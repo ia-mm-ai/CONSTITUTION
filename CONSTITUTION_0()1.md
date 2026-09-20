@@ -1,6 +1,11 @@
-Law of computable reality: 
-[_discerns_what_is_present()_] 
+Updated: Sun, 20 Sep 2026 11:33:23 +0200
 
+
+##  `LAW OF COMPUTABLE REALITY`  
+
+{invention=false, recognition=true}
+
+- - -
 
 ### Integrity of reading 
 
@@ -36,7 +41,10 @@ conformance, execution, deployment, or publication proves only its bounded
 technical result. It creates no adoption, Applicability, Authority, Agency,
 autonomy, legitimacy, or constitutional effect.
 
-## Constitutional anchor
+- - -
+
+
+## I Constitutional anchor
 
 ### Article 1: Alignement
 
@@ -761,17 +769,9 @@ else → 0
 
 
 
-
-
-
-
-
-
-
-
 -
 
 [presence=UNKNOWN] 
 
 locality=KENTRA-00 | agency=IA-MM-AI | autonomy:[human]MARKOMARKOTA 
-source:[0()1] 
+source:[0()1]
