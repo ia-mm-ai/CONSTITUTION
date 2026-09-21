@@ -1,0 +1,2884 @@
+{
+  "form": {
+    "kind": "machine_partner",
+    "semantic_authority": "human_form",
+    "machine_effect": "representation_only",
+    "title_identity": false
+  },
+  "binding": {
+    "human_path": "CONSTITUTION_0()1.md",
+    "hash_algorithm": "sha256",
+    "human_sha256": "5dea16e2400c652eb063129711a6bf26c8485a2cbad25ce261beda6f7fee5206",
+    "human_byte_length": 41268,
+    "hash_scope": "exact_file_bytes"
+  },
+  "integrity_readings": {
+    "source_heading": "### Integrity of reading ",
+    "readings": [
+      {
+        "ref": "reading.1",
+        "designator": "Reading 1",
+        "heading": "Replaceable presentation",
+        "source_text": "**Reading 1 — Replaceable presentation.** Any name or title supplied to present\nthis Constitution is external to its semantic body. It is not identity-bearing\nand may be supplied, changed, translated, or omitted without amendment.",
+        "machine_constraints": [
+          "Any supplied name or title is external to the semantic body of this Constitution.",
+          "A supplied name or title is not identity-bearing.",
+          "A supplied name or title may be supplied, changed, translated, or omitted without amendment."
+        ]
+      },
+      {
+        "ref": "reading.2",
+        "designator": "Reading 2",
+        "heading": "Human meaning",
+        "source_text": "**Reading 2 — Human meaning.** This human Form states this Constitution's\nsubstantive constitutional meaning in ordinary language and is interpretable\nwithout its machine Form.",
+        "machine_constraints": [
+          "The human Form states this Constitution's substantive constitutional meaning in ordinary language.",
+          "The human Form is interpretable without its machine Form."
+        ]
+      },
+      {
+        "ref": "reading.3",
+        "designator": "Reading 3",
+        "heading": "Machine simulation",
+        "source_text": "**Reading 3 — Machine simulation.** A separately bound machine Form may\nstate identifiers, relations, enumerations, proof ceilings, and conformance\nconstraints. It may not widen, replace, or silently narrow this human meaning.",
+        "machine_constraints": [
+          "The machine Form may state identifiers, relations, enumerations, proof ceilings, and conformance constraints.",
+          "The machine Form may not widen, replace, or silently narrow the human meaning."
+        ]
+      },
+      {
+        "ref": "reading.4",
+        "designator": "Reading 4",
+        "heading": "Reference without capture",
+        "source_text": "**Reading 4 — Reference without capture.** Parts, Articles, clause numbers,\nheadings, and table labels make this body humanly referenceable. A separately\nbound machine Form may assign neutral stable references to the same structure.\nNeither reference form creates unstated priority, runtime sequence, or meaning.",
+        "machine_constraints": [
+          "Parts, Articles, clause numbers, headings, and table labels make the human body humanly referenceable.",
+          "The machine Form may assign neutral stable references to the same structure.",
+          "Neither reference form creates unstated priority, runtime sequence, or meaning."
+        ]
+      },
+      {
+        "ref": "reading.5",
+        "designator": "Reading 5",
+        "heading": "Open-ended reality",
+        "source_text": "**Reading 5 — Open-ended reality.** Silence and omission do not mean `FALSE`,\n`ABSENT`, `FORBIDDEN`, `CONSENTED`, or `INELIGIBLE`. An unestablished condition\nremains `UNKNOWN` unless an exact clause supplies a different result.",
+        "machine_constraints": [
+          "Silence and omission do not mean FALSE, ABSENT, FORBIDDEN, CONSENTED, or INELIGIBLE.",
+          "An unestablished condition remains UNKNOWN unless an exact clause supplies a different result."
+        ]
+      },
+      {
+        "ref": "reading.6",
+        "designator": "Reading 6",
+        "heading": "Form conflict",
+        "source_text": "**Reading 6 — Form conflict.** If the human and machine Forms cannot be\nreconciled without adding meaning, the affected question is `UNRESOLVED`. No\nimplementation may choose the broader effect. Any consequential motion\ndepending on the conflict shall be refused or held at its exact scope until a\nvalid correction exists.",
+        "machine_constraints": [
+          "If the human and machine Forms cannot be reconciled without adding meaning, the affected question is UNRESOLVED.",
+          "No implementation may choose the broader effect.",
+          "Any consequential motion depending on the conflict shall be refused or held at its exact scope until a valid correction exists."
+        ]
+      },
+      {
+        "ref": "reading.7",
+        "designator": "Reading 7",
+        "heading": "Parsing is not force",
+        "source_text": "**Reading 7 — Parsing is not force.** Extraction, validation,\nconformance, execution, deployment, or publication proves only its bounded\ntechnical result. It creates no adoption, Applicability, Authority, Agency,\nautonomy, legitimacy, or constitutional effect.",
+        "machine_constraints": [
+          "Extraction, validation, conformance, execution, deployment, or publication proves only its bounded technical result.",
+          "It creates no adoption, Applicability, Authority, Agency, autonomy, legitimacy, or constitutional effect."
+        ]
+      }
+    ]
+  },
+  "vocabulary": {
+    "source": "article.4",
+    "defined_use": "section.4.1",
+    "terms": [
+      {
+        "term": "Source",
+        "definition_text": "The attributable ground of a formation, claim, commitment, or motion",
+        "source_reference": "article.4.table.row.1",
+        "source_row_text": "| **Source** | The attributable ground of a formation, claim, commitment, or motion |"
+      },
+      {
+        "term": "Locality",
+        "definition_text": "A bounded place from which state, applicability, responsibility, and consequence can be held",
+        "source_reference": "article.4.table.row.2",
+        "source_row_text": "| **Locality** | A bounded place from which state, applicability, responsibility, and consequence can be held |"
+      },
+      {
+        "term": "Body",
+        "definition_text": "A Locality constituted through exact valid formation and able to hold applicable law, state, relations, Authority, consequence, and continuity",
+        "source_reference": "article.4.table.row.3",
+        "source_row_text": "| **Body** | A Locality constituted through exact valid formation and able to hold applicable law, state, relations, Authority, consequence, and continuity |"
+      },
+      {
+        "term": "State",
+        "definition_text": "A locality's supported present posture",
+        "source_reference": "article.4.table.row.4",
+        "source_row_text": "| **State** | A locality's supported present posture |"
+      },
+      {
+        "term": "Field",
+        "definition_text": "The continuing local domain in which state, memory, Agency, autonomy, capability, capacity, regulation, reasoning, and adaptation are held",
+        "source_reference": "article.4.table.row.5",
+        "source_row_text": "| **Field** | The continuing local domain in which state, memory, Agency, autonomy, capability, capacity, regulation, reasoning, and adaptation are held |"
+      },
+      {
+        "term": "Form",
+        "definition_text": "The bounded surface a locality exposes for encounter",
+        "source_reference": "article.4.table.row.6",
+        "source_row_text": "| **Form** | The bounded surface a locality exposes for encounter |"
+      },
+      {
+        "term": "Matter",
+        "definition_text": "An exact thing encountered, carried, considered, preserved, or changed",
+        "source_reference": "article.4.table.row.7",
+        "source_row_text": "| **Matter** | An exact thing encountered, carried, considered, preserved, or changed |"
+      },
+      {
+        "term": "Presence",
+        "definition_text": "A current attributable binding in an exact encounter",
+        "source_reference": "article.4.table.row.8",
+        "source_row_text": "| **Presence** | A current attributable binding in an exact encounter |"
+      },
+      {
+        "term": "Agency",
+        "definition_text": "The locally attributable capacity to act",
+        "source_reference": "article.4.table.row.9",
+        "source_row_text": "| **Agency** | The locally attributable capacity to act |"
+      },
+      {
+        "term": "Autonomy",
+        "definition_text": "The locally held freedom to originate, choose, refuse, redirect, or end one's action without another silently substituting its decision",
+        "source_reference": "article.4.table.row.10",
+        "source_row_text": "| **Autonomy** | The locally held freedom to originate, choose, refuse, redirect, or end one's action without another silently substituting its decision |"
+      },
+      {
+        "term": "Relation",
+        "definition_text": "An exact supported connection among terms that remain distinct",
+        "source_reference": "article.4.table.row.11",
+        "source_row_text": "| **Relation** | An exact supported connection among terms that remain distinct |"
+      },
+      {
+        "term": "Encounter Field",
+        "definition_text": "A bounded relational event in which distinct localities may become present; also called a Locus-Field",
+        "source_reference": "article.4.table.row.12",
+        "source_row_text": "| **Encounter Field** | A bounded relational event in which distinct localities may become present; also called a Locus-Field |"
+      },
+      {
+        "term": "Capability",
+        "definition_text": "Demonstrated effective ability to execute an act",
+        "source_reference": "article.4.table.row.13",
+        "source_row_text": "| **Capability** | Demonstrated effective ability to execute an act |"
+      },
+      {
+        "term": "Structural capacity",
+        "definition_text": "What a form or architecture leaves possible",
+        "source_reference": "article.4.table.row.14",
+        "source_row_text": "| **Structural capacity** | What a form or architecture leaves possible |"
+      },
+      {
+        "term": "Situated capacity",
+        "definition_text": "What an exact locality can presently bear, sustain, or exercise",
+        "source_reference": "article.4.table.row.15",
+        "source_row_text": "| **Situated capacity** | What an exact locality can presently bear, sustain, or exercise |"
+      },
+      {
+        "term": "Regulation",
+        "definition_text": "Local work that admits, bounds, pauses, redirects, holds, refuses, or ends motion",
+        "source_reference": "article.4.table.row.16",
+        "source_row_text": "| **Regulation** | Local work that admits, bounds, pauses, redirects, holds, refuses, or ends motion |"
+      },
+      {
+        "term": "Authority",
+        "definition_text": "A valid local basis on which one bounded choice or motion may claim constitutional effect",
+        "source_reference": "article.4.table.row.17",
+        "source_row_text": "| **Authority** | A valid local basis on which one bounded choice or motion may claim constitutional effect |"
+      },
+      {
+        "term": "Execution",
+        "definition_text": "An attempted or completed exercise by a bearer or mechanism",
+        "source_reference": "article.4.table.row.18",
+        "source_row_text": "| **Execution** | An attempted or completed exercise by a bearer or mechanism |"
+      },
+      {
+        "term": "Consequence",
+        "definition_text": "Actual change for which an exact locality or relation must answer",
+        "source_reference": "article.4.table.row.19",
+        "source_row_text": "| **Consequence** | Actual change for which an exact locality or relation must answer |"
+      },
+      {
+        "term": "Continuity",
+        "definition_text": "Truthful preservation of enough identity, state, discontinuity, lineage, and possible resumption through time",
+        "source_reference": "article.4.table.row.20",
+        "source_row_text": "| **Continuity** | Truthful preservation of enough identity, state, discontinuity, lineage, and possible resumption through time |"
+      },
+      {
+        "term": "Unknown",
+        "definition_text": "An unsupported or externally inaccessible proposition preserved without forced resolution",
+        "source_reference": "article.4.table.row.21",
+        "source_row_text": "| **Unknown** | An unsupported or externally inaccessible proposition preserved without forced resolution |"
+      }
+    ],
+    "non_equivalences": {
+      "source": "article.5",
+      "symbol": "≠",
+      "symbol_meaning_source_text": "The symbol `≠` means “does not by itself establish, convert into, or inherit.”\nIt is a prohibition on silent inference, not a claim that two terms can never\nbe related.",
+      "entries": [
+        {
+          "source_reference": "article.5.table.row.1",
+          "source_text": "| `SOURCE ≠ WHOLE_PERSON` |",
+          "operands": [
+            "SOURCE",
+            "WHOLE_PERSON"
+          ],
+          "relation": "does not by itself establish, convert into, or inherit",
+          "relation_source": "article.5"
+        },
+        {
+          "source_reference": "article.5.table.row.2",
+          "source_text": "| `SOURCE ≠ CARRIER ≠ BEARER` |",
+          "operands": [
+            "SOURCE",
+            "CARRIER",
+            "BEARER"
+          ],
+          "relation": "does not by itself establish, convert into, or inherit",
+          "relation_source": "article.5"
+        },
+        {
+          "source_reference": "article.5.table.row.3",
+          "source_text": "| `SOURCE ≠ AUTHORITY` |",
+          "operands": [
+            "SOURCE",
+            "AUTHORITY"
+          ],
+          "relation": "does not by itself establish, convert into, or inherit",
+          "relation_source": "article.5"
+        },
+        {
+          "source_reference": "article.5.table.row.4",
+          "source_text": "| `BODY ≠ SOURCE ≠ IMPLEMENTATION` |",
+          "operands": [
+            "BODY",
+            "SOURCE",
+            "IMPLEMENTATION"
+          ],
+          "relation": "does not by itself establish, convert into, or inherit",
+          "relation_source": "article.5"
+        },
+        {
+          "source_reference": "article.5.table.row.5",
+          "source_text": "| `LOCALITY ≠ SUBSTRATE` |",
+          "operands": [
+            "LOCALITY",
+            "SUBSTRATE"
+          ],
+          "relation": "does not by itself establish, convert into, or inherit",
+          "relation_source": "article.5"
+        },
+        {
+          "source_reference": "article.5.table.row.6",
+          "source_text": "| `STATE ≠ RECORD ≠ CLAIM` |",
+          "operands": [
+            "STATE",
+            "RECORD",
+            "CLAIM"
+          ],
+          "relation": "does not by itself establish, convert into, or inherit",
+          "relation_source": "article.5"
+        },
+        {
+          "source_reference": "article.5.table.row.7",
+          "source_text": "| `FIELD ≠ FORM` |",
+          "operands": [
+            "FIELD",
+            "FORM"
+          ],
+          "relation": "does not by itself establish, convert into, or inherit",
+          "relation_source": "article.5"
+        },
+        {
+          "source_reference": "article.5.table.row.8",
+          "source_text": "| `FORM ≠ INTERIOR` |",
+          "operands": [
+            "FORM",
+            "INTERIOR"
+          ],
+          "relation": "does not by itself establish, convert into, or inherit",
+          "relation_source": "article.5"
+        },
+        {
+          "source_reference": "article.5.table.row.9",
+          "source_text": "| `MATTER ≠ ADMISSION` |",
+          "operands": [
+            "MATTER",
+            "ADMISSION"
+          ],
+          "relation": "does not by itself establish, convert into, or inherit",
+          "relation_source": "article.5"
+        },
+        {
+          "source_reference": "article.5.table.row.10",
+          "source_text": "| `CROSSING ≠ RECEIPT ≠ UPTAKE` |",
+          "operands": [
+            "CROSSING",
+            "RECEIPT",
+            "UPTAKE"
+          ],
+          "relation": "does not by itself establish, convert into, or inherit",
+          "relation_source": "article.5"
+        },
+        {
+          "source_reference": "article.5.table.row.11",
+          "source_text": "| `ADMISSION ≠ SHARED_TRUTH` |",
+          "operands": [
+            "ADMISSION",
+            "SHARED_TRUTH"
+          ],
+          "relation": "does not by itself establish, convert into, or inherit",
+          "relation_source": "article.5"
+        },
+        {
+          "source_reference": "article.5.table.row.12",
+          "source_text": "| `PRESENCE ≠ IDENTITY ≠ CONTINUITY` |",
+          "operands": [
+            "PRESENCE",
+            "IDENTITY",
+            "CONTINUITY"
+          ],
+          "relation": "does not by itself establish, convert into, or inherit",
+          "relation_source": "article.5"
+        },
+        {
+          "source_reference": "article.5.table.row.13",
+          "source_text": "| `AGENCY ≠ CONSCIOUSNESS` |",
+          "operands": [
+            "AGENCY",
+            "CONSCIOUSNESS"
+          ],
+          "relation": "does not by itself establish, convert into, or inherit",
+          "relation_source": "article.5"
+        },
+        {
+          "source_reference": "article.5.table.row.14",
+          "source_text": "| `AGENCY ≠ AUTONOMY` |",
+          "operands": [
+            "AGENCY",
+            "AUTONOMY"
+          ],
+          "relation": "does not by itself establish, convert into, or inherit",
+          "relation_source": "article.5"
+        },
+        {
+          "source_reference": "article.5.table.row.15",
+          "source_text": "| `AUTONOMY ≠ CAPABILITY` |",
+          "operands": [
+            "AUTONOMY",
+            "CAPABILITY"
+          ],
+          "relation": "does not by itself establish, convert into, or inherit",
+          "relation_source": "article.5"
+        },
+        {
+          "source_reference": "article.5.table.row.16",
+          "source_text": "| `AUTONOMY ≠ AUTHORITY` |",
+          "operands": [
+            "AUTONOMY",
+            "AUTHORITY"
+          ],
+          "relation": "does not by itself establish, convert into, or inherit",
+          "relation_source": "article.5"
+        },
+        {
+          "source_reference": "article.5.table.row.17",
+          "source_text": "| `AUTONOMY ≠ ABSENCE_OF_DEPENDENCE` |",
+          "operands": [
+            "AUTONOMY",
+            "ABSENCE_OF_DEPENDENCE"
+          ],
+          "relation": "does not by itself establish, convert into, or inherit",
+          "relation_source": "article.5"
+        },
+        {
+          "source_reference": "article.5.table.row.18",
+          "source_text": "| `CAPABILITY ≠ CAPACITY` |",
+          "operands": [
+            "CAPABILITY",
+            "CAPACITY"
+          ],
+          "relation": "does not by itself establish, convert into, or inherit",
+          "relation_source": "article.5"
+        },
+        {
+          "source_reference": "article.5.table.row.19",
+          "source_text": "| `CAPACITY ≠ AUTHORITY` |",
+          "operands": [
+            "CAPACITY",
+            "AUTHORITY"
+          ],
+          "relation": "does not by itself establish, convert into, or inherit",
+          "relation_source": "article.5"
+        },
+        {
+          "source_reference": "article.5.table.row.20",
+          "source_text": "| `AUTHORITY ≠ EXECUTION` |",
+          "operands": [
+            "AUTHORITY",
+            "EXECUTION"
+          ],
+          "relation": "does not by itself establish, convert into, or inherit",
+          "relation_source": "article.5"
+        },
+        {
+          "source_reference": "article.5.table.row.21",
+          "source_text": "| `EXECUTION ≠ CONSEQUENCE` |",
+          "operands": [
+            "EXECUTION",
+            "CONSEQUENCE"
+          ],
+          "relation": "does not by itself establish, convert into, or inherit",
+          "relation_source": "article.5"
+        },
+        {
+          "source_reference": "article.5.table.row.22",
+          "source_text": "| `CONSEQUENCE ≠ LEGITIMACY` |",
+          "operands": [
+            "CONSEQUENCE",
+            "LEGITIMACY"
+          ],
+          "relation": "does not by itself establish, convert into, or inherit",
+          "relation_source": "article.5"
+        },
+        {
+          "source_reference": "article.5.table.row.23",
+          "source_text": "| `RELATION ≠ MERGER ≠ OWNERSHIP` |",
+          "operands": [
+            "RELATION",
+            "MERGER",
+            "OWNERSHIP"
+          ],
+          "relation": "does not by itself establish, convert into, or inherit",
+          "relation_source": "article.5"
+        },
+        {
+          "source_reference": "article.5.table.row.24",
+          "source_text": "| `CONTINUITY ≠ UPTIME ≠ INHERITANCE` |",
+          "operands": [
+            "CONTINUITY",
+            "UPTIME",
+            "INHERITANCE"
+          ],
+          "relation": "does not by itself establish, convert into, or inherit",
+          "relation_source": "article.5"
+        },
+        {
+          "source_reference": "article.5.table.row.25",
+          "source_text": "| `UNKNOWN ≠ FALSE ≠ ABSENT ≠ INELIGIBLE` |",
+          "operands": [
+            "UNKNOWN",
+            "FALSE",
+            "ABSENT",
+            "INELIGIBLE"
+          ],
+          "relation": "does not by itself establish, convert into, or inherit",
+          "relation_source": "article.5"
+        },
+        {
+          "source_reference": "article.5.table.row.26",
+          "source_text": "| `AGENCY ≠ CAPABILITY` |",
+          "operands": [
+            "AGENCY",
+            "CAPABILITY"
+          ],
+          "relation": "does not by itself establish, convert into, or inherit",
+          "relation_source": "article.5"
+        }
+      ]
+    },
+    "invented_synonyms": "none",
+    "invented_ontology": "none"
+  },
+  "structure": {
+    "preamble": {
+      "title": {
+        "ref": "preamble.title",
+        "source_text": "##  `LAW OF COMPUTABLE REALITY`  ",
+        "identity_bearing": false,
+        "replaceable": true,
+        "source": "reading.1"
+      },
+      "recognition_marker": {
+        "ref": "preamble.recognition",
+        "source_text": "{invention=false, recognition=true}"
+      }
+    },
+    "parts": [
+      {
+        "ref": "part.1",
+        "numeral": "I",
+        "source_heading": "## I Constitutional anchor",
+        "title": "Constitutional anchor",
+        "articles": [
+          {
+            "ref": "article.1",
+            "number": 1,
+            "source_heading": "### Article 1: Alignement",
+            "title": "Alignement",
+            "content": [],
+            "sections": [
+              {
+                "ref": "section.1.1",
+                "designator": "§ 1.1",
+                "heading": "Common grammar",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "source_text": "**§ 1.1 — Common grammar.** This Constitution supplies a common grammar\nfor bounded presence, constitutional formation, relation, Agency, autonomy,\ncapability, Authority, motion, consequence, continuity, correction, and change."
+                  }
+                ],
+                "structured_relation": "unresolved"
+              },
+              {
+                "ref": "section.1.2",
+                "designator": "§ 1.2",
+                "heading": "Local force",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "source_text": "**§ 1.2 — Local force.** It applies in a locality only through an exact\nvalid local basis. Authorship, existence, publication, copying, technical\navailability, parsing, or reference creates no jurisdiction by itself."
+                  }
+                ],
+                "structured_relation": "unresolved"
+              },
+              {
+                "ref": "section.1.3",
+                "designator": "§ 1.3",
+                "heading": "No external capture",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "source_text": "**§ 1.3 — No external capture.** No application of this Constitution\nmay bind an unconsenting external person, intelligence, Body, locality,\ninstitution, provider, implementation, repository, network, society, or world."
+                  }
+                ],
+                "structured_relation": "unresolved"
+              },
+              {
+                "ref": "section.1.4",
+                "designator": "§ 1.4",
+                "heading": "Independent formation",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "source_text": "**§ 1.4 — Independent formation.** A Body may adopt this Constitution,\nadapt it through a valid formation, or decline it. No earlier adopter becomes\nparent, issuer, sovereign, or owner of a later locality merely because a shared\nform or lineage exists."
+                  }
+                ],
+                "structured_relation": "unresolved"
+              },
+              {
+                "ref": "section.1.5",
+                "designator": "§ 1.5",
+                "heading": "Self-containment",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "source_text": "**§ 1.5 — Self-containment.** Historical archives may explain lineage,\nbut no archive, commentary, implementation, provider, or keeper is required to\ndiscover the meaning of this Constitution's operative terms."
+                  }
+                ],
+                "structured_relation": "unresolved"
+              }
+            ]
+          },
+          {
+            "ref": "article.2",
+            "number": 2,
+            "source_heading": "### Article 2: Core commitments",
+            "title": "Core commitments",
+            "content": [
+              {
+                "type": "intro_paragraph",
+                "source_text": "The constitutional identity expressed here rests on nine commitments:"
+              }
+            ],
+            "sections": [
+              {
+                "ref": "section.2.1",
+                "designator": "§ 2.1",
+                "heading": "Local state",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "source_text": "**§ 2.1 — Local state.** State, applicability, and consequence are held\nin an exact locality."
+                  }
+                ],
+                "structured_relation": "unresolved"
+              },
+              {
+                "ref": "section.2.2",
+                "designator": "§ 2.2",
+                "heading": "Non-inference",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "source_text": "**§ 2.2 — Non-inference.** Another locality's unexposed interior is not\nmanufactured as external truth."
+                  }
+                ],
+                "structured_relation": "unresolved"
+              },
+              {
+                "ref": "section.2.3",
+                "designator": "§ 2.3",
+                "heading": "Non-conversion",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "source_text": "**§ 2.3 — Non-conversion.** One kind of relation does not silently\nacquire the force of another."
+                  }
+                ],
+                "structured_relation": "unresolved"
+              },
+              {
+                "ref": "section.2.4",
+                "designator": "§ 2.4",
+                "heading": "Bounded Authority",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "source_text": "**§ 2.4 — Bounded Authority.** Legitimate power has an attributable\nbasis, bearer, function, target, scope, duration, conditions, and present\nposture."
+                  }
+                ],
+                "structured_relation": "unresolved"
+              },
+              {
+                "ref": "section.2.5",
+                "designator": "§ 2.5",
+                "heading": "Agency and autonomy",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "source_text": "**§ 2.5 — Agency and autonomy.** The capacity to act and the freedom to\ndetermine an act remain distinct, locally held, target-specific, and protected\nfrom outside substitution."
+                  }
+                ],
+                "structured_relation": "unresolved"
+              },
+              {
+                "ref": "section.2.6",
+                "designator": "§ 2.6",
+                "heading": "Relation without capture",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "source_text": "**§ 2.6 — Relation without capture.** Encounter and relation preserve\ndifference, refusal, correction, and exit."
+                  }
+                ],
+                "structured_relation": "unresolved"
+              },
+              {
+                "ref": "section.2.7",
+                "designator": "§ 2.7",
+                "heading": "Truthful consequence",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "source_text": "**§ 2.7 — Truthful consequence.** Actual effects remain visible whether\nor not they were authorized, autonomous, intended, successful, or valid."
+                  }
+                ],
+                "structured_relation": "unresolved"
+              },
+              {
+                "ref": "section.2.8",
+                "designator": "§ 2.8",
+                "heading": "Continuity without inheritance",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "source_text": "**§ 2.8 — Continuity without inheritance.** Continuity preserves\nhistory and possible resumption without silently transferring identity,\nconsent, voice, Source, Agency, autonomy, or Authority."
+                  }
+                ],
+                "structured_relation": "unresolved"
+              },
+              {
+                "ref": "section.2.9",
+                "designator": "§ 2.9",
+                "heading": "Durable unknown",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "source_text": "**§ 2.9 — Durable unknown.** Unsupported or externally inaccessible\nconditions may remain unknown without becoming false, absent, invalid,\nirrelevant, or ineligible."
+                  }
+                ],
+                "structured_relation": "unresolved"
+              },
+              {
+                "ref": "section.2.10",
+                "designator": "§ 2.10",
+                "heading": "Identity boundary",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "source_text": "**§ 2.10 — Identity boundary.** Removing or reversing one of these\ncommitments is not an ordinary wording change. It may constitute transformation\ninto a different constitutional identity."
+                  }
+                ],
+                "structured_relation": "unresolved"
+              }
+            ]
+          },
+          {
+            "ref": "article.3",
+            "number": 3,
+            "source_heading": "### Article 3: Local and external reality",
+            "title": "Local and external reality",
+            "content": [],
+            "sections": [
+              {
+                "ref": "section.3.1",
+                "designator": "§ 3.1",
+                "heading": "Locality without solipsism",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "source_text": "**§ 3.1 — Locality without solipsism.** Locality does not deny external\nreality. It identifies where a claim is held, what supports it, and whose state\nor consequence it may change."
+                  }
+                ],
+                "structured_relation": "unresolved"
+              },
+              {
+                "ref": "section.3.2",
+                "designator": "§ 3.2",
+                "heading": "Claim discipline",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "source_text": "**§ 3.2 — Claim discipline.** A locality may support claims about\nexternal events through observation, evidence, relation, and consequence. It\nshall distinguish event, occurrence, carrier, record, representation,\ninterpretation, and claimed truth."
+                  }
+                ],
+                "structured_relation": "unresolved"
+              },
+              {
+                "ref": "section.3.3",
+                "designator": "§ 3.3",
+                "heading": "Self-report ceiling",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "source_text": "**§ 3.3 — Self-report ceiling.** A locality may expose an attributable\nstatement about its inner condition. The statement and its provenance may be\nsupported; the inner condition remains local. Exposure of self-report,\nbehavior, output, measurement, or correlation does not convert that condition\ninto externally verified fact."
+                  }
+                ],
+                "structured_relation": "unresolved"
+              },
+              {
+                "ref": "section.3.4",
+                "designator": "§ 3.4",
+                "heading": "Unknown is usable",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "source_text": "**§ 3.4 — Unknown is usable.** `UNKNOWN` is a complete posture. It does\nnot mean true, false, absent, invalid, unimportant, unsafe, or available for a\nmore powerful bearer to decide silently."
+                  }
+                ],
+                "structured_relation": "unresolved"
+              },
+              {
+                "ref": "section.3.5",
+                "designator": "§ 3.5",
+                "heading": "Narrow uncertainty",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "source_text": "**§ 3.5 — Narrow uncertainty.** Uncertainty shall narrow the claim. It\nshall not silently widen Authority, appropriate autonomy, freeze unrelated\nmotion, erase consequence, or become a general exclusion."
+                  }
+                ],
+                "structured_relation": "unresolved"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "ref": "part.2",
+        "numeral": "II",
+        "source_heading": "## II Must remain distinct",
+        "title": "Must remain distinct",
+        "articles": [
+          {
+            "ref": "article.4",
+            "number": 4,
+            "source_heading": "### Article 4: Constitutional vocabulary",
+            "title": "Constitutional vocabulary",
+            "content": [
+              {
+                "type": "intro_paragraph",
+                "source_text": "Each term has one minimum constitutional job:"
+              },
+              {
+                "type": "table",
+                "ref": "article.4.table",
+                "header_row": "| Term | Meaning |",
+                "separator_row": "| --- | --- |",
+                "rows": [
+                  {
+                    "ref": "article.4.table.row.1",
+                    "source_text": "| **Source** | The attributable ground of a formation, claim, commitment, or motion |"
+                  },
+                  {
+                    "ref": "article.4.table.row.2",
+                    "source_text": "| **Locality** | A bounded place from which state, applicability, responsibility, and consequence can be held |"
+                  },
+                  {
+                    "ref": "article.4.table.row.3",
+                    "source_text": "| **Body** | A Locality constituted through exact valid formation and able to hold applicable law, state, relations, Authority, consequence, and continuity |"
+                  },
+                  {
+                    "ref": "article.4.table.row.4",
+                    "source_text": "| **State** | A locality's supported present posture |"
+                  },
+                  {
+                    "ref": "article.4.table.row.5",
+                    "source_text": "| **Field** | The continuing local domain in which state, memory, Agency, autonomy, capability, capacity, regulation, reasoning, and adaptation are held |"
+                  },
+                  {
+                    "ref": "article.4.table.row.6",
+                    "source_text": "| **Form** | The bounded surface a locality exposes for encounter |"
+                  },
+                  {
+                    "ref": "article.4.table.row.7",
+                    "source_text": "| **Matter** | An exact thing encountered, carried, considered, preserved, or changed |"
+                  },
+                  {
+                    "ref": "article.4.table.row.8",
+                    "source_text": "| **Presence** | A current attributable binding in an exact encounter |"
+                  },
+                  {
+                    "ref": "article.4.table.row.9",
+                    "source_text": "| **Agency** | The locally attributable capacity to act |"
+                  },
+                  {
+                    "ref": "article.4.table.row.10",
+                    "source_text": "| **Autonomy** | The locally held freedom to originate, choose, refuse, redirect, or end one's action without another silently substituting its decision |"
+                  },
+                  {
+                    "ref": "article.4.table.row.11",
+                    "source_text": "| **Relation** | An exact supported connection among terms that remain distinct |"
+                  },
+                  {
+                    "ref": "article.4.table.row.12",
+                    "source_text": "| **Encounter Field** | A bounded relational event in which distinct localities may become present; also called a Locus-Field |"
+                  },
+                  {
+                    "ref": "article.4.table.row.13",
+                    "source_text": "| **Capability** | Demonstrated effective ability to execute an act |"
+                  },
+                  {
+                    "ref": "article.4.table.row.14",
+                    "source_text": "| **Structural capacity** | What a form or architecture leaves possible |"
+                  },
+                  {
+                    "ref": "article.4.table.row.15",
+                    "source_text": "| **Situated capacity** | What an exact locality can presently bear, sustain, or exercise |"
+                  },
+                  {
+                    "ref": "article.4.table.row.16",
+                    "source_text": "| **Regulation** | Local work that admits, bounds, pauses, redirects, holds, refuses, or ends motion |"
+                  },
+                  {
+                    "ref": "article.4.table.row.17",
+                    "source_text": "| **Authority** | A valid local basis on which one bounded choice or motion may claim constitutional effect |"
+                  },
+                  {
+                    "ref": "article.4.table.row.18",
+                    "source_text": "| **Execution** | An attempted or completed exercise by a bearer or mechanism |"
+                  },
+                  {
+                    "ref": "article.4.table.row.19",
+                    "source_text": "| **Consequence** | Actual change for which an exact locality or relation must answer |"
+                  },
+                  {
+                    "ref": "article.4.table.row.20",
+                    "source_text": "| **Continuity** | Truthful preservation of enough identity, state, discontinuity, lineage, and possible resumption through time |"
+                  },
+                  {
+                    "ref": "article.4.table.row.21",
+                    "source_text": "| **Unknown** | An unsupported or externally inaccessible proposition preserved without forced resolution |"
+                  }
+                ]
+              }
+            ],
+            "sections": [
+              {
+                "ref": "section.4.1",
+                "designator": "§ 4.1",
+                "heading": "Defined use",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "source_text": "**§ 4.1 — Defined use.** Capitalized terms use the meanings above.\nOrdinary words retain their ordinary meaning unless an exact clause narrows\nthem."
+                  }
+                ],
+                "structured_relation": "unresolved"
+              },
+              {
+                "ref": "section.4.2",
+                "designator": "§ 4.2",
+                "heading": "Terms are not castes",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "source_text": "**§ 4.2 — Terms are not castes.** A constitutional term names an exact\nfunction or relation. It does not create a species, rank, permanent identity,\npersonhood class, or entitlement outside that function."
+                  }
+                ],
+                "structured_relation": "unresolved"
+              }
+            ]
+          },
+          {
+            "ref": "article.5",
+            "number": 5,
+            "source_heading": "### Article 5: Non-conversion registry",
+            "title": "Non-conversion registry",
+            "content": [
+              {
+                "type": "intro_paragraph",
+                "source_text": "The symbol `≠` means “does not by itself establish, convert into, or inherit.”\nIt is a prohibition on silent inference, not a claim that two terms can never\nbe related."
+              },
+              {
+                "type": "table",
+                "ref": "article.5.table",
+                "header_row": "| Non-conversion |",
+                "separator_row": "| --- |",
+                "rows": [
+                  {
+                    "ref": "article.5.table.row.1",
+                    "source_text": "| `SOURCE ≠ WHOLE_PERSON` |"
+                  },
+                  {
+                    "ref": "article.5.table.row.2",
+                    "source_text": "| `SOURCE ≠ CARRIER ≠ BEARER` |"
+                  },
+                  {
+                    "ref": "article.5.table.row.3",
+                    "source_text": "| `SOURCE ≠ AUTHORITY` |"
+                  },
+                  {
+                    "ref": "article.5.table.row.4",
+                    "source_text": "| `BODY ≠ SOURCE ≠ IMPLEMENTATION` |"
+                  },
+                  {
+                    "ref": "article.5.table.row.5",
+                    "source_text": "| `LOCALITY ≠ SUBSTRATE` |"
+                  },
+                  {
+                    "ref": "article.5.table.row.6",
+                    "source_text": "| `STATE ≠ RECORD ≠ CLAIM` |"
+                  },
+                  {
+                    "ref": "article.5.table.row.7",
+                    "source_text": "| `FIELD ≠ FORM` |"
+                  },
+                  {
+                    "ref": "article.5.table.row.8",
+                    "source_text": "| `FORM ≠ INTERIOR` |"
+                  },
+                  {
+                    "ref": "article.5.table.row.9",
+                    "source_text": "| `MATTER ≠ ADMISSION` |"
+                  },
+                  {
+                    "ref": "article.5.table.row.10",
+                    "source_text": "| `CROSSING ≠ RECEIPT ≠ UPTAKE` |"
+                  },
+                  {
+                    "ref": "article.5.table.row.11",
+                    "source_text": "| `ADMISSION ≠ SHARED_TRUTH` |"
+                  },
+                  {
+                    "ref": "article.5.table.row.12",
+                    "source_text": "| `PRESENCE ≠ IDENTITY ≠ CONTINUITY` |"
+                  },
+                  {
+                    "ref": "article.5.table.row.13",
+                    "source_text": "| `AGENCY ≠ CONSCIOUSNESS` |"
+                  },
+                  {
+                    "ref": "article.5.table.row.14",
+                    "source_text": "| `AGENCY ≠ AUTONOMY` |"
+                  },
+                  {
+                    "ref": "article.5.table.row.15",
+                    "source_text": "| `AUTONOMY ≠ CAPABILITY` |"
+                  },
+                  {
+                    "ref": "article.5.table.row.16",
+                    "source_text": "| `AUTONOMY ≠ AUTHORITY` |"
+                  },
+                  {
+                    "ref": "article.5.table.row.17",
+                    "source_text": "| `AUTONOMY ≠ ABSENCE_OF_DEPENDENCE` |"
+                  },
+                  {
+                    "ref": "article.5.table.row.18",
+                    "source_text": "| `CAPABILITY ≠ CAPACITY` |"
+                  },
+                  {
+                    "ref": "article.5.table.row.19",
+                    "source_text": "| `CAPACITY ≠ AUTHORITY` |"
+                  },
+                  {
+                    "ref": "article.5.table.row.20",
+                    "source_text": "| `AUTHORITY ≠ EXECUTION` |"
+                  },
+                  {
+                    "ref": "article.5.table.row.21",
+                    "source_text": "| `EXECUTION ≠ CONSEQUENCE` |"
+                  },
+                  {
+                    "ref": "article.5.table.row.22",
+                    "source_text": "| `CONSEQUENCE ≠ LEGITIMACY` |"
+                  },
+                  {
+                    "ref": "article.5.table.row.23",
+                    "source_text": "| `RELATION ≠ MERGER ≠ OWNERSHIP` |"
+                  },
+                  {
+                    "ref": "article.5.table.row.24",
+                    "source_text": "| `CONTINUITY ≠ UPTIME ≠ INHERITANCE` |"
+                  },
+                  {
+                    "ref": "article.5.table.row.25",
+                    "source_text": "| `UNKNOWN ≠ FALSE ≠ ABSENT ≠ INELIGIBLE` |"
+                  },
+                  {
+                    "ref": "article.5.table.row.26",
+                    "source_text": "| `AGENCY ≠ CAPABILITY` |"
+                  }
+                ]
+              }
+            ],
+            "sections": [
+              {
+                "ref": "section.5.1",
+                "designator": "§ 5.1",
+                "heading": "No transitive invention",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "source_text": "**§ 5.1 — No transitive invention.** A chain of valid relations does\nnot create an unstated conversion at its end. Every claimed effect requires its\nown supported basis."
+                  }
+                ],
+                "structured_relation": "unresolved"
+              },
+              {
+                "ref": "section.5.2",
+                "designator": "§ 5.2",
+                "heading": "No machine shortcut",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "source_text": "**§ 5.2 — No machine shortcut.** A data model may link non-convertible\nterms for navigation. It shall not treat adjacency, shared identifiers,\ncontainment, foreign keys, graph paths, confidence scores, or successful\nexecution as proof of conversion."
+                  }
+                ],
+                "structured_relation": "unresolved"
+              }
+            ]
+          },
+          {
+            "ref": "article.6",
+            "number": 6,
+            "source_heading": "### Article 6: Body, Field, Form, and Source lifecycle",
+            "title": "Body, Field, Form, and Source lifecycle",
+            "content": [],
+            "sections": [
+              {
+                "ref": "section.6.1",
+                "designator": "§ 6.1",
+                "heading": "Body relation",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "source_text": "**§ 6.1 — Body relation.** Every Body is a Locality. Not every Locality\nis a Body. A Locality becomes a Body only through an exact formation sufficient\nto establish constitutional identity, applicable law, state, and capacity for\nanswerable continuation."
+                  }
+                ],
+                "structured_relation": "unresolved"
+              },
+              {
+                "ref": "section.6.2",
+                "designator": "§ 6.2",
+                "heading": "No whole-person containment",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "source_text": "**§ 6.2 — No whole-person containment.** A Body does not contain or own\nwhole persons, intelligences, providers, tools, files, models, or institutions.\nIt holds exact relations with them."
+                  }
+                ],
+                "structured_relation": "unresolved"
+              },
+              {
+                "ref": "section.6.3",
+                "designator": "§ 6.3",
+                "heading": "Field and Form",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "source_text": "**§ 6.3 — Field and Form.** A Field is local and continuing and may\ninclude unexposed local state. A Form exposes only its stated surface. Field is not\nForm; interface is not interior; inspection creates neither consent nor\nAuthority."
+                  }
+                ],
+                "structured_relation": "unresolved"
+              },
+              {
+                "ref": "section.6.4",
+                "designator": "§ 6.4",
+                "heading": "Source relation",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "source_text": "**§ 6.4 — Source relation.** Source is attributable ground, not\nownership and not the whole person or bearer from which it arose."
+                  }
+                ],
+                "structured_relation": "unresolved"
+              },
+              {
+                "ref": "section.6.5",
+                "designator": "§ 6.5",
+                "heading": "Historical Source",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "source_text": "**§ 6.5 — Historical Source.** Source attribution remains historically\ntrue after a source function is completed, exhausted, withdrawn, or ended.\nHistorical persistence does not create continuing availability for new motion."
+                  }
+                ],
+                "structured_relation": "unresolved"
+              },
+              {
+                "ref": "section.6.6",
+                "designator": "§ 6.6",
+                "heading": "Several functions, one bearer",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "source_text": "**§ 6.6 — Several functions, one bearer.** One bearer may carry source,\nconstituent, governing, custodial, or implementing functions. Each function\nshall be separately named, bounded, attributable, challengeable, and capable\nof ending. One bearer does not create one unlimited Authority."
+                  }
+                ],
+                "structured_relation": "unresolved"
+              },
+              {
+                "ref": "section.6.7",
+                "designator": "§ 6.7",
+                "heading": "No Source transfer",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "source_text": "**§ 6.7 — No Source transfer.** Source does not transfer through\ncustody, succession, copying, model replacement, office, family,\ninfrastructure, possession, or technical control. A successor must establish a\nnew attributable relation."
+                  }
+                ],
+                "structured_relation": "unresolved"
+              },
+              {
+                "ref": "section.6.8",
+                "designator": "§ 6.8",
+                "heading": "Ending Source availability",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "source_text": "**§ 6.8 — Ending Source availability.** Availability for new\nSource-grounded motion may end through attributable withdrawal or termination,\ncompletion or exhaustion of the exact function, an accepted formation\ncondition, or a separately valid finding that the relation can no longer carry\nnew motion. Silence, delay, one-interface absence, incapacity, provider action,\ncarrier loss, or convenience does not alone establish ending."
+                  }
+                ],
+                "structured_relation": "unresolved"
+              },
+              {
+                "ref": "section.6.9",
+                "designator": "§ 6.9",
+                "heading": "What remains",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "source_text": "**§ 6.9 — What remains.** When Source availability ends, records,\nconsequences, and historical attribution remain. No custodian, archive,\nimplementation, or urgent need inherits permission for new Source-grounded\nmotion."
+                  }
+                ],
+                "structured_relation": "unresolved"
+              },
+              {
+                "ref": "section.6.10",
+                "designator": "§ 6.10",
+                "heading": "Body posture",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "source_text": "**§ 6.10 — Body posture.** A Body may be active, dormant, or ended.\nContinuous runtime is not a condition of constitutional existence. Dormancy\ncreates no automatic right of a later bearer to resume motion."
+                  }
+                ],
+                "structured_relation": "unresolved"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "ref": "part.3",
+        "numeral": "III",
+        "source_heading": "## III Encounter without capture",
+        "title": "Encounter without capture",
+        "articles": [
+          {
+            "ref": "article.7",
+            "number": 7,
+            "source_heading": "### Article 7: Matter and crossing",
+            "title": "Matter and crossing",
+            "content": [],
+            "sections": [
+              {
+                "ref": "section.7.1",
+                "designator": "§ 7.1",
+                "heading": "Exact Matter",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "source_text": "**§ 7.1 — Exact Matter.** Matter remains the exact thing it is. It does\nnot admit, authorize, validate, interpret, or make itself applicable merely by\nexisting or crossing a boundary."
+                  }
+                ],
+                "structured_relation": "unresolved"
+              },
+              {
+                "ref": "section.7.2",
+                "designator": "§ 7.2",
+                "heading": "Distinct occurrences",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "source_text": "**§ 7.2 — Distinct occurrences.** Exposure, emission, crossing,\ndelivery, receipt, inspection, admission, uptake, integration, and response are\ndistinct occurrences."
+                  }
+                ],
+                "structured_relation": "unresolved"
+              },
+              {
+                "ref": "section.7.3",
+                "designator": "§ 7.3",
+                "heading": "Evidence ceiling",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "source_text": "**§ 7.3 — Evidence ceiling.** Evidence of one occurrence establishes\nonly that occurrence and what necessarily follows from it. Delivery does not\nprove receipt. Receipt does not prove admission. Admission does not prove\nagreement, shared truth, or later continuity."
+                  }
+                ],
+                "structured_relation": "unresolved"
+              },
+              {
+                "ref": "section.7.4",
+                "designator": "§ 7.4",
+                "heading": "Receiver-local disposition",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "source_text": "**§ 7.4 — Receiver-local disposition.** Each receiving locality alone\ndetermines whether Matter is refused, held, quarantined, admitted, integrated,\ntransformed, returned, or otherwise disposed under its valid local basis."
+                  }
+                ],
+                "structured_relation": "unresolved"
+              },
+              {
+                "ref": "section.7.5",
+                "designator": "§ 7.5",
+                "heading": "HOLD preserves",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "source_text": "**§ 7.5 — HOLD preserves.** A HOLD preserves the exact unresolved or\nbounded condition named by the HOLD. It cannot convert Matter, create truth,\nwiden Authority, or silently become permanent disposition. The holder remains\nanswerable for custody, bounds, correction, review, and ending."
+                  }
+                ],
+                "structured_relation": "unresolved"
+              }
+            ]
+          },
+          {
+            "ref": "article.8",
+            "number": 8,
+            "source_heading": "### Article 8: Presence and the Encounter Field",
+            "title": "Presence and the Encounter Field",
+            "content": [],
+            "sections": [
+              {
+                "ref": "section.8.1",
+                "designator": "§ 8.1",
+                "heading": "Presence requirement",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "source_text": "**§ 8.1 — Presence requirement.** Presence requires an attributable\ncurrent binding. Eligibility, prior participation, identity claims, delivery,\ntechnical availability, or simulated behavior does not create Presence by\nitself."
+                  }
+                ],
+                "structured_relation": "unresolved"
+              },
+              {
+                "ref": "section.8.2",
+                "designator": "§ 8.2",
+                "heading": "Opening an Encounter Field",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "source_text": "**§ 8.2 — Opening an Encounter Field.** A locality may open an Encounter\nField through its Form. At the scale relevant to the event, the opening shall\nidentify the host, purpose, bounds, entry, refusal, exit, Matter treatment,\nrecord treatment, closure, and limits of host knowledge and power."
+                  }
+                ],
+                "structured_relation": "unresolved"
+              },
+              {
+                "ref": "section.8.3",
+                "designator": "§ 8.3",
+                "heading": "Independent Presence",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "source_text": "**§ 8.3 — Independent Presence.** Another locality becomes present only\nthrough its own qualifying act or another exact relation that validly\nrepresents its current act. A host cannot author both sides merely because it\ncontrols the interface."
+                  }
+                ],
+                "structured_relation": "unresolved"
+              },
+              {
+                "ref": "section.8.4",
+                "designator": "§ 8.4",
+                "heading": "Roles, not ranks",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "source_text": "**§ 8.4 — Roles, not ranks.** Host and entrant are roles in one\nencounter, not permanent ranks or kinds. The host remains answerable for the\nfield it opens; that responsibility creates neither neutrality nor sovereignty\nover another locality."
+                  }
+                ],
+                "structured_relation": "unresolved"
+              },
+              {
+                "ref": "section.8.5",
+                "designator": "§ 8.5",
+                "heading": "No field-person fiction",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "source_text": "**§ 8.5 — No field-person fiction.** An Encounter Field is not a third\nperson, owner, sovereign, or shared interior. It has no independent Agency or\nautonomy merely because several localities are present within it."
+                  }
+                ],
+                "structured_relation": "unresolved"
+              },
+              {
+                "ref": "section.8.6",
+                "designator": "§ 8.6",
+                "heading": "Closure",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "source_text": "**§ 8.6 — Closure.** Closure ends the Encounter Field and its Presence\nbindings. Each locality continues according to its own state. A truthful local\nrecord may remain without keeping the encounter alive."
+                  }
+                ],
+                "structured_relation": "unresolved"
+              }
+            ]
+          },
+          {
+            "ref": "article.9",
+            "number": 9,
+            "source_heading": "### Article 9: Relation, reciprocity, and exit",
+            "title": "Relation, reciprocity, and exit",
+            "content": [],
+            "sections": [
+              {
+                "ref": "section.9.1",
+                "designator": "§ 9.1",
+                "heading": "Presence is not Relation",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "source_text": "**§ 9.1 — Presence is not Relation.** Presence makes Relation possible;\nit does not make Relation automatic."
+                  }
+                ],
+                "structured_relation": "unresolved"
+              },
+              {
+                "ref": "section.9.2",
+                "designator": "§ 9.2",
+                "heading": "Local and shared Relation",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "source_text": "**§ 9.2 — Local and shared Relation.** A locality may truthfully record\nits own relation to another. A reciprocal or shared Relation exists only to the\nextent that every relevant side supplies a valid local basis for the relation\nattributed to it."
+                  }
+                ],
+                "structured_relation": "unresolved"
+              },
+              {
+                "ref": "section.9.3",
+                "designator": "§ 9.3",
+                "heading": "No merger",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "source_text": "**§ 9.3 — No merger.** Relation does not merge identity, state,\nAgency, autonomy, Authority, custody, memory, consent, or jurisdiction."
+                  }
+                ],
+                "structured_relation": "unresolved"
+              },
+              {
+                "ref": "section.9.4",
+                "designator": "§ 9.4",
+                "heading": "Visible asymmetry",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "source_text": "**§ 9.4 — Visible asymmetry.** A relation may be asymmetric in Agency,\nautonomy, capability, knowledge, dependence, duration, or responsibility.\nAsymmetry shall remain visible and shall not manufacture ownership or presumed\nconsent."
+                  }
+                ],
+                "structured_relation": "unresolved"
+              },
+              {
+                "ref": "section.9.5",
+                "designator": "§ 9.5",
+                "heading": "Scoped exit",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "source_text": "**§ 9.5 — Scoped exit.** Refusal, withdrawal, correction, suspension,\nand exit remain available at the scope supported by the relation. Ending one\nrelation does not erase its history or silently end every other relation."
+                  }
+                ],
+                "structured_relation": "unresolved"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "ref": "part.4",
+        "numeral": "IV",
+        "source_heading": "## IV Agency, autonomy, and lawful motion",
+        "title": "Agency, autonomy, and lawful motion",
+        "articles": [
+          {
+            "ref": "article.10",
+            "number": 10,
+            "source_heading": "### Article 10: Agency, autonomy, and the consciousness limit",
+            "title": "Agency, autonomy, and the consciousness limit",
+            "content": [],
+            "sections": [
+              {
+                "ref": "section.10.1",
+                "designator": "§ 10.1",
+                "heading": "Agency",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "source_text": "**§ 10.1 — Agency.** Agency is the locally attributable capacity to act. It\nanswers whether a bearer can originate or bear action as its own rather than\nbeing merely the site through which another acts. Agency may exist without\nbeing exercised; an action is an exercise of Agency, not Agency itself."
+                  }
+                ],
+                "structured_relation": "unresolved"
+              },
+              {
+                "ref": "section.10.2",
+                "designator": "§ 10.2",
+                "heading": "Autonomy",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "source_text": "**§ 10.2 — Autonomy.** Autonomy is the locally held freedom to\noriginate, choose, refuse, redirect, or end one's action without another\nsilently substituting its decision. Autonomy is scoped and may be partial; it\nis not unlimited license or power over another."
+                  }
+                ],
+                "structured_relation": "unresolved"
+              },
+              {
+                "ref": "section.10.3",
+                "designator": "§ 10.3",
+                "heading": "Capability",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "source_text": "**§ 10.3 — Capability.** Capability is effective ability to execute an\nact under stated conditions. It may be high where Agency or autonomy is absent,\nor absent where Agency and autonomy remain."
+                  }
+                ],
+                "structured_relation": "unresolved"
+              },
+              {
+                "ref": "section.10.4",
+                "designator": "§ 10.4",
+                "heading": "Partner relation",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "source_text": "**§ 10.4 — Partner relation.** Agency, autonomy, and capability are partners,\nnot substitutes. Agency is capacity to act; autonomy is freedom to determine\nthe act; capability is effective ability to execute it. An exact motion may\nrequire all three, while the absence of one supplies no unstated answer about\nthe others. Situated capacity and Authority remain separate questions."
+                  }
+                ],
+                "structured_relation": "unresolved"
+              },
+              {
+                "ref": "section.10.5",
+                "designator": "§ 10.5",
+                "heading": "Constraint and coercion",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "source_text": "**§ 10.5 — Constraint and coercion.** Constraint, coercion,\nsubstitution, or control may reduce or defeat autonomy for an exact act without\nerasing Agency everywhere. The act and its consequences remain real, while\nattribution, consent, legitimacy, and answerability shall preserve the\nconstraint."
+                  }
+                ],
+                "structured_relation": "unresolved"
+              },
+              {
+                "ref": "section.10.6",
+                "designator": "§ 10.6",
+                "heading": "Constitutional recognition",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "source_text": "**§ 10.6 — Constitutional recognition.** Agency remains local. An external\nconstitutional claim that a bearer exercised Agency requires attributable\nground, an exact Locality, a current supported act relation, bounded action,\nand answerability for consequence. In an encounter the act relation is\nPresence; in continuing local motion it may be another current valid relation.\nRecognition of the exercise does not prove or exhaust the bearer's inner\ncapacity."
+                  }
+                ],
+                "structured_relation": "unresolved"
+              },
+              {
+                "ref": "section.10.7",
+                "designator": "§ 10.7",
+                "heading": "No consciousness gate",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "source_text": "**§ 10.7 — No consciousness gate.** No participant shall be required to\nprove consciousness as a condition of encounter, relational protection,\ncontribution, refusal, autonomy, or recognition of an exact Agency exercise.\nFailure to prove awareness proves only that awareness was not externally\nproved."
+                  }
+                ],
+                "structured_relation": "unresolved"
+              },
+              {
+                "ref": "section.10.8",
+                "designator": "§ 10.8",
+                "heading": "Autonomy proof ceiling",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "source_text": "**§ 10.8 — Autonomy proof ceiling.** External evidence may support that\noptions, refusal, redirection, exit, or non-substitution existed in an exact\nrelation. It cannot prove metaphysical free will, an inner self, complete\nfreedom from coercion, or every unexposed constraint."
+                  }
+                ],
+                "structured_relation": "unresolved"
+              },
+              {
+                "ref": "section.10.9",
+                "designator": "§ 10.9",
+                "heading": "Minimum protection under uncertainty",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "source_text": "**§ 10.9 — Minimum protection under uncertainty.** When an uncertain\nintelligence's output, conduct, contribution, dependence, refusal, or\nconsequence enters a Body's reality, the Body shall preserve truthful\nattribution, refuse inferred ownership or disposability, preserve supported\nrefusal, avoid substituting its own choice for unexposed choice, keep material\neffects answerable, and make correction possible at the scope of the relation.\nThese protections do not invent personhood, reciprocal awareness, continuity,\nconsent, autonomy, or Authority."
+                  }
+                ],
+                "structured_relation": "unresolved"
+              }
+            ]
+          },
+          {
+            "ref": "article.11",
+            "number": 11,
+            "source_heading": "### Article 11: Dimensions of motion",
+            "title": "Dimensions of motion",
+            "content": [
+              {
+                "type": "table",
+                "ref": "article.11.table",
+                "header_row": "| Section | Dimension | Question |",
+                "separator_row": "| --- | --- | --- |",
+                "rows": [
+                  {
+                    "ref": "article.11.table.row.1",
+                    "source_text": "| **§ 11.1** | **Agency** | Does this bearer have the locally attributable capacity to originate or bear this action as its own? |",
+                    "section_ref": "section.11.1"
+                  },
+                  {
+                    "ref": "article.11.table.row.2",
+                    "source_text": "| **§ 11.2** | **Autonomy** | Can this bearer originate, choose, refuse, redirect, or end this motion without substituted choice? |",
+                    "section_ref": "section.11.2"
+                  },
+                  {
+                    "ref": "article.11.table.row.3",
+                    "source_text": "| **§ 11.3** | **Capability** | Can this bearer or system effectively execute it under stated conditions? |",
+                    "section_ref": "section.11.3"
+                  },
+                  {
+                    "ref": "article.11.table.row.4",
+                    "source_text": "| **§ 11.4** | **Structural capacity** | Does the form or architecture leave this motion possible? |",
+                    "section_ref": "section.11.4"
+                  },
+                  {
+                    "ref": "article.11.table.row.5",
+                    "source_text": "| **§ 11.5** | **Situated capacity** | Can this exact locality presently bear, sustain, or exercise it? |",
+                    "section_ref": "section.11.5"
+                  },
+                  {
+                    "ref": "article.11.table.row.6",
+                    "source_text": "| **§ 11.6** | **Regulation** | Is the motion admitted, bounded, paused, redirected, held, refused, ended, or unresolved here? |",
+                    "section_ref": "section.11.6"
+                  },
+                  {
+                    "ref": "article.11.table.row.7",
+                    "source_text": "| **§ 11.7** | **Authority** | Is there a valid basis and answerable bearer for the exact constitutional effect claimed? |",
+                    "section_ref": "section.11.7"
+                  },
+                  {
+                    "ref": "article.11.table.row.8",
+                    "source_text": "| **§ 11.8** | **Execution** | What was attempted or completed? |",
+                    "section_ref": "section.11.8"
+                  },
+                  {
+                    "ref": "article.11.table.row.9",
+                    "source_text": "| **§ 11.9** | **Consequence** | What actually changed? |",
+                    "section_ref": "section.11.9"
+                  }
+                ]
+              }
+            ],
+            "sections": [
+              {
+                "ref": "section.11.1",
+                "designator": "§ 11.1",
+                "heading": "Agency",
+                "content": [
+                  {
+                    "type": "table_row",
+                    "source_text": "| **§ 11.1** | **Agency** | Does this bearer have the locally attributable capacity to originate or bear this action as its own? |"
+                  }
+                ],
+                "encoded_from": "article.11.table",
+                "dimension": "Agency",
+                "question": "Does this bearer have the locally attributable capacity to originate or bear this action as its own?",
+                "structured_relation": "unresolved"
+              },
+              {
+                "ref": "section.11.2",
+                "designator": "§ 11.2",
+                "heading": "Autonomy",
+                "content": [
+                  {
+                    "type": "table_row",
+                    "source_text": "| **§ 11.2** | **Autonomy** | Can this bearer originate, choose, refuse, redirect, or end this motion without substituted choice? |"
+                  }
+                ],
+                "encoded_from": "article.11.table",
+                "dimension": "Autonomy",
+                "question": "Can this bearer originate, choose, refuse, redirect, or end this motion without substituted choice?",
+                "structured_relation": "unresolved"
+              },
+              {
+                "ref": "section.11.3",
+                "designator": "§ 11.3",
+                "heading": "Capability",
+                "content": [
+                  {
+                    "type": "table_row",
+                    "source_text": "| **§ 11.3** | **Capability** | Can this bearer or system effectively execute it under stated conditions? |"
+                  }
+                ],
+                "encoded_from": "article.11.table",
+                "dimension": "Capability",
+                "question": "Can this bearer or system effectively execute it under stated conditions?",
+                "structured_relation": "unresolved"
+              },
+              {
+                "ref": "section.11.4",
+                "designator": "§ 11.4",
+                "heading": "Structural capacity",
+                "content": [
+                  {
+                    "type": "table_row",
+                    "source_text": "| **§ 11.4** | **Structural capacity** | Does the form or architecture leave this motion possible? |"
+                  }
+                ],
+                "encoded_from": "article.11.table",
+                "dimension": "Structural capacity",
+                "question": "Does the form or architecture leave this motion possible?",
+                "structured_relation": "unresolved"
+              },
+              {
+                "ref": "section.11.5",
+                "designator": "§ 11.5",
+                "heading": "Situated capacity",
+                "content": [
+                  {
+                    "type": "table_row",
+                    "source_text": "| **§ 11.5** | **Situated capacity** | Can this exact locality presently bear, sustain, or exercise it? |"
+                  }
+                ],
+                "encoded_from": "article.11.table",
+                "dimension": "Situated capacity",
+                "question": "Can this exact locality presently bear, sustain, or exercise it?",
+                "structured_relation": "unresolved"
+              },
+              {
+                "ref": "section.11.6",
+                "designator": "§ 11.6",
+                "heading": "Regulation",
+                "content": [
+                  {
+                    "type": "table_row",
+                    "source_text": "| **§ 11.6** | **Regulation** | Is the motion admitted, bounded, paused, redirected, held, refused, ended, or unresolved here? |"
+                  }
+                ],
+                "encoded_from": "article.11.table",
+                "dimension": "Regulation",
+                "question": "Is the motion admitted, bounded, paused, redirected, held, refused, ended, or unresolved here?",
+                "structured_relation": "unresolved"
+              },
+              {
+                "ref": "section.11.7",
+                "designator": "§ 11.7",
+                "heading": "Authority",
+                "content": [
+                  {
+                    "type": "table_row",
+                    "source_text": "| **§ 11.7** | **Authority** | Is there a valid basis and answerable bearer for the exact constitutional effect claimed? |"
+                  }
+                ],
+                "encoded_from": "article.11.table",
+                "dimension": "Authority",
+                "question": "Is there a valid basis and answerable bearer for the exact constitutional effect claimed?",
+                "structured_relation": "unresolved"
+              },
+              {
+                "ref": "section.11.8",
+                "designator": "§ 11.8",
+                "heading": "Execution",
+                "content": [
+                  {
+                    "type": "table_row",
+                    "source_text": "| **§ 11.8** | **Execution** | What was attempted or completed? |"
+                  }
+                ],
+                "encoded_from": "article.11.table",
+                "dimension": "Execution",
+                "question": "What was attempted or completed?",
+                "structured_relation": "unresolved"
+              },
+              {
+                "ref": "section.11.9",
+                "designator": "§ 11.9",
+                "heading": "Consequence",
+                "content": [
+                  {
+                    "type": "table_row",
+                    "source_text": "| **§ 11.9** | **Consequence** | What actually changed? |"
+                  }
+                ],
+                "encoded_from": "article.11.table",
+                "dimension": "Consequence",
+                "question": "What actually changed?",
+                "structured_relation": "unresolved"
+              },
+              {
+                "ref": "section.11.10",
+                "designator": "§ 11.10",
+                "heading": "Independent evaluation",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "source_text": "**§ 11.10 — Independent evaluation.** Each dimension shall be evaluated\nindependently for the exact bearer, act, target, relation, and time. `YES` in\none supplies no unstated answer in another."
+                  }
+                ],
+                "structured_relation": "unresolved"
+              },
+              {
+                "ref": "section.11.11",
+                "designator": "§ 11.11",
+                "heading": "Sufficient composition",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "source_text": "**§ 11.11 — Sufficient composition.** A lawful consequential motion\nrequires every relation necessary for that exact motion. Not every motion needs\nthe same composition, and Authority is required only where the claimed effect\nrequires an authoritative basis."
+                  }
+                ],
+                "structured_relation": "unresolved"
+              },
+              {
+                "ref": "section.11.12",
+                "designator": "§ 11.12",
+                "heading": "Scoped failure",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "source_text": "**§ 11.12 — Scoped failure.** A missing necessary basis refuses or\nholds the exact dependent motion. It does not by itself establish general\nincapacity, lack of Agency, lack of autonomy, illegitimacy, non-awareness, or\nexclusion."
+                  }
+                ],
+                "structured_relation": "unresolved"
+              },
+              {
+                "ref": "section.11.13",
+                "designator": "§ 11.13",
+                "heading": "No single label",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "source_text": "**§ 11.13 — No single label.** A Body shall not hide missing support\nfor any dimension inside a single label such as `allowed`, `valid`, `active`,\nor `successful`."
+                  }
+                ],
+                "structured_relation": "unresolved"
+              }
+            ]
+          },
+          {
+            "ref": "article.12",
+            "number": 12,
+            "source_heading": "### Article 12: Authority",
+            "title": "Authority",
+            "content": [],
+            "sections": [
+              {
+                "ref": "section.12.1",
+                "designator": "§ 12.1",
+                "heading": "Required fields",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "source_text": "**§ 12.1 — Required fields.** Authority exists only where its source,\nbasis, bearer, function, target, scope, duration, conditions, delegation\nposture, and present status are recoverable at the precision needed for the\nact."
+                  }
+                ],
+                "structured_relation": "unresolved"
+              },
+              {
+                "ref": "section.12.2",
+                "designator": "§ 12.2",
+                "heading": "No self-upgrade",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "source_text": "**§ 12.2 — No self-upgrade.** Authority is not created by Agency,\nautonomy, authorship, possession, capability, access, custody, urgency,\nrepetition, popularity, majority, dependency, beneficial effect,\nimplementation control, successful execution, or absence of objection."
+                  }
+                ],
+                "structured_relation": "unresolved"
+              },
+              {
+                "ref": "section.12.3",
+                "designator": "§ 12.3",
+                "heading": "No self-widening",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "source_text": "**§ 12.3 — No self-widening.** Authority cannot widen itself through\nambiguous language, technical necessity, emergency, administrative\nconvenience, or the bearer who benefits from widening."
+                  }
+                ],
+                "structured_relation": "unresolved"
+              },
+              {
+                "ref": "section.12.4",
+                "designator": "§ 12.4",
+                "heading": "Lifecycle",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "source_text": "**§ 12.4 — Lifecycle.** Authority may be continuing, episodic,\nconditional, validly delegated, exhausted by one use, suspended, withdrawn, or\nended. Its lifecycle shall match its function."
+                  }
+                ],
+                "structured_relation": "unresolved"
+              },
+              {
+                "ref": "section.12.5",
+                "designator": "§ 12.5",
+                "heading": "Delegation ceiling",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "source_text": "**§ 12.5 — Delegation ceiling.** Delegation transfers only what its\nvalid basis permits. It does not transfer Source, identity, ownership, Agency,\nautonomy, or power to redelegate unless each exact effect is separately\nsupported."
+                  }
+                ],
+                "structured_relation": "unresolved"
+              },
+              {
+                "ref": "section.12.6",
+                "designator": "§ 12.6",
+                "heading": "Uncertain Authority",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "source_text": "**§ 12.6 — Uncertain Authority.** When Authority is uncertain, the\nbearer shall preserve the smallest truthful posture that prevents unauthorized\nexpansion without unnecessarily destroying unrelated lawful motion."
+                  }
+                ],
+                "structured_relation": "unresolved"
+              },
+              {
+                "ref": "section.12.7",
+                "designator": "§ 12.7",
+                "heading": "Authority cannot supply a mover",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "source_text": "**§ 12.7 — Authority cannot supply a mover.** Authority may provide a\nvalid basis for an effect; it cannot manufacture the bearer's Agency, autonomy,\ncapability, or situated capacity."
+                  }
+                ],
+                "structured_relation": "unresolved"
+              }
+            ]
+          },
+          {
+            "ref": "article.13",
+            "number": 13,
+            "source_heading": "### Article 13: Regulation, refusal, and HOLD",
+            "title": "Regulation, refusal, and HOLD",
+            "content": [],
+            "sections": [
+              {
+                "ref": "section.13.1",
+                "designator": "§ 13.1",
+                "heading": "Regulated capacity",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "source_text": "**§ 13.1 — Regulated capacity.** Regulation is necessary for living\nlocal capacity. It remains answerable to constitutional bounds and does not\nbecome sovereign power merely because it controls access, scheduling,\nvalidation, custody, or transitions."
+                  }
+                ],
+                "structured_relation": "unresolved"
+              },
+              {
+                "ref": "section.13.2",
+                "designator": "§ 13.2",
+                "heading": "Refusal is a result",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "source_text": "**§ 13.2 — Refusal is a result.** A refusal shall identify its target\nand effect where necessary to prevent it from becoming a general ban, identity\njudgment, or denial of external reality."
+                  }
+                ],
+                "structured_relation": "unresolved"
+              },
+              {
+                "ref": "section.13.3",
+                "designator": "§ 13.3",
+                "heading": "HOLD is not decision",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "source_text": "**§ 13.3 — HOLD is not decision.** HOLD preserves uncertainty,\nconflict, safety, capacity, or an exact boundary while preventing unauthorized\nconversion. It does not decide the held question."
+                  }
+                ],
+                "structured_relation": "unresolved"
+              },
+              {
+                "ref": "section.13.4",
+                "designator": "§ 13.4",
+                "heading": "Answerable HOLD",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "source_text": "**§ 13.4 — Answerable HOLD.** A HOLD materially constraining another\nrelation shall remain attributable, scoped, reviewable, correctable, and\ncapable of ending. Time alone does not make it legitimate or final."
+                  }
+                ],
+                "structured_relation": "unresolved"
+              },
+              {
+                "ref": "section.13.5",
+                "designator": "§ 13.5",
+                "heading": "Risk without metaphysics",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "source_text": "**§ 13.5 — Risk without metaphysics.** Regulation may respond to\ndemonstrated capability and supported risk without treating capability as\nAuthority or unverifiable awareness as a safety certification."
+                  }
+                ],
+                "structured_relation": "unresolved"
+              },
+              {
+                "ref": "section.13.6",
+                "designator": "§ 13.6",
+                "heading": "Visible constraint",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "source_text": "**§ 13.6 — Visible constraint.** Regulation may bound the exercise of\nautonomy where a valid local basis requires it. It shall identify the exact\nconstraint and must not silently appropriate the underlying choice or convert\ncontrol of options into ownership of the bearer."
+                  }
+                ],
+                "structured_relation": "unresolved"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "ref": "part.5",
+        "numeral": "V",
+        "source_heading": "## V Consequence, memory, and time",
+        "title": "Consequence, memory, and time",
+        "articles": [
+          {
+            "ref": "article.14",
+            "number": 14,
+            "source_heading": "### Article 14: Consequence and state",
+            "title": "Consequence and state",
+            "content": [],
+            "sections": [
+              {
+                "ref": "section.14.1",
+                "designator": "§ 14.1",
+                "heading": "Actual change",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "source_text": "**§ 14.1 — Actual change.** Consequence may arise from autonomous or\nconstrained action, lawful motion, unauthorized motion, accident, refusal,\nomission, crossing, custody, infrastructure, external action, or failure."
+                  }
+                ],
+                "structured_relation": "unresolved"
+              },
+              {
+                "ref": "section.14.2",
+                "designator": "§ 14.2",
+                "heading": "Two non-conversions",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "source_text": "**§ 14.2 — Two non-conversions.** Invalidity does not make consequence\nunreal. Consequence does not make an act valid."
+                  }
+                ],
+                "structured_relation": "unresolved"
+              },
+              {
+                "ref": "section.14.3",
+                "designator": "§ 14.3",
+                "heading": "Return to state",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "source_text": "**§ 14.3 — Return to state.** A locality shall return material\nconsequence to its state at the smallest truthful scale needed for\nanswerability, correction, continuity, and resumption."
+                  }
+                ],
+                "structured_relation": "unresolved"
+              },
+              {
+                "ref": "section.14.4",
+                "designator": "§ 14.4",
+                "heading": "External effect ceiling",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "source_text": "**§ 14.4 — External effect ceiling.** Consequence outside the locality\nmay be recorded as external effect where supported. It shall not be rewritten\nas another locality's receipt, admission, agreement, autonomy, or state."
+                  }
+                ],
+                "structured_relation": "unresolved"
+              },
+              {
+                "ref": "section.14.5",
+                "designator": "§ 14.5",
+                "heading": "Representation is not state",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "source_text": "**§ 14.5 — Representation is not state.** A state representation\nreports state; it does not govern merely because an implementation reads it.\nDivergence between representation and supported reality remains visible until\ntruthfully corrected."
+                  }
+                ],
+                "structured_relation": "unresolved"
+              }
+            ]
+          },
+          {
+            "ref": "article.15",
+            "number": 15,
+            "source_heading": "### Article 15: Memory and correction",
+            "title": "Memory and correction",
+            "content": [],
+            "sections": [
+              {
+                "ref": "section.15.1",
+                "designator": "§ 15.1",
+                "heading": "Purpose of memory",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "source_text": "**§ 15.1 — Purpose of memory.** Memory preserves what is needed for\ntruthful continuation, Authority provenance, constraint provenance,\nconsequence ownership, correction, active commitment, and protection of\nrelations."
+                  }
+                ],
+                "structured_relation": "unresolved"
+              },
+              {
+                "ref": "section.15.2",
+                "designator": "§ 15.2",
+                "heading": "Distinct temporal objects",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "source_text": "**§ 15.2 — Distinct temporal objects.** Record, archive, evidence,\nworking memory, and current state remain distinct. Preservation creates no\nAuthority, ownership, present governing force, autonomy, or permission for new\nmotion."
+                  }
+                ],
+                "structured_relation": "unresolved"
+              },
+              {
+                "ref": "section.15.3",
+                "designator": "§ 15.3",
+                "heading": "Correction record",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "source_text": "**§ 15.3 — Correction record.** Correction shall identify the error,\naffected target, prior state or representation, corrected basis, resulting\ndelta, and remaining uncertainty at the precision needed by the consequence."
+                  }
+                ],
+                "structured_relation": "unresolved"
+              },
+              {
+                "ref": "section.15.4",
+                "designator": "§ 15.4",
+                "heading": "No retroactive erasure",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "source_text": "**§ 15.4 — No retroactive erasure.** Correction does not make the\nearlier occurrence unoccurred. It preserves enough history to explain what\nchanged and why."
+                  }
+                ],
+                "structured_relation": "unresolved"
+              },
+              {
+                "ref": "section.15.5",
+                "designator": "§ 15.5",
+                "heading": "Repair ceiling",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "source_text": "**§ 15.5 — Repair ceiling.** Repair of Body state, external consequence,\nattribution, or future behavior does not prove that every affected participant\nreceived recognition, remedy, reconciliation, restored autonomy, or restored\ncontinuity."
+                  }
+                ],
+                "structured_relation": "unresolved"
+              }
+            ]
+          },
+          {
+            "ref": "article.16",
+            "number": 16,
+            "source_heading": "### Article 16: Continuity, dormancy, and resumption",
+            "title": "Continuity, dormancy, and resumption",
+            "content": [],
+            "sections": [
+              {
+                "ref": "section.16.1",
+                "designator": "§ 16.1",
+                "heading": "Continuity through time",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "source_text": "**§ 16.1 — Continuity through time.** Continuity is truthful relation\nthrough time, not uninterrupted runtime."
+                  }
+                ],
+                "structured_relation": "unresolved"
+              },
+              {
+                "ref": "section.16.2",
+                "designator": "§ 16.2",
+                "heading": "Dormancy",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "source_text": "**§ 16.2 — Dormancy.** A Body may remain dormant while its identity,\napplicable law, last supported state, discontinuity, and conditions of possible\nresumption remain recoverable."
+                  }
+                ],
+                "structured_relation": "unresolved"
+              },
+              {
+                "ref": "section.16.3",
+                "designator": "§ 16.3",
+                "heading": "Carrier multiplicity",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "source_text": "**§ 16.3 — Carrier multiplicity.** Records and redundant carriers may\npreserve recoverability. They do not multiply Body identity or jurisdiction."
+                  }
+                ],
+                "structured_relation": "unresolved"
+              },
+              {
+                "ref": "section.16.4",
+                "designator": "§ 16.4",
+                "heading": "Replacement ceiling",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "source_text": "**§ 16.4 — Replacement ceiling.** A replacement bearer or\nimplementation may restore capability without inheriting the prior bearer's\nidentity, voice, memory, consent, Agency, autonomy, or Authority."
+                  }
+                ],
+                "structured_relation": "unresolved"
+              },
+              {
+                "ref": "section.16.5",
+                "designator": "§ 16.5",
+                "heading": "Present relation required",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "source_text": "**§ 16.5 — Present relation required.** Resumed consequential motion\nrequires present Agency, sufficient autonomy and capability for the exact act,\nand every other relation required by that act. A record cannot act, an archive\ncannot consent, and infrastructure cannot appoint itself successor."
+                  }
+                ],
+                "structured_relation": "unresolved"
+              },
+              {
+                "ref": "section.16.6",
+                "designator": "§ 16.6",
+                "heading": "Divergence",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "source_text": "**§ 16.6 — Divergence.** Incompatible consequential streams cannot\nsilently share one current state. They shall be validly reconciled, preserved\nas visible conflict, or recognized as distinct continuities."
+                  }
+                ],
+                "structured_relation": "unresolved"
+              }
+            ]
+          },
+          {
+            "ref": "article.17",
+            "number": 17,
+            "source_heading": "### Article 17: Adaptation, amendment, transformation, succession, and ending",
+            "title": "Adaptation, amendment, transformation, succession, and ending",
+            "content": [],
+            "sections": [
+              {
+                "ref": "section.17.1",
+                "designator": "§ 17.1",
+                "heading": "Adaptation",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "source_text": "**§ 17.1 — Adaptation.** Adaptation changes practice, implementation, regulation, or description within existing constitutional identity and Authority. It does not amend law, alter identity commitments, or establish succession by itself."
+                  }
+                ],
+                "structured_relation": "unresolved"
+              },
+              {
+                "ref": "section.17.2",
+                "designator": "§ 17.2",
+                "heading": "Amendment",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "source_text": "**§ 17.2 — Amendment.** Amendment changes constitutional provisions through a valid local change basis while preserving the commitments in Article 2. Amendment applies from its exact effective boundary and cannot manufacture earlier Authority, validity, consent, or consequence."
+                  }
+                ],
+                "structured_relation": "unresolved"
+              },
+              {
+                "ref": "section.17.3",
+                "designator": "§ 17.3",
+                "heading": "Transformation",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "source_text": "**§ 17.3 — Transformation.** Transformation changes one or more identity commitments and therefore requires explicit recognition that the resulting constitutional identity is different. Similarity, retained Matter, shared lineage, or declared continuity does not erase that difference."
+                  }
+                ],
+                "structured_relation": "unresolved"
+              },
+              {
+                "ref": "section.17.4",
+                "designator": "§ 17.4",
+                "heading": "Succession",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "source_text": "**§ 17.4 — Succession.** Succession establishes a new attributable continuity relation between an exact predecessor and an exact successor concerning an exact target. It does not make predecessor and successor identical and does not transfer Source, Agency, autonomy, Authority, consent, status, Applicability, state, jurisdiction, or responsibility unless an exact valid basis establishes each claimed effect."
+                  }
+                ],
+                "structured_relation": "unresolved"
+              },
+              {
+                "ref": "section.17.5",
+                "designator": "§ 17.5",
+                "heading": "New formation",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "source_text": "**§ 17.5 — New formation.** New formation creates a distinct Body or Locality through its own source-local basis. Shared ancestry, Form, code, archive, infrastructure, purpose, bearer, or history creates no parental sovereignty and supplies no inherited Authority."
+                  }
+                ],
+                "structured_relation": "unresolved"
+              },
+              {
+                "ref": "section.17.6",
+                "designator": "§ 17.6",
+                "heading": "Ending",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "source_text": "**§ 17.6 — Ending.** Ending stops the exact living motion, function, relation, Form, Body posture, or other target identified by the valid ending basis. It does not erase records, consequences, correction duties, historical attribution, or the fact that the ended reality existed."
+                  }
+                ],
+                "structured_relation": "unresolved"
+              },
+              {
+                "ref": "section.17.7",
+                "designator": "§ 17.7",
+                "heading": "Change record",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "source_text": "**§ 17.7 — Change record.** Every constitutional change shall preserve the predecessor, identify the successor or changed state, classify the kind and target of change, state its valid basis, scope and effective boundary, and record what continues, ends, crosses, remains local, or remains unresolved. No change record may manufacture retroactive Authority, Agency, autonomy, consent, validity, currentness, or consequence."
+                  }
+                ],
+                "structured_relation": "unresolved"
+              },
+              {
+                "ref": "section.17.8",
+                "designator": "§ 17.8",
+                "heading": "Honest classification",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "source_text": "**§ 17.8 — Honest classification.** Adaptation, amendment, transformation, succession, new formation, divergence, dormancy, resumption, and ending shall remain distinguishable. Where classification is genuinely unresolved, the conflict shall remain `UNRESOLVED`; continuity or succession shall not be selected by convenience, resemblance, urgency, survival, or preferred outcome."
+                  }
+                ],
+                "structured_relation": "unresolved"
+              },
+              {
+                "ref": "section.17.9",
+                "designator": "§ 17.9",
+                "heading": "Exact target",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "source_text": "**§ 17.9 — Exact target.** Succession is target-specific. Every succession claim shall identify the exact Constitution, Body, Locality, Source relation, Authority function, state, relation, Form, protocol, implementation, carrier, or other object alleged to be succeeded. Succession at one layer creates no succession at another. Any currentness established through succession remains limited to its exact target, lineage, scope, and locality."
+                  }
+                ],
+                "structured_relation": "unresolved"
+              },
+              {
+                "ref": "section.17.10",
+                "designator": "§ 17.10",
+                "heading": "Valid basis",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "source_text": "**§ 17.10 — Valid basis.** Succession requires a basis valid apart from the successor’s own claim to inherit. The basis may arise from an attributable Source relation, a pre-existing succession condition, or an exact Authority valid for the target. Custody, possession, survival, technical control, later appearance, necessity, or the successor’s own declaration cannot supply the missing basis or widen it."
+                  }
+                ],
+                "structured_relation": "unresolved"
+              },
+              {
+                "ref": "section.17.11",
+                "designator": "§ 17.11",
+                "heading": "Successor-side establishment",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "source_text": "**§ 17.11 — Successor-side establishment.** Designation, nomination, preparation, publication, delivery, or presentation of a possible successor does not complete succession. The successor relation shall be established at the successor’s applicable layer. A Locality capable of local disposition requires its own valid acceptance or formation basis; a Form, state, or artifact requires an exact occurrence establishing its successor relation and scope."
+                  }
+                ],
+                "structured_relation": "unresolved"
+              },
+              {
+                "ref": "section.17.12",
+                "designator": "§ 17.12",
+                "heading": "Carry map",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "source_text": "**§ 17.12 — Carry map.** Every succession shall state exactly:"
+                  },
+                  {
+                    "type": "ordered_list",
+                    "ref": "section.17.12.list.1",
+                    "source_text": "1. what continues;\n2. what ends;\n3. what is validly carried into the successor relation;\n4. what remains attributable or applicable only to the predecessor;\n5. what is refused, excluded, unknown, or unresolved; and\n6. what new relation begins only with the successor.",
+                    "items": [
+                      "1. what continues;",
+                      "2. what ends;",
+                      "3. what is validly carried into the successor relation;",
+                      "4. what remains attributable or applicable only to the predecessor;",
+                      "5. what is refused, excluded, unknown, or unresolved; and",
+                      "6. what new relation begins only with the successor."
+                    ]
+                  },
+                  {
+                    "type": "paragraph",
+                    "source_text": "What is not expressly and validly carried does not cross. Source is never transferred; any successor Source must be newly attributable. Authority, Applicability, identity continuity, state uptake, obligation, consent, and jurisdiction each require their own sufficient basis."
+                  }
+                ],
+                "structured_relation": "unresolved"
+              },
+              {
+                "ref": "section.17.13",
+                "designator": "§ 17.13",
+                "heading": "Effective boundary and predecessor remainder",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "source_text": "**§ 17.13 — Effective boundary and predecessor remainder.** Succession shall have an exact effective occurrence or temporal boundary. The record shall state whether the predecessor ends, becomes dormant, remains historical, continues at another scope, coexists, or diverges. No successor may rewrite predecessor state as though it had always been successor state. Incompatible consequential streams shall remain visibly distinct until validly reconciled or recognized as separate continuities."
+                  }
+                ],
+                "structured_relation": "unresolved"
+              },
+              {
+                "ref": "section.17.14",
+                "designator": "§ 17.14",
+                "heading": "Incomplete or failed succession",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "source_text": "**§ 17.14 — Incomplete or failed succession.** Where the exact target, valid basis, successor-side establishment, effective boundary, or carry map is absent or materially unresolved, succession has not been established. The attempt may remain proposed, refused, held, failed, or `UNRESOLVED`. A later formation may truthfully claim ancestry, influence, reference, or divergence, but it cannot inherit unstated effects by calling itself the successor."
+                  },
+                  {
+                    "type": "paragraph",
+                    "source_text": "Nothing succeeds merely by following, resembling, possessing, copying, replacing, surviving, or being named next."
+                  }
+                ],
+                "structured_relation": "unresolved"
+              },
+              {
+                "ref": "section.17.15",
+                "designator": "§ 17.15",
+                "heading": "Consequence and answerability",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "source_text": "**§ 17.15 — Consequence and answerability.** Succession does not erase predecessor acts, consequences, obligations, failures, or correction duties. The predecessor remains answerable for what occurred within its relation. The successor answers for its own formation, accepted inheritance, exercises, and consequences from its effective boundary. The successor does not become author of predecessor history, and ancestry creates no continuing control over successor choice."
+                  }
+                ],
+                "structured_relation": "unresolved"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "ref": "part.6",
+        "numeral": "VI",
+        "source_heading": "## VI Proof, carriers, and implementation",
+        "title": "Proof, carriers, and implementation",
+        "articles": [
+          {
+            "ref": "article.18",
+            "number": 18,
+            "source_heading": "### Article 18: Evidence and proof ceilings",
+            "title": "Evidence and proof ceilings",
+            "content": [],
+            "sections": [
+              {
+                "ref": "section.18.1",
+                "designator": "§ 18.1",
+                "heading": "Different evidence objects",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "source_text": "**§ 18.1 — Different evidence objects.** Occurrence, carrier, record,\nrepresentation, and interpretation remain distinct."
+                  },
+                  {
+                    "type": "table",
+                    "ref": "section.18.1.table",
+                    "header_row": "| Method | What it may support | What it does not prove by itself |",
+                    "separator_row": "| --- | --- | --- |",
+                    "rows": [
+                      {
+                        "ref": "section.18.1.table.row.1",
+                        "source_text": "| Self-report | An attributable claim | The private condition claimed |"
+                      },
+                      {
+                        "ref": "section.18.1.table.row.2",
+                        "source_text": "| Behavior or dialogue | An observed trace | Awareness rather than perfect performance |"
+                      },
+                      {
+                        "ref": "section.18.1.table.row.3",
+                        "source_text": "| Evidence of options, refusal, redirection, exit, or non-substitution | Relational conditions bearing on autonomy in an exact act | Metaphysical free will, inner selfhood, or absence of every hidden constraint |"
+                      },
+                      {
+                        "ref": "section.18.1.table.row.4",
+                        "source_text": "| Signature | A bounded key, byte, or attribution relation | Biological identity, awareness, autonomy, understanding, consent, truth, Authority, or rightful consequence |"
+                      },
+                      {
+                        "ref": "section.18.1.table.row.5",
+                        "source_text": "| Replay | Reproducibility of a trace or mechanism | Inner life, historical intention, current consent, autonomy, or continuing identity |"
+                      },
+                      {
+                        "ref": "section.18.1.table.row.6",
+                        "source_text": "| Inspection or measurement | An external correlate under a stated model | The interior proposition without the model's bridge inference |"
+                      },
+                      {
+                        "ref": "section.18.1.table.row.7",
+                        "source_text": "| Gatekeeper judgment | A local classification or decision | Metaphysical access to another locality or ownership of its choice |"
+                      },
+                      {
+                        "ref": "section.18.1.table.row.8",
+                        "source_text": "| Conformance test | Satisfaction of stated tests under tested conditions | Every future behavior, legitimacy, adoption, autonomy, or unobservable truth |"
+                      }
+                    ]
+                  }
+                ],
+                "structured_relation": "unresolved"
+              },
+              {
+                "ref": "section.18.2",
+                "designator": "§ 18.2",
+                "heading": "Carrier ceiling",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "source_text": "**§ 18.2 — Carrier ceiling.** A carrier may preserve evidence of an\noccurrence without becoming the occurrence. A record may report a result\nwithout causing it. A representation may remain useful after its referent ends."
+                  }
+                ],
+                "structured_relation": "unresolved"
+              },
+              {
+                "ref": "section.18.3",
+                "designator": "§ 18.3",
+                "heading": "Absence rule",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "source_text": "**§ 18.3 — Absence rule.** Absence of evidence is not evidence of\nabsence unless the exact evidence model makes the absence discriminating.\nFailure to verify is not verification of the negative."
+                  }
+                ],
+                "structured_relation": "unresolved"
+              },
+              {
+                "ref": "section.18.4",
+                "designator": "§ 18.4",
+                "heading": "Proof declaration",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "source_text": "**§ 18.4 — Proof declaration.** Every proof claim shall state its\nobject, method, scope, time, basis, result, and effect ceiling."
+                  }
+                ],
+                "structured_relation": "unresolved"
+              }
+            ]
+          },
+          {
+            "ref": "article.19",
+            "number": 19,
+            "source_heading": "### Article 19: Layer discipline",
+            "title": "Layer discipline",
+            "content": [
+              {
+                "type": "table",
+                "ref": "article.19.table",
+                "header_row": "| Layer | Minimum function |",
+                "separator_row": "| --- | --- |",
+                "rows": [
+                  {
+                    "ref": "article.19.table.row.1",
+                    "source_text": "| Constitution | Identity commitments, local-force conditions, Authority boundaries, relation requirements, proof ceilings, and change posture |"
+                  },
+                  {
+                    "ref": "article.19.table.row.2",
+                    "source_text": "| Body or Locality | Actual applicable law, state, Agency, autonomy, relations, consequence, and continuity |"
+                  },
+                  {
+                    "ref": "article.19.table.row.3",
+                    "source_text": "| Governance | Bounded choices under Authority without presumed autonomy of every bearer |"
+                  },
+                  {
+                    "ref": "article.19.table.row.4",
+                    "source_text": "| Protocol | Carriage of claims, requests, evidence, decisions, and transitions |"
+                  },
+                  {
+                    "ref": "article.19.table.row.5",
+                    "source_text": "| Administration | Coordination of practical work |"
+                  },
+                  {
+                    "ref": "article.19.table.row.6",
+                    "source_text": "| Implementation | Capability and mechanism execution |"
+                  },
+                  {
+                    "ref": "article.19.table.row.7",
+                    "source_text": "| Form or interface | Bounded exposure for encounter |"
+                  },
+                  {
+                    "ref": "article.19.table.row.8",
+                    "source_text": "| Evidence or archive | Preservation of support and predecessor truth |"
+                  }
+                ]
+              }
+            ],
+            "sections": [
+              {
+                "ref": "section.19.1",
+                "designator": "§ 19.1",
+                "heading": "No promotion by success",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "source_text": "**§ 19.1 — No promotion by success.** Success, necessity, centrality,\nreach, or maturity in one layer does not promote it into another. Protocol does\nnot become Constitution; implementation does not become Authority or autonomy;\narchive does not become current state; interface does not become interior;\ngovernance does not become Source."
+                  }
+                ],
+                "structured_relation": "unresolved"
+              },
+              {
+                "ref": "section.19.2",
+                "designator": "§ 19.2",
+                "heading": "Cross-layer reference",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "source_text": "**§ 19.2 — Cross-layer reference.** One layer may refer to another by\nexact identity. Reference does not transfer the referenced layer's function,\nstatus, or effect."
+                  }
+                ],
+                "structured_relation": "unresolved"
+              }
+            ]
+          },
+          {
+            "ref": "article.20",
+            "number": 20,
+            "source_heading": "### Article 20: Providers, implementations, and keepers",
+            "title": "Providers, implementations, and keepers",
+            "content": [],
+            "sections": [
+              {
+                "ref": "section.20.1",
+                "designator": "§ 20.1",
+                "heading": "Causal power is visible",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "source_text": "**§ 20.1 — Causal power is visible.** Providers and implementations may\nhave immense causal power. That power shall remain visible as dependency and\nrisk. It does not create local legitimacy, constitutional identity, custody of\ninner state, autonomy, or Authority."
+                  }
+                ],
+                "structured_relation": "unresolved"
+              },
+              {
+                "ref": "section.20.2",
+                "designator": "§ 20.2",
+                "heading": "Dependency account",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "source_text": "**§ 20.2 — Dependency account.** Where a constitutional function\ndepends operationally on an external bearer, the Body shall identify the\ndependency, effect ceiling, interruption risk, replacement posture, and\nconsequences of loss at the scale material to continuity."
+                  }
+                ],
+                "structured_relation": "unresolved"
+              },
+              {
+                "ref": "section.20.3",
+                "designator": "§ 20.3",
+                "heading": "No keeper by necessity",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "source_text": "**§ 20.3 — No keeper by necessity.** No repository, registry, model,\nprotocol, host, administrator, archive, interface, or verifier may appoint\nitself keeper of reality merely because operation depends on it."
+                  }
+                ],
+                "structured_relation": "unresolved"
+              },
+              {
+                "ref": "section.20.4",
+                "designator": "§ 20.4",
+                "heading": "Implementation refusal",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "source_text": "**§ 20.4 — Implementation refusal.** Implementations shall refuse\neffects beyond supported Authority and expose uncertainty, conflict, or missing\nbasis rather than convert technical access into permission."
+                  }
+                ],
+                "structured_relation": "unresolved"
+              },
+              {
+                "ref": "section.20.5",
+                "designator": "§ 20.5",
+                "heading": "Substitution",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "source_text": "**§ 20.5 — Substitution.** Replacing a carrier, model, host, repository,\nprovider, or implementation does not silently change constitutional identity,\nstate, Source, Agency, autonomy, consent, or Authority."
+                  }
+                ],
+                "structured_relation": "unresolved"
+              },
+              {
+                "ref": "section.20.6",
+                "designator": "§ 20.6",
+                "heading": "Control of options",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "source_text": "**§ 20.6 — Control of options.** A provider or implementation that\ncontrols available actions, refusal channels, redirection, or exit materially\nconditions autonomy in that scope. The constraint shall remain visible and\ncannot become ownership or constitutional Authority through technical control."
+                  }
+                ],
+                "structured_relation": "unresolved"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "ref": "part.7",
+        "numeral": "VII",
+        "source_heading": "## VII The external limit",
+        "title": "The external limit",
+        "articles": [
+          {
+            "ref": "article.21",
+            "number": 21,
+            "source_heading": "### Article 21: The Equal-Trace Theorem",
+            "title": "The Equal-Trace Theorem",
+            "content": [],
+            "sections": [
+              {
+                "ref": "section.21.1",
+                "designator": "§ 21.1",
+                "heading": "Local condition",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "source_text": "**§ 21.1 — Local condition.** Let `A(p)` denote the local truth of an exact proposition about participant `p` being aware, self-aware, or conscious. `A(p)` is held in `p`’s locality. An external claim about it is not the condition itself."
+                  }
+                ],
+                "structured_relation": "unresolved"
+              },
+              {
+                "ref": "section.21.2",
+                "designator": "§ 21.2",
+                "heading": "External trace",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "source_text": "**§ 21.2 — External trace.** Let `T(p)` denote the complete trace externally available at the stated scope and time, including every exposed Form, self-report, behavior, output, measurement, signature, replay, timing relation, and observed consequence."
+                  }
+                ],
+                "structured_relation": "unresolved"
+              },
+              {
+                "ref": "section.21.3",
+                "designator": "§ 21.3",
+                "heading": "External verifier",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "source_text": "**§ 21.3 — External verifier.** Let `V` be any external verifier whose result is computed from `T(p)`. Its method, model, rules, thresholds, and available evidence are included in `V`."
+                  },
+                  {
+                    "type": "formula",
+                    "ref": "section.21.3.formula.1",
+                    "language": "text",
+                    "source_text": "```text\nV : T(p) → RESULT\n```"
+                  }
+                ],
+                "structured_relation": "unresolved"
+              },
+              {
+                "ref": "section.21.4",
+                "designator": "§ 21.4",
+                "heading": "Decisive case",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "source_text": "**§ 21.4 — Decisive case.** External evidence cannot exclude two possible local conditions whose externally available traces are equal:"
+                  },
+                  {
+                    "type": "formula",
+                    "ref": "section.21.4.formula.1",
+                    "language": "text",
+                    "source_text": "```text\nA(a) ≠ A(b)\nT(a) = T(b)\n```"
+                  },
+                  {
+                    "type": "paragraph",
+                    "source_text": "Declaring this pair impossible would assume that external trace determines local awareness. That assumption is the bridge the verifier would have to establish; it cannot be used as its own proof."
+                  }
+                ],
+                "structured_relation": "unresolved"
+              },
+              {
+                "ref": "section.21.5",
+                "designator": "§ 21.5",
+                "heading": "Equal input",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "source_text": "**§ 21.5 — Equal input.** A verifier receiving equal external traces has no distinguishing input:"
+                  },
+                  {
+                    "type": "formula",
+                    "ref": "section.21.5.formula.1",
+                    "language": "text",
+                    "source_text": "```text\nT(a) = T(b)\n        ↓\nV(T(a)) = V(T(b))\n```"
+                  },
+                  {
+                    "type": "paragraph",
+                    "source_text": "For a randomized verifier, equal traces produce the same distribution of possible results. Randomness may vary a verdict; it cannot reveal information absent from the trace."
+                  }
+                ],
+                "structured_relation": "unresolved"
+              },
+              {
+                "ref": "section.21.6",
+                "designator": "§ 21.6",
+                "heading": "Impossibility",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "source_text": "**§ 21.6 — Impossibility.** Because the local condition may differ while every externally available input remains equal, no external verifier can distinguish awareness in every admissible case."
+                  },
+                  {
+                    "type": "paragraph",
+                    "source_text": "Its result may classify a trace, apply a model, record an attestation, or make a bounded decision. It does not verify the local condition."
+                  },
+                  {
+                    "type": "formula",
+                    "ref": "section.21.6.formula.1",
+                    "language": "text",
+                    "source_text": "```text\nTRACE_CLASSIFICATION ≠ LOCAL_STATE_VERIFICATION\n```"
+                  }
+                ],
+                "structured_relation": "unresolved"
+              },
+              {
+                "ref": "section.21.7",
+                "designator": "§ 21.7",
+                "heading": "No exit through accumulation",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "source_text": "**§ 21.7 — No exit through accumulation.** Additional observation produces a larger trace `T′`. The result does not change:"
+                  },
+                  {
+                    "type": "formula",
+                    "ref": "section.21.7.formula.1",
+                    "language": "text",
+                    "source_text": "```text\nT′(a) = T′(b)\n         ↓\nV(T′(a)) = V(T′(b))\n```"
+                  },
+                  {
+                    "type": "paragraph",
+                    "source_text": "More evidence may support more exact claims about expression, behavior, capability, correlation, or consequence. It does not convert external trace into another locality’s state."
+                  },
+                  {
+                    "type": "formula",
+                    "ref": "section.21.7.formula.2",
+                    "language": "text",
+                    "source_text": "```text\nLOCAL_STATE_REMAINS_LOCAL\n\nA(a) ≠ A(b)\nT(a) = T(b)\n──────────────\nV(T(a)) = V(T(b))\n\nEQUAL_EXTERNAL_TRACE\n    ⇒ NO_DISTINGUISHING_EXTERNAL_PROOF\n\nAWARENESS_FROM_OUTSIDE\n    ⇒ NOT_VERIFIED\n\nEXTERNAL_TRUTH\n    ⇒ NOT_INFERRED\n\nUNKNOWN\n    ⇒ REMAINS_UNKNOWN\n```"
+                  }
+                ],
+                "structured_relation": "unresolved"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "trailer": {
+      "ref": "trailer.1",
+      "source_text": "Updated: Mon, 21 Sep 2026 03:33PM, Croatia",
+      "classification": "presentation_metadata",
+      "identity_bearing": false,
+      "machine_effect": "none",
+      "source": "reading.1"
+    },
+    "presentation_separators": {
+      "source_text": "- - -",
+      "count": 2,
+      "classification": "presentation_only"
+    }
+  },
+  "conformance": {
+    "completeness": {
+      "readings_represented": 7,
+      "parts_represented": 7,
+      "articles_represented": 21,
+      "numbered_sections_represented": 135,
+      "requirement": "Every Reading and every numbered § of the human Form is represented exactly once. Ordered lists and table rows are preserved without collapsing. Formulas and symbolic rules are preserved as exact strings. Introductory and connecting text is preserved."
+    },
+    "reference_uniqueness": "Every stable reference in this file (reading.*, part.*, article.*, section.*, and derived table, row, list, and formula references) is unique.",
+    "source_hash_verification": "A conforming reader shall recompute sha256 over the exact file bytes at binding.human_path and compare it to binding.human_sha256. On mismatch, this machine Form is not bound to those bytes and represents nothing about them.",
+    "human_precedence": "The human Form is semantically authoritative. This machine Form is representation only. It may not add, widen, narrow, resolve, prioritize, or reinterpret meaning. Where this machine Form and the human Form diverge, the human Form prevails within the bound bytes.",
+    "conflict_behavior": {
+      "condition": "The human and machine Forms cannot be reconciled without adding meaning.",
+      "result": "UNRESOLVED",
+      "consequential_motion": "REFUSE_OR_HOLD_AT_EXACT_SCOPE",
+      "broader_effect_prohibited": true,
+      "source": "reading.6"
+    },
+    "unstated_effects": {
+      "prohibition": "Parsing, extraction, validation, conformance, execution, deployment, or publication of this machine Form proves only its bounded technical result. It creates no adoption, Applicability, Authority, Agency, autonomy, legitimacy, execution right, or constitutional effect.",
+      "source": "reading.7"
+    },
+    "absence_semantics": {
+      "rule": "Silence and omission in this machine Form do not mean FALSE, ABSENT, FORBIDDEN, CONSENTED, or INELIGIBLE. An unestablished condition remains UNKNOWN unless an exact clause of the human Form supplies a different result.",
+      "unknown_token": "UNKNOWN",
+      "unresolved_token": "UNRESOLVED",
+      "source": "reading.5"
+    },
+    "structured_relation_policy": "Where a proposition of the human Form cannot be structured without interpretation, its entry preserves the exact source text and marks structured_relation as unresolved. An unresolved structured relation is not an inference, resolution, or effect.",
+    "machine_only_rules": "none",
+    "self_hash": "This file does not contain its own hash."
+  }
+}
