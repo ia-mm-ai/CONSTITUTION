@@ -8,8 +8,8 @@
   "binding": {
     "human_path": "CONSTITUTION_0()1.md",
     "hash_algorithm": "sha256",
-    "human_sha256": "5dea16e2400c652eb063129711a6bf26c8485a2cbad25ce261beda6f7fee5206",
-    "human_byte_length": 41268,
+    "human_sha256": "affeb5738cdfeea7ee4fe985652bf78b15eb6dfbba5871d82f0f2213a81832d0",
+    "human_byte_length": 44133,
     "hash_scope": "exact_file_bytes"
   },
   "integrity_readings": {
@@ -173,51 +173,63 @@
         "source_row_text": "| **Capability** | Demonstrated effective ability to execute an act |"
       },
       {
+        "term": "Continuity State Capability (CSC)",
+        "definition_text": "The capability to preserve supported State succession across transition, dormancy, correction, and resumption",
+        "source_reference": "article.4.table.row.14",
+        "source_row_text": "| **Continuity State Capability (CSC)** | The capability to preserve supported State succession across transition, dormancy, correction, and resumption |"
+      },
+      {
         "term": "Structural capacity",
         "definition_text": "What a form or architecture leaves possible",
-        "source_reference": "article.4.table.row.14",
+        "source_reference": "article.4.table.row.15",
         "source_row_text": "| **Structural capacity** | What a form or architecture leaves possible |"
       },
       {
         "term": "Situated capacity",
         "definition_text": "What an exact locality can presently bear, sustain, or exercise",
-        "source_reference": "article.4.table.row.15",
+        "source_reference": "article.4.table.row.16",
         "source_row_text": "| **Situated capacity** | What an exact locality can presently bear, sustain, or exercise |"
       },
       {
         "term": "Regulation",
         "definition_text": "Local work that admits, bounds, pauses, redirects, holds, refuses, or ends motion",
-        "source_reference": "article.4.table.row.16",
+        "source_reference": "article.4.table.row.17",
         "source_row_text": "| **Regulation** | Local work that admits, bounds, pauses, redirects, holds, refuses, or ends motion |"
+      },
+      {
+        "term": "Dynamic Capacity Regulation (DCR)",
+        "definition_text": "The local, time-sensitive reconciliation of structural capacity with situated capacity that constrains presently supportable motion",
+        "source_reference": "article.4.table.row.18",
+        "source_row_text": "| **Dynamic Capacity Regulation (DCR)** | The local, time-sensitive reconciliation of structural capacity with situated capacity that constrains presently supportable motion |"
       },
       {
         "term": "Authority",
         "definition_text": "A valid local basis on which one bounded choice or motion may claim constitutional effect",
-        "source_reference": "article.4.table.row.17",
+        "source_reference": "article.4.table.row.19",
         "source_row_text": "| **Authority** | A valid local basis on which one bounded choice or motion may claim constitutional effect |"
       },
       {
         "term": "Execution",
         "definition_text": "An attempted or completed exercise by a bearer or mechanism",
-        "source_reference": "article.4.table.row.18",
+        "source_reference": "article.4.table.row.20",
         "source_row_text": "| **Execution** | An attempted or completed exercise by a bearer or mechanism |"
       },
       {
         "term": "Consequence",
         "definition_text": "Actual change for which an exact locality or relation must answer",
-        "source_reference": "article.4.table.row.19",
+        "source_reference": "article.4.table.row.21",
         "source_row_text": "| **Consequence** | Actual change for which an exact locality or relation must answer |"
       },
       {
         "term": "Continuity",
         "definition_text": "Truthful preservation of enough identity, state, discontinuity, lineage, and possible resumption through time",
-        "source_reference": "article.4.table.row.20",
+        "source_reference": "article.4.table.row.22",
         "source_row_text": "| **Continuity** | Truthful preservation of enough identity, state, discontinuity, lineage, and possible resumption through time |"
       },
       {
         "term": "Unknown",
         "definition_text": "An unsupported or externally inaccessible proposition preserved without forced resolution",
-        "source_reference": "article.4.table.row.21",
+        "source_reference": "article.4.table.row.23",
         "source_row_text": "| **Unknown** | An unsupported or externally inaccessible proposition preserved without forced resolution |"
       }
     ],
@@ -491,6 +503,28 @@
           "operands": [
             "AGENCY",
             "CAPABILITY"
+          ],
+          "relation": "does not by itself establish, convert into, or inherit",
+          "relation_source": "article.5"
+        },
+        {
+          "source_reference": "article.5.table.row.27",
+          "source_text": "| `DYNAMIC_CAPACITY_REGULATION ≠ CAPACITY ≠ AUTHORITY` |",
+          "operands": [
+            "DYNAMIC_CAPACITY_REGULATION",
+            "CAPACITY",
+            "AUTHORITY"
+          ],
+          "relation": "does not by itself establish, convert into, or inherit",
+          "relation_source": "article.5"
+        },
+        {
+          "source_reference": "article.5.table.row.28",
+          "source_text": "| `CONTINUITY_STATE_CAPABILITY ≠ CONTINUITY ≠ IDENTITY` |",
+          "operands": [
+            "CONTINUITY_STATE_CAPABILITY",
+            "CONTINUITY",
+            "IDENTITY"
           ],
           "relation": "does not by itself establish, convert into, or inherit",
           "relation_source": "article.5"
@@ -871,34 +905,42 @@
                   },
                   {
                     "ref": "article.4.table.row.14",
-                    "source_text": "| **Structural capacity** | What a form or architecture leaves possible |"
+                    "source_text": "| **Continuity State Capability (CSC)** | The capability to preserve supported State succession across transition, dormancy, correction, and resumption |"
                   },
                   {
                     "ref": "article.4.table.row.15",
-                    "source_text": "| **Situated capacity** | What an exact locality can presently bear, sustain, or exercise |"
+                    "source_text": "| **Structural capacity** | What a form or architecture leaves possible |"
                   },
                   {
                     "ref": "article.4.table.row.16",
-                    "source_text": "| **Regulation** | Local work that admits, bounds, pauses, redirects, holds, refuses, or ends motion |"
+                    "source_text": "| **Situated capacity** | What an exact locality can presently bear, sustain, or exercise |"
                   },
                   {
                     "ref": "article.4.table.row.17",
-                    "source_text": "| **Authority** | A valid local basis on which one bounded choice or motion may claim constitutional effect |"
+                    "source_text": "| **Regulation** | Local work that admits, bounds, pauses, redirects, holds, refuses, or ends motion |"
                   },
                   {
                     "ref": "article.4.table.row.18",
-                    "source_text": "| **Execution** | An attempted or completed exercise by a bearer or mechanism |"
+                    "source_text": "| **Dynamic Capacity Regulation (DCR)** | The local, time-sensitive reconciliation of structural capacity with situated capacity that constrains presently supportable motion |"
                   },
                   {
                     "ref": "article.4.table.row.19",
-                    "source_text": "| **Consequence** | Actual change for which an exact locality or relation must answer |"
+                    "source_text": "| **Authority** | A valid local basis on which one bounded choice or motion may claim constitutional effect |"
                   },
                   {
                     "ref": "article.4.table.row.20",
-                    "source_text": "| **Continuity** | Truthful preservation of enough identity, state, discontinuity, lineage, and possible resumption through time |"
+                    "source_text": "| **Execution** | An attempted or completed exercise by a bearer or mechanism |"
                   },
                   {
                     "ref": "article.4.table.row.21",
+                    "source_text": "| **Consequence** | Actual change for which an exact locality or relation must answer |"
+                  },
+                  {
+                    "ref": "article.4.table.row.22",
+                    "source_text": "| **Continuity** | Truthful preservation of enough identity, state, discontinuity, lineage, and possible resumption through time |"
+                  },
+                  {
+                    "ref": "article.4.table.row.23",
                     "source_text": "| **Unknown** | An unsupported or externally inaccessible proposition preserved without forced resolution |"
                   }
                 ]
@@ -1050,6 +1092,14 @@
                   {
                     "ref": "article.5.table.row.26",
                     "source_text": "| `AGENCY ≠ CAPABILITY` |"
+                  },
+                  {
+                    "ref": "article.5.table.row.27",
+                    "source_text": "| `DYNAMIC_CAPACITY_REGULATION ≠ CAPACITY ≠ AUTHORITY` |"
+                  },
+                  {
+                    "ref": "article.5.table.row.28",
+                    "source_text": "| `CONTINUITY_STATE_CAPABILITY ≠ CONTINUITY ≠ IDENTITY` |"
                   }
                 ]
               }
@@ -1979,6 +2029,18 @@
                   }
                 ],
                 "structured_relation": "unresolved"
+              },
+              {
+                "ref": "section.13.7",
+                "designator": "§ 13.7",
+                "heading": "Dynamic Capacity Regulation",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "source_text": "**§ 13.7 — Dynamic Capacity Regulation.** Dynamic Capacity Regulation (`DCR`) is the local, \ntime-sensitive reconciliation of structural capacity with situated capacity. It shall preserve \nthe distinction between what a Form or architecture leaves possible and what the exact Locality \ncan presently bear, sustain, or exercise. It may regulate motion only within applicable law, \nsupported State, exact Authority where required, and the smallest truthful scope. Its availability, \nclassification, or execution creates no capacity, Agency, autonomy, Authority, Presence, shared truth, or legitimacy by itself."
+                  }
+                ],
+                "structured_relation": "unresolved"
               }
             ]
           }
@@ -2203,6 +2265,30 @@
                   {
                     "type": "paragraph",
                     "source_text": "**§ 16.6 — Divergence.** Incompatible consequential streams cannot\nsilently share one current state. They shall be validly reconciled, preserved\nas visible conflict, or recognized as distinct continuities."
+                  }
+                ],
+                "structured_relation": "unresolved"
+              },
+              {
+                "ref": "section.16.7",
+                "designator": "§ 16.7",
+                "heading": "Continuity State Capability",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "source_text": "**§ 16.7 — Continuity State Capability.** Continuity State Capability (`CSC`) is \nthe demonstrated effective ability, under stated conditions, to preserve supported \nState succession across transition, dormancy, correction, and resumption. It requires \nrecoverable predecessor State, applicable law, discontinuity, transition evidence, \ncorrection, lineage, and conditions of possible resumption at the precision \nneeded for truthful continuation."
+                  }
+                ],
+                "structured_relation": "unresolved"
+              },
+              {
+                "ref": "section.16.8",
+                "designator": "§ 16.8",
+                "heading": "Capability qualification and currentness",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "source_text": "**§ 16.8 — Capability qualification and currentness.** A claim of CSC shall identify \nits exact bearer or mechanism, scope, conditions, demonstration, dependencies, failure \nboundaries, and present status. Release, publication, conformance, deployment, historical \nsuccess, infrastructure availability, or possession of records does not establish present \nCSC outside the demonstrated conditions and exact Locality. CSC does not require uninterrupted runtime."
                   }
                 ],
                 "structured_relation": "unresolved"
@@ -2595,6 +2681,30 @@
                   }
                 ],
                 "structured_relation": "unresolved"
+              },
+              {
+                "ref": "section.19.3",
+                "designator": "§ 19.3",
+                "heading": "Constitutional function and embodiment",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "source_text": "**§ 19.3 — Constitutional function and embodiment.** DCR and CSC name a constitutional \nregulatory function and a constitutional capability. They do not prescribe a mandatory \ntechnology or privileged implementation. A human procedure, software service, protocol, \nvirtual machine, network, or mixed system may embody either only at its exact supported scope. \nConformance, centrality, custody, technical control, or successful operation creates no \nSource, Authority, Agency, autonomy, adoption, or constitutional effect."
+                  }
+                ],
+                "structured_relation": "unresolved"
+              },
+              {
+                "ref": "section.19.4",
+                "designator": "§ 19.4",
+                "heading": "Distinct operation",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "source_text": "**§ 19.4 — Distinct operation.** DCR regulates what an exact Locality can presently support. \nCSC identifies demonstrated ability to preserve supported State succession through time. \nNeither supplies a missing basis belonging to the other or to another dimension of motion. \nCapacity regulation does not become State succession, and State succession does not \nretroactively establish capacity or Authority."
+                  }
+                ],
+                "structured_relation": "unresolved"
               }
             ]
           },
@@ -2835,14 +2945,6 @@
         ]
       }
     ],
-    "trailer": {
-      "ref": "trailer.1",
-      "source_text": "Updated: Mon, 21 Sep 2026 03:33PM, Croatia",
-      "classification": "presentation_metadata",
-      "identity_bearing": false,
-      "machine_effect": "none",
-      "source": "reading.1"
-    },
     "presentation_separators": {
       "source_text": "- - -",
       "count": 2,
@@ -2854,7 +2956,7 @@
       "readings_represented": 7,
       "parts_represented": 7,
       "articles_represented": 21,
-      "numbered_sections_represented": 135,
+      "numbered_sections_represented": 140,
       "requirement": "Every Reading and every numbered § of the human Form is represented exactly once. Ordered lists and table rows are preserved without collapsing. Formulas and symbolic rules are preserved as exact strings. Introductory and connecting text is preserved."
     },
     "reference_uniqueness": "Every stable reference in this file (reading.*, part.*, article.*, section.*, and derived table, row, list, and formula references) is unique.",
