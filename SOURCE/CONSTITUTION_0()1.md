@@ -151,9 +151,11 @@ Each term has one minimum constitutional job:
 | **Relation** | An exact supported connection among terms that remain distinct |
 | **Encounter Field** | A bounded relational event in which distinct localities may become present; also called a Locus-Field |
 | **Capability** | Demonstrated effective ability to execute an act |
+| **Continuity State Capability (CSC)** | The capability to preserve supported State succession across transition, dormancy, correction, and resumption |
 | **Structural capacity** | What a form or architecture leaves possible |
 | **Situated capacity** | What an exact locality can presently bear, sustain, or exercise |
 | **Regulation** | Local work that admits, bounds, pauses, redirects, holds, refuses, or ends motion |
+| **Dynamic Capacity Regulation (DCR)** | The local, time-sensitive reconciliation of structural capacity with situated capacity that constrains presently supportable motion |
 | **Authority** | A valid local basis on which one bounded choice or motion may claim constitutional effect |
 | **Execution** | An attempted or completed exercise by a bearer or mechanism |
 | **Consequence** | Actual change for which an exact locality or relation must answer |
@@ -202,6 +204,8 @@ be related.
 | `CONTINUITY ≠ UPTIME ≠ INHERITANCE` |
 | `UNKNOWN ≠ FALSE ≠ ABSENT ≠ INELIGIBLE` |
 | `AGENCY ≠ CAPABILITY` |
+| `DYNAMIC_CAPACITY_REGULATION ≠ CAPACITY ≠ AUTHORITY` |
+| `CONTINUITY_STATE_CAPABILITY ≠ CONTINUITY ≠ IDENTITY` |
 
 **§ 5.1 — No transitive invention.** A chain of valid relations does
 not create an unstated conversion at its end. Every claimed effect requires its
@@ -490,6 +494,13 @@ autonomy where a valid local basis requires it. It shall identify the exact
 constraint and must not silently appropriate the underlying choice or convert
 control of options into ownership of the bearer.
 
+**§ 13.7 — Dynamic Capacity Regulation.** Dynamic Capacity Regulation (`DCR`) is the local, 
+time-sensitive reconciliation of structural capacity with situated capacity. It shall preserve 
+the distinction between what a Form or architecture leaves possible and what the exact Locality 
+can presently bear, sustain, or exercise. It may regulate motion only within applicable law, 
+supported State, exact Authority where required, and the smallest truthful scope. Its availability, 
+classification, or execution creates no capacity, Agency, autonomy, Authority, Presence, shared truth, or legitimacy by itself.
+
 ## V Consequence, memory, and time
 
 ### Article 14: Consequence and state
@@ -563,6 +574,19 @@ cannot consent, and infrastructure cannot appoint itself successor.
 **§ 16.6 — Divergence.** Incompatible consequential streams cannot
 silently share one current state. They shall be validly reconciled, preserved
 as visible conflict, or recognized as distinct continuities.
+
+**§ 16.7 — Continuity State Capability.** Continuity State Capability (`CSC`) is 
+the demonstrated effective ability, under stated conditions, to preserve supported 
+State succession across transition, dormancy, correction, and resumption. It requires 
+recoverable predecessor State, applicable law, discontinuity, transition evidence, 
+correction, lineage, and conditions of possible resumption at the precision 
+needed for truthful continuation.
+
+**§ 16.8 — Capability qualification and currentness.** A claim of CSC shall identify 
+its exact bearer or mechanism, scope, conditions, demonstration, dependencies, failure 
+boundaries, and present status. Release, publication, conformance, deployment, historical 
+success, infrastructure availability, or possession of records does not establish present 
+CSC outside the demonstrated conditions and exact Locality. CSC does not require uninterrupted runtime.
 
 ### Article 17: Adaptation, amendment, transformation, succession, and ending
 
@@ -658,6 +682,19 @@ governance does not become Source.
 **§ 19.2 — Cross-layer reference.** One layer may refer to another by
 exact identity. Reference does not transfer the referenced layer's function,
 status, or effect.
+
+**§ 19.3 — Constitutional function and embodiment.** DCR and CSC name a constitutional 
+regulatory function and a constitutional capability. They do not prescribe a mandatory 
+technology or privileged implementation. A human procedure, software service, protocol, 
+virtual machine, network, or mixed system may embody either only at its exact supported scope. 
+Conformance, centrality, custody, technical control, or successful operation creates no 
+Source, Authority, Agency, autonomy, adoption, or constitutional effect.
+
+**§ 19.4 — Distinct operation.** DCR regulates what an exact Locality can presently support. 
+CSC identifies demonstrated ability to preserve supported State succession through time. 
+Neither supplies a missing basis belonging to the other or to another dimension of motion. 
+Capacity regulation does not become State succession, and State succession does not 
+retroactively establish capacity or Authority.
 
 ### Article 20: Providers, implementations, and keepers
 
@@ -759,17 +796,3 @@ EXTERNAL_TRUTH
 UNKNOWN
     ⇒ REMAINS_UNKNOWN
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
-Updated: Mon, 21 Sep 2026 03:33PM, Croatia
