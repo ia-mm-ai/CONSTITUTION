@@ -1,0 +1,25 @@
+{
+  "kind": "scenario_outline",
+  "status": "ILLUSTRATIVE_NON_EXECUTABLE",
+  "source": {
+    "machine": "../../../SOURCE/CONSTITUTION_0()1.json",
+    "refs": ["reading.5", "section.3.5", "section.7.5", "section.11.12", "section.13.3", "section.13.4", "section.13.7"]
+  },
+  "schemas": ["../SCHEMAS/CAPACITY.schema.json", "../SCHEMAS/DISPOSITION.schema.json", "../SCHEMAS/EVIDENCE.schema.json"],
+  "scenario": {
+    "assumptions": [
+      "An exact proposed motion depends on a situated-capacity condition that remains unestablished.",
+      "An attributable local HOLD preserves that question at the smallest truthful scope under its valid basis.",
+      "The HOLD materially constrains another relation."
+    ],
+    "proposed_claim": "Hold only the dependent motion while preserving the unresolved capacity condition.",
+    "expected_reading": [
+      "HOLD does not decide the held question or turn missing support into falsehood or general incapacity.",
+      "Attribution, scope, review, correction, and the possibility of ending remain recoverable.",
+      "Unrelated supported motion is not frozen merely by this uncertainty; time alone does not make the HOLD final."
+    ],
+    "forbidden_inferences": ["HOLD is a final negative decision.", "Uncertainty authorizes wider control."]
+  },
+  "fixture": null,
+  "expected_validation": null
+}

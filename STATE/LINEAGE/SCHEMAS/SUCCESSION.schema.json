@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Succession — structural placeholder",
+  "description": "Target-specific establishment of a new attributable predecessor-successor relation, not identity or automatic inheritance.",
+  "$comment": "Annotation-only placeholder: accepts every instance; no conformance or constitutional effect is established.",
+  "x-status": "STRUCTURAL_PLACEHOLDER",
+  "x-source": {
+    "machine": "../../../SOURCE/CONSTITUTION_0()1.json",
+    "refs": ["section.17.4", "section.17.9", "section.17.10", "section.17.11", "section.17.12", "section.17.13", "section.17.14", "section.17.15"]
+  },
+  "properties": {
+    "predecessor": {"description": "Exact predecessor, kept attributable as predecessor."},
+    "successor": {"description": "Exact successor, distinct from the predecessor."},
+    "target": {"description": "Exact object, layer, lineage, scope, and Locality of alleged succession."},
+    "valid_basis": {"description": "Basis valid apart from the successor's own inheritance claim."},
+    "successor_side_establishment": {"description": "Valid acceptance or formation basis for a locally disposing Locality, or an exact establishing occurrence for a Form, State, or artifact."},
+    "effective_boundary": {"description": "Exact effective occurrence or temporal boundary."},
+    "carry_map": {
+      "description": "The six distinctions of section.17.12; nothing crosses unless expressly and validly carried.",
+      "properties": {
+        "continues": {"description": "What continues."},
+        "ends": {"description": "What ends."},
+        "validly_carried": {"description": "What is validly carried into the successor relation, with separate sufficient basis for each claimed effect; Source never transfers."},
+        "predecessor_only": {"description": "What remains attributable or applicable only to the predecessor."},
+        "refused_excluded_unknown_unresolved": {"description": "What is refused, excluded, unknown, or unresolved, retaining these distinctions."},
+        "successor_new": {"description": "What new relation begins only with the successor; any successor Source must be newly attributable."}
+      }
+    },
+    "predecessor_remainder": {"description": "Whether the predecessor ends, becomes dormant, remains historical, continues elsewhere, coexists, or diverges."},
+    "establishment_posture": {"description": "Whether succession is established or remains proposed, refused, held, failed, or unresolved, on its exact support."},
+    "answerability": {"description": "Predecessor consequences and duties preserved; successor answerability for its own formation, accepted inheritance, exercises, and consequences."}
+  }
+}

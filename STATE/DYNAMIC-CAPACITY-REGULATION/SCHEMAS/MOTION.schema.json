@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Motion — structural placeholder",
+  "description": "Independent dimensions of an exact motion; no single permission label replaces the necessary composition.",
+  "$comment": "Annotation-only placeholder: accepts every instance; no conformance or constitutional effect is established.",
+  "x-status": "STRUCTURAL_PLACEHOLDER",
+  "x-source": {
+    "machine": "../../../SOURCE/CONSTITUTION_0()1.json",
+    "refs": ["article.11", "section.12.1", "section.13.7"]
+  },
+  "properties": {
+    "locality": {"description": "Locality in which the motion is considered."},
+    "bearer": {"description": "Exact bearer of the proposed, attempted, or completed act."},
+    "act": {"description": "Bounded action under consideration."},
+    "target": {"description": "Exact target and claimed effect."},
+    "relation": {"description": "Current relation under which the act is considered."},
+    "time": {"description": "Temporal scope of the evaluation."},
+    "dimensions": {
+      "description": "Independent questions from Article 11, each retaining its support, limits, and uncertainty.",
+      "properties": {
+        "agency": {"description": "Locally attributable capacity to originate or bear the action as one's own."},
+        "autonomy": {"description": "Freedom to determine this act without substituted choice."},
+        "capability": {"description": "Demonstrated effective ability under the stated conditions."},
+        "structural_capacity": {"description": "What the Form or architecture leaves possible."},
+        "situated_capacity": {"description": "What this Locality can presently bear, sustain, or exercise."},
+        "regulation": {"description": "Exact local regulatory posture."},
+        "authority": {"description": "Valid basis where the claimed effect requires one, with the recoverable subjects of section.12.1."},
+        "execution": {"description": "What was attempted or completed, if supported."},
+        "consequence": {"description": "What actually changed, whether authorized or not."}
+      }
+    },
+    "necessary_composition": {"description": "Relations necessary for this exact motion and their separately supported bases; no universal requirement for the same composition."},
+    "uncertainty": {"description": "Scoped missing support or conflict, not silently replaced by a single allowed or valid label."}
+  }
+}

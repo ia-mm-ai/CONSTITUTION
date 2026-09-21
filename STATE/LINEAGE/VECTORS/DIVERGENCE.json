@@ -1,0 +1,25 @@
+{
+  "kind": "scenario_outline",
+  "status": "ILLUSTRATIVE_NON_EXECUTABLE",
+  "source": {
+    "machine": "../../../SOURCE/CONSTITUTION_0()1.json",
+    "refs": ["section.16.6", "section.17.3", "section.17.8", "section.17.13"]
+  },
+  "schemas": ["../SCHEMAS/DIVERGENCE.schema.json", "../SCHEMAS/RELATION.schema.json"],
+  "scenario": {
+    "assumptions": [
+      "Two attributable consequential streams have a supported predecessor relation.",
+      "Their resulting State claims are incompatible at an exact scope.",
+      "No valid reconciliation is established for the conflict."
+    ],
+    "proposed_claim": "Preserve the incompatible streams and their relation without silently assigning one current State to both.",
+    "expected_reading": [
+      "The conflict remains visible unless validly reconciled or the streams are recognized as distinct continuities.",
+      "A genuinely unresolved change classification remains UNRESOLVED rather than being called succession for convenience.",
+      "Shared lineage does not erase a difference in constitutional identity commitments."
+    ],
+    "forbidden_inferences": ["Shared ancestry proves identical current State.", "A preferred stream can rewrite the other's predecessor history."]
+  },
+  "fixture": null,
+  "expected_validation": null
+}

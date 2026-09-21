@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Dormancy — structural placeholder",
+  "description": "Recoverable subjects of a dormant Body without treating interrupted runtime as ending or granting a later bearer a right to resume.",
+  "$comment": "Annotation-only placeholder: accepts every instance; no conformance or constitutional effect is established.",
+  "x-status": "STRUCTURAL_PLACEHOLDER",
+  "x-source": {
+    "machine": "../../../SOURCE/CONSTITUTION_0()1.json",
+    "refs": ["section.6.10", "section.16.1", "section.16.2", "section.16.3", "section.16.7"]
+  },
+  "properties": {
+    "body": {"description": "Exact Body whose dormancy is represented."},
+    "identity": {"description": "Recoverable constitutional identity; carrier multiplicity does not multiply it."},
+    "applicable_law": {"description": "Recoverable applicable law at the declared scope."},
+    "last_supported_state": {"description": "Last supported State without claiming it is a present active posture."},
+    "dormancy_boundary": {"description": "Supported occurrence or temporal boundary of dormancy."},
+    "discontinuity": {"description": "Interruption and any loss or uncertainty kept recoverable."},
+    "resumption_conditions": {"description": "Conditions of possible resumption, not a grant of permission to a later bearer."},
+    "preservation_support": {"description": "Evidence and carriers preserving recoverability, distinct from a current act or consent."}
+  }
+}

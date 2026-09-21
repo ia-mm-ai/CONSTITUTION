@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Supported State — structural placeholder",
+  "description": "Subjects of a representation of a Locality's supported present posture; the representation is not State itself.",
+  "$comment": "Annotation-only placeholder: accepts every instance; no conformance or constitutional effect is established.",
+  "x-status": "STRUCTURAL_PLACEHOLDER",
+  "x-source": {
+    "machine": "../../../SOURCE/CONSTITUTION_0()1.json",
+    "refs": ["article.4.table.row.4", "section.2.1", "section.3.3", "section.14.3", "section.14.4", "section.14.5", "section.16.7"]
+  },
+  "properties": {
+    "locality": {"description": "Exact Locality in which the represented posture is held."},
+    "temporal_scope": {"description": "Occurrence or time for which support is claimed; a historical record does not establish currentness."},
+    "posture": {"description": "Supported posture at the declared scope, distinct from a record or unsupported claim."},
+    "applicable_law": {"description": "Recoverable applicable law and its exact local basis, without adoption by reference alone."},
+    "support": {"description": "Attributable basis and evidence for the represented posture."},
+    "consequences": {"description": "Material consequences returned to State at the smallest truthful scale, including unauthorized effects."},
+    "discontinuity": {"description": "Known interruption, loss, conflict, or divergence; absence of a value establishes no continuity."},
+    "uncertainty": {"description": "Unsupported, inaccessible, or unresolved conditions without forced resolution."},
+    "representation_limits": {"description": "Scope and limits of exposure; no external verification of an unexposed interior."}
+  }
+}

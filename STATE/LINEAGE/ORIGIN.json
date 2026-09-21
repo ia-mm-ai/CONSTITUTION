@@ -1,0 +1,29 @@
+{
+  "kind": "source_locator",
+  "status": "STRUCTURAL_PLACEHOLDER",
+  "policy": "../STATE.json",
+  "source": {
+    "human": "../../SOURCE/CONSTITUTION_0()1.md",
+    "machine": "../../SOURCE/CONSTITUTION_0()1.json",
+    "refs": ["reading.1", "reading.2", "reading.3", "reading.7", "section.1.2", "section.1.4", "section.6.4", "section.6.5", "section.6.7", "section.19.2", "section.20.3"]
+  },
+  "locator_scope": "Constitutional source material held in this repository; not a genesis event, a Body's current State, or a claim of worldwide priority.",
+  "human_content_binding": {
+    "path": "../../SOURCE/CONSTITUTION_0()1.md",
+    "hash_algorithm": "sha256",
+    "sha256": "affeb5738cdfeea7ee4fe985652bf78b15eb6dfbba5871d82f0f2213a81832d0",
+    "byte_length": 44133,
+    "hash_scope": "exact_file_bytes",
+    "effect_ceiling": "Byte correspondence only; no author identity, adoption, Authority, or current Source availability."
+  },
+  "historical_occurrence": null,
+  "predecessor_relation": null,
+  "unfilled_slots": "No origin event or predecessor history is asserted; null does not establish absence.",
+  "not_established": [
+    "parental sovereignty over a later formation",
+    "transfer of Source",
+    "succession by copying or reference",
+    "adoption or jurisdiction by publication",
+    "keeper status by repository custody"
+  ]
+}

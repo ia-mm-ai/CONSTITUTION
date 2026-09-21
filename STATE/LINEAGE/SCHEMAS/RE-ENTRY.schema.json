@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Re-entry — structural placeholder",
+  "description": "Organizational outline for a renewed encounter or relation after interruption or exit; not a new constitutional category or automatic resumption.",
+  "$comment": "Annotation-only placeholder: accepts every instance; no conformance or constitutional effect is established.",
+  "x-status": "STRUCTURAL_PLACEHOLDER",
+  "x-source": {
+    "machine": "../../../SOURCE/CONSTITUTION_0()1.json",
+    "refs": ["section.8.1", "section.8.3", "section.8.6", "section.9.2", "section.9.5", "section.16.5", "section.17.8"]
+  },
+  "properties": {
+    "prior_relation": {"description": "Exact earlier relation and its historical scope."},
+    "interruption_or_exit": {"description": "Supported closure, withdrawal, or interruption, without erasing its history."},
+    "new_occurrence": {"description": "Exact renewed encounter or act; prior participation does not establish current Presence."},
+    "present_binding": {"description": "Attributable current binding supplied by the relevant Locality's own qualifying act or an exact valid representation of it."},
+    "local_bases": {"description": "Valid local bases for the relation attributed to each relevant side."},
+    "scope": {"description": "What is newly supported and what remains historical, ended, or unestablished."},
+    "motion_relations": {"description": "Present relations independently required if consequential motion is resumed."},
+    "uncertainty": {"description": "Open questions without presumed restored consent, succession, or Authority."}
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "kind": "scenario_outline",
+  "status": "ILLUSTRATIVE_NON_EXECUTABLE",
+  "source": {
+    "machine": "../../../SOURCE/CONSTITUTION_0()1.json",
+    "refs": ["section.6.10", "section.11.11", "section.16.1", "section.16.2", "section.16.4", "section.16.5", "section.16.7"]
+  },
+  "schemas": ["../SCHEMAS/DORMANCY.schema.json", "../SCHEMAS/RESUMPTION.schema.json", "../SCHEMAS/SUPPORTED-STATE.schema.json"],
+  "scenario": {
+    "assumptions": [
+      "A dormant Body's identity, applicable law, last supported State, discontinuity, and conditions of possible resumption remain recoverable.",
+      "At a later exact boundary, present Agency, sufficient autonomy and capability, and every other relation needed for the proposed act are independently supported.",
+      "The interruption and any replacement of a bearer remain visible."
+    ],
+    "proposed_claim": "Resume the exact supported motion without claiming uninterrupted operation.",
+    "expected_reading": [
+      "Dormancy does not require continuous runtime and does not erase the Body.",
+      "Resumption depends on present relations rather than records acting or archives consenting.",
+      "Recovered records and restored capability transfer no prior bearer's identity, voice, consent, Agency, autonomy, or Authority."
+    ],
+    "forbidden_inferences": ["Recoverability alone grants the later bearer a right to resume.", "Resumption proves there was no discontinuity."]
+  },
+  "fixture": null,
+  "expected_validation": null
+}

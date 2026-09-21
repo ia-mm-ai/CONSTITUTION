@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Occurrence — structural placeholder",
+  "description": "An exact attributable occurrence, without converting evidence of one occurrence into another.",
+  "$comment": "Annotation-only placeholder: accepts every instance; no conformance or constitutional effect is established.",
+  "x-status": "STRUCTURAL_PLACEHOLDER",
+  "x-source": {
+    "machine": "../../../SOURCE/CONSTITUTION_0()1.json",
+    "refs": ["section.3.2", "section.7.2", "section.7.3", "section.18.1", "section.18.2", "section.18.4"]
+  },
+  "properties": {
+    "occurrence": {"description": "Exact occurrence claimed, distinguishing exposure, delivery, receipt, admission, and other events."},
+    "locality": {"description": "Locality in which the claim is held; not another Locality's inferred interior."},
+    "attribution": {"description": "Attributable ground of the occurrence claim."},
+    "scope": {"description": "Exact target and relation supported by the claim."},
+    "time": {"description": "Supported temporal boundary or ordering; no invented precision."},
+    "evidence": {"description": "Support with declared object, method, scope, time, basis, result, and effect ceiling."},
+    "carrier": {"description": "Carrier kept distinct from the occurrence."},
+    "record": {"description": "Preserved account kept distinct from the occurrence."},
+    "uncertainty": {"description": "Unsupported or unresolved details retained without forced resolution."}
+  }
+}

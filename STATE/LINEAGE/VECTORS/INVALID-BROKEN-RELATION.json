@@ -1,0 +1,25 @@
+{
+  "kind": "scenario_outline",
+  "status": "ILLUSTRATIVE_NON_EXECUTABLE",
+  "source": {
+    "machine": "../../../SOURCE/CONSTITUTION_0()1.json",
+    "refs": ["section.5.1", "section.5.2", "section.6.7", "section.9.2", "section.17.10", "section.17.11", "section.17.14", "section.19.2"]
+  },
+  "schemas": ["../SCHEMAS/RELATION.schema.json", "../SCHEMAS/DERIVATION.schema.json", "../SCHEMAS/SUCCESSION.schema.json"],
+  "scenario": {
+    "assumptions": [
+      "A later artifact copies predecessor material and records a link to it.",
+      "The copied material's earlier relations are recoverable, but the claimed succession lacks an independent valid basis and successor-side establishment."
+    ],
+    "proposed_claim": "The chain of references makes the later artifact a successor inheriting the predecessor's Source and Authority.",
+    "expected_reading": [
+      "A navigable chain establishes neither an unstated conversion nor missing relation support.",
+      "Succession has not been established; ancestry, reference, or derivation may be recorded only at their supported scope.",
+      "Source cannot transfer, and Authority requires its own sufficient basis; a one-sided link establishes no reciprocal relation."
+    ],
+    "forbidden_inferences": ["Reference chains carry constitutional effects transitively.", "Copying makes Source inheritable."],
+    "invalidity_scope": "The missing relation basis and claimed inheritance, not a malformed path or rejection by the annotation-only schemas."
+  },
+  "fixture": null,
+  "expected_validation": null
+}
