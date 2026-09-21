@@ -1,0 +1,31 @@
+{
+  "kind": "module_index",
+  "status": "STRUCTURAL_PLACEHOLDER",
+  "human_outline": "DYNAMIC-CAPACITY-REGULATION.md",
+  "source": {
+    "human": "../../SOURCE/CONSTITUTION_0()1.md",
+    "machine": "../../SOURCE/CONSTITUTION_0()1.json",
+    "refs": ["article.4", "article.10", "article.11", "article.12", "article.13", "article.18", "section.19.3", "section.19.4"]
+  },
+  "scope": "Local, time-sensitive reconciliation of structural capacity with situated capacity.",
+  "policy": "../STATE.json",
+  "related": ["../CONTINUITY-STATE-CAPABILITY/CONTINUITY-STATE-CAPABILITY.json", "../LINEAGE/LINEAGE.json"],
+  "schemas": [
+    "SCHEMAS/CAPACITY.schema.json",
+    "SCHEMAS/MOTION.schema.json",
+    "SCHEMAS/DISPOSITION.schema.json",
+    "SCHEMAS/EVIDENCE.schema.json"
+  ],
+  "vectors": [
+    "VECTORS/SUPPORT.json",
+    "VECTORS/HOLD.json",
+    "VECTORS/REFUSAL.json",
+    "VECTORS/INVALID-OVERREACH.json"
+  ],
+  "not_established": [
+    "actual situated capacity",
+    "Authority from capability or regulation",
+    "a universal permission result",
+    "State succession from capacity regulation"
+  ]
+}

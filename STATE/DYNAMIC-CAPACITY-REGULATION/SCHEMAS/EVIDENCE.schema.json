@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Evidence and proof declaration — structural placeholder",
+  "description": "Bounded proof subjects, retaining the distinction between occurrence, carrier, record, representation, and interpretation.",
+  "$comment": "Annotation-only placeholder: accepts every instance; no conformance or constitutional effect is established.",
+  "x-status": "STRUCTURAL_PLACEHOLDER",
+  "x-source": {
+    "machine": "../../../SOURCE/CONSTITUTION_0()1.json",
+    "refs": ["section.3.3", "section.7.3", "article.18", "reading.7"]
+  },
+  "properties": {
+    "object": {"description": "Exact object of the proof claim."},
+    "method": {"description": "Method and evidence model used, without exceeding that method's proof ceiling."},
+    "scope": {"description": "Bounds of the claim and relevant Locality or relation."},
+    "time": {"description": "Time or occurrence to which the claim applies."},
+    "basis": {"description": "Attributable support relied on by the claim."},
+    "result": {"description": "Bounded result, preserving non-verification without turning it into a verified negative."},
+    "effect_ceiling": {"description": "What the proof supports and what it cannot establish by itself."},
+    "occurrence": {"description": "Event claimed, distinct from its preservation or interpretation."},
+    "carrier": {"description": "Carrier of evidence, not the occurrence itself."},
+    "record": {"description": "Preserved account, which does not cause the reported result."},
+    "representation": {"description": "Represented surface, not an unexposed interior."},
+    "interpretation": {"description": "Reading or inference kept distinct from the evidence objects."}
+  }
+}

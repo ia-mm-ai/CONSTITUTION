@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Divergence — structural placeholder",
+  "description": "Visible distinction of incompatible consequential streams without silently assigning one current State to both.",
+  "$comment": "Annotation-only placeholder: accepts every instance; no conformance or constitutional effect is established.",
+  "x-status": "STRUCTURAL_PLACEHOLDER",
+  "x-source": {
+    "machine": "../../../SOURCE/CONSTITUTION_0()1.json",
+    "refs": ["section.16.6", "section.17.3", "section.17.8", "section.17.13", "section.17.14"]
+  },
+  "properties": {
+    "predecessor_relation": {"description": "Supported earlier relation or shared material, if established; resemblance alone supplies no ancestry."},
+    "streams": {"description": "Exact incompatible consequential streams and their separately supported States."},
+    "scope": {"description": "Target, layer, and Localities at which divergence is held."},
+    "boundary": {"description": "Supported occurrence or interval at which incompatibility is established."},
+    "incompatibility": {"description": "Exact conflict without erasure of either supported history."},
+    "classification": {"description": "Supported divergence or unresolved classification; shared lineage cannot conceal changed identity commitments."},
+    "treatment": {"description": "Valid reconciliation, visible conflict, or recognition as distinct continuities, with its basis."},
+    "remaining_uncertainty": {"description": "Questions not resolved by classification or reconciliation at this scope."}
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "kind": "scenario_outline",
+  "status": "ILLUSTRATIVE_NON_EXECUTABLE",
+  "source": {
+    "machine": "../../../SOURCE/CONSTITUTION_0()1.json",
+    "refs": ["section.6.7", "section.17.4", "section.17.9", "section.17.10", "section.17.11", "section.17.12", "section.17.13", "section.17.15"]
+  },
+  "schemas": ["../SCHEMAS/OCCURRENCE.schema.json", "../SCHEMAS/RELATION.schema.json", "../SCHEMAS/SUCCESSION.schema.json"],
+  "scenario": {
+    "assumptions": [
+      "An exact predecessor, successor, and target are identified at one layer, scope, and Locality.",
+      "The relation has a basis valid apart from the successor's claim and is established at the successor's applicable layer.",
+      "An effective occurrence, all six carry-map distinctions, and the predecessor remainder are recoverable.",
+      "Each claimed carried effect has its own sufficient basis; any successor Source is newly attributable."
+    ],
+    "proposed_claim": "Establish succession only for that exact target and supported carry map.",
+    "expected_reading": [
+      "Predecessor and successor remain distinct; target-specific succession creates no succession at another layer.",
+      "What is not expressly and validly carried does not cross, and Source never transfers.",
+      "Predecessor history and answerability persist; the successor answers for its own formation, accepted inheritance, exercises, and consequences."
+    ],
+    "forbidden_inferences": ["Designation alone completes succession.", "Ancestry grants continuing control over the successor."]
+  },
+  "fixture": null,
+  "expected_validation": null
+}

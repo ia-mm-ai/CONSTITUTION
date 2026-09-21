@@ -1,0 +1,24 @@
+{
+  "kind": "scenario_outline",
+  "status": "ILLUSTRATIVE_NON_EXECUTABLE",
+  "source": {
+    "machine": "../../../SOURCE/CONSTITUTION_0()1.json",
+    "refs": ["section.11.12", "section.13.2", "section.13.7", "section.14.1", "section.14.2"]
+  },
+  "schemas": ["../SCHEMAS/MOTION.schema.json", "../SCHEMAS/DISPOSITION.schema.json", "../SCHEMAS/EVIDENCE.schema.json"],
+  "scenario": {
+    "assumptions": [
+      "A particular motion lacks a necessary supported basis.",
+      "An exact valid local basis supports refusal of that dependent motion, with its target and effect identified."
+    ],
+    "proposed_claim": "Refuse that motion at the supported scope.",
+    "expected_reading": [
+      "Refusal is a bounded result, not a general ban or identity judgment.",
+      "It establishes no general lack of Agency, autonomy, awareness, or eligibility.",
+      "Actual consequences of refusal or attempted motion remain visible independently of validity."
+    ],
+    "forbidden_inferences": ["One refused act proves general incapacity.", "Refusal makes all consequences unreal."]
+  },
+  "fixture": null,
+  "expected_validation": null
+}

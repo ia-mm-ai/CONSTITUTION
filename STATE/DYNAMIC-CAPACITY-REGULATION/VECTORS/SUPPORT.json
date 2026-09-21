@@ -1,0 +1,24 @@
+{
+  "kind": "scenario_outline",
+  "status": "ILLUSTRATIVE_NON_EXECUTABLE",
+  "source": {
+    "machine": "../../../SOURCE/CONSTITUTION_0()1.json",
+    "refs": ["section.11.4", "section.11.5", "section.11.10", "section.11.11", "section.11.13", "section.13.7", "section.18.4"]
+  },
+  "schemas": ["../SCHEMAS/CAPACITY.schema.json", "../SCHEMAS/MOTION.schema.json", "../SCHEMAS/DISPOSITION.schema.json", "../SCHEMAS/EVIDENCE.schema.json"],
+  "scenario": {
+    "assumptions": [
+      "Structural capacity and situated capacity are separately supported for one exact Locality, act, time, and set of conditions.",
+      "Every relation necessary for that motion, including Authority where its claimed effect requires it, has its own sufficient basis."
+    ],
+    "proposed_claim": "Record presently supportable motion at that exact scope.",
+    "expected_reading": [
+      "The two capacity accounts remain distinct even where their bounds permit the same act.",
+      "Support does not replace the independently evaluated dimensions with a universal permission label.",
+      "Execution and actual consequence remain separate questions, not inferred future events."
+    ],
+    "forbidden_inferences": ["Capacity supplies Authority.", "Present support guarantees future capacity or successful execution."]
+  },
+  "fixture": null,
+  "expected_validation": null
+}

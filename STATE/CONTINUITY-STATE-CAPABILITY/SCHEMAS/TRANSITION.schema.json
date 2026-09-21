@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "State transition — structural placeholder",
+  "description": "Recoverable account of an exact change in supported State, without presuming lawful motion or succession at another layer.",
+  "$comment": "Annotation-only placeholder: accepts every instance; no conformance or constitutional effect is established.",
+  "x-status": "STRUCTURAL_PLACEHOLDER",
+  "x-source": {
+    "machine": "../../../SOURCE/CONSTITUTION_0()1.json",
+    "refs": ["section.14.1", "section.14.2", "section.14.3", "section.16.7", "section.17.7", "section.17.8", "section.17.9"]
+  },
+  "properties": {
+    "locality": {"description": "Exact Locality holding the change account."},
+    "predecessor_state": {"description": "Recoverable supported State before the transition."},
+    "resulting_state": {"description": "Supported resulting posture; an invalid act may still have actual consequences."},
+    "target": {"description": "Exact target and layer of change, without effects inferred at other layers."},
+    "classification": {"description": "Supported kind of change under Article 17, or preserved unresolved classification."},
+    "basis": {"description": "Attributable ground of the change and any claimed constitutional effect; missing or disputed basis remains visible."},
+    "effective_boundary": {"description": "Exact occurrence or temporal boundary of the change."},
+    "transition_evidence": {"description": "Support for the occurrence and delta, with a bounded proof ceiling."},
+    "delta": {"description": "What changed, remained, ended, or remains unresolved."},
+    "discontinuity": {"description": "Interruption, conflict, or lost support retained rather than concealed."},
+    "lineage": {"description": "Exact predecessor and resulting relations; any succession claim needs its own supported basis."},
+    "correction": {"description": "Recoverable correction account where the transition corrects an earlier error."}
+  }
+}

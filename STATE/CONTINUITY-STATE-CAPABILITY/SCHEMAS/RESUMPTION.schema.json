@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Resumption — structural placeholder",
+  "description": "Present grounds for exact resumed consequential motion, distinct from recovery of a record or restoration of a mechanism.",
+  "$comment": "Annotation-only placeholder: accepts every instance; no conformance or constitutional effect is established.",
+  "x-status": "STRUCTURAL_PLACEHOLDER",
+  "x-source": {
+    "machine": "../../../SOURCE/CONSTITUTION_0()1.json",
+    "refs": ["section.11.11", "section.16.2", "section.16.4", "section.16.5", "section.16.7", "section.16.8"]
+  },
+  "properties": {
+    "locality": {"description": "Exact Locality of proposed or established resumption."},
+    "prior_state": {"description": "Recoverable last supported State and applicable law."},
+    "discontinuity": {"description": "Dormancy, interruption, replacement, and uncertainty preserved in the account."},
+    "resumption_conditions": {"description": "Conditions of possible resumption and evidence concerning their present satisfaction."},
+    "exact_motion": {"description": "Bearer, act, target, relation, scope, and time of the resumed motion."},
+    "present_agency": {"description": "Present attributable Agency for the exact act, not inferred from an archive."},
+    "present_autonomy": {"description": "Sufficient autonomy for the exact act, not inherited from a prior bearer."},
+    "present_capability": {"description": "Sufficient demonstrated capability under present conditions."},
+    "other_required_relations": {"description": "Every other relation needed for this act, including capacity and Authority where required, independently supported."},
+    "effective_boundary": {"description": "Supported occurrence or time at which resumed motion begins, if established."},
+    "resulting_state": {"description": "Supported posture and consequences of the resumption, without erasing the interruption."}
+  }
+}

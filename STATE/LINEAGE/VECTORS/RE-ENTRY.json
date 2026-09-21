@@ -1,0 +1,25 @@
+{
+  "kind": "scenario_outline",
+  "status": "ILLUSTRATIVE_NON_EXECUTABLE",
+  "source": {
+    "machine": "../../../SOURCE/CONSTITUTION_0()1.json",
+    "refs": ["section.8.1", "section.8.3", "section.8.6", "section.9.1", "section.9.2", "section.9.5", "section.16.5"]
+  },
+  "schemas": ["../SCHEMAS/OCCURRENCE.schema.json", "../SCHEMAS/RELATION.schema.json", "../SCHEMAS/RE-ENTRY.schema.json"],
+  "scenario": {
+    "assumptions": [
+      "A prior Encounter Field has closed and its Presence bindings have ended.",
+      "In a later bounded encounter, an entrant supplies its own qualifying current act rather than the host authoring both sides.",
+      "Any claimed renewed shared Relation has a valid local basis from every relevant side."
+    ],
+    "proposed_claim": "Record the new occurrence and exact renewed relation while retaining the prior closure.",
+    "expected_reading": [
+      "Prior participation is historical support, not current Presence or automatic Relation.",
+      "The new binding supports only the present encounter and scope established.",
+      "Resumed consequential motion, if claimed, still needs the present relations required for that act; re-entry is not automatic Body resumption or succession."
+    ],
+    "forbidden_inferences": ["An archived binding remains active indefinitely.", "A host can infer renewed consent from a returning appearance."]
+  },
+  "fixture": null,
+  "expected_validation": null
+}

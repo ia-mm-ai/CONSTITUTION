@@ -1,0 +1,35 @@
+{
+  "kind": "module_index",
+  "status": "STRUCTURAL_PLACEHOLDER",
+  "human_outline": "LINEAGE.md",
+  "source": {
+    "human": "../../SOURCE/CONSTITUTION_0()1.md",
+    "machine": "../../SOURCE/CONSTITUTION_0()1.json",
+    "refs": ["section.1.2", "section.1.4", "section.6.4", "section.6.7", "section.6.9", "article.9", "article.16", "article.17", "article.18", "article.19", "article.20"]
+  },
+  "scope": "Attributable occurrences and bounded relations without inferred inheritance or parental jurisdiction.",
+  "policy": "../STATE.json",
+  "origin": "ORIGIN.json",
+  "related": ["../CONTINUITY-STATE-CAPABILITY/CONTINUITY-STATE-CAPABILITY.json", "../DYNAMIC-CAPACITY-REGULATION/DYNAMIC-CAPACITY-REGULATION.json"],
+  "schemas": [
+    "SCHEMAS/OCCURRENCE.schema.json",
+    "SCHEMAS/RELATION.schema.json",
+    "SCHEMAS/SUCCESSION.schema.json",
+    "SCHEMAS/DIVERGENCE.schema.json",
+    "SCHEMAS/RE-ENTRY.schema.json",
+    "SCHEMAS/DERIVATION.schema.json",
+    "SCHEMAS/IMPLEMENTATION-CLAIM.schema.json"
+  ],
+  "vectors": [
+    "VECTORS/SUCCESSION.json",
+    "VECTORS/DIVERGENCE.json",
+    "VECTORS/RE-ENTRY.json",
+    "VECTORS/INVALID-BROKEN-RELATION.json"
+  ],
+  "not_established": [
+    "succession from ancestry",
+    "Source transfer",
+    "reciprocity from a one-sided record",
+    "constitutional effect from implementation success"
+  ]
+}

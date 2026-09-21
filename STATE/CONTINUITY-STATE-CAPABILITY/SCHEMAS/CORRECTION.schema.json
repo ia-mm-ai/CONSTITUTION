@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Correction — structural placeholder",
+  "description": "Subjects of an exact correction record preserving predecessor truth and remaining uncertainty.",
+  "$comment": "Annotation-only placeholder: accepts every instance; no conformance or constitutional effect is established.",
+  "x-status": "STRUCTURAL_PLACEHOLDER",
+  "x-source": {
+    "machine": "../../../SOURCE/CONSTITUTION_0()1.json",
+    "refs": ["section.14.5", "section.15.3", "section.15.4", "section.15.5"]
+  },
+  "properties": {
+    "locality": {"description": "Exact Locality holding the correction."},
+    "error": {"description": "Error being corrected, rather than an unexplained replacement."},
+    "affected_target": {"description": "Exact State, representation, attribution, or other affected target."},
+    "prior_state_or_representation": {"description": "Recoverable prior object; correcting a representation is not automatically a change of State."},
+    "corrected_basis": {"description": "Attributable support for the correction."},
+    "resulting_delta": {"description": "Exact difference produced by the correction."},
+    "remaining_uncertainty": {"description": "Unresolved or unsupported matters left visible after correction."},
+    "preserved_history": {"description": "Enough predecessor history to explain what changed and why, without making earlier occurrences unoccurred."},
+    "repair_ceiling": {"description": "Limits on claims of remedy, recognition, reconciliation, restored autonomy, or restored continuity."}
+  }
+}

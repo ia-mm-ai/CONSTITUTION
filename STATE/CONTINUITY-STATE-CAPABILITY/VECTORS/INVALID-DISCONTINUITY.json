@@ -1,0 +1,25 @@
+{
+  "kind": "scenario_outline",
+  "status": "ILLUSTRATIVE_NON_EXECUTABLE",
+  "source": {
+    "machine": "../../../SOURCE/CONSTITUTION_0()1.json",
+    "refs": ["section.11.12", "section.14.5", "section.16.4", "section.16.5", "section.16.7", "section.16.8", "section.17.14"]
+  },
+  "schemas": ["../SCHEMAS/TRANSITION.schema.json", "../SCHEMAS/RESUMPTION.schema.json", "../SCHEMAS/SUPPORTED-STATE.schema.json"],
+  "scenario": {
+    "assumptions": [
+      "A replacement bearer possesses an old State record after a known interruption.",
+      "Support for the intervening transition and the present relations required for the proposed motion is missing."
+    ],
+    "proposed_claim": "Possession of the record proves uninterrupted supported State succession and permits continuation under the prior bearer's Authority.",
+    "expected_reading": [
+      "The proposed inference is unsupported; the interruption and missing bases remain visible.",
+      "Preservation of a record does not establish present CSC or transfer Authority.",
+      "The exact dependent motion is refused or held for its missing necessary basis, without erasing actual consequences or banning unrelated motion."
+    ],
+    "forbidden_inferences": ["Record possession repairs an unestablished transition.", "Replacement inherits the prior bearer's Authority."],
+    "invalidity_scope": "The claimed constitutional conversion, not JSON syntax or rejection by the annotation-only schemas."
+  },
+  "fixture": null,
+  "expected_validation": null
+}

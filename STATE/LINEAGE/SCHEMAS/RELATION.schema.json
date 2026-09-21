@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Relation — structural placeholder",
+  "description": "An exact supported connection among terms that remain distinct; a one-sided record does not establish reciprocity.",
+  "$comment": "Annotation-only placeholder: accepts every instance; no conformance or constitutional effect is established.",
+  "x-status": "STRUCTURAL_PLACEHOLDER",
+  "x-source": {
+    "machine": "../../../SOURCE/CONSTITUTION_0()1.json",
+    "refs": ["article.4.table.row.11", "section.5.1", "section.5.2", "article.9", "section.19.2"]
+  },
+  "properties": {
+    "terms": {"description": "Exact distinct terms participating in the claimed relation."},
+    "holding_locality": {"description": "Locality holding the relation claim."},
+    "kind": {"description": "Kind of connection claimed, without silent conversion into another kind."},
+    "direction": {"description": "Local, reciprocal, or shared extent actually supported; no reciprocity inferred from a link."},
+    "basis_by_side": {"description": "Valid local basis supplied by every relevant side for what is attributed to it."},
+    "scope": {"description": "Exact target, function, and supported effects."},
+    "duration": {"description": "Temporal extent and current posture."},
+    "asymmetry": {"description": "Visible differences in dependence, knowledge, capability, responsibility, or other relevant dimensions."},
+    "exit_and_correction": {"description": "Supported refusal, withdrawal, correction, suspension, and ending at the relation's scope."},
+    "uncertainty": {"description": "Missing support without presumed consent, merger, or ownership."}
+  }
+}

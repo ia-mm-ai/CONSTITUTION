@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Capacity — structural placeholder",
+  "description": "Separate accounts of structural possibility and what an exact Locality can presently bear, sustain, or exercise.",
+  "$comment": "Annotation-only placeholder: accepts every instance; no conformance or constitutional effect is established.",
+  "x-status": "STRUCTURAL_PLACEHOLDER",
+  "x-source": {
+    "machine": "../../../SOURCE/CONSTITUTION_0()1.json",
+    "refs": ["article.4.table.row.15", "article.4.table.row.16", "section.11.4", "section.11.5", "section.11.10", "section.13.7"]
+  },
+  "properties": {
+    "locality": {"description": "Exact Locality for which capacity is considered."},
+    "scope": {"description": "Exact act or burden and the bounds of the capacity claim."},
+    "time": {"description": "Time for which support is claimed; past support does not establish present capacity."},
+    "conditions": {"description": "Conditions under which each capacity account holds."},
+    "structural_capacity": {"description": "What a Form or architecture leaves possible, with its own support and limits."},
+    "situated_capacity": {"description": "What this Locality can presently bear, sustain, or exercise, with separate support and limits."},
+    "reconciliation": {"description": "Local, time-sensitive relation between the two accounts without equating them."},
+    "uncertainty": {"description": "Missing or disputed support, without general incapacity inferred from a scoped limitation."}
+  }
+}

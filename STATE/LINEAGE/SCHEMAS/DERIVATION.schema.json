@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Derivation — structural placeholder",
+  "description": "Attributable relation between referenced and resulting material; derivation is not itself adoption, succession, or a constitutional change classification.",
+  "$comment": "Annotation-only placeholder: accepts every instance; no conformance or constitutional effect is established.",
+  "x-status": "STRUCTURAL_PLACEHOLDER",
+  "x-source": {
+    "machine": "../../../SOURCE/CONSTITUTION_0()1.json",
+    "refs": ["section.1.2", "section.1.4", "section.6.7", "section.17.1", "section.17.2", "section.17.3", "section.17.5", "section.17.7", "section.17.8", "section.19.2"]
+  },
+  "properties": {
+    "referenced_material": {"description": "Exact predecessor material to which derivation is attributed."},
+    "resulting_material": {"description": "Exact resulting material, distinct from its referent."},
+    "attribution": {"description": "Supported derivation relation, without transfer of Source or ownership of later formations."},
+    "changes": {"description": "Recoverable additions, removals, or transformations of material."},
+    "scope": {"description": "Bounds of the derivation claim and supporting evidence."},
+    "constitutional_classification": {"description": "Separately supported Article 17 classification if constitutional change is claimed; otherwise no classification is established by derivation alone."},
+    "change_basis": {"description": "Independent valid local basis, carry account, and effective boundary for any claimed constitutional change."},
+    "effect_ceiling": {"description": "Effects not established by copying, adaptation of material, ancestry, or reference."}
+  }
+}

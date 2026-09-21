@@ -1,0 +1,36 @@
+{
+  "kind": "module_index",
+  "status": "STRUCTURAL_PLACEHOLDER",
+  "human_outline": "CONTINUITY-STATE-CAPABILITY.md",
+  "source": {
+    "human": "../../SOURCE/CONSTITUTION_0()1.md",
+    "machine": "../../SOURCE/CONSTITUTION_0()1.json",
+    "refs": ["article.4", "section.14.3", "section.14.5", "article.15", "article.16", "article.17", "section.19.3", "section.19.4"]
+  },
+  "scope": "Preservation of supported State succession across transition, correction, dormancy, and resumption.",
+  "policy": "../STATE.json",
+  "related": ["../DYNAMIC-CAPACITY-REGULATION/DYNAMIC-CAPACITY-REGULATION.json", "../LINEAGE/LINEAGE.json"],
+  "schemas": [
+    "SCHEMAS/SUPPORTED-STATE.schema.json",
+    "SCHEMAS/TRANSITION.schema.json",
+    "SCHEMAS/CORRECTION.schema.json",
+    "SCHEMAS/DORMANCY.schema.json",
+    "SCHEMAS/RESUMPTION.schema.json"
+  ],
+  "vectors": [
+    "VECTORS/SUCCESSION.json",
+    "VECTORS/CORRECTION.json",
+    "VECTORS/DORMANCY-RESUMPTION.json",
+    "VECTORS/INVALID-DISCONTINUITY.json"
+  ],
+  "qualification_outline": {
+    "bearer_or_mechanism": null,
+    "scope": null,
+    "conditions": null,
+    "demonstration": null,
+    "dependencies": null,
+    "failure_boundaries": null,
+    "present_status": null
+  },
+  "qualification_effect": "No CSC claim is made; slots reserve the subjects of section.16.8."
+}

@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Regulatory disposition — structural placeholder",
+  "description": "Attributable, scoped regulation of exact motion, preserving refusal and answerable HOLD without general exclusion.",
+  "$comment": "Annotation-only placeholder: accepts every instance; no conformance or constitutional effect is established.",
+  "x-status": "STRUCTURAL_PLACEHOLDER",
+  "x-source": {
+    "machine": "../../../SOURCE/CONSTITUTION_0()1.json",
+    "refs": ["section.7.5", "section.11.6", "section.11.12", "section.13.2", "section.13.3", "section.13.4", "section.13.6", "section.13.7"]
+  },
+  "properties": {
+    "locality": {"description": "Locality holding the disposition."},
+    "attribution": {"description": "Answerable bearer of the scoped regulatory act."},
+    "target": {"description": "Exact motion or condition addressed."},
+    "scope": {"description": "Smallest truthful boundary of the effect, leaving unrelated motion distinct."},
+    "time": {"description": "Temporal scope and currentness of the disposition."},
+    "posture": {"description": "Supported regulation, such as admitting, bounding, pausing, redirecting, holding, refusing, or ending; no closed enumeration is prescribed."},
+    "basis": {"description": "Applicable law, supported State, capacity account, and exact Authority where required."},
+    "effect": {"description": "Actual constraint or change, distinct from its legitimacy or intended effect."},
+    "held_condition": {"description": "For HOLD, the exact uncertainty, conflict, capacity, safety, or boundary preserved without deciding it."},
+    "review": {"description": "How a materially constraining HOLD remains reviewable."},
+    "correction": {"description": "How a materially constraining HOLD remains correctable."},
+    "ending": {"description": "How the disposition can end at its exact scope; time alone does not make HOLD final."},
+    "uncertainty": {"description": "Remaining missing support or conflict without wider Authority inferred."}
+  }
+}

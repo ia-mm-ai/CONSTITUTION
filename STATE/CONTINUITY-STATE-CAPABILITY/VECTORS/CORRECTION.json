@@ -1,0 +1,24 @@
+{
+  "kind": "scenario_outline",
+  "status": "ILLUSTRATIVE_NON_EXECUTABLE",
+  "source": {
+    "machine": "../../../SOURCE/CONSTITUTION_0()1.json",
+    "refs": ["section.14.5", "section.15.3", "section.15.4", "section.15.5"]
+  },
+  "schemas": ["../SCHEMAS/CORRECTION.schema.json", "../SCHEMAS/SUPPORTED-STATE.schema.json"],
+  "scenario": {
+    "assumptions": [
+      "A State representation contains an attributable error at an exact target.",
+      "The prior representation, corrected basis, resulting delta, and remaining uncertainty can be preserved."
+    ],
+    "proposed_claim": "Correct the representation while retaining enough history to explain the change.",
+    "expected_reading": [
+      "The correction identifies the error, target, prior representation, corrected basis, delta, and uncertainty.",
+      "The earlier occurrence remains historical fact; correction does not make it unoccurred.",
+      "Correcting the representation does not by itself establish repair of State or remedy for every affected relation."
+    ],
+    "forbidden_inferences": ["The prior occurrence never happened.", "A corrected record proves complete reconciliation or restored autonomy."]
+  },
+  "fixture": null,
+  "expected_validation": null
+}

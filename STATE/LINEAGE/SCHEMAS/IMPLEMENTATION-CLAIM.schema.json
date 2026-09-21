@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Implementation claim — structural placeholder",
+  "description": "Bounded claim to embody a constitutional function or capability; no embodiment is privileged and no claim is certified here.",
+  "$comment": "Annotation-only placeholder: accepts every instance; no conformance or constitutional effect is established.",
+  "x-status": "STRUCTURAL_PLACEHOLDER",
+  "x-source": {
+    "machine": "../../../SOURCE/CONSTITUTION_0()1.json",
+    "refs": ["reading.7", "section.13.7", "section.16.8", "section.18.4", "section.19.1", "section.19.3", "section.19.4", "section.20.2", "section.20.4"]
+  },
+  "properties": {
+    "claimant": {"description": "Attributable bearer of the claim, not a self-appointed constitutional authority."},
+    "bearer_or_mechanism": {"description": "Exact embodiment to which the claim applies."},
+    "constitutional_reference": {"description": "Exact source provisions and the function or capability claimed."},
+    "locality": {"description": "Exact Locality of the supported claim; no general applicability inferred."},
+    "scope": {"description": "Bounded function, act, or capability claimed."},
+    "conditions": {"description": "Conditions under which the claimed capability or function is supported."},
+    "demonstration": {"description": "Evidence with declared object, method, scope, time, basis, result, and effect ceiling."},
+    "dependencies": {"description": "Material dependencies, interruption risks, replacement posture, and consequences of loss."},
+    "failure_boundaries": {"description": "Known limits, uncertainty, and unsupported cases."},
+    "present_status": {"description": "Present qualification at the stated scope, not presumed from publication or historical success."},
+    "effect_ceiling": {"description": "No Source, Authority, Agency, autonomy, adoption, or constitutional effect created by the claim, conformance, custody, or successful operation."}
+  }
+}

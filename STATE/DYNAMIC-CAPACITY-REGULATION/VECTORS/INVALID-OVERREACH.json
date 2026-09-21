@@ -1,0 +1,25 @@
+{
+  "kind": "scenario_outline",
+  "status": "ILLUSTRATIVE_NON_EXECUTABLE",
+  "source": {
+    "machine": "../../../SOURCE/CONSTITUTION_0()1.json",
+    "refs": ["section.11.10", "section.11.12", "section.12.2", "section.12.3", "section.13.7", "section.18.4", "section.20.4"]
+  },
+  "schemas": ["../SCHEMAS/CAPACITY.schema.json", "../SCHEMAS/MOTION.schema.json", "../SCHEMAS/DISPOSITION.schema.json", "../SCHEMAS/EVIDENCE.schema.json"],
+  "scenario": {
+    "assumptions": [
+      "A mechanism has demonstrated capability and supported capacity for a bounded act.",
+      "A proposed wider effect requires Authority that has not been established."
+    ],
+    "proposed_claim": "Successful capability demonstration and regulatory control authorize the wider effect.",
+    "expected_reading": [
+      "Capability, capacity, and regulatory control do not supply the missing Authority.",
+      "Evidence remains bounded to its declared object, scope, time, and effect ceiling.",
+      "The exact dependent motion is refused or held; no wider Authority or general incapacity is manufactured."
+    ],
+    "forbidden_inferences": ["Technical ability is permission.", "A regulatory mechanism can widen its own Authority."],
+    "invalidity_scope": "The unsupported expansion of effect, not rejection by the annotation-only schemas."
+  },
+  "fixture": null,
+  "expected_validation": null
+}

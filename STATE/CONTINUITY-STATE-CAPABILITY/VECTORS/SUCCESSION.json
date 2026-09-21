@@ -1,0 +1,25 @@
+{
+  "kind": "scenario_outline",
+  "status": "ILLUSTRATIVE_NON_EXECUTABLE",
+  "source": {
+    "machine": "../../../SOURCE/CONSTITUTION_0()1.json",
+    "refs": ["section.16.7", "section.16.8", "section.17.9", "section.17.10", "section.17.11", "section.17.12", "section.17.13", "section.19.4"]
+  },
+  "schemas": ["../SCHEMAS/SUPPORTED-STATE.schema.json", "../SCHEMAS/TRANSITION.schema.json", "../../LINEAGE/SCHEMAS/SUCCESSION.schema.json"],
+  "scenario": {
+    "assumptions": [
+      "An exact Locality's predecessor State, applicable law, transition evidence, and discontinuity are recoverable.",
+      "A State succession has an exact target, independent valid basis, successor-side establishing occurrence, effective boundary, and expressly supported carry map.",
+      "The successor State and predecessor remainder remain separately attributable."
+    ],
+    "proposed_claim": "Preserve this supported State succession at its exact scope.",
+    "expected_reading": [
+      "The account retains the predecessor, resulting State, carried effects, exclusions, and uncertainty.",
+      "State succession supplies no succession at another layer and no retroactive capacity or Authority.",
+      "A claim of CSC still needs its exact bearer or mechanism, conditions, demonstration, dependencies, failure boundaries, and present status."
+    ],
+    "forbidden_inferences": ["State succession transfers Source.", "One preserved transition proves present CSC under every condition."]
+  },
+  "fixture": null,
+  "expected_validation": null
+}
