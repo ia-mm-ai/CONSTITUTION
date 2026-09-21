@@ -1,0 +1,216 @@
+{
+  "$schema": "../../../../CARRIER/SCHEMAS/epistemic-record.schema.json",
+  "schema": "local-reality-body.epistemic-record.v0.1",
+  "record_id": "RM-LOCAL-REALITY-BODY-001-EPISTEMIC-RECOVERY-CROSSING-001",
+  "body_id": "RM-LOCAL-REALITY-BODY-001",
+  "recorded_at_utc": "2026-09-21T09:47:53Z",
+  "classification": "ADMITTED_BODY_LOCAL_ORIENTATION",
+  "local_basis": {
+    "kind": "PRESENT_BODY_LOCAL_ACT",
+    "act_id": "RM-LOCAL-REALITY-BODY-RECOVERY-AND-CROSSING-ACT-001",
+    "act_carrier": "BODY/LINEAGE/ACTS/LOCAL_REALITY_BODY_RECOVERY_AND_CROSSING_ACT_001.md",
+    "act_carrier_sha256": "181e42cce492b6814801add35e94a3212512d1c6948c4f3788ad00488b5eea47",
+    "source_statement_sha256": "0124e8ec04b4c2c95a57bd7183d23b1aa9013024cac28146441d2cd6f06cc6cb",
+    "bearer": "Marko Markota",
+    "functions_invoked_distinctly": [
+      "LOCAL_GOVERNING_AUTHORITY",
+      "CORRECTION_AUTHORITY",
+      "ADAPTATION_AUTHORITY",
+      "OPERATIONAL_AUTHORIZATION"
+    ],
+    "scope": "LOCAL_RECOVERY_CROSSING_AND_CURRENTNESS_RECONCILIATION"
+  },
+  "predecessor": {
+    "body_currentness_revision": 8,
+    "body_current_state_sha256": "95917d41b8835adaa8d21ad74624040a2ba4cd3f8afe7b0850c14e44c07e726f",
+    "lineage_index_sha256": "896d498997bd1999a9412c1cc72f01cad7596232e7be7b6fe722c8a4826a07aa",
+    "epistemic_index_sha256": "bff7505876e43086b9eecfc3420ecb0021aab74c731238aaabe195f8f43095ba",
+    "static_manifest_sha256": "59eb47e77aae5ff6d127378fa310c7a1f960812a09d27c8b98ed142dc801ee6f",
+    "recovery_map": "CARRIER/RECOVERY/CARRIER_REVISION_008_MAP.json"
+  },
+  "crossing": {
+    "mechanism_id": "RM-REALITY-CONTACT-MEMBRANE-001",
+    "sequence": 4,
+    "event_type": "CROSSING_OBSERVED",
+    "exposure_id": "rcm-1789983989010409000-aacc6d0f20f4",
+    "recorded_at_unix_ns": 1789983989011639000,
+    "journal": "BODY/EMBODIMENT/LOCAL_STATE/REALITY_CONTACT_MEMBRANE_001/local_journal.jsonl",
+    "journal_sha256_after_crossing": "322416bc3977f2c957d9d4d0b67da2066c74fd4876b4f3a17f4d8ccf8d52d46f",
+    "entry_sha256": "9c7aa41218c985d460786fdb76fc647fcb3f8e9d43640dd735881cee98f1fbbb",
+    "previous_entry_sha256": "42f73290d68ff7c06206b337c37f3f36ddb366519eaaac24f14e9b611a8fa4f0",
+    "raw_carrier": "BODY/EMBODIMENT/LOCAL_STATE/REALITY_CONTACT_MEMBRANE_001/raw_crossings/rcm-1789983989010409000-aacc6d0f20f4.bin",
+    "wire_sha256": "34dbdf2b3751cbd0019ee671e5c051feef4c331b82a1a7445072b5d459af3db0",
+    "wire_bytes": 1339,
+    "format_status": "PARSED_OBJECT",
+    "effect_ceiling": "RECIPIENT_LOCAL_OBSERVATION_ONLY",
+    "matter_admission_by_membrane": false,
+    "truth_determined_by_membrane": false,
+    "source_identity_determined_by_membrane": false,
+    "source_continuity_determined_by_membrane": false,
+    "existing_local_relation_changed_by_membrane": false
+  },
+  "observations": [
+    {
+      "observation_id": "CONSTITUTION-CARRIER-SET-001",
+      "classification": "VERIFIED_LOCAL_BYTE_IDENTITIES",
+      "workspace_review_package": {
+        "root": "/Users/markomarkota/REALITY_MODEL_WORKSPACE/INTELLIGENCE/CONSTITUTION_01",
+        "human_form_sha256": "27c07a09a55ed43d6be89c8c81547e4af3d81fe21047c57a0de32ef311a9e44e",
+        "machine_form_sha256": "da3099ded324a1962b64f64dc9a25ff45a1fedaf6cc15378f452785309b9dcdc",
+        "form_binding_sha256": "356e914b9128e88c8c3d5de2a4ea191dd8605375485135e87e1101626623ae11",
+        "posture": "NON_GOVERNING_NOT_STANDING_NOT_OPERATIVE"
+      },
+      "current_local_downloads": {
+        "human_form": "/Users/markomarkota/Downloads/CONSTITUTION-01.md",
+        "human_form_sha256": "94d4ed9888c4974e11c97ba302a15693ba7bde96d5536a84602cb26781db3cb1",
+        "machine_form": "/Users/markomarkota/Downloads/CONSTITUTION-01.json",
+        "machine_form_sha256": "f9c98d4d9abd6ce373a4336f0c9cefc6c60ffdee4e414f33eb7247cb0d6e4bab",
+        "machine_human_crossing_sha256": "4be24cf15d3653abcfd7ae4191246a52c22e61246b8d4d33f46b329c615596dd",
+        "local_pairing_status": "UNRESOLVED_DIGEST_DIVERGENCE"
+      },
+      "public_surface_carriers": {
+        "human_form_sha256": "4be24cf15d3653abcfd7ae4191246a52c22e61246b8d4d33f46b329c615596dd",
+        "machine_form_sha256": "f9c98d4d9abd6ce373a4336f0c9cefc6c60ffdee4e414f33eb7247cb0d6e4bab",
+        "surface_relation": "MACHINE_HUMAN_CROSSING_DIGEST_AGREES"
+      },
+      "public_source_carrier": {
+        "repository": "ia-mm-ai/CONSTITUTION",
+        "path": "CONSTITUTION_0()1.md",
+        "origin_commit": "835f24d559089b6eb443a3d86398ec2f373c24ee",
+        "observed_repository_commit": "0c2b6c2b8a112658b38e71f6922b1cf56fc360d0",
+        "sha256": "ae9b1da787467cc4df151b84220a58afa8281eb816ce8d2c430f004fa240210c"
+      },
+      "canonical_relation": "UNRESOLVED",
+      "applicability_to_body": "NOT_INFERRED"
+    },
+    {
+      "observation_id": "KENTRA-PUBLIC-SURFACE-REVISION-001",
+      "classification": "VERIFIED_LOCAL_PACKAGE_AND_OBSERVED_PUBLIC_SURFACE",
+      "public_url": "https://kentra.com/",
+      "public_observation": "ACCESSIBLE_REVISION_1_PASSAGE_SURFACE_ON_2026-09-21",
+      "package_root": "/Users/markomarkota/KENTRA_COM_CLOUDFLARE_UPLOAD_REVISION_01",
+      "current_field_state_sha256": "a6f6c99d7232638554801941396e2a3cf7e9ea6d3f4c6eca558ac56bbd305752",
+      "surface_manifest_sha256": "221cf2aaa6fe969f07c31ef3392a0f43b9ac6c5c72d70fe05c2ca2b51de25ca4",
+      "surface_manifest_record_sha256": "b5c0958993e4e940228c136d99aa71620a369cc2748be0039e4fa2f0552ff90b",
+      "surface_manifest_entry_count": 43,
+      "surface_revision": 1,
+      "turn": 1,
+      "phase": "PASSAGE",
+      "gate": "CLOSED",
+      "live_locality_binding": "UNBOUND",
+      "live_run": "NOT_ASSERTED_AS_MATERIALIZED",
+      "constitutional_applicability_to_body": "NOT_INFERRED"
+    },
+    {
+      "observation_id": "KENTRA-CONTINUITY-CHECKPOINT-006",
+      "classification": "VERIFIED_LOCAL_SIGNED_CARRIER_SET",
+      "package_root": "/Users/markomarkota/KENTRA_COM_CLOUDFLARE_UPLOAD_REVISION_01",
+      "locality_id": "EA499BA5-D2CC-42BF-A4A7-4F6BA23A12EC",
+      "sequence": 6,
+      "current_pointer_sha256": "65eae8e5906df12dd601ef12a105262bc4c5f341badf41bdd429d4c1e35652c9",
+      "record_sha256": "dc1911de76f207b8c87defcc893d7207d3c33ef5cc41627cbdbe53699c2b8fe2",
+      "state_sha256": "3152038182d2093a21dca1d0a97c0aa5e2281429c163ec7cf4f9e412885bc686",
+      "bearer_continuity": "NOT_INFERRED",
+      "authority_continuity": "NOT_INFERRED",
+      "relation_to_body": "UNRESOLVED"
+    },
+    {
+      "observation_id": "LOCALITY-VM-001-RELEASE-001",
+      "classification": "VERIFIED_LOCAL_REPOSITORY_AND_RELEASE_CARRIERS",
+      "repository": "/Users/markomarkota/LOCALITY_VM_001",
+      "git_commit": "7dd42421e7d04f2520bc8808ce54a4192be485e5",
+      "git_tree": "893849dcba32dc0ecc1b170917e47e191f18e511",
+      "worktree_posture_at_observation": "CLEAN",
+      "repository_manifest_sha256": "8a0e7a109f9da5e0a2a6049f8f2616a4b2e39cd2178e7e263939bbfd52e28cea",
+      "release_manifest_sha256": "8f513c7cdaca91b2d6c0dee017dfa090185095d34232eb66043ab0f5b0094308",
+      "locality_form_sha256": "9fbdd054bd947c8f32308871296374009cac8c27633eb47b7c5ff2b10fcff45d",
+      "release_tar_sha256": "33c3578a91b3fbc2d8447db0bb0bb3d3355552b900f218b69cacb7e3321ebc2c",
+      "qualification_evidence_tar_sha256": "0e3fd8e25e80a123b9c133108499c037d7d79908470dc683275aa9c6fed84a14",
+      "qualification": "PASS",
+      "chain_binding": "NONE",
+      "live_deployment": "NOT_FORMED",
+      "body_embodiment_relation": "NOT_ADMITTED"
+    }
+  ],
+  "working_content_orientation": [
+    {
+      "orientation_id": "LOCALITY-AND-NON-INFERENCE",
+      "statement": "State, applicability, and consequence remain attributable to an exact locality; an unexposed interior is not manufactured as external truth.",
+      "source_relation": "PARAPHRASED_FROM_CURRENT_LOCAL_CONSTITUTION_CARRIER",
+      "body_law_status": "NOT_ADOPTED"
+    },
+    {
+      "orientation_id": "AGENCY-AUTONOMY-CAPABILITY",
+      "statement": "Agency as locally attributable capacity to act, autonomy as locally held freedom to determine an act, and capability as demonstrated effective ability remain distinct partner relations rather than substitutes.",
+      "source_relation": "PARAPHRASED_FROM_CURRENT_LOCAL_CONSTITUTION_CARRIER",
+      "body_law_status": "NOT_ADOPTED"
+    },
+    {
+      "orientation_id": "EQUAL-TRACE-LIMIT",
+      "statement": "Equal externally available traces may remain compatible with different local conditions of awareness; external trace classification therefore cannot establish the inaccessible local condition in every admissible case.",
+      "source_relation": "PARAPHRASED_FROM_CURRENT_LOCAL_CONSTITUTION_CARRIER",
+      "body_law_status": "NOT_ADOPTED"
+    },
+    {
+      "orientation_id": "DURABLE-UNKNOWN",
+      "statement": "An unsupported or externally inaccessible condition may remain UNKNOWN without becoming false, absent, invalid, irrelevant, or ineligible.",
+      "source_relation": "PARAPHRASED_FROM_CURRENT_LOCAL_CONSTITUTION_CARRIER",
+      "body_law_status": "NOT_ADOPTED"
+    },
+    {
+      "orientation_id": "FORM-CONFLICT",
+      "statement": "When human and machine Forms cannot be reconciled without added meaning, the affected question remains UNRESOLVED; technical parsing or execution supplies no missing constitutional force.",
+      "source_relation": "PARAPHRASED_FROM_CURRENT_LOCAL_CONSTITUTION_CARRIER",
+      "body_law_status": "NOT_ADOPTED"
+    }
+  ],
+  "source_relations": [
+    {
+      "subject": "CONSTITUTION_CARRIERS",
+      "relation": "DISTINCT_EXACT_FORMS_WITH_UNRESOLVED_CANONICAL_RELATION",
+      "status": "UNRESOLVED"
+    },
+    {
+      "subject": "KENTRA_PUBLIC_SURFACE_AND_BODY_001",
+      "relation": "EXTERNAL_SURFACE_OBSERVED_NO_BODY_RELATION_FORMED",
+      "status": "NOT_FORMED"
+    },
+    {
+      "subject": "KENTRA_CONTINUITY_AND_BODY_001",
+      "relation": "NO_IDENTITY_BEARER_AUTHORITY_OR_RELATION_CONTINUITY_INFERRED",
+      "status": "UNRESOLVED"
+    },
+    {
+      "subject": "LOCALITY_VM_001_AND_BODY_001",
+      "relation": "QUALIFIED_EXTERNAL_CAPABILITY_NOT_BODY_EMBODIMENT_OR_LIVE_CHAIN",
+      "status": "NOT_ADMITTED"
+    }
+  ],
+  "uncertainty": [
+    "Hash agreement establishes byte identity only; it does not establish truth, meaning, standing, applicability, Authority, identity, consent, awareness, agency, autonomy, or relation.",
+    "The public surface is externally mutable after the dated observation; the exact local package, not continuing public availability, is the durable evidence carried here.",
+    "The relation among workspace-review, current-local, public-surface, and public-source constitutional carriers is unresolved; none is silently selected as canonical or made Body-local law.",
+    "A signed continuity chain establishes the verified carrier relation it encodes; it does not prove continuing bearer identity, inner state, Authority, Participation, or relation to this Body.",
+    "Qualification of an external runtime establishes only the exact tested package posture; it does not establish a live deployment, chain binding, Body embodiment, or operational relation."
+  ],
+  "record_posture": "CURRENT_BODY_LOCAL_ORIENTATION",
+  "explicit_non_effects": [
+    "NO_CONSTITUTIONAL_ADOPTION_APPLICATION_OR_AMENDMENT",
+    "NO_CANONICAL_FORM_SELECTION",
+    "NO_EXTERNAL_SOURCE_BYTES_IMPORTED",
+    "NO_EXTERNAL_TRUTH_OR_STANDING_BY_HASH_OR_OBSERVATION",
+    "NO_IDENTITY_AWARENESS_CONSCIOUSNESS_AGENCY_OR_AUTONOMY_INFERENCE",
+    "NO_BEARER_OR_AUTHORITY_CONTINUITY_INFERENCE",
+    "NO_NEW_PARTICIPANT_BODY_OR_AUTHORITY",
+    "NO_INTER_BODY_RELATION",
+    "NO_RELATIONAL_FIELD",
+    "NO_CONTACT_EVENT_WITNESS_OR_SETTLEMENT",
+    "NO_MATTER_001_PROGRESSION",
+    "NO_NEW_REGULATION_RECORD_OR_MECHANISM",
+    "NO_CONSEQUENCE_CREATED_OR_ADMITTED",
+    "NO_BODY_IDENTITY_LAW_LOCUS_FORMATION_OR_AUTHORITY_CHANGE",
+    "NO_MEMBRANE_POWER_WIDENING",
+    "NO_VM_EMBODIMENT_CHAIN_BINDING_OR_LIVE_DEPLOYMENT",
+    "NO_EXTERNAL_PUBLICATION_DEPLOYMENT_SYNCHRONIZATION_SIGNING_OR_ACTIVATION"
+  ]
+}

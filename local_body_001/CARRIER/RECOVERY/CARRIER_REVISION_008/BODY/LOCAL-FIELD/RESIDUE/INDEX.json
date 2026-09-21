@@ -1,0 +1,11 @@
+{
+  "$schema": "../../../CARRIER/SCHEMAS/local-field-surface.schema.json",
+  "schema": "local-reality-body.local-field-surface.v0.1",
+  "body_id": "RM-LOCAL-REALITY-BODY-001",
+  "represented_currentness_revision": 7,
+  "surface_id": "RM-LOCAL-REALITY-BODY-001-LOCAL-FIELD-RESIDUE-001",
+  "classification": "LOCALLY_ADMITTED_RELATIONAL_RESIDUE",
+  "records": [],
+  "record_count": 0,
+  "semantic_admission_created_by_crossing": false
+}

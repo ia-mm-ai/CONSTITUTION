@@ -1,0 +1,127 @@
+{
+  "$schema": "../CARRIER/SCHEMAS/current-state.schema.json",
+  "schema": "local-reality-body.current-state.v0.2",
+  "body_id": "RM-LOCAL-REALITY-BODY-001",
+  "body_status": "FORMED",
+  "currentness_revision": 2,
+  "formed_at_utc": "2026-09-01T17:40:39Z",
+  "formation": {
+    "occurrence_id": "RM-LOCAL-REALITY-BODY-FORMATION-OCCURRENCE-001",
+    "occurrence_carrier": "LINEAGE/OCCURRENCES/FORMATION_OCCURRENCE_001.md",
+    "occurrence_sha256": "eb419df3af209d1684c8935747b9e9f5f77c33babc978bfec6c49f84b9fb1da6",
+    "candidate_id": "RM-FIRST-LOCAL-REALITY-BODY-CANDIDATE-001",
+    "candidate_carrier": "LINEAGE/CANDIDATES/FIRST_LOCAL_REALITY_BODY_CANDIDATE_001.md",
+    "candidate_sha256": "f61959c964b768110708d7ca98b28f87b16ea1e496ffd926cfa177b9dff3310d",
+    "source": "Marko Markota",
+    "source_act_sha256": "2ac21ea8c01b6a4faef206a518daa5c13eaecd78ee4709266cec563d2fe1f9f2",
+    "source_posture": "CONSTITUTE",
+    "result": "FORMED",
+    "source_capacity_after": "EXHAUSTED"
+  },
+  "core": {
+    "identity": {
+      "carrier": "CORE/IDENTITY.md",
+      "sha256": "47dfa944d02c3668b5385eab078653751f88bda9b847632f9427911639bf94d9"
+    },
+    "law": {
+      "carrier": "CORE/LAW.md",
+      "sha256": "3ae0f66a687e054ff56859e8be70e7001a60b48eeeeefc0909523d5881cf3e06",
+      "kind": "BODY_NATIVE_IDENTITY_FLOOR",
+      "same_body_constitutional_change_authority": false
+    },
+    "locus": {
+      "carrier": "CORE/LOCUS.md",
+      "sha256": "8a674f1ff787b0d19cac2e732e1b22d79991ef94a4ddc872181b2693d1650d0d",
+      "name": "bounded Reality-Model undertaking",
+      "carrier_is_not_locus": true
+    },
+    "applicability": {
+      "carrier": "CORE/APPLICABILITY.json",
+      "sha256": "8fc46922aa0b3dcd174f4dcec1ffc616df928ccffa9bb59abc611ddeae867aa6"
+    }
+  },
+  "current_authority_relations": {
+    "owner": "RELATIONS/INDEX.json",
+    "bearer": "Marko Markota",
+    "functions": [
+      "LOCAL_GOVERNING_AUTHORITY",
+      "OPERATIONAL_AUTHORIZATION",
+      "CORRECTION_AUTHORITY",
+      "ADAPTATION_AUTHORITY",
+      "DORMANCY_AND_CESSATION"
+    ]
+  },
+  "relations": {
+    "carrier": "RELATIONS/INDEX.json",
+    "sha256": "1bb74bf7969c6c02c5d80a0bc42cb1ba7df95e734b1c41c022b599831a3b6630"
+  },
+  "embodiment": {
+    "carrier": "EMBODIMENT/STATE.json",
+    "sha256": "c74c8dc45e25a99b9e91181213c5fa2c7f90e39b94e5aed5791bd2748e7d8709",
+    "integrity_host_status": "ADMITTED_INACTIVE"
+  },
+  "epistemic": {
+    "boundary_carrier": "EPISTEMIC/BOUNDARY.md",
+    "boundary_sha256": "eca50e362d53136a0084b2a6483bb719536581077c6901628d1a1bf1a3642035",
+    "index_carrier": "EPISTEMIC/INDEX.json",
+    "index_sha256": "e05a24774238aff8ccb8a15b8315ceef631ac39aff8bdd4b2e30065a670c3974",
+    "admitted_record_count": 0
+  },
+  "carrier_topology_occurrence": {
+    "occurrence_id": "RM-LOCAL-REALITY-BODY-CARRIER-TOPOLOGY-OCCURRENCE-001",
+    "carrier": "LINEAGE/OCCURRENCES/CARRIER_TOPOLOGY_OCCURRENCE_001.md",
+    "performed_at_utc": "2026-09-01T19:34:27Z",
+    "candidate_id": "RM-LOCAL-REALITY-BODY-CARRIER-TOPOLOGY-CANDIDATE-001",
+    "candidate_carrier": "LINEAGE/CANDIDATES/LOCAL_REALITY_BODY_CARRIER_TOPOLOGY_CANDIDATE_001.md",
+    "candidate_sha256": "393e00f2292a793fdd64f22379c3d69d22a126f9b17a3db7c3562fa683d498da",
+    "act_carrier": "LINEAGE/ACTS/CARRIER_TOPOLOGY_ACT_001.md",
+    "act_carrier_sha256": "947cde3815d1c08bee3d522cf90e907f475bd5a904a49c4657850d911b6d8662",
+    "canonical_act_sha256": "3b062e2a9a2c1e4e0fc49d6c4c8c99f05d869bb32cc11110f5556dcafda877b1",
+    "posture": "CORRECT_AND_ADAPT",
+    "predecessor_revision": 1,
+    "predecessor_state_carrier": "LINEAGE/STATE_REVISIONS/CURRENT_REVISION_001.json",
+    "predecessor_state_sha256": "5e7c1f17430a626e5c49db8cfafc345882bd96c58800b2944747b526d4042356",
+    "recovery_carrier": "CARRIER/RECOVERY/CARRIER_REVISION_001",
+    "result": "CORRECTED_AND_ADAPTED"
+  },
+  "continuity": {
+    "current_authority_addressable": true,
+    "dormancy": "NOT_ENTERED",
+    "resumption_requires_addressable_authority": true,
+    "root_path_is_carrier_only": true,
+    "manifest_has_constitutional_effect": false,
+    "revision_1_exact_recovery_present": true
+  },
+  "exposure": {
+    "body_form_exposed": false,
+    "external_publication": false
+  },
+  "material_uncertainty": [
+    "Persistent DI constitutional identity, Participation, consent, Authority, and bearer continuity remain unsupported.",
+    "Integrity Host operational activation remains unauthorized and unformed.",
+    "Inter-Body relation, Relational Field, Contact Event, witness, and settlement topology remain unformed.",
+    "No same-Body constitutional-change Authority exists."
+  ],
+  "explicit_non_effects": [
+    "NO_UNRECORDED_EXTERNAL_PROJECT_EFFECT",
+    "NO_DESCENDANT_BODY",
+    "NO_INTER_BODY_RELATION",
+    "NO_RELATIONAL_FIELD",
+    "NO_CONTACT_EVENT",
+    "NO_WITNESS_RELATION",
+    "NO_SETTLEMENT_SURFACE",
+    "NO_DI_AUTHORITY",
+    "NO_CROSS_BODY_AUTHORITY",
+    "NO_EXTERNAL_PUBLICATION",
+    "NO_CONSTITUTIONAL_CHANGE",
+    "NO_BODY_IDENTITY_CHANGE",
+    "NO_LOCUS_CHANGE",
+    "NO_AUTHORITY_CHANGE",
+    "NO_MECHANISM_ACTIVATION",
+    "NO_REAL_BODY_ACT_PROCESSING",
+    "NO_REAL_BODY_STATE_MUTATION",
+    "NO_AUTONOMOUS_EXECUTION",
+    "NO_EPISTEMIC_CONTENT_ADMISSION",
+    "NO_INTELLIGENCE_OWNERSHIP"
+  ]
+}

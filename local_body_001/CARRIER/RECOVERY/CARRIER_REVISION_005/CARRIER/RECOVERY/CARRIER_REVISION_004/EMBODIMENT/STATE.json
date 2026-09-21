@@ -1,0 +1,34 @@
+{
+  "$schema": "../CARRIER/SCHEMAS/embodiment-state.schema.json",
+  "schema": "local-reality-body.embodiment-state.v0.1",
+  "body_id": "RM-LOCAL-REALITY-BODY-001",
+  "represented_currentness_revision": 4,
+  "mechanisms": [
+    {
+      "mechanism_id": "RM-BODY-INTEGRITY-HOST-001",
+      "historical_constitutional_classification": "REPLACEABLE_NON_CONSTITUTIVE_INTEGRITY_AND_ANSWERABILITY_ORGAN",
+      "carrier_classification": "REPLACEABLE_EMBODIMENT_MECHANISM",
+      "status": "ADMITTED_INACTIVE",
+      "admission_occurrence_id": "RM-BODY-INTEGRITY-HOST-ADMISSION-OCCURRENCE-001",
+      "implementation": {
+        "carrier": "EMBODIMENT/MECHANISMS/BODY_INTEGRITY_HOST/V0_1/body_integrity_host.py",
+        "sha256": "4f0ae922a9bd8a593b9be05b1e9b37fee1c41092f4c893781ea37096c97f7490"
+      },
+      "pressure_verifier": {
+        "carrier": "EMBODIMENT/MECHANISMS/BODY_INTEGRITY_HOST/V0_1/verify_body_integrity_host.py",
+        "sha256": "902bae93d0fa2711f4cf626003f5c0dbdff7539ac12644b64d1046e23dd17d64",
+        "last_admission_result": "PASS_22_OF_22"
+      },
+      "activation_authorized": false,
+      "real_body_act_processing_authorized": false,
+      "real_body_state_mutation_authorized": false,
+      "direct_state_adapter_present": false,
+      "persistence_present": false,
+      "autonomous_invocation_present": false,
+      "external_update_relation": false,
+      "replaceable": true,
+      "body_continuity_requires_mechanism": false
+    }
+  ],
+  "surfaces": []
+}

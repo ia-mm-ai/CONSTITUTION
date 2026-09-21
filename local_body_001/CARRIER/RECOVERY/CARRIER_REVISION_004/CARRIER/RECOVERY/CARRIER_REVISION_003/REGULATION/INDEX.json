@@ -1,0 +1,17 @@
+{
+  "$schema": "../CARRIER/SCHEMAS/regulation-index.schema.json",
+  "schema": "local-reality-body.regulation-index.v0.1",
+  "body_id": "RM-LOCAL-REALITY-BODY-001",
+  "represented_currentness_revision": 3,
+  "records": [],
+  "record_count": 0,
+  "mechanism_present": false,
+  "explicit_non_effects": [
+    "NO_SOVEREIGN_REGULATION_LAYER",
+    "NO_NORMATIVE_THRESHOLD_CREATION",
+    "NO_AUTHORITY_OR_ACT_ORIGINATION",
+    "NO_OCCURRENCE_OR_CURRENTNESS_CREATION",
+    "NO_REGULATION_MECHANISM_ADMISSION_OR_ACTIVATION",
+    "NO_FORCED_PROGRESSION_OR_SILENT_DISCARD"
+  ]
+}

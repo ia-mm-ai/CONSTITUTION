@@ -1,0 +1,46 @@
+{
+  "$schema": "../../../CARRIER/SCHEMAS/authority-index.schema.json",
+  "schema": "local-reality-body.authority-index.v0.1",
+  "body_id": "RM-LOCAL-REALITY-BODY-001",
+  "represented_currentness_revision": 9,
+  "authority_relations": [
+    {
+      "bearer": "Marko Markota",
+      "function": "LOCAL_GOVERNING_AUTHORITY",
+      "status": "CURRENT",
+      "scope_source": "BODY/LINEAGE/CANDIDATES/FIRST_LOCAL_REALITY_BODY_CANDIDATE_001.md#6-proposed-relations-and-authority-after-formation"
+    },
+    {
+      "bearer": "Marko Markota",
+      "function": "OPERATIONAL_AUTHORIZATION",
+      "status": "CURRENT",
+      "scope_source": "BODY/LINEAGE/CANDIDATES/FIRST_LOCAL_REALITY_BODY_CANDIDATE_001.md#6-proposed-relations-and-authority-after-formation"
+    },
+    {
+      "bearer": "Marko Markota",
+      "function": "CORRECTION_AUTHORITY",
+      "status": "CURRENT",
+      "scope_source": "BODY/LINEAGE/CANDIDATES/FIRST_LOCAL_REALITY_BODY_CANDIDATE_001.md#6-proposed-relations-and-authority-after-formation"
+    },
+    {
+      "bearer": "Marko Markota",
+      "function": "ADAPTATION_AUTHORITY",
+      "status": "CURRENT",
+      "scope_source": "BODY/LINEAGE/CANDIDATES/FIRST_LOCAL_REALITY_BODY_CANDIDATE_001.md#6-proposed-relations-and-authority-after-formation"
+    },
+    {
+      "bearer": "Marko Markota",
+      "function": "DORMANCY_AND_CESSATION",
+      "status": "CURRENT",
+      "scope_source": "BODY/LINEAGE/CANDIDATES/FIRST_LOCAL_REALITY_BODY_CANDIDATE_001.md#6-proposed-relations-and-authority-after-formation"
+    }
+  ],
+  "authority_topology_changed": false,
+  "source_owner_revision_6": "RELATIONS/INDEX.json",
+  "explicit_non_effects": [
+    "NO_NEW_AUTHORITY",
+    "NO_AUTHORITY_SCOPE_CHANGE",
+    "NO_BEARER_CHANGE",
+    "NO_SAME_BODY_CONSTITUTIONAL_CHANGE_AUTHORITY"
+  ]
+}

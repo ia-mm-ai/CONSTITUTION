@@ -1,0 +1,46 @@
+{
+  "schema": "local-reality-body.mechanism-binding.v0.1",
+  "body_id": "RM-LOCAL-REALITY-BODY-001",
+  "mechanism_id": "RM-REALITY-CONTACT-MEMBRANE-001",
+  "mechanism_version": "0.1",
+  "classification": "REPLACEABLE_NON_CONSTITUTIVE_RECIPIENT_LOCAL_OBSERVATION_MECHANISM",
+  "status": "ADMITTED_ACTIVE_ON_EXPLICIT_INVOCATION",
+  "admission_activation_occurrence_id": "RM-REALITY-CONTACT-MEMBRANE-ACTIVATION-OCCURRENCE-001",
+  "authority": {
+    "adaptation_bearer": "Marko Markota",
+    "adaptation_function": "ADAPTATION_AUTHORITY",
+    "operational_bearer": "Marko Markota",
+    "operational_function": "OPERATIONAL_AUTHORIZATION",
+    "common_bearership_merges_functions": false
+  },
+  "invocation": {
+    "mode": "EXPLICIT_ONE_SHOT_LOCAL_SOCKET",
+    "entrypoint": "EMBODIMENT/MECHANISMS/REALITY_CONTACT_MEMBRANE/V0_1/body_reality_contact_membrane.py",
+    "local_state_root": "EMBODIMENT/LOCAL_STATE/REALITY_CONTACT_MEMBRANE_001",
+    "socket_must_be_outside_carrier": true,
+    "persistent_daemon": false,
+    "autonomous_invocation": false,
+    "external_network_listener": false
+  },
+  "effect_ceiling": {
+    "crossing_observed_before_interpretation": true,
+    "exact_raw_carrier_preserved": true,
+    "same_content_may_form_distinct_occurrences": true,
+    "malformed_content_may_still_be_observed": true,
+    "later_local_posture_separate": true,
+    "later_effect_observation_separate": true,
+    "may_validate_authority": false,
+    "may_admit_matter": false,
+    "may_create_relation": false,
+    "may_create_contact_event": false,
+    "may_create_consequence": false,
+    "may_mutate_body_currentness": false,
+    "may_determine_source_identity_or_continuity": false
+  },
+  "operational_state_integrity": {
+    "append_only_hash_chain": true,
+    "raw_carrier_hash_bound": true,
+    "excluded_from_static_carrier_manifest": true,
+    "exclusion_does_not_remove_mechanism_local_verification": true
+  }
+}

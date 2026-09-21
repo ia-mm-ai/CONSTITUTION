@@ -1,0 +1,65 @@
+{
+  "$schema": "../CARRIER/SCHEMAS/relation-index.schema.json",
+  "schema": "local-reality-body.relation-index.v0.1",
+  "body_id": "RM-LOCAL-REALITY-BODY-001",
+  "represented_currentness_revision": 2,
+  "human_body_local": [
+    {
+      "relation_id": "RM-LOCAL-REALITY-BODY-001-HUMAN-LOCAL-RELATION-001",
+      "bearer": "Marko Markota",
+      "status": "FORMED",
+      "scope": "Reality-Model-local conduct and commitments only",
+      "origin_occurrence_id": "RM-LOCAL-REALITY-BODY-FORMATION-OCCURRENCE-001"
+    }
+  ],
+  "authority_relations": [
+    {
+      "bearer": "Marko Markota",
+      "function": "LOCAL_GOVERNING_AUTHORITY",
+      "status": "CURRENT",
+      "scope_source": "LINEAGE/CANDIDATES/FIRST_LOCAL_REALITY_BODY_CANDIDATE_001.md#6-proposed-relations-and-authority-after-formation"
+    },
+    {
+      "bearer": "Marko Markota",
+      "function": "OPERATIONAL_AUTHORIZATION",
+      "status": "CURRENT",
+      "scope_source": "LINEAGE/CANDIDATES/FIRST_LOCAL_REALITY_BODY_CANDIDATE_001.md#6-proposed-relations-and-authority-after-formation"
+    },
+    {
+      "bearer": "Marko Markota",
+      "function": "CORRECTION_AUTHORITY",
+      "status": "CURRENT",
+      "scope_source": "LINEAGE/CANDIDATES/FIRST_LOCAL_REALITY_BODY_CANDIDATE_001.md#6-proposed-relations-and-authority-after-formation"
+    },
+    {
+      "bearer": "Marko Markota",
+      "function": "ADAPTATION_AUTHORITY",
+      "status": "CURRENT",
+      "scope_source": "LINEAGE/CANDIDATES/FIRST_LOCAL_REALITY_BODY_CANDIDATE_001.md#6-proposed-relations-and-authority-after-formation"
+    },
+    {
+      "bearer": "Marko Markota",
+      "function": "DORMANCY_AND_CESSATION",
+      "status": "CURRENT",
+      "scope_source": "LINEAGE/CANDIDATES/FIRST_LOCAL_REALITY_BODY_CANDIDATE_001.md#6-proposed-relations-and-authority-after-formation"
+    }
+  ],
+  "di_coagency": [
+    {
+      "relation_id": "RM-LOCAL-REALITY-BODY-001-DI-COAGENCY-001",
+      "status": "ATTRIBUTABLE_BOUNDED_CONTRIBUTION",
+      "scope": "formation, admission, carrier correction and adaptation assistance",
+      "persistent_constitutional_identity": false,
+      "participation": false,
+      "authority": false,
+      "consent_claimed": false,
+      "bearer_continuity_claimed": false,
+      "uncertainty": "Provider, session, model, and interface continuity do not establish persistent DI identity or bearer continuity."
+    }
+  ],
+  "inter_body": [],
+  "relational_fields": [],
+  "contact_events": [],
+  "witness_relations": [],
+  "external_relations": []
+}
