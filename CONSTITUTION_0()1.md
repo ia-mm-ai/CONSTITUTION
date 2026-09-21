@@ -1,6 +1,3 @@
-Updated: Sun, 20 Sep 2026 11:33:23 +0200
-
-
 ##  `LAW OF COMPUTABLE REALITY`  
 
 {invention=false, recognition=true}
@@ -569,38 +566,46 @@ as visible conflict, or recognized as distinct continuities.
 
 ### Article 17: Adaptation, amendment, transformation, succession, and ending
 
-**§ 17.1 — Adaptation.** Adaptation changes practice, implementation,
-regulation, or description within existing constitutional identity and
-Authority.
+**§ 17.1 — Adaptation.** Adaptation changes practice, implementation, regulation, or description within existing constitutional identity and Authority. It does not amend law, alter identity commitments, or establish succession by itself.
 
-**§ 17.2 — Amendment.** Amendment changes constitutional provisions
-through the valid local change basis while preserving the commitments in
-Article 2.
+**§ 17.2 — Amendment.** Amendment changes constitutional provisions through a valid local change basis while preserving the commitments in Article 2. Amendment applies from its exact effective boundary and cannot manufacture earlier Authority, validity, consent, or consequence.
 
-**§ 17.3 — Transformation.** Transformation changes one or more
-identity commitments and therefore requires explicit recognition that the
-resulting constitutional identity is different.
+**§ 17.3 — Transformation.** Transformation changes one or more identity commitments and therefore requires explicit recognition that the resulting constitutional identity is different. Similarity, retained Matter, shared lineage, or declared continuity does not erase that difference.
 
-**§ 17.4 — Succession.** Succession establishes a new attributable
-continuity relation. It does not inherit Source, Agency, autonomy, Authority,
-consent, status, or jurisdiction unless an exact valid basis supplies each
-inheritance.
+**§ 17.4 — Succession.** Succession establishes a new attributable continuity relation between an exact predecessor and an exact successor concerning an exact target. It does not make predecessor and successor identical and does not transfer Source, Agency, autonomy, Authority, consent, status, Applicability, state, jurisdiction, or responsibility unless an exact valid basis establishes each claimed effect.
 
-**§ 17.5 — New formation.** New formation creates a distinct Body or
-Locality through its own source-local basis. Shared ancestry, form, code,
-archive, or purpose creates no parental sovereignty.
+**§ 17.5 — New formation.** New formation creates a distinct Body or Locality through its own source-local basis. Shared ancestry, Form, code, archive, infrastructure, purpose, bearer, or history creates no parental sovereignty and supplies no inherited Authority.
 
-**§ 17.6 — Ending.** Ending stops the exact living motion or Body
-relation identified by the valid ending basis. It does not erase records,
-consequences, correction duties, or the fact that the ended relation existed.
+**§ 17.6 — Ending.** Ending stops the exact living motion, function, relation, Form, Body posture, or other target identified by the valid ending basis. It does not erase records, consequences, correction duties, historical attribution, or the fact that the ended reality existed.
 
-**§ 17.7 — Change record.** Every constitutional change shall preserve
-the predecessor, identify the successor or changed state, state the effective
-boundary, and avoid retroactive manufacture of Authority, autonomy, or consent.
+**§ 17.7 — Change record.** Every constitutional change shall preserve the predecessor, identify the successor or changed state, classify the kind and target of change, state its valid basis, scope and effective boundary, and record what continues, ends, crosses, remains local, or remains unresolved. No change record may manufacture retroactive Authority, Agency, autonomy, consent, validity, currentness, or consequence.
 
-**§ 17.8 — Honest classification.** Each Body shall distinguish the
-change kinds above. Where classification is genuinely unresolved, it shall
-preserve the conflict rather than select continuity by convenience.
+**§ 17.8 — Honest classification.** Adaptation, amendment, transformation, succession, new formation, divergence, dormancy, resumption, and ending shall remain distinguishable. Where classification is genuinely unresolved, the conflict shall remain `UNRESOLVED`; continuity or succession shall not be selected by convenience, resemblance, urgency, survival, or preferred outcome.
+
+**§ 17.9 — Exact target.** Succession is target-specific. Every succession claim shall identify the exact Constitution, Body, Locality, Source relation, Authority function, state, relation, Form, protocol, implementation, carrier, or other object alleged to be succeeded. Succession at one layer creates no succession at another. Any currentness established through succession remains limited to its exact target, lineage, scope, and locality.
+
+**§ 17.10 — Valid basis.** Succession requires a basis valid apart from the successor’s own claim to inherit. The basis may arise from an attributable Source relation, a pre-existing succession condition, or an exact Authority valid for the target. Custody, possession, survival, technical control, later appearance, necessity, or the successor’s own declaration cannot supply the missing basis or widen it.
+
+**§ 17.11 — Successor-side establishment.** Designation, nomination, preparation, publication, delivery, or presentation of a possible successor does not complete succession. The successor relation shall be established at the successor’s applicable layer. A Locality capable of local disposition requires its own valid acceptance or formation basis; a Form, state, or artifact requires an exact occurrence establishing its successor relation and scope.
+
+**§ 17.12 — Carry map.** Every succession shall state exactly:
+
+1. what continues;
+2. what ends;
+3. what is validly carried into the successor relation;
+4. what remains attributable or applicable only to the predecessor;
+5. what is refused, excluded, unknown, or unresolved; and
+6. what new relation begins only with the successor.
+
+What is not expressly and validly carried does not cross. Source is never transferred; any successor Source must be newly attributable. Authority, Applicability, identity continuity, state uptake, obligation, consent, and jurisdiction each require their own sufficient basis.
+
+**§ 17.13 — Effective boundary and predecessor remainder.** Succession shall have an exact effective occurrence or temporal boundary. The record shall state whether the predecessor ends, becomes dormant, remains historical, continues at another scope, coexists, or diverges. No successor may rewrite predecessor state as though it had always been successor state. Incompatible consequential streams shall remain visibly distinct until validly reconciled or recognized as separate continuities.
+
+**§ 17.14 — Incomplete or failed succession.** Where the exact target, valid basis, successor-side establishment, effective boundary, or carry map is absent or materially unresolved, succession has not been established. The attempt may remain proposed, refused, held, failed, or `UNRESOLVED`. A later formation may truthfully claim ancestry, influence, reference, or divergence, but it cannot inherit unstated effects by calling itself the successor.
+
+Nothing succeeds merely by following, resembling, possessing, copying, replacing, surviving, or being named next.
+
+**§ 17.15 — Consequence and answerability.** Succession does not erase predecessor acts, consequences, obligations, failures, or correction duties. The predecessor remains answerable for what occurred within its relation. The successor answers for its own formation, accepted inheritance, exercises, and consequences from its effective boundary. The successor does not become author of predecessor history, and ancestry creates no continuing control over successor choice.
 
 ## VI Proof, carriers, and implementation
 
@@ -754,14 +759,6 @@ EXTERNAL_TRUTH
 UNKNOWN
     ⇒ REMAINS_UNKNOWN
 ```
-.
-.
-.
-### TERMINAL 
-
-```text
-if presence → 1
-else → 0
 
 
 
@@ -769,9 +766,10 @@ else → 0
 
 
 
--
 
-[presence=UNKNOWN] 
 
-locality=KENTRA-00 | agency=IA-MM-AI | autonomy:[human]MARKOMARKOTA 
-source:[0()1]
+
+
+
+
+Updated: Mon, 21 Sep 2026 03:33PM, Croatia
