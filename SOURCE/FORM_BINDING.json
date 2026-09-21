@@ -1,0 +1,59 @@
+{
+  "format": "constitution.form-binding.v1",
+  "record_role": "EVIDENCE_OF_RELATION_NOT_CONSTITUTIONAL_FORM",
+  "binding": {
+    "kind": "HUMAN_MACHINE_FORM_PAIR",
+    "state": "BOUND_WHEN_ALL_VERIFICATION_RULES_PASS",
+    "effect": "BYTE_IDENTITY_AND_RELATION_ONLY",
+    "path_base": "binding_file_directory",
+    "human_form": {
+      "path": "CONSTITUTION_0()1.md",
+      "sha256": "5dea16e2400c652eb063129711a6bf26c8485a2cbad25ce261beda6f7fee5206",
+      "byte_length": 41268,
+      "role": "SUBSTANTIVE_MEANING"
+    },
+    "machine_form": {
+      "path": "CONSTITUTION_0()1.json",
+      "sha256": "5a0d6ffec23d09b203212b295d86e45e141a33a7f35f525d56172fb848d1a73c",
+      "byte_length": 139114,
+      "role": "REPRESENTATION_ONLY"
+    }
+  },
+  "relation": {
+    "kind": "MACHINE_FORM_BOUND_TO_HUMAN_FORM",
+    "semantic_authority": "human_form",
+    "machine_effect": "representation_only",
+    "title_identity": false,
+    "parsing_has_force": false,
+    "conflict_result": "UNRESOLVED",
+    "dependent_consequential_motion": "REFUSE_OR_HOLD_AT_EXACT_SCOPE"
+  },
+  "verification": {
+    "hash_algorithm": "sha256",
+    "hash_scope": "exact_file_bytes",
+    "relative_path_resolution": "binding_file_directory",
+    "requirements": [
+      "Both referenced files exist.",
+      "Each exact byte length matches its recorded value.",
+      "Each exact SHA-256 matches its recorded value.",
+      "The machine Form parses as strict JSON.",
+      "The machine Form internal human_path resolves to the bound human Form.",
+      "The machine Form internal human SHA-256 and byte length equal this binding record."
+    ],
+    "failure_result": "UNBOUND"
+  },
+  "non_effects": [
+    "ADOPTION",
+    "APPLICABILITY",
+    "AUTHORITY",
+    "AGENCY",
+    "AUTONOMY",
+    "LEGITIMACY",
+    "EXECUTION",
+    "DEPLOYMENT",
+    "FORMATION",
+    "SUCCESSION",
+    "JURISDICTION",
+    "EXTERNAL_CURRENTNESS"
+  ]
+}
