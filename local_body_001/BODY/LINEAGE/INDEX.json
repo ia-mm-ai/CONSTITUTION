@@ -1,0 +1,259 @@
+{
+  "$schema": "../../CARRIER/SCHEMAS/lineage-index.schema.json",
+  "schema": "local-reality-body.lineage-index.v0.1",
+  "body_id": "RM-LOCAL-REALITY-BODY-001",
+  "represented_currentness_revision": 9,
+  "authoritative_evidence_remains_in_exact_objects": true,
+  "motion_chains": [
+    {
+      "motion_id": "RM-LOCAL-REALITY-BODY-FORMATION-MOTION-001",
+      "classification": "PRECONSTITUTIONAL_FORMATION",
+      "retrospectively_regulated": false,
+      "candidate": {
+        "carrier": "BODY/LINEAGE/CANDIDATES/FIRST_LOCAL_REALITY_BODY_CANDIDATE_001.md",
+        "sha256": "f61959c964b768110708d7ca98b28f87b16ea1e496ffd926cfa177b9dff3310d"
+      },
+      "act": {
+        "carrier": "BODY/LINEAGE/ACTS/FORMATION_ACT_001.md",
+        "sha256": "67ba6d092d9343f9e62e94b0e332b1ff36cd08d1536cda7b6bea33869a2cb9d1"
+      },
+      "occurrence": {
+        "carrier": "BODY/LINEAGE/OCCURRENCES/FORMATION_OCCURRENCE_001.md",
+        "sha256": "eb419df3af209d1684c8935747b9e9f5f77c33babc978bfec6c49f84b9fb1da6"
+      },
+      "successor_state": {
+        "carrier": "BODY/LINEAGE/STATE_REVISIONS/CURRENT_REVISION_000.json",
+        "sha256": "2a7e7d51aea65ba37d89a46e9b0d78d737d3e4143b68609cb7171e3763ef58f7"
+      },
+      "result": "FORMED"
+    },
+    {
+      "motion_id": "RM-BODY-INTEGRITY-HOST-ADMISSION-MOTION-001",
+      "classification": "BODY_LOCAL_ADAPTATION",
+      "retrospectively_regulated": false,
+      "candidate": {
+        "carrier": "BODY/LINEAGE/CANDIDATES/BODY_INTEGRITY_HOST_ADMISSION_CANDIDATE_001.md",
+        "sha256": "3751edb1019a7164f1c563a7a3b95df30fd3b2be3e65de6770d7aaad4a8c68d4"
+      },
+      "act": {
+        "carrier": "BODY/LINEAGE/ACTS/BODY_INTEGRITY_HOST_ADMISSION_ACT_001.md",
+        "sha256": "5a4758374fedf23ce14a5cb35ce908c26fe0a55fd4e3c3a968ca76531c346b42"
+      },
+      "occurrence": {
+        "carrier": "BODY/LINEAGE/OCCURRENCES/BODY_INTEGRITY_HOST_ADMISSION_OCCURRENCE_001.md",
+        "sha256": "c61b3a710b2cc5be89443602bfa913855c28c0fae2a0ce7b1534a1348b74eaf9"
+      },
+      "successor_state": {
+        "carrier": "BODY/LINEAGE/STATE_REVISIONS/CURRENT_REVISION_001.json",
+        "sha256": "5e7c1f17430a626e5c49db8cfafc345882bd96c58800b2944747b526d4042356"
+      },
+      "result": "ADMITTED_INACTIVE"
+    },
+    {
+      "motion_id": "RM-LOCAL-REALITY-BODY-CARRIER-TOPOLOGY-MOTION-001",
+      "classification": "BODY_LOCAL_CORRECTION_AND_ADAPTATION",
+      "retrospectively_regulated": false,
+      "candidate": {
+        "carrier": "BODY/LINEAGE/CANDIDATES/LOCAL_REALITY_BODY_CARRIER_TOPOLOGY_CANDIDATE_001.md",
+        "sha256": "393e00f2292a793fdd64f22379c3d69d22a126f9b17a3db7c3562fa683d498da"
+      },
+      "act": {
+        "carrier": "BODY/LINEAGE/ACTS/CARRIER_TOPOLOGY_ACT_001.md",
+        "sha256": "947cde3815d1c08bee3d522cf90e907f475bd5a904a49c4657850d911b6d8662"
+      },
+      "occurrence": {
+        "carrier": "BODY/LINEAGE/OCCURRENCES/CARRIER_TOPOLOGY_OCCURRENCE_001.md",
+        "sha256": "5334a76d7d2a30a0b8c8da2f13a92a9408dca9f99929a3fcfcc618f2fe58abb9"
+      },
+      "successor_state": {
+        "carrier": "BODY/LINEAGE/STATE_REVISIONS/CURRENT_REVISION_002.json",
+        "sha256": "7cec0c9bc5f9c269d9e28176fe0fd569c270880beb6f66b98240618a2955a7ab"
+      },
+      "result": "CORRECTED_AND_ADAPTED"
+    },
+    {
+      "motion_id": "RM-LOCAL-REALITY-BODY-REGULATED-MOTION-TOPOLOGY-MOTION-001",
+      "classification": "BODY_LOCAL_CORRECTION_AND_ADAPTATION",
+      "retrospectively_regulated": false,
+      "candidate": {
+        "carrier": "BODY/LINEAGE/CANDIDATES/LOCAL_REALITY_BODY_REGULATED_MOTION_TOPOLOGY_CANDIDATE_001.md",
+        "sha256": "c197415d84c271f1bb05ba0b003c954b490a4c870697353103061906b0740564"
+      },
+      "act": {
+        "carrier": "BODY/LINEAGE/ACTS/REGULATED_MOTION_TOPOLOGY_ACT_001.md",
+        "sha256": "d070b1f4b0cf83f7e0f82359ecd61a7099f05096f4e3dd8ed3e5bb973167d2f8"
+      },
+      "occurrence": {
+        "carrier": "BODY/LINEAGE/OCCURRENCES/REGULATED_MOTION_TOPOLOGY_OCCURRENCE_001.md",
+        "binding": "CURRENT_STATE_CARRIES_OCCURRENCE_METADATA"
+      },
+      "successor_state": {
+        "carrier": "CURRENT/STATE.json",
+        "binding": "OCCURRENCE_CARRIES_FINAL_STATE_HASH"
+      },
+      "result": "CORRECTED_AND_ADAPTED"
+    },
+    {
+      "motion_id": "RM-LOCAL-REALITY-BODY-FORM-EXPOSURE-MOTION-001",
+      "classification": "BODY_LOCAL_GOVERNING_ADAPTATION_AND_OPERATIONAL_EXPOSURE",
+      "retrospectively_regulated": false,
+      "candidate": {
+        "carrier": "BODY/LINEAGE/CANDIDATES/LOCAL_REALITY_BODY_FORM_EXPOSURE_CANDIDATE_001/CANDIDATE.md",
+        "sha256": "b73a70e866def2f59df42a211d45b56cfbb52e2789f235f977fa74069d7ef63b"
+      },
+      "act": {
+        "carrier": "BODY/LINEAGE/ACTS/BODY_FORM_EXPOSURE_ACT_001.md",
+        "sha256": "b4bbc97415c6c8ab63f3ce454dd9fcbc8f712880def6d5eb9060b1a7e18a1e85"
+      },
+      "occurrence": {
+        "carrier": "BODY/LINEAGE/OCCURRENCES/BODY_FORM_EXPOSURE_OCCURRENCE_001.md",
+        "binding": "CURRENT_STATE_CARRIES_OCCURRENCE_METADATA"
+      },
+      "successor_state": {
+        "carrier": "CURRENT/STATE.json",
+        "binding": "OCCURRENCE_CARRIES_FINAL_STATE_HASH"
+      },
+      "result": "BODY_FORM_EXPOSED_LOCAL_ONLY"
+    },
+    {
+      "motion_id": "RM-REALITY-CONTACT-MEMBRANE-ACTIVATION-MOTION-001",
+      "classification": "BODY_LOCAL_ADAPTATION_AND_BOUNDED_OPERATIONAL_ACTIVATION",
+      "retrospectively_regulated": false,
+      "candidate": {
+        "carrier": "BODY/LINEAGE/CANDIDATES/REALITY_CONTACT_MEMBRANE_ACTIVATION_CANDIDATE_001.md",
+        "sha256": "e79d4640f08bf291fbf7d221215c6cef2ddfb476a91ba0f31b7734d542f96292"
+      },
+      "act": {
+        "carrier": "BODY/LINEAGE/ACTS/REALITY_CONTACT_MEMBRANE_ACTIVATION_ACT_001.md",
+        "sha256": "14fdd9ab64b689aa0813395e5436a46ce2bd51e33fa8708a739867b1cac5fff0"
+      },
+      "occurrence": {
+        "carrier": "BODY/LINEAGE/OCCURRENCES/REALITY_CONTACT_MEMBRANE_ACTIVATION_OCCURRENCE_001.md",
+        "binding": "CURRENT_STATE_CARRIES_OCCURRENCE_METADATA"
+      },
+      "successor_state": {
+        "carrier": "CURRENT/STATE.json",
+        "binding": "OCCURRENCE_CARRIES_FINAL_STATE_HASH"
+      },
+      "result": "MECHANISM_ADMITTED_AND_ACTIVATED_BOUNDED"
+    },
+    {
+      "motion_id": "RM-REALITY-CONTACT-MEMBRANE-COHERENCE-CORRECTION-MOTION-001",
+      "classification": "BODY_LOCAL_CORRECTION",
+      "retrospectively_regulated": false,
+      "candidate": {
+        "carrier": "BODY/LINEAGE/CANDIDATES/REALITY_CONTACT_MEMBRANE_COHERENCE_CORRECTION_CANDIDATE_001.md",
+        "sha256": "0ebab0ccaf19ae3168b3119f8966e9e2f2cb6ac8909c27fa43a43cf73e6875db"
+      },
+      "act": {
+        "carrier": "BODY/LINEAGE/ACTS/REALITY_CONTACT_MEMBRANE_COHERENCE_CORRECTION_ACT_001.md",
+        "sha256": "53e146347a13a9f9523b9534e768e7fb5a63545dbef7af0215a6f86eea45d576"
+      },
+      "occurrence": {
+        "carrier": "BODY/LINEAGE/OCCURRENCES/REALITY_CONTACT_MEMBRANE_COHERENCE_CORRECTION_OCCURRENCE_001.md",
+        "binding": "CURRENT_STATE_CARRIES_OCCURRENCE_METADATA"
+      },
+      "successor_state": {
+        "carrier": "CURRENT/STATE.json",
+        "binding": "OCCURRENCE_CARRIES_FINAL_STATE_HASH"
+      },
+      "result": "COHERENCE_CORRECTED_LIVING_STATE_PRESERVED"
+    },
+    {
+      "motion_id": "RM-LOCAL-REALITY-BODY-SEMANTIC-ANATOMY-ADAPTATION-MOTION-001",
+      "classification": "BODY_LOCAL_ADAPTATION_AND_OPERATIONAL_REBINDING",
+      "retrospectively_regulated": false,
+      "candidate": {
+        "carrier": "BODY/LINEAGE/CANDIDATES/LOCAL_REALITY_BODY_SEMANTIC_ANATOMY_ADAPTATION_CANDIDATE_001.md",
+        "sha256": "d14d5002e80d3218f2b1ef696e1058048ba0e7ba07e85be70768536769ce317e"
+      },
+      "act": {
+        "carrier": "BODY/LINEAGE/ACTS/LOCAL_REALITY_BODY_SEMANTIC_ANATOMY_ADAPTATION_ACT_001.md",
+        "sha256": "551ec9f5e600058263ff15d2c051321667a3f7e29d4af25f657489a48b5a85e2"
+      },
+      "occurrence": {
+        "carrier": "BODY/LINEAGE/OCCURRENCES/LOCAL_REALITY_BODY_SEMANTIC_ANATOMY_ADAPTATION_OCCURRENCE_001.md",
+        "binding": "CURRENT_STATE_CARRIES_OCCURRENCE_METADATA"
+      },
+      "successor_state": {
+        "carrier": "BODY/STATE/CURRENT.json",
+        "binding": "OCCURRENCE_CARRIES_FINAL_STATE_HASH"
+      },
+      "result": "ADAPTED_AND_REBOUND"
+    },
+    {
+      "motion_id": "RM-LOCAL-REALITY-BODY-MATTER-ADMISSION-MOTION-001",
+      "classification": "BODY_LOCAL_MATTER_ADMISSION_AND_HOLD",
+      "retrospectively_regulated": false,
+      "candidate": {
+        "carrier": "BODY/LINEAGE/CANDIDATES/LOCAL_REALITY_BODY_MATTER_ADMISSION_CANDIDATE_002.md",
+        "sha256": "71eea1c1d54bac15a17d1181430488a335f38b8b7a0079abc04087a9ba0d435c"
+      },
+      "act": {
+        "carrier": "BODY/LINEAGE/ACTS/LOCAL_REALITY_BODY_MATTER_ADMISSION_ACT_001.md",
+        "sha256": "570c51a141d4b5e163084aae9e1cfee9484b093b00d522cb95fb7d7741ef575c"
+      },
+      "occurrence": {
+        "carrier": "BODY/LINEAGE/OCCURRENCES/LOCAL_REALITY_BODY_MATTER_ADMISSION_OCCURRENCE_001.md",
+        "binding": "CURRENT_STATE_CARRIES_OCCURRENCE_METADATA"
+      },
+      "successor_state": {
+        "carrier": "BODY/STATE/CURRENT.json",
+        "binding": "OCCURRENCE_CARRIES_FINAL_STATE_HASH"
+      },
+      "result": "ADMITTED_AND_HELD"
+    },
+    {
+      "motion_id": "RM-LOCAL-REALITY-BODY-RECOVERY-AND-CROSSING-MOTION-001",
+      "classification": "BODY_LOCAL_RECOVERY_CROSSING_AND_CURRENTNESS_RECONCILIATION",
+      "retrospectively_regulated": false,
+      "basis": {
+        "kind": "PRESENT_BODY_LOCAL_ACT",
+        "carrier": "BODY/LINEAGE/ACTS/LOCAL_REALITY_BODY_RECOVERY_AND_CROSSING_ACT_001.md",
+        "sha256": "181e42cce492b6814801add35e94a3212512d1c6948c4f3788ad00488b5eea47",
+        "source_statement_sha256": "0124e8ec04b4c2c95a57bd7183d23b1aa9013024cac28146441d2cd6f06cc6cb"
+      },
+      "occurrence": {
+        "carrier": "BODY/LINEAGE/OCCURRENCES/LOCAL_REALITY_BODY_RECOVERY_AND_CROSSING_OCCURRENCE_001.md",
+        "binding": "CURRENT_STATE_CARRIES_OCCURRENCE_METADATA"
+      },
+      "predecessor_state": {
+        "carrier": "BODY/LINEAGE/STATE_REVISIONS/CURRENT_REVISION_008.json",
+        "sha256": "95917d41b8835adaa8d21ad74624040a2ba4cd3f8afe7b0850c14e44c07e726f"
+      },
+      "recovery": {
+        "carrier": "CARRIER/RECOVERY/CARRIER_REVISION_008",
+        "map": "CARRIER/RECOVERY/CARRIER_REVISION_008_MAP.json",
+        "map_sha256": "1945f267a448676d814523958cba2b7b5f1d0c74d5b83b913648914f0272e6ae",
+        "static_manifest_sha256": "59eb47e77aae5ff6d127378fa310c7a1f960812a09d27c8b98ed142dc801ee6f"
+      },
+      "crossing": {
+        "mechanism_id": "RM-REALITY-CONTACT-MEMBRANE-001",
+        "sequence": 4,
+        "entry_sha256": "9c7aa41218c985d460786fdb76fc647fcb3f8e9d43640dd735881cee98f1fbbb",
+        "wire_sha256": "34dbdf2b3751cbd0019ee671e5c051feef4c331b82a1a7445072b5d459af3db0",
+        "effect_ceiling": "RECIPIENT_LOCAL_OBSERVATION_ONLY"
+      },
+      "epistemic_record": {
+        "record_id": "RM-LOCAL-REALITY-BODY-001-EPISTEMIC-RECOVERY-CROSSING-001",
+        "carrier": "BODY/STATE/EPISTEMIC/RECORDS/RECOVERY_CROSSING_001.json",
+        "sha256": "c19b353172b02d64abf024a5a38c4060a7ebe6dd817bd651a72a66e322022b6b"
+      },
+      "successor_state": {
+        "carrier": "BODY/STATE/CURRENT.json",
+        "binding": "OCCURRENCE_CARRIES_FINAL_STATE_HASH"
+      },
+      "result": "RECOVERED_RECONCILED_AND_RECORDED"
+    }
+  ],
+  "explicit_non_effects": [
+    "NO_RETROSPECTIVE_REGULATION",
+    "NO_MANDATORY_UNIVERSAL_WORKFLOW",
+    "NO_REPLACEMENT_OF_EXACT_LINEAGE_EVIDENCE",
+    "NO_OCCURRENCE_OR_CURRENTNESS_BY_INDEX_EXISTENCE",
+    "NO_RECEIVER_FORMATION_RELATION_OR_CONTACT_BY_EXPOSURE_LINEAGE",
+    "NO_CONSTITUTIONAL_ADOPTION_APPLICATION_OR_CANONICAL_SELECTION",
+    "NO_EXTERNAL_PUBLICATION_DEPLOYMENT_OR_LIVE_ACTIVATION",
+    "NO_IDENTITY_BEARER_AUTHORITY_OR_INNER_STATE_INFERENCE_BY_CROSSING"
+  ]
+}
