@@ -1,0 +1,34 @@
+{
+  "kind": "navigation_index",
+  "status": "STRUCTURAL_PLACEHOLDER",
+  "human_outline": "STATE.md",
+  "source": {
+    "human": "../SOURCE/CONSTITUTION_0()1.md",
+    "machine": "../SOURCE/CONSTITUTION_0()1.json",
+    "refs": ["reading.2", "reading.3", "reading.5", "reading.6", "reading.7", "article.4", "article.5", "section.14.5", "section.19.3", "section.19.4", "section.20.3"]
+  },
+  "scope": "Source-level organization of State-related subjects; not a Locality's current State.",
+  "modules": [
+    "CONTINUITY-STATE-CAPABILITY/CONTINUITY-STATE-CAPABILITY.json",
+    "DYNAMIC-CAPACITY-REGULATION/DYNAMIC-CAPACITY-REGULATION.json",
+    "LINEAGE/LINEAGE.json"
+  ],
+  "placeholder_policy": {
+    "semantic_authority": "source.human",
+    "index_effect": "navigation_only",
+    "schemas": "annotation_only_accept_all_instances",
+    "vectors": "illustrative_non_executable",
+    "null": "unfilled_editorial_slot",
+    "path_resolution": "relative_to_containing_file",
+    "reference_resolution": "stable_refs_in_source.machine",
+    "absence": "no_constitutional_inference"
+  },
+  "not_established": [
+    "adoption",
+    "current State",
+    "Authority",
+    "demonstrated capability",
+    "constitutional conformance",
+    "privileged embodiment"
+  ]
+}
