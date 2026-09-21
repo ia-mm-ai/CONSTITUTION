@@ -1,0 +1,62 @@
+{
+  "record_id": "RM-LOCAL-REALITY-BODY-001-REGULATION-001",
+  "matter_record_id": "RM-LOCAL-REALITY-BODY-001-MATTER-001",
+  "source": {
+    "matter_record_carrier": "BODY/STATE/MATTER/RECORDS/MATTER_001.json",
+    "matter_subject_id": "RM-UPAD-SEALED-CHECKPOINT-AND-FIRST-POREZNA-EDUC-ACCEPTANCE-EVIDENCE-001",
+    "admission_act_id": "RM-LOCAL-REALITY-BODY-MATTER-ADMISSION-ACT-001",
+    "admission_occurrence_id": "RM-LOCAL-REALITY-BODY-MATTER-ADMISSION-OCCURRENCE-001"
+  },
+  "local_target": {
+    "body_id": "RM-LOCAL-REALITY-BODY-001",
+    "matter_record_id": "RM-LOCAL-REALITY-BODY-001-MATTER-001",
+    "scope": "MATTER_ADMISSION"
+  },
+  "basis": {
+    "authority_bearer": "Marko Markota",
+    "authority_function": "LOCAL_GOVERNING_AUTHORITY",
+    "act_scope": "MATTER_ADMISSION",
+    "selected_posture": "ADMIT_AND_HOLD",
+    "semantic_owners": [
+      "BODY/STATE/MATTER/BOUNDARY.md",
+      "BODY/METABOLISM/REGULATION/MEDIUM.md"
+    ],
+    "meaning": "Hold the exact admitted reference as present Body-local Matter without progression, consequence, epistemic uptake, or Authority presentation."
+  },
+  "originating_surface": "RM-LOCAL-REALITY-BODY-MATTER-ADMISSION-OCCURRENCE-001",
+  "recorded_at": "2026-09-03T17:07:11Z",
+  "predecessor": {
+    "record": null,
+    "regulation_index_revision": 7,
+    "regulation_index_sha256": "251ce389847df02971689fc71b577d93d17f70ef6512315ba5e1b115b531d402",
+    "body_currentness_revision": 7,
+    "body_current_state_sha256": "857294137f75f6799a41990b2aaea94e1bfa1c8b489f1b048d96fc680e32296c"
+  },
+  "uncertainty": [
+    "Substantive law compatibility remains unassessed; admission and holding do not decide it.",
+    "The evidence set is hash-complete for the three carriers listed in EVIDENCE.sha256 but substantively partial because the original signed Porezna XML response bytes were not archived.",
+    "No epistemic assessment of the source-carried acceptance, implementation quality, production readiness, compliance, or consequence is made by this record.",
+    "No Regulation mechanism exists; this posture is a Body-local semantic record under the exact Act and occurrence only."
+  ],
+  "local_record_posture": "ADMITTED_BODY_LOCAL_MATTER",
+  "progression_posture": "HELD",
+  "locus_assessment": "WITHIN_SUPPORTED_LOCUS",
+  "law_compatibility_assessment": "UNASSESSED",
+  "evidence_posture": "PARTIAL",
+  "authority_presentation": "NOT_PRESENTED",
+  "explicit_non_effects": [
+    "NO_PROGRESSION",
+    "NO_RELEASE",
+    "NO_AUTHORITY_PRESENTATION",
+    "NO_ACT_OR_OCCURRENCE_ORIGINATION_BY_REGULATION",
+    "NO_CONSEQUENCE_CREATED_RECORDED_OR_INFERRED",
+    "NO_EPISTEMIC_UPTAKE_OR_ADMISSION",
+    "NO_SOURCE_TRUTH_STANDING_ACCEPTANCE_OR_CONSENT",
+    "NO_MATTER_SCOPE_EXPANSION",
+    "NO_SOVEREIGN_REGULATION_OR_NORMATIVE_THRESHOLD",
+    "NO_REGULATION_MECHANISM_ADMISSION_OR_ACTIVATION",
+    "NO_RELATION_CONTACT_EVENT_WITNESS_OR_SETTLEMENT",
+    "NO_LOCAL_FIELD_EXPOSURE_APERTURE_OR_RESIDUE_CHANGE",
+    "NO_EXTERNAL_MUTATION_SYNCHRONIZATION_OR_PUBLICATION"
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "$schema": "../../../CARRIER/SCHEMAS/epistemic-index.schema.json",
+  "schema": "local-reality-body.epistemic-index.v0.2",
+  "body_id": "RM-LOCAL-REALITY-BODY-001",
+  "represented_currentness_revision": 7,
+  "admitted_records": [],
+  "source_relations": [],
+  "observations": [],
+  "evidence": [],
+  "inferences": [],
+  "working_interpretations": [],
+  "consequence_observations": [],
+  "standing_claims": [],
+  "explicit_non_admissions": [
+    "NO_WORKSPACE_CORPUS_ADMISSION",
+    "NO_RECOVERY_CORPUS_ADMISSION",
+    "NO_HISTORICAL_CORPUS_ADMISSION",
+    "NO_CONVERSATION_ADMISSION",
+    "NO_QUOTATION_ADMISSION",
+    "NO_DI_OUTPUT_ADMISSION",
+    "NO_INTELLIGENCE_OWNERSHIP"
+  ]
+}

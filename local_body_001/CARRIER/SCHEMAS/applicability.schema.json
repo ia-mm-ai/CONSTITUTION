@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "local-reality-body.applicability.v0.1",
+  "type": "object",
+  "required": ["schema", "body_id", "law_floor", "formation_candidate", "formation_occurrence", "classification", "effect_ceiling"],
+  "properties": {
+    "schema": {"const": "local-reality-body.applicability.v0.1"},
+    "body_id": {"const": "RM-LOCAL-REALITY-BODY-001"},
+    "law_floor": {"type": "object"},
+    "formation_candidate": {"type": "object"},
+    "formation_occurrence": {"type": "object"},
+    "classification": {"type": "object"},
+    "effect_ceiling": {"type": "object"}
+  },
+  "additionalProperties": true
+}

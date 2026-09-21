@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "local-reality-body.local-field-index.v0.1",
+  "type": "object",
+  "required": [
+    "schema",
+    "body_id",
+    "represented_currentness_revision",
+    "classification",
+    "surfaces",
+    "core_exposed",
+    "cross_local_container",
+    "explicit_non_effects"
+  ],
+  "properties": {
+    "schema": {
+      "const": "local-reality-body.local-field-index.v0.1"
+    },
+    "body_id": {
+      "const": "RM-LOCAL-REALITY-BODY-001"
+    },
+    "represented_currentness_revision": {
+      "const": 7
+    },
+    "surfaces": {
+      "type": "array",
+      "minItems": 5,
+      "maxItems": 5
+    },
+    "core_exposed": {
+      "const": false
+    },
+    "cross_local_container": {
+      "const": false
+    }
+  },
+  "additionalProperties": true
+}

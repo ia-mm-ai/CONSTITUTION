@@ -1,0 +1,52 @@
+{
+  "$schema": "../CARRIER/SCHEMAS/applicability.schema.json",
+  "schema": "local-reality-body.applicability.v0.1",
+  "body_id": "RM-LOCAL-REALITY-BODY-001",
+  "law_floor": {
+    "id": "RM-LOCAL-REALITY-BODY-001-LAW-FLOOR",
+    "operative_projection": "CORE/LAW.md",
+    "sha256": "3ae0f66a687e054ff56859e8be70e7001a60b48eeeeefc0909523d5881cf3e06",
+    "commitments": [
+      "INTEGRITY_OF_KIND",
+      "INTEGRITY_OF_BOUNDARY",
+      "INTEGRITY_THROUGH_TIME",
+      "RELATIONAL_ANSWERABILITY"
+    ]
+  },
+  "identity_projection": {
+    "carrier": "CORE/IDENTITY.md",
+    "sha256": "47dfa944d02c3668b5385eab078653751f88bda9b847632f9427911639bf94d9"
+  },
+  "locus_projection": {
+    "carrier": "CORE/LOCUS.md",
+    "sha256": "8a674f1ff787b0d19cac2e732e1b22d79991ef94a4ddc872181b2693d1650d0d"
+  },
+  "formation_candidate": {
+    "id": "RM-FIRST-LOCAL-REALITY-BODY-CANDIDATE-001",
+    "carrier": "LINEAGE/CANDIDATES/FIRST_LOCAL_REALITY_BODY_CANDIDATE_001.md",
+    "sha256": "f61959c964b768110708d7ca98b28f87b16ea1e496ffd926cfa177b9dff3310d"
+  },
+  "formation_occurrence": {
+    "id": "RM-LOCAL-REALITY-BODY-FORMATION-OCCURRENCE-001",
+    "carrier": "LINEAGE/OCCURRENCES/FORMATION_OCCURRENCE_001.md",
+    "sha256": "eb419df3af209d1684c8935747b9e9f5f77c33babc978bfec6c49f84b9fb1da6",
+    "effective_at_utc": "2026-09-01T17:40:39Z",
+    "source_act_sha256": "2ac21ea8c01b6a4faef206a518daa5c13eaecd78ee4709266cec563d2fe1f9f2",
+    "result": "FORMED"
+  },
+  "classification": {
+    "identity_floor": "FIXED",
+    "same_body_constitutional_change_authority": false,
+    "representations": "REPLACEABLE_ONLY_WITH_ATTRIBUTABLE_SUPPORTED_EFFECT",
+    "carrier": "REPLACEABLE_NON_CONSTITUTIVE",
+    "mechanisms": "SUBORDINATE_REPLACEABLE_NON_CONSTITUTIVE"
+  },
+  "effect_ceiling": {
+    "projection_can_create_law": false,
+    "projection_can_change_identity": false,
+    "projection_can_change_locus": false,
+    "interpretation_can_change_law": false,
+    "carrier_can_create_applicability": false,
+    "source_constitution_or_provenance_can_change_local_edition_automatically": false
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "$schema": "../../../CARRIER/SCHEMAS/relation-posture-index.schema.json",
+  "schema": "local-reality-body.relation-posture-index.v0.1",
+  "body_id": "RM-LOCAL-REALITY-BODY-001",
+  "represented_currentness_revision": 9,
+  "human_body_local_owner": {
+    "carrier": "BODY/STATE/RELATION-POSTURE/HUMAN-BODY-LOCAL.json",
+    "sha256": "1b5aadc55cb84074b880306c15ecdc47e62ad2e02f825237fd511bf2c9b84ed8"
+  },
+  "authority_owner": {
+    "carrier": "BODY/STATE/AUTHORITY/INDEX.json",
+    "sha256": "171d93e84ee6c4bd70b01f66152f942116be909088f619f64f3da706548fb3ee"
+  },
+  "di_coagency": [
+    {
+      "relation_id": "RM-LOCAL-REALITY-BODY-001-DI-COAGENCY-001",
+      "status": "ATTRIBUTABLE_BOUNDED_CONTRIBUTION",
+      "scope": "formation, admission, carrier correction and adaptation assistance",
+      "persistent_constitutional_identity": false,
+      "participation": false,
+      "authority": false,
+      "consent_claimed": false,
+      "bearer_continuity_claimed": false,
+      "uncertainty": "Provider, session, model, and interface continuity do not establish persistent DI identity or bearer continuity."
+    }
+  ],
+  "inter_body": [],
+  "relational_fields": [],
+  "contact_events": [],
+  "witness_relations": [],
+  "external_relations": [],
+  "explicit_non_effects": [
+    "NO_CROSS_LOCAL_RELATION_CREATED",
+    "NO_RELATIONAL_FIELD",
+    "NO_CONTACT_EVENT",
+    "NO_PARTICIPATION_OR_DI_IDENTITY_UPGRADE"
+  ]
+}

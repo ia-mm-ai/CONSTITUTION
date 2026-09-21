@@ -1,0 +1,49 @@
+{
+  "schema": "rm.upad-implementation-benchmark-exposure.v0.1",
+  "exposure_id": "RM-UPAD-ADMIN-ORGANIZER-IMPLEMENTATION-BENCHMARK-EXPOSURE-001",
+  "source_claim": "UPAD Admin and Organizer successor prototype sealed local checkpoint",
+  "source_continuity_claim": "LOCAL_GIT_COMMIT_PLUS_CONTENT_MANIFEST",
+  "target_claim": "RM-LOCAL-REALITY-BODY-001",
+  "requested_effect": "OBSERVE_EXACT_EXTERNAL_CANDIDATE_ONLY",
+  "candidate": {
+    "repository_path": "/Users/markomarkota/UPAD_ADMIN_SUCCESSOR_PROTOTYPE",
+    "git_commit": "331454c497e8df533e14f2f96f5c721def11dd87",
+    "git_tree": "2fde97823f77e15ba025664dfd3dbafd11472b8b",
+    "branch_at_exposure": "codex/implementation-benchmark-candidate",
+    "content_manifest_path": "CHECKPOINT/CONTENT.sha256",
+    "content_manifest_sha256": "ad439fddad939f93d959a589b0c86c1c6c75b81ef4299322813c4fac4c71b48a",
+    "content_manifest_entry_count": 97,
+    "candidate_boundary_path": "CHECKPOINT/CANDIDATE.md",
+    "candidate_boundary_sha256": "80d488f2e01493db60a4a53ea975d71f8dbf686f54c8d4fc6bbc4cd56cf01a37",
+    "worktree_at_exposure": "CLEAN",
+    "remote_configured": false
+  },
+  "classification": "SEALED_IMPLEMENTATION_BENCHMARK_CANDIDATE",
+  "carrier_boundary": {
+    "project_bytes_imported_into_body": false,
+    "external_source_remains_external": true,
+    "exact_recovery_depends_on_named_external_local_git_object": true,
+    "content_manifest_independently_verified_before_exposure": true
+  },
+  "requested_local_posture": "OBSERVATION_ONLY",
+  "explicit_non_effects": [
+    "NO_MATTER_ADMISSION",
+    "NO_EPISTEMIC_UPTAKE",
+    "NO_CONSEQUENCE",
+    "NO_RELATION",
+    "NO_RELATIONAL_FIELD",
+    "NO_CONTACT_EVENT",
+    "NO_BODY_CURRENTNESS_CHANGE",
+    "NO_PROTOTYPE_MUTATION",
+    "NO_TEAM_ACCEPTANCE",
+    "NO_DEPLOYMENT",
+    "NO_CONSTITUTIONAL_EFFECT",
+    "NO_PUBLICATION"
+  ],
+  "authorization_context": {
+    "bearer": "Marko Markota",
+    "source_statement": "be present hoe, and do your thing  💅",
+    "scope": "BOUNDED_BODY_FACING_EXPOSURE_ONLY",
+    "does_not_authorize_matter_admission": true
+  }
+}

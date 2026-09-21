@@ -1,0 +1,19 @@
+{
+  "schema": "local-reality-body.mechanism-source-provenance.v0.1",
+  "mechanism_id": "RM-REALITY-CONTACT-MEMBRANE-001",
+  "source": {
+    "classification": "WORKSPACE_PRESSURE_IMPLEMENTATION",
+    "path": "/Users/markomarkota/REALITY_MODEL_WORKSPACE/INTELLIGENCE/SAMPLES/REALITY_CONTACT_MEMBRANE_V0_1",
+    "implementation_sha256": "633d1ae4eba9cfa5875a6c47575107303ca3d398df61d14f14977cd325337f7e",
+    "verifier_sha256": "a77d1d2f96497f0b6e2643fa5715b4733d667c8dc7e63499fc0d11c06a70b302",
+    "contract_sha256": "edb127c22657518e891f552ba6484500758998c3a9a1bab3d0a95a3f9450223b",
+    "pressure_result_sha256": "32fb5b8f1529563d0d9e2c493965c79ff865234a360dce6aa09e84f617079cde"
+  },
+  "adaptation": {
+    "implementation_change": "Only the module status docstring was corrected to route admission and activation posture to Body-owned records.",
+    "contract_change": "Pressure-only status and the obsolete no-activation non-claim were replaced by the exact Body-local non-constitutive ceiling.",
+    "body_wrapper_added": true,
+    "semantic_algorithm_preserved": true
+  },
+  "source_custody_or_similarity_creates_authority": false
+}

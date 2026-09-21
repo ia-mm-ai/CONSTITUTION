@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "local-reality-body.lineage-index.v0.1",
+  "type": "object",
+  "required": ["schema", "body_id", "represented_currentness_revision", "authoritative_evidence_remains_in_exact_objects", "motion_chains", "explicit_non_effects"],
+  "properties": {
+    "schema": {"const": "local-reality-body.lineage-index.v0.1"},
+    "body_id": {"const": "RM-LOCAL-REALITY-BODY-001"},
+    "represented_currentness_revision": {"const": 6},
+    "authoritative_evidence_remains_in_exact_objects": {"const": true},
+    "motion_chains": {"type": "array", "minItems": 7},
+    "explicit_non_effects": {"type": "array", "items": {"type": "string"}, "uniqueItems": true}
+  },
+  "additionalProperties": false
+}
