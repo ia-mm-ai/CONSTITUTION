@@ -1,4 +1,6 @@
 import { assertPlainObject } from "./canonical.js";
+import { goJSONStringify } from "./go-json.js";
+import { normalizedTransition, verifyTransitionSignature } from "./signature.js";
 
 export class VMHTTPError extends Error {
   constructor(status, message, body = null) {
@@ -21,7 +23,7 @@ export class VMClient {
     let encoded;
     if (body !== undefined) {
       headers["content-type"] = "application/json";
-      encoded = JSON.stringify(body);
+      encoded = goJSONStringify(body);
       if (Buffer.byteLength(encoded) > 1 << 20) throw new Error("request exceeds VM 1 MiB limit");
     }
     const response = await fetch(`${this.endpoint}${path}`, {
@@ -54,7 +56,13 @@ export class VMClient {
   state() { return this.request("/state"); }
   genesis() { return this.request("/genesis"); }
   draft(request) { return this.request("/drafts", { method: "POST", body: request }); }
-  submit(transition) { return this.request("/transitions", { method: "POST", body: transition }); }
+  async submit(transition) {
+    verifyTransitionSignature(transition);
+    return this.request("/transitions", {
+      method: "POST",
+      body: normalizedTransition(transition.unsigned, transition.signature)
+    });
+  }
   receipt(id) { return this.request(`/receipts/${encodeURIComponent(id)}`, { allowNotFound: true }); }
   transition(id) { return this.request(`/transitions/${encodeURIComponent(id)}`, { allowNotFound: true }); }
 }

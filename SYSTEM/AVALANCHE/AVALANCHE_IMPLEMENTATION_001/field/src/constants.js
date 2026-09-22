@@ -1,5 +1,7 @@
-import { readFileSync } from "node:fs";
+import { VM_OPERATIONS, VM_OPERATION_CONTRACT_SHA256 } from "./operations.js";
+export { VM_OPERATION_CONTRACT_SHA256 } from "./operations.js";
 
+export const IMPLEMENTATION = "AVALANCHE_IMPLEMENTATION_001";
 export const MEDIUM_PROTOCOL = "PRESENCE_AVALANCHE_FIELD_001";
 export const MEDIUM_VERSION = "1.0.0";
 export const MEDIUM_CONTRACT_SCHEMA = "PRESENCE_AVALANCHE_FIELD_CONTRACT_001";
@@ -11,46 +13,32 @@ export const MEDIUM_OBSERVATION_SCHEMA = "PRESENCE_AVALANCHE_FIELD_OBSERVATION_0
 
 export const VM_PROTOCOL = "PRESENCE_AVALANCHE_VM_001";
 export const VM_VERSION = "presence-avalanche-vm/1.0.0";
-export const VM_ID = "cQYXygFUVutQucm4s8pr8M51sRdS1UfrTbpMdEgpRYt2JvEzr";
+export const VM_ID = "cNhhBznc1YN29QVJMQbK7sxy6GsimFKN6yvftRjPK7qWEvZw8";
 export const VM_RPCCHAINVM_PROTOCOL = 46;
-export const VM_STATE_SCHEMA = "PRESENCE_AVALANCHE_STATE_001";
+export const VM_STATE_SCHEMA = "PRESENCE_AVALANCHE_RUNTIME_STATE_001";
+export const VM_ACTOR_PREFIX = "PRESENCE-AVALANCHE-ACTOR-";
+const VM_IDENTITY = Object.freeze({
+  actorPrefix: VM_ACTOR_PREFIX,
+  stateSchema: VM_STATE_SCHEMA,
+  contractSHA256: VM_OPERATION_CONTRACT_SHA256
+});
+export function vmIdentity(id) {
+  if (id !== VM_ID) throw new Error("unsupported expected_vm_id");
+  return VM_IDENTITY;
+}
 export const VM_TRANSITION_SCHEMA = "PRESENCE_AVALANCHE_TRANSITION_001";
 export const VM_RECEIPT_SCHEMA = "PRESENCE_AVALANCHE_RECEIPT_001";
 export const VM_FORM_ID = "PRESENCE-AVALANCHE-FORM-001";
 export const VM_FORM_SHA256 = "e70fedb8ec8420275703542ee16d6d0429b1b5979b0b8ff964eac87aa19a7d8a";
-
-const operationContract = JSON.parse(readFileSync(
-  new URL("../../protocol/operations.json", import.meta.url),
-  "utf8"
-));
-if (
-  operationContract.schema !== "PRESENCE_AVALANCHE_OPERATION_CONTRACT_001" ||
-  operationContract.implementation !== "AVALANCHE_IMPLEMENTATION_001" ||
-  operationContract.version !== "1.0.0" ||
-  !Array.isArray(operationContract.operations)
-) {
-  throw new Error("shared operation contract identity is invalid");
-}
-const operationEntries = new Map();
-for (const definition of operationContract.operations) {
-  if (
-    !definition || typeof definition.operation !== "string" ||
-    typeof definition.scope !== "string" || typeof definition.effect !== "string" ||
-    operationEntries.has(definition.operation)
-  ) {
-    throw new Error("shared operation contract is incomplete or contains duplicates");
-  }
-  operationEntries.set(definition.operation, Object.freeze({ ...definition }));
-}
-export const OPERATION_CONTRACT = Object.freeze([...operationEntries.values()]);
 export const VM_EFFECTS = Object.freeze(Object.fromEntries(
-  OPERATION_CONTRACT.map(({ operation, effect }) => [operation, effect])
+  Object.values(VM_OPERATIONS).map(({ operation, effect }) => [operation, effect])
 ));
+export const OPERATION_CONTRACT = Object.freeze(Object.values(VM_OPERATIONS));
 export const VM_SCOPES = Object.freeze(Object.fromEntries(
   OPERATION_CONTRACT.map(({ operation, scope }) => [operation, scope])
 ));
 export function operationDefinition(operation) {
-  const definition = operationEntries.get(operation);
+  const definition = VM_OPERATIONS[operation];
   if (!definition) throw new Error(`unsupported operation ${operation}`);
   return definition;
 }

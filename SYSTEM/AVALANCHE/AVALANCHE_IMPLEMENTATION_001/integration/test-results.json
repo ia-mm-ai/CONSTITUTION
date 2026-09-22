@@ -1,0 +1,47 @@
+{
+  "schema": "PRESENCE_AVALANCHE_INTEGRATION_TEST_RESULTS_001",
+  "go_toolchain": "go1.25.13",
+  "node_runtime": "v22.23.2",
+  "commands": [
+    {
+      "working_directory": "SYSTEM/AVALANCHE/AVALANCHE_IMPLEMENTATION_001",
+      "environment": "COUPLED_EVIDENCE_PATH=../integration/qualification-run.json",
+      "command": "./integration/run.sh",
+      "result": "PASS",
+      "accepted_transitions": 29,
+      "vm_database_reloads": 2,
+      "final_revision": 29,
+      "final_posture": "DORMANT_P0",
+      "includes_latest_operation_contract_status_hash_check": true,
+      "includes_html_and_unicode_separator_payload": true,
+      "includes_same_open_locus_and_new_locus_reentry": true
+    },
+    {
+      "working_directory": "SYSTEM/AVALANCHE/AVALANCHE_IMPLEMENTATION_001/vm",
+      "environment": "GOTMPDIR and TMPDIR set to project-relative integration scratch",
+      "command": "go test -race -tags=integration -run '^TestCoupledFIELDLifecycle$' -count=3 -v .",
+      "result": "PASS",
+      "runs": 3,
+      "accepted_transitions_per_run": 29,
+      "vm_database_reloads_per_run": 2,
+      "race_reports": 0
+    },
+    {
+      "working_directory": "SYSTEM/AVALANCHE/AVALANCHE_IMPLEMENTATION_001",
+      "command": "bash integration/network.sh <security-overlaid avalanchego> <presence-avalanche-vm> <presence-avalanche-rehearsal> <result path>",
+      "result": "PASS",
+      "validator_count": 3,
+      "accepted_transitions": 21,
+      "distinct_operations": 18,
+      "lifecycle": "BOUND -> DECLARE_CAPACITY -> PULSE -> PRESENT_FORM -> GATE_DISPOSITION -> ENTER -> OBSERVE_CROSSING -> MATTER_DISPOSITION -> RECORD_EMERGENCE -> CORRECT -> CHECKPOINT_DEPARTURE -> EXIT -> CLOSE -> BOUND -> PRESENT_FORM -> GATE_DISPOSITION -> REENTER -> CHECKPOINT_DEPARTURE -> EXIT -> CLOSE -> INCORPORATE_ADDRESSED_RESIDUE",
+      "validator_bounce_and_rejoin": "PASSED_AT_DECLARED_LOCAL_SCOPE",
+      "full_network_process_restart": "PASSED_AT_DECLARED_LOCAL_SCOPE",
+      "public_evidence": "integration/network-result.json"
+    }
+  ],
+  "operation_contract_sha256": "63ca502d34af7bdb4de5c11ba45680ca1714eca45f00292e1bb7c8dfddf90d83",
+  "result_evidence": "integration/qualification-run.json",
+  "unresolved_boundary": "integration/qualification-boundary.json",
+  "historical_evidence": "integration/historical/ retains the pre-consolidation network evidence as bounded history only",
+  "effect": "LOCAL_IMPLEMENTATION_TEST_EVIDENCE_ONLY_NO_CONSTITUTIONAL_EFFECT"
+}

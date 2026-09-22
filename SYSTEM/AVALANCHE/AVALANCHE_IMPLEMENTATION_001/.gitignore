@@ -1,0 +1,12 @@
+/build/
+/artifacts/
+/vm/.work/
+/integration/.coupled-*/
+/integration/.network-build/
+*.private.json
+*.key
+*.pem
+node_modules/
+__pycache__/
+/vm/vm
+/vm/rehearsal/rehearsal

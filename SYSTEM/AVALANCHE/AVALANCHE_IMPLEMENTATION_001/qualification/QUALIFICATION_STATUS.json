@@ -1,0 +1,171 @@
+{
+  "schema": "PRESENCE_AVALANCHE_QUALIFICATION_STATUS_001",
+  "implementation": "AVALANCHE_IMPLEMENTATION_001",
+  "version": "1.0.0",
+  "starting_commit": "5e09d1fbe3c1008937d95497fcc162a6ebd4190d",
+  "consolidation_inputs": {
+    "accepted_first_crossing": "PR #15 / main@5e09d1fbe3c1008937d95497fcc162a6ebd4190d",
+    "optimization_crossing_a": "PR #16 / 0ab38005f4de88eb972dbc50faa9796f818daba8",
+    "optimization_crossing_b": "PR #17 / d5e6703c71cd5b261041b9ebc41fbbf69450c2b9",
+    "record": "records/COHERENCE_RECORD_001.json"
+  },
+  "status_set": [
+    "SOURCE_IMPLEMENTED",
+    "FUNCTIONALLY_TESTED",
+    "QUALIFICATION_INCOMPLETE",
+    "NOT_RELEASED",
+    "NOT_DEPLOYED",
+    "NOT_READY_FOR_MAINNET"
+  ],
+  "scope": "IMPLEMENTATION_SOURCE_CROSSING_ONLY",
+  "vm_id": "cNhhBznc1YN29QVJMQbK7sxy6GsimFKN6yvftRjPK7qWEvZw8",
+  "binding": "vm/protocol/binding.json",
+  "contract": "vm/protocol/operations.json",
+  "operation_contract_sha256": "63ca502d34af7bdb4de5c11ba45680ca1714eca45f00292e1bb7c8dfddf90d83",
+  "vm_id_derivation": "compat/COMPATIBILITY_001.json",
+  "immutable_inputs": "SOURCE_AND_ALL_CANONICAL_STATE_AND_BOTH_PREDECESSOR_ZIPS_BYTE_UNCHANGED",
+  "evidence_rule": "Every result below was regenerated on the final consolidated tree; no passed observation is transferred across the changed VM ID, contract digest, state schema, actor namespace, genesis or binary. Pre-consolidation evidence is bounded history only (integration/historical/, Git history).",
+  "tests": [
+    {
+      "directory": "repository root",
+      "command": "python SYSTEM/verify.py --revision <consolidation head commit>",
+      "result": "PASS",
+      "scope": "Selected revision Source/STATE/carriers and conformance; 128 normative vectors, not constitutional effect"
+    },
+    {
+      "directory": "repository root",
+      "command": "python -m unittest discover -s SYSTEM -p 'test_*.py'",
+      "result": "PASS",
+      "tests": 33
+    },
+    {
+      "directory": "implementation root",
+      "commands": [
+        "python3 scripts/verify-bindings.py",
+        "python3 scripts/verify-binding.py",
+        "python -m unittest discover -s scripts -p 'test_*.py' -v"
+      ],
+      "result": "PASS",
+      "tests": 6,
+      "scope": "Exact Source, whole-STATE and predecessor archive byte bindings"
+    },
+    {
+      "directory": "vm",
+      "commands": [
+        "go test ./...",
+        "go test -race ./...",
+        "go vet ./...",
+        "go mod verify"
+      ],
+      "toolchain": "go1.25.13",
+      "result": "PASS",
+      "scope": "VM law, canonical parsing, signatures, exhaustive operation/effect/scope inventory with five scope classes, fail-closed contract checks, current bindings, lifecycle, persistence, and the accepted 18-transition lifecycle regression (vm/lifecycle_regression_test.go)"
+    },
+    {
+      "directory": "vm/rehearsal",
+      "commands": [
+        "go test ./...",
+        "go vet ./...",
+        "go mod verify"
+      ],
+      "toolchain": "go1.25.13",
+      "result": "PASS",
+      "scope": "Bounded rehearsal runner submodule; no test files in this module"
+    },
+    {
+      "directory": "field",
+      "commands": [
+        "npm test"
+      ],
+      "result": "PASS",
+      "tests": 68,
+      "failed": 0,
+      "scope": "FIELD runtime, single canonical VM identity fail-closed, profiles, shared operation inventory and scope classes, pre-sign/draft-time/pre-submit and accepted-state scope enforcement"
+    },
+    {
+      "directory": "implementation root",
+      "command": "bash scripts/build.sh <output dir>",
+      "result": "PASS",
+      "version_json": {
+        "name": "presence-avalanche-vm",
+        "version": "1.0.0",
+        "implementation": "AVALANCHE_IMPLEMENTATION_001",
+        "protocol": "PRESENCE_AVALANCHE_VM_001",
+        "protocol_contract_sha256": "63ca502d34af7bdb4de5c11ba45680ca1714eca45f00292e1bb7c8dfddf90d83",
+        "avalanchego": "v1.15.0",
+        "rpcchainvm": 46,
+        "vm_id": "cNhhBznc1YN29QVJMQbK7sxy6GsimFKN6yvftRjPK7qWEvZw8"
+      },
+      "scope": "Binding-checked native Go VM build; the single default build resolves to the canonical VM ID"
+    },
+    {
+      "directory": "implementation root",
+      "command": "presence-avalanche-vm --generate-authority / --materialize-genesis / --check-genesis with disposable credentials under /tmp",
+      "result": "PASS",
+      "scope": "Genesis materialization and validation from the committed template and vm/genesis/administrative-input.schema.json; disposable authority removed; deployment-specific genesis not committed"
+    },
+    {
+      "directory": "implementation root",
+      "command": "COUPLED_EVIDENCE_PATH=../integration/qualification-run.json ./integration/run.sh",
+      "result": "PASS",
+      "accepted_transitions": 29,
+      "detailed_results": "integration/test-results.json",
+      "public_evidence": "integration/qualification-run.json",
+      "scope": "Separate FIELD process with real VM HTTP, explicit BuildBlock/Verify/Accept, full bounded lifecycle including same-locus and new-locus re-entry, contract digest equality, Go/JavaScript canonical JSON and signature-wire agreement, and two in-memory VM reinitializations; also run three times under -race"
+    },
+    {
+      "directory": "implementation root",
+      "command": "bash scripts/build-avalanchego.sh <dir> && bash integration/network.sh <overlaid avalanchego> <vm> <rehearsal> <result>",
+      "result": "PASS",
+      "avalanchego_build": "v1.15.0 (70bd6d0) with compat/AVALANCHEGO_SECURITY_OVERLAY_001.json applied",
+      "validator_count": 3,
+      "accepted_transitions": 21,
+      "distinct_operations": 18,
+      "public_evidence": "integration/network-result.json",
+      "scope": "Actual three-validator custom-plugin consensus under the canonical cNhh… VM ID: the complete accepted lifecycle BOUND through INCORPORATE_ADDRESSED_RESIDUE, then single-validator bounce/rejoin and whole-network process restart with exact state and receipt equality on all validators"
+    },
+    {
+      "directory": "implementation root",
+      "commands": [
+        "bash -n scripts/build.sh",
+        "bash -n integration/network.sh",
+        "node --check integration/network-driver.mjs"
+      ],
+      "result": "PASS"
+    }
+  ],
+  "identity_proofs": {
+    "single_default_build": "scripts/build.sh builds only vm/ and prints vm_id cNhhBznc1YN29QVJMQbK7sxy6GsimFKN6yvftRjPK7qWEvZw8",
+    "single_default_field_config": "field/examples/config.template.json expected_vm_id is the canonical VM ID; field/src/constants.js carries exactly one identity and fails closed for any other",
+    "genesis": "Materialized and checked genesis binds the canonical VM identity and schemas",
+    "predecessor_identity_posture": "HISTORICAL_ONLY; see records/COHERENCE_RECORD_001.json and records/DERIVATION_RECORD.json. The predecessor has no operative configuration, build output, genesis, FIELD default, compatibility, binding, migration or evidence-transfer effect."
+  },
+  "security": {
+    "avalanchego_security_overlay": "PRESENCE_AVALANCHE_SECURITY_OVERLAY_001 (compat/AVALANCHEGO_SECURITY_OVERLAY_001.json) was applied to the AvalancheGo build used by the recorded three-validator network run; base-version-only network evidence is retained solely as bounded history in integration/historical/",
+    "vulnerability_status": "UNRESOLVED_EXTERNAL_OBSERVATION",
+    "govulncheck": "Package loading succeeds; vuln.go.dev is unreachable from this environment (DNS failure), so no vulnerability observation and no zero-vulnerabilities claim is made",
+    "secret_scan": "NO_SECRETS_DETECTED_IN_SCANNED_SOURCE_FILES",
+    "private_credential_retention": "NONE; disposable network authority and validator directories were created under /tmp and removed by the harness exit trap",
+    "signer_boundary": "EXTERNAL_PROTECTED_SIGNER preserved; no private keys, mnemonics, credentials, binaries, network directories or deployment-specific genesis are committed",
+    "zero_vulnerabilities_claim": false
+  },
+  "unresolved": [
+    {
+      "boundary": "External Go vulnerability database reachability",
+      "status": "UNRESOLVED_EXTERNAL_OBSERVATION",
+      "details": "govulncheck could not reach vuln.go.dev from this environment; the observation must be rerun where the database is reachable"
+    },
+    {
+      "boundary": "Production deployment and release qualification",
+      "status": "UNRESOLVED",
+      "details": "No production validator-manager configuration, independent operational custody, adversarial or long-duration qualification, public-network run, L1 creation, release or deployment was undertaken"
+    }
+  ],
+  "public_network_act": false,
+  "release_created": false,
+  "tag_created": false,
+  "deployment_created": false,
+  "merge_performed": false,
+  "ready_for_admin_instantiation": false,
+  "effect_ceiling": "NO_ADOPTION_FORMATION_SUCCESSION_AUTHORITY_OR_PRESENCE; TEST_RECEIPTS_ARE_LOCAL_IMPLEMENTATION_EVIDENCE_ONLY"
+}

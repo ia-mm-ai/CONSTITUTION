@@ -1,8 +1,13 @@
-import { generateKeyPairSync } from "node:crypto";
+import { generateKeyPairSync, randomUUID } from "node:crypto";
+import { mkdir, rm } from "node:fs/promises";
+import { after } from "node:test";
+import { join } from "node:path";
 import {
   REQUIRED_EFFECT_CEILING,
   VM_FORM_ID,
   VM_FORM_SHA256,
+  VM_ID,
+  VM_OPERATION_CONTRACT_SHA256,
   VM_REQUIRED_MEDIUM_CAPABILITIES,
   VM_STATE_SCHEMA,
   VM_VERSION,
@@ -13,11 +18,18 @@ import { actorIdFromPublicKey } from "../src/config.js";
 export const DIGEST_A = "a".repeat(64);
 export const DIGEST_B = "b".repeat(64);
 
-export function keyMaterial() {
+export async function testDirectory() {
+  const directory = join(process.cwd(), `.field-test-${randomUUID()}`);
+  await mkdir(directory, { mode: 0o700 });
+  after(() => rm(directory, { recursive: true, force: true }));
+  return directory;
+}
+
+export function keyMaterial(vmID = VM_ID) {
   const pair = generateKeyPairSync("ed25519");
   const der = pair.publicKey.export({ format: "der", type: "spki" });
   const publicKeyHex = der.subarray(-32).toString("hex");
-  return { ...pair, publicKeyHex, actorId: actorIdFromPublicKey(publicKeyHex) };
+  return { ...pair, publicKeyHex, actorId: actorIdFromPublicKey(publicKeyHex, vmID) };
 }
 
 export function presentState(actorId, publicKeyHex, overrides = {}) {
@@ -101,6 +113,7 @@ export function statusFor(state, overrides = {}) {
   return {
     healthy: true,
     vm_version: VM_VERSION,
+    operation_contract_sha256: VM_OPERATION_CONTRACT_SHA256,
     rpcchainvm_protocol: VM_RPCCHAINVM_PROTOCOL,
     avalanchego_target: "v1.15.0",
     locality_id: state.host_locality_id,

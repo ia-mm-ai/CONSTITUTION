@@ -1,0 +1,107 @@
+{
+  "schema": "PRESENCE_AVALANCHE_DERIVATION_001",
+  "implementation": "AVALANCHE_IMPLEMENTATION_001",
+  "version": "1.0.0",
+  "vm_protocol": "PRESENCE_AVALANCHE_VM_001",
+  "starting_commit": "5e09d1fbe3c1008937d95497fcc162a6ebd4190d",
+  "source_state_binding_commit": "a0cbb1080540bbe83f8678e81240247585dba060",
+  "source_state_binding_note": "SOURCE and canonical STATE bytes are identical at a0cbb108 and 5e09d1f; the exact byte binding in vm/protocol/binding.json therefore remains true at the consolidation starting commit.",
+  "consolidation": {
+    "kind": "SINGLE_COHERENT_FORM_FROM_THREE_COMPLETED_CROSSINGS",
+    "starting_main_commit": "5e09d1fbe3c1008937d95497fcc162a6ebd4190d",
+    "inputs": [
+      {
+        "crossing": "ACCEPTED_FIRST_SOURCE_CROSSING",
+        "pull_request": 15,
+        "commit": "5e09d1fbe3c1008937d95497fcc162a6ebd4190d",
+        "vm_id": "cQYXygFUVutQucm4s8pr8M51sRdS1UfrTbpMdEgpRYt2JvEzr",
+        "disposition": "PRESERVED_AND_SUPERSEDED_AT_THE_PRE_RELEASE_IMPLEMENTATION_FORM_LAYER_NOT_INVALIDATED_OR_REWRITTEN"
+      },
+      {
+        "crossing": "PARALLEL_OPTIMIZATION_CROSSING_A",
+        "pull_request": 16,
+        "commit": "0ab38005f4de88eb972dbc50faa9796f818daba8",
+        "disposition": "READ_ONLY_IMPLEMENTATION_INPUT_NOT_MERGED"
+      },
+      {
+        "crossing": "PARALLEL_OPTIMIZATION_CROSSING_B",
+        "pull_request": 17,
+        "commit": "d5e6703c71cd5b261041b9ebc41fbbf69450c2b9",
+        "disposition": "READ_ONLY_STRUCTURAL_BASIS_NOT_MERGED"
+      }
+    ],
+    "predecessor_vm_id": {
+      "value": "cQYXygFUVutQucm4s8pr8M51sRdS1UfrTbpMdEgpRYt2JvEzr",
+      "standing": "IDENTITY_OF_THE_ACCEPTED_FIRST_SOURCE_CROSSING_ONLY",
+      "operative_use": "NONE",
+      "state_migration_or_identity_continuity": "NOT_INFERRED"
+    },
+    "canonical_vm_id": "cNhhBznc1YN29QVJMQbK7sxy6GsimFKN6yvftRjPK7qWEvZw8",
+    "coherence_record": "records/COHERENCE_RECORD_001.json"
+  },
+  "input_binding": "vm/protocol/binding.json",
+  "inputs": [
+    {
+      "archive": "../../../STATE/LOCALITY_VM_003-v3.0.0-GITHUB_UPLOAD.zip",
+      "nested_source": "continuous_state/LOCALITY_VM_003/LOCALITY_VM_003-v3.0.0-GITHUB_REPOSITORY_PACK.zip",
+      "nested_sha256": "5597eab61802b1df92636b6df88fea46b88f460c4e5f2c51e393c5c6ce7a214f",
+      "nested_bytes": 207315,
+      "materialized": [
+        "vm/*.go",
+        "vm/go.mod",
+        "vm/go.sum",
+        "vm/genesis/",
+        "vm/profile/"
+      ],
+      "preserved_mechanisms": [
+        "signed append-only state transitions and bounded effects",
+        "capacity, departure, carried-state reentry and explicit succession law",
+        "strict genesis and administrative materialization",
+        "Avalanche RPCChainVM and accepted-block persistence"
+      ]
+    },
+    {
+      "archive": "../../../STATE/LOCALITY_MEDIUM_001-v2.0.0-GITHUB_UPLOAD.zip",
+      "nested_source": "local_medium/LOCALITY_MEDIUM_001/LOCALITY_MEDIUM_001-v2.0.0-GITHUB_REPOSITORY_PACK.zip",
+      "nested_sha256": "0962405082e8e07f428605a3091ac2307c921d2632f95ad62dea713103c84e70",
+      "nested_bytes": 103702,
+      "materialized": [
+        "field/src/",
+        "field/bin/",
+        "field/package.json",
+        "field/profiles/",
+        "field/test/"
+      ],
+      "preserved_mechanisms": [
+        "accepted-state observation, profile gating and external protected signer boundary",
+        "state-bound drafts, exact signature/receipt checks and renewed reads",
+        "private local journal and bounded broker/server interfaces"
+      ]
+    }
+  ],
+  "successor_changes": [
+    "one embedded/read shared exhaustive operation-effect-scope contract",
+    "structural scope validation in FIELD and VM with fail-closed inventory checks",
+    "current repository Source and complete canonical STATE byte binding",
+    "successor protocol, schemas, runtime and form identity",
+    "official pinned AvalancheGo VM-ID API rather than predecessor custom hashing",
+    "deterministic scope and coupled-runtime regression tests",
+    "build, offline preflight, public administrative schema and qualification records"
+  ],
+  "excluded_from_successor_authority": [
+    "predecessor binaries, release manifests, seals and historical qualification assertions",
+    "predecessor private credentials or deployment custody",
+    "archived stale Constitution copies and their former public-origin binding",
+    "automatic transfer of historical chain identity, formation, adoption or authority",
+    "predecessor release/deployment automation"
+  ],
+  "preservation": "ALL_PREDECESSOR_CARRIERS_AND_CANONICAL_SOURCE_STATE_UNCHANGED",
+  "rule_standing": "DERIVATIVE_IMPLEMENTATION_ENCODING",
+  "relation": "SOURCE_DERIVATION_ONLY_NOT_BODY_SUCCESSION",
+  "non_effects": [
+    "NO_SOURCE_AMENDMENT",
+    "NO_CANONICAL_CSC_DCR_LINEAGE_AMENDMENT",
+    "NO_ADOPTION_FORMATION_OR_AUTHORITY",
+    "NO_RELEASE_DEPLOYMENT_OR_PUBLIC_NETWORK_ACT"
+  ]
+}

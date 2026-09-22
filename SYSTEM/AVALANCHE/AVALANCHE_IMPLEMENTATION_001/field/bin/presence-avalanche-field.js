@@ -4,7 +4,7 @@ import { resolve } from "node:path";
 import process from "node:process";
 import { sha256Hex } from "../src/canonical.js";
 import { buildPassage, passageCommitment } from "../src/continuity.js";
-import { MEDIUM_PROTOCOL, MEDIUM_VERSION, VM_ID, VM_VERSION } from "../src/constants.js";
+import { IMPLEMENTATION, MEDIUM_PROTOCOL, MEDIUM_VERSION, VM_ID, VM_VERSION, VM_OPERATION_CONTRACT_SHA256 } from "../src/constants.js";
 import { actorIdFromPublicKey } from "../src/config.js";
 import { AppendOnlyJournal } from "../src/journal.js";
 import { createRuntime } from "../src/runtime.js";
@@ -27,7 +27,7 @@ function usage() {
     "  presence-avalanche-field --version-json",
     "  presence-avalanche-field inspect --config <config.json>",
     "  presence-avalanche-field serve --config <config.json>",
-    "  presence-avalanche-field actor-id --public-key <64-lowercase-hex>",
+    "  presence-avalanche-field actor-id --public-key <64-lowercase-hex> [--vm-id <id>]",
     "  presence-avalanche-field commit <file>",
     "  presence-avalanche-field successor --participant <id> --from <sha256> --delta <sha256> [--delta <sha256> ...]",
     "  presence-avalanche-field verify-journal <journal.ndjson>"
@@ -37,7 +37,7 @@ function usage() {
 async function main() {
   const args = process.argv.slice(2);
   if (args.length === 1 && args[0] === "--version-json") {
-    process.stdout.write(`${JSON.stringify({ protocol: MEDIUM_PROTOCOL, version: MEDIUM_VERSION, vm_id: VM_ID, vm_version: VM_VERSION })}\n`);
+    process.stdout.write(`${JSON.stringify({ implementation: IMPLEMENTATION, protocol: MEDIUM_PROTOCOL, version: MEDIUM_VERSION, vm_id: VM_ID, vm_version: VM_VERSION, operation_contract_sha256: VM_OPERATION_CONTRACT_SHA256 })}\n`);
     return;
   }
   const command = args[0];
@@ -49,7 +49,8 @@ async function main() {
   }
   if (command === "actor-id") {
     const publicKey = valueAfter(args, "--public-key");
-    process.stdout.write(`${JSON.stringify({ actor_id: actorIdFromPublicKey(publicKey), actor_public_key: publicKey })}\n`);
+    const vmID = args.includes("--vm-id") ? valueAfter(args, "--vm-id") : VM_ID;
+    process.stdout.write(`${JSON.stringify({ actor_id: actorIdFromPublicKey(publicKey, vmID), actor_public_key: publicKey })}\n`);
     return;
   }
   if (command === "serve") {

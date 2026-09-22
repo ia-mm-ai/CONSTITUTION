@@ -38,6 +38,7 @@ export function validateVMState(state) {
   assertPlainObject(state.loci, "loci");
   assertPlainObject(state.actor_keys, "actor_keys");
   assertPlainObject(state.next_nonces, "next_nonces");
+  assertPlainObject(state.events, "events");
   for (const [actorId, nonce] of Object.entries(state.next_nonces)) {
     requireSafeUint(nonce, `next_nonces.${actorId}`);
   }
@@ -74,7 +75,8 @@ export function deriveActorContext(state, actorId, observedAt = Math.floor(Date.
   if (!locus || locus.phase !== "OPEN") throw new Error("active_locus_id does not name an open locus");
   const presentation = locus.presentations?.[actorId] ?? null;
   const gate = locus.gates?.[actorId] ?? null;
-  const entry = locus.entries?.[actorId] ?? null;
+  const recordedEntry = locus.entries?.[actorId] ?? null;
+  const entry = presentation && recordedEntry?.presentation_id === presentation.presentation_id ? recordedEntry : null;
   if (gate) {
     requireString(gate.disposition, "gate.disposition");
     requireString(gate.offer_status, "gate.offer_status");

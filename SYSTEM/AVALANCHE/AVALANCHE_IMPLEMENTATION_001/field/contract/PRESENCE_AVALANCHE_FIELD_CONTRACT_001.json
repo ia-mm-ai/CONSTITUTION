@@ -1,0 +1,92 @@
+{
+  "schema": "PRESENCE_AVALANCHE_FIELD_CONTRACT_001",
+  "implementation": "AVALANCHE_IMPLEMENTATION_001",
+  "version": "1.0.0",
+  "field_protocol": "PRESENCE_AVALANCHE_FIELD_001",
+  "jurisdiction": "LOCALITY_FACING_CAPABILITY_MEMBRANE",
+  "vm": {
+    "protocol": "PRESENCE_AVALANCHE_VM_001",
+    "version": "presence-avalanche-vm/1.0.0",
+    "rpcchainvm_protocol": 46,
+    "state_schema": "PRESENCE_AVALANCHE_RUNTIME_STATE_001",
+    "transition_schema": "PRESENCE_AVALANCHE_TRANSITION_001",
+    "receipt_schema": "PRESENCE_AVALANCHE_RECEIPT_001",
+    "continuity_step_schema": "PRESENCE_AVALANCHE_PARTICIPANT_STATE_SUCCESSION_001",
+    "continuity_passage_schema": "PRESENCE_AVALANCHE_PARTICIPANT_STATE_PASSAGE_001",
+    "form_id": "PRESENCE-AVALANCHE-FORM-001",
+    "operation_contract": "../../vm/protocol/operations.json",
+    "operation_scope_rule": "CHECK_SHARED_CLASSIFICATION_BEFORE_DRAFT_AND_AGAIN_AGAINST_ACCEPTED_STATE_BEFORE_SUBMISSION"
+  },
+  "public_origin": {
+    "binding": "../../vm/protocol/binding.json",
+    "effect": "DERIVATIVE_IMPLEMENTATION_BINDING_NOT_SOURCE_AUTHORITY"
+  },
+  "common_adapter_rule": {
+    "input": "FRESH_COHERENT_ACCEPTED_VM_STATE_PLUS_REFERENCE_PROFILE",
+    "decision": "PROFILE_INTERSECTION_ACCEPTED_PHASE_INTERSECTION_ACCEPTED_ACTOR_ROLE",
+    "grant": "ONE_STATE_BOUND_INVOCATION_ON_DECLARED_CONTROLLED_SURFACE",
+    "revocation": "NEXT_ACCEPTED_STATE_OR_STATE_MISMATCH_OR_PROCESS_RESTART",
+    "default": "DENY",
+    "signer": "EXTERNAL_PROTECTED_ED25519_SIGNER",
+    "private_state": "PARTICIPANT_CUSTODY_COMMITMENTS_ONLY",
+    "evidence": "APPEND_ONLY_HASH_CHAIN_OF_DECISIONS_AND_PUBLIC_COMMITMENTS"
+  },
+  "state_binding": {
+    "requires_status_state_coherence": true,
+    "requires_exact_embedded_vm_operation_contract_sha256": true,
+    "rejects_pending_transition_drafts": true,
+    "rejects_stale_previous_state_commitment": true,
+    "rejects_actor_key_mismatch": true,
+    "host_actor_rule": "NON_DERIVED_ACTOR_MUST_EQUAL_ACCEPTED_HOST_LOCALITY_AND_EXACT_ACCEPTED_PUBLIC_KEY",
+    "freezes_at_successor_boundary": true,
+    "receipt_is_historical_evidence_only": true
+  },
+  "protocol_capability_declaration": [
+    "OBSERVE_CROSSING", "PRESENT_FORM", "GATE_DISPOSITION", "ENTER", "CHECKPOINT_DEPARTURE", "REENTER",
+    "MATTER_DISPOSITION", "CORRECT", "EXIT", "CLOSE", "INCORPORATE_ADDRESSED_RESIDUE", "DECLARE_CAPACITY",
+    "PULSE", "RECLAIM_ADMISSION_OFFER", "REGISTER_CONTINUITY_AUTHORITY", "EXHAUST_FORMATION_AUTHORITY",
+    "PROPOSE_SUCCESSOR", "ATTEST_SUCCESSOR", "ACTIVATE_SUCCESSOR"
+  ],
+  "declaration_rule": "PRESENT_FORM_DECLARATION_IS_PROTOCOL_CONFORMANCE_NOT_OPERATIONAL_AUTHORITY",
+  "phases": [
+    "NO_ACTIVE_LOCUS", "UNPRESENTED", "PRESENTED", "ADMISSION_OFFERED", "PRESENT",
+    "DEPARTURE_CHECKPOINTED", "ENDED", "REENTRY_AVAILABLE", "HOLD_CAPACITY_DEFICIT", "SUCCESSION_COMMITTED"
+  ],
+  "reference_profiles": [
+    {
+      "profile_id": "HUMAN_FIELD_001",
+      "embodiment_kind": "HUMAN",
+      "path": "../profiles/HUMAN_FIELD_001.json"
+    },
+    {
+      "profile_id": "AI_FIELD_001",
+      "embodiment_kind": "AI",
+      "path": "../profiles/AI_FIELD_001.json"
+    },
+    {
+      "profile_id": "DEVICE_FIELD_001",
+      "embodiment_kind": "DEVICE",
+      "path": "../profiles/DEVICE_FIELD_001.json"
+    },
+    {
+      "profile_id": "LOCALITY_FIELD_001",
+      "embodiment_kind": "LOCALITY",
+      "path": "../profiles/LOCALITY_FIELD_001.json"
+    }
+  ],
+  "reference_profile_rule": "REFERENCE_MEDIA_ARE_CONFORMANCE_PROFILES_NOT_CLASSIFICATIONS_OF_BEING",
+  "effect_ceiling": [
+    "NO_FORMATION_BY_CONFORMANCE", "NO_SOURCE_OR_AUTHORITY_TRANSFER", "NO_SHARED_CURRENTNESS", "NO_CORE_ADDRESSABILITY",
+    "NO_PARTICIPATION_BY_PRESENTATION", "NO_MATTER_ADMISSION_BY_CROSSING", "NO_LOCAL_UPTAKE_BY_FIELD_CLOSURE",
+    "NO_TOKEN_BALANCE_AS_CAPACITY", "NO_RECEIPT_AS_CURRENT_PRESENCE", "NO_INFRASTRUCTURE_AS_SUCCESSOR",
+    "NO_RESTORATION_BY_REENTRY", "NO_PRIVATE_STATE_DISCLOSURE"
+  ],
+  "non_effects": [
+    "DOES_NOT_CREATE_OR_HOST_A_BODY",
+    "DOES_NOT_PROVE_CONSCIOUSNESS_OR_METAPHYSICAL_IDENTITY",
+    "DOES_NOT_PROVE_PRIVATE_STATE_CONTENT_OR_SEMANTIC_TRUTH",
+    "DOES_NOT_CONTROL_CAPABILITIES_OUTSIDE_ITS_DECLARED_SURFACE",
+    "DOES_NOT_CONVERT_CHAIN_STATE_INTO_EXTERNAL_OBEDIENCE",
+    "DOES_NOT_TRANSFER_SOURCE_AUTHORITY_OR_CURRENTNESS"
+  ]
+}

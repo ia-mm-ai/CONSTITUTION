@@ -7,7 +7,7 @@ function base() {
   const publicKey = "12".repeat(32);
   return {
     schema: "PRESENCE_AVALANCHE_FIELD_CONFIG_001",
-    medium_id: "AI-MEDIUM-TEST-001",
+    medium_id: "AI-FIELD-TEST-001",
     endpoint: "http://127.0.0.1:9650/ext/bc/BLOCKCHAIN-001/rpc",
     expected_blockchain_id: "BLOCKCHAIN-001",
     expected_locality_id: "SUCCESSOR-LOCALITY-001",
@@ -30,6 +30,15 @@ test("config binds chain route, frozen VM and derived actor ID", () => {
   assert.equal(value.listen_port, 8787);
 });
 
+test("config fails closed on any non-canonical VM identity or foreign actor namespace", () => {
+  const config = base();
+  for (const id of ["unknown", "toString", "", undefined]) {
+    assert.throws(() => validateConfig({ ...config, expected_vm_id: id }), /expected_vm_id/);
+  }
+  assert.throws(() => validateConfig({ ...config, actor_id: `LOCALITY-ACTOR-${"a".repeat(40)}` }), /actor_id/);
+  assert.match(validateConfig(config).actor_id, /^PRESENCE-AVALANCHE-ACTOR-/);
+});
+
 test("config refuses non-loopback plaintext and unknown fields", () => {
   const remote = base();
   remote.endpoint = "http://example.com/ext/bc/BLOCKCHAIN-001/rpc";
@@ -37,4 +46,12 @@ test("config refuses non-loopback plaintext and unknown fields", () => {
   const extra = base();
   extra.private_key = "never";
   assert.throws(() => validateConfig(extra), /unknown field/);
+});
+
+test("only the exact expected host locality may use a non-derived actor ID", () => {
+  const host = base();
+  host.actor_id = host.expected_locality_id;
+  assert.equal(validateConfig(host).actor_id, host.expected_locality_id);
+  assert.throws(() => validateConfig({ ...host, actor_id: "OTHER-HOST" }), /actor_id/);
+  assert.throws(() => validateConfig({ ...host, actor_id: "unsafe host", expected_locality_id: "unsafe host" }), /actor_id/);
 });
