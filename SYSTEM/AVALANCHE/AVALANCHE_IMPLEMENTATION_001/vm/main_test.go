@@ -22,15 +22,15 @@ func TestMachineVersionContract(t *testing.T) {
 	}
 
 	document := machineVersion{
-		Name:               "presence-avalanche-vm",
-		Version:            implementationVersion,
-		Implementation:     implementationID,
-		Protocol:           vmIDDomain,
+		Name:                   "presence-avalanche-vm",
+		Version:                implementationVersion,
+		Implementation:         implementationID,
+		Protocol:               vmIDDomain,
 		ProtocolContractSHA256: protocolContractSHA256,
-		AvalancheGo:        "v1.15.0",
-		AvalancheGoProfile: avalancheGoProfile,
-		RPCChainVM:         version.RPCChainVMProtocol,
-		VMID:               localityVMID().String(),
+		AvalancheGo:            "v1.15.0",
+		AvalancheGoProfile:     avalancheGoProfile,
+		RPCChainVM:             version.RPCChainVMProtocol,
+		VMID:                   localityVMID().String(),
 	}
 	encoded, err := json.Marshal(document)
 	if err != nil {

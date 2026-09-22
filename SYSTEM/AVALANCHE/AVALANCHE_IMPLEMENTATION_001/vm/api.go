@@ -101,7 +101,7 @@ func (vm *VM) handleStatus(w http.ResponseWriter, _ *http.Request) {
 		"vm_version":                vmVersion,
 		"implementation":            implementationID,
 		"protocol":                  vmIDDomain,
-		"protocol_contract_sha256": protocolContractSHA256,
+		"protocol_contract_sha256":  protocolContractSHA256,
 		"rpcchainvm_protocol":       version.RPCChainVMProtocol,
 		"operation_contract_sha256": fmt.Sprintf("%x", sha256.Sum256(protocolContractJSON)),
 		"avalanchego_target":        "v1.15.0",

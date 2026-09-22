@@ -4,6 +4,19 @@
   "vulnerability_status": "UNRESOLVED_EXTERNAL_OBSERVATION",
   "observations": [
     {
+      "tool": "parallel_validation",
+      "query": "Final committed AVALANCHE_IMPLEMENTATION_001 changes; non-trivial CodeQL assessment",
+      "result": "UNRESOLVED_EXTERNAL_OBSERVATION",
+      "failure": "Validation has timed out 2 consecutive times. The circuit breaker has tripped — do NOT call parallel_validation again.",
+      "ceiling": "No final automated-review or security clearance. Earlier agent invocation reported zero Go/Python CodeQL alerts but overall timed out; that partial result is not a zero-vulnerabilities claim."
+    },
+    {
+      "tool": "code-review agent",
+      "query": "Staged implementation-source crossing against a0cbb1080540bbe83f8678e81240247585dba060",
+      "result": "TWO_COUPLED_RUNTIME_FINDINGS_REPAIRED",
+      "details": "FIELD now ignores older exited entries for a fresh same-locus presentation and matches Go JSON escaping for signed/submitted envelopes. FIELD regression suite passes with 61 tests."
+    },
+    {
       "tool": "runtime-tools-gh-advisory-database",
       "query": "Pinned direct and indirect require entries in vm/go.mod and vm/rehearsal/go.mod, plus golang.org/x/vuln@1.7.0; submitted as Go ecosystem package/version pairs in three calls",
       "result": "NO_MATCHING_ADVISORIES_RETURNED_FOR_QUERIED_PINS",

@@ -22,15 +22,15 @@ const (
 )
 
 type machineVersion struct {
-	Name               string `json:"name"`
-	Version            string `json:"version"`
-	Implementation     string `json:"implementation"`
-	Protocol           string `json:"protocol"`
+	Name                   string `json:"name"`
+	Version                string `json:"version"`
+	Implementation         string `json:"implementation"`
+	Protocol               string `json:"protocol"`
 	ProtocolContractSHA256 string `json:"protocol_contract_sha256"`
-	AvalancheGo        string `json:"avalanchego"`
-	AvalancheGoProfile string `json:"avalanchego_profile"`
-	RPCChainVM         uint   `json:"rpcchainvm"`
-	VMID               string `json:"vm_id"`
+	AvalancheGo            string `json:"avalanchego"`
+	AvalancheGoProfile     string `json:"avalanchego_profile"`
+	RPCChainVM             uint   `json:"rpcchainvm"`
+	VMID                   string `json:"vm_id"`
 }
 
 func localityVMID() ids.ID {
@@ -55,15 +55,15 @@ func main() {
 		return
 	case len(os.Args) == 2 && os.Args[1] == "--version-json":
 		if err := json.NewEncoder(os.Stdout).Encode(machineVersion{
-			Name:               "presence-avalanche-vm",
-			Version:            implementationVersion,
-			Implementation:     implementationID,
-			Protocol:           vmIDDomain,
+			Name:                   "presence-avalanche-vm",
+			Version:                implementationVersion,
+			Implementation:         implementationID,
+			Protocol:               vmIDDomain,
 			ProtocolContractSHA256: protocolContractSHA256,
-			AvalancheGo:        "v1.15.0",
-			AvalancheGoProfile: avalancheGoProfile,
-			RPCChainVM:         version.RPCChainVMProtocol,
-			VMID:               localityVMID().String(),
+			AvalancheGo:            "v1.15.0",
+			AvalancheGoProfile:     avalancheGoProfile,
+			RPCChainVM:             version.RPCChainVMProtocol,
+			VMID:                   localityVMID().String(),
 		}); err != nil {
 			exitWithError("encode machine-readable version", err)
 		}
