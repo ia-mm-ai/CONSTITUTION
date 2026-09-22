@@ -1,0 +1,72 @@
+name: Publish verified edition
+
+on:
+  workflow_dispatch:
+    inputs:
+      manifest_sha256:
+        description: Independently trusted manifest SHA-256 for the selected workflow commit
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  export:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Read the selected commit
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+      - name: Install existing conformance dependency
+        run: python -m pip install -r "$GITHUB_WORKSPACE/SYSTEM/requirements.txt"
+      - name: Export and verify against the independent digest
+        env:
+          MANIFEST_SHA256: ${{ inputs.manifest_sha256 }}
+        run: |
+          set -euo pipefail
+          python "$GITHUB_WORKSPACE/SYSTEM/export.py" \
+            --revision "$GITHUB_SHA" \
+            --destination "$RUNNER_TEMP/presence-edition" \
+            > "$RUNNER_TEMP/presence-export-report.json"
+          python "$GITHUB_WORKSPACE/SYSTEM/verify.py" \
+            --export "$RUNNER_TEMP/presence-edition" \
+            --manifest-sha256 "$MANIFEST_SHA256"
+          {
+            printf 'Revision: `%s`\n\n' "$GITHUB_SHA"
+            printf 'Verified manifest SHA-256: `%s`\n\n' "$MANIFEST_SHA256"
+            printf 'Static edition only; no API, upload service, custom domain, or succession established.\n'
+          } >> "$GITHUB_STEP_SUMMARY"
+      - name: Upload only the verified SYSTEM export
+        uses: actions/upload-pages-artifact@56afc609e74202658d3ffba0e8f6dda462b719fa # v3.0.1
+        with:
+          path: ${{ runner.temp }}/presence-edition
+
+  deploy:
+    needs: export
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Require separate hosting with no custom domain
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          gh api "repos/$GITHUB_REPOSITORY/pages" > "$RUNNER_TEMP/pages.json"
+          jq -e '.build_type == "workflow" and ((.cname // "") == "")' "$RUNNER_TEMP/pages.json"
+      - name: Publish the verified edition
+        id: deployment
+        uses: actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e # v4.0.5

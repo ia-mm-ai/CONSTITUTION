@@ -4,14 +4,17 @@
     "status": "INITIAL_EXTERNALISATION",
     "public_location": {
       "status": "UNCONFIGURED",
-      "reason": "No deployed POINT is established by this repository."
+      "reason": "No deployed repository edition is established; separate publication must be confirmed before any custom-domain cutover.",
+      "intended_url": "https://presence.limited",
+      "domain_control": "UNVERIFIED"
     },
     "scope": "Reading the bound Source pair and canonical STATE representations; resolving listed references; checking edition bytes.",
     "provenance": [
       "../STATE/LINEAGE/ORIGIN.json",
       "../STATE/LINEAGE/RECORDS/VM003-TO-CSC.json",
       "../STATE/LINEAGE/RECORDS/MEDIUM-TO-DCR.json",
-      "../STATE/LINEAGE/IMPLEMENTATIONS/VM003-MEDIUM001.json"
+      "../STATE/LINEAGE/IMPLEMENTATIONS/VM003-MEDIUM001.json",
+      "../STATE/LINEAGE/OCCURRENCES/PRESENCE-LIMITED.json"
     ],
     "effect_ceiling": "Derivative exposure, not a Body, adoption, Authority, a current State, or demonstrated CSC/DCR."
   },
@@ -27,6 +30,7 @@
     {"path": "../STATE/LINEAGE/LINEAGE.md", "ref": "urn:presence:surface:lineage-human:1"},
     {"path": "../STATE/LINEAGE/LINEAGE.json", "ref": "urn:presence:core:lineage:lineage:1"},
     {"path": "../STATE/LINEAGE/ORIGIN.json", "ref": "urn:presence:surface:origin:1"},
+    {"path": "../STATE/LINEAGE/OCCURRENCES/PRESENCE-LIMITED.json", "ref": "urn:presence:lineage:occurrence-record:presence-limited-predecessor:1"},
     {"path": "../STATE/LINEAGE/RECORDS/VM003-TO-CSC.json", "ref": "urn:presence:core:derivation:vm003-to-csc:1"},
     {"path": "../STATE/LINEAGE/RECORDS/MEDIUM-TO-DCR.json", "ref": "urn:presence:core:lineage:medium-to-dcr:1"},
     {"path": "../STATE/LINEAGE/IMPLEMENTATIONS/VM003-MEDIUM001.md", "ref": "urn:presence:surface:vm003-medium001-human:1"},

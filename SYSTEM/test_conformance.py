@@ -4,6 +4,7 @@ import json
 from pathlib import Path
 import tempfile
 import unittest
+from unittest.mock import patch
 
 import conformance as core
 
@@ -140,6 +141,34 @@ class CoreTests(unittest.TestCase):
         claim["claimed_effects"].append("DECLARED_DEMONSTRATION")
         self.assertIn("IMPLEMENTATION_HISTORICAL_TO_CURRENT_CONVERSION",
                       core.semantic_result(model["rules"], claim)["failure_codes"])
+
+    def test_predecessor_account_retains_its_uncertainty(self):
+        record = core.load(core.ROOT / "STATE/LINEAGE/OCCURRENCES/PRESENCE-LIMITED.json")
+        self.core.validate(core.BASE + "occurrence:1", record)
+        model = core.load(core.ROOT / core.MODULES["LINEAGE"])
+        self.assertEqual(core.semantic_result(model["rules"], record)["failure_codes"], [])
+        self.assertEqual(record["occurrence"]["status"], "UNKNOWN")
+        self.assertEqual(record["evidence"]["method"], "SELF_REPORT")
+        self.assertEqual(record["evidence"]["effect_ceiling"], "ATTRIBUTABLE_CLAIM_ONLY")
+        self.assertEqual(record["claimed_effects"], [])
+        self.assertTrue(record["uncertainty"])
+
+    def test_occurrence_record_schema_and_rules_are_evaluated(self):
+        path = core.ROOT / "STATE/LINEAGE/OCCURRENCES/PRESENCE-LIMITED.json"
+        original_load = core.load
+        for change, expected in (
+            (lambda record: record.pop("uncertainty"), core.ValidationError),
+            (lambda record: record["claimed_effects"].append("AUTHORITY"), ValueError),
+            (lambda record: record["evidence"].update(effect_ceiling="EXACT_OCCURRENCE_ONLY"), ValueError),
+        ):
+            def changed_load(selected):
+                record = original_load(selected)
+                if selected == path:
+                    change(record)
+                return record
+            with self.subTest(change=change), patch.object(core, "load", side_effect=changed_load):
+                with self.assertRaises(expected):
+                    self.core.check_records()
 
     def test_unknown_and_missing_core_properties_rejected(self):
         suite = core.load(core.ROOT / "STATE/LINEAGE/VECTORS/COMPOSITION.json")
