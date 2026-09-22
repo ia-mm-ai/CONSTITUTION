@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PRESENCE — POINT</title>
+  <style>
+    :root { color-scheme: light dark; font-family: system-ui, sans-serif; }
+    body { max-width: 70rem; margin: auto; padding: 2rem; line-height: 1.6; }
+    h1 { letter-spacing: .12em; }
+    code, a { overflow-wrap: anywhere; }
+    li { margin-block: .7rem; }
+    small { display: block; }
+    #status { border-inline-start: .25rem solid currentColor; padding-inline-start: 1rem; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>PRESENCE</h1>
+    <p>The POINT's human entrance to one portable edition.</p>
+  </header>
+  <main>
+    <p id="status" role="status">Loading the generated edition inventory…</p>
+    <noscript>JavaScript is needed to display the inventory here; the same <a href="index.json">index.json</a> remains directly readable.</noscript>
+    <section aria-labelledby="edition-heading">
+      <h2 id="edition-heading">Edition</h2>
+      <p id="scope"></p>
+      <p>Revision: <code id="revision">not yet read</code></p>
+      <p id="ceiling">Exposure does not establish adoption, Authority, or present capability.</p>
+      <p><a href="index.json">Machine inventory</a> · <a href="manifest.json">Exact-byte manifest</a></p>
+    </section>
+    <section aria-labelledby="material-heading">
+      <h2 id="material-heading">Selected material</h2>
+      <p>The human Constitution governs meaning; the machine form supplies bound references.
+        STATE contains representation contracts, not a Body's current State.
+        Vectors are normative examples, not actual events.</p>
+      <ul id="resources"></ul>
+    </section>
+    <section aria-labelledby="operations-heading">
+      <h2 id="operations-heading">Bounded interaction</h2>
+      <p>The local interface offers the contracts below. A static host offers reading
+        only unless these handlers are explicitly deployed. Export and recovery remain local.</p>
+      <ul id="operations"></ul>
+    </section>
+  </main>
+  <script>
+    "use strict";
+    async function showEdition() {
+      const status = document.getElementById("status");
+      try {
+        const response = await fetch("index.json", {cache: "no-store"});
+        if (!response.ok) throw new Error("Inventory unavailable");
+        const index = await response.json();
+        if (index.format !== "presence.index.v1") throw new Error("Unsupported inventory");
+        document.getElementById("scope").textContent = index.point.scope;
+        document.getElementById("revision").textContent = index.revision;
+        document.getElementById("ceiling").textContent = index.point.effect_ceiling;
+        for (const item of index.resources) {
+          if (!/^(SOURCE|STATE)\//.test(item.path) ||
+              item.path.split("/").some(part => !part || part === "." || part === "..")) {
+            throw new Error("Unsafe resource path");
+          }
+          const row = document.createElement("li");
+          const link = document.createElement("a");
+          link.href = item.path.split("/").map(encodeURIComponent).join("/");
+          link.textContent = item.path;
+          const detail = document.createElement("small");
+          detail.textContent = `${item.ref} · ${item.byte_length} bytes · SHA-256 ${item.sha256}`;
+          row.append(link, detail);
+          document.getElementById("resources").append(row);
+        }
+        for (const operation of index.operations) {
+          const row = document.createElement("li");
+          row.textContent = `${operation.method} ${operation.route} — ${operation.scope}`;
+          document.getElementById("operations").append(row);
+        }
+        status.textContent = `Edition verification: ${index.verification.status}. ` +
+          `Core conformance: ${index.verification.conformance.status}. ` +
+          "This page reads the machine inventory; displaying it does not independently authenticate the manifest.";
+      } catch (error) {
+        document.getElementById("resources").replaceChildren();
+        document.getElementById("operations").replaceChildren();
+        status.textContent = "No usable generated edition inventory. Export an explicitly selected revision and serve that edition; this source template is not a published POINT.";
+      }
+    }
+    showEdition();
+  </script>
+</body>
+</html>
