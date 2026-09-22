@@ -7,21 +7,26 @@
     "accepted_transitions": 29,
     "acceptance": "REAL_VM_BUILD_VERIFY_ACCEPT_UNDER_LOCAL_TEST_CONTROLLER",
     "vm_database_reloads": 2,
-    "validator_quorum": "NOT_RUN"
+    "validator_quorum": "NOT_APPLICABLE_TO_LOCAL_CONTROLLER"
+  },
+  "current_network_observation": {
+    "command": "bash integration/network.sh /tmp/presence-overlay-node/avalanchego /tmp/presence-build/presence-avalanche-vm /tmp/presence-build/presence-avalanche-rehearsal /tmp/current-network-result.json",
+    "result": "PASSED_AT_DECLARED_LOCAL_SCOPE",
+    "evidence": "../qualification/THREE_VALIDATOR_QUALIFICATION_001.json",
+    "avalanchego_profile": "v1.15.0+PRESENCE_AVALANCHE_SECURITY_OVERLAY_001",
+    "validator_count": 3,
+    "accepted_transitions": 18,
+    "validator_bounce_and_rejoin": "PASSED_WITH_EXACT_STATE_AND_RECEIPT_EQUALITY",
+    "full_network_process_restart": "PASSED_WITH_EXACT_STATE_AND_RECEIPT_EQUALITY"
   },
   "unresolved": [
     {
-      "boundary": "COMPLETE_LIFECYCLE_ON_THREE_VALIDATOR_SECURITY_OVERLAY_NETWORK",
+      "boundary": "SECURITY_OVERLAY_GOVULNCHECK",
       "status": "UNRESOLVED",
-      "required": "BOUND through INCORPORATE_ADDRESSED_RESIDUE, one-validator bounce/rejoin, and full-network restart with exact state and receipt equality"
-    },
-    {
-      "boundary": "SECURITY_OVERLAY_NETWORK_OBSERVATION",
-      "status": "UNRESOLVED",
-      "required": "Run the current VM and contract against AvalancheGo v1.15.0 plus PRESENCE_AVALANCHE_SECURITY_OVERLAY_001"
+      "required": "Run the declared govulncheck v1.7.0 qualification scanner over the final security-overlay source tree; no zero-vulnerability claim is made"
     }
   ],
   "historical_network_evidence": "../records/HISTORICAL_PR17_NETWORK_OBSERVATION_001.json",
   "historical_evidence_current_qualification_effect": "NONE",
-  "effect": "LOCAL_IMPLEMENTATION_TEST_EVIDENCE_ONLY_NO_RELEASE_DEPLOYMENT_OR_CONSTITUTIONAL_EFFECT"
+  "effect": "LOCAL_DISPOSABLE_NETWORK_AND_IMPLEMENTATION_TEST_EVIDENCE_ONLY_NO_RELEASE_DEPLOYMENT_OR_CONSTITUTIONAL_EFFECT"
 }

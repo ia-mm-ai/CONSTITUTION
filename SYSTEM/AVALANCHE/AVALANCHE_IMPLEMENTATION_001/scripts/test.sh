@@ -5,6 +5,7 @@ root="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 repository="$(cd "${root}/../../.." && pwd)"
 
 python3 "${root}/scripts/verify-binding.py"
+python3 "${root}/scripts/verify-coherence.py"
 python3 -m unittest discover -s "${root}/scripts" -p 'test_*.py'
 python3 "${repository}/SYSTEM/verify.py" --revision 5e09d1fbe3c1008937d95497fcc162a6ebd4190d
 python3 -m unittest discover -s "${repository}/SYSTEM" -p 'test_*.py'

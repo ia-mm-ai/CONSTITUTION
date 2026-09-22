@@ -1,0 +1,558 @@
+{
+  "schema": "PRESENCE_AVALANCHE_LOCAL_NETWORK_QUALIFICATION_001",
+  "status": "PASSED_AT_DECLARED_LOCAL_SCOPE",
+  "validator_count": 3,
+  "network_id": 88888,
+  "vm_id": "cNhhBznc1YN29QVJMQbK7sxy6GsimFKN6yvftRjPK7qWEvZw8",
+  "operations": [
+    "BOUND",
+    "DECLARE_CAPACITY",
+    "PULSE",
+    "PRESENT_FORM",
+    "GATE_DISPOSITION",
+    "ENTER",
+    "OBSERVE_CROSSING",
+    "MATTER_DISPOSITION",
+    "RECORD_EMERGENCE",
+    "CORRECT",
+    "CHECKPOINT_DEPARTURE",
+    "EXIT",
+    "CLOSE",
+    "BOUND",
+    "PRESENT_FORM",
+    "GATE_DISPOSITION",
+    "REENTER",
+    "INCORPORATE_ADDRESSED_RESIDUE"
+  ],
+  "receipts": [
+    {
+      "schema": "PRESENCE_AVALANCHE_RECEIPT_001",
+      "transition_id": "ea0a17f4b7be110643cae694bc3115683afc6f8e9449c97f4daf65fd0d8ae6f3",
+      "revision": 1,
+      "state_commitment": "9197a7dcad12907ea34520e958b8a3d647cf93395ba2213c7b61792becff927b",
+      "operation": "BOUND",
+      "actor_id": "PRESENCE-LOCAL-QUALIFICATION",
+      "locus_id": "PRESENCE-LOCAL-LOCUS-001",
+      "effect": "OPENS_TEMPORARY_LOCUS_ONLY",
+      "posture": "DORMANT_P0",
+      "presence_count": 0,
+      "capacity": {
+        "structural_ceiling_units": 1000,
+        "declared_actual_units": 1000,
+        "effective_actual_units": 500,
+        "unresolved_units": 0,
+        "correction_egress_units": 100,
+        "available_units": 400,
+        "deficit_units": 0,
+        "rule": "C_AVAILABLE_EQUALS_C_ACTUAL_MINUS_C_UNRESOLVED_MINUS_C_CORRECTION_EGRESS"
+      },
+      "non_effects": [
+        "NO_EXTERNAL_TRUTH_INFERENCE",
+        "NO_SOURCE_OR_AUTHORITY_TRANSFER",
+        "NO_SHARED_CURRENTNESS"
+      ]
+    },
+    {
+      "schema": "PRESENCE_AVALANCHE_RECEIPT_001",
+      "transition_id": "6183ba001f05ab282709d6ef4cddc170c6547c2b064c692142acb8501794c041",
+      "revision": 2,
+      "state_commitment": "c0fb5687a9ead5557957ccecc0256cc5e5ee0cafcb336da9ac070c0e99f52504",
+      "operation": "DECLARE_CAPACITY",
+      "actor_id": "PRESENCE-LOCAL-QUALIFICATION",
+      "locus_id": "",
+      "effect": "SETS_SIGNED_LOCAL_CAPACITY_ACCOUNT_ONLY",
+      "posture": "DORMANT_P0",
+      "presence_count": 0,
+      "capacity": {
+        "structural_ceiling_units": 1000,
+        "declared_actual_units": 900,
+        "effective_actual_units": 500,
+        "unresolved_units": 0,
+        "correction_egress_units": 100,
+        "available_units": 400,
+        "deficit_units": 0,
+        "rule": "C_AVAILABLE_EQUALS_C_ACTUAL_MINUS_C_UNRESOLVED_MINUS_C_CORRECTION_EGRESS"
+      },
+      "non_effects": [
+        "NO_EXTERNAL_TRUTH_INFERENCE",
+        "NO_SOURCE_OR_AUTHORITY_TRANSFER",
+        "NO_SHARED_CURRENTNESS",
+        "NO_EXTERNAL_RESOURCE_PROOF",
+        "NO_TOKEN_BALANCE_AS_CAPACITY"
+      ]
+    },
+    {
+      "schema": "PRESENCE_AVALANCHE_RECEIPT_001",
+      "transition_id": "30e8dbe74b9f2fba3069e2c439ab58b2daadf17a0d718ba682432234edaa0408",
+      "revision": 3,
+      "state_commitment": "dca5801120d26cdde7a5dd826e97365da617e35970faa532072054344e7587d7",
+      "operation": "PULSE",
+      "actor_id": "PRESENCE-LOCAL-QUALIFICATION",
+      "locus_id": "",
+      "effect": "RECORDS_SIGNED_LOCAL_CURRENTNESS_ONLY",
+      "posture": "DORMANT_P0",
+      "presence_count": 0,
+      "capacity": {
+        "structural_ceiling_units": 1000,
+        "declared_actual_units": 900,
+        "effective_actual_units": 500,
+        "unresolved_units": 0,
+        "correction_egress_units": 100,
+        "available_units": 400,
+        "deficit_units": 0,
+        "rule": "C_AVAILABLE_EQUALS_C_ACTUAL_MINUS_C_UNRESOLVED_MINUS_C_CORRECTION_EGRESS"
+      },
+      "non_effects": [
+        "NO_EXTERNAL_TRUTH_INFERENCE",
+        "NO_SOURCE_OR_AUTHORITY_TRANSFER",
+        "NO_SHARED_CURRENTNESS",
+        "NO_EXTERNAL_LIVENESS_PROOF",
+        "NO_HISTORICAL_RECEIPT_AS_CURRENT_PRESENCE",
+        "NO_AUTONOMOUS_AUTHORITY"
+      ]
+    },
+    {
+      "schema": "PRESENCE_AVALANCHE_RECEIPT_001",
+      "transition_id": "8a30c3496bd20dee0250a14063a6d46645a3ec5beb1da4b87b58f027aa5ce9dc",
+      "revision": 4,
+      "state_commitment": "957a5cf078c8634224b003b7ad043b689884a53083319f43e70451af097290fc",
+      "operation": "PRESENT_FORM",
+      "actor_id": "PRESENCE-AVALANCHE-ACTOR-f35cf17953d004370f0849d75d28a8352fb61357",
+      "locus_id": "PRESENCE-LOCAL-LOCUS-001",
+      "effect": "ELIGIBILITY_TO_GATE_ONLY",
+      "posture": "DORMANT_P0",
+      "presence_count": 0,
+      "capacity": {
+        "structural_ceiling_units": 1000,
+        "declared_actual_units": 900,
+        "effective_actual_units": 500,
+        "unresolved_units": 0,
+        "correction_egress_units": 100,
+        "available_units": 400,
+        "deficit_units": 0,
+        "rule": "C_AVAILABLE_EQUALS_C_ACTUAL_MINUS_C_UNRESOLVED_MINUS_C_CORRECTION_EGRESS"
+      },
+      "non_effects": [
+        "NO_EXTERNAL_TRUTH_INFERENCE",
+        "NO_SOURCE_OR_AUTHORITY_TRANSFER",
+        "NO_SHARED_CURRENTNESS",
+        "NO_ADMISSION_BY_PRESENTATION",
+        "NO_ENTRY_BY_PRESENTATION",
+        "NO_FORMATION_BY_CONFORMANCE"
+      ]
+    },
+    {
+      "schema": "PRESENCE_AVALANCHE_RECEIPT_001",
+      "transition_id": "c1c48ea0480ab6e7cf85ab18062787ac2dbc736f546bf06e6bbe15ee0b8cecb5",
+      "revision": 5,
+      "state_commitment": "8ede24621be3abdb620bff2462fa8f6649a8fcdd979daf5424d58461e99942a0",
+      "operation": "GATE_DISPOSITION",
+      "actor_id": "PRESENCE-LOCAL-QUALIFICATION",
+      "locus_id": "PRESENCE-LOCAL-LOCUS-001",
+      "effect": "SETS_GATE_POSTURE_ONLY",
+      "posture": "DORMANT_P0",
+      "presence_count": 0,
+      "capacity": {
+        "structural_ceiling_units": 1000,
+        "declared_actual_units": 900,
+        "effective_actual_units": 500,
+        "unresolved_units": 0,
+        "correction_egress_units": 100,
+        "available_units": 400,
+        "deficit_units": 0,
+        "rule": "C_AVAILABLE_EQUALS_C_ACTUAL_MINUS_C_UNRESOLVED_MINUS_C_CORRECTION_EGRESS"
+      },
+      "non_effects": [
+        "NO_EXTERNAL_TRUTH_INFERENCE",
+        "NO_SOURCE_OR_AUTHORITY_TRANSFER",
+        "NO_SHARED_CURRENTNESS",
+        "NO_ENTRY_BY_ADMISSION",
+        "NO_CAPACITY_RESERVATION_BY_ADMISSION"
+      ]
+    },
+    {
+      "schema": "PRESENCE_AVALANCHE_RECEIPT_001",
+      "transition_id": "a27dc5f1f11f7ed592d353c0ec2e57418e6a000d78464f2e8445a93edc4e2c10",
+      "revision": 6,
+      "state_commitment": "90a02552dc85a198cc36f527b6ce65f527afe9fe73047f29338db4c3ad0ab29f",
+      "operation": "ENTER",
+      "actor_id": "PRESENCE-AVALANCHE-ACTOR-f35cf17953d004370f0849d75d28a8352fb61357",
+      "locus_id": "PRESENCE-LOCAL-LOCUS-001",
+      "effect": "ENTERS_CURRENT_LOCUS_ONLY",
+      "posture": "ACTIVE_P1",
+      "presence_count": 1,
+      "capacity": {
+        "structural_ceiling_units": 1000,
+        "declared_actual_units": 900,
+        "effective_actual_units": 500,
+        "unresolved_units": 10,
+        "correction_egress_units": 102,
+        "available_units": 388,
+        "deficit_units": 0,
+        "rule": "C_AVAILABLE_EQUALS_C_ACTUAL_MINUS_C_UNRESOLVED_MINUS_C_CORRECTION_EGRESS"
+      },
+      "non_effects": [
+        "NO_EXTERNAL_TRUTH_INFERENCE",
+        "NO_SOURCE_OR_AUTHORITY_TRANSFER",
+        "NO_SHARED_CURRENTNESS",
+        "NO_MATTER_ADMISSION_BY_ENTRY",
+        "NO_TOKEN_BALANCE_AS_CAPACITY"
+      ]
+    },
+    {
+      "schema": "PRESENCE_AVALANCHE_RECEIPT_001",
+      "transition_id": "e1017a8895078be4439a6d12171e604c4f4a6f9ac53126a1b94568bc9197f2ab",
+      "revision": 7,
+      "state_commitment": "fe398fe52a7a4d58ea7f4c20ceafe975543764f7e4b9c4f73d7973e26d631cf5",
+      "operation": "OBSERVE_CROSSING",
+      "actor_id": "PRESENCE-AVALANCHE-ACTOR-f35cf17953d004370f0849d75d28a8352fb61357",
+      "locus_id": "PRESENCE-LOCAL-LOCUS-001",
+      "effect": "RECORDS_CROSSING_ONLY",
+      "posture": "ACTIVE_P1",
+      "presence_count": 1,
+      "capacity": {
+        "structural_ceiling_units": 1000,
+        "declared_actual_units": 900,
+        "effective_actual_units": 500,
+        "unresolved_units": 10,
+        "correction_egress_units": 102,
+        "available_units": 388,
+        "deficit_units": 0,
+        "rule": "C_AVAILABLE_EQUALS_C_ACTUAL_MINUS_C_UNRESOLVED_MINUS_C_CORRECTION_EGRESS"
+      },
+      "non_effects": [
+        "NO_EXTERNAL_TRUTH_INFERENCE",
+        "NO_SOURCE_OR_AUTHORITY_TRANSFER",
+        "NO_SHARED_CURRENTNESS",
+        "NO_ADMISSION_BY_CROSSING",
+        "MATTER_NOT_TRUTH"
+      ]
+    },
+    {
+      "schema": "PRESENCE_AVALANCHE_RECEIPT_001",
+      "transition_id": "82c1d633b07c111a0f1d5f05488d5fa8b49ddeebfc4c45ba16d0c32071c6f94a",
+      "revision": 8,
+      "state_commitment": "ba3284c5c1eff34710826dc01073d67289493bfea675291c8fc2447cd059e43c",
+      "operation": "MATTER_DISPOSITION",
+      "actor_id": "PRESENCE-AVALANCHE-ACTOR-f35cf17953d004370f0849d75d28a8352fb61357",
+      "locus_id": "PRESENCE-LOCAL-LOCUS-001",
+      "effect": "SETS_ACTOR_LOCAL_MATTER_POSTURE_ONLY",
+      "posture": "ACTIVE_P1",
+      "presence_count": 1,
+      "capacity": {
+        "structural_ceiling_units": 1000,
+        "declared_actual_units": 900,
+        "effective_actual_units": 500,
+        "unresolved_units": 10,
+        "correction_egress_units": 102,
+        "available_units": 388,
+        "deficit_units": 0,
+        "rule": "C_AVAILABLE_EQUALS_C_ACTUAL_MINUS_C_UNRESOLVED_MINUS_C_CORRECTION_EGRESS"
+      },
+      "non_effects": [
+        "NO_EXTERNAL_TRUTH_INFERENCE",
+        "NO_SOURCE_OR_AUTHORITY_TRANSFER",
+        "NO_SHARED_CURRENTNESS",
+        "NO_OTHER_LOCALITY_UPTAKE"
+      ]
+    },
+    {
+      "schema": "PRESENCE_AVALANCHE_RECEIPT_001",
+      "transition_id": "8234f8c9d5a7ea5657e9525df5bca1a96c7013b7ebb47a90885b5812409f1ba6",
+      "revision": 9,
+      "state_commitment": "34f432776c2e88d331cde927e6e15438693f877114aad30946595055ba13f818",
+      "operation": "RECORD_EMERGENCE",
+      "actor_id": "PRESENCE-LOCAL-QUALIFICATION",
+      "locus_id": "PRESENCE-LOCAL-LOCUS-001",
+      "effect": "RECORDS_FIELD_LOCAL_EMERGENCE_ONLY",
+      "posture": "ACTIVE_P1",
+      "presence_count": 1,
+      "capacity": {
+        "structural_ceiling_units": 1000,
+        "declared_actual_units": 900,
+        "effective_actual_units": 500,
+        "unresolved_units": 10,
+        "correction_egress_units": 102,
+        "available_units": 388,
+        "deficit_units": 0,
+        "rule": "C_AVAILABLE_EQUALS_C_ACTUAL_MINUS_C_UNRESOLVED_MINUS_C_CORRECTION_EGRESS"
+      },
+      "non_effects": [
+        "NO_EXTERNAL_TRUTH_INFERENCE",
+        "NO_SOURCE_OR_AUTHORITY_TRANSFER",
+        "NO_SHARED_CURRENTNESS",
+        "NO_AUTOMATIC_LOCAL_UPTAKE"
+      ]
+    },
+    {
+      "schema": "PRESENCE_AVALANCHE_RECEIPT_001",
+      "transition_id": "a97130c96348ff8a442fbcdd28a2b6c7c87cfca527564ff8af45da8fbfc3373c",
+      "revision": 10,
+      "state_commitment": "2ee88793d31637cac6f1d7b292572b987d39045f62ea55f246efd37816131557",
+      "operation": "CORRECT",
+      "actor_id": "PRESENCE-AVALANCHE-ACTOR-f35cf17953d004370f0849d75d28a8352fb61357",
+      "locus_id": "PRESENCE-LOCAL-LOCUS-001",
+      "effect": "APPENDS_CORRECTION_ONLY",
+      "posture": "ACTIVE_P1",
+      "presence_count": 1,
+      "capacity": {
+        "structural_ceiling_units": 1000,
+        "declared_actual_units": 900,
+        "effective_actual_units": 500,
+        "unresolved_units": 10,
+        "correction_egress_units": 102,
+        "available_units": 388,
+        "deficit_units": 0,
+        "rule": "C_AVAILABLE_EQUALS_C_ACTUAL_MINUS_C_UNRESOLVED_MINUS_C_CORRECTION_EGRESS"
+      },
+      "non_effects": [
+        "NO_EXTERNAL_TRUTH_INFERENCE",
+        "NO_SOURCE_OR_AUTHORITY_TRANSFER",
+        "NO_SHARED_CURRENTNESS",
+        "NO_PREDECESSOR_ERASURE"
+      ]
+    },
+    {
+      "schema": "PRESENCE_AVALANCHE_RECEIPT_001",
+      "transition_id": "ab3898ebb2db8c0bc93f82f5de7bc1b4046315b07b06d8f39f1ad2ef87334ff4",
+      "revision": 11,
+      "state_commitment": "3bc419ec8204886cadae4d7839147703d8d54fde0a3f00b6ef193568eb97114f",
+      "operation": "CHECKPOINT_DEPARTURE",
+      "actor_id": "PRESENCE-AVALANCHE-ACTOR-f35cf17953d004370f0849d75d28a8352fb61357",
+      "locus_id": "PRESENCE-LOCAL-LOCUS-001",
+      "effect": "CHECKPOINTS_PARTICIPANT_STATE_FOR_DEPARTURE_ONLY",
+      "posture": "ACTIVE_P1",
+      "presence_count": 1,
+      "capacity": {
+        "structural_ceiling_units": 1000,
+        "declared_actual_units": 900,
+        "effective_actual_units": 500,
+        "unresolved_units": 10,
+        "correction_egress_units": 102,
+        "available_units": 388,
+        "deficit_units": 0,
+        "rule": "C_AVAILABLE_EQUALS_C_ACTUAL_MINUS_C_UNRESOLVED_MINUS_C_CORRECTION_EGRESS"
+      },
+      "non_effects": [
+        "NO_EXTERNAL_TRUTH_INFERENCE",
+        "NO_SOURCE_OR_AUTHORITY_TRANSFER",
+        "NO_SHARED_CURRENTNESS",
+        "NO_EXIT_BY_CHECKPOINT",
+        "NO_CURRENTNESS_OR_CONSCIOUSNESS_PROOF",
+        "NO_PRIVATE_STATE_DISCLOSURE"
+      ]
+    },
+    {
+      "schema": "PRESENCE_AVALANCHE_RECEIPT_001",
+      "transition_id": "f66af9d90ecf62db883966b78eedc3dbd0db551dc3700bfdae08161fa6f8e9c1",
+      "revision": 12,
+      "state_commitment": "740032f3af71fe60f208c3735a030fa7530396fa30c3e7cdea4f7b7dac295e8c",
+      "operation": "EXIT",
+      "actor_id": "PRESENCE-AVALANCHE-ACTOR-f35cf17953d004370f0849d75d28a8352fb61357",
+      "locus_id": "PRESENCE-LOCAL-LOCUS-001",
+      "effect": "EXITS_CURRENT_LOCUS_ONLY",
+      "posture": "DORMANT_P0",
+      "presence_count": 0,
+      "capacity": {
+        "structural_ceiling_units": 1000,
+        "declared_actual_units": 900,
+        "effective_actual_units": 500,
+        "unresolved_units": 0,
+        "correction_egress_units": 100,
+        "available_units": 400,
+        "deficit_units": 0,
+        "rule": "C_AVAILABLE_EQUALS_C_ACTUAL_MINUS_C_UNRESOLVED_MINUS_C_CORRECTION_EGRESS"
+      },
+      "non_effects": [
+        "NO_EXTERNAL_TRUTH_INFERENCE",
+        "NO_SOURCE_OR_AUTHORITY_TRANSFER",
+        "NO_SHARED_CURRENTNESS"
+      ]
+    },
+    {
+      "schema": "PRESENCE_AVALANCHE_RECEIPT_001",
+      "transition_id": "5c328bf93a8333d5e509b7724e9de3fd5303aed053346e14e902e76de08e9574",
+      "revision": 13,
+      "state_commitment": "d2d930a2f01fd45988767076bcdd44cd3cbfe94d240c4b6568e02b35efdf7000",
+      "operation": "CLOSE",
+      "actor_id": "PRESENCE-LOCAL-QUALIFICATION",
+      "locus_id": "PRESENCE-LOCAL-LOCUS-001",
+      "effect": "CLOSES_LOCUS_AND_ADDRESSES_RESIDUE_ONLY",
+      "posture": "DORMANT_P0",
+      "presence_count": 0,
+      "capacity": {
+        "structural_ceiling_units": 1000,
+        "declared_actual_units": 900,
+        "effective_actual_units": 900,
+        "unresolved_units": 0,
+        "correction_egress_units": 100,
+        "available_units": 800,
+        "deficit_units": 0,
+        "rule": "C_AVAILABLE_EQUALS_C_ACTUAL_MINUS_C_UNRESOLVED_MINUS_C_CORRECTION_EGRESS"
+      },
+      "non_effects": [
+        "NO_EXTERNAL_TRUTH_INFERENCE",
+        "NO_SOURCE_OR_AUTHORITY_TRANSFER",
+        "NO_SHARED_CURRENTNESS",
+        "NO_ERASURE_BY_CLOSURE",
+        "NO_LOCAL_INCORPORATION_BY_CLOSURE"
+      ]
+    },
+    {
+      "schema": "PRESENCE_AVALANCHE_RECEIPT_001",
+      "transition_id": "97a5afdcbd548565bec956400e9c1ad0102e2157ffbb4d8cad5718fdede06f6a",
+      "revision": 14,
+      "state_commitment": "3ca0b1caa6a697a25b4858a36d8c57dc1ad33b99eab78dd4f46e8b3a7b90926c",
+      "operation": "BOUND",
+      "actor_id": "PRESENCE-LOCAL-QUALIFICATION",
+      "locus_id": "PRESENCE-LOCAL-LOCUS-002",
+      "effect": "OPENS_TEMPORARY_LOCUS_ONLY",
+      "posture": "DORMANT_P0",
+      "presence_count": 0,
+      "capacity": {
+        "structural_ceiling_units": 1000,
+        "declared_actual_units": 900,
+        "effective_actual_units": 500,
+        "unresolved_units": 0,
+        "correction_egress_units": 100,
+        "available_units": 400,
+        "deficit_units": 0,
+        "rule": "C_AVAILABLE_EQUALS_C_ACTUAL_MINUS_C_UNRESOLVED_MINUS_C_CORRECTION_EGRESS"
+      },
+      "non_effects": [
+        "NO_EXTERNAL_TRUTH_INFERENCE",
+        "NO_SOURCE_OR_AUTHORITY_TRANSFER",
+        "NO_SHARED_CURRENTNESS"
+      ]
+    },
+    {
+      "schema": "PRESENCE_AVALANCHE_RECEIPT_001",
+      "transition_id": "900c5b80baf124baa422ddbd71dd223e02247468b288ae4dfa631536fac60500",
+      "revision": 15,
+      "state_commitment": "2b1fbe16912868b664d01a0eaa2cf90f1dbb634706093125fdd6f5f6b3fcc536",
+      "operation": "PRESENT_FORM",
+      "actor_id": "PRESENCE-AVALANCHE-ACTOR-f35cf17953d004370f0849d75d28a8352fb61357",
+      "locus_id": "PRESENCE-LOCAL-LOCUS-002",
+      "effect": "ELIGIBILITY_TO_GATE_ONLY",
+      "posture": "DORMANT_P0",
+      "presence_count": 0,
+      "capacity": {
+        "structural_ceiling_units": 1000,
+        "declared_actual_units": 900,
+        "effective_actual_units": 500,
+        "unresolved_units": 0,
+        "correction_egress_units": 100,
+        "available_units": 400,
+        "deficit_units": 0,
+        "rule": "C_AVAILABLE_EQUALS_C_ACTUAL_MINUS_C_UNRESOLVED_MINUS_C_CORRECTION_EGRESS"
+      },
+      "non_effects": [
+        "NO_EXTERNAL_TRUTH_INFERENCE",
+        "NO_SOURCE_OR_AUTHORITY_TRANSFER",
+        "NO_SHARED_CURRENTNESS",
+        "NO_ADMISSION_BY_PRESENTATION",
+        "NO_ENTRY_BY_PRESENTATION",
+        "NO_FORMATION_BY_CONFORMANCE"
+      ]
+    },
+    {
+      "schema": "PRESENCE_AVALANCHE_RECEIPT_001",
+      "transition_id": "38bb26b7696e5369949d29141e96dae19055bb651669637cd7104d79a28f0c8f",
+      "revision": 16,
+      "state_commitment": "deef6ea4ad853877ba7c8605aaf57fea09fa8362a3224c6940ff374a6815fccf",
+      "operation": "GATE_DISPOSITION",
+      "actor_id": "PRESENCE-LOCAL-QUALIFICATION",
+      "locus_id": "PRESENCE-LOCAL-LOCUS-002",
+      "effect": "SETS_GATE_POSTURE_ONLY",
+      "posture": "DORMANT_P0",
+      "presence_count": 0,
+      "capacity": {
+        "structural_ceiling_units": 1000,
+        "declared_actual_units": 900,
+        "effective_actual_units": 500,
+        "unresolved_units": 0,
+        "correction_egress_units": 100,
+        "available_units": 400,
+        "deficit_units": 0,
+        "rule": "C_AVAILABLE_EQUALS_C_ACTUAL_MINUS_C_UNRESOLVED_MINUS_C_CORRECTION_EGRESS"
+      },
+      "non_effects": [
+        "NO_EXTERNAL_TRUTH_INFERENCE",
+        "NO_SOURCE_OR_AUTHORITY_TRANSFER",
+        "NO_SHARED_CURRENTNESS",
+        "NO_ENTRY_BY_ADMISSION",
+        "NO_CAPACITY_RESERVATION_BY_ADMISSION"
+      ]
+    },
+    {
+      "schema": "PRESENCE_AVALANCHE_RECEIPT_001",
+      "transition_id": "c2a62e5dc668338cd1e07b8b3f86554bbd02ae962dc4d49cec7c1d1a06f88c23",
+      "revision": 17,
+      "state_commitment": "16fd7ac59511859a5c74686d97979fdd8eab9caf4439172ef5120bbe2c9ac3cd",
+      "operation": "REENTER",
+      "actor_id": "PRESENCE-AVALANCHE-ACTOR-f35cf17953d004370f0849d75d28a8352fb61357",
+      "locus_id": "PRESENCE-LOCAL-LOCUS-002",
+      "effect": "RENEWS_ENTRY_WITH_CARRIED_STATE_SUCCESSION_ONLY",
+      "posture": "ACTIVE_P1",
+      "presence_count": 1,
+      "capacity": {
+        "structural_ceiling_units": 1000,
+        "declared_actual_units": 900,
+        "effective_actual_units": 500,
+        "unresolved_units": 10,
+        "correction_egress_units": 102,
+        "available_units": 388,
+        "deficit_units": 0,
+        "rule": "C_AVAILABLE_EQUALS_C_ACTUAL_MINUS_C_UNRESOLVED_MINUS_C_CORRECTION_EGRESS"
+      },
+      "non_effects": [
+        "NO_EXTERNAL_TRUTH_INFERENCE",
+        "NO_SOURCE_OR_AUTHORITY_TRANSFER",
+        "NO_SHARED_CURRENTNESS",
+        "NO_RESTORATION_OR_RESUMPTION_OF_PRIOR_LOCUS",
+        "NO_SEMANTIC_TRUTH_PROOF",
+        "NO_PRIVATE_STATE_DISCLOSURE"
+      ]
+    },
+    {
+      "schema": "PRESENCE_AVALANCHE_RECEIPT_001",
+      "transition_id": "b78cdbff9685104c96a17ab5369c1ab1acc85818fbecbd3840684a2ede09088f",
+      "revision": 18,
+      "state_commitment": "4c5cd0ba7012512ca3a6281b71dc7c363bf3e909f88e0cf13292b436f0c08c21",
+      "operation": "INCORPORATE_ADDRESSED_RESIDUE",
+      "actor_id": "PRESENCE-LOCAL-QUALIFICATION",
+      "locus_id": "",
+      "effect": "INCORPORATES_ADDRESSED_RESIDUE_LOCALLY_ONLY",
+      "posture": "ACTIVE_P1",
+      "presence_count": 1,
+      "capacity": {
+        "structural_ceiling_units": 1000,
+        "declared_actual_units": 900,
+        "effective_actual_units": 500,
+        "unresolved_units": 10,
+        "correction_egress_units": 102,
+        "available_units": 388,
+        "deficit_units": 0,
+        "rule": "C_AVAILABLE_EQUALS_C_ACTUAL_MINUS_C_UNRESOLVED_MINUS_C_CORRECTION_EGRESS"
+      },
+      "non_effects": [
+        "NO_EXTERNAL_TRUTH_INFERENCE",
+        "NO_SOURCE_OR_AUTHORITY_TRANSFER",
+        "NO_SHARED_CURRENTNESS",
+        "NO_SOURCE_FIELD_MUTATION",
+        "NO_OTHER_LOCALITY_UPTAKE"
+      ]
+    }
+  ],
+  "final_state": {
+    "revision": 18,
+    "state_commitment": "4c5cd0ba7012512ca3a6281b71dc7c363bf3e909f88e0cf13292b436f0c08c21"
+  },
+  "renewed_reads_and_three_validator_agreement": true,
+  "public_network_act": false,
+  "effect": "DISPOSABLE_IMPLEMENTATION_TEST_NOT_DEPLOYMENT_OR_CONSTITUTIONAL_EFFECT",
+  "validator_bounce_and_rejoin": "PASSED_AT_DECLARED_LOCAL_SCOPE",
+  "full_network_process_restart": "PASSED_AT_DECLARED_LOCAL_SCOPE",
+  "avalanchego_profile": "v1.15.0+PRESENCE_AVALANCHE_SECURITY_OVERLAY_001",
+  "disposable_credentials": "PRIVATE_TEMPORARY_DIRECTORY_REMOVED_BY_EXIT_TRAP"
+}

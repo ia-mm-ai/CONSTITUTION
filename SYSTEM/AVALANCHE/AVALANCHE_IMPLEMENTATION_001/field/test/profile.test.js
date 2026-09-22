@@ -25,6 +25,11 @@ test("a profile cannot silently drop an effect ceiling", async () => {
   }
 });
 
+test("locality profile permits explicit addressed-residue uptake while a participant locus is unpresented", async () => {
+  const profile = validateProfile(JSON.parse(await readFile(resolve("profiles/LOCALITY_FIELD_001.json"), "utf8")));
+  assert.ok(profile.capabilities_by_phase.UNPRESENTED.includes("INCORPORATE_ADDRESSED_RESIDUE"));
+});
+
 test("FIELD contract references resolve to the shared implementation artifacts", async () => {
   const url = new URL("../contract/PRESENCE_AVALANCHE_FIELD_CONTRACT_001.json", import.meta.url);
   const contract = JSON.parse(await readFile(url, "utf8"));
