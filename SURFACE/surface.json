@@ -10,7 +10,8 @@
     "provenance": [
       "../STATE/LINEAGE/ORIGIN.json",
       "../STATE/LINEAGE/RECORDS/VM003-TO-CSC.json",
-      "../STATE/LINEAGE/RECORDS/MEDIUM-TO-DCR.json"
+      "../STATE/LINEAGE/RECORDS/MEDIUM-TO-DCR.json",
+      "../STATE/LINEAGE/IMPLEMENTATIONS/VM003-MEDIUM001.json"
     ],
     "effect_ceiling": "Derivative exposure, not a Body, adoption, Authority, a current State, or demonstrated CSC/DCR."
   },
@@ -28,6 +29,10 @@
     {"path": "../STATE/LINEAGE/ORIGIN.json", "ref": "urn:presence:surface:origin:1"},
     {"path": "../STATE/LINEAGE/RECORDS/VM003-TO-CSC.json", "ref": "urn:presence:core:derivation:vm003-to-csc:1"},
     {"path": "../STATE/LINEAGE/RECORDS/MEDIUM-TO-DCR.json", "ref": "urn:presence:core:lineage:medium-to-dcr:1"},
+    {"path": "../STATE/LINEAGE/IMPLEMENTATIONS/VM003-MEDIUM001.md", "ref": "urn:presence:surface:vm003-medium001-human:1"},
+    {"path": "../STATE/LINEAGE/IMPLEMENTATIONS/VM003-MEDIUM001.json", "ref": "urn:presence:lineage:implementation:vm003-medium001:1"},
+    {"path": "../STATE/LOCALITY_VM_003-v3.0.0-GITHUB_UPLOAD.zip", "ref": "urn:presence:surface:vm003-carrier:1"},
+    {"path": "../STATE/LOCALITY_MEDIUM_001-v2.0.0-GITHUB_UPLOAD.zip", "ref": "urn:presence:surface:medium001-carrier:1"},
     {"path": "../STATE/CONTINUITY-STATE-CAPABILITY/SCHEMAS/SUPPORTED-STATE.schema.json", "ref": "urn:presence:core:csc:supported-state:1"},
     {"path": "../STATE/CONTINUITY-STATE-CAPABILITY/SCHEMAS/TRANSITION.schema.json", "ref": "urn:presence:core:csc:transition:1"},
     {"path": "../STATE/CONTINUITY-STATE-CAPABILITY/SCHEMAS/CORRECTION.schema.json", "ref": "urn:presence:core:csc:correction:1"},

@@ -14,7 +14,7 @@ def main():
     parser.add_argument("--destination", required=True, type=Path)
     parser.add_argument("--repository", type=Path, default=ROOT)
     parser.add_argument("--allow-incomplete", action="store_true",
-                        help="Emit an explicitly incomplete preview when the core checker is absent")
+                        help="Emit an explicitly incomplete preview when the selected revision lacks SYSTEM's evaluator")
     args = parser.parse_args()
     try:
         files, report = publication(args.repository, args.revision, args.allow_incomplete)
