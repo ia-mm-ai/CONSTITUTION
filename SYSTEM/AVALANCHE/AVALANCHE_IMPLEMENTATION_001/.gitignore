@@ -8,3 +8,5 @@
 *.pem
 node_modules/
 __pycache__/
+/vm/vm
+/vm/rehearsal/rehearsal

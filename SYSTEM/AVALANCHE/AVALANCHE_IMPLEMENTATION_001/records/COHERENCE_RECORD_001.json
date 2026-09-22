@@ -1,0 +1,118 @@
+{
+  "schema": "PRESENCE_AVALANCHE_COHERENCE_RECORD_001",
+  "implementation": "AVALANCHE_IMPLEMENTATION_001",
+  "version": "1.0.0",
+  "purpose": "Materialize one coherent current form of AVALANCHE_IMPLEMENTATION_001 from three completed crossings while preserving their distinct lineage in Git and in this record.",
+  "starting_main_commit": "5e09d1fbe3c1008937d95497fcc162a6ebd4190d",
+  "read_only_inputs": {
+    "accepted_first_crossing": {
+      "pull_request": 15,
+      "commit": "5e09d1fbe3c1008937d95497fcc162a6ebd4190d",
+      "vm_id": "cQYXygFUVutQucm4s8pr8M51sRdS1UfrTbpMdEgpRYt2JvEzr"
+    },
+    "parallel_optimization_crossing_a": {
+      "pull_request": 16,
+      "commit": "0ab38005f4de88eb972dbc50faa9796f818daba8"
+    },
+    "parallel_optimization_crossing_b": {
+      "pull_request": 17,
+      "commit": "d5e6703c71cd5b261041b9ebc41fbbf69450c2b9"
+    }
+  },
+  "identity": {
+    "vm_protocol": "PRESENCE_AVALANCHE_VM_001",
+    "vm_id_derivation_input": "PRESENCE_AVALANCHE_VM_001",
+    "vm_id_derivation": "UTF-8 name bytes right-padded with zero bytes to ids.IDLen (32), converted through github.com/ava-labs/avalanchego@v1.15.0 ids.ToID",
+    "canonical_vm_id": "cNhhBznc1YN29QVJMQbK7sxy6GsimFKN6yvftRjPK7qWEvZw8",
+    "state_schema": "PRESENCE_AVALANCHE_RUNTIME_STATE_001",
+    "transition_schema": "PRESENCE_AVALANCHE_TRANSITION_001",
+    "receipt_schema": "PRESENCE_AVALANCHE_RECEIPT_001",
+    "actor_namespace": "PRESENCE-AVALANCHE-ACTOR-"
+  },
+  "predecessor_identity": {
+    "vm_id": "cQYXygFUVutQucm4s8pr8M51sRdS1UfrTbpMdEgpRYt2JvEzr",
+    "standing": "IDENTITY_OF_THE_ACCEPTED_FIRST_SOURCE_CROSSING_ONLY",
+    "record": "The first crossing is preserved and superseded at the pre-release implementation-form layer; it is not invalidated or silently rewritten. Its VM ID, receipts, state, binaries and three-validator evidence remain addressable only through Git history and this bounded lineage record.",
+    "operative_use": "NONE",
+    "state_migration_or_identity_continuity": "NOT_INFERRED",
+    "evidence_transfer": "NO_PASSED_OBSERVATION_IS_TRANSFERRED_ACROSS_THE_CHANGED_VM_ID_CONTRACT_DIGEST_STATE_SCHEMA_ACTOR_NAMESPACE_GENESIS_OR_BINARY"
+  },
+  "disposition_table": {
+    "retained_from_pr17": [
+      "vm/ + field/ sibling architecture as the sole operative topology",
+      "official cNhh… VM-ID derivation through pinned AvalancheGo v1.15.0 ids.ToID",
+      "fully namespaced runtime schemas and PRESENCE-AVALANCHE-ACTOR- namespace",
+      "exact whole-STATE byte binding (vm/protocol/binding.json)",
+      "shared contract-digest checks between Go and FIELD",
+      "host-locality/key binding",
+      "Go-compatible JSON and signature-wire encoding in FIELD",
+      "same-locus and new-locus re-entry corrections",
+      "fail-closed contract inventory checks",
+      "29-transition local coupled integration harness (integration/)",
+      "explicit qualification ceilings"
+    ],
+    "retained_from_pr16": [
+      "richer NEW_LOCUS/ACTIVE_LOCUS/BODY_LOCAL/DORMANT_BODY/TARGET_SCOPED scope-class definitions, now embedded in the single shared contract vm/protocol/operations.json",
+      "one exhaustive shared operation/effect/scope contract with declared FAIL_CLOSED unknown-operation and missing-scope rules",
+      "CORRECT bound to the exact target transition rather than incidental current activity",
+      "FIELD contract, reference-profile ceilings and non-effects (field/contract/, field/profiles/)",
+      "pre-sign, draft-time, pre-submit and accepted-state scope enforcement in FIELD",
+      "fail-closed unknown/missing/duplicate operation behavior in both runtimes",
+      "coupled FIELD-VM verification beyond DECLARE_CAPACITY"
+    ],
+    "retained_from_accepted_main": [
+      "current Source/STATE integrity machinery (bindings/, scripts/verify-bindings.py, scripts/verify-binding.py)",
+      "predecessor archive bindings for both GITHUB_UPLOAD zips",
+      "PRESENCE_AVALANCHE_SECURITY_OVERLAY_001 requirement and exact identity (compat/AVALANCHEGO_SECURITY_OVERLAY_001.json)",
+      "the earlier 18-transition lifecycle, rerun as vm/lifecycle_regression_test.go against the canonical cNhh… implementation"
+    ],
+    "reworked": [
+      "shared contract vm/protocol/operations.json extended with PR16 scope classes; digest regenerated and re-embedded",
+      "FIELD reduced to a single canonical VM identity; dual-mode expected_vm_id selection removed",
+      "scripts/test.sh and scripts/build.sh target only the vm/ tree",
+      "records/DERIVATION_RECORD.json extended with the consolidation lineage",
+      "qualification regenerated from the final coherent tree (qualification/QUALIFICATION_STATUS.json)",
+      "compat/COMPATIBILITY_001.json is the single current compatibility declaration"
+    ],
+    "historical_only": [
+      "PR15 cQYX… receipts, state, binaries and three-validator evidence (Git history at 5e09d1f)",
+      "PR16 competing contract/binding/qualification paths (Git history at 0ab3800)",
+      "PR17 dual-runtime accommodation, root-level cQYX… VM, README.txt/DELIVERY.txt/DEPLOYMENT.txt records and committed vm/vm binary (Git history at d5e6703)",
+      "PR17 three-validator cNhh… critical-path, bounce/rejoin and full-process-restart evidence (integration/historical/): recorded against the pre-consolidation contract digest and a plain v1.15.0 build; retained as bounded historical evidence, not transferred to the final tree. The three-validator run was regenerated on the final tree with the security-overlaid AvalancheGo through the complete accepted lifecycle (integration/network-result.json)"
+    ],
+    "discarded": [
+      "root-level Go VM implementation and its go.mod/go.sum, protocol/, genesis/, schemas/, profile/, rehearsal/ trees",
+      "dependencies/COMPATIBILITY_001.json (cQYX… compatibility declaration)",
+      "security-observations.json for the predecessor form",
+      "qualification/REHEARSAL_OBSERVATION_001.json (cQYX… rehearsal evidence)",
+      "dual-mode FIELD selection between predecessor candidates (ROOT_VM_ID, VM_IDENTITIES)",
+      "scripts/rehearsal-001.sh and rehearsal/run_lifecycle.py root-VM harness (scenario preserved as vm/lifecycle_regression_test.go)",
+      "Markdown qualification/derivation duplicates (DERIVATION.md, QUALIFICATION_STATUS.md) in favor of single JSON records",
+      "committed vm/vm build artifact"
+    ]
+  },
+  "structure": [
+    "README.md",
+    "vm/ — the sole Go RPCChainVM module and metabolism (with bounded vm/rehearsal/ submodule)",
+    "vm/protocol/ — the exact shared contract bytes embedded by Go and read by FIELD",
+    "vm/genesis/ — genesis schema, template and administrative-input schema",
+    "field/ — the sole locality-facing admission/capability membrane",
+    "bindings/ — Source/STATE/predecessor-archive binding record",
+    "integration/ — coupled FIELD/VM and disposable network harnesses",
+    "qualification/ — single current qualification record",
+    "records/ — derivation and coherence records",
+    "compat/ — compatibility declaration and AvalancheGo security overlay",
+    "docs/ — deployment architecture boundary",
+    "scripts/ — build, preflight, binding verification and test entry points"
+  ],
+  "non_effects": [
+    "NO_AVALANCHE_IMPLEMENTATION_002",
+    "NO_RELEASE",
+    "NO_DEPLOYMENT",
+    "NO_L1_OR_CHAIN_CREATION",
+    "NO_VALIDATOR_MANAGER",
+    "NO_AUTHORITY_FORMATION_ADOPTION_SUCCESSION_OR_PRESENCE_CLAIM",
+    "NO_TAG",
+    "NO_PUBLIC_NETWORK_MUTATION"
+  ]
+}

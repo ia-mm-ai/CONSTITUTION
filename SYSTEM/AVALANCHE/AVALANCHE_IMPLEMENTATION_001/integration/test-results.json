@@ -5,7 +5,8 @@
   "commands": [
     {
       "working_directory": "SYSTEM/AVALANCHE/AVALANCHE_IMPLEMENTATION_001",
-      "command": "GOFLAGS=-race ./integration/run.sh",
+      "environment": "COUPLED_EVIDENCE_PATH=../integration/qualification-run.json",
+      "command": "./integration/run.sh",
       "result": "PASS",
       "accepted_transitions": 29,
       "vm_database_reloads": 2,
@@ -17,7 +18,7 @@
     },
     {
       "working_directory": "SYSTEM/AVALANCHE/AVALANCHE_IMPLEMENTATION_001/vm",
-      "environment": "GOTMPDIR and TMPDIR set to project-relative integration scratch; COUPLED_EVIDENCE_PATH=../integration/qualification-run.json",
+      "environment": "GOTMPDIR and TMPDIR set to project-relative integration scratch",
       "command": "go test -race -tags=integration -run '^TestCoupledFIELDLifecycle$' -count=3 -v .",
       "result": "PASS",
       "runs": 3,
@@ -26,20 +27,21 @@
       "race_reports": 0
     },
     {
-      "working_directory": "SYSTEM/AVALANCHE/AVALANCHE_IMPLEMENTATION_001/vm",
-      "environment": "GOTMPDIR and TMPDIR set to project-relative integration scratch",
-      "command": "go test -run '^(TestHTTPDraftSubmitAndReceiptLifecycle|TestVMLifecyclePersistsAndRestarts|TestReentryCarriesStateWithoutReopeningPriorLocus)$' -count=1 .",
+      "working_directory": "SYSTEM/AVALANCHE/AVALANCHE_IMPLEMENTATION_001",
+      "command": "bash integration/network.sh <security-overlaid avalanchego> <presence-avalanche-vm> <presence-avalanche-rehearsal> <result path>",
       "result": "PASS",
-      "tests": 3
+      "validator_count": 3,
+      "accepted_transitions": 21,
+      "distinct_operations": 18,
+      "lifecycle": "BOUND -> DECLARE_CAPACITY -> PULSE -> PRESENT_FORM -> GATE_DISPOSITION -> ENTER -> OBSERVE_CROSSING -> MATTER_DISPOSITION -> RECORD_EMERGENCE -> CORRECT -> CHECKPOINT_DEPARTURE -> EXIT -> CLOSE -> BOUND -> PRESENT_FORM -> GATE_DISPOSITION -> REENTER -> CHECKPOINT_DEPARTURE -> EXIT -> CLOSE -> INCORPORATE_ADDRESSED_RESIDUE",
+      "validator_bounce_and_rejoin": "PASSED_AT_DECLARED_LOCAL_SCOPE",
+      "full_network_process_restart": "PASSED_AT_DECLARED_LOCAL_SCOPE",
+      "public_evidence": "integration/network-result.json"
     }
   ],
-  "additional_validation": {
-    "secret_scan": "PASS_NO_SECRETS_IN_INTEGRATION_SOURCE_AND_EVIDENCE",
-    "scratch_cleanup": "PASS_NO_INTEGRATION_SCRATCH_DIRECTORIES_REMAIN",
-    "parallel_code_review_and_codeql": "NOT_RUN_TOOL_REPORTED_VALIDATION_TIME_LIMIT",
-    "latest_source_recheck": "PASS_CONTRACT_STATUS_HASH_ESCAPED_PAYLOAD_SAME_OPEN_LOCUS_AND_NEW_LOCUS_REENTRY"
-  },
+  "operation_contract_sha256": "63ca502d34af7bdb4de5c11ba45680ca1714eca45f00292e1bb7c8dfddf90d83",
   "result_evidence": "integration/qualification-run.json",
   "unresolved_boundary": "integration/qualification-boundary.json",
+  "historical_evidence": "integration/historical/ retains the pre-consolidation network evidence as bounded history only",
   "effect": "LOCAL_IMPLEMENTATION_TEST_EVIDENCE_ONLY_NO_CONSTITUTIONAL_EFFECT"
 }

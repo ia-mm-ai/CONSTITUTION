@@ -115,7 +115,7 @@ class PreflightTests(unittest.TestCase):
 
     def test_administrative_schema_is_closed_and_public_only(self):
         from jsonschema import Draft202012Validator
-        schema = json.loads((ROOT / "administrative-input.schema.json").read_bytes())
+        schema = json.loads((ROOT / "vm" / "genesis" / "administrative-input.schema.json").read_bytes())
         Draft202012Validator.check_schema(schema)
         validator = Draft202012Validator(schema)
         public = {

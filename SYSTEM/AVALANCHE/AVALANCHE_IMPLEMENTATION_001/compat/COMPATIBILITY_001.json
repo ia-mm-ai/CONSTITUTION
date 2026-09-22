@@ -49,7 +49,7 @@
   },
   "scanner": {
     "inherited_go_scanner": "golang.org/x/vuln/cmd/govulncheck@v1.7.0",
-    "results": "qualification.json",
+    "results": "qualification/QUALIFICATION_STATUS.json",
     "missing_external_observation_status": "UNRESOLVED_EXTERNAL_OBSERVATION"
   },
   "wire_compatibility": {

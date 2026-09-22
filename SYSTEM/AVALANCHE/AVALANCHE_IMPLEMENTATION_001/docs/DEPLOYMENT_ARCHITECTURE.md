@@ -21,7 +21,7 @@ must not be inferred from source implementation.
 
 ## Administrative and custody boundary
 
-`schemas/PRESENCE_AVALANCHE_ADMIN_INPUT_001.schema.json` defines the non-secret
+`vm/genesis/administrative-input.schema.json` defines the non-secret
 deployment descriptor. Formation authority generation writes the private file
 with mode `0600`, refuses overwrite, and emits a separate public document.
 Production custody must be operator-controlled and outside this repository.

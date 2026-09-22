@@ -4,6 +4,7 @@
     "validator_count": 3,
     "avalanchego_version": "v1.15.0",
     "avalanchego_commit": "70bd6d063b7343fd2cd8217200aaf77b57f19f68",
+    "avalanchego_security_overlay": "PRESENCE_AVALANCHE_SECURITY_OVERLAY_001",
     "go_version": "1.25.13",
     "rpcchainvm_protocol": 46,
     "network_class": "DISPOSABLE_LOCAL_ONLY",
@@ -16,15 +17,27 @@
     "module_sum": "h1:F9RFoUT0tKguC+GYtambBL0TXafUNGJOfx/DjZtb6S0=",
     "repository_clone_performed": false
   },
+  "observed_network_run": {
+    "avalanchego_build": "scripts/build-avalanchego.sh with compat/AVALANCHEGO_SECURITY_OVERLAY_001.json applied; binary sha256 fe5fd807d4cedd68cec3061cd2fadfe8f9a797a3f4be4131cdf2cc533dda28bb",
+    "vm_binary_sha256": "953397f23955685b75aeceb8dcef18361d5e754d307b436767c0274e60e47d33",
+    "operation_contract_sha256": "63ca502d34af7bdb4de5c11ba45680ca1714eca45f00292e1bb7c8dfddf90d83",
+    "three_validator_network": "PASSED_AT_DECLARED_LOCAL_SCOPE",
+    "lifecycle": "All 18 distinct accepted operations, BOUND through INCORPORATE_ADDRESSED_RESIDUE, over 21 accepted transitions on three validators through real consensus",
+    "profile_ordering_note": "The LOCALITY_FIELD_001 reference profile permits INCORPORATE_ADDRESSED_RESIDUE only with no active locus, so the network run checkpoints, exits and closes the second locus before incorporation; the exact eighteen-transition ordering at VM law level is proven by vm/lifecycle_regression_test.go on the same tree",
+    "validator_bounce_and_rejoin": "PASSED_AT_DECLARED_LOCAL_SCOPE",
+    "full_network_process_restart": "PASSED_AT_DECLARED_LOCAL_SCOPE",
+    "state_and_receipt_equality": "All three validators returned identical final state commitments and per-transition receipt commitments after bounce and after full restart",
+    "evidence": "integration/network-result.json"
+  },
+  "historical_evidence": {
+    "location": "integration/historical/",
+    "standing": "BOUNDED_HISTORICAL_ONLY",
+    "reason": "The pre-consolidation network run and build attempts were observed against a different operation-contract digest and tree; no passed observation is transferred across that change"
+  },
   "unresolved_boundary": {
-    "three_validator_network": "PASSED_BOUND_DECLARE_CAPACITY_CLOSE",
-    "validator_process_restart": "PASSED_AT_DECLARED_LOCAL_SCOPE",
-    "rpcchainvm_plugin_transport": "PASSED_AT_DECLARED_LOCAL_SCOPE",
-    "resolved_build_prerequisite": "Parent built upstream through a separate disposable Go module with the pinned AvalancheGo and gRPC versions; additional pins received advisory queries.",
-    "reason": "The recorded earlier build failures were resolved. Actual three-validator FIELD coupling, validator bounce/rejoin and whole-network restart passed; see network-result.json. The full participant/correction/reentry lifecycle remains tested under explicit local VM acceptance rather than three-validator consensus.",
-    "attempt_evidence": "integration/network-build-attempts.json",
-    "observed_network_evidence": "network-result.json",
-    "next_required_qualification": "Extend the actual three-validator run from the critical three-operation lifecycle to the complete participant/correction/reentry sequence and complete independent production qualification."
+    "external_vulnerability_observation": "govulncheck package loading succeeds but vuln.go.dev is unreachable from this environment; no zero-vulnerabilities claim is made",
+    "production_qualification": "No production validator-manager configuration, independent operational custody, adversarial or long-duration qualification, public-network run, L1 creation, release or deployment was undertaken",
+    "next_required_qualification": "Independent production qualification with operator custody, external vulnerability observation and long-duration adversarial testing"
   },
   "retained_test": {
     "command_from_implementation_root": "./integration/run.sh",
@@ -33,7 +46,7 @@
     "vm_server": "vm/coupled_integration_test.go",
     "client": "Real FIELD MediumEngine and VMClient over loopback HTTP; no fake VM client",
     "acceptance": "Real VM BuildBlock, block.Verify and block.Accept invoked explicitly by an isolated test controller",
-    "restart_boundary": "Two fresh VM instances reinitialize from the same in-memory database; not an AvalancheGo or disk/process restart",
+    "restart_boundary": "Two fresh VM instances reinitialize from the same in-memory database; the AvalancheGo process restart boundary is covered by the network run above",
     "signer_custody": "Random Ed25519 private keys held only in memory and passed to the separate Node signer over stdin; never written to journals or files",
     "scratch": "Project-relative public journal and Go work files are cleaned on completion",
     "effect": "LOCAL_IMPLEMENTATION_TEST_EVIDENCE_ONLY_NO_CONSTITUTIONAL_EFFECT"
