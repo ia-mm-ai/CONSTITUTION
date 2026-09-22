@@ -12,14 +12,15 @@
   "operations": {
     "verify": {
       "handler": "verify.py",
-      "scope": "Exact Source and LINEAGE bytes, selected references, schema definitions, available core checker, or exported byte bindings.",
-      "conformance_checker": "../STATE/LINEAGE/CONFORMANCE.py",
-      "missing_checker": "INCOMPLETE, never PASSED"
+      "scope": "Exact Source and LINEAGE bytes, portable model and implementation relations, exact historical ZIP bindings, schema definitions, SYSTEM formal rule/vector evaluation, or exported byte bindings.",
+      "conformance_checker": "conformance.py",
+      "execution": "Only the selected local commit's SYSTEM evaluator; no canonical STATE verifier or archive execution. The report binds the evaluator bytes.",
+      "missing_checker": "INCOMPLETE, never PASSED; legacy revisions may request an explicit preview"
     },
     "export": {
       "handler": "export.py",
       "input": "One full locally available Git commit ID and a fresh destination.",
-      "output": ["index.html", "index.json", "manifest.json", "selected core material"],
+      "output": ["index.html", "index.json", "manifest.json", "selected core material", "historical implementation account", "exact historical ZIP carriers"],
       "incomplete_preview": "Only by explicit --allow-incomplete; failure of an available checker still blocks export."
     },
     "recover": {
@@ -34,11 +35,12 @@
     "revision": "Resolved only from an explicit full commit ID, never from ORIGIN.repository.inspected_commit.",
     "index": "Generated inventory and bounded operation contracts, not a hand-maintained second core.",
     "manifest": "Exact SHA-256 and byte_length for every exported file except the manifest itself.",
+    "carriers": "application/zip; exact outer bytes checked against derivation and implementation bindings, ZIP recognition only; no extraction, nested-member reinspection, execution or authenticity claim.",
     "trust": "A manifest digest needs an independent trusted channel; internal consistency is not authentication."
   },
   "unestablished": [
     "A deployed public location",
-    "Core conformance while STATE/LINEAGE/CONFORMANCE.py is absent",
+    "Present capability or constitutional conformance from formal representation checks",
     "Any constitutional implementation or adoption"
   ],
   "effect_ceiling": "Derivative maintenance and byte correspondence only; no independent Source, constitutional effect, or demonstrated CSC/DCR."

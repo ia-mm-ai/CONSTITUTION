@@ -1,4 +1,3 @@
 # Python 3.10+ and Git are host prerequisites, not pip packages.
-# Used for Draft 2020-12 schema checks and bounded SURFACE input validation.
-# STATE/STATE.md also documents this version for its currently absent checker.
+# Used by SYSTEM's offline formal conformance evaluator and bounded SURFACE validation.
 jsonschema==4.10.3
