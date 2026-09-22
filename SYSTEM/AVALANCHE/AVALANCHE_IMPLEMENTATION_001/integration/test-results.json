@@ -85,7 +85,8 @@
   "additional_validation": {
     "secret_scan": "PASS_NO_SECRETS_IN_INTEGRATION_SOURCE_AND_EVIDENCE",
     "scratch_cleanup": "PASS_NO_INTEGRATION_SCRATCH_DIRECTORIES_REMAIN",
-    "parallel_code_review_and_codeql": "PENDING_FINAL_VALIDATION",
+    "parallel_code_review": "UNAVAILABLE_MODEL_NOT_FOUND",
+    "codeql": "PASS_ZERO_ALERTS_GO_PYTHON_JAVASCRIPT",
     "latest_source_recheck": "PASS_CONTRACT_STATUS_HASH_ESCAPED_PAYLOAD_SAME_OPEN_LOCUS_AND_NEW_LOCUS_REENTRY"
   },
   "result_evidence": "integration/qualification-run.json",
