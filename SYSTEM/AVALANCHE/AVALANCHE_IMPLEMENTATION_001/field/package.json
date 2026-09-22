@@ -1,7 +1,7 @@
 {
   "name": "presence-avalanche-field",
   "version": "1.0.0",
-  "description": "Fail-closed FIELD companion for AVALANCHE_IMPLEMENTATION_001",
+  "description": "Fail-closed FIELD runtime for AVALANCHE_IMPLEMENTATION_001",
   "type": "module",
   "private": true,
   "exports": {
@@ -14,8 +14,8 @@
     "bin/",
     "src/",
     "profiles/",
-    "examples/",
-    "../protocol/operations.json"
+    "contract/",
+    "examples/"
   ],
   "engines": {
     "node": ">=22"

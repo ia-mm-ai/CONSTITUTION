@@ -1,12 +1,12 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { mkdtemp, readFile, writeFile } from "node:fs/promises";
-import { tmpdir } from "node:os";
+import { readFile, writeFile } from "node:fs/promises";
 import { join } from "node:path";
 import { AppendOnlyJournal } from "../src/journal.js";
+import { testDirectory } from "./helpers.js";
 
 test("journal verifies its append-only hash chain and detects mutation", async () => {
-  const directory = await mkdtemp(join(tmpdir(), "presence-avalanche-field-journal-"));
+  const directory = await testDirectory();
   const path = join(directory, "events.ndjson");
   const journal = await new AppendOnlyJournal(path).initialize();
   await journal.append("TEST", { state_commitment: "a".repeat(64) });
@@ -18,7 +18,7 @@ test("journal verifies its append-only hash chain and detects mutation", async (
 });
 
 test("concurrent journal calls serialize and reserved or content-bearing fields are refused", async () => {
-  const directory = await mkdtemp(join(tmpdir(), "presence-avalanche-field-journal-race-"));
+  const directory = await testDirectory();
   const path = join(directory, "events.ndjson");
   const journal = await new AppendOnlyJournal(path).initialize();
   await Promise.all(Array.from({ length: 32 }, (_, index) => journal.append("DECISION", { index })));

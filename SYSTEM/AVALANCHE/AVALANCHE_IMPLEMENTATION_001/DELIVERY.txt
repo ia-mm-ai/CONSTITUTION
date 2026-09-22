@@ -1,0 +1,168 @@
+Implementation-source crossing: AVALANCHE_IMPLEMENTATION_001 1.0.0
+Review branch: copilot/create-first-implementation-source
+Starting live-main commit: a0cbb1080540bbe83f8678e81240247585dba060
+Resulting commit: the review-branch commit containing this delivery record;
+its exact ID is returned separately, avoiding a self-referential commit hash.
+No merge, release, tag, deployment or public-blockchain act.
+
+BEFORE = AFTER (SHA-256 of exact file bytes)
+SOURCE/CONSTITUTION_0()1.md
+  affeb5738cdfeea7ee4fe985652bf78b15eb6dfbba5871d82f0f2213a81832d0
+SOURCE/CONSTITUTION_0()1.json
+  519a81d2a26d5bf32afd77566bbb35b4d28b22af85ac45a7055fccd1b45222f8
+STATE/LOCALITY_VM_003-v3.0.0-GITHUB_UPLOAD.zip
+  073949b8b74e7407a433b74efab71f22e2ee93c4d9ed80eb0aeb07b164c08d2b
+STATE/LOCALITY_MEDIUM_001-v2.0.0-GITHUB_UPLOAD.zip
+  61353cddc93d62ac28d60e0c7357203ecfe01235e7d249e973ffb16356990989
+Canonical STATE: all 51 files unchanged, inventory digest
+  59d73ebd495816f5736fa8f88d56881a17b10704ce2ca27c07fe098ad929887f
+Encoding and exact lengths: vm/protocol/binding.json.
+
+VM ID
+  Canonical implementation: AVALANCHE_IMPLEMENTATION_001
+  Protocol and exact derivation input: PRESENCE_AVALANCHE_VM_001
+  Official pinned AvalancheGo v1.15.0 API: ids.ToID; ids.ID.String.
+  Name bytes zero-padded to ids.IDLen, following upstream VM constants;
+  underscores are preserved. No transport-safe alias or private digest scheme.
+  Result: cNhhBznc1YN29QVJMQbK7sxy6GsimFKN6yvftRjPK7qWEvZw8
+
+Shared operation/effect/scope contract: vm/protocol/operations.json.
+Go embeds these exact bytes, FIELD reads them, exhaustive tests compare the
+inventories, and FIELD requires their exact SHA-256 in live VM status.
+
+RESULTS AND BOUNDARIES
+Exact commands/results: qualification.json and integration/test-results.json.
+Three-validator evidence: integration/network-result.json.
+Real FIELD BOUND -> DECLARE_CAPACITY(empty locus while active) -> renewed read
+-> CLOSE passed with accepted-state agreement on all three local validators.
+Validator bounce/rejoin and full network process restart preserved receipts and
+accepted commitments. The extended participant/correction/reentry lifecycle
+uses the real VM under an explicit local acceptance controller, not a quorum.
+
+Secret scans reported no secrets in scanned source. Disposable network processes
+and credential directories were removed; neither private keys nor binaries are
+delivery files. Security queries and exact inaccessible-database failures are in
+security-observations.json. No zero-vulnerabilities claim is made.
+Complete three-validator participant lifecycle, fresh external vulnerability/
+review observations and production/release prerequisites remain unqualified.
+
+STATUS SET
+SOURCE_IMPLEMENTED
+FUNCTIONALLY_TESTED
+QUALIFICATION_INCOMPLETE
+NOT_RELEASED
+NOT_DEPLOYED
+NOT_READY_FOR_MAINNET
+
+COMPLETE CHANGED-FILE LIST / IMPLEMENTATION TREE
+Every leaf below is an added ordinary source or evidence file. No other
+repository file is changed. Root:
+/home/runner/work/PRESENCE/PRESENCE/SYSTEM/AVALANCHE/AVALANCHE_IMPLEMENTATION_001/
+  .gitignore
+  DELIVERY.txt
+  DEPLOYMENT.txt
+  README.txt
+  administrative-input.schema.json
+  compatibility.json
+  derivation.json
+  qualification.json
+  security-observations.json
+  field/
+    package.json
+    bin/
+      presence-avalanche-field.js
+    contract/
+      PRESENCE_AVALANCHE_FIELD_CONTRACT_001.json
+    examples/
+      config.template.json
+    profiles/
+      AI_FIELD_001.json
+      DEVICE_FIELD_001.json
+      HUMAN_FIELD_001.json
+      LOCALITY_FIELD_001.json
+    src/
+      broker.js
+      canonical.js
+      config.js
+      constants.js
+      continuity.js
+      engine.js
+      go-json.js
+      journal.js
+      operations.js
+      profile.js
+      runtime.js
+      server.js
+      signature.js
+      state.js
+      vm-client.js
+    test/
+      cli.test.js
+      config.test.js
+      continuity.test.js
+      engine.test.js
+      helpers.js
+      journal.test.js
+      operations.test.js
+      profile.test.js
+      server.test.js
+      signature.test.js
+      state.test.js
+      vm-client.test.js
+  integration/
+    README.txt
+    driver.mjs
+    network-build-attempts.json
+    network-driver.mjs
+    network-result.json
+    network.sh
+    qualification-boundary.json
+    qualification-run.json
+    run.sh
+    test-results.json
+  scripts/
+    build.sh
+    test_tools.py
+    validator-preflight.py
+    verify-binding.py
+  vm/
+    api.go
+    api_test.go
+    authority.go
+    authority_test.go
+    block.go
+    canonical.go
+    continuity_reentry_test.go
+    correction_scope_test.go
+    coupled_integration_test.go
+    fuzz_test.go
+    genesis.go
+    genesis_binding_test.go
+    genesis_schema_test.go
+    go.mod
+    go.sum
+    main.go
+    main_test.go
+    metabolism_test.go
+    operations.go
+    protocol.go
+    protocol_test.go
+    signing.go
+    state.go
+    state_test.go
+    test_helpers_test.go
+    transition.go
+    vm.go
+    vm_test.go
+    genesis/
+      PRESENCE_AVALANCHE_RUNTIME_GENESIS_TEMPLATE_001.json
+      genesis.schema.json
+    profile/
+      PRESENCE_AVALANCHE_FORM_001.json
+    protocol/
+      binding.json
+      operations.json
+    rehearsal/
+      go.mod
+      go.sum
+      main.go

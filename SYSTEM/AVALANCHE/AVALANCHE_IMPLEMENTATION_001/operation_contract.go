@@ -1,6 +1,7 @@
 package main
 
 import (
+	"crypto/sha256"
 	_ "embed"
 	"encoding/json"
 	"errors"
@@ -30,6 +31,8 @@ type operationContractDocument struct {
 
 //go:embed protocol/operations.json
 var operationContractBytes []byte
+
+var operationContractSHA256 = fmt.Sprintf("%x", sha256.Sum256(operationContractBytes))
 
 var (
 	operationDefinitions map[string]operationDefinition

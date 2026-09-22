@@ -21,6 +21,15 @@ func TestHTTPDraftSubmitAndReceiptLifecycle(t *testing.T) {
 		if response.Code != http.StatusOK {
 			t.Fatalf("GET %s = %d: %s", path, response.Code, response.Body.String())
 		}
+		if path == "/status" {
+			var status map[string]any
+			if err := json.Unmarshal(response.Body.Bytes(), &status); err != nil {
+				t.Fatal(err)
+			}
+			if status["operation_contract_sha256"] != operationContractSHA256 {
+				t.Fatal("status must bind the embedded operation contract")
+			}
+		}
 	}
 	currentnessResponse := httptest.NewRecorder()
 	currentnessPath := "/currentness?observed_at=1&carrier_set_sha256=" + digestText("api carriers")

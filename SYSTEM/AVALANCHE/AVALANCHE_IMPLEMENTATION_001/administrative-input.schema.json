@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:presence:avalanche:administrative-input:1",
+  "title": "Public materializer administrative input; no deployment authority",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema", "genesis_id", "locality_id", "purpose", "source_reference", "source_sha256"],
+  "properties": {
+    "schema": {"const": "PRESENCE_AVALANCHE_DEPLOYMENT_DESCRIPTOR_001"},
+    "genesis_id": {"$ref": "#/$defs/id"},
+    "locality_id": {"$ref": "#/$defs/id"},
+    "purpose": {"type": "string", "minLength": 1, "maxLength": 1024},
+    "source_reference": {"$ref": "#/$defs/id"},
+    "source_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+  },
+  "$defs": {
+    "id": {"type": "string", "minLength": 1, "maxLength": 128, "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"}
+  },
+  "x-standing": "DERIVATIVE_IMPLEMENTATION_ENCODING",
+  "x-effect-ceiling": "PUBLIC_INPUT_ONLY_NOT_FORMATION_AUTHORITY_OR_DEPLOYMENT"
+}

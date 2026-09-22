@@ -3,7 +3,7 @@ import {
   NON_EFFECTS,
   REQUIRED_EFFECT_CEILING,
   VM_EFFECTS,
-  VM_ID,
+  vmIdentity,
   VM_RECEIPT_SCHEMA,
   VM_REQUIRED_MEDIUM_CAPABILITIES,
   VM_RPCCHAINVM_PROTOCOL,
@@ -13,7 +13,7 @@ import { canonicalize, isDigest, sha256Hex } from "./canonical.js";
 import { actorIdFromPublicKey } from "./config.js";
 import { makeObservation, validateVMState } from "./state.js";
 import { profileAllowsOperation } from "./profile.js";
-import { assertOperationScope } from "./scope.js";
+import { assertOperationScope } from "./operations.js";
 import {
   draftCommitment,
   normalizedTransition,
@@ -27,10 +27,12 @@ function assertStatus(status, state, config) {
   if (!status || typeof status !== "object" || Array.isArray(status)) throw new Error("VM status is invalid");
   if (status.healthy !== true) throw new Error("VM reports unhealthy");
   if (status.vm_version !== VM_VERSION || config.expected_vm_version !== VM_VERSION) throw new Error("VM version mismatch");
+  const identity = vmIdentity(config.expected_vm_id);
+  if (status.operation_contract_sha256 !== identity.contractSHA256) throw new Error("VM operation contract hash mismatch");
   if (status.rpcchainvm_protocol !== VM_RPCCHAINVM_PROTOCOL || config.expected_rpcchainvm_protocol !== VM_RPCCHAINVM_PROTOCOL) {
     throw new Error("RPCChainVM protocol mismatch");
   }
-  if (config.expected_vm_id !== VM_ID) throw new Error("configured VM ID mismatch");
+  if (state.schema !== identity.stateSchema) throw new Error("configured VM state schema mismatch");
   if (status.locality_id !== config.expected_locality_id || state.host_locality_id !== config.expected_locality_id) {
     throw new Error("host locality identity mismatch");
   }
@@ -110,6 +112,12 @@ export class MediumEngine {
       reason = "OPERATION_OUTSIDE_PROFILE_ALLOWLIST";
     }
     const boundKey = state.actor_keys?.[this.config.actor_id];
+    const derivedActor = actorIdFromPublicKey(this.config.actor_public_key, this.config.expected_vm_id) === this.config.actor_id;
+    const acceptedHost = this.config.actor_id === state.host_locality_id && boundKey === this.config.actor_public_key;
+    if (!derivedActor && !acceptedHost) {
+      allowed = false;
+      reason = "ACTOR_ID_IS_NOT_DERIVED_OR_EXACT_ACCEPTED_HOST";
+    }
     if (boundKey && boundKey !== this.config.actor_public_key) {
       allowed = false;
       reason = "ACCEPTED_ACTOR_KEY_BINDING_MISMATCH";
@@ -200,14 +208,9 @@ export class MediumEngine {
       throw new Error("draft request fields do not match the medium contract");
     }
     const decision = await this.assertAuthorized(request.operation);
+    assertOperationScope(request, decision.state);
     if (!Number.isSafeInteger(request.observed_at) || request.observed_at < 0) throw new Error("observed_at is invalid");
     if (!request.payload || typeof request.payload !== "object" || Array.isArray(request.payload)) throw new Error("payload must be an object");
-    assertOperationScope({
-      operation: request.operation,
-      locusId: request.locus_id,
-      payload: request.payload,
-      state: decision.state
-    });
     const vmRequest = {
       operation: request.operation,
       actor_id: this.config.actor_id,
@@ -257,9 +260,6 @@ export class MediumEngine {
 
   async submitTransition(transition) {
     verifyTransitionSignature(transition);
-    if (actorIdFromPublicKey(transition.unsigned.actor_public_key) !== transition.unsigned.actor_id) {
-      throw new Error("transition actor ID does not derive from public key");
-    }
     if (transition.unsigned.actor_id !== this.config.actor_id || transition.unsigned.actor_public_key !== this.config.actor_public_key) {
       throw new Error("transition signer is not the configured medium actor");
     }
@@ -271,12 +271,7 @@ export class MediumEngine {
     const decision = await this.assertAuthorized(transition.unsigned.operation, {
       expectedStateCommitment: transition.unsigned.previous_state_commitment
     });
-    assertOperationScope({
-      operation: transition.unsigned.operation,
-      locusId: transition.unsigned.locus_id,
-      payload: transition.unsigned.payload,
-      state: decision.state
-    });
+    assertOperationScope(transition.unsigned, decision.state);
     const normalized = normalizedTransition(prepared.unsigned, transition.signature);
     const expectedID = transitionID(normalized);
     const response = await this.client.submit(normalized);
@@ -309,6 +304,7 @@ export class MediumEngine {
       receipt.schema !== VM_RECEIPT_SCHEMA || receipt.transition_id !== id ||
       receipt.actor_id !== this.config.actor_id || !isDigest(receipt.state_commitment) ||
       !Number.isSafeInteger(receipt.revision) || receipt.revision < 1 ||
+      !Object.hasOwn(VM_EFFECTS, receipt.operation) ||
       receipt.effect !== VM_EFFECTS[receipt.operation]
     ) {
       throw new Error("accepted receipt violates the frozen VM contract");

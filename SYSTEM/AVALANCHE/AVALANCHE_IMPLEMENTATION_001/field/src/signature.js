@@ -1,6 +1,7 @@
 import { createPublicKey, verify } from "node:crypto";
 import { canonicalize, sha256Hex } from "./canonical.js";
 import { VM_EFFECTS, VM_TRANSITION_SCHEMA } from "./constants.js";
+import { goJSONStringify } from "./go-json.js";
 
 const ED25519_SPKI_PREFIX = Buffer.from("302a300506032b6570032100", "hex");
 const UNSIGNED_FIELDS = [
@@ -31,14 +32,14 @@ export function signingBytes(unsigned) {
     effect: unsigned.effect,
     payload: unsigned.payload
   };
-  return Buffer.from(JSON.stringify(ordered), "utf8");
+  return Buffer.from(goJSONStringify(ordered), "utf8");
 }
 
 export function validateUnsigned(unsigned) {
   if (!unsigned || typeof unsigned !== "object" || Array.isArray(unsigned)) throw new Error("unsigned transition must be an object");
   exactFields(unsigned, UNSIGNED_FIELDS, "unsigned transition");
   if (unsigned.schema !== VM_TRANSITION_SCHEMA) throw new Error("unsigned transition schema mismatch");
-  const effect = VM_EFFECTS[unsigned.operation];
+  const effect = Object.hasOwn(VM_EFFECTS, unsigned.operation) ? VM_EFFECTS[unsigned.operation] : null;
   if (!effect || unsigned.effect !== effect) throw new Error("unsigned transition effect mismatch");
   if (!Number.isSafeInteger(unsigned.revision) || unsigned.revision < 1) throw new Error("unsigned revision is invalid");
   if (!Number.isSafeInteger(unsigned.nonce) || unsigned.nonce < 0) throw new Error("unsigned nonce is invalid");
@@ -92,7 +93,7 @@ export function normalizedTransition(unsigned, signature) {
 
 export function transitionID(transition) {
   verifyTransitionSignature(transition);
-  return sha256Hex(Buffer.from(JSON.stringify(normalizedTransition(transition.unsigned, transition.signature)), "utf8"));
+  return sha256Hex(Buffer.from(goJSONStringify(normalizedTransition(transition.unsigned, transition.signature)), "utf8"));
 }
 
 export function draftCommitment(unsigned) {

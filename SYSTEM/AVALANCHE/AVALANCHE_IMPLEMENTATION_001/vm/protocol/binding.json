@@ -1,0 +1,38 @@
+{
+  "schema": "PRESENCE_AVALANCHE_SOURCE_STATE_BINDING_001",
+  "implementation": "AVALANCHE_IMPLEMENTATION_001",
+  "version": "1.0.0",
+  "repository": "https://github.com/ia-mm-ai/PRESENCE",
+  "starting_commit": "a0cbb1080540bbe83f8678e81240247585dba060",
+  "hash_scope": "EXACT_STORED_FILE_BYTES",
+  "source": {
+    "SOURCE/CONSTITUTION_0()1.md": {
+      "sha256": "affeb5738cdfeea7ee4fe985652bf78b15eb6dfbba5871d82f0f2213a81832d0",
+      "bytes": 44133
+    },
+    "SOURCE/CONSTITUTION_0()1.json": {
+      "sha256": "519a81d2a26d5bf32afd77566bbb35b4d28b22af85ac45a7055fccd1b45222f8",
+      "bytes": 146048
+    }
+  },
+  "canonical_state": {
+    "path": "STATE",
+    "excluded_suffix": ".zip",
+    "inventory_encoding": "UTF8_SORTED_SHA256_TWO_SPACES_REPOSITORY_PATH_LF",
+    "file_count": 51,
+    "total_bytes": 649915,
+    "inventory_sha256": "59d73ebd495816f5736fa8f88d56881a17b10704ce2ca27c07fe098ad929887f"
+  },
+  "predecessors": {
+    "STATE/LOCALITY_VM_003-v3.0.0-GITHUB_UPLOAD.zip": {
+      "sha256": "073949b8b74e7407a433b74efab71f22e2ee93c4d9ed80eb0aeb07b164c08d2b",
+      "bytes": 6201060
+    },
+    "STATE/LOCALITY_MEDIUM_001-v2.0.0-GITHUB_UPLOAD.zip": {
+      "sha256": "61353cddc93d62ac28d60e0c7357203ecfe01235e7d249e973ffb16356990989",
+      "bytes": 260923
+    }
+  },
+  "rule_standing": "DERIVATIVE_IMPLEMENTATION_ENCODING_NOT_CANONICAL_STATE",
+  "effect_ceiling": "SOURCE_IMPLEMENTATION_ONLY_NOT_ADOPTION_FORMATION_AUTHORITY_OR_PRESENCE"
+}
