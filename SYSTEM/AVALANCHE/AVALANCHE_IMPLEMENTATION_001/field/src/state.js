@@ -22,7 +22,7 @@ export function validateVMState(state) {
   requireString(state.host_locality_id, "host_locality_id");
   requireString(state.active_locus_id, "active_locus_id");
   if (state.profile_form_id !== VM_FORM_ID || state.profile_form_sha256 !== VM_FORM_SHA256) {
-    throw new Error("VM form identity does not match PRESENCE_AVALANCHE_VM_001 v3.0.0");
+    throw new Error("VM form identity does not match PRESENCE_AVALANCHE_VM_001 v1.0.0");
   }
   assertPlainObject(state.body, "body");
   requireString(state.body.posture, "body.posture");

@@ -100,7 +100,7 @@ export function createMediumServer(runtime) {
     } catch (error) {
       const status = error.status ?? (error.code === "CAPABILITY_DENIED" ? 403 : 400);
       send(response, status, {
-        error: error.code ?? "LOCALITY_MEDIUM_ERROR",
+        error: error.code ?? "PRESENCE_AVALANCHE_FIELD_ERROR",
         message: error.message,
         ...(error.decision ? { decision: error.decision } : {})
       });

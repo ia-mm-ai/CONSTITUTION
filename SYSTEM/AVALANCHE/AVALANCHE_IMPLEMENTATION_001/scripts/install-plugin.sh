@@ -2,7 +2,7 @@
 set -euo pipefail
 
 if [[ $# -ne 3 ]]; then
-  echo "usage: $0 VM_ID PLUGIN_DIRECTORY LOCALITY_VM_BINARY" >&2
+  echo "usage: $0 VM_ID PLUGIN_DIRECTORY PRESENCE_AVALANCHE_VM_BINARY" >&2
   exit 2
 fi
 
@@ -31,4 +31,4 @@ fi
 
 install -m 0755 "${source_binary}" "${target}"
 "${target}" --version
-echo "installed LOCALITY VM plugin at ${target}"
+echo "installed PRESENCE Avalanche VM plugin at ${target}"

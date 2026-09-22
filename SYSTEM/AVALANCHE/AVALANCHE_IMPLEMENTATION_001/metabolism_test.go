@@ -195,7 +195,7 @@ func TestFormationAuthorityExhaustsAndAttestedSuccessorFreezesPredecessor(t *tes
 	continuity1ID := operationalActorID(keys.continuity1.Public().(ed25519.PublicKey))
 	continuity2ID := operationalActorID(keys.continuity2.Public().(ed25519.PublicKey))
 	proposalPayload := ProposeSuccessorPayload{
-		ProposalID: "LOCALITY-VM-004-CANDIDATE-001", Protocol: "LOCALITY_VM_004", Version: "4.0.0",
+		ProposalID: "PRESENCE-AVALANCHE-VM-CANDIDATE-002", Protocol: "PRESENCE_AVALANCHE_VM_002", Version: "2.0.0",
 		VMID: "BQeuw4nSSyB6mjvjgZXD4r4tQdpXfiUsKAC2Vyb3setqnHsFJ", RuntimeSHA256: digestText("successor runtime"),
 		MigrationSHA256: digestText("migration"), InvariantSetSHA256: digestText("invariants"),
 		SourceReference: "CONSTITUTION-SUCCESSOR-001", SourceSHA256: digestText("successor source"),

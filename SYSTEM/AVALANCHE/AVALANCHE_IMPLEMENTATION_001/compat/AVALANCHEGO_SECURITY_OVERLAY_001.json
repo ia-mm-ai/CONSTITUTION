@@ -1,6 +1,6 @@
 {
-  "schema": "LOCALITY_AVALANCHEGO_SECURITY_OVERLAY_001",
-  "overlay_id": "LOCALITY_SECURITY_OVERLAY_001",
+  "schema": "PRESENCE_AVALANCHEGO_SECURITY_OVERLAY_001",
+  "overlay_id": "PRESENCE_AVALANCHE_SECURITY_OVERLAY_001",
   "status": "REQUIRED_UNTIL_AN_OFFICIAL_AVALANCHEGO_RELEASE_INCLUDES_EQUIVALENT_OR_LATER_FIXES",
   "base": {
     "repository": "https://github.com/ava-labs/avalanchego.git",

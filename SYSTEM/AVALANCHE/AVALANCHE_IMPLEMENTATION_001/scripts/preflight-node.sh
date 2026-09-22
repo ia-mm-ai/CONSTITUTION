@@ -24,7 +24,7 @@ for command_name in curl file go sha256sum; do
 done
 
 if [[ ! -x "${plugin_path}" ]]; then
-  echo "LOCALITY plugin is missing or not executable: ${plugin_path}" >&2
+  echo "PRESENCE Avalanche plugin is missing or not executable: ${plugin_path}" >&2
   exit 1
 fi
 for digest in "${expected_vm_sha256}" "${expected_avalanchego_sha256}"; do
@@ -41,7 +41,7 @@ fi
 observed_vm_sha256="$(sha256sum "${plugin_path}" | awk '{print $1}')"
 observed_avalanchego_sha256="$(sha256sum "${avalanchego_binary}" | awk '{print $1}')"
 if [[ "${observed_vm_sha256}" != "${expected_vm_sha256}" ]]; then
-  echo "LOCALITY VM binary digest mismatch" >&2
+  echo "PRESENCE Avalanche VM binary digest mismatch" >&2
   exit 1
 fi
 if [[ "${observed_avalanchego_sha256}" != "${expected_avalanchego_sha256}" ]]; then
@@ -50,8 +50,8 @@ if [[ "${observed_avalanchego_sha256}" != "${expected_avalanchego_sha256}" ]]; t
 fi
 
 plugin_version="$(${plugin_path} --version)"
-if [[ "${plugin_version}" != *"avalanchego-profile=v1.15.0+LOCALITY_SECURITY_OVERLAY_001"* || "${plugin_version}" != *"rpcchainvm-protocol=46"* ]]; then
-  echo "unexpected LOCALITY plugin compatibility declaration: ${plugin_version}" >&2
+if [[ "${plugin_version}" != *"avalanchego-profile=v1.15.0+PRESENCE_AVALANCHE_SECURITY_OVERLAY_001"* || "${plugin_version}" != *"rpcchainvm-protocol=46"* ]]; then
+  echo "unexpected PRESENCE Avalanche plugin compatibility declaration: ${plugin_version}" >&2
   exit 1
 fi
 
@@ -108,7 +108,7 @@ if [[ "${identity_response}" != *'"nodeID":"'"${expected_node_id}"'"'* ]]; then
 fi
 
 file "${plugin_path}"
-echo "LOCALITY node preflight passed"
+echo "PRESENCE Avalanche node preflight passed"
 echo "plugin: ${plugin_version}"
 echo "plugin sha256: ${observed_vm_sha256}"
 echo "avalanchego sha256: ${observed_avalanchego_sha256}"

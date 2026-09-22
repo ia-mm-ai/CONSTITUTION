@@ -27,7 +27,7 @@ import (
 var (
 	_ smblock.ChainVM = (*VM)(nil)
 
-	errNotInitialized       = errors.New("LOCALITY VM is not initialized")
+	errNotInitialized       = errors.New("PRESENCE Avalanche VM is not initialized")
 	errNoPendingTransitions = errors.New("no valid pending LOCALITY transitions")
 	errInvalidPreference    = errors.New("preferred block is unavailable or unverified")
 )
@@ -70,7 +70,7 @@ func (vm *VM) Initialize(
 ) error {
 	genesis, err := parseGenesis(genesisBytes)
 	if err != nil {
-		return fmt.Errorf("parse LOCALITY runtime genesis: %w", err)
+		return fmt.Errorf("parse PRESENCE Avalanche runtime genesis: %w", err)
 	}
 	initialState, err := initialRuntimeState(genesis)
 	if err != nil {

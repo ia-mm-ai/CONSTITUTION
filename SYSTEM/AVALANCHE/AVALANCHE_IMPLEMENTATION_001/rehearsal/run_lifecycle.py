@@ -18,11 +18,11 @@ import urllib.request
 from typing import Any
 
 
-FORM_ID = "LOCALITY-FORM-003"
-FORM_SHA256 = "10848ac3fc2f68f6fdc041a4c9862d8fb186f4c3d0ebd4edde3f3933fe3ce893"
+FORM_ID = "PRESENCE-AVALANCHE-FORM-001"
+FORM_SHA256 = "e70fedb8ec8420275703542ee16d6d0429b1b5979b0b8ff964eac87aa19a7d8a"
 SOURCE_REFERENCE = "PRESENCE_AVALANCHE_VM_001_REHEARSAL_SOURCE"
 SOURCE_SHA256 = "c02f9a3927f7e2a48c49a4d2267b0cc7c8a932694817374366d8ec5709c419bd"
-HOST_LOCALITY_ID = "LOCALITY-REHEARSAL-HOST-003"
+HOST_LOCALITY_ID = "PRESENCE-AVALANCHE-REHEARSAL-HOST-001"
 LOCUS_ID = "LOCALITY-REHEARSAL-LOCUS-003"
 RETURN_LOCUS_ID = "LOCALITY-REHEARSAL-LOCUS-003-RETURN"
 MATTER_ID = "LOCALITY-REHEARSAL-MATTER-003"
@@ -342,10 +342,10 @@ def command_run(args: argparse.Namespace) -> None:
         raise RuntimeError("REHEARSAL 003 requires exactly three nodes")
     vm_version = json.loads(run_checked([str(args.vm), "--version-json"]))
     if summary["vm_id"] != vm_version["vm_id"]:
-        raise RuntimeError("network VM ID does not match the LOCALITY binary")
+        raise RuntimeError("network VM ID does not match the PRESENCE Avalanche binary")
     if (
         vm_version.get("avalanchego_profile")
-        != "v1.15.0+LOCALITY_SECURITY_OVERLAY_001"
+        != "v1.15.0+PRESENCE_AVALANCHE_SECURITY_OVERLAY_001"
     ):
         raise RuntimeError("VM does not declare the required AvalancheGo security profile")
 
@@ -383,6 +383,18 @@ def command_run(args: argparse.Namespace) -> None:
         transitions.append(result)
         return result
 
+    issue(
+        "BOUND",
+        HOST_LOCALITY_ID,
+        host["public_key"],
+        args.host_private,
+        {
+            "locus_id": LOCUS_ID,
+            "purpose_sha256": digest("PRESENCE AVALANCHE REHEARSAL PURPOSE"),
+            "closure_condition_sha256": digest("PRESENCE AVALANCHE REHEARSAL CLOSE AFTER EXIT"),
+            "capacity_ceiling_units": 500,
+        },
+    )
     capacity_declaration = issue(
         "DECLARE_CAPACITY",
         HOST_LOCALITY_ID,
@@ -390,11 +402,19 @@ def command_run(args: argparse.Namespace) -> None:
         args.host_private,
         {
             "actual_units": 800,
-            "resource_commitment_sha256": digest("LOCALITY REHEARSAL 003 CARRIERS"),
-            "basis_sha256": digest("LOCALITY REHEARSAL 003 CAPACITY BASIS"),
+            "resource_commitment_sha256": digest("PRESENCE AVALANCHE REHEARSAL CARRIERS"),
+            "basis_sha256": digest("PRESENCE AVALANCHE REHEARSAL CAPACITY BASIS"),
         },
         locus_id="",
     )
+    renewed_read_after_capacity = collect_snapshot(summary)
+    if (
+        renewed_read_after_capacity["revision"] != capacity_declaration["receipt"]["revision"]
+        or renewed_read_after_capacity["state_commitment"]
+        != capacity_declaration["receipt"]["state_commitment"]
+        or renewed_read_after_capacity["consensus_state"]["active_locus_id"] != LOCUS_ID
+    ):
+        raise RuntimeError("renewed read did not bind the accepted body-local capacity declaration")
     carrier_set = digest("LOCALITY REHEARSAL 003 CARRIER SET")
     pulse_observed_at = observed_at
     pulse_material = checked_http_json(
@@ -412,18 +432,6 @@ def command_run(args: argparse.Namespace) -> None:
             "carrier_set_sha256": carrier_set,
         },
         locus_id="",
-    )
-    issue(
-        "BOUND",
-        HOST_LOCALITY_ID,
-        host["public_key"],
-        args.host_private,
-        {
-            "locus_id": LOCUS_ID,
-            "purpose_sha256": digest("LOCALITY REHEARSAL 003 PURPOSE"),
-            "closure_condition_sha256": digest("LOCALITY REHEARSAL 003 CLOSE AFTER EXIT"),
-            "capacity_ceiling_units": 500,
-        },
     )
     initial_participant_state = digest("LOCALITY REHEARSAL PARTICIPANT INITIAL STATE")
     presentation = issue(
@@ -696,7 +704,7 @@ def command_run(args: argparse.Namespace) -> None:
     public_network = dict(summary)
     public_network.pop("network_dir", None)
     evidence = {
-        "schema": "LOCALITY_REHEARSAL_LIFECYCLE_003",
+        "schema": "PRESENCE_AVALANCHE_REHEARSAL_LIFECYCLE_001",
         "started_at_utc": started_at,
         "completed_at_utc": utc_now(),
         "network": public_network,
@@ -726,6 +734,7 @@ def command_run(args: argparse.Namespace) -> None:
             "reentry_preserves_prior_locus_without_reopening": True,
             "reentry_carries_deterministic_state_successor": True,
             "capacity_declaration_is_local_account_only": capacity_declaration["receipt"]["operation"] == "DECLARE_CAPACITY",
+            "bound_capacity_renewed_read": renewed_read_after_capacity["consensus_state"]["active_locus_id"] == LOCUS_ID,
             "pulse_at_p_zero_does_not_invent_presence": pulse["receipt"]["presence_count"] == 0,
             "first_entry_reserves_work_and_resolution": any(
                 item["operation"] == "ENTER"
@@ -742,6 +751,7 @@ def command_run(args: argparse.Namespace) -> None:
             and reentry["receipt"]["capacity"]["correction_egress_units"] == 130,
         },
         "closure_snapshot": closure_snapshot,
+        "renewed_read_after_capacity": renewed_read_after_capacity,
         "snapshot": snapshot,
         "private_material_exported": False,
     }
@@ -765,7 +775,7 @@ def command_snapshot(args: argparse.Namespace) -> None:
         if observed[field] != expected[field]:
             raise RuntimeError(f"{args.label}: {field} changed: expected {expected[field]}, observed {observed[field]}")
     result = {
-        "schema": "LOCALITY_REHEARSAL_SNAPSHOT_003",
+        "schema": "PRESENCE_AVALANCHE_REHEARSAL_SNAPSHOT_001",
         "label": args.label,
         "expected": {
             "revision": expected["revision"],
@@ -797,13 +807,13 @@ def command_assemble(args: argparse.Namespace) -> None:
         raise RuntimeError("RPCChainVM protocol mismatch during evidence assembly")
     if (
         vm_version.get("avalanchego_profile")
-        != "v1.15.0+LOCALITY_SECURITY_OVERLAY_001"
+        != "v1.15.0+PRESENCE_AVALANCHE_SECURITY_OVERLAY_001"
         or avalanchego_version.get("go") != "1.25.13"
     ):
         raise RuntimeError("security-overlaid AvalancheGo profile mismatch")
     final = lifecycle["snapshot"]
     evidence = {
-        "schema": "LOCALITY_REHEARSAL_003_EVIDENCE",
+        "schema": "PRESENCE_AVALANCHE_REHEARSAL_001_EVIDENCE",
         "observed_at_utc": utc_now(),
         "scope": "DISPOSABLE_THREE_NODE_LOCAL_NETWORK_ONLY",
         "mainnet_mutations_performed": False,
@@ -834,7 +844,7 @@ def command_assemble(args: argparse.Namespace) -> None:
             "avalanchego": avalanchego_version,
             "avalanchego_binary_sha256": sha256_file(args.avalanchego),
             "rpcchainvm_compatibility": "EXACT_MATCH",
-            "security_profile": "v1.15.0+LOCALITY_SECURITY_OVERLAY_001",
+            "security_profile": "v1.15.0+PRESENCE_AVALANCHE_SECURITY_OVERLAY_001",
         },
         "network": lifecycle["network"],
         "lifecycle": {

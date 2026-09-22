@@ -41,8 +41,8 @@ func generateAuthority(directory string) (string, string, string, error) {
 	if err := ensurePrivateDirectory(directory); err != nil {
 		return "", "", "", err
 	}
-	privatePath := filepath.Join(directory, "locality-authority.private.json")
-	publicPath := filepath.Join(directory, "locality-authority.public.json")
+	privatePath := filepath.Join(directory, "presence-avalanche-authority.private.json")
+	publicPath := filepath.Join(directory, "presence-avalanche-authority.public.json")
 	for _, path := range []string{privatePath, publicPath} {
 		if _, err := os.Lstat(path); err == nil {
 			return "", "", "", fmt.Errorf("refusing to overwrite %s", path)
@@ -55,7 +55,7 @@ func generateAuthority(directory string) (string, string, string, error) {
 		return "", "", "", err
 	}
 	publicDigest := sha256.Sum256(publicKey)
-	keyID := "locality-" + hex.EncodeToString(publicDigest[:12])
+	keyID := "presence-avalanche-" + hex.EncodeToString(publicDigest[:12])
 	actorID := operationalActorID(publicKey)
 	publicDocument := PublicAuthorityFile{
 		Schema: publicAuthoritySchema, Scheme: "ED25519", KeyID: keyID, ActorID: actorID, PublicKey: hex.EncodeToString(publicKey),
@@ -99,7 +99,7 @@ func materializeGenesis(templatePath, deploymentDescriptorPath, publicAuthorityP
 		return errors.New("genesis template must leave deployment-bound identity and source fields empty")
 	}
 	if genesis.Locality.Authority.Scheme != "ED25519" ||
-		genesis.Locality.Authority.KeyID != "MATERIALIZE-WITH-LOCALITY-VM" ||
+		genesis.Locality.Authority.KeyID != "MATERIALIZE-WITH-PRESENCE-AVALANCHE-VM" ||
 		genesis.Locality.Authority.PublicKey != "" ||
 		genesis.Locality.Authority.Scope != "FORMATION_AND_BOOTSTRAP_ONLY" {
 		return errors.New("genesis template contains an unexpected authority placeholder")

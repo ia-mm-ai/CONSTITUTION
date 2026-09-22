@@ -33,7 +33,7 @@ func TestAuthorityGenerationAndGenesisMaterialization(t *testing.T) {
 	genesis.Locality.ID = ""
 	genesis.Locality.SourceReference = ""
 	genesis.Locality.SourceSHA256 = ""
-	genesis.Locality.Authority.KeyID = "MATERIALIZE-WITH-LOCALITY-VM"
+	genesis.Locality.Authority.KeyID = "MATERIALIZE-WITH-PRESENCE-AVALANCHE-VM"
 	genesis.Locality.Authority.PublicKey = ""
 	templateBytes, err := json.MarshalIndent(genesis, "", "  ")
 	if err != nil {

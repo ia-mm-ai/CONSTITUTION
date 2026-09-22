@@ -1,0 +1,29 @@
+{
+  "schema": "PRESENCE_AVALANCHE_COMPATIBILITY_001",
+  "implementation": "AVALANCHE_IMPLEMENTATION_001",
+  "version": "1.0.0",
+  "vm_protocol_identity": "PRESENCE_AVALANCHE_VM_001",
+  "vm_id_derivation_input": "PRESENCE_AVALANCHE_VM_001",
+  "vm_id": "cQYXygFUVutQucm4s8pr8M51sRdS1UfrTbpMdEgpRYt2JvEzr",
+  "go": {
+    "version": "1.25.13",
+    "module": "github.com/ia-mm-ai/PRESENCE/SYSTEM/AVALANCHE/AVALANCHE_IMPLEMENTATION_001",
+    "dependency_lock": ["go.mod", "go.sum"]
+  },
+  "avalanchego": {
+    "version": "v1.15.0",
+    "commit": "70bd6d063b7343fd2cd8217200aaf77b57f19f68",
+    "rpcchainvm_protocol": 46,
+    "security_overlay": "../compat/AVALANCHEGO_SECURITY_OVERLAY_001.json"
+  },
+  "field": {
+    "node_minimum": "22",
+    "package": "presence-avalanche-field",
+    "third_party_runtime_dependencies": []
+  },
+  "build_target": {
+    "os": "linux",
+    "architecture": "amd64"
+  },
+  "network_write_required_for_build_or_unit_test": false
+}

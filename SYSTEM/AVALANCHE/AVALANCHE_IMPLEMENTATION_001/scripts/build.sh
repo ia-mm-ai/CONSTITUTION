@@ -13,4 +13,4 @@ mkdir -p "${output_dir}"
 )
 
 "${output_dir}/presence-avalanche-vm" --version
-echo "built LOCALITY VM artifacts in ${output_dir}"
+echo "built PRESENCE Avalanche VM in ${output_dir}"

@@ -25,7 +25,8 @@ if [[ "$("${go_binary}" env GOVERSION)" != "go1.25.13" ]]; then
   echo "AvalancheGo preparation requires exact Go 1.25.13" >&2
   exit 1
 fi
-export PATH="$(dirname "${go_binary}"):${PATH}"
+go_binary_dir="$(dirname "${go_binary}")"
+export PATH="${go_binary_dir}:${PATH}"
 if [[ -e "${output_source}" ]]; then
   echo "refusing to overwrite AvalancheGo source path: ${output_source}" >&2
   exit 1
@@ -181,5 +182,5 @@ jq -n \
     graft_modules: $graft_modules
   }' >"${output_source}/AVALANCHEGO_SOURCE_IDENTITY.json"
 
-echo "prepared AvalancheGo ${tag} (${observed_commit}) + LOCALITY_SECURITY_OVERLAY_001"
+echo "prepared AvalancheGo ${tag} (${observed_commit}) + PRESENCE_AVALANCHE_SECURITY_OVERLAY_001"
 echo "source: ${output_source}"

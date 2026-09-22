@@ -10,7 +10,7 @@ const (
 	domainID                   = vmIDDomain
 	genesisFormat              = "PRESENCE_AVALANCHE_GENESIS"
 	genesisEncoding            = "UTF-8_JSON"
-	genesisVersion             = uint32(4)
+	genesisVersion             = uint32(1)
 	deploymentDescriptorSchema = "PRESENCE_AVALANCHE_ADMIN_INPUT_001"
 	formID                     = "PRESENCE-AVALANCHE-FORM-001"
 	formSHA256                 = "e70fedb8ec8420275703542ee16d6d0429b1b5979b0b8ff964eac87aa19a7d8a"
@@ -258,7 +258,7 @@ func (g *Genesis) Validate() error {
 		return fmt.Errorf("expected %s version %d encoded as %s", genesisFormat, genesisVersion, genesisEncoding)
 	}
 	if g.Domain.ID != domainID || g.Domain.VMClass != "AVALANCHE_CUSTOM_RPCCHAINVM" {
-		return errors.New("domain must identify the LOCALITY_VM Avalanche RPCChainVM")
+		return errors.New("domain must identify the PRESENCE Avalanche RPCChainVM")
 	}
 	if g.Domain.ExecutionModel != "NON_EVM_SIGNED_EVENT_SOURCED" || g.Domain.StateModel != "VERSIONED_EVENT_SOURCED_LIVING_CAPACITY" {
 		return errors.New("unsupported LOCALITY execution or state model")
@@ -277,7 +277,7 @@ func (g *Genesis) Validate() error {
 		"PRESERVED_IMMUTABLE_PREDECESSOR",
 	}
 	if g.Lineage.DirectPredecessor != wantDirect {
-		return errors.New("lineage must bind the exact immutable LOCALITY_VM_002 v2.1.0 predecessor")
+		return errors.New("lineage must bind the exact immutable LOCALITY_VM_003 v3.0.0 predecessor")
 	}
 	wantAncestor := FormationAncestor{"KENTRA", predecessorChainID, predecessorL1ID, predecessorVMID, predecessorValidationID, predecessorValidatorNodeID, predecessorGenesisID, predecessorBodySHA256, "FORMATION_COMPLETE_REFERENCE_ONLY", "UNAVAILABLE_TO_CURRENT_OPERATOR", "NEW_LOCALITY_REQUIRES_NEW_VALIDATOR_AND_AUTHORITY_CUSTODY"}
 	if g.Lineage.FormationAncestor != wantAncestor {

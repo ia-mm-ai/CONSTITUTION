@@ -21,12 +21,13 @@ if [[ "$("${go_binary}" env GOVERSION)" != "go1.25.13" ]]; then
   echo "AvalancheGo build requires exact Go 1.25.13" >&2
   exit 1
 fi
-export PATH="$(dirname "${go_binary}"):${PATH}"
+go_binary_dir="$(dirname "${go_binary}")"
+export PATH="${go_binary_dir}:${PATH}"
 
-scratch_root="$(mktemp -d "${TMPDIR:-/tmp}/locality-avalanchego-build-001.XXXXXX")"
+scratch_root="$(mktemp -d "${TMPDIR:-/tmp}/presence-avalanchego-build-001.XXXXXX")"
 cleanup() {
   case "${scratch_root}" in
-    "${TMPDIR:-/tmp}"/locality-avalanchego-build-001.*) rm -rf -- "${scratch_root}" ;;
+    "${TMPDIR:-/tmp}"/presence-avalanchego-build-001.*) rm -rf -- "${scratch_root}" ;;
     *) echo "refusing to remove unexpected build directory: ${scratch_root}" >&2 ;;
   esac
 }
@@ -35,7 +36,7 @@ trap cleanup EXIT INT TERM
 GO_BINARY="${go_binary}" "${root_dir}/scripts/prepare-avalanchego.sh" "${scratch_root}/avalanchego"
 (
   cd "${scratch_root}/avalanchego"
-  ./scripts/build.sh
+  AVALANCHEGO_COMMIT="70bd6d063b7343fd2cd8217200aaf77b57f19f68" bash ./scripts/build.sh
 )
 
 mkdir -p "${output_dir}"

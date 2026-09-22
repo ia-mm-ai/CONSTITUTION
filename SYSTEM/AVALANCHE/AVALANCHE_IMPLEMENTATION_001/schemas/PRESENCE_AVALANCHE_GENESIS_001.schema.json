@@ -1,0 +1,278 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:presence:avalanche:genesis:1",
+  "title": "PRESENCE Avalanche custom VM genesis",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "format",
+    "version",
+    "encoding",
+    "domain",
+    "lineage",
+    "constitution",
+    "locality",
+    "profile",
+    "capacity",
+    "continuity",
+    "initial_state",
+    "claim_limits",
+    "evolution"
+  ],
+  "properties": {
+    "format": {"const": "PRESENCE_AVALANCHE_GENESIS"},
+    "version": {"const": 1},
+    "encoding": {"const": "UTF-8_JSON"},
+    "domain": {"$ref": "#/$defs/domain"},
+    "lineage": {"$ref": "#/$defs/lineage"},
+    "constitution": {"$ref": "#/$defs/constitution"},
+    "locality": {"$ref": "#/$defs/locality"},
+    "profile": {"$ref": "#/$defs/profile"},
+    "capacity": {"$ref": "#/$defs/capacity"},
+    "continuity": {"$ref": "#/$defs/continuity"},
+    "initial_state": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["revision", "previous_state_commitment", "history"],
+      "properties": {
+        "revision": {"const": 0},
+        "previous_state_commitment": {"type": "null"},
+        "history": {"const": "APPEND_ONLY"}
+      }
+    },
+    "claim_limits": {"$ref": "#/$defs/closedStrings"},
+    "evolution": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "state_schema_version",
+        "unknown_fields",
+        "genesis_mutability",
+        "upgrade_policy",
+        "activation_effect"
+      ],
+      "properties": {
+        "state_schema_version": {"const": 4},
+        "unknown_fields": {"const": "REJECT"},
+        "genesis_mutability": {"const": "IMMUTABLE"},
+        "upgrade_policy": {"type": "string", "minLength": 1},
+        "activation_effect": {"type": "string", "minLength": 1}
+      }
+    }
+  },
+  "$defs": {
+    "id": {"type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]{2,255}$"},
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "nonempty": {"type": "string", "minLength": 1},
+    "tokenArray": {
+      "type": "array",
+      "items": {"type": "string", "minLength": 1},
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "domain": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "genesis_id", "vm_class", "execution_model", "state_model", "purpose"],
+      "properties": {
+        "id": {"const": "PRESENCE_AVALANCHE_VM_001"},
+        "genesis_id": {"$ref": "#/$defs/id"},
+        "vm_class": {"const": "AVALANCHE_CUSTOM_RPCCHAINVM"},
+        "execution_model": {"const": "NON_EVM_SIGNED_EVENT_SOURCED"},
+        "state_model": {"const": "VERSIONED_EVENT_SOURCED_LIVING_CAPACITY"},
+        "purpose": {"type": "string", "minLength": 1, "maxLength": 1024}
+      }
+    },
+    "lineage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "direct_predecessor",
+        "formation_ancestor",
+        "relation",
+        "effect",
+        "authority_transfer",
+        "shared_currentness"
+      ],
+      "properties": {
+        "direct_predecessor": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "protocol",
+            "version",
+            "vm_id",
+            "repository_pack_sha256",
+            "repository_checksum_sidecar_sha256",
+            "linux_release_sha256",
+            "qualification_evidence_sha256",
+            "final_state_commitment",
+            "final_state_sha256",
+            "disposition"
+          ],
+          "properties": {
+            "protocol": {"const": "LOCALITY_VM_003"},
+            "version": {"const": "3.0.0"},
+            "vm_id": {"const": "25tZjky6SecZA1Gwc6VwD2ouy64xAUdgNLo1C8dkXfbsFNxaTk"},
+            "repository_pack_sha256": {"$ref": "#/$defs/sha256"},
+            "repository_checksum_sidecar_sha256": {"$ref": "#/$defs/sha256"},
+            "linux_release_sha256": {"$ref": "#/$defs/sha256"},
+            "qualification_evidence_sha256": {"$ref": "#/$defs/sha256"},
+            "final_state_commitment": {"$ref": "#/$defs/sha256"},
+            "final_state_sha256": {"$ref": "#/$defs/sha256"},
+            "disposition": {"const": "PRESERVED_IMMUTABLE_PREDECESSOR"}
+          }
+        },
+        "formation_ancestor": {"$ref": "#/$defs/closedStrings"},
+        "relation": {"const": "SUCCESSOR_DERIVED_WITHOUT_REWRITE"},
+        "effect": {"const": "ANCESTRY_REFERENCE_ONLY"},
+        "authority_transfer": {"const": "NONE"},
+        "shared_currentness": {"const": "NONE"}
+      }
+    },
+    "constitution": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "human_path",
+        "human_sha256",
+        "machine_path",
+        "machine_sha256",
+        "public_origin",
+        "human_role",
+        "machine_role",
+        "conflict_result",
+        "parsing_has_force"
+      ],
+      "properties": {
+        "human_path": {"const": "../../../../SOURCE/CONSTITUTION_0()1.md"},
+        "human_sha256": {"const": "affeb5738cdfeea7ee4fe985652bf78b15eb6dfbba5871d82f0f2213a81832d0"},
+        "machine_path": {"const": "../../../../SOURCE/CONSTITUTION_0()1.json"},
+        "machine_sha256": {"const": "519a81d2a26d5bf32afd77566bbb35b4d28b22af85ac45a7055fccd1b45222f8"},
+        "public_origin": {"$ref": "#/$defs/closedScalar"},
+        "human_role": {"const": "SUBSTANTIVE_MEANING"},
+        "machine_role": {"const": "REPRESENTATION_ONLY"},
+        "conflict_result": {"const": "UNRESOLVED_HOLD_EXACT_SCOPE"},
+        "parsing_has_force": {"const": false}
+      }
+    },
+    "locality": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "source_reference", "source_sha256", "formation_authority"],
+      "properties": {
+        "id": {"$ref": "#/$defs/id"},
+        "source_reference": {"$ref": "#/$defs/id"},
+        "source_sha256": {"$ref": "#/$defs/sha256"},
+        "formation_authority": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["scheme", "key_id", "public_key", "scope"],
+          "properties": {
+            "scheme": {"const": "ED25519"},
+            "key_id": {"$ref": "#/$defs/id"},
+            "public_key": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+            "scope": {"const": "FORMATION_AND_BOOTSTRAP_ONLY"}
+          }
+        }
+      }
+    },
+    "profile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "form_id",
+        "form_sha256",
+        "gate_postures",
+        "effect_ceiling",
+        "non_collapse_rules",
+        "private_state",
+        "admission_rule",
+        "entry_rule",
+        "capacity_rule",
+        "correction_rule",
+        "presence_rule",
+        "dormancy_rule",
+        "reentry_rule",
+        "succession_rule",
+        "origin_rule"
+      ],
+      "properties": {
+        "form_id": {"const": "PRESENCE-AVALANCHE-FORM-001"},
+        "form_sha256": {"const": "e70fedb8ec8420275703542ee16d6d0429b1b5979b0b8ff964eac87aa19a7d8a"},
+        "gate_postures": {"$ref": "#/$defs/tokenArray"},
+        "effect_ceiling": {"$ref": "#/$defs/tokenArray"},
+        "non_collapse_rules": {"$ref": "#/$defs/tokenArray"},
+        "private_state": {"$ref": "#/$defs/nonempty"},
+        "admission_rule": {"$ref": "#/$defs/nonempty"},
+        "entry_rule": {"$ref": "#/$defs/nonempty"},
+        "capacity_rule": {"$ref": "#/$defs/nonempty"},
+        "correction_rule": {"$ref": "#/$defs/nonempty"},
+        "presence_rule": {"$ref": "#/$defs/nonempty"},
+        "dormancy_rule": {"$ref": "#/$defs/nonempty"},
+        "reentry_rule": {"$ref": "#/$defs/nonempty"},
+        "succession_rule": {"$ref": "#/$defs/nonempty"},
+        "origin_rule": {"$ref": "#/$defs/nonempty"}
+      }
+    },
+    "capacity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "unit",
+        "structural_ceiling_units",
+        "initial_actual_units",
+        "correction_egress_reserve_units",
+        "max_admission_offer_seconds",
+        "availability_rule",
+        "reservation_rule",
+        "degradation_rule"
+      ],
+      "properties": {
+        "unit": {"const": "LOCALITY_CAPACITY_UNIT"},
+        "structural_ceiling_units": {"type": "integer", "minimum": 1},
+        "initial_actual_units": {"type": "integer", "minimum": 0},
+        "correction_egress_reserve_units": {"type": "integer", "minimum": 1},
+        "max_admission_offer_seconds": {"type": "integer", "minimum": 1},
+        "availability_rule": {"$ref": "#/$defs/nonempty"},
+        "reservation_rule": {"$ref": "#/$defs/nonempty"},
+        "degradation_rule": {"$ref": "#/$defs/nonempty"}
+      }
+    },
+    "continuity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "initial_posture",
+        "minimum_continuity_authorities",
+        "successor_attestation_threshold",
+        "formation_authority_lifecycle",
+        "p_zero_rule",
+        "pulse_rule",
+        "infrastructure_succession_rule"
+      ],
+      "properties": {
+        "initial_posture": {"const": "DORMANT_P0"},
+        "minimum_continuity_authorities": {"type": "integer", "minimum": 2},
+        "successor_attestation_threshold": {"type": "integer", "minimum": 2},
+        "formation_authority_lifecycle": {"$ref": "#/$defs/nonempty"},
+        "p_zero_rule": {"$ref": "#/$defs/nonempty"},
+        "pulse_rule": {"$ref": "#/$defs/nonempty"},
+        "infrastructure_succession_rule": {"$ref": "#/$defs/nonempty"}
+      }
+    },
+    "closedStrings": {
+      "type": "object",
+      "additionalProperties": {"type": "string", "minLength": 1},
+      "minProperties": 1
+    },
+    "closedScalar": {
+      "type": "object",
+      "additionalProperties": {
+        "type": ["string", "integer", "boolean"],
+        "minLength": 1
+      },
+      "minProperties": 1
+    }
+  }
+}

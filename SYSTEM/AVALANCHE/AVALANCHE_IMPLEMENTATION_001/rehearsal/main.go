@@ -65,10 +65,10 @@ func main() {
 func start(args []string) error {
 	flags := flag.NewFlagSet("start", flag.ContinueOnError)
 	avalancheGoPath := flags.String("avalanchego", "", "absolute path to AvalancheGo v1.15.0")
-	pluginDir := flags.String("plugin-dir", "", "directory containing the LOCALITY VM binary named by VM ID")
-	genesisPath := flags.String("genesis", "", "materialized LOCALITY runtime genesis")
+	pluginDir := flags.String("plugin-dir", "", "directory containing the PRESENCE Avalanche VM binary named by VM ID")
+	genesisPath := flags.String("genesis", "", "materialized PRESENCE Avalanche runtime genesis")
 	rootDir := flags.String("root", "", "parent directory for disposable rehearsal networks")
-	vmIDText := flags.String("vm-id", "", "LOCALITY VM ID")
+	vmIDText := flags.String("vm-id", "", "PRESENCE Avalanche VM ID")
 	if err := flags.Parse(args); err != nil {
 		return err
 	}
@@ -234,7 +234,7 @@ func stop(args []string) error {
 	if err := tmpnet.StopNetwork(ctx, logging.NoLog{}, networkDir); err != nil {
 		return fmt.Errorf("stop rehearsal network: %w", err)
 	}
-	fmt.Printf("{\"schema\":\"LOCALITY_REHEARSAL_STOP_001\",\"network_dir\":%q,\"stopped\":true}\n", networkDir)
+	fmt.Printf("{\"schema\":\"PRESENCE_AVALANCHE_REHEARSAL_STOP_001\",\"network_dir\":%q,\"stopped\":true}\n", networkDir)
 	return nil
 }
 
@@ -274,7 +274,7 @@ func emitSummary(network *tmpnet.Network) error {
 		})
 	}
 	summary := networkSummary{
-		Schema:       "LOCALITY_REHEARSAL_NETWORK_001",
+		Schema:       "PRESENCE_AVALANCHE_REHEARSAL_NETWORK_001",
 		NetworkDir:   network.Dir,
 		NetworkID:    network.GetNetworkID(),
 		VMID:         chain.VMID.String(),

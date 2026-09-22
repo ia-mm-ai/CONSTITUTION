@@ -17,7 +17,7 @@ import (
 const (
 	vmVersion          = "presence-avalanche-vm/1.0.0"
 	vmIDDomain         = "PRESENCE_AVALANCHE_VM_001"
-	avalancheGoProfile = "v1.15.0+LOCALITY_SECURITY_OVERLAY_001"
+	avalancheGoProfile = "v1.15.0+PRESENCE_AVALANCHE_SECURITY_OVERLAY_001"
 )
 
 type machineVersion struct {
@@ -79,9 +79,9 @@ func main() {
 	case len(os.Args) == 3 && os.Args[1] == "--generate-authority":
 		keyID, privatePath, publicPath, err := generateAuthority(os.Args[2])
 		if err != nil {
-			exitWithError("generate locality authority", err)
+			exitWithError("generate PRESENCE Avalanche authority", err)
 		}
-		fmt.Printf("generated locality authority %s\nprivate: %s\npublic: %s\n", keyID, privatePath, publicPath)
+		fmt.Printf("generated PRESENCE Avalanche authority %s\nprivate: %s\npublic: %s\n", keyID, privatePath, publicPath)
 		return
 	case len(os.Args) == 6 && os.Args[1] == "--materialize-genesis":
 		if err := materializeGenesis(os.Args[2], os.Args[3], os.Args[4], os.Args[5]); err != nil {
