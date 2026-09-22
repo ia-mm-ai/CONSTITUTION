@@ -3,13 +3,14 @@
 import argparse
 import hashlib
 import json
+import math
 import re
 import subprocess
 import sys
 import tempfile
 from pathlib import Path, PurePosixPath
 
-from jsonschema import Draft202012Validator
+from jsonschema import Draft202012Validator, SchemaError
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -31,7 +32,14 @@ def load_json(data):
     def reject(value):
         raise ValueError(f"Non-finite JSON number: {value}")
 
-    return json.loads(data.decode("utf-8"), object_pairs_hook=pairs, parse_constant=reject)
+    def finite_float(value):
+        number = float(value)
+        if not math.isfinite(number):
+            reject(value)
+        return number
+
+    return json.loads(data.decode("utf-8"), object_pairs_hook=pairs,
+                      parse_constant=reject, parse_float=finite_float)
 
 
 def encode(value):
@@ -40,6 +48,13 @@ def encode(value):
 
 def binding(data):
     return {"sha256": hashlib.sha256(data).hexdigest(), "byte_length": len(data)}
+
+
+def check_schema(schema):
+    try:
+        Draft202012Validator.check_schema(schema)
+    except SchemaError as error:
+        raise ValueError(f"Invalid schema definition: {error.message}") from error
 
 
 def safe_path(name):
@@ -70,7 +85,10 @@ def revision_files(repository, revision):
         raise ValueError("Select a full Git commit ID, not a branch, tag, or abbreviated ID")
 
     def git(*args):
-        return subprocess.check_output(["git", "-C", str(repository), *args], stderr=subprocess.PIPE)
+        return subprocess.check_output(
+            ["git", "--no-replace-objects", "-C", str(repository), *args],
+            stderr=subprocess.PIPE,
+        )
 
     if git("cat-file", "-t", revision).strip() != b"commit":
         raise ValueError("Revision must identify a commit")
@@ -154,7 +172,15 @@ def inventory(files):
         }
         if op["input"] != contract:
             raise ValueError("Operation input must retain its bounded contract")
-        Draft202012Validator.check_schema(op["input"])
+        check_schema(op["input"])
+        if op["id"] == "read":
+            if op["output"] != {"representation": "exact_resource_bytes",
+                                "media_type_from": "index.resources[].media_type"}:
+                raise ValueError("Read output must remain exact resource bytes")
+        else:
+            check_schema(op["output"])
+            if any("$ref" in node or "$dynamicRef" in node for node, _ in walk(op["output"])):
+                raise ValueError("Operation output contracts must be self-contained; no reference fetching")
     return declaration, resources, references
 
 
@@ -182,7 +208,7 @@ def check_material(files):
             continue
         document = load_json(files[name])
         if name.endswith(".schema.json"):
-            Draft202012Validator.check_schema(document)
+            check_schema(document)
             schemas[document["$id"]] = document
         for node, _ in walk(document):
             for key in ("source", "x-source"):
@@ -336,9 +362,12 @@ def main():
         else:
             *_, report = check_revision(args.repository, args.revision)
         print(encode(report).decode(), end="")
-        return 0 if report["status"] in ("PASSED", "INTEGRITY_VERIFIED") else 2
+        if report["status"] in ("PASSED", "INTEGRITY_VERIFIED"):
+            return 0
+        return 2 if report["status"] == "INCOMPLETE" else 1
     except (ValueError, KeyError, TypeError, OSError, subprocess.SubprocessError) as error:
-        print(encode({"status": "FAILED", "error": str(error)}).decode(), end="")
+        selection = {"export": str(args.export)} if args.export else {"revision": args.revision}
+        print(encode({"status": "FAILED", **selection, "error": str(error)}).decode(), end="")
         return 1
 
 
