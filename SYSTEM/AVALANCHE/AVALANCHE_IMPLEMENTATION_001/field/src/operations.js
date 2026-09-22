@@ -16,12 +16,28 @@ const TOKEN = /^[A-Z][A-Z0-9_]+$/;
 export function validateOperationContract(contract) {
   if (
     !contract || typeof contract !== "object" || Array.isArray(contract) ||
-    Object.keys(contract).sort().join(",") !== "implementation,operations,protocol,schema,version" ||
+    Object.keys(contract).sort().join(",") !==
+      "implementation,missing_scope_rule,operations,protocol,schema,scope_classes,unknown_operation_rule,version" ||
     contract.schema !== "PRESENCE_AVALANCHE_OPERATION_CONTRACT_001" ||
     contract.implementation !== "AVALANCHE_IMPLEMENTATION_001" ||
     contract.protocol !== "PRESENCE_AVALANCHE_VM_001" || contract.version !== "1.0.0" ||
+    contract.unknown_operation_rule !== "FAIL_CLOSED" ||
+    contract.missing_scope_rule !== "FAIL_CLOSED" ||
     !Array.isArray(contract.operations)
   ) throw new Error("unsupported shared VM operation contract");
+  const classes = contract.scope_classes;
+  if (!classes || typeof classes !== "object" || Array.isArray(classes) ||
+      Object.keys(classes).sort().join(",") !== [...SCOPES].sort().join(",")) {
+    throw new Error("shared VM operation contract scope classes are not exhaustive");
+  }
+  for (const [scope, definition] of Object.entries(classes)) {
+    if (!definition || typeof definition !== "object" || Array.isArray(definition) ||
+        Object.keys(definition).sort().join(",") !== "active_locus_rule,description,transition_locus_rule" ||
+        [definition.transition_locus_rule, definition.active_locus_rule, definition.description]
+          .some((value) => typeof value !== "string" || value.length === 0)) {
+      throw new Error(`incomplete scope class definition for ${scope}`);
+    }
+  }
   const operations = Object.create(null);
   for (const row of contract.operations) {
     if (!row || typeof row !== "object" || Array.isArray(row)) throw new Error("invalid VM operation classification");
@@ -41,19 +57,6 @@ export function validateOperationContract(contract) {
 const contractBytes = readFileSync(new URL("../../vm/protocol/operations.json", import.meta.url));
 export const VM_OPERATION_CONTRACT_SHA256 = createHash("sha256").update(contractBytes).digest("hex");
 export const VM_OPERATIONS = validateOperationContract(JSON.parse(contractBytes.toString("utf8")));
-
-const rootContractBytes = readFileSync(new URL("../../protocol/operations.json", import.meta.url));
-export const ROOT_OPERATION_CONTRACT_SHA256 = createHash("sha256").update(rootContractBytes).digest("hex");
-const rootOperations = validateOperationContract({
-  protocol: "PRESENCE_AVALANCHE_VM_001",
-  ...JSON.parse(rootContractBytes.toString("utf8"))
-});
-for (const operation of SUPPORTED_VM_OPERATIONS) {
-  if (rootOperations[operation].scope !== VM_OPERATIONS[operation].scope ||
-      rootOperations[operation].effect !== VM_OPERATIONS[operation].effect) {
-    throw new Error(`VM operation contracts disagree for ${operation}`);
-  }
-}
 
 export function assertOperationScope(request, state) {
   const classification = VM_OPERATIONS[request.operation];

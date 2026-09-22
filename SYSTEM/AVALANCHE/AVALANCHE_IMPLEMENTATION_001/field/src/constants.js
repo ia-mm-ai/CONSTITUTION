@@ -1,4 +1,4 @@
-import { VM_OPERATIONS, VM_OPERATION_CONTRACT_SHA256, ROOT_OPERATION_CONTRACT_SHA256 } from "./operations.js";
+import { VM_OPERATIONS, VM_OPERATION_CONTRACT_SHA256 } from "./operations.js";
 export { VM_OPERATION_CONTRACT_SHA256 } from "./operations.js";
 
 export const IMPLEMENTATION = "AVALANCHE_IMPLEMENTATION_001";
@@ -16,22 +16,15 @@ export const VM_VERSION = "presence-avalanche-vm/1.0.0";
 export const VM_ID = "cNhhBznc1YN29QVJMQbK7sxy6GsimFKN6yvftRjPK7qWEvZw8";
 export const VM_RPCCHAINVM_PROTOCOL = 46;
 export const VM_STATE_SCHEMA = "PRESENCE_AVALANCHE_RUNTIME_STATE_001";
-export const ROOT_VM_ID = "cQYXygFUVutQucm4s8pr8M51sRdS1UfrTbpMdEgpRYt2JvEzr";
-export const VM_IDENTITIES = Object.freeze({
-  [VM_ID]: Object.freeze({
-    actorPrefix: "PRESENCE-AVALANCHE-ACTOR-",
-    stateSchema: VM_STATE_SCHEMA,
-    contractSHA256: VM_OPERATION_CONTRACT_SHA256
-  }),
-  [ROOT_VM_ID]: Object.freeze({
-    actorPrefix: "LOCALITY-ACTOR-",
-    stateSchema: "PRESENCE_AVALANCHE_STATE_001",
-    contractSHA256: ROOT_OPERATION_CONTRACT_SHA256
-  })
+export const VM_ACTOR_PREFIX = "PRESENCE-AVALANCHE-ACTOR-";
+const VM_IDENTITY = Object.freeze({
+  actorPrefix: VM_ACTOR_PREFIX,
+  stateSchema: VM_STATE_SCHEMA,
+  contractSHA256: VM_OPERATION_CONTRACT_SHA256
 });
 export function vmIdentity(id) {
-  if (!Object.hasOwn(VM_IDENTITIES, id)) throw new Error("unsupported expected_vm_id");
-  return VM_IDENTITIES[id];
+  if (id !== VM_ID) throw new Error("unsupported expected_vm_id");
+  return VM_IDENTITY;
 }
 export const VM_TRANSITION_SCHEMA = "PRESENCE_AVALANCHE_TRANSITION_001";
 export const VM_RECEIPT_SCHEMA = "PRESENCE_AVALANCHE_RECEIPT_001";

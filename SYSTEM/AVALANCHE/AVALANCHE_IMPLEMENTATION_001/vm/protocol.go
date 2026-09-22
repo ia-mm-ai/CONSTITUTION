@@ -33,12 +33,21 @@ type operationContract struct {
 	Scope     string `json:"scope"`
 }
 
+type scopeClassContract struct {
+	TransitionLocusRule string `json:"transition_locus_rule"`
+	ActiveLocusRule     string `json:"active_locus_rule"`
+	Description         string `json:"description"`
+}
+
 type protocolContract struct {
-	Schema         string              `json:"schema"`
-	Implementation string              `json:"implementation"`
-	Protocol       string              `json:"protocol"`
-	Version        string              `json:"version"`
-	Operations     []operationContract `json:"operations"`
+	Schema               string                        `json:"schema"`
+	Implementation       string                        `json:"implementation"`
+	Protocol             string                        `json:"protocol"`
+	Version              string                        `json:"version"`
+	UnknownOperationRule string                        `json:"unknown_operation_rule"`
+	MissingScopeRule     string                        `json:"missing_scope_rule"`
+	ScopeClasses         map[string]scopeClassContract `json:"scope_classes"`
+	Operations           []operationContract           `json:"operations"`
 }
 
 var supportedOperations = []string{
@@ -71,6 +80,18 @@ func loadOperationContracts(data []byte) (map[string]operationContract, error) {
 		document.Implementation != implementationID || document.Protocol != vmIDDomain ||
 		document.Version != implementationVersion {
 		return nil, errors.New("operation contract identity mismatch")
+	}
+	if document.UnknownOperationRule != "FAIL_CLOSED" || document.MissingScopeRule != "FAIL_CLOSED" {
+		return nil, errors.New("operation contract must declare FAIL_CLOSED unknown-operation and missing-scope rules")
+	}
+	if len(document.ScopeClasses) != 5 {
+		return nil, errors.New("operation contract scope classes are not exhaustive")
+	}
+	for _, scope := range []string{scopeNewLocus, scopeActiveLocus, scopeBodyLocal, scopeDormantBody, scopeTarget} {
+		class, exists := document.ScopeClasses[scope]
+		if !exists || class.TransitionLocusRule == "" || class.ActiveLocusRule == "" || class.Description == "" {
+			return nil, fmt.Errorf("operation contract scope class %q is missing or incomplete", scope)
+		}
 	}
 	contracts := make(map[string]operationContract, len(document.Operations))
 	for _, operation := range document.Operations {

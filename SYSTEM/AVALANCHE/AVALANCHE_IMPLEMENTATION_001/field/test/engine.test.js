@@ -7,7 +7,7 @@ import { AppendOnlyJournal } from "../src/journal.js";
 import { MediumEngine } from "../src/engine.js";
 import { loadProfile } from "../src/profile.js";
 import { signingBytes, transitionID } from "../src/signature.js";
-import { ROOT_VM_ID, VM_EFFECTS, VM_ID, VM_RPCCHAINVM_PROTOCOL, VM_TRANSITION_SCHEMA, VM_VERSION, vmIdentity } from "../src/constants.js";
+import { VM_EFFECTS, VM_ID, VM_RPCCHAINVM_PROTOCOL, VM_TRANSITION_SCHEMA, VM_VERSION, vmIdentity } from "../src/constants.js";
 import { CapabilityBroker } from "../src/broker.js";
 import { keyMaterial, presentState, statusFor, testDirectory } from "./helpers.js";
 
@@ -62,33 +62,19 @@ async function fixture(profileName = "AI_FIELD_001.json", vmID = VM_ID) {
   };
 }
 
-test("root VM identity can observe, draft and submit through the merged FIELD", async () => {
-  const f = await fixture("AI_MEDIUM_001.json", ROOT_VM_ID);
-  assert.equal((await f.engine.observe()).state.schema, vmIdentity(ROOT_VM_ID).stateSchema);
-  const draft = await f.engine.prepareDraft({
-    operation: "OBSERVE_CROSSING", locus_id: f.state.active_locus_id, observed_at: 1001,
-    payload: { claim: "A&B <>\u2028\u2029" }
-  });
-  assert.match(draft.unsigned.actor_id, /^LOCALITY-ACTOR-/);
-  const signature = sign(null, signingBytes(draft.unsigned), f.keys.privateKey).toString("hex");
-  assert.equal((await f.engine.submitTransition({ unsigned: draft.unsigned, signature })).status, "PENDING_CONSENSUS");
-});
-
-test("each configured VM refuses the other schema, contract digest and actor namespace", async () => {
-  for (const [id, other] of [[VM_ID, ROOT_VM_ID], [ROOT_VM_ID, VM_ID]]) {
-    const f = await fixture("AI_MEDIUM_001.json", id);
-    const original = structuredClone(f.state);
-    f.setState({ ...original, schema: vmIdentity(other).stateSchema });
-    await assert.rejects(() => f.engine.observe(), /state schema mismatch/);
-    f.setState(original);
-    for (const digest of [undefined, vmIdentity(other).contractSHA256]) {
-      f.client.status = async () => statusFor(f.state, { operation_contract_sha256: digest });
-      await assert.rejects(() => f.engine.observe(), /contract hash mismatch/);
-    }
-    f.client.status = async () => statusFor(f.state, { operation_contract_sha256: vmIdentity(id).contractSHA256 });
-    f.engine.config.actor_id = keyMaterial(other).actorId;
-    assert.equal((await f.engine.decide("AI_BOUNDED_TOOL_BROKER")).allowed, false);
+test("the engine refuses any foreign schema, contract digest and actor namespace", async () => {
+  const f = await fixture("AI_MEDIUM_001.json");
+  const original = structuredClone(f.state);
+  f.setState({ ...original, schema: "PRESENCE_AVALANCHE_STATE_001" });
+  await assert.rejects(() => f.engine.observe(), /unsupported VM state schema/);
+  f.setState(original);
+  for (const digest of [undefined, "f".repeat(64)]) {
+    f.client.status = async () => statusFor(f.state, { operation_contract_sha256: digest });
+    await assert.rejects(() => f.engine.observe(), /contract hash mismatch/);
   }
+  f.client.status = async () => statusFor(f.state, { operation_contract_sha256: vmIdentity(VM_ID).contractSHA256 });
+  f.engine.config.actor_id = `LOCALITY-ACTOR-${"a".repeat(40)}`;
+  assert.equal((await f.engine.decide("AI_BOUNDED_TOOL_BROKER")).allowed, false);
 });
 
 test("broker grants a controlled AI tool only while accepted entry is PRESENT", async () => {

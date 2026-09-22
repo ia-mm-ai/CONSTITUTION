@@ -3,6 +3,35 @@
   "implementation": "AVALANCHE_IMPLEMENTATION_001",
   "protocol": "PRESENCE_AVALANCHE_VM_001",
   "version": "1.0.0",
+  "unknown_operation_rule": "FAIL_CLOSED",
+  "missing_scope_rule": "FAIL_CLOSED",
+  "scope_classes": {
+    "NEW_LOCUS": {
+      "transition_locus_rule": "NONEMPTY_PROPOSED_NEW_LOCUS_ID",
+      "active_locus_rule": "MUST_NOT_NAME_AN_ALREADY_ACTIVE_LOCUS",
+      "description": "The transition names the proposed new locus. It must not pretend that the named locus is an already active locus, and no accepted active locus may exist."
+    },
+    "ACTIVE_LOCUS": {
+      "transition_locus_rule": "EXACT_ACCEPTED_ACTIVE_LOCUS_ID",
+      "active_locus_rule": "AN_ACTIVE_LOCUS_MUST_EXIST",
+      "description": "The transition must name the exact accepted active locus."
+    },
+    "BODY_LOCAL": {
+      "transition_locus_rule": "EMPTY",
+      "active_locus_rule": "ACTIVE_LOCUS_MAY_EXIST_UNLESS_THE_VM_OPERATION_HAS_A_STRICTER_LAWFUL_CONDITION",
+      "description": "Body/locality-level operation. The transition locus_id must be empty; an active locus may still exist unless the VM operation has a stricter lawful condition."
+    },
+    "DORMANT_BODY": {
+      "transition_locus_rule": "EMPTY",
+      "active_locus_rule": "NO_ACTIVE_LOCUS_AND_EXACT_VM_DORMANT_POSTURE_CONDITIONS",
+      "description": "Requires an empty transition locus_id, no active locus, and the VM's exact dormant-posture conditions."
+    },
+    "TARGET_SCOPED": {
+      "transition_locus_rule": "EXACT_SCOPE_OF_THE_TARGET_TRANSITION",
+      "active_locus_rule": "INCIDENTAL_CURRENT_ACTIVITY_DOES_NOT_BIND",
+      "description": "The transition binds the exact scope/locus of its target transition. It must not be forced into the currently active locus merely because another locus is open."
+    }
+  },
   "operations": [
     {"operation": "BOUND", "effect": "OPENS_TEMPORARY_LOCUS_ONLY", "scope": "NEW_LOCUS"},
     {"operation": "PRESENT_FORM", "effect": "ELIGIBILITY_TO_GATE_ONLY", "scope": "ACTIVE_LOCUS"},

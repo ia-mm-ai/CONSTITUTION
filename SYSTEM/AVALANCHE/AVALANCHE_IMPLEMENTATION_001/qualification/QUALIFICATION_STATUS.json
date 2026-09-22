@@ -1,0 +1,132 @@
+{
+  "schema": "PRESENCE_AVALANCHE_QUALIFICATION_STATUS_001",
+  "implementation": "AVALANCHE_IMPLEMENTATION_001",
+  "version": "1.0.0",
+  "starting_commit": "a0cbb1080540bbe83f8678e81240247585dba060",
+  "status_set": [
+    "SOURCE_IMPLEMENTED",
+    "FUNCTIONALLY_TESTED",
+    "QUALIFICATION_INCOMPLETE",
+    "NOT_RELEASED",
+    "NOT_DEPLOYED",
+    "NOT_READY_FOR_MAINNET"
+  ],
+  "scope": "IMPLEMENTATION_SOURCE_CROSSING_ONLY",
+  "binding": "vm/protocol/binding.json",
+  "contract": "vm/protocol/operations.json",
+  "vm_id_derivation": "compatibility.json",
+  "immutable_inputs": "SOURCE_AND_ALL_CANONICAL_STATE_AND_BOTH_PREDECESSOR_ZIPS_BYTE_UNCHANGED",
+  "tests": [
+    {
+      "directory": "repository root",
+      "command": "python SYSTEM/verify.py --revision a0cbb1080540bbe83f8678e81240247585dba060",
+      "result": "PASS",
+      "scope": "Selected baseline Source/STATE/carriers and conformance; 128 normative vectors, not constitutional effect"
+    },
+    {
+      "directory": "repository root",
+      "command": "python -m unittest discover -s SYSTEM -p 'test_*.py'",
+      "result": "PASS",
+      "tests": 33
+    },
+    {
+      "directory": "implementation root",
+      "command": "python -m unittest discover -s scripts -p 'test_*.py' -v",
+      "result": "PASS",
+      "tests": 6
+    },
+    {
+      "directory": "vm",
+      "commands": [
+        "go test ./...",
+        "go test -race ./...",
+        "go vet ./...",
+        "go mod verify"
+      ],
+      "toolchain": "go1.25.13",
+      "result": "PASS",
+      "scope": "VM law, canonical parsing, signatures, 21-operation total scope inventory, current bindings, lifecycle and persistence tests"
+    },
+    {
+      "directory": "vm/rehearsal",
+      "commands": ["go test ./...", "go vet ./...", "go build -trimpath -o ../.work/presence-avalanche-rehearsal ."],
+      "toolchain": "go1.25.13",
+      "result": "PASS",
+      "scope": "Runner compiles; no test files in this module"
+    },
+    {
+      "directory": "field",
+      "commands": ["npm test"],
+      "result": "PASS",
+      "tests": 61,
+      "module_load_result": "All 15 src/*.js ES modules load under Node 22",
+      "scope": "FIELD runtime, profiles, shared operation inventory, scope-before-draft/sign/submit and current accepted-state checks"
+    },
+    {
+      "directory": "implementation root",
+      "command": "bash scripts/build.sh /tmp/presence-build",
+      "result": "PASS",
+      "scope": "Binding-checked read-only-module native Go VM build, version and official VM ID"
+    },
+    {
+      "directory": "implementation root",
+      "command": "bash integration/run.sh",
+      "result": "PASS",
+      "detailed_results": "integration/test-results.json",
+      "public_evidence": "integration/qualification-run.json",
+      "scope": "Separate FIELD process with real VM HTTP, explicit BuildBlock/Verify/Accept, full bounded lifecycle and two in-memory VM reinitializations"
+    },
+    {
+      "directory": "implementation root",
+      "command": "bash integration/network.sh /tmp/presence-node-build/avalanchego /tmp/presence-build/presence-avalanche-vm /tmp/presence-build/presence-avalanche-rehearsal /tmp/presence-inputs/network-result.json",
+      "result": "PASS",
+      "public_evidence": "integration/network-result.json",
+      "scope": "Actual three-validator custom-plugin consensus; FIELD BOUND -> DECLARE_CAPACITY -> renewed read -> CLOSE; validator bounce/rejoin and whole-network process restart preserve state/receipts"
+    },
+    {
+      "directory": "implementation root",
+      "commands": [
+        "bash -n scripts/build.sh",
+        "bash -n integration/network.sh",
+        "node --check integration/network-driver.mjs",
+        "python scripts/verify-binding.py"
+      ],
+      "result": "PASS"
+    }
+  ],
+  "security": {
+    "observations": "security-observations.json",
+    "vulnerability_status": "UNRESOLVED_EXTERNAL_OBSERVATION",
+    "secret_scan": "NO_SECRETS_DETECTED_IN_SCANNED_SOURCE_FILES",
+    "private_credential_retention": "NONE; disposable local network stopped and its private temporary directory removed",
+    "zero_vulnerabilities_claim": false
+  },
+  "unresolved": [
+    {
+      "boundary": "External Go vulnerability database reachability",
+      "status": "UNRESOLVED_EXTERNAL_OBSERVATION",
+      "details": "govulncheck package loading succeeded but vuln.go.dev module index DNS lookup failed; exact query and failure are in security-observations.json"
+    },
+    {
+      "boundary": "Complete final automated review/security backend observation",
+      "status": "UNRESOLVED_EXTERNAL_OBSERVATION",
+      "details": "Only reported tool results may establish coverage; no final review or vulnerability clearance is inferred from backend availability or earlier partial scans"
+    },
+    {
+      "boundary": "Full participant/correction/reentry lifecycle on a three-validator network",
+      "status": "UNRESOLVED",
+      "details": "The extended lifecycle is exercised with the real VM under an explicit local acceptance controller. The three-validator run is deliberately limited to BOUND, DECLARE_CAPACITY, CLOSE and restart/rejoin consistency"
+    },
+    {
+      "boundary": "Production deployment and release qualification",
+      "status": "UNRESOLVED",
+      "details": "No production validator-manager configuration, independent operational custody, adversarial/long-duration qualification, public-network run, L1 creation, release or deployment was undertaken. See DEPLOYMENT.txt"
+    }
+  ],
+  "public_network_act": false,
+  "release_created": false,
+  "tag_created": false,
+  "deployment_created": false,
+  "merge_performed": false,
+  "effect_ceiling": "NO_ADOPTION_FORMATION_SUCCESSION_AUTHORITY_OR_PRESENCE; TEST_RECEIPTS_ARE_LOCAL_IMPLEMENTATION_EVIDENCE_ONLY"
+}

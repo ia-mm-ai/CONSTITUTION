@@ -1,0 +1,61 @@
+{
+  "schema": "PRESENCE_AVALANCHE_COMPATIBILITY_001",
+  "implementation": "AVALANCHE_IMPLEMENTATION_001",
+  "version": "1.0.0",
+  "vm_protocol": "PRESENCE_AVALANCHE_VM_001",
+  "vm_id_derivation": {
+    "canonical_implementation_identity": "AVALANCHE_IMPLEMENTATION_001",
+    "canonical_protocol_identity": "PRESENCE_AVALANCHE_VM_001",
+    "derivation_input": "PRESENCE_AVALANCHE_VM_001",
+    "transport_safe_alias_required": false,
+    "name_encoding": "UTF-8_NAME_BYTES_RIGHT_PADDED_WITH_ZERO_BYTES_TO_IDS_IDLEN_32",
+    "official_api": "github.com/ava-labs/avalanchego/ids.ToID; ids.ID.String",
+    "upstream_convention": "github.com/ava-labs/avalanchego@v1.15.0/utils/constants/vm_ids.go:17-21",
+    "upstream_note": "Pinned AvalancheGo v1.15.0 has no vms.ComputeVMID function. Its official VM constants use zero-padded name bytes; ids APIs validate and CB58-format those bytes. No private hash scheme or CLI name sanitization is used.",
+    "result": "cNhhBznc1YN29QVJMQbK7sxy6GsimFKN6yvftRjPK7qWEvZw8",
+    "reproduction": "presence-avalanche-vm --vm-id"
+  },
+  "avalanchego": {
+    "module": "github.com/ava-labs/avalanchego",
+    "version": "v1.15.0",
+    "commit": "70bd6d063b7343fd2cd8217200aaf77b57f19f68",
+    "rpcchainvm_protocol": 46,
+    "go": "1.25.13",
+    "target": "linux/amd64",
+    "module_sum": "h1:F9RFoUT0tKguC+GYtambBL0TXafUNGJOfx/DjZtb6S0="
+  },
+  "vm_dependencies": {
+    "declaration": "vm/go.mod",
+    "checksums": "vm/go.sum",
+    "grpc": "v1.83.2",
+    "policy": "INHERITED_PINNED_MODULE_GRAPH_NOT_A_ZERO_VULNERABILITY_ASSERTION"
+  },
+  "local_rehearsal_dependencies": {
+    "declaration": "vm/rehearsal/go.mod",
+    "checksums": "vm/rehearsal/go.sum",
+    "purpose": "DISPOSABLE_LOCAL_VALIDATOR_QUALIFICATION_ONLY"
+  },
+  "field_dependencies": {
+    "declaration": "field/package.json",
+    "node": ">=22",
+    "npm_dependencies": [],
+    "shared_runtime_data": "vm/protocol/operations.json",
+    "distribution": "SOURCE_TREE_WITH_SIBLING_VM_PROTOCOL_REQUIRED"
+  },
+  "maintenance_tests": {
+    "python": ">=3.10",
+    "existing_dependency_declaration": "../../requirements.txt",
+    "additional_dependencies": []
+  },
+  "scanner": {
+    "inherited_go_scanner": "golang.org/x/vuln/cmd/govulncheck@v1.7.0",
+    "results": "qualification.json",
+    "missing_external_observation_status": "UNRESOLVED_EXTERNAL_OBSERVATION"
+  },
+  "wire_compatibility": {
+    "predecessor": "NOT_WIRE_COMPATIBLE_SUCCESSOR_IDENTITY",
+    "source_rule": "NO_IMPLICIT_MIGRATION_OR_STATE_AUTHORITY_TRANSFER",
+    "contract": "vm/protocol/operations.json"
+  },
+  "deployment_qualification": "NOT_ESTABLISHED_BY_SOURCE_COMPATIBILITY"
+}
