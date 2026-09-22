@@ -40,6 +40,8 @@ Observed on 2026-09-22 UTC.
 - A GitHub advisory database query for direct dependency AvalancheGo `v1.15.0`
   returned no known advisory. A temporary-lockfile `npm audit --omit=dev` of
   the dependency-free FIELD package reported zero vulnerabilities.
+- CodeQL analyzed the Go, Python, and JavaScript changes and reported zero
+  alerts.
 
 The compact observed rehearsal result is
 `qualification/REHEARSAL_OBSERVATION_001.json`.
@@ -61,8 +63,12 @@ The first query targeted this VM module; the second targeted the exact
 security-overlaid AvalancheGo source. Therefore no claim of zero Go
 vulnerabilities is made.
 
+The automated code-review backend was also unavailable. Its exact failure was
+that model `capi-prod-claude-sonnet-4.6` was not found in the configured model
+registry. No review findings were returned, and successful CodeQL analysis is
+not represented as a substitute for that review.
+
 Independent cryptographic/Avalanche consensus review, public test-network
 rehearsal, production credential restoration, adversarial partition and
 resource testing, deployment operations, release qualification, and Mainnet
 readiness remain unperformed. None is implied by the local source crossing.
-
