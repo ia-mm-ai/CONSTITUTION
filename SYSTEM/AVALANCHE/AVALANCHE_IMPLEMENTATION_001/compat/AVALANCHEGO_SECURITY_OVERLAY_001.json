@@ -1,0 +1,73 @@
+{
+  "schema": "LOCALITY_AVALANCHEGO_SECURITY_OVERLAY_001",
+  "overlay_id": "LOCALITY_SECURITY_OVERLAY_001",
+  "status": "REQUIRED_UNTIL_AN_OFFICIAL_AVALANCHEGO_RELEASE_INCLUDES_EQUIVALENT_OR_LATER_FIXES",
+  "base": {
+    "repository": "https://github.com/ava-labs/avalanchego.git",
+    "tag": "v1.15.0",
+    "tag_object": "e1abf5a0841a9bc9f881e149fa5c3e4056ea3fa1",
+    "peeled_commit": "70bd6d063b7343fd2cd8217200aaf77b57f19f68",
+    "go_module_sum": "h1:F9RFoUT0tKguC+GYtambBL0TXafUNGJOfx/DjZtb6S0=",
+    "go_mod_sum": "h1:bhrYxnLTXaHNXW90n5VF1Co7kz5wsAx4ooSTJRDXiMA=",
+    "graft_modules": {
+      "coreth": {
+        "tag_object": "41bf0e9a9790b4b389ee2c0fc5e50fdea31d4d9e",
+        "module_sum": "h1:vcDl5ABwookm0DxfcZ1IewHNA6al6VpoxqBD4dcKOVE=",
+        "go_mod_sum": "h1:G+vJvwMzRDWQSrNcCEStU8HZg+bQvFyGrS4rul9xISo="
+      },
+      "subnet-evm": {
+        "tag_object": "9a329633b8d2265cb8d5aa610997edeab0302b59",
+        "module_sum": "h1:3g1SC2Dknav6gYNXDNGN7WP5K48jYZD/dYRdAE6Qf/o=",
+        "go_mod_sum": "h1:zrXyZXFQ3vbSn8aGsCduzInAg9Qx8rqNu6vdNg2kKPo="
+      },
+      "evm": {
+        "tag_object": "bd38c17bc583ab8299207caad7e20a5e9d01dbbf",
+        "module_sum": "h1:y/yu6dQllNekN4cWj7j6uaDim9NH9JKcn3VS7JR+Kdc=",
+        "go_mod_sum": "h1:KbTaLdDYFn5SKhEjae90q8R3mBugxSrjkOopX0LYLqo="
+      }
+    },
+    "go_mod_sha256": "91f45455086aaa5c084572925c80f2680ba930b0339943ab5f3b5614f4f2abac",
+    "go_sum_sha256": "6167ea21566e986f3190d5e478d7346050b233219028c49cfa19bcb177b29c2e"
+  },
+  "toolchain": {
+    "go": "1.25.13",
+    "linux_amd64_archive_sha256": "39042a078ea9ceebe3ecda4a7188f0f5b96e14a071d27923ba7f40b456e85ae3"
+  },
+  "operation": {
+    "go_get": [
+      "google.golang.org/grpc@v1.83.2"
+    ],
+    "go_mod_tidy": true
+  },
+  "resolved_modules": {
+    "golang.org/x/crypto": "v0.55.0",
+    "golang.org/x/mod": "v0.38.0",
+    "golang.org/x/net": "v0.58.0",
+    "golang.org/x/sync": "v0.22.0",
+    "golang.org/x/sys": "v0.47.0",
+    "golang.org/x/term": "v0.45.0",
+    "golang.org/x/text": "v0.41.0",
+    "golang.org/x/tools": "v0.48.0",
+    "google.golang.org/grpc": "v1.83.2"
+  },
+  "result": {
+    "go_mod_sha256": "12ce72a561fddb538af2ae77f483b07c90815f085f110e25cdae5d54f1924883",
+    "go_sum_sha256": "c524d2028a4bcf6985fb05674adf2eeba8646a560c18d36503248c35593bf6b4"
+  },
+  "remediates": [
+    "GO-2026-6443",
+    "GO-2026-6218",
+    "GO-2026-6091",
+    "GO-2026-6090",
+    "GO-2026-6089",
+    "GO-2026-6088",
+    "GO-2026-5972",
+    "GO-2026-5970",
+    "GO-2026-5856",
+    "GO-2026-5039",
+    "GO-2026-5037",
+    "GO-2026-5026"
+  ],
+  "qualification_scanner": "golang.org/x/vuln/cmd/govulncheck@v1.7.0",
+  "required_scan_result": "ZERO_REACHABLE_VULNERABILITIES"
+}
