@@ -1,35 +1,40 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "Motion — structural placeholder",
-  "description": "Independent dimensions of an exact motion; no single permission label replaces the necessary composition.",
-  "$comment": "Annotation-only placeholder: accepts every instance; no conformance or constitutional effect is established.",
-  "x-status": "STRUCTURAL_PLACEHOLDER",
-  "x-source": {
-    "machine": "../../../SOURCE/CONSTITUTION_0()1.json",
-    "refs": ["article.11", "section.12.1", "section.13.7"]
-  },
+  "$id": "urn:presence:core:dcr:motion.schema:1",
+  "title": "DCR independent dimensions of an exact motion",
+  "x-status": "CANONICAL_SCHEMA",
+  "x-source": {"refs": ["article.10", "article.11", "section.12.1", "section.12.6", "reading.3", "reading.5"]},
+  "x-rule-classification": "CORE_ENCODING_RULE",
+  "type": "object",
+  "required": ["kind", "id", "subject", "time", "dimensions", "necessary", "authority", "posture", "claimed_effect"],
+  "additionalProperties": false,
   "properties": {
-    "locality": {"description": "Locality in which the motion is considered."},
-    "bearer": {"description": "Exact bearer of the proposed, attempted, or completed act."},
-    "act": {"description": "Bounded action under consideration."},
-    "target": {"description": "Exact target and claimed effect."},
-    "relation": {"description": "Current relation under which the act is considered."},
-    "time": {"description": "Temporal scope of the evaluation."},
+    "kind": {"type": "string", "const": "motion"},
+    "id": {"type": "string", "minLength": 1},
+    "subject": {"$ref": "urn:presence:core:dcr:capacity.schema:1#/$defs/subject"},
+    "time": {"$ref": "urn:presence:core:dcr:capacity.schema:1#/$defs/instant"},
     "dimensions": {
-      "description": "Independent questions from Article 11, each retaining its support, limits, and uncertainty.",
+      "type": "object",
+      "required": ["agency", "autonomy", "capability", "structural_capacity", "situated_capacity", "regulation", "authority", "execution", "consequence"],
+      "additionalProperties": false,
       "properties": {
-        "agency": {"description": "Locally attributable capacity to originate or bear the action as one's own."},
-        "autonomy": {"description": "Freedom to determine this act without substituted choice."},
-        "capability": {"description": "Demonstrated effective ability under the stated conditions."},
-        "structural_capacity": {"description": "What the Form or architecture leaves possible."},
-        "situated_capacity": {"description": "What this Locality can presently bear, sustain, or exercise."},
-        "regulation": {"description": "Exact local regulatory posture."},
-        "authority": {"description": "Valid basis where the claimed effect requires one, with the recoverable subjects of section.12.1."},
-        "execution": {"description": "What was attempted or completed, if supported."},
-        "consequence": {"description": "What actually changed, whether authorized or not."}
+        "agency": {"$ref": "urn:presence:core:dcr:capacity.schema:1#/$defs/dimension"},
+        "autonomy": {"$ref": "urn:presence:core:dcr:capacity.schema:1#/$defs/dimension"},
+        "capability": {"$ref": "urn:presence:core:dcr:capacity.schema:1#/$defs/dimension"},
+        "structural_capacity": {"$ref": "urn:presence:core:dcr:capacity.schema:1#/$defs/dimension"},
+        "situated_capacity": {"$ref": "urn:presence:core:dcr:capacity.schema:1#/$defs/dimension"},
+        "regulation": {"$ref": "urn:presence:core:dcr:capacity.schema:1#/$defs/dimension"},
+        "authority": {"$ref": "urn:presence:core:dcr:capacity.schema:1#/$defs/dimension"},
+        "execution": {"$ref": "urn:presence:core:dcr:capacity.schema:1#/$defs/dimension"},
+        "consequence": {"$ref": "urn:presence:core:dcr:capacity.schema:1#/$defs/dimension"}
       }
     },
-    "necessary_composition": {"description": "Relations necessary for this exact motion and their separately supported bases; no universal requirement for the same composition."},
-    "uncertainty": {"description": "Scoped missing support or conflict, not silently replaced by a single allowed or valid label."}
+    "necessary": {
+      "type": "array", "uniqueItems": true,
+      "items": {"type": "string", "enum": ["agency", "autonomy", "capability", "structural_capacity", "situated_capacity", "regulation", "authority", "execution", "consequence"]}
+    },
+    "authority": {"$ref": "urn:presence:core:dcr:capacity.schema:1#/$defs/authority"},
+    "posture": {"type": "string", "enum": ["SUPPORTED", "HOLD", "REFUSE", "NOT_CLAIMED"]},
+    "claimed_effect": {"type": "string", "minLength": 1}
   }
 }

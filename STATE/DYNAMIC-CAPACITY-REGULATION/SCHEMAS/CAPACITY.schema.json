@@ -1,21 +1,88 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "Capacity — structural placeholder",
-  "description": "Separate accounts of structural possibility and what an exact Locality can presently bear, sustain, or exercise.",
-  "$comment": "Annotation-only placeholder: accepts every instance; no conformance or constitutional effect is established.",
-  "x-status": "STRUCTURAL_PLACEHOLDER",
-  "x-source": {
-    "machine": "../../../SOURCE/CONSTITUTION_0()1.json",
-    "refs": ["article.4.table.row.15", "article.4.table.row.16", "section.11.4", "section.11.5", "section.11.10", "section.13.7"]
-  },
+  "$id": "urn:presence:core:dcr:capacity.schema:1",
+  "title": "DCR exact structural and situated capacity account",
+  "x-status": "CANONICAL_SCHEMA",
+  "x-source": {"refs": ["article.4", "section.11.4", "section.11.5", "section.11.10", "section.13.7", "reading.3", "reading.5"]},
+  "x-rule-classification": "CORE_ENCODING_RULE",
+  "type": "object",
+  "required": ["kind", "id", "subject", "time", "structural", "situated", "reconciliation"],
+  "additionalProperties": false,
   "properties": {
-    "locality": {"description": "Exact Locality for which capacity is considered."},
-    "scope": {"description": "Exact act or burden and the bounds of the capacity claim."},
-    "time": {"description": "Time for which support is claimed; past support does not establish present capacity."},
-    "conditions": {"description": "Conditions under which each capacity account holds."},
-    "structural_capacity": {"description": "What a Form or architecture leaves possible, with its own support and limits."},
-    "situated_capacity": {"description": "What this Locality can presently bear, sustain, or exercise, with separate support and limits."},
-    "reconciliation": {"description": "Local, time-sensitive relation between the two accounts without equating them."},
-    "uncertainty": {"description": "Missing or disputed support, without general incapacity inferred from a scoped limitation."}
+    "kind": {"type": "string", "const": "capacity"},
+    "id": {"$ref": "urn:presence:core:dcr:capacity.schema:1#/$defs/text"},
+    "subject": {"$ref": "urn:presence:core:dcr:capacity.schema:1#/$defs/subject"},
+    "time": {"$ref": "urn:presence:core:dcr:capacity.schema:1#/$defs/instant"},
+    "structural": {"$ref": "urn:presence:core:dcr:capacity.schema:1#/$defs/assessment"},
+    "situated": {"$ref": "urn:presence:core:dcr:capacity.schema:1#/$defs/assessment"},
+    "reconciliation": {"type": "string", "enum": ["SUPPORTABLE", "NOT_ESTABLISHED"]}
+  },
+  "$defs": {
+    "text": {"type": "string", "minLength": 1},
+    "texts": {"type": "array", "items": {"$ref": "urn:presence:core:dcr:capacity.schema:1#/$defs/text"}, "uniqueItems": true},
+    "subject": {
+      "type": "object",
+      "required": ["locality", "bearer", "act", "target", "relation", "scope", "conditions"],
+      "additionalProperties": false,
+      "properties": {
+        "locality": {"$ref": "urn:presence:core:dcr:capacity.schema:1#/$defs/text"},
+        "bearer": {"$ref": "urn:presence:core:dcr:capacity.schema:1#/$defs/text"},
+        "act": {"$ref": "urn:presence:core:dcr:capacity.schema:1#/$defs/text"},
+        "target": {"$ref": "urn:presence:core:dcr:capacity.schema:1#/$defs/text"},
+        "relation": {"$ref": "urn:presence:core:dcr:capacity.schema:1#/$defs/text"},
+        "scope": {"$ref": "urn:presence:core:dcr:capacity.schema:1#/$defs/text"},
+        "conditions": {"$ref": "urn:presence:core:dcr:capacity.schema:1#/$defs/texts"}
+      }
+    },
+    "instant": {
+      "type": "object", "required": ["frame", "at"], "additionalProperties": false,
+      "properties": {"frame": {"$ref": "urn:presence:core:dcr:capacity.schema:1#/$defs/text"}, "at": {"type": "integer", "minimum": 0}}
+    },
+    "interval": {
+      "type": "object", "required": ["frame", "from", "until"], "additionalProperties": false,
+      "properties": {
+        "frame": {"$ref": "urn:presence:core:dcr:capacity.schema:1#/$defs/text"},
+        "from": {"type": "integer", "minimum": 0},
+        "until": {"type": "integer", "minimum": 0}
+      }
+    },
+    "assessment": {
+      "type": "object",
+      "required": ["posture", "basis", "subject", "time", "evidence", "failure"],
+      "additionalProperties": false,
+      "properties": {
+        "posture": {"type": "string", "enum": ["SUPPORTED", "NOT_SUPPORTED", "UNKNOWN", "UNRESOLVED", "FAILED"]},
+        "basis": {"type": ["string", "null"], "minLength": 1},
+        "subject": {"$ref": "urn:presence:core:dcr:capacity.schema:1#/$defs/subject"},
+        "time": {"$ref": "urn:presence:core:dcr:capacity.schema:1#/$defs/interval"},
+        "evidence": {"$ref": "urn:presence:core:dcr:capacity.schema:1#/$defs/texts"},
+        "failure": {"type": ["string", "null"], "minLength": 1}
+      }
+    },
+    "dimension": {
+      "type": "object", "required": ["posture", "basis", "evidence"], "additionalProperties": false,
+      "properties": {
+        "posture": {"type": "string", "enum": ["YES", "NO", "UNKNOWN", "UNRESOLVED", "FAILED"]},
+        "basis": {"type": ["string", "null"], "minLength": 1},
+        "evidence": {"$ref": "urn:presence:core:dcr:capacity.schema:1#/$defs/texts"}
+      }
+    },
+    "authority": {
+      "type": ["object", "null"],
+      "required": ["source", "basis", "bearer", "function", "target", "scope", "duration", "conditions", "delegation", "present_status"],
+      "additionalProperties": false,
+      "properties": {
+        "source": {"$ref": "urn:presence:core:dcr:capacity.schema:1#/$defs/text"},
+        "basis": {"$ref": "urn:presence:core:dcr:capacity.schema:1#/$defs/text"},
+        "bearer": {"$ref": "urn:presence:core:dcr:capacity.schema:1#/$defs/text"},
+        "function": {"$ref": "urn:presence:core:dcr:capacity.schema:1#/$defs/text"},
+        "target": {"$ref": "urn:presence:core:dcr:capacity.schema:1#/$defs/text"},
+        "scope": {"$ref": "urn:presence:core:dcr:capacity.schema:1#/$defs/text"},
+        "duration": {"$ref": "urn:presence:core:dcr:capacity.schema:1#/$defs/interval"},
+        "conditions": {"$ref": "urn:presence:core:dcr:capacity.schema:1#/$defs/texts"},
+        "delegation": {"$ref": "urn:presence:core:dcr:capacity.schema:1#/$defs/text"},
+        "present_status": {"type": "string", "enum": ["SUPPORTED", "UNKNOWN", "UNRESOLVED", "SUSPENDED", "ENDED"]}
+      }
+    }
   }
 }

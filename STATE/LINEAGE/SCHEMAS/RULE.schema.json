@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:presence:core:lineage:rule:1",
+  "title": "Closed, side-effect-free core predicate",
+  "x-status": "CANONICAL_SCHEMA",
+  "x-rule-classification": "CORE_ENCODING_RULE",
+  "x-source": {"refs": ["reading.3", "reading.4", "reading.7", "section.5.2"]},
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "classification", "source", "assert", "failure_code", "description"],
+  "properties": {
+    "id": {"$ref": "urn:presence:core:lineage:core:1#/$defs/id"},
+    "classification": {"enum": ["CONSTITUTIONAL_RULE", "CORE_ENCODING_RULE"]},
+    "source": {"$ref": "urn:presence:core:lineage:core:1#/$defs/source"},
+    "when": {"$ref": "urn:presence:core:lineage:rule:1#/$defs/expression"},
+    "assert": {"$ref": "urn:presence:core:lineage:rule:1#/$defs/expression"},
+    "failure_code": {"type": "string", "pattern": "^[A-Z][A-Z0-9_]+$"},
+    "description": {"$ref": "urn:presence:core:lineage:core:1#/$defs/text"}
+  },
+  "allOf": [{
+    "if": {"properties": {"classification": {"const": "CONSTITUTIONAL_RULE"}}},
+    "then": {"properties": {"source": {"properties": {"refs": {"minItems": 1}}}}}
+  }],
+  "$defs": {
+    "pair": {
+      "type": "array", "minItems": 2, "maxItems": 2,
+      "items": {"$ref": "urn:presence:core:lineage:rule:1#/$defs/expression"}
+    },
+    "expression": {
+      "oneOf": [
+        {"type": ["string", "number", "boolean", "null"]},
+        {"type": "array", "items": {"$ref": "urn:presence:core:lineage:rule:1#/$defs/expression"}},
+        {
+          "type": "object", "minProperties": 1, "maxProperties": 1,
+          "additionalProperties": false,
+          "properties": {
+            "var": {"type": "string", "pattern": "^(?:[^.]+(?:\\.[^.]+)*)?$"},
+            "missing": {"type": "array", "uniqueItems": true, "items": {"type": "string"}},
+            "===": {"$ref": "urn:presence:core:lineage:rule:1#/$defs/pair"},
+            "!==": {"$ref": "urn:presence:core:lineage:rule:1#/$defs/pair"},
+            "in": {"$ref": "urn:presence:core:lineage:rule:1#/$defs/pair"},
+            ">": {"$ref": "urn:presence:core:lineage:rule:1#/$defs/pair"},
+            ">=": {"$ref": "urn:presence:core:lineage:rule:1#/$defs/pair"},
+            "<": {"$ref": "urn:presence:core:lineage:rule:1#/$defs/pair"},
+            "<=": {"$ref": "urn:presence:core:lineage:rule:1#/$defs/pair"},
+            "all": {"$ref": "urn:presence:core:lineage:rule:1#/$defs/pair"},
+            "some": {"$ref": "urn:presence:core:lineage:rule:1#/$defs/pair"},
+            "none": {"$ref": "urn:presence:core:lineage:rule:1#/$defs/pair"},
+            "and": {"type": "array", "items": {"$ref": "urn:presence:core:lineage:rule:1#/$defs/expression"}},
+            "or": {"type": "array", "items": {"$ref": "urn:presence:core:lineage:rule:1#/$defs/expression"}},
+            "!": {"$ref": "urn:presence:core:lineage:rule:1#/$defs/expression"},
+            "count": {"$ref": "urn:presence:core:lineage:rule:1#/$defs/expression"}
+          }
+        }
+      ]
+    }
+  }
+}

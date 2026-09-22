@@ -1,69 +1,157 @@
 # STATE
 
-## Standing
+## Standing and authority
 
-This directory reserves a source-level structure for supported State,
-Continuity State Capability, Dynamic Capacity Regulation, and lineage. It is
-not a declaration of any Body's present State, an adoption, or a new
-constitutional layer.
+This is the canonical State core: a normative representation contract, not a
+Body's current State, a new Constitution, or an implementation. The
+[human Constitution](../SOURCE/CONSTITUTION_0%28%291.md) governs meaning. The
+[bound machine Constitution](../SOURCE/CONSTITUTION_0%28%291.json) supplies
+references, not independent law. Verify its internal exact-human-byte binding
+before using those references. A mismatch invalidates the binding, not the
+human Constitution. An irreconcilable Form conflict remains `UNRESOLVED`; the
+dependent consequential motion is held or refused at its exact scope, never
+given the broader effect (Readings 2–7).
 
-The [human Constitution](../SOURCE/CONSTITUTION_0%28%291.md) remains the
-semantic authority. Its [bound machine Form](../SOURCE/CONSTITUTION_0%28%291.json)
-is representation only. These outlines and indexes are **structural
-placeholders**, not additional law, completed specifications, or claims of
-demonstrated capability. Constitutional references use the machine Form's
-stable references; their meaning remains in the human Form.
+“MUST” below concerns this representation contract. A constitutional obligation
+is identified by its exact `source.refs`; an interoperable representation
+choice is identified as `CORE_ENCODING_RULE`. Neither silently amends Source.
+`CANONICAL_CORE`, `CANONICAL_STANDARD`, `CANONICAL_SCHEMA`, and
+`NORMATIVE_VECTOR` are repository metadata, not constitutional vocabulary.
 
-## Topology
+## Composition without a universal pipeline
 
-| Branch | Reserved subject | Boundary |
+| Branch | Job | What it cannot supply |
 | --- | --- | --- |
-| [CONTINUITY-STATE-CAPABILITY](CONTINUITY-STATE-CAPABILITY/CONTINUITY-STATE-CAPABILITY.md) | Preservation of supported State succession through transition, correction, dormancy, and resumption | Capability is neither identity nor inherited Authority |
-| [DYNAMIC-CAPACITY-REGULATION](DYNAMIC-CAPACITY-REGULATION/DYNAMIC-CAPACITY-REGULATION.md) | Local, time-sensitive reconciliation of structural and situated capacity | Regulation does not supply capacity or Authority |
-| [LINEAGE](LINEAGE/LINEAGE.md) | Attributable occurrences and bounded predecessor, successor, and other relations | Ancestry and reference do not establish succession or ownership |
+| [CSC](CONTINUITY-STATE-CAPABILITY/CONTINUITY-STATE-CAPABILITY.md) | Requirements for preserving supported State succession through transition, correction, dormancy, and resumption | Missing present capacity, identity, Agency, Authority, or a successor's independent basis |
+| [DCR](DYNAMIC-CAPACITY-REGULATION/DYNAMIC-CAPACITY-REGULATION.md) | What an exact Locality presently supports, distinguishing structural and situated capacity | State succession, truth, general permission, or Authority |
+| [LINEAGE](LINEAGE/LINEAGE.md) | Exact attributable occurrences and relations, including derivation and implementation claims | The occurrence itself, reciprocity, inheritance, adoption, or present capability |
 
-[STATE.json](STATE.json) is the corresponding navigation index. Neither the
-directory order nor cross-references prescribe an execution sequence. CSC
-preserves supported succession; DCR concerns presently supportable motion;
-LINEAGE makes exact relations referenceable. None supplies a missing basis
-belonging to another (Articles 5 and 19).
+[STATE.json](STATE.json) specifies these interfaces. There is no compulsory
+CSC→DCR→LINEAGE order, shared runtime, universal gate, ledger, or global State.
+A result becomes another module's input only through an explicit attributable
+relation identifying the producing record, consuming record, exact target,
+scope, Locality, effective boundary, conditions, supporting basis and evidence,
+and effect ceiling. Use [INTERFACE](LINEAGE/SCHEMAS/INTERFACE.schema.json) for
+this narrow cross-module input relation; LINEAGE's general relations remain
+distinct. A transfer of a representation is not transfer of the represented
+function or its effect (sections 5.1–5.2, 11.10–11.12, 19.2–19.4).
 
-## Placeholder discipline
+A DCR disposition may be referred to in a CSC proposal, but cannot establish
+the proposal's predecessor, preservation, Agency, or Authority. A CSC record
+may be referred to by DCR, but does not refresh its time-sensitive observations.
+A LINEAGE record makes either reference explicit; it does not certify either
+claim. No module fills another module's missing basis. Unconnected records
+remain unconnected; matching identifiers are not an implicit relation.
 
-- The module Markdown files explain reserved subjects and constitutional
-  boundaries. Their JSON companions are indexes, not separately bound machine
-  Forms of the Constitution or authoritative translations of these outlines.
-- `SCHEMAS/` contains JSON Schema 2020-12 **annotation-only** placeholders.
-  Named properties describe subjects to represent; no types, required fields,
-  closed enumerations, or validation rules have been settled. They intentionally
-  accept every instance. Passing them proves no conformance or supported State.
-- `VECTORS/` contains illustrative scenario outlines, not executable fixtures
-  or reported events. Each separates assumptions, a proposed claim, and the
-  source-grounded reading to preserve. `INVALID-*` names a prohibited inference,
-  not a JSON Schema rejection. Fixture and validation results remain unfilled.
-- JSON `null` in these outlines means an unfilled editorial slot, not a
-  constitutional finding. Omission establishes no negative, consent, or
-  eligibility result. `UNKNOWN` and `UNRESOLVED` retain their constitutional
-  meanings (Readings 5–6).
-- JSON paths resolve relative to the file containing them. `source.refs`
-  (or `x-source.refs` in schemas) identify entries in the referenced
-  constitutional machine Form. Property names and file names are navigation
-  choices, not new constitutional terms.
+## Common representation discipline
 
-## Source boundaries
+The following are **CORE_ENCODING_RULES**, limited to interoperable notation.
 
-State is a Locality's supported present posture (Article 4). A representation
-reports State; it does not govern by being read (§ 14.5). Record, evidence,
-archive, and current State remain distinct (§§ 15.1–15.4).
+1. Core documents use JSON and Draft 2020-12 schemas. Objects are closed unless
+   a schema explicitly defines an extension boundary. Unknown fields and
+   missing required fields are syntax failures, not constitutional negatives.
+   Each schema has a stable `urn:presence:core:…:1` identifier; resolve it from
+   the exact checked-out core revision, never by fetching arbitrary references.
+2. `source.refs` and `x-source.refs` name exact stable `ref` entries in the
+   bound machine Constitution. A constitutional rule MUST cite at least one.
+   Structural choices, enumerations, notation, and test execution semantics are
+   encoding rules even when their purpose is supported by a cited clause.
+3. Omission means no statement was supplied; a required omission is malformed.
+   `null` is not a placeholder or an alternative to `UNKNOWN`: it is rejected
+   unless a particular schema explicitly assigns it a bounded meaning.
+   `UNKNOWN` means unestablished; `UNRESOLVED` preserves an identified conflict.
+   `UNSUPPORTED` means the stated support does not establish this scoped claim;
+   `REFUSED` is an attributable scoped disposition. None means general absence,
+   falsehood, incapacity, consent, or permanent exclusion (Reading 5;
+   sections 3.4–3.5, 11.12, 13.2).
+4. Identifiers are explicit references, not content hashes or claims of global
+   uniqueness. SHA-256 bindings always cover **the exact stored file bytes**,
+   with byte length, no newline conversion, Unicode normalization, JSON
+   reserialization, archive decompression, or implicit canonicalization. To
+   bind a newly serialized document, first fix its UTF-8 file bytes, then hash
+   those bytes; different serializations are different byte objects. Internal
+   record IDs and semantic equality never depend on serialized byte hashes.
+   Duplicate JSON keys, non-finite numbers and invalid UTF-8 are rejected.
+5. Repository file references resolve relative to their containing document,
+   except `target_files` in derivations, which are repository-root-relative.
+   Archive inventory paths use `!/` to cross a nested archive boundary.
+   Digests of inventory members cover uncompressed member bytes; outer archive
+   digests cover the original archive bytes. Evidence remains outside the
+   canonical tree; a digest is a locator, not proof of a claim.
 
-Canonical source/origin here identifies the constitutional material to which
-an external relation may refer. It does not appoint this repository a keeper
-of reality, impose adoption, or confer jurisdiction (§§ 1.2–1.5, 20.3).
-Publication, parsing, and conformance create no constitutional effect
-(Reading 7).
+## Formal rule and vector evaluation
 
-Future specifications, demonstrations, or embodiments can name their exact
-source relation and supported scope without changing these boundaries.
-No technology, mechanism, deployment, or external domain is privileged by
-this topology (§§ 19.3–19.4). Their presence here would not establish present
-CSC, sufficient capacity, or Authority (§§ 13.7, 16.8).
+The module models contain independent rules, not a state-changing program.
+The [rule schema](LINEAGE/SCHEMAS/RULE.schema.json) defines a small closed
+expression language. An expression is a JSON literal, an array of expressions,
+or a single-key operation. Objects as data are obtained through `var`, not
+executed as arbitrary code. There are no network, clock, filesystem, random,
+evaluation, or external-execution operators.
+
+**CORE_ENCODING_RULE — expression semantics:**
+
+- `var` takes a dotted property path; `""` denotes the current evaluation
+  object. Missing paths produce a distinct internal missing value, not `null`.
+  `missing` takes an array of paths and returns the missing paths in order.
+- `===` and `!==` compare two evaluated values by deep JSON equality: no
+  coercion of strings, booleans, numbers, arrays, or objects; object key order
+  is immaterial, array order is material. Missing values do not equal a JSON
+  value. Finite JSON numbers compare numerically; booleans are not numbers.
+- `and` / `or` take arrays and return a Boolean; `!` negates one expression.
+  False, null, missing, zero, empty string and empty array are falsey; all
+  other values are truthy. Logical operations short-circuit.
+- `in` takes `[value, array]` and uses deep equality, not substring matching.
+  `count` takes an array expression and returns its length.
+- `>`, `>=`, `<`, `<=` take two finite numbers or two strings of the same
+  type; string comparison is Unicode code-point order. Any time comparison
+  therefore requires a schema-constrained uniform time representation.
+- `all`, `some`, `none` take `[array, predicate]`; the predicate's `var` paths
+  are relative to each item, not an ambient parent. `all([])` is true,
+  `some([])` false, and `none([])` true; required evidence must separately
+  require nonempty arrays. An operand of the wrong type is an evaluation
+  error, never a passing rule.
+
+For each vector, validate `input` against the exact named schema with format
+checking enabled. Invalid syntax yields `schema_valid: false`,
+`semantic_result: NOT_EVALUATED`, `failure_codes: ["SCHEMA_INVALID"]`.
+For valid syntax, evaluate every applicable rule (`when`, default true) in
+model array order; a false `assert` appends its failure code, once, in that
+order. No failures yields `CONSISTENT_AT_DECLARED_SCOPE`; otherwise the result
+is `INCONSISTENT`. These labels describe represented claims only. Unknown
+conditions may be consistently represented without supporting action.
+Errors in a model, unresolved references or evaluation errors stop the check;
+they are not converted to ordinary refusal or success.
+
+The suites contain exact inputs and expected triples, source references and
+forbidden inferences. They are normative tests, not actual events, simulated
+Localities, present capability demonstrations, or evidence of adoption.
+[CONFORMANCE.py](LINEAGE/CONFORMANCE.py) is an offline notation/vector checker,
+not a CSC or DCR implementation. It uses Python's standard library and the
+existing `jsonschema` validator (tested with 4.10.3); it performs no local
+dispositions, deployments or State mutation. Run from any directory:
+
+```sh
+python /home/runner/work/PRESENCE/PRESENCE/STATE/LINEAGE/CONFORMANCE.py
+python -m unittest discover -s /home/runner/work/PRESENCE/PRESENCE/STATE/LINEAGE -p 'test_conformance.py'
+```
+
+## Qualification and proof boundaries
+
+Source, evidence, records, representations and supported State remain
+distinct. Correction preserves predecessor truth and actual consequence;
+validity never erases an occurrence (sections 14.1–14.5, 15.1–15.5).
+An implementation claim must identify the exact core commit and Source byte
+binding, scope, conditions, dependencies, demonstrations, failure boundaries,
+present status and proof ceiling. Schema acceptance or historical qualification
+does not establish present CSC or capacity (sections 16.7–16.8, 18.1–18.4).
+
+[ORIGIN](LINEAGE/ORIGIN.json) locates this canonical core and the verified
+Source snapshot. The derivation records preserve the two predecessor packs'
+inspected materials, extracted rules, exclusions and refused claims; they
+are semantic provenance, not duplicate Git history or succession of a Body.
+The archives and their executable contents are not part of this core.
+
+This crossing neither amends Source nor forms, adopts, deploys or demonstrates
+a Body or implementation. No bearer, platform, repository or verifier becomes
+parent, owner, sovereign or keeper by publication, ancestry, technical control
+or necessity (sections 1.2–1.5, 6.4–6.9, 19.1–19.4, 20.1–20.6; Reading 7).

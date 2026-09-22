@@ -1,28 +1,71 @@
 {
-  "kind": "navigation_index",
-  "status": "STRUCTURAL_PLACEHOLDER",
-  "human_outline": "STATE.md",
+  "kind": "canonical_state_core",
+  "status": "CANONICAL_CORE",
+  "human_standard": "STATE.md",
   "source": {
     "human": "../SOURCE/CONSTITUTION_0()1.md",
     "machine": "../SOURCE/CONSTITUTION_0()1.json",
-    "refs": ["reading.2", "reading.3", "reading.5", "reading.6", "reading.7", "article.4", "article.5", "section.14.5", "section.19.3", "section.19.4", "section.20.3"]
+    "refs": ["reading.2", "reading.3", "reading.4", "reading.5", "reading.6", "reading.7", "article.4", "article.5", "section.11.10", "section.14.5", "section.19.2", "section.19.3", "section.19.4", "section.20.3"]
   },
-  "scope": "Source-level organization of State-related subjects; not a Locality's current State.",
+  "scope": "Platform-neutral representation of the canonical State core; not a Locality's current State or an implementation.",
   "modules": [
     "CONTINUITY-STATE-CAPABILITY/CONTINUITY-STATE-CAPABILITY.json",
     "DYNAMIC-CAPACITY-REGULATION/DYNAMIC-CAPACITY-REGULATION.json",
     "LINEAGE/LINEAGE.json"
   ],
-  "placeholder_policy": {
+  "encoding": {
+    "classification": "CORE_ENCODING_RULE",
     "semantic_authority": "source.human",
-    "index_effect": "navigation_only",
-    "schemas": "annotation_only_accept_all_instances",
-    "vectors": "illustrative_non_executable",
-    "null": "unfilled_editorial_slot",
+    "schemas": "strict_draft_2020_12_with_format_checking",
+    "vectors": "exact_input_schema_and_semantic_expectations",
+    "null": "invalid_unless_explicitly_defined_by_schema",
     "path_resolution": "relative_to_containing_file",
+    "derivation_target_paths": "relative_to_repository_root",
     "reference_resolution": "stable_refs_in_source.machine",
-    "absence": "no_constitutional_inference"
+    "absence": "no_statement_not_negative; missing_required_property_is_syntax_failure",
+    "unknown": "unestablished",
+    "unresolved": "identified_conflict_not_silently_resolved",
+    "unsupported": "support_does_not_establish_exact_claim",
+    "refused": "attributable_scoped_disposition",
+    "hash_representation": "sha256_over_exact_stored_file_bytes_with_byte_length; no_reencoding",
+    "identifiers": "explicit_non_content_addressed_references",
+    "rule_language": "LINEAGE/SCHEMAS/RULE.schema.json",
+    "evaluation": "STATE.md#formal-rule-and-vector-evaluation"
   },
+  "interfaces": [
+    {"module": "CSC", "model": "CONTINUITY-STATE-CAPABILITY/CONTINUITY-STATE-CAPABILITY.json", "job": "preserving_supported_State_succession", "inputs": ["attributed_predecessor", "transition_evidence", "present_conditions"], "outputs": ["bounded_preservation_claim", "visible_discontinuity"], "does_not_supply": ["capacity", "Agency", "Authority", "identity", "Source"]},
+    {"module": "DCR", "model": "DYNAMIC-CAPACITY-REGULATION/DYNAMIC-CAPACITY-REGULATION.json", "job": "present_local_supportability", "inputs": ["exact_motion", "structural_capacity", "situated_capacity", "scoped_evidence"], "outputs": ["attributable_scoped_disposition"], "does_not_supply": ["State_succession", "Agency", "Authority", "capacity", "Source"]},
+    {"module": "LINEAGE", "model": "LINEAGE/LINEAGE.json", "job": "referenceable_occurrences_and_relations", "inputs": ["attributable_occurrences", "exact_relation_bases"], "outputs": ["bounded_relation_record"], "does_not_supply": ["occurrence", "reciprocity", "inheritance", "Authority", "Source"]}
+  ],
+  "composition": {
+    "universal_execution_order": false,
+    "input_relation_schema": "urn:presence:core:lineage:interface:1",
+    "source": {"refs": ["section.5.1", "section.5.2", "section.11.10", "section.19.2", "section.19.4"]},
+    "rule": "A module result becomes another module's input only through an explicit attributable relation; references never fill a missing basis."
+  },
+  "schemas": ["LINEAGE/SCHEMAS/INTERFACE.schema.json"],
+  "vectors": ["LINEAGE/VECTORS/COMPOSITION.json"],
+  "rules": [
+    {
+      "id": "STATE-EXACT-INPUT",
+      "classification": "CORE_ENCODING_RULE",
+      "source": {"refs": ["section.5.2", "section.19.2"]},
+      "when": {"===": [{"var": "kind"}, "module_input_relation"]},
+      "assert": {"===": [{"var": "output.record"}, {"var": "input.from_record"}]},
+      "failure_code": "INPUT_BINDING_MISMATCH",
+      "description": "The consuming relation explicitly names the exact producing record."
+    },
+    {
+      "id": "STATE-DISTINCT-MODULES",
+      "classification": "CORE_ENCODING_RULE",
+      "source": {"refs": ["section.19.4"]},
+      "when": {"===": [{"var": "kind"}, "module_input_relation"]},
+      "assert": {"!==": [{"var": "output.module"}, {"var": "input.module"}]},
+      "failure_code": "NOT_A_CROSS_MODULE_RELATION",
+      "description": "This narrow schema describes cross-module input relations, not every lawful local relation."
+    }
+  ],
+  "effect_ceiling": "Representation consistency only. No adoption, present State, demonstrated CSC, capacity, Authority, Agency, identity, Source transfer, or constitutional effect.",
   "not_established": [
     "adoption",
     "current State",

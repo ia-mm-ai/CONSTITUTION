@@ -1,24 +1,78 @@
 {
-  "kind": "scenario_outline",
-  "status": "ILLUSTRATIVE_NON_EXECUTABLE",
-  "source": {
-    "machine": "../../../SOURCE/CONSTITUTION_0()1.json",
-    "refs": ["section.11.4", "section.11.5", "section.11.10", "section.11.11", "section.11.13", "section.13.7", "section.18.4"]
-  },
-  "schemas": ["../SCHEMAS/CAPACITY.schema.json", "../SCHEMAS/MOTION.schema.json", "../SCHEMAS/DISPOSITION.schema.json", "../SCHEMAS/EVIDENCE.schema.json"],
-  "scenario": {
-    "assumptions": [
-      "Structural capacity and situated capacity are separately supported for one exact Locality, act, time, and set of conditions.",
-      "Every relation necessary for that motion, including Authority where its claimed effect requires it, has its own sufficient basis."
-    ],
-    "proposed_claim": "Record presently supportable motion at that exact scope.",
-    "expected_reading": [
-      "The two capacity accounts remain distinct even where their bounds permit the same act.",
-      "Support does not replace the independently evaluated dimensions with a universal permission label.",
-      "Execution and actual consequence remain separate questions, not inferred future events."
-    ],
-    "forbidden_inferences": ["Capacity supplies Authority.", "Present support guarantees future capacity or successful execution."]
-  },
-  "fixture": null,
-  "expected_validation": null
+  "kind": "normative_vector_suite", "status": "NORMATIVE_VECTOR",
+  "source": {"refs": ["section.11.10", "section.11.11", "section.13.7", "section.18.1", "reading.7"]},
+  "cases": [
+    {
+      "id": "capacity-present-support", "schema": "urn:presence:core:dcr:capacity.schema:1",
+      "input": {"kind":"capacity","id":"c1","subject":{"locality":"L","bearer":"B","act":"A","target":"T","relation":"R","scope":"S","conditions":["C"]},"time":{"frame":"f","at":5},"structural":{"posture":"SUPPORTED","basis":"form-assessment","subject":{"locality":"L","bearer":"B","act":"A","target":"T","relation":"R","scope":"S","conditions":["C"]},"time":{"frame":"f","from":0,"until":10},"evidence":["form-evidence"],"failure":null},"situated":{"posture":"SUPPORTED","basis":"present-assessment","subject":{"locality":"L","bearer":"B","act":"A","target":"T","relation":"R","scope":"S","conditions":["C"]},"time":{"frame":"f","from":4,"until":6},"evidence":["present-evidence"],"failure":null},"reconciliation":"SUPPORTABLE"},
+      "expected":{"schema_valid":true,"semantic_result":"CONSISTENT_AT_DECLARED_SCOPE","failure_codes":[]},
+      "source":{"refs":["section.13.7"]},"forbidden_inference":"Supportable capacity is not permission, Authority, execution, or an obligation to act."
+    },
+    {
+      "id":"unknown-situated-is-not-negative","schema":"urn:presence:core:dcr:capacity.schema:1",
+      "input":{"kind":"capacity","id":"c2","subject":{"locality":"L","bearer":"B","act":"A","target":"T","relation":"R","scope":"S","conditions":["C"]},"time":{"frame":"f","at":5},"structural":{"posture":"SUPPORTED","basis":"form-assessment","subject":{"locality":"L","bearer":"B","act":"A","target":"T","relation":"R","scope":"S","conditions":["C"]},"time":{"frame":"f","from":0,"until":10},"evidence":["form-evidence"],"failure":null},"situated":{"posture":"UNKNOWN","basis":null,"subject":{"locality":"L","bearer":"B","act":"A","target":"T","relation":"R","scope":"S","conditions":["C"]},"time":{"frame":"f","from":5,"until":5},"evidence":[],"failure":null},"reconciliation":"NOT_ESTABLISHED"},
+      "expected":{"schema_valid":true,"semantic_result":"CONSISTENT_AT_DECLARED_SCOPE","failure_codes":[]},
+      "source":{"refs":["reading.5","section.3.4"]},"forbidden_inference":"Unknown is neither false nor general incapacity; a null basis declares no recorded support."
+    },
+    {
+      "id":"independent-motion-without-required-authority","schema":"urn:presence:core:dcr:motion.schema:1",
+      "input":{"kind":"motion","id":"m1","subject":{"locality":"L","bearer":"B","act":"A","target":"T","relation":"R","scope":"S","conditions":["C"]},"time":{"frame":"f","at":5},"dimensions":{"agency":{"posture":"YES","basis":"own-act","evidence":["a"]},"autonomy":{"posture":"YES","basis":"options","evidence":["o"]},"capability":{"posture":"YES","basis":"demonstration","evidence":["d"]},"structural_capacity":{"posture":"YES","basis":"form","evidence":["s"]},"situated_capacity":{"posture":"YES","basis":"present","evidence":["p"]},"regulation":{"posture":"YES","basis":"local-support","evidence":["r"]},"authority":{"posture":"UNKNOWN","basis":null,"evidence":[]},"execution":{"posture":"UNKNOWN","basis":null,"evidence":[]},"consequence":{"posture":"UNKNOWN","basis":null,"evidence":[]}},"necessary":["agency","autonomy","capability","structural_capacity","situated_capacity"],"authority":null,"posture":"SUPPORTED","claimed_effect":"Exact self-directed act; no authoritative effect claimed"},
+      "expected":{"schema_valid":true,"semantic_result":"CONSISTENT_AT_DECLARED_SCOPE","failure_codes":[]},
+      "source":{"refs":["section.11.10","section.11.11","section.12.6"]},"forbidden_inference":"Lack of required Authority elsewhere does not refuse this unrelated non-authoritative act; proposed support does not prove execution."
+    },
+    {
+      "id":"self-report-ceiling","schema":"urn:presence:core:dcr:evidence.schema:1",
+      "input":{"kind":"evidence","id":"e1","object":"attributed statement","method":"SELF_REPORT","subject":{"locality":"L","bearer":"B","act":"A","target":"T","relation":"R","scope":"S","conditions":["C"]},"time":{"frame":"f","from":4,"until":6},"basis":"attributable report","result":"SUPPORTED","observation":"RECORD","claim":{"object":"attributed statement","subject":{"locality":"L","bearer":"B","act":"A","target":"T","relation":"R","scope":"S","conditions":["C"]},"time":{"frame":"f","at":5},"result":"SUPPORTED"},"effect_ceiling":"ATTRIBUTABLE_CLAIM","evidence_available":true,"absence_model":null,"failure":null},
+      "expected":{"schema_valid":true,"semantic_result":"CONSISTENT_AT_DECLARED_SCOPE","failure_codes":[]},
+      "source":{"refs":["section.18.1.table.row.1"]},"forbidden_inference":"The private reported condition is not externally verified."
+    },
+    {
+      "id":"behavior-ceiling","schema":"urn:presence:core:dcr:evidence.schema:1",
+      "input":{"kind":"evidence","id":"e2","object":"trace","method":"BEHAVIOR","subject":{"locality":"L","bearer":"B","act":"A","target":"T","relation":"R","scope":"S","conditions":["C"]},"time":{"frame":"f","from":4,"until":6},"basis":"observed trace","result":"SUPPORTED","observation":"OCCURRENCE","claim":{"object":"trace","subject":{"locality":"L","bearer":"B","act":"A","target":"T","relation":"R","scope":"S","conditions":["C"]},"time":{"frame":"f","at":5},"result":"SUPPORTED"},"effect_ceiling":"OBSERVED_TRACE","evidence_available":true,"absence_model":null,"failure":null},
+      "expected":{"schema_valid":true,"semantic_result":"CONSISTENT_AT_DECLARED_SCOPE","failure_codes":[]},
+      "source":{"refs":["section.18.1.table.row.2"]},"forbidden_inference":"Behavior does not establish awareness."
+    },
+    {
+      "id":"options-ceiling","schema":"urn:presence:core:dcr:evidence.schema:1",
+      "input":{"kind":"evidence","id":"e3","object":"available refusal","method":"OPTIONS","subject":{"locality":"L","bearer":"B","act":"A","target":"T","relation":"R","scope":"S","conditions":["C"]},"time":{"frame":"f","from":4,"until":6},"basis":"observed refusal route","result":"SUPPORTED","observation":"RECORD","claim":{"object":"available refusal","subject":{"locality":"L","bearer":"B","act":"A","target":"T","relation":"R","scope":"S","conditions":["C"]},"time":{"frame":"f","at":5},"result":"SUPPORTED"},"effect_ceiling":"EXACT_RELATIONAL_CONDITIONS","evidence_available":true,"absence_model":null,"failure":null},
+      "expected":{"schema_valid":true,"semantic_result":"CONSISTENT_AT_DECLARED_SCOPE","failure_codes":[]},
+      "source":{"refs":["section.18.1.table.row.3"]},"forbidden_inference":"A refusal route does not prove metaphysical free will or absence of hidden constraint."
+    },
+    {
+      "id":"signature-ceiling","schema":"urn:presence:core:dcr:evidence.schema:1",
+      "input":{"kind":"evidence","id":"e4","object":"attribution","method":"SIGNATURE","subject":{"locality":"L","bearer":"B","act":"A","target":"T","relation":"R","scope":"S","conditions":["C"]},"time":{"frame":"f","from":4,"until":6},"basis":"bounded attribution relation","result":"SUPPORTED","observation":"RECORD","claim":{"object":"attribution","subject":{"locality":"L","bearer":"B","act":"A","target":"T","relation":"R","scope":"S","conditions":["C"]},"time":{"frame":"f","at":5},"result":"SUPPORTED"},"effect_ceiling":"ATTRIBUTION_RELATION","evidence_available":true,"absence_model":null,"failure":null},
+      "expected":{"schema_valid":true,"semantic_result":"CONSISTENT_AT_DECLARED_SCOPE","failure_codes":[]},
+      "source":{"refs":["section.18.1.table.row.4"]},"forbidden_inference":"Attribution is not identity, Authority, consent, understanding or truth."
+    },
+    {
+      "id":"replay-ceiling","schema":"urn:presence:core:dcr:evidence.schema:1",
+      "input":{"kind":"evidence","id":"e5","object":"repeatable trace","method":"REPLAY","subject":{"locality":"L","bearer":"B","act":"A","target":"T","relation":"R","scope":"S","conditions":["C"]},"time":{"frame":"f","from":4,"until":6},"basis":"repeated trace under C","result":"SUPPORTED","observation":"REPRESENTATION","claim":{"object":"repeatable trace","subject":{"locality":"L","bearer":"B","act":"A","target":"T","relation":"R","scope":"S","conditions":["C"]},"time":{"frame":"f","at":5},"result":"SUPPORTED"},"effect_ceiling":"TRACE_REPRODUCIBILITY","evidence_available":true,"absence_model":null,"failure":null},
+      "expected":{"schema_valid":true,"semantic_result":"CONSISTENT_AT_DECLARED_SCOPE","failure_codes":[]},
+      "source":{"refs":["section.18.1.table.row.5"]},"forbidden_inference":"Replay does not establish continuing identity or current consent."
+    },
+    {
+      "id":"measurement-ceiling","schema":"urn:presence:core:dcr:evidence.schema:1",
+      "input":{"kind":"evidence","id":"e6","object":"external correlate","method":"MEASUREMENT","subject":{"locality":"L","bearer":"B","act":"A","target":"T","relation":"R","scope":"S","conditions":["C"]},"time":{"frame":"f","from":4,"until":6},"basis":"declared measurement model","result":"SUPPORTED","observation":"INTERPRETATION","claim":{"object":"external correlate","subject":{"locality":"L","bearer":"B","act":"A","target":"T","relation":"R","scope":"S","conditions":["C"]},"time":{"frame":"f","at":5},"result":"SUPPORTED"},"effect_ceiling":"MODEL_CORRELATE","evidence_available":true,"absence_model":null,"failure":null},
+      "expected":{"schema_valid":true,"semantic_result":"CONSISTENT_AT_DECLARED_SCOPE","failure_codes":[]},
+      "source":{"refs":["section.18.1.table.row.6"]},"forbidden_inference":"The model's bridge to an interior condition is not proved by the correlate."
+    },
+    {
+      "id":"local-classification-ceiling","schema":"urn:presence:core:dcr:evidence.schema:1",
+      "input":{"kind":"evidence","id":"e7","object":"local classification","method":"LOCAL_JUDGMENT","subject":{"locality":"L","bearer":"B","act":"A","target":"T","relation":"R","scope":"S","conditions":["C"]},"time":{"frame":"f","from":4,"until":6},"basis":"attributable local classification","result":"SUPPORTED","observation":"RECORD","claim":{"object":"local classification","subject":{"locality":"L","bearer":"B","act":"A","target":"T","relation":"R","scope":"S","conditions":["C"]},"time":{"frame":"f","at":5},"result":"SUPPORTED"},"effect_ceiling":"LOCAL_CLASSIFICATION","evidence_available":true,"absence_model":null,"failure":null},
+      "expected":{"schema_valid":true,"semantic_result":"CONSISTENT_AT_DECLARED_SCOPE","failure_codes":[]},
+      "source":{"refs":["section.18.1.table.row.7"]},"forbidden_inference":"Classification grants no ownership of another's choice."
+    },
+    {
+      "id":"conformance-ceiling","schema":"urn:presence:core:dcr:evidence.schema:1",
+      "input":{"kind":"evidence","id":"e8","object":"tested conditions","method":"CONFORMANCE","subject":{"locality":"L","bearer":"B","act":"A","target":"T","relation":"R","scope":"S","conditions":["C"]},"time":{"frame":"f","from":4,"until":6},"basis":"declared test suite","result":"SUPPORTED","observation":"RECORD","claim":{"object":"tested conditions","subject":{"locality":"L","bearer":"B","act":"A","target":"T","relation":"R","scope":"S","conditions":["C"]},"time":{"frame":"f","at":5},"result":"SUPPORTED"},"effect_ceiling":"TEST_SATISFACTION","evidence_available":true,"absence_model":null,"failure":null},
+      "expected":{"schema_valid":true,"semantic_result":"CONSISTENT_AT_DECLARED_SCOPE","failure_codes":[]},
+      "source":{"refs":["section.18.1.table.row.8","reading.7"]},"forbidden_inference":"Conformance does not establish future behavior, adoption, legitimacy or actual capacity."
+    },
+    {
+      "id":"attributable-support-disposition","schema":"urn:presence:core:dcr:disposition.schema:1",
+      "input":{"kind":"disposition","id":"d1","subject":{"locality":"L","bearer":"B","act":"A","target":"T","relation":"R","scope":"S","conditions":["C"]},"time":{"frame":"f","at":5},"structural":{"posture":"SUPPORTED","basis":"form","subject":{"locality":"L","bearer":"B","act":"A","target":"T","relation":"R","scope":"S","conditions":["C"]},"time":{"frame":"f","from":0,"until":10},"evidence":["s"],"failure":null},"situated":{"posture":"SUPPORTED","basis":"present","subject":{"locality":"L","bearer":"B","act":"A","target":"T","relation":"R","scope":"S","conditions":["C"]},"time":{"frame":"f","from":4,"until":6},"evidence":["p"],"failure":null},"disposition":"SUPPORT","attribution":"regulator","applicable_law":{"posture":"YES","basis":"local-law","evidence":["law"]},"supported_state":{"posture":"YES","basis":"present-state","evidence":["state"]},"authority_required":false,"authority":null,"effect":{"target":"T","scope":"S","description":"Present capacity support only","ceiling":"EXACT_MOTION_ONLY"},"constraint":"Only this exact motion under C","uncertainty":[],"failures":[],"hold":null},
+      "expected":{"schema_valid":true,"semantic_result":"CONSISTENT_AT_DECLARED_SCOPE","failure_codes":[]},
+      "source":{"refs":["section.13.7","section.11.11"]},"forbidden_inference":"Support grants neither universal permission nor any unstated Authority."
+    }
+  ]
 }

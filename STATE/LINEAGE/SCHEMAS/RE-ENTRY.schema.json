@@ -1,21 +1,96 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "Re-entry — structural placeholder",
-  "description": "Organizational outline for a renewed encounter or relation after interruption or exit; not a new constitutional category or automatic resumption.",
-  "$comment": "Annotation-only placeholder: accepts every instance; no conformance or constitutional effect is established.",
-  "x-status": "STRUCTURAL_PLACEHOLDER",
-  "x-source": {
-    "machine": "../../../SOURCE/CONSTITUTION_0()1.json",
-    "refs": ["section.8.1", "section.8.3", "section.8.6", "section.9.2", "section.9.5", "section.16.5", "section.17.8"]
-  },
+  "$id": "urn:presence:core:lineage:re-entry:1",
+  "title": "LINEAGE new current re-entry basis",
+  "x-status": "CANONICAL_SCHEMA",
+  "x-rule-classification": "CORE_ENCODING_RULE",
+  "x-source": {"refs": ["reading.3", "section.8.1", "section.8.3", "section.8.6", "section.9.2", "section.9.5", "section.11.10", "section.16.5", "section.17.8"]},
+  "description": "Re-entry is an organizational label, not a new constitutional category, Body resumption, or succession.",
+  "type": "object", "additionalProperties": false,
+  "required": ["kind", "id", "host", "entrant", "prior_relation", "interruption_or_exit", "new_occurrence", "present_binding", "current_relation", "renewal_status", "motion", "retained_history", "claimed_effects", "uncertainty"],
   "properties": {
-    "prior_relation": {"description": "Exact earlier relation and its historical scope."},
-    "interruption_or_exit": {"description": "Supported closure, withdrawal, or interruption, without erasing its history."},
-    "new_occurrence": {"description": "Exact renewed encounter or act; prior participation does not establish current Presence."},
-    "present_binding": {"description": "Attributable current binding supplied by the relevant Locality's own qualifying act or an exact valid representation of it."},
-    "local_bases": {"description": "Valid local bases for the relation attributed to each relevant side."},
-    "scope": {"description": "What is newly supported and what remains historical, ended, or unestablished."},
-    "motion_relations": {"description": "Present relations independently required if consequential motion is resumed."},
-    "uncertainty": {"description": "Open questions without presumed restored consent, succession, or Authority."}
+    "kind": {"const": "re_entry"}, "id": {"$ref": "#/$defs/text"},
+    "host": {"$ref": "#/$defs/text"}, "entrant": {"$ref": "#/$defs/text"},
+    "prior_relation": {
+      "type": "object", "additionalProperties": false,
+      "required": ["id", "binding_ref", "occurrence_ref", "locality", "scope", "history_refs"],
+      "properties": {
+        "id": {"$ref": "#/$defs/text"}, "binding_ref": {"$ref": "#/$defs/text"}, "occurrence_ref": {"$ref": "#/$defs/text"},
+        "locality": {"$ref": "#/$defs/text"}, "scope": {"$ref": "#/$defs/text"}, "history_refs": {"$ref": "#/$defs/references"}
+      }
+    },
+    "interruption_or_exit": {
+      "type": "object", "additionalProperties": false, "required": ["id", "type", "time", "ended_binding_ref", "evidence_refs"],
+      "properties": {
+        "id": {"$ref": "#/$defs/text"}, "type": {"enum": ["CLOSURE", "WITHDRAWAL", "EXIT", "INTERRUPTION"]},
+        "time": {"$ref": "#/$defs/text"}, "ended_binding_ref": {"$ref": "#/$defs/text"},
+        "evidence_refs": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"$ref": "#/$defs/text"}}
+      }
+    },
+    "new_occurrence": {
+      "type": "object", "additionalProperties": false, "required": ["id", "locality", "scope", "time", "status"],
+      "properties": {
+        "id": {"$ref": "#/$defs/text"}, "locality": {"$ref": "#/$defs/text"}, "scope": {"$ref": "#/$defs/text"},
+        "time": {"$ref": "#/$defs/text"}, "status": {"$ref": "#/$defs/support"}
+      }
+    },
+    "present_binding": {
+      "type": "object", "additionalProperties": false, "required": ["id", "bearer", "locality", "scope", "occurrence_ref", "basis"],
+      "properties": {
+        "id": {"$ref": "#/$defs/text"}, "bearer": {"$ref": "#/$defs/text"}, "locality": {"$ref": "#/$defs/text"},
+        "scope": {"$ref": "#/$defs/text"}, "occurrence_ref": {"$ref": "#/$defs/text"}, "basis": {"$ref": "#/$defs/basis"}
+      }
+    },
+    "current_relation": {
+      "type": "object", "additionalProperties": false, "required": ["id", "scope", "posture", "local_bases"],
+      "properties": {
+        "id": {"$ref": "#/$defs/text"}, "scope": {"$ref": "#/$defs/text"},
+        "posture": {"enum": ["ENCOUNTER_ONLY", "LOCAL", "SHARED"]},
+        "local_bases": {
+          "type": "object", "additionalProperties": false, "required": ["host", "entrant"],
+          "properties": {"host": {"$ref": "#/$defs/basis"}, "entrant": {"$ref": "#/$defs/basis"}}
+        }
+      }
+    },
+    "renewal_status": {"enum": ["ESTABLISHED", "PROPOSED", "HELD", "REFUSED", "UNRESOLVED"]},
+    "motion": {
+      "type": "object", "additionalProperties": false, "required": ["posture", "scope", "time", "relations"],
+      "properties": {
+        "posture": {"enum": ["NOT_CLAIMED", "PROPOSED", "ESTABLISHED"]},
+        "scope": {"$ref": "#/$defs/text"}, "time": {"$ref": "#/$defs/text"},
+        "relations": {
+          "type": "array", "uniqueItems": true,
+          "items": {
+            "type": "object", "additionalProperties": false,
+            "required": ["dimension", "required", "scope", "basis_scope", "temporal_posture", "status", "basis_ref", "evidence_refs"],
+            "properties": {
+              "dimension": {"enum": ["AGENCY", "AUTONOMY", "CAPABILITY", "AUTHORITY", "APPLICABILITY", "SITUATED_CAPACITY", "REGULATION", "OTHER_EXACT_RELATION"]},
+              "required": {"type": "boolean"}, "scope": {"$ref": "#/$defs/text"}, "basis_scope": {"$ref": "#/$defs/text"},
+              "temporal_posture": {"enum": ["CURRENT", "HISTORICAL", "UNKNOWN", "UNRESOLVED"]},
+              "status": {"$ref": "#/$defs/support"}, "basis_ref": {"$ref": "#/$defs/text"}, "evidence_refs": {"$ref": "#/$defs/references"}
+            }
+          }
+        }
+      }
+    },
+    "retained_history": {"$ref": "#/$defs/references"},
+    "claimed_effects": {
+      "type": "array", "uniqueItems": true,
+      "items": {"enum": ["NEW_CURRENT_BINDING", "NEW_LOCAL_RELATION", "NEW_SHARED_RELATION", "RESUMED_MOTION", "INHERITED_CONSENT", "INHERITED_AUTHORITY", "BODY_RESUMPTION", "SUCCESSION"]}
+    },
+    "uncertainty": {"$ref": "#/$defs/references"}
+  },
+  "$defs": {
+    "text": {"type": "string", "minLength": 1, "pattern": "\\S"},
+    "references": {"type": "array", "uniqueItems": true, "items": {"$ref": "#/$defs/text"}},
+    "support": {"enum": ["SUPPORTED", "UNKNOWN", "UNRESOLVED", "UNSUPPORTED", "REFUSED"]},
+    "basis": {
+      "type": "object", "additionalProperties": false, "required": ["id", "bearer", "occurrence_ref", "origin", "status", "evidence_refs"],
+      "properties": {
+        "id": {"$ref": "#/$defs/text"}, "bearer": {"$ref": "#/$defs/text"}, "occurrence_ref": {"$ref": "#/$defs/text"},
+        "origin": {"enum": ["OWN_CURRENT_ACT", "VALID_CURRENT_REPRESENTATION", "CURRENT_FORMATION", "HISTORICAL_BINDING", "HOST_INFERENCE", "UNKNOWN", "UNRESOLVED"]},
+        "status": {"$ref": "#/$defs/support"}, "evidence_refs": {"$ref": "#/$defs/references"}
+      }
+    }
   }
 }

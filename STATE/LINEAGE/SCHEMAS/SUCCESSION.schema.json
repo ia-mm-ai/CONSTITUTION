@@ -1,33 +1,109 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "Succession — structural placeholder",
-  "description": "Target-specific establishment of a new attributable predecessor-successor relation, not identity or automatic inheritance.",
-  "$comment": "Annotation-only placeholder: accepts every instance; no conformance or constitutional effect is established.",
-  "x-status": "STRUCTURAL_PLACEHOLDER",
-  "x-source": {
-    "machine": "../../../SOURCE/CONSTITUTION_0()1.json",
-    "refs": ["section.17.4", "section.17.9", "section.17.10", "section.17.11", "section.17.12", "section.17.13", "section.17.14", "section.17.15"]
-  },
+  "$id": "urn:presence:core:lineage:succession:1",
+  "title": "LINEAGE target-specific succession",
+  "x-status": "CANONICAL_SCHEMA",
+  "x-rule-classification": "CORE_ENCODING_RULE",
+  "x-source": {"refs": ["reading.3", "section.6.7", "section.17.4", "section.17.9", "section.17.10", "section.17.11", "section.17.12", "section.17.13", "section.17.14", "section.17.15"]},
+  "type": "object", "additionalProperties": false,
+  "required": ["kind", "id", "predecessor", "successor", "target", "establishment_posture", "valid_basis", "successor_side_establishment", "effective_boundary", "carry_map", "predecessor_remainder", "answerability", "uncertainty"],
   "properties": {
-    "predecessor": {"description": "Exact predecessor, kept attributable as predecessor."},
-    "successor": {"description": "Exact successor, distinct from the predecessor."},
-    "target": {"description": "Exact object, layer, lineage, scope, and Locality of alleged succession."},
-    "valid_basis": {"description": "Basis valid apart from the successor's own inheritance claim."},
-    "successor_side_establishment": {"description": "Valid acceptance or formation basis for a locally disposing Locality, or an exact establishing occurrence for a Form, State, or artifact."},
-    "effective_boundary": {"description": "Exact effective occurrence or temporal boundary."},
-    "carry_map": {
-      "description": "The six distinctions of section.17.12; nothing crosses unless expressly and validly carried.",
+    "kind": {"const": "succession"}, "id": {"$ref": "#/$defs/text"},
+    "predecessor": {"$ref": "#/$defs/text"}, "successor": {"$ref": "#/$defs/text"},
+    "target": {
+      "type": "object", "additionalProperties": false, "required": ["id", "layer", "scope", "locality", "lineage"],
       "properties": {
-        "continues": {"description": "What continues."},
-        "ends": {"description": "What ends."},
-        "validly_carried": {"description": "What is validly carried into the successor relation, with separate sufficient basis for each claimed effect; Source never transfers."},
-        "predecessor_only": {"description": "What remains attributable or applicable only to the predecessor."},
-        "refused_excluded_unknown_unresolved": {"description": "What is refused, excluded, unknown, or unresolved, retaining these distinctions."},
-        "successor_new": {"description": "What new relation begins only with the successor; any successor Source must be newly attributable."}
+        "id": {"$ref": "#/$defs/text"},
+        "layer": {"enum": ["CONSTITUTION", "BODY", "LOCALITY", "SOURCE_RELATION", "AUTHORITY_FUNCTION", "STATE", "RELATION", "FORM", "PROTOCOL", "IMPLEMENTATION", "CARRIER", "OTHER_EXACT_OBJECT"]},
+        "scope": {"$ref": "#/$defs/text"}, "locality": {"$ref": "#/$defs/text"}, "lineage": {"$ref": "#/$defs/text"}
       }
     },
-    "predecessor_remainder": {"description": "Whether the predecessor ends, becomes dormant, remains historical, continues elsewhere, coexists, or diverges."},
-    "establishment_posture": {"description": "Whether succession is established or remains proposed, refused, held, failed, or unresolved, on its exact support."},
-    "answerability": {"description": "Predecessor consequences and duties preserved; successor answerability for its own formation, accepted inheritance, exercises, and consequences."}
+    "establishment_posture": {"enum": ["ESTABLISHED", "PROPOSED", "REFUSED", "HELD", "FAILED", "UNRESOLVED"]},
+    "valid_basis": {
+      "type": "object", "additionalProperties": false,
+      "required": ["id", "target", "scope", "locality", "origin", "status", "evidence_refs"],
+      "properties": {
+        "id": {"$ref": "#/$defs/text"}, "target": {"$ref": "#/$defs/text"},
+        "scope": {"$ref": "#/$defs/text"}, "locality": {"$ref": "#/$defs/text"},
+        "origin": {"enum": ["ATTRIBUTABLE_SOURCE", "PREEXISTING_CONDITION", "EXACT_AUTHORITY", "SUCCESSOR_DECLARATION", "CUSTODY", "COPYING", "SURVIVAL", "TECHNICAL_CONTROL", "UNKNOWN", "UNRESOLVED"]},
+        "status": {"$ref": "#/$defs/support"}, "evidence_refs": {"$ref": "#/$defs/references"}
+      }
+    },
+    "successor_side_establishment": {
+      "type": "object", "additionalProperties": false,
+      "required": ["successor", "target", "scope", "locality", "layer_disposition", "method", "status", "basis_ref", "occurrence_ref"],
+      "properties": {
+        "successor": {"$ref": "#/$defs/text"}, "target": {"$ref": "#/$defs/text"}, "scope": {"$ref": "#/$defs/text"}, "locality": {"$ref": "#/$defs/text"},
+        "layer_disposition": {"enum": ["LOCAL_DISPOSITION", "ARTIFACT"]},
+        "method": {"enum": ["ACCEPTANCE", "FORMATION", "EXACT_OCCURRENCE", "DESIGNATION", "DELIVERY", "SUCCESSOR_DECLARATION", "UNKNOWN", "UNRESOLVED"]},
+        "status": {"$ref": "#/$defs/support"}, "basis_ref": {"$ref": "#/$defs/text"}, "occurrence_ref": {"$ref": "#/$defs/text"}
+      }
+    },
+    "effective_boundary": {
+      "type": "object", "additionalProperties": false, "required": ["kind", "reference"],
+      "properties": {"kind": {"enum": ["OCCURRENCE", "TEMPORAL", "UNKNOWN", "UNRESOLVED"]}, "reference": {"$ref": "#/$defs/text"}}
+    },
+    "carry_map": {
+      "type": "object", "additionalProperties": false,
+      "required": ["status", "continues", "ends", "validly_carried", "predecessor_only", "refused_excluded_unknown_unresolved", "successor_new"],
+      "properties": {
+        "status": {"enum": ["COMPLETE_AT_DECLARED_SCOPE", "UNKNOWN", "UNRESOLVED"]},
+        "continues": {"$ref": "#/$defs/references"}, "ends": {"$ref": "#/$defs/references"}, "predecessor_only": {"$ref": "#/$defs/references"},
+        "validly_carried": {"type": "array", "uniqueItems": true, "items": {"$ref": "#/$defs/effect"}},
+        "refused_excluded_unknown_unresolved": {
+          "type": "array", "uniqueItems": true,
+          "items": {
+            "type": "object", "additionalProperties": false, "required": ["target", "posture"],
+            "properties": {"target": {"$ref": "#/$defs/text"}, "posture": {"enum": ["REFUSED", "EXCLUDED", "UNKNOWN", "UNRESOLVED"]}}
+          }
+        },
+        "successor_new": {"type": "array", "uniqueItems": true, "items": {"$ref": "#/$defs/effect"}}
+      }
+    },
+    "predecessor_remainder": {
+      "type": "object", "additionalProperties": false, "required": ["posture", "scope", "state_ref"],
+      "properties": {
+        "posture": {"enum": ["ENDED", "DORMANT", "HISTORICAL", "CONTINUES_ELSEWHERE", "COEXISTS", "DIVERGES", "UNKNOWN", "UNRESOLVED"]},
+        "scope": {"$ref": "#/$defs/text"}, "state_ref": {"$ref": "#/$defs/text"}
+      }
+    },
+    "answerability": {
+      "type": "object", "additionalProperties": false,
+      "required": ["predecessor_history", "retained_history", "predecessor_duties", "retained_predecessor_duties", "predecessor_state", "retained_predecessor_state", "predecessor_author", "retained_predecessor_author", "successor_state", "successor_answers_from", "successor_duties", "ancestral_control"],
+      "properties": {
+        "predecessor_history": {"$ref": "#/$defs/references"}, "retained_history": {"$ref": "#/$defs/references"},
+        "predecessor_duties": {"$ref": "#/$defs/references"}, "retained_predecessor_duties": {"$ref": "#/$defs/references"},
+        "predecessor_state": {"$ref": "#/$defs/text"}, "retained_predecessor_state": {"$ref": "#/$defs/text"},
+        "predecessor_author": {"$ref": "#/$defs/text"}, "retained_predecessor_author": {"$ref": "#/$defs/text"},
+        "successor_state": {"$ref": "#/$defs/text"}, "successor_answers_from": {"$ref": "#/$defs/text"},
+        "successor_duties": {"$ref": "#/$defs/references"},
+        "ancestral_control": {"enum": ["NO_EFFECT_CLAIMED", "INHERITED_CONTROL"]}
+      }
+    },
+    "uncertainty": {"$ref": "#/$defs/references"}
+  },
+  "$defs": {
+    "text": {"type": "string", "minLength": 1, "pattern": "\\S"},
+    "references": {"type": "array", "uniqueItems": true, "items": {"$ref": "#/$defs/text"}},
+    "support": {"enum": ["SUPPORTED", "UNKNOWN", "UNRESOLVED", "UNSUPPORTED", "REFUSED"]},
+    "effectType": {"enum": ["SOURCE", "AUTHORITY", "APPLICABILITY", "IDENTITY_CONTINUITY", "STATE_UPTAKE", "OBLIGATION", "CONSENT", "JURISDICTION", "AGENCY", "AUTONOMY", "STATUS", "RESPONSIBILITY", "OTHER_EXACT_EFFECT"]},
+    "effect": {
+      "type": "object", "additionalProperties": false,
+      "required": ["target", "scope", "locality", "effect", "basis"],
+      "properties": {
+        "target": {"$ref": "#/$defs/text"}, "scope": {"$ref": "#/$defs/text"}, "locality": {"$ref": "#/$defs/text"},
+        "effect": {"$ref": "#/$defs/effectType"},
+        "basis": {
+          "type": "object", "additionalProperties": false,
+          "required": ["id", "target", "scope", "locality", "effect", "origin", "status", "evidence_refs"],
+          "properties": {
+            "id": {"$ref": "#/$defs/text"}, "target": {"$ref": "#/$defs/text"}, "scope": {"$ref": "#/$defs/text"}, "locality": {"$ref": "#/$defs/text"},
+            "effect": {"$ref": "#/$defs/effectType"},
+            "origin": {"enum": ["ATTRIBUTABLE_SOURCE", "PREEXISTING_CONDITION", "EXACT_AUTHORITY", "LOCAL_ACT", "FORMATION", "INHERITANCE_ASSERTION", "UNKNOWN", "UNRESOLVED"]},
+            "status": {"$ref": "#/$defs/support"}, "evidence_refs": {"$ref": "#/$defs/references"}
+          }
+        }
+      }
+    }
   }
 }

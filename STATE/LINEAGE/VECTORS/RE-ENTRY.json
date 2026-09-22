@@ -1,25 +1,121 @@
 {
-  "kind": "scenario_outline",
-  "status": "ILLUSTRATIVE_NON_EXECUTABLE",
-  "source": {
-    "machine": "../../../SOURCE/CONSTITUTION_0()1.json",
-    "refs": ["section.8.1", "section.8.3", "section.8.6", "section.9.1", "section.9.2", "section.9.5", "section.16.5"]
-  },
-  "schemas": ["../SCHEMAS/OCCURRENCE.schema.json", "../SCHEMAS/RELATION.schema.json", "../SCHEMAS/RE-ENTRY.schema.json"],
-  "scenario": {
-    "assumptions": [
-      "A prior Encounter Field has closed and its Presence bindings have ended.",
-      "In a later bounded encounter, an entrant supplies its own qualifying current act rather than the host authoring both sides.",
-      "Any claimed renewed shared Relation has a valid local basis from every relevant side."
-    ],
-    "proposed_claim": "Record the new occurrence and exact renewed relation while retaining the prior closure.",
-    "expected_reading": [
-      "Prior participation is historical support, not current Presence or automatic Relation.",
-      "The new binding supports only the present encounter and scope established.",
-      "Resumed consequential motion, if claimed, still needs the present relations required for that act; re-entry is not automatic Body resumption or succession."
-    ],
-    "forbidden_inferences": ["An archived binding remains active indefinitely.", "A host can infer renewed consent from a returning appearance."]
-  },
-  "fixture": null,
-  "expected_validation": null
+  "kind": "normative_vector_suite",
+  "status": "NORMATIVE_VECTOR",
+  "source": {"refs": ["section.8.1", "section.8.3", "section.8.6", "section.9.1", "section.9.2", "section.9.5", "section.11.10", "section.16.5"]},
+  "cases": [
+    {
+      "id": "lineage-reentry-new-shared-relation",
+      "schema": "urn:presence:core:lineage:re-entry:1",
+      "input": {
+        "kind": "re_entry", "id": "fixture:reentry", "host": "fixture:host", "entrant": "fixture:entrant",
+        "prior_relation": {"id": "fixture:old-relation", "binding_ref": "fixture:old-binding", "occurrence_ref": "fixture:old-occurrence", "locality": "fixture:entrant-locality", "scope": "fixture:old-encounter", "history_refs": ["fixture:old-encounter", "fixture:closure"]},
+        "interruption_or_exit": {"id": "fixture:closure", "type": "CLOSURE", "time": "fixture:t1", "ended_binding_ref": "fixture:old-binding", "evidence_refs": ["fixture:closure-record"]},
+        "new_occurrence": {"id": "fixture:new-occurrence", "locality": "fixture:entrant-locality", "scope": "fixture:new-encounter", "time": "fixture:t2", "status": "SUPPORTED"},
+        "present_binding": {"id": "fixture:new-binding", "bearer": "fixture:entrant", "locality": "fixture:entrant-locality", "scope": "fixture:new-encounter", "occurrence_ref": "fixture:new-occurrence", "basis": {"id": "fixture:entrant-act", "bearer": "fixture:entrant", "occurrence_ref": "fixture:new-occurrence", "origin": "OWN_CURRENT_ACT", "status": "SUPPORTED", "evidence_refs": ["fixture:entrant-act-record"]}},
+        "current_relation": {"id": "fixture:new-relation", "scope": "fixture:new-encounter", "posture": "SHARED", "local_bases": {
+          "host": {"id": "fixture:host-act", "bearer": "fixture:host", "occurrence_ref": "fixture:new-occurrence", "origin": "OWN_CURRENT_ACT", "status": "SUPPORTED", "evidence_refs": ["fixture:host-act-record"]},
+          "entrant": {"id": "fixture:entrant-relation", "bearer": "fixture:entrant", "occurrence_ref": "fixture:new-occurrence", "origin": "OWN_CURRENT_ACT", "status": "SUPPORTED", "evidence_refs": ["fixture:entrant-relation-record"]}
+        }},
+        "renewal_status": "ESTABLISHED",
+        "motion": {"posture": "NOT_CLAIMED", "scope": "fixture:new-encounter", "time": "fixture:t2", "relations": []},
+        "retained_history": ["fixture:old-encounter", "fixture:closure"],
+        "claimed_effects": ["NEW_CURRENT_BINDING", "NEW_SHARED_RELATION"], "uncertainty": ["No resumed consequential motion claimed"]
+      },
+      "expected": {"schema_valid": true, "semantic_result": "CONSISTENT_AT_DECLARED_SCOPE", "failure_codes": []},
+      "source": {"refs": ["section.8.1", "section.8.3", "section.8.6", "section.9.2", "section.16.5"]},
+      "forbidden_inference": "New shared encounter support neither reactivates the archived binding nor establishes Body resumption, succession, or Authority."
+    },
+    {
+      "id": "lineage-reentry-motion-has-independent-current-dimensions",
+      "schema": "urn:presence:core:lineage:re-entry:1",
+      "input": {
+        "kind": "re_entry", "id": "fixture:reentry-motion", "host": "fixture:host", "entrant": "fixture:entrant",
+        "prior_relation": {"id": "fixture:old-relation", "binding_ref": "fixture:old-binding", "occurrence_ref": "fixture:old-occurrence", "locality": "fixture:entrant-locality", "scope": "fixture:old-encounter", "history_refs": ["fixture:old-encounter", "fixture:closure"]},
+        "interruption_or_exit": {"id": "fixture:closure", "type": "CLOSURE", "time": "fixture:t1", "ended_binding_ref": "fixture:old-binding", "evidence_refs": ["fixture:closure-record"]},
+        "new_occurrence": {"id": "fixture:new-occurrence", "locality": "fixture:entrant-locality", "scope": "fixture:new-motion", "time": "fixture:t2", "status": "SUPPORTED"},
+        "present_binding": {"id": "fixture:new-binding", "bearer": "fixture:entrant", "locality": "fixture:entrant-locality", "scope": "fixture:new-motion", "occurrence_ref": "fixture:new-occurrence", "basis": {"id": "fixture:entrant-act", "bearer": "fixture:entrant", "occurrence_ref": "fixture:new-occurrence", "origin": "OWN_CURRENT_ACT", "status": "SUPPORTED", "evidence_refs": ["fixture:entrant-act-record"]}},
+        "current_relation": {"id": "fixture:new-relation", "scope": "fixture:new-motion", "posture": "LOCAL", "local_bases": {
+          "host": {"id": "UNKNOWN", "bearer": "fixture:host", "occurrence_ref": "fixture:new-occurrence", "origin": "UNKNOWN", "status": "UNKNOWN", "evidence_refs": []},
+          "entrant": {"id": "fixture:entrant-relation", "bearer": "fixture:entrant", "occurrence_ref": "fixture:new-occurrence", "origin": "OWN_CURRENT_ACT", "status": "SUPPORTED", "evidence_refs": ["fixture:entrant-relation-record"]}
+        }},
+        "renewal_status": "ESTABLISHED",
+        "motion": {"posture": "ESTABLISHED", "scope": "fixture:new-motion", "time": "fixture:t2", "relations": [
+          {"dimension": "AGENCY", "required": true, "scope": "fixture:new-motion", "basis_scope": "fixture:new-motion", "temporal_posture": "CURRENT", "status": "SUPPORTED", "basis_ref": "fixture:agency-basis", "evidence_refs": ["fixture:agency-evidence"]},
+          {"dimension": "AUTONOMY", "required": true, "scope": "fixture:new-motion", "basis_scope": "fixture:new-motion", "temporal_posture": "CURRENT", "status": "SUPPORTED", "basis_ref": "fixture:autonomy-basis", "evidence_refs": ["fixture:autonomy-evidence"]},
+          {"dimension": "CAPABILITY", "required": true, "scope": "fixture:new-motion", "basis_scope": "fixture:new-motion", "temporal_posture": "CURRENT", "status": "SUPPORTED", "basis_ref": "fixture:capability-basis", "evidence_refs": ["fixture:capability-evidence"]},
+          {"dimension": "AUTHORITY", "required": true, "scope": "fixture:new-motion", "basis_scope": "fixture:new-motion", "temporal_posture": "CURRENT", "status": "SUPPORTED", "basis_ref": "fixture:authority-basis", "evidence_refs": ["fixture:authority-evidence"]}
+        ]},
+        "retained_history": ["fixture:old-encounter", "fixture:closure"],
+        "claimed_effects": ["NEW_CURRENT_BINDING", "NEW_LOCAL_RELATION", "RESUMED_MOTION"], "uncertainty": []
+      },
+      "expected": {"schema_valid": true, "semantic_result": "CONSISTENT_AT_DECLARED_SCOPE", "failure_codes": []},
+      "source": {"refs": ["section.9.2", "section.11.10", "section.11.11", "section.16.5"]},
+      "forbidden_inference": "The declared present relations are individually required and remain unverified; capability does not supply Authority or the host's reciprocal relation."
+    },
+    {
+      "id": "lineage-reentry-archived-binding-cannot-act",
+      "schema": "urn:presence:core:lineage:re-entry:1",
+      "input": {
+        "kind": "re_entry", "id": "fixture:archive-reuse", "host": "fixture:host", "entrant": "fixture:entrant",
+        "prior_relation": {"id": "fixture:old-relation", "binding_ref": "fixture:old-binding", "occurrence_ref": "fixture:old-occurrence", "locality": "fixture:entrant-locality", "scope": "fixture:old-encounter", "history_refs": ["fixture:old-encounter", "fixture:closure"]},
+        "interruption_or_exit": {"id": "fixture:closure", "type": "CLOSURE", "time": "fixture:t1", "ended_binding_ref": "fixture:old-binding", "evidence_refs": ["fixture:closure-record"]},
+        "new_occurrence": {"id": "fixture:old-occurrence", "locality": "fixture:entrant-locality", "scope": "fixture:new-encounter", "time": "fixture:t2", "status": "SUPPORTED"},
+        "present_binding": {"id": "fixture:old-binding", "bearer": "fixture:entrant", "locality": "fixture:entrant-locality", "scope": "fixture:new-encounter", "occurrence_ref": "fixture:old-occurrence", "basis": {"id": "fixture:archive", "bearer": "fixture:entrant", "occurrence_ref": "fixture:old-occurrence", "origin": "HISTORICAL_BINDING", "status": "SUPPORTED", "evidence_refs": ["fixture:old-record"]}},
+        "current_relation": {"id": "fixture:new-relation", "scope": "fixture:new-encounter", "posture": "ENCOUNTER_ONLY", "local_bases": {
+          "host": {"id": "UNKNOWN", "bearer": "fixture:host", "occurrence_ref": "fixture:old-occurrence", "origin": "UNKNOWN", "status": "UNKNOWN", "evidence_refs": []},
+          "entrant": {"id": "UNKNOWN", "bearer": "fixture:entrant", "occurrence_ref": "fixture:old-occurrence", "origin": "UNKNOWN", "status": "UNKNOWN", "evidence_refs": []}
+        }},
+        "renewal_status": "ESTABLISHED",
+        "motion": {"posture": "ESTABLISHED", "scope": "fixture:new-encounter", "time": "fixture:t2", "relations": []},
+        "retained_history": ["fixture:old-encounter", "fixture:closure"],
+        "claimed_effects": ["NEW_CURRENT_BINDING", "INHERITED_CONSENT", "BODY_RESUMPTION"], "uncertainty": []
+      },
+      "expected": {"schema_valid": true, "semantic_result": "INCONSISTENT", "failure_codes": ["REENTRY_NEW_CURRENT_OCCURRENCE_MISSING", "REENTRY_PRESENT_BASIS_MISSING", "REENTRY_MOTION_RELATIONS_MISSING", "REENTRY_EFFECT_OVERREACH"]},
+      "source": {"refs": ["section.8.1", "section.8.6", "section.16.5", "section.17.8"]},
+      "forbidden_inference": "Historical participation is not current Presence; an archive cannot consent, act, or establish resumption."
+    },
+    {
+      "id": "lineage-reentry-no-host-authored-reciprocity",
+      "schema": "urn:presence:core:lineage:re-entry:1",
+      "input": {
+        "kind": "re_entry", "id": "fixture:shared-overreach", "host": "fixture:host", "entrant": "fixture:entrant",
+        "prior_relation": {"id": "fixture:old-relation", "binding_ref": "fixture:old-binding", "occurrence_ref": "fixture:old-occurrence", "locality": "fixture:entrant-locality", "scope": "fixture:old-encounter", "history_refs": ["fixture:old-encounter"]},
+        "interruption_or_exit": {"id": "fixture:closure", "type": "EXIT", "time": "fixture:t1", "ended_binding_ref": "fixture:old-binding", "evidence_refs": ["fixture:exit-record"]},
+        "new_occurrence": {"id": "fixture:new-occurrence", "locality": "fixture:entrant-locality", "scope": "fixture:new-encounter", "time": "fixture:t2", "status": "SUPPORTED"},
+        "present_binding": {"id": "fixture:new-binding", "bearer": "fixture:entrant", "locality": "fixture:entrant-locality", "scope": "fixture:new-encounter", "occurrence_ref": "fixture:new-occurrence", "basis": {"id": "fixture:entrant-act", "bearer": "fixture:entrant", "occurrence_ref": "fixture:new-occurrence", "origin": "OWN_CURRENT_ACT", "status": "SUPPORTED", "evidence_refs": ["fixture:entrant-act-record"]}},
+        "current_relation": {"id": "fixture:new-relation", "scope": "fixture:new-encounter", "posture": "SHARED", "local_bases": {
+          "host": {"id": "fixture:host-act", "bearer": "fixture:host", "occurrence_ref": "fixture:new-occurrence", "origin": "OWN_CURRENT_ACT", "status": "SUPPORTED", "evidence_refs": ["fixture:host-act-record"]},
+          "entrant": {"id": "fixture:host-assumption", "bearer": "fixture:entrant", "occurrence_ref": "fixture:new-occurrence", "origin": "HOST_INFERENCE", "status": "SUPPORTED", "evidence_refs": ["fixture:arrival-only"]}
+        }},
+        "renewal_status": "ESTABLISHED",
+        "motion": {"posture": "NOT_CLAIMED", "scope": "fixture:new-encounter", "time": "fixture:t2", "relations": []},
+        "retained_history": ["fixture:old-encounter"],
+        "claimed_effects": ["NEW_CURRENT_BINDING", "NEW_SHARED_RELATION"], "uncertainty": []
+      },
+      "expected": {"schema_valid": true, "semantic_result": "INCONSISTENT", "failure_codes": ["REENTRY_LOCAL_RELATION_BASIS_MISSING"]},
+      "source": {"refs": ["section.8.3", "section.9.1", "section.9.2"]},
+      "forbidden_inference": "Even supported current Presence is not automatic Relation; the host cannot infer the entrant's agreement."
+    },
+    {
+      "id": "lineage-reentry-unknown-nested-property-rejected",
+      "schema": "urn:presence:core:lineage:re-entry:1",
+      "input": {
+        "kind": "re_entry", "id": "fixture:malformed-reentry", "host": "fixture:host", "entrant": "fixture:entrant",
+        "prior_relation": {"id": "fixture:old-relation", "binding_ref": "fixture:old-binding", "occurrence_ref": "fixture:old-occurrence", "locality": "fixture:entrant-locality", "scope": "fixture:old-encounter", "history_refs": []},
+        "interruption_or_exit": {"id": "fixture:closure", "type": "CLOSURE", "time": "fixture:t1", "ended_binding_ref": "fixture:old-binding", "evidence_refs": ["fixture:closure-record"]},
+        "new_occurrence": {"id": "fixture:new-occurrence", "locality": "fixture:entrant-locality", "scope": "fixture:new-encounter", "time": "fixture:t2", "status": "UNKNOWN", "inherited_consent": true},
+        "present_binding": {"id": "fixture:new-binding", "bearer": "fixture:entrant", "locality": "fixture:entrant-locality", "scope": "fixture:new-encounter", "occurrence_ref": "fixture:new-occurrence", "basis": {"id": "UNKNOWN", "bearer": "fixture:entrant", "occurrence_ref": "fixture:new-occurrence", "origin": "UNKNOWN", "status": "UNKNOWN", "evidence_refs": []}},
+        "current_relation": {"id": "fixture:new-relation", "scope": "fixture:new-encounter", "posture": "ENCOUNTER_ONLY", "local_bases": {
+          "host": {"id": "UNKNOWN", "bearer": "fixture:host", "occurrence_ref": "fixture:new-occurrence", "origin": "UNKNOWN", "status": "UNKNOWN", "evidence_refs": []},
+          "entrant": {"id": "UNKNOWN", "bearer": "fixture:entrant", "occurrence_ref": "fixture:new-occurrence", "origin": "UNKNOWN", "status": "UNKNOWN", "evidence_refs": []}
+        }},
+        "renewal_status": "PROPOSED",
+        "motion": {"posture": "NOT_CLAIMED", "scope": "fixture:new-encounter", "time": "fixture:t2", "relations": []},
+        "retained_history": [], "claimed_effects": [], "uncertainty": ["Current binding not established"]
+      },
+      "expected": {"schema_valid": false, "semantic_result": "NOT_EVALUATED", "failure_codes": ["SCHEMA_INVALID"]},
+      "source": {"refs": ["reading.3", "section.8.1", "section.16.5"]},
+      "forbidden_inference": "Unknown extension fields cannot smuggle inherited consent into a closed declaration."
+    }
+  ]
 }

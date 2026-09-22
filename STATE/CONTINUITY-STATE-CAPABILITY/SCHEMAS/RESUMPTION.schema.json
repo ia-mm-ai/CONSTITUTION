@@ -1,24 +1,35 @@
 {
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "Resumption — structural placeholder",
-  "description": "Present grounds for exact resumed consequential motion, distinct from recovery of a record or restoration of a mechanism.",
-  "$comment": "Annotation-only placeholder: accepts every instance; no conformance or constitutional effect is established.",
-  "x-status": "STRUCTURAL_PLACEHOLDER",
-  "x-source": {
-    "machine": "../../../SOURCE/CONSTITUTION_0()1.json",
-    "refs": ["section.11.11", "section.16.2", "section.16.4", "section.16.5", "section.16.7", "section.16.8"]
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"urn:presence:core:csc:resumption:1",
+  "title":"Presently supported resumption",
+  "x-status":"CANONICAL_SCHEMA",
+  "x-source":{"refs":["section.11.10","section.11.11","section.11.12","section.16.4","section.16.5","section.16.7"]},
+  "x-rule-classification":"CORE_ENCODING_RULE",
+  "type":"object",
+  "required":["kind","id","locality","scope","at","evidence","uncertainty","before","after","dormancy","motion","present_context","required_conditions","assessed_conditions","relations","authority_required","other_required_relations","inheritance"],
+  "additionalProperties":false,
+  "properties":{
+    "kind":{"type":"string","const":"resumption"},
+    "id":{"$ref":"#/$defs/text"},"locality":{"$ref":"#/$defs/text"},"scope":{"$ref":"#/$defs/text"},"at":{"$ref":"#/$defs/text"},
+    "evidence":{"$ref":"#/$defs/evidence"},"uncertainty":{"$ref":"#/$defs/uncertainty"},
+    "before":{"$ref":"#/$defs/state"},"after":{"$ref":"#/$defs/state"},
+    "dormancy":{"type":"object","required":["record","state_id","identity","applicable_law","discontinuity","conditions"],"additionalProperties":false,"properties":{"record":{"$ref":"#/$defs/text"},"state_id":{"$ref":"#/$defs/text"},"identity":{"$ref":"#/$defs/text"},"applicable_law":{"$ref":"#/$defs/text"},"discontinuity":{"type":"array","minItems":1,"uniqueItems":true,"items":{"$ref":"#/$defs/text"}},"conditions":{"type":"array","minItems":1,"uniqueItems":true,"items":{"$ref":"#/$defs/text"}}}},
+    "motion":{"$ref":"#/$defs/context"},"present_context":{"$ref":"#/$defs/context"},
+    "required_conditions":{"type":"array","minItems":1,"uniqueItems":true,"items":{"$ref":"#/$defs/text"}},
+    "assessed_conditions":{"$ref":"#/$defs/strings"},
+    "relations":{"type":"object","required":["agency","autonomy","capability","capacity","authority"],"additionalProperties":false,"properties":{"agency":{"$ref":"#/$defs/relation"},"autonomy":{"$ref":"#/$defs/relation"},"capability":{"$ref":"#/$defs/relation"},"capacity":{"$ref":"#/$defs/relation"},"authority":{"$ref":"#/$defs/relation"}}},
+    "authority_required":{"type":"boolean"},
+    "other_required_relations":{"type":"array","items":{"type":"object","required":["name","status","basis"],"additionalProperties":false,"properties":{"name":{"$ref":"#/$defs/text"},"status":{"type":"string","enum":["SUPPORTED","UNKNOWN","REFUSED"]},"basis":{"$ref":"#/$defs/nullable_text"}}}},
+    "inheritance":{"type":"string","enum":["NONE","CLAIMED"]}
   },
-  "properties": {
-    "locality": {"description": "Exact Locality of proposed or established resumption."},
-    "prior_state": {"description": "Recoverable last supported State and applicable law."},
-    "discontinuity": {"description": "Dormancy, interruption, replacement, and uncertainty preserved in the account."},
-    "resumption_conditions": {"description": "Conditions of possible resumption and evidence concerning their present satisfaction."},
-    "exact_motion": {"description": "Bearer, act, target, relation, scope, and time of the resumed motion."},
-    "present_agency": {"description": "Present attributable Agency for the exact act, not inferred from an archive."},
-    "present_autonomy": {"description": "Sufficient autonomy for the exact act, not inherited from a prior bearer."},
-    "present_capability": {"description": "Sufficient demonstrated capability under present conditions."},
-    "other_required_relations": {"description": "Every other relation needed for this act, including capacity and Authority where required, independently supported."},
-    "effective_boundary": {"description": "Supported occurrence or time at which resumed motion begins, if established."},
-    "resulting_state": {"description": "Supported posture and consequences of the resumption, without erasing the interruption."}
+  "$defs":{
+    "text":{"type":"string","minLength":1,"pattern":"\\S"},
+    "nullable_text":{"type":["string","null"],"minLength":1,"pattern":"\\S"},
+    "strings":{"type":"array","uniqueItems":true,"items":{"$ref":"#/$defs/text"}},
+    "uncertainty":{"type":"object","required":["status","matters"],"additionalProperties":false,"properties":{"status":{"type":"string","enum":["KNOWN_AT_SCOPE","UNKNOWN","UNRESOLVED"]},"matters":{"$ref":"#/$defs/strings"}}},
+    "evidence":{"type":"object","required":["object","locality","scope","at","basis","method","result","effect_ceiling"],"additionalProperties":false,"properties":{"object":{"$ref":"#/$defs/text"},"locality":{"$ref":"#/$defs/text"},"scope":{"$ref":"#/$defs/text"},"at":{"$ref":"#/$defs/text"},"basis":{"$ref":"#/$defs/text"},"method":{"type":"string","enum":["OBSERVATION","RECORD_COMPARISON","DEMONSTRATION","SELF_REPORT"]},"result":{"type":"string","enum":["SUPPORTED","UNSUPPORTED","UNKNOWN"]},"effect_ceiling":{"type":"string","const":"BOUNDED_REPRESENTATION_ONLY"}}},
+    "state":{"type":"object","required":["id","locality","identity","applicable_law","at","posture","history","discontinuity"],"additionalProperties":false,"properties":{"id":{"$ref":"#/$defs/text"},"locality":{"$ref":"#/$defs/text"},"identity":{"$ref":"#/$defs/text"},"applicable_law":{"$ref":"#/$defs/text"},"at":{"$ref":"#/$defs/text"},"posture":{"type":"string","enum":["ACTIVE","DORMANT","ENDED","HELD","UNKNOWN","CONFLICTED"]},"history":{"$ref":"#/$defs/strings"},"discontinuity":{"$ref":"#/$defs/strings"}}},
+    "context":{"type":"object","required":["bearer","act","target","locality","scope","at"],"additionalProperties":false,"properties":{"bearer":{"$ref":"#/$defs/text"},"act":{"$ref":"#/$defs/text"},"target":{"$ref":"#/$defs/text"},"locality":{"$ref":"#/$defs/text"},"scope":{"$ref":"#/$defs/text"},"at":{"$ref":"#/$defs/text"}}},
+    "relation":{"type":"object","required":["status","basis"],"additionalProperties":false,"properties":{"status":{"type":"string","enum":["SUPPORTED","UNKNOWN","REFUSED","NOT_REQUIRED"]},"basis":{"$ref":"#/$defs/nullable_text"}}}
   }
 }

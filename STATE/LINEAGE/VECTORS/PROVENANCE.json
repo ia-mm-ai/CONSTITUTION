@@ -1,0 +1,107 @@
+{
+  "kind": "normative_vector_suite",
+  "status": "NORMATIVE_VECTOR",
+  "source": {"refs": ["reading.7", "section.1.5", "section.6.7", "section.18.4", "section.19.2", "section.20.3"]},
+  "cases": [
+    {
+      "id": "derivation-bounded-representation",
+      "schema": "urn:presence:core:lineage:derivation:1",
+      "input": {
+        "kind": "derivation",
+        "status": "RECORDED",
+        "id": "urn:vector:derivation",
+        "source": {"refs": ["reading.7", "section.19.2"]},
+        "input_archive": {
+          "filename": "synthetic-vector.zip",
+          "byte_length": 1,
+          "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+          "predecessor_identity": "Synthetic test identifier, not an existing implementation"
+        },
+        "inspected_material": [{
+          "path": "synthetic-vector.zip!/rule.txt",
+          "byte_length": 1,
+          "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+          "inspection": "TEXT_REVIEW",
+          "substance": "Synthetic declaration of a bounded reference rule; no historical inspection is claimed by this vector"
+        }],
+        "extracted_rule_map": [{
+          "input_paths": ["synthetic-vector.zip!/rule.txt"],
+          "target_rules": ["synthetic.rule"],
+          "source": {"refs": ["section.19.2"]},
+          "classification": "CORE_ENCODING_RULE",
+          "extraction": "A test of the derivation representation shape only"
+        }],
+        "target_files": ["STATE/LINEAGE/LINEAGE.json"],
+        "excluded_material": [{"paths": ["synthetic-vector.zip!/platform"], "reason": "Embodiment is outside the canonical rule"}],
+        "unsupported_or_refused_claims": [{
+          "claim": "Source transfer by extraction",
+          "disposition": "REFUSED",
+          "reason": "Reference does not transfer Source",
+          "source": {"refs": ["section.6.7", "section.19.2"]}
+        }],
+        "transformation_classification": "CANONICAL_EXTRACTION",
+        "effect_ceiling": "Representation shape only; synthetic digests and declarations are not evidence of an event."
+      },
+      "expected": {"schema_valid": true, "semantic_result": "CONSISTENT_AT_DECLARED_SCOPE", "failure_codes": []},
+      "source": {"refs": ["reading.7", "section.18.4", "section.19.2"]},
+      "forbidden_inference": "Syntactically valid inventory digests prove inspection, historical truth, or constitutional succession; actual derivation records require separate inventory and rule-map resolution."
+    },
+    {
+      "id": "derivation-no-empty-reservation",
+      "schema": "urn:presence:core:lineage:derivation:1",
+      "input": {"kind": "derivation", "status": "RECORDED", "input_archive": null},
+      "expected": {"schema_valid": false, "semantic_result": "NOT_EVALUATED", "failure_codes": ["SCHEMA_INVALID"]},
+      "source": {"refs": ["reading.5", "section.18.4"]},
+      "forbidden_inference": "A label and null placeholders establish inspected predecessor material."
+    },
+    {
+      "id": "origin-coordinate-only",
+      "schema": "urn:presence:core:lineage:origin:1",
+      "input": {
+        "kind": "source_locator",
+        "status": "CANONICAL_LOCATOR",
+        "policy": "../STATE.json",
+        "source": {"refs": ["reading.7", "section.1.2", "section.6.7", "section.19.2", "section.20.3"]},
+        "repository": {
+          "url": "https://github.com/ia-mm-ai/PRESENCE",
+          "inspected_ref": "refs/heads/main",
+          "inspected_commit": "85e873a881a69ad004ef2d3fd51de2ff752169d2",
+          "core_path": "STATE/",
+          "revision_rule": "Containing commit identifies this core version; inspected commit identifies its input snapshot."
+        },
+        "locator_scope": "Canonical source coordinate only",
+        "human_content_binding": {
+          "path": "../../SOURCE/CONSTITUTION_0()1.md",
+          "hash_algorithm": "sha256",
+          "sha256": "affeb5738cdfeea7ee4fe985652bf78b15eb6dfbba5871d82f0f2213a81832d0",
+          "byte_length": 44133,
+          "hash_scope": "exact_file_bytes",
+          "effect_ceiling": "Byte correspondence only"
+        },
+        "machine_content_binding": {
+          "path": "../../SOURCE/CONSTITUTION_0()1.json",
+          "hash_algorithm": "sha256",
+          "sha256": "519a81d2a26d5bf32afd77566bbb35b4d28b22af85ac45a7055fccd1b45222f8",
+          "byte_length": 146048,
+          "hash_scope": "exact_file_bytes",
+          "effect_ceiling": "Representation only"
+        },
+        "historical_occurrence": {"status": "UNKNOWN", "reason": "No first origin event established"},
+        "predecessor_relation": {"status": "UNKNOWN", "reason": "No Source succession established"},
+        "not_established": ["worldwide priority", "Authority", "Source transfer", "adoption", "keeper status"],
+        "effect_ceiling": "Canonical source coordinate and exact byte correspondence only."
+      },
+      "expected": {"schema_valid": true, "semantic_result": "CONSISTENT_AT_DECLARED_SCOPE", "failure_codes": []},
+      "source": {"refs": ["reading.7", "section.1.2", "section.6.7", "section.19.2", "section.20.3"]},
+      "forbidden_inference": "The canonical coordinate is worldwide priority, parental sovereignty, Source ownership, or proof of actual bytes without verification."
+    },
+    {
+      "id": "origin-rejects-keeper-upgrade",
+      "schema": "urn:presence:core:lineage:origin:1",
+      "input": {"kind": "source_locator", "status": "KEEPER", "authority": "unlimited"},
+      "expected": {"schema_valid": false, "semantic_result": "NOT_EVALUATED", "failure_codes": ["SCHEMA_INVALID"]},
+      "source": {"refs": ["reading.7", "section.20.3"]},
+      "forbidden_inference": "Repository custody upgrades a locator into keeper or Authority."
+    }
+  ]
+}

@@ -1,13 +1,20 @@
 {
   "kind": "source_locator",
-  "status": "STRUCTURAL_PLACEHOLDER",
+  "status": "CANONICAL_LOCATOR",
   "policy": "../STATE.json",
   "source": {
     "human": "../../SOURCE/CONSTITUTION_0()1.md",
     "machine": "../../SOURCE/CONSTITUTION_0()1.json",
     "refs": ["reading.1", "reading.2", "reading.3", "reading.7", "section.1.2", "section.1.4", "section.6.4", "section.6.5", "section.6.7", "section.19.2", "section.20.3"]
   },
-  "locator_scope": "Constitutional source material held in this repository; not a genesis event, a Body's current State, or a claim of worldwide priority.",
+  "repository": {
+    "url": "https://github.com/ia-mm-ai/PRESENCE",
+    "inspected_ref": "refs/heads/main",
+    "inspected_commit": "85e873a881a69ad004ef2d3fd51de2ff752169d2",
+    "core_path": "STATE/",
+    "revision_rule": "The exact containing Git commit identifies a version of the core. inspected_commit identifies the verified input snapshot, not this locator's future containing commit."
+  },
+  "locator_scope": "This repository is the coordinate of the canonical core and its constitutional Source material, not a genesis event, a Body's current State, or worldwide priority.",
   "human_content_binding": {
     "path": "../../SOURCE/CONSTITUTION_0()1.md",
     "hash_algorithm": "sha256",
@@ -16,14 +23,25 @@
     "hash_scope": "exact_file_bytes",
     "effect_ceiling": "Byte correspondence only; no author identity, adoption, Authority, or current Source availability."
   },
-  "historical_occurrence": null,
-  "predecessor_relation": null,
-  "unfilled_slots": "No origin event or predecessor history is asserted; null does not establish absence.",
+  "machine_content_binding": {
+    "path": "../../SOURCE/CONSTITUTION_0()1.json",
+    "hash_algorithm": "sha256",
+    "sha256": "519a81d2a26d5bf32afd77566bbb35b4d28b22af85ac45a7055fccd1b45222f8",
+    "byte_length": 146048,
+    "hash_scope": "exact_file_bytes",
+    "effect_ceiling": "Exact machine representation bytes; semantic authority remains with the internally bound human Form."
+  },
+  "historical_occurrence": {"status": "UNKNOWN", "reason": "This locator does not establish a first origin event."},
+  "predecessor_relation": {"status": "UNKNOWN", "reason": "Extraction records establish bounded material derivation, not succession of Source or a Body."},
   "not_established": [
+    "worldwide priority",
     "parental sovereignty over a later formation",
     "transfer of Source",
     "succession by copying or reference",
     "adoption or jurisdiction by publication",
-    "keeper status by repository custody"
-  ]
+    "keeper status by repository custody",
+    "Authority",
+    "present CSC or capacity"
+  ],
+  "effect_ceiling": "Canonical source coordinate and exact byte correspondence only."
 }

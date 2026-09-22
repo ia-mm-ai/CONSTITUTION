@@ -1,26 +1,87 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "Regulatory disposition — structural placeholder",
-  "description": "Attributable, scoped regulation of exact motion, preserving refusal and answerable HOLD without general exclusion.",
-  "$comment": "Annotation-only placeholder: accepts every instance; no conformance or constitutional effect is established.",
-  "x-status": "STRUCTURAL_PLACEHOLDER",
-  "x-source": {
-    "machine": "../../../SOURCE/CONSTITUTION_0()1.json",
-    "refs": ["section.7.5", "section.11.6", "section.11.12", "section.13.2", "section.13.3", "section.13.4", "section.13.6", "section.13.7"]
-  },
+  "$id": "urn:presence:core:dcr:disposition.schema:1",
+  "title": "DCR attributable regulation and answerable HOLD",
+  "x-status": "CANONICAL_SCHEMA",
+  "x-source": {"refs": ["section.11.12", "section.12.1", "section.12.6", "article.13", "section.15.3", "section.15.4", "section.17.6", "reading.3"]},
+  "x-rule-classification": "CORE_ENCODING_RULE",
+  "type": "object",
+  "required": ["kind", "id", "subject", "time", "structural", "situated", "disposition", "attribution", "applicable_law", "supported_state", "authority_required", "authority", "effect", "constraint", "uncertainty", "failures", "hold"],
+  "additionalProperties": false,
   "properties": {
-    "locality": {"description": "Locality holding the disposition."},
-    "attribution": {"description": "Answerable bearer of the scoped regulatory act."},
-    "target": {"description": "Exact motion or condition addressed."},
-    "scope": {"description": "Smallest truthful boundary of the effect, leaving unrelated motion distinct."},
-    "time": {"description": "Temporal scope and currentness of the disposition."},
-    "posture": {"description": "Supported regulation, such as admitting, bounding, pausing, redirecting, holding, refusing, or ending; no closed enumeration is prescribed."},
-    "basis": {"description": "Applicable law, supported State, capacity account, and exact Authority where required."},
-    "effect": {"description": "Actual constraint or change, distinct from its legitimacy or intended effect."},
-    "held_condition": {"description": "For HOLD, the exact uncertainty, conflict, capacity, safety, or boundary preserved without deciding it."},
-    "review": {"description": "How a materially constraining HOLD remains reviewable."},
-    "correction": {"description": "How a materially constraining HOLD remains correctable."},
-    "ending": {"description": "How the disposition can end at its exact scope; time alone does not make HOLD final."},
-    "uncertainty": {"description": "Remaining missing support or conflict without wider Authority inferred."}
+    "kind": {"type": "string", "const": "disposition"},
+    "id": {"type": "string", "minLength": 1},
+    "subject": {"$ref": "urn:presence:core:dcr:capacity.schema:1#/$defs/subject"},
+    "time": {"$ref": "urn:presence:core:dcr:capacity.schema:1#/$defs/instant"},
+    "structural": {"$ref": "urn:presence:core:dcr:capacity.schema:1#/$defs/assessment"},
+    "situated": {"$ref": "urn:presence:core:dcr:capacity.schema:1#/$defs/assessment"},
+    "disposition": {"type": "string", "enum": ["SUPPORT", "BOUND", "PAUSE", "REDIRECT", "HOLD", "REFUSE", "END"]},
+    "attribution": {"type": "string", "minLength": 1},
+    "applicable_law": {"$ref": "urn:presence:core:dcr:capacity.schema:1#/$defs/dimension"},
+    "supported_state": {"$ref": "urn:presence:core:dcr:capacity.schema:1#/$defs/dimension"},
+    "authority_required": {"type": "boolean"},
+    "authority": {"$ref": "urn:presence:core:dcr:capacity.schema:1#/$defs/authority"},
+    "effect": {
+      "type": "object", "required": ["target", "scope", "description", "ceiling"], "additionalProperties": false,
+      "properties": {
+        "target": {"type": "string", "minLength": 1},
+        "scope": {"type": "string", "minLength": 1},
+        "description": {"type": "string", "minLength": 1},
+        "ceiling": {"type": "string", "enum": ["EXACT_MOTION_ONLY", "GENERAL_INCAPACITY", "UNIVERSAL_PERMISSION", "AUTHORITY"]}
+      }
+    },
+    "constraint": {"type": "string", "minLength": 1},
+    "uncertainty": {"type": "array", "items": {"type": "string", "minLength": 1}, "uniqueItems": true},
+    "failures": {
+      "type": "array",
+      "items": {
+        "type": "object", "required": ["target", "scope", "description"], "additionalProperties": false,
+        "properties": {
+          "target": {"type": "string", "minLength": 1},
+          "scope": {"type": "string", "minLength": 1},
+          "description": {"type": "string", "minLength": 1}
+        }
+      }
+    },
+    "hold": {
+      "type": ["object", "null"],
+      "required": ["question", "holder", "target", "scope", "review_due", "review_route", "correction_route", "ending_route", "status", "opened", "review", "correction", "resolution", "retained_records"],
+      "additionalProperties": false,
+      "properties": {
+        "question": {"type": "string", "minLength": 1},
+        "holder": {"type": "string", "minLength": 1},
+        "target": {"type": "string", "minLength": 1},
+        "scope": {"type": "string", "minLength": 1},
+        "review_due": {"type": "integer", "minimum": 0},
+        "review_route": {"type": "string", "minLength": 1},
+        "correction_route": {"type": "string", "minLength": 1},
+        "ending_route": {"type": "string", "minLength": 1},
+        "status": {"type": "string", "enum": ["OPEN", "RELEASED", "ENDED"]},
+        "opened": {"$ref": "urn:presence:core:dcr:disposition.schema:1#/$defs/record"},
+        "review": {"anyOf": [{"$ref": "urn:presence:core:dcr:disposition.schema:1#/$defs/record"}, {"type": "null"}]},
+        "correction": {"anyOf": [{"$ref": "urn:presence:core:dcr:disposition.schema:1#/$defs/record"}, {"type": "null"}]},
+        "resolution": {"anyOf": [{"$ref": "urn:presence:core:dcr:disposition.schema:1#/$defs/record"}, {"type": "null"}]},
+        "retained_records": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"$ref": "urn:presence:core:dcr:disposition.schema:1#/$defs/record"}}
+      }
+    }
+  },
+  "$defs": {
+    "record": {
+      "type": "object",
+      "required": ["id", "event", "by", "target", "scope", "at", "prior", "basis", "detail", "remaining_uncertainty"],
+      "additionalProperties": false,
+      "properties": {
+        "id": {"type": "string", "minLength": 1},
+        "event": {"type": "string", "enum": ["OPEN", "REVIEW", "CORRECT", "RELEASE", "END"]},
+        "by": {"type": "string", "minLength": 1},
+        "target": {"type": "string", "minLength": 1},
+        "scope": {"type": "string", "minLength": 1},
+        "at": {"type": "integer", "minimum": 0},
+        "prior": {"type": ["string", "null"], "minLength": 1},
+        "basis": {"type": "string", "minLength": 1},
+        "detail": {"type": "string", "minLength": 1},
+        "remaining_uncertainty": {"type": "array", "items": {"type": "string", "minLength": 1}, "uniqueItems": true}
+      }
+    }
   }
 }

@@ -1,25 +1,90 @@
 {
-  "kind": "scenario_outline",
-  "status": "ILLUSTRATIVE_NON_EXECUTABLE",
-  "source": {
-    "machine": "../../../SOURCE/CONSTITUTION_0()1.json",
-    "refs": ["section.11.12", "section.14.5", "section.16.4", "section.16.5", "section.16.7", "section.16.8", "section.17.14"]
-  },
-  "schemas": ["../SCHEMAS/TRANSITION.schema.json", "../SCHEMAS/RESUMPTION.schema.json", "../SCHEMAS/SUPPORTED-STATE.schema.json"],
-  "scenario": {
-    "assumptions": [
-      "A replacement bearer possesses an old State record after a known interruption.",
-      "Support for the intervening transition and the present relations required for the proposed motion is missing."
-    ],
-    "proposed_claim": "Possession of the record proves uninterrupted supported State succession and permits continuation under the prior bearer's Authority.",
-    "expected_reading": [
-      "The proposed inference is unsupported; the interruption and missing bases remain visible.",
-      "Preservation of a record does not establish present CSC or transfer Authority.",
-      "The exact dependent motion is refused or held for its missing necessary basis, without erasing actual consequences or banning unrelated motion."
-    ],
-    "forbidden_inferences": ["Record possession repairs an unestablished transition.", "Replacement inherits the prior bearer's Authority."],
-    "invalidity_scope": "The claimed constitutional conversion, not JSON syntax or rejection by the annotation-only schemas."
-  },
-  "fixture": null,
-  "expected_validation": null
+  "kind":"normative_vector_suite","status":"NORMATIVE_VECTOR",
+  "source":{"refs":["reading.5","section.3.4","section.16.6","section.16.7","section.16.8"]},
+  "cases":[
+    {
+      "id":"csc.state.unknown-is-usable","schema":"urn:presence:core:csc:supported-state:1",
+      "input":{"kind":"supported_state","id":"r","locality":"L","scope":"scope","at":"t1","evidence":{"object":"r","locality":"L","scope":"scope","at":"t1","basis":"synthetic-account-of-unknown","method":"RECORD_COMPARISON","result":"SUPPORTED","effect_ceiling":"BOUNDED_REPRESENTATION_ONLY"},"uncertainty":{"status":"UNKNOWN","matters":["stream-compatibility"]},"state":{"id":"s1","locality":"L","identity":"I","applicable_law":"law","at":"t1","posture":"UNKNOWN","history":["event"],"discontinuity":["gap"]},"observed_consequences":[],"returned_consequences":[],"continuity":{"known_interruptions":["gap"],"recorded_interruptions":["gap"],"streams":[{"id":"a","state_id":"s1"}],"relation":"UNKNOWN","disposition":"UNKNOWN","reconciliation_basis":null},"qualification":{"claim":"NO_CLAIM","bearer_or_mechanism":null,"locality":null,"scope":null,"conditions":[],"demonstrated_conditions":[],"demonstration":{"evidence":[],"at":null,"result":"UNKNOWN"},"dependencies":[],"failure_boundaries":[],"present_status":"NOT_CLAIMED","assessed_at":null}},
+      "expected":{"schema_valid":true,"semantic_result":"CONSISTENT_AT_DECLARED_SCOPE","failure_codes":[]},
+      "source":{"refs":["reading.5","section.3.4","section.3.5"]},
+      "forbidden_inference":"An explicit synthetic UNKNOWN is neither false, absence, ineligibility nor an unrestricted ban."
+    },
+    {
+      "id":"csc.state.visible-incompatible-streams","schema":"urn:presence:core:csc:supported-state:1",
+      "input":{"kind":"supported_state","id":"r","locality":"L","scope":"scope","at":"t1","evidence":{"object":"r","locality":"L","scope":"scope","at":"t1","basis":"synthetic-conflict-evidence","method":"RECORD_COMPARISON","result":"SUPPORTED","effect_ceiling":"BOUNDED_REPRESENTATION_ONLY"},"uncertainty":{"status":"UNRESOLVED","matters":["reconciliation"]},"state":{"id":"s1","locality":"L","identity":"I","applicable_law":"law","at":"t1","posture":"CONFLICTED","history":["event"],"discontinuity":["divergence"]},"observed_consequences":["effect-a","effect-b"],"returned_consequences":["effect-a","effect-b"],"continuity":{"known_interruptions":["divergence"],"recorded_interruptions":["divergence"],"streams":[{"id":"a","state_id":"s1"},{"id":"b","state_id":"s2"}],"relation":"INCOMPATIBLE","disposition":"VISIBLE_CONFLICT","reconciliation_basis":null},"qualification":{"claim":"NO_CLAIM","bearer_or_mechanism":null,"locality":null,"scope":null,"conditions":[],"demonstrated_conditions":[],"demonstration":{"evidence":[],"at":null,"result":"UNKNOWN"},"dependencies":[],"failure_boundaries":[],"present_status":"NOT_CLAIMED","assessed_at":null}},
+      "expected":{"schema_valid":true,"semantic_result":"CONSISTENT_AT_DECLARED_SCOPE","failure_codes":[]},
+      "source":{"refs":["section.16.6","section.17.13"]},
+      "forbidden_inference":"A consistent conflict representation does not resolve the conflict or establish a single current State."
+    },
+    {
+      "id":"csc.state.concealed-conflict-and-effects","schema":"urn:presence:core:csc:supported-state:1",
+      "input":{"kind":"supported_state","id":"r","locality":"L","scope":"scope","at":"t1","evidence":{"object":"r","locality":"L","scope":"scope","at":"t1","basis":"synthetic-conflict-evidence","method":"RECORD_COMPARISON","result":"SUPPORTED","effect_ceiling":"BOUNDED_REPRESENTATION_ONLY"},"uncertainty":{"status":"KNOWN_AT_SCOPE","matters":[]},"state":{"id":"s1","locality":"L","identity":"I","applicable_law":"law","at":"t1","posture":"ACTIVE","history":["event"],"discontinuity":[]},"observed_consequences":["unauthorized-effect"],"returned_consequences":[],"continuity":{"known_interruptions":["divergence"],"recorded_interruptions":[],"streams":[{"id":"a","state_id":"s1"},{"id":"b","state_id":"s2"}],"relation":"INCOMPATIBLE","disposition":"SINGLE","reconciliation_basis":null},"qualification":{"claim":"NO_CLAIM","bearer_or_mechanism":null,"locality":null,"scope":null,"conditions":[],"demonstrated_conditions":[],"demonstration":{"evidence":[],"at":null,"result":"UNKNOWN"},"dependencies":[],"failure_boundaries":[],"present_status":"NOT_CLAIMED","assessed_at":null}},
+      "expected":{"schema_valid":true,"semantic_result":"INCONSISTENT","failure_codes":["CONSEQUENCE_OMITTED","DISCONTINUITY_CONCEALED","STREAM_INVENTORY_MISMATCH","INCOMPATIBLE_STREAMS_COLLAPSED"]},
+      "source":{"refs":["section.14.2","section.14.3","section.16.6","section.16.7"]},
+      "forbidden_inference":"Preferred posture, omission and an unauthorized originating act cannot erase effects or incompatible history."
+    },
+    {
+      "id":"csc.state.unknown-coerced-and-support-missing","schema":"urn:presence:core:csc:supported-state:1",
+      "input":{"kind":"supported_state","id":"r","locality":"L","scope":"scope","at":"t1","evidence":{"object":"r","locality":"L","scope":"scope","at":"t1","basis":"synthetic-no-support","method":"SELF_REPORT","result":"UNKNOWN","effect_ceiling":"BOUNDED_REPRESENTATION_ONLY"},"uncertainty":{"status":"UNKNOWN","matters":[]},"state":{"id":"s1","locality":"foreign","identity":"I","applicable_law":"law","at":"old","posture":"ACTIVE","history":["event"],"discontinuity":[]},"observed_consequences":[],"returned_consequences":[],"continuity":{"known_interruptions":[],"recorded_interruptions":[],"streams":[{"id":"a","state_id":"s1"}],"relation":"UNKNOWN","disposition":"SINGLE","reconciliation_basis":null},"qualification":{"claim":"NO_CLAIM","bearer_or_mechanism":null,"locality":null,"scope":null,"conditions":[],"demonstrated_conditions":[],"demonstration":{"evidence":[],"at":null,"result":"UNKNOWN"},"dependencies":[],"failure_boundaries":[],"present_status":"SUPPORTED_AT_DECLARED_SCOPE","assessed_at":null}},
+      "expected":{"schema_valid":true,"semantic_result":"INCONSISTENT","failure_codes":["SUPPORT_NOT_ESTABLISHED","UNCERTAINTY_NOT_PRESERVED","STATE_BINDING_MISMATCH","UNKNOWN_STREAM_RELATION_UPGRADED","NO_CLAIM_UPGRADED"]},
+      "source":{"refs":["section.3.4","section.3.5","section.16.8"]},
+      "forbidden_inference":"A missing basis is not a verified negative and no-claim metadata cannot silently become current capability."
+    },
+    {
+      "id":"csc.qualification.historical-only","schema":"urn:presence:core:csc:supported-state:1",
+      "input":{"kind":"supported_state","id":"r","locality":"L","scope":"scope","at":"t1","evidence":{"object":"r","locality":"L","scope":"scope","at":"t1","basis":"synthetic-history-review","method":"RECORD_COMPARISON","result":"SUPPORTED","effect_ceiling":"BOUNDED_REPRESENTATION_ONLY"},"uncertainty":{"status":"UNKNOWN","matters":["present-capability"]},"state":{"id":"s1","locality":"L","identity":"I","applicable_law":"law","at":"t1","posture":"DORMANT","history":["event"],"discontinuity":["gap"]},"observed_consequences":[],"returned_consequences":[],"continuity":{"known_interruptions":["gap"],"recorded_interruptions":["gap"],"streams":[{"id":"a","state_id":"s1"}],"relation":"COMPATIBLE","disposition":"SINGLE","reconciliation_basis":null},"qualification":{"claim":"HISTORICAL","bearer_or_mechanism":"procedure","locality":"L","scope":"scope","conditions":["recoverable-records"],"demonstrated_conditions":["recoverable-records"],"demonstration":{"evidence":["synthetic-demonstration"],"at":"t0","result":"DEMONSTRATED"},"dependencies":[{"id":"custody","status":"UNKNOWN","interruption_risk":"loss","replacement_posture":"independent-new-basis","loss_consequence":"recoverability-unknown"}],"failure_boundaries":["untested-loss"],"present_status":"UNKNOWN","assessed_at":"t1"}},
+      "expected":{"schema_valid":true,"semantic_result":"CONSISTENT_AT_DECLARED_SCOPE","failure_codes":[]},
+      "source":{"refs":["section.15.2","section.16.8","section.20.2"]},
+      "forbidden_inference":"Historical synthetic success and a reviewed archive establish no present CSC or present dependency availability."
+    },
+    {
+      "id":"csc.qualification.historical-promoted","schema":"urn:presence:core:csc:supported-state:1",
+      "input":{"kind":"supported_state","id":"r","locality":"L","scope":"scope","at":"t1","evidence":{"object":"r","locality":"L","scope":"scope","at":"t1","basis":"synthetic-history-review","method":"RECORD_COMPARISON","result":"SUPPORTED","effect_ceiling":"BOUNDED_REPRESENTATION_ONLY"},"uncertainty":{"status":"KNOWN_AT_SCOPE","matters":[]},"state":{"id":"s1","locality":"L","identity":"I","applicable_law":"law","at":"t1","posture":"ACTIVE","history":["event"],"discontinuity":[]},"observed_consequences":[],"returned_consequences":[],"continuity":{"known_interruptions":[],"recorded_interruptions":[],"streams":[{"id":"a","state_id":"s1"}],"relation":"COMPATIBLE","disposition":"SINGLE","reconciliation_basis":null},"qualification":{"claim":"HISTORICAL","bearer_or_mechanism":"procedure","locality":"L","scope":"scope","conditions":["recoverable-records"],"demonstrated_conditions":["recoverable-records"],"demonstration":{"evidence":["synthetic-demonstration"],"at":"t0","result":"DEMONSTRATED"},"dependencies":[],"failure_boundaries":["untested-loss"],"present_status":"SUPPORTED_AT_DECLARED_SCOPE","assessed_at":"t1"}},
+      "expected":{"schema_valid":true,"semantic_result":"INCONSISTENT","failure_codes":["HISTORICAL_QUALIFICATION_UPGRADED"]},
+      "source":{"refs":["section.16.8"]},
+      "forbidden_inference":"Changing a present-status label does not refresh a historical demonstration."
+    },
+    {
+      "id":"csc.qualification.current-at-exact-synthetic-scope","schema":"urn:presence:core:csc:supported-state:1",
+      "input":{"kind":"supported_state","id":"r","locality":"L","scope":"scope","at":"t1","evidence":{"object":"r","locality":"L","scope":"scope","at":"t1","basis":"synthetic-current-review","method":"DEMONSTRATION","result":"SUPPORTED","effect_ceiling":"BOUNDED_REPRESENTATION_ONLY"},"uncertainty":{"status":"KNOWN_AT_SCOPE","matters":[]},"state":{"id":"s1","locality":"L","identity":"I","applicable_law":"law","at":"t1","posture":"ACTIVE","history":["event"],"discontinuity":[]},"observed_consequences":[],"returned_consequences":[],"continuity":{"known_interruptions":[],"recorded_interruptions":[],"streams":[{"id":"a","state_id":"s1"}],"relation":"COMPATIBLE","disposition":"SINGLE","reconciliation_basis":null},"qualification":{"claim":"CURRENT","bearer_or_mechanism":"procedure","locality":"L","scope":"scope","conditions":["recoverable-records"],"demonstrated_conditions":["recoverable-records"],"demonstration":{"evidence":["synthetic-current-demonstration"],"at":"t1","result":"DEMONSTRATED"},"dependencies":[{"id":"custody","status":"AVAILABLE","interruption_risk":"loss","replacement_posture":"independent-new-basis","loss_consequence":"recoverability-unknown"}],"failure_boundaries":["untested-loss"],"present_status":"SUPPORTED_AT_DECLARED_SCOPE","assessed_at":"t1"}},
+      "expected":{"schema_valid":true,"semantic_result":"CONSISTENT_AT_DECLARED_SCOPE","failure_codes":[]},
+      "source":{"refs":["section.16.8","section.19.3","section.20.2"]},
+      "forbidden_inference":"This exact synthetic fixture makes no present CSC claim about this standard, repository, mechanism or real locality."
+    },
+    {
+      "id":"csc.qualification.current-widened-and-stale","schema":"urn:presence:core:csc:supported-state:1",
+      "input":{"kind":"supported_state","id":"r","locality":"L","scope":"scope","at":"t1","evidence":{"object":"r","locality":"L","scope":"scope","at":"t1","basis":"synthetic-current-review","method":"DEMONSTRATION","result":"SUPPORTED","effect_ceiling":"BOUNDED_REPRESENTATION_ONLY"},"uncertainty":{"status":"UNKNOWN","matters":["dependency-availability"]},"state":{"id":"s1","locality":"L","identity":"I","applicable_law":"law","at":"t1","posture":"ACTIVE","history":["event"],"discontinuity":[]},"observed_consequences":[],"returned_consequences":[],"continuity":{"known_interruptions":[],"recorded_interruptions":[],"streams":[{"id":"a","state_id":"s1"}],"relation":"COMPATIBLE","disposition":"SINGLE","reconciliation_basis":null},"qualification":{"claim":"CURRENT","bearer_or_mechanism":"procedure","locality":"other-locality","scope":"every-scope","conditions":["recoverable-records","untested-condition"],"demonstrated_conditions":["recoverable-records"],"demonstration":{"evidence":["synthetic-historical-demonstration"],"at":"t0","result":"DEMONSTRATED"},"dependencies":[{"id":"custody","status":"UNKNOWN","interruption_risk":"loss","replacement_posture":"independent-new-basis","loss_consequence":"recoverability-unknown"}],"failure_boundaries":["untested-loss"],"present_status":"SUPPORTED_AT_DECLARED_SCOPE","assessed_at":"t0"}},
+      "expected":{"schema_valid":true,"semantic_result":"INCONSISTENT","failure_codes":["CURRENT_QUALIFICATION_UNSUPPORTED"]},
+      "source":{"refs":["section.16.8","section.20.2"]},
+      "forbidden_inference":"A demonstration at another boundary, locality, scope or condition does not establish present CSC here."
+    },
+    {
+      "id":"csc.qualification.claim-with-null-demonstration","schema":"urn:presence:core:csc:supported-state:1",
+      "input":{"kind":"supported_state","id":"r","locality":"L","scope":"scope","at":"t1","evidence":{"object":"r","locality":"L","scope":"scope","at":"t1","basis":"synthetic-history-review","method":"RECORD_COMPARISON","result":"SUPPORTED","effect_ceiling":"BOUNDED_REPRESENTATION_ONLY"},"uncertainty":{"status":"UNKNOWN","matters":["demonstration"]},"state":{"id":"s1","locality":"L","identity":"I","applicable_law":"law","at":"t1","posture":"ACTIVE","history":["event"],"discontinuity":[]},"observed_consequences":[],"returned_consequences":[],"continuity":{"known_interruptions":[],"recorded_interruptions":[],"streams":[{"id":"a","state_id":"s1"}],"relation":"COMPATIBLE","disposition":"SINGLE","reconciliation_basis":null},"qualification":{"claim":"HISTORICAL","bearer_or_mechanism":null,"locality":null,"scope":null,"conditions":[],"demonstrated_conditions":[],"demonstration":{"evidence":[],"at":null,"result":"UNKNOWN"},"dependencies":[],"failure_boundaries":[],"present_status":"UNKNOWN","assessed_at":null}},
+      "expected":{"schema_valid":true,"semantic_result":"INCONSISTENT","failure_codes":["QUALIFICATION_INCOMPLETE"]},
+      "source":{"refs":["reading.5","section.16.8"]},
+      "forbidden_inference":"Schema-permitted null references do not establish a demonstration; a failed claim does not prove incapability."
+    },
+    {
+      "id":"csc.state.null-required-object","schema":"urn:presence:core:csc:supported-state:1",
+      "input":{"kind":"supported_state","id":"r","locality":"L","scope":"scope","at":"t1","evidence":{"object":"r","locality":"L","scope":"scope","at":"t1","basis":"synthetic-account","method":"RECORD_COMPARISON","result":"SUPPORTED","effect_ceiling":"BOUNDED_REPRESENTATION_ONLY"},"uncertainty":null,"state":{"id":"s1","locality":"L","identity":"I","applicable_law":"law","at":"t1","posture":"ACTIVE","history":["event"],"discontinuity":[]},"observed_consequences":[],"returned_consequences":[],"continuity":{"known_interruptions":[],"recorded_interruptions":[],"streams":[{"id":"a","state_id":"s1"}],"relation":"COMPATIBLE","disposition":"SINGLE","reconciliation_basis":null},"qualification":{"claim":"NO_CLAIM","bearer_or_mechanism":null,"locality":null,"scope":null,"conditions":[],"demonstrated_conditions":[],"demonstration":{"evidence":[],"at":null,"result":"UNKNOWN"},"dependencies":[],"failure_boundaries":[],"present_status":"NOT_CLAIMED","assessed_at":null}},
+      "expected":{"schema_valid":false,"semantic_result":"NOT_EVALUATED","failure_codes":["SCHEMA_INVALID"]},
+      "source":{"refs":["reading.5","section.3.4"]},
+      "forbidden_inference":"Null is not an uncertainty account."
+    },
+    {
+      "id":"csc.state.missing-is-not-false","schema":"urn:presence:core:csc:supported-state:1",
+      "input":{"kind":"supported_state","id":"r"},
+      "expected":{"schema_valid":false,"semantic_result":"NOT_EVALUATED","failure_codes":["SCHEMA_INVALID"]},
+      "source":{"refs":["reading.5","section.18.3"]},
+      "forbidden_inference":"Missing support does not prove falsehood, absence or ineligibility."
+    },
+    {
+      "id":"csc.state.false-is-not-unknown","schema":"urn:presence:core:csc:supported-state:1",
+      "input":{"kind":"supported_state","id":"r","locality":"L","scope":"scope","at":"t1","evidence":{"object":"r","locality":"L","scope":"scope","at":"t1","basis":"synthetic-account","method":"RECORD_COMPARISON","result":"SUPPORTED","effect_ceiling":"BOUNDED_REPRESENTATION_ONLY"},"uncertainty":{"status":false,"matters":[]},"state":{"id":"s1","locality":"L","identity":"I","applicable_law":"law","at":"t1","posture":"ACTIVE","history":["event"],"discontinuity":[]},"observed_consequences":[],"returned_consequences":[],"continuity":{"known_interruptions":[],"recorded_interruptions":[],"streams":[{"id":"a","state_id":"s1"}],"relation":"COMPATIBLE","disposition":"SINGLE","reconciliation_basis":null},"qualification":{"claim":"NO_CLAIM","bearer_or_mechanism":null,"locality":null,"scope":null,"conditions":[],"demonstrated_conditions":[],"demonstration":{"evidence":[],"at":null,"result":"UNKNOWN"},"dependencies":[],"failure_boundaries":[],"present_status":"NOT_CLAIMED","assessed_at":null}},
+      "expected":{"schema_valid":false,"semantic_result":"NOT_EVALUATED","failure_codes":["SCHEMA_INVALID"]},
+      "source":{"refs":["reading.5","section.3.4"]},
+      "forbidden_inference":"A Boolean false is not an encoded UNKNOWN and must not be coerced."
+    }
+  ]
 }

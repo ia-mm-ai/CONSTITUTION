@@ -1,22 +1,52 @@
 {
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "Supported State — structural placeholder",
-  "description": "Subjects of a representation of a Locality's supported present posture; the representation is not State itself.",
-  "$comment": "Annotation-only placeholder: accepts every instance; no conformance or constitutional effect is established.",
-  "x-status": "STRUCTURAL_PLACEHOLDER",
-  "x-source": {
-    "machine": "../../../SOURCE/CONSTITUTION_0()1.json",
-    "refs": ["article.4.table.row.4", "section.2.1", "section.3.3", "section.14.3", "section.14.4", "section.14.5", "section.16.7"]
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"urn:presence:core:csc:supported-state:1",
+  "title":"Supported State representation",
+  "x-status":"CANONICAL_SCHEMA",
+  "x-source":{"refs":["section.14.3","section.14.5","section.16.6","section.16.7","section.16.8","section.18.4"]},
+  "x-rule-classification":"CORE_ENCODING_RULE",
+  "description":"Closed representation vocabulary, not a State, adoption, proof of present capability, or grant of permission. Required fields and exact comparisons are encoding choices.",
+  "type":"object",
+  "required":["kind","id","locality","scope","at","evidence","uncertainty","state","observed_consequences","returned_consequences","continuity","qualification"],
+  "additionalProperties":false,
+  "properties":{
+    "kind":{"type":"string","const":"supported_state"},
+    "id":{"$ref":"#/$defs/text"},"locality":{"$ref":"#/$defs/text"},"scope":{"$ref":"#/$defs/text"},"at":{"$ref":"#/$defs/text"},
+    "evidence":{"$ref":"#/$defs/evidence"},
+    "uncertainty":{"$ref":"#/$defs/uncertainty"},
+    "state":{"$ref":"#/$defs/state"},
+    "observed_consequences":{"$ref":"#/$defs/strings"},
+    "returned_consequences":{"$ref":"#/$defs/strings"},
+    "continuity":{
+      "type":"object","required":["known_interruptions","recorded_interruptions","streams","relation","disposition","reconciliation_basis"],"additionalProperties":false,
+      "properties":{
+        "known_interruptions":{"$ref":"#/$defs/strings"},"recorded_interruptions":{"$ref":"#/$defs/strings"},
+        "streams":{"type":"array","minItems":1,"uniqueItems":true,"items":{"type":"object","required":["id","state_id"],"additionalProperties":false,"properties":{"id":{"$ref":"#/$defs/text"},"state_id":{"$ref":"#/$defs/text"}}}},
+        "relation":{"type":"string","enum":["COMPATIBLE","INCOMPATIBLE","UNKNOWN"]},
+        "disposition":{"type":"string","enum":["SINGLE","VISIBLE_CONFLICT","DISTINCT","RECONCILED","UNKNOWN"]},
+        "reconciliation_basis":{"$ref":"#/$defs/nullable_text"}
+      }
+    },
+    "qualification":{
+      "type":"object","required":["claim","bearer_or_mechanism","locality","scope","conditions","demonstrated_conditions","demonstration","dependencies","failure_boundaries","present_status","assessed_at"],"additionalProperties":false,
+      "properties":{
+        "claim":{"type":"string","enum":["NO_CLAIM","HISTORICAL","CURRENT"]},
+        "bearer_or_mechanism":{"$ref":"#/$defs/nullable_text"},"locality":{"$ref":"#/$defs/nullable_text"},"scope":{"$ref":"#/$defs/nullable_text"},
+        "conditions":{"$ref":"#/$defs/strings"},"demonstrated_conditions":{"$ref":"#/$defs/strings"},
+        "demonstration":{"type":"object","required":["evidence","at","result"],"additionalProperties":false,"properties":{"evidence":{"$ref":"#/$defs/strings"},"at":{"$ref":"#/$defs/nullable_text"},"result":{"type":"string","enum":["DEMONSTRATED","NOT_DEMONSTRATED","UNKNOWN"]}}},
+        "dependencies":{"type":"array","items":{"type":"object","required":["id","status","interruption_risk","replacement_posture","loss_consequence"],"additionalProperties":false,"properties":{"id":{"$ref":"#/$defs/text"},"status":{"type":"string","enum":["AVAILABLE","UNAVAILABLE","UNKNOWN"]},"interruption_risk":{"$ref":"#/$defs/text"},"replacement_posture":{"$ref":"#/$defs/text"},"loss_consequence":{"$ref":"#/$defs/text"}}}},
+        "failure_boundaries":{"$ref":"#/$defs/strings"},
+        "present_status":{"type":"string","enum":["NOT_CLAIMED","SUPPORTED_AT_DECLARED_SCOPE","UNKNOWN","UNAVAILABLE"]},
+        "assessed_at":{"$ref":"#/$defs/nullable_text"}
+      }
+    }
   },
-  "properties": {
-    "locality": {"description": "Exact Locality in which the represented posture is held."},
-    "temporal_scope": {"description": "Occurrence or time for which support is claimed; a historical record does not establish currentness."},
-    "posture": {"description": "Supported posture at the declared scope, distinct from a record or unsupported claim."},
-    "applicable_law": {"description": "Recoverable applicable law and its exact local basis, without adoption by reference alone."},
-    "support": {"description": "Attributable basis and evidence for the represented posture."},
-    "consequences": {"description": "Material consequences returned to State at the smallest truthful scale, including unauthorized effects."},
-    "discontinuity": {"description": "Known interruption, loss, conflict, or divergence; absence of a value establishes no continuity."},
-    "uncertainty": {"description": "Unsupported, inaccessible, or unresolved conditions without forced resolution."},
-    "representation_limits": {"description": "Scope and limits of exposure; no external verification of an unexposed interior."}
+  "$defs":{
+    "text":{"type":"string","minLength":1,"pattern":"\\S"},
+    "nullable_text":{"type":["string","null"],"minLength":1,"pattern":"\\S"},
+    "strings":{"type":"array","uniqueItems":true,"items":{"$ref":"#/$defs/text"}},
+    "uncertainty":{"type":"object","required":["status","matters"],"additionalProperties":false,"properties":{"status":{"type":"string","enum":["KNOWN_AT_SCOPE","UNKNOWN","UNRESOLVED"]},"matters":{"$ref":"#/$defs/strings"}}},
+    "evidence":{"type":"object","required":["object","locality","scope","at","basis","method","result","effect_ceiling"],"additionalProperties":false,"properties":{"object":{"$ref":"#/$defs/text"},"locality":{"$ref":"#/$defs/text"},"scope":{"$ref":"#/$defs/text"},"at":{"$ref":"#/$defs/text"},"basis":{"$ref":"#/$defs/text"},"method":{"type":"string","enum":["OBSERVATION","RECORD_COMPARISON","DEMONSTRATION","SELF_REPORT"]},"result":{"type":"string","enum":["SUPPORTED","UNSUPPORTED","UNKNOWN"]},"effect_ceiling":{"type":"string","const":"BOUNDED_REPRESENTATION_ONLY"}}},
+    "state":{"type":"object","required":["id","locality","identity","applicable_law","at","posture","history","discontinuity"],"additionalProperties":false,"properties":{"id":{"$ref":"#/$defs/text"},"locality":{"$ref":"#/$defs/text"},"identity":{"$ref":"#/$defs/text"},"applicable_law":{"$ref":"#/$defs/text"},"at":{"$ref":"#/$defs/text"},"posture":{"type":"string","enum":["ACTIVE","DORMANT","ENDED","HELD","UNKNOWN","CONFLICTED"]},"history":{"$ref":"#/$defs/strings"},"discontinuity":{"$ref":"#/$defs/strings"}}}
   }
 }
