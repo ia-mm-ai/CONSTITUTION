@@ -48,7 +48,7 @@
       "status": "PASSED",
       "detail": "No private keys, mnemonics or credentials persisted; disposable rehearsal keys confined to a temporary directory outside the repository"
     }
-  ],
+  },
   "unresolved": [
     {
       "id": "THREE_VALIDATOR_RESTART_REJOIN",
@@ -65,6 +65,16 @@
       "attempted_query": "govulncheck ./... fetching https://vuln.go.dev/index/modules.json.gz",
       "failure": "dial tcp: lookup vuln.go.dev on 127.0.0.53:53: server misbehaving (DNS resolution blocked in sandbox)",
       "consequence": "No zero-vulnerabilities claim is made. Dependency vulnerability posture of the pinned AvalancheGo v1.15.0 module graph is externally unobserved from this environment.",
+      "claimed_passed": false
+    },
+    {
+      "id": "EXTERNAL_REVIEW_BACKEND_OBSERVATION",
+      "status": "UNRESOLVED_EXTERNAL_OBSERVATION",
+      "kind": "EXTERNAL_REVIEW_BACKEND_UNAVAILABLE",
+      "tool": "Copilot code-review backend (autofind)",
+      "attempted_query": "parallel_validation code review over the 89 changed files",
+      "failure": "autofind: failed to get model capi-prod-claude-sonnet-4.6: model not found in registry",
+      "consequence": "Automated external review commentary was unavailable. CodeQL security scan did run and reported 0 alerts for go, python and javascript; that scan result is recorded, not a zero-vulnerabilities claim.",
       "claimed_passed": false
     },
     {
