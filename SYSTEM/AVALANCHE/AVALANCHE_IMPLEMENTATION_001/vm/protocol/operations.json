@@ -1,0 +1,29 @@
+{
+  "schema": "PRESENCE_AVALANCHE_OPERATION_CONTRACT_001",
+  "implementation": "AVALANCHE_IMPLEMENTATION_001",
+  "protocol": "PRESENCE_AVALANCHE_VM_001",
+  "version": "1.0.0",
+  "operations": [
+    {"operation": "BOUND", "effect": "OPENS_TEMPORARY_LOCUS_ONLY", "scope": "NEW_LOCUS"},
+    {"operation": "PRESENT_FORM", "effect": "ELIGIBILITY_TO_GATE_ONLY", "scope": "ACTIVE_LOCUS"},
+    {"operation": "GATE_DISPOSITION", "effect": "SETS_GATE_POSTURE_ONLY", "scope": "ACTIVE_LOCUS"},
+    {"operation": "ENTER", "effect": "ENTERS_CURRENT_LOCUS_ONLY", "scope": "ACTIVE_LOCUS"},
+    {"operation": "CHECKPOINT_DEPARTURE", "effect": "CHECKPOINTS_PARTICIPANT_STATE_FOR_DEPARTURE_ONLY", "scope": "ACTIVE_LOCUS"},
+    {"operation": "REENTER", "effect": "RENEWS_ENTRY_WITH_CARRIED_STATE_SUCCESSION_ONLY", "scope": "ACTIVE_LOCUS"},
+    {"operation": "OBSERVE_CROSSING", "effect": "RECORDS_CROSSING_ONLY", "scope": "ACTIVE_LOCUS"},
+    {"operation": "MATTER_DISPOSITION", "effect": "SETS_ACTOR_LOCAL_MATTER_POSTURE_ONLY", "scope": "ACTIVE_LOCUS"},
+    {"operation": "RECORD_EMERGENCE", "effect": "RECORDS_FIELD_LOCAL_EMERGENCE_ONLY", "scope": "ACTIVE_LOCUS"},
+    {"operation": "CORRECT", "effect": "APPENDS_CORRECTION_ONLY", "scope": "TARGET_SCOPED"},
+    {"operation": "EXIT", "effect": "EXITS_CURRENT_LOCUS_ONLY", "scope": "ACTIVE_LOCUS"},
+    {"operation": "CLOSE", "effect": "CLOSES_LOCUS_AND_ADDRESSES_RESIDUE_ONLY", "scope": "ACTIVE_LOCUS"},
+    {"operation": "INCORPORATE_ADDRESSED_RESIDUE", "effect": "INCORPORATES_ADDRESSED_RESIDUE_LOCALLY_ONLY", "scope": "BODY_LOCAL"},
+    {"operation": "DECLARE_CAPACITY", "effect": "SETS_SIGNED_LOCAL_CAPACITY_ACCOUNT_ONLY", "scope": "BODY_LOCAL"},
+    {"operation": "PULSE", "effect": "RECORDS_SIGNED_LOCAL_CURRENTNESS_ONLY", "scope": "BODY_LOCAL"},
+    {"operation": "RECLAIM_ADMISSION_OFFER", "effect": "EXPIRES_UNENTERED_ADMISSION_OFFER_ONLY", "scope": "ACTIVE_LOCUS"},
+    {"operation": "REGISTER_CONTINUITY_AUTHORITY", "effect": "REGISTERS_BOUNDED_CONTINUITY_AUTHORITY_ONLY", "scope": "BODY_LOCAL"},
+    {"operation": "EXHAUST_FORMATION_AUTHORITY", "effect": "EXHAUSTS_FORMATION_AUTHORITY_WITHOUT_TRANSFER", "scope": "DORMANT_BODY"},
+    {"operation": "PROPOSE_SUCCESSOR", "effect": "RECORDS_SUCCESSOR_PROPOSAL_ONLY", "scope": "BODY_LOCAL"},
+    {"operation": "ATTEST_SUCCESSOR", "effect": "APPENDS_SUCCESSOR_ATTESTATION_ONLY", "scope": "BODY_LOCAL"},
+    {"operation": "ACTIVATE_SUCCESSOR", "effect": "FREEZES_PREDECESSOR_AT_SUCCESSION_BOUNDARY_ONLY", "scope": "DORMANT_BODY"}
+  ]
+}

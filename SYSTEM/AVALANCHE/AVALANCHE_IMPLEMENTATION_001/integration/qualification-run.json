@@ -1,0 +1,331 @@
+{
+  "schema": "PRESENCE_AVALANCHE_COUPLED_QUALIFICATION_001",
+  "result": "PASS",
+  "mode": "REAL_VM_HTTP_AND_REAL_FIELD_EXPLICIT_BLOCK_ACCEPTANCE",
+  "observed_at": "2026-09-22T05:29:14.708Z",
+  "go_version": "go1.25.13",
+  "node_version": "v22.23.2",
+  "avalanchego": "v1.15.0",
+  "avalanchego_commit": "70bd6d063b7343fd2cd8217200aaf77b57f19f68",
+  "rpcchainvm_protocol": 46,
+  "accepted_transitions": 29,
+  "final_revision": 29,
+  "final_posture": "DORMANT_P0",
+  "final_state_commitment": "1377e0f0a0bd0eca695069f6659b6dd965a3f556f16d2bf6667b79480948b976",
+  "vm_database_reloads": 2,
+  "validator_network": "NOT_RUN",
+  "validator_process_restart": "NOT_RUN",
+  "private_credentials": "EPHEMERAL_MEMORY_AND_STDIN_ONLY",
+  "effect": "LOCAL_IMPLEMENTATION_TEST_EVIDENCE_ONLY_NO_CONSTITUTIONAL_EFFECT",
+  "checks": [
+    "invalid_signature_rejected_by_FIELD_and_VM",
+    "BOUND_then_empty_locus_DECLARE_CAPACITY_while_active",
+    "wrong_global_scope_rejected_by_FIELD_and_VM",
+    "stale_draft_rejected",
+    "VM_reload_while_locus_active_preserves_state_and_receipts",
+    "presentation_and_admission_do_not_enter",
+    "broker_requires_current_accepted_presence",
+    "Go_and_JavaScript_signing_ID_and_submission_agree_for_HTML_and_Unicode_separators",
+    "same_open_locus_fresh_admission_overrides_retained_EXITED_entry_for_reentry",
+    "crossing_does_not_admit_matter",
+    "HOLD_denies_work_but_preserves_correction_and_egress",
+    "checkpoint_does_not_exit",
+    "closure_does_not_incorporate_residue",
+    "historical_CORRECT_uses_existing_target_locus_not_active_locus",
+    "renewed_entry_consumes_checkpoint_without_restoring_prior_locus",
+    "final_VM_reload_preserves_all_receipts",
+    "historical_receipts_do_not_grant_presence"
+  ],
+  "transitions": [
+    {
+      "operation": "BOUND",
+      "locus_id": "COUPLED-LOCUS-001",
+      "revision": 1,
+      "transition_id": "8aca1a66cadaa6041c5d7225d24fc0ad6a7cca66e56e21fc9e9623e094ac71e0",
+      "state_commitment": "ac88ab4b246673304d5bb4b056d3969e5211667dd86a028bb1cf820316cc7131",
+      "accepted_block_id": "ZP2CVAZPZet2sEtCJLuukS9xMTdUSw53CYAVp4krFfJpmNu2Q",
+      "receipt_then_renewed_read": true,
+      "draft_and_submission_did_not_accept": true
+    },
+    {
+      "operation": "DECLARE_CAPACITY",
+      "locus_id": "",
+      "revision": 2,
+      "transition_id": "8f8b180e09744b676337d6f1e02c6d18773451b579eb62fc1a7252bee5b90367",
+      "state_commitment": "cbaad50c03e822734d28d8d45642ac0c5fe449f54719e1c36b7ba359020d5cd6",
+      "accepted_block_id": "RAkaP2XMJrDTZfxfCw224d1tiiKY2zKiYVKXZA1sxtTR9YV2i",
+      "receipt_then_renewed_read": true,
+      "draft_and_submission_did_not_accept": true
+    },
+    {
+      "operation": "PRESENT_FORM",
+      "locus_id": "COUPLED-LOCUS-001",
+      "revision": 3,
+      "transition_id": "6f19ebc484d1f9fd132f7e6414bdc90de292b849cf1fb5c027b3c6405ec07814",
+      "state_commitment": "4a586b78bdc73baf26593e5a5d7aa6ec260c38b65eff82d5a04fd86a141f1a1b",
+      "accepted_block_id": "2v1rE19Q6SuGjH8PzXLg8r3GaZkjmYw9mA2zVZiwc4cZeabA1b",
+      "receipt_then_renewed_read": true,
+      "draft_and_submission_did_not_accept": true
+    },
+    {
+      "operation": "GATE_DISPOSITION",
+      "locus_id": "COUPLED-LOCUS-001",
+      "revision": 4,
+      "transition_id": "8a8c2c5ea91743051ee6201c7c579cbca6538c338e8f8fed47d88930686609d6",
+      "state_commitment": "dae429b38651903885c980623a996ae260b9d85e859504f49e7a0d379eae7a45",
+      "accepted_block_id": "22xQCE95AragoRcW2KSJJi5AC5EdVUnqDsCoZUTxwaY24pMoup",
+      "receipt_then_renewed_read": true,
+      "draft_and_submission_did_not_accept": true
+    },
+    {
+      "operation": "ENTER",
+      "locus_id": "COUPLED-LOCUS-001",
+      "revision": 5,
+      "transition_id": "9c17c76557f383cbd3c338bf2461943233f04753dc57397d77d405bfd76387f2",
+      "state_commitment": "3c1871fb37b03b76c3cbdbd0cdff207d7076f313556fa72fb2ef00800c97fe13",
+      "accepted_block_id": "xK4JyBKR2pm23JZGJFvUfFabAhjxxjnw2s5DNmoLhBdA5Em3o",
+      "receipt_then_renewed_read": true,
+      "draft_and_submission_did_not_accept": true
+    },
+    {
+      "operation": "OBSERVE_CROSSING",
+      "locus_id": "COUPLED-LOCUS-001",
+      "revision": 6,
+      "transition_id": "4ea61ec00b0d128d93a1f8cd1f775dadec2853022fe828e78d29f209e944c928",
+      "state_commitment": "85c5ac7a54c958fc5559ff5ad97a65512a7269818f4d52431be6aa899b73c6b3",
+      "accepted_block_id": "2dcobamtA9ausqamc8SMY3RH7ZLTvdb1BRh2re24PwRYKDNQrG",
+      "receipt_then_renewed_read": true,
+      "draft_and_submission_did_not_accept": true
+    },
+    {
+      "operation": "MATTER_DISPOSITION",
+      "locus_id": "COUPLED-LOCUS-001",
+      "revision": 7,
+      "transition_id": "17a63f42b6e193eadfdc9d729dd4ec9fb6cefb3f25e579bb0ae53326a03abd6c",
+      "state_commitment": "f6c19cdfa7408770426c7c2a403bb3df35785a0aa6998f3234f264028f753184",
+      "accepted_block_id": "2W5MVYaCJQ2jVvvTUrdypNvE7fbWvVxg8W1v5W4zctc7zR6ZjZ",
+      "receipt_then_renewed_read": true,
+      "draft_and_submission_did_not_accept": true
+    },
+    {
+      "operation": "RECORD_EMERGENCE",
+      "locus_id": "COUPLED-LOCUS-001",
+      "revision": 8,
+      "transition_id": "c2cb5e2adf902cd8eef952eedea2f2335759df3bb2ae112da3499b191ee6bedd",
+      "state_commitment": "c135a5c6ff6e001d43d4283176c58536763247b234af31371c352a07df4c9730",
+      "accepted_block_id": "Y4v5XUrRpMYfNqhvyydf4ou831QprBuKix2T6b9RTjZbJaHCR",
+      "receipt_then_renewed_read": true,
+      "draft_and_submission_did_not_accept": true
+    },
+    {
+      "operation": "DECLARE_CAPACITY",
+      "locus_id": "",
+      "revision": 9,
+      "transition_id": "c8c17c6a0629f3a4fabc3408d01ec622534691e44fee3255f3bc30d565c62cc8",
+      "state_commitment": "6d1bc97484121ad612d60d0c1a2c2478dcbe9a16b06c3f49ce0750ab9f915c56",
+      "accepted_block_id": "HaTaNiPfKCcBYs2C2Lu4KbatfNK68qVChnnpG1L4Z3JxciohD",
+      "receipt_then_renewed_read": true,
+      "draft_and_submission_did_not_accept": true
+    },
+    {
+      "operation": "CORRECT",
+      "locus_id": "COUPLED-LOCUS-001",
+      "revision": 10,
+      "transition_id": "b47556e00d77297d02b33b8548932cc37aae4595afa7e97ad618afd194c82b03",
+      "state_commitment": "fad3133c47c0b4260fed721570be71e5ff0b49d94bb5455e03b25f60e9d8110a",
+      "accepted_block_id": "KrXkDxVBYSr16dg5ddr3CR6QyBTN8Tw997xG5FbMphZX6DWUz",
+      "receipt_then_renewed_read": true,
+      "draft_and_submission_did_not_accept": true
+    },
+    {
+      "operation": "CHECKPOINT_DEPARTURE",
+      "locus_id": "COUPLED-LOCUS-001",
+      "revision": 11,
+      "transition_id": "ac9d213cac57c65cf8e85dae5804e03caff2f904929148c1d59791d313c2a85a",
+      "state_commitment": "33b755d36313a8b7050bc922bb9ea5418f41e1c64aae93798eaef96b81c22b17",
+      "accepted_block_id": "2PmKKZ9rmNmhkH7TCWZqzszwHXL9oUUQ8R9zZF9DzAxhHcqQ4G",
+      "receipt_then_renewed_read": true,
+      "draft_and_submission_did_not_accept": true
+    },
+    {
+      "operation": "EXIT",
+      "locus_id": "COUPLED-LOCUS-001",
+      "revision": 12,
+      "transition_id": "51458da1d34fdf590959b343362cce0a5b12d109c905216241c1eab317b4a489",
+      "state_commitment": "454f0acc8e53cd7b8d82f126c64bd5c3b7f32bfb28914e8f75dc8dd4007665df",
+      "accepted_block_id": "2j3GkpjSQesf4VzfsmiKj3mGYCzf3KYGUD4aprMbKj7HAGoMLM",
+      "receipt_then_renewed_read": true,
+      "draft_and_submission_did_not_accept": true
+    },
+    {
+      "operation": "DECLARE_CAPACITY",
+      "locus_id": "",
+      "revision": 13,
+      "transition_id": "ba83a0712022431b6804aa754f29935eeb315afc7d03a55f48575e9f6cc35108",
+      "state_commitment": "7b80796bb2c3ebd823a364fcb25f86bfdedf3269caaa0e52441594f13a12140e",
+      "accepted_block_id": "HsDrvznCBkD1oyqM3iwo7PGdEiv5WXU2Fhha1cQR95Enwf6U2",
+      "receipt_then_renewed_read": true,
+      "draft_and_submission_did_not_accept": true
+    },
+    {
+      "operation": "PRESENT_FORM",
+      "locus_id": "COUPLED-LOCUS-001",
+      "revision": 14,
+      "transition_id": "7543858d886461177c712cb07ca4f89167425618633f0cd2071c5624b349be14",
+      "state_commitment": "68927788d9067313621dc6dfad46fe1316d37d3eed166b2c9ab01db8d08bdbcb",
+      "accepted_block_id": "GJSBhuQQq3mjW7nr3H7XyXqewRLRZ6DabMdYYhBwPWFGrcHvz",
+      "receipt_then_renewed_read": true,
+      "draft_and_submission_did_not_accept": true
+    },
+    {
+      "operation": "GATE_DISPOSITION",
+      "locus_id": "COUPLED-LOCUS-001",
+      "revision": 15,
+      "transition_id": "b6cf622f7a9b0837d1c32cd219288b539ea8612ac46edf6e157376f5e22d4a30",
+      "state_commitment": "9c0147757aa948925adb3b5a970e576039034e7a12d5ff8e5b734e0d63b3def3",
+      "accepted_block_id": "2QAqASre3Fa2iN5u8Ngdd1vDj5CdmJ65EmWe9kqVyNcHD9i2pf",
+      "receipt_then_renewed_read": true,
+      "draft_and_submission_did_not_accept": true
+    },
+    {
+      "operation": "REENTER",
+      "locus_id": "COUPLED-LOCUS-001",
+      "revision": 16,
+      "transition_id": "18cc0f33f8df33a16a0efcc534bbdf881d0f3715eb7e52823ba48aba1ed01dc7",
+      "state_commitment": "c06f2b055cc841fe1d3edd6a4f37b24ae0422c4af6e2970b86e3657a4dc9d63e",
+      "accepted_block_id": "6PfyxU5HJJkMC3S7NmygNABrE8H6Sa4TEq36DNj2Q5sNZYCzL",
+      "receipt_then_renewed_read": true,
+      "draft_and_submission_did_not_accept": true
+    },
+    {
+      "operation": "CHECKPOINT_DEPARTURE",
+      "locus_id": "COUPLED-LOCUS-001",
+      "revision": 17,
+      "transition_id": "1b3662485d1c85c2f464dc28baefa8990eb68c67ab4df6e3b992e41c4069d1a7",
+      "state_commitment": "487431c488075f4d4b3b9408400906b0d2ece3b7d3008f3784a949c31a244a52",
+      "accepted_block_id": "y6vmLnkLn8Uis7a4pB5WpDauJ35avkbt5WofZyTKp62gbDdo5",
+      "receipt_then_renewed_read": true,
+      "draft_and_submission_did_not_accept": true
+    },
+    {
+      "operation": "EXIT",
+      "locus_id": "COUPLED-LOCUS-001",
+      "revision": 18,
+      "transition_id": "0491ab697105dd406b547ee3189394b12d70d40bd4322daca4b4f26dd325525b",
+      "state_commitment": "0b5c128c8246180cd26b01588246b92c037a32180904735bb64ce40e6d3ffe6e",
+      "accepted_block_id": "2uGCyoCLYiobfqerAPLGrMVn5KJdHbN8KSWSMsuX5ShCoaQSmG",
+      "receipt_then_renewed_read": true,
+      "draft_and_submission_did_not_accept": true
+    },
+    {
+      "operation": "CLOSE",
+      "locus_id": "COUPLED-LOCUS-001",
+      "revision": 19,
+      "transition_id": "944a7f63dec804f1b9ebf047d8ffc421ee2163b290b6a19a333dfe11eb14d896",
+      "state_commitment": "32acd5b2483a39ad9fe24a88f77f45db1cc306315c118d686a1d5f7d4d98cf2c",
+      "accepted_block_id": "2CT19gYRVN1aEq46VyfB6rDnkDHM8CEjuNpz5ctdYcWKdo1tC1",
+      "receipt_then_renewed_read": true,
+      "draft_and_submission_did_not_accept": true
+    },
+    {
+      "operation": "PULSE",
+      "locus_id": "",
+      "revision": 20,
+      "transition_id": "1b11b605129746d3074f79fd71405cbdf72c3995088869e398e773b85dfda939",
+      "state_commitment": "f9a4c4c61d567be108ead759ef0f88428e2ef5fc94cf539f88c13544bffeb188",
+      "accepted_block_id": "2B3HXxr7smiNJu9bZ2tixetoqRrqKnu5uoWizGsQUNGrcJGwG1",
+      "receipt_then_renewed_read": true,
+      "draft_and_submission_did_not_accept": true
+    },
+    {
+      "operation": "BOUND",
+      "locus_id": "COUPLED-LOCUS-002",
+      "revision": 21,
+      "transition_id": "98427e6b4d6f937bb1ca77f81e0609e4fa4fd83b39ed38b8ab0a0d3d87b66f4e",
+      "state_commitment": "8401388a7fc73cb058554131c503c4849e2b10d27b3671812b6ea631c4cdc47d",
+      "accepted_block_id": "2jikUU7y8p2zWmBMKzsdiuRMS4vFcU8NDrZQJdeXoBAkVgVzYR",
+      "receipt_then_renewed_read": true,
+      "draft_and_submission_did_not_accept": true
+    },
+    {
+      "operation": "CORRECT",
+      "locus_id": "COUPLED-LOCUS-001",
+      "revision": 22,
+      "transition_id": "03bb12884d4ef7997c4e2fc906ba5c1dd7c9e9769ae06bd34be62e725220e740",
+      "state_commitment": "e9e2bec8d763f8b25fcd08e3c90ef989da86e40d3d1648537403d1819805787a",
+      "accepted_block_id": "D6zEdqNVXbhAWZSUt6BZbBfDfQDaSq3dbRUd65fC6m8T4Wpgx",
+      "receipt_then_renewed_read": true,
+      "draft_and_submission_did_not_accept": true
+    },
+    {
+      "operation": "PRESENT_FORM",
+      "locus_id": "COUPLED-LOCUS-002",
+      "revision": 23,
+      "transition_id": "0ddf1fee5775a31d0e45deda21e6cb97bc4c240fd68a5f11b1f5bf0690e68a2d",
+      "state_commitment": "2fcd1a5391a9ace9ff5b856a72cc0f2508ec7794ff8cd52569f2e66ed66bc42a",
+      "accepted_block_id": "MYMqFjqXrB28Kcix5hxBSeRZemaDRzfRiVLCB3xKNNCzkFzaB",
+      "receipt_then_renewed_read": true,
+      "draft_and_submission_did_not_accept": true
+    },
+    {
+      "operation": "GATE_DISPOSITION",
+      "locus_id": "COUPLED-LOCUS-002",
+      "revision": 24,
+      "transition_id": "c95c3a9519660dd427c00ebccf0bcbd260bce36dff1aa111fa0def44c85cddff",
+      "state_commitment": "ef10beae1e3b04b39eb1d71c341cb845e150a70e619ff2b53631eedf7369b7d1",
+      "accepted_block_id": "SqE3ZUa4StrFptbiDWct4qUrVFEpiJWV2k6TsNgbrVLPB9aZi",
+      "receipt_then_renewed_read": true,
+      "draft_and_submission_did_not_accept": true
+    },
+    {
+      "operation": "REENTER",
+      "locus_id": "COUPLED-LOCUS-002",
+      "revision": 25,
+      "transition_id": "30d9b3e9cadb0a2b96b1bf9f08cf3838d2205ab5d625d115a9aad34d4007d407",
+      "state_commitment": "e945d773dba911194fe47846bb112a7e39901a5e1fd834790b0eba9b73a69b01",
+      "accepted_block_id": "2GmVSo5nZYq2k9AtVAGZD2B4VwQ8VB7qhutBx1f8XZY3S41zWA",
+      "receipt_then_renewed_read": true,
+      "draft_and_submission_did_not_accept": true
+    },
+    {
+      "operation": "CHECKPOINT_DEPARTURE",
+      "locus_id": "COUPLED-LOCUS-002",
+      "revision": 26,
+      "transition_id": "365f52d01f875487ac448f6f2162faba4cd8121f26dac0be127b8999a0485389",
+      "state_commitment": "fba6c429c44ee7520d9470579a0233b9350dbf68c888fb595d921c29999425c0",
+      "accepted_block_id": "2KES3bYcMzorXABca13mUNDegwoMNBZJJqufGAS32Zx8Y1acbP",
+      "receipt_then_renewed_read": true,
+      "draft_and_submission_did_not_accept": true
+    },
+    {
+      "operation": "EXIT",
+      "locus_id": "COUPLED-LOCUS-002",
+      "revision": 27,
+      "transition_id": "bc4af1a69c5bb99aa5c36ddf980c8fd18ce322808e86b513b89445ace8f90745",
+      "state_commitment": "2fbb3af3b1800fcfbafbd847d838de8f8f3a11c8a0024bbc59151c4d1c7083a5",
+      "accepted_block_id": "g4fkDHFgzJk39ZdFk5wQohu43v7D1TnvLcLKG6R6iCSYSbiBR",
+      "receipt_then_renewed_read": true,
+      "draft_and_submission_did_not_accept": true
+    },
+    {
+      "operation": "CLOSE",
+      "locus_id": "COUPLED-LOCUS-002",
+      "revision": 28,
+      "transition_id": "7330a707d61bef2c85dcf7678a5dcacb0cced8ca5a7163cedc4439dfaae299e3",
+      "state_commitment": "c2700e201c2e98dfdd994aed010649cd9be7d3b2168d6904db6648f1fab5bdca",
+      "accepted_block_id": "292tukR4finEbdedzf8J8xakdzuCMKxcBV4n92oBUkdsLNKpPs",
+      "receipt_then_renewed_read": true,
+      "draft_and_submission_did_not_accept": true
+    },
+    {
+      "operation": "PULSE",
+      "locus_id": "",
+      "revision": 29,
+      "transition_id": "53b6f87672ecee5f7a23dbf53f38d5951037f42f43db5fb5e1bfb5daea3a5a11",
+      "state_commitment": "1377e0f0a0bd0eca695069f6659b6dd965a3f556f16d2bf6667b79480948b976",
+      "accepted_block_id": "VbYwc5kQogkrMSK8LqS93pmaC7r9bxZXpubAomDNmopVmG9Rd",
+      "receipt_then_renewed_read": true,
+      "draft_and_submission_did_not_accept": true
+    }
+  ]
+}
