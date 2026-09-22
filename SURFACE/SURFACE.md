@@ -8,8 +8,8 @@ location is explicitly **UNCONFIGURED**. The repository's historical coordinate
 in [ORIGIN](../STATE/LINEAGE/ORIGIN.json) is provenance, not an invented service
 URL or a currently published revision.
 
-The intended later address is `https://presence.limited`, but domain control and
-hosting are unverified. The [predecessor account](../STATE/LINEAGE/OCCURRENCES/PRESENCE-LIMITED.json)
+The intended later address is `https://presence.limited`, but domain control is
+unverified and no publication provider is established. The [predecessor account](../STATE/LINEAGE/OCCURRENCES/PRESENCE-LIMITED.json)
 retains the submitter's report and the limited scope of user-supplied visual
 evidence. It is not a recovered Site or established succession. Attachment bytes
 were unavailable for preservation: no cropped image is yet retained or hashed.
@@ -96,13 +96,6 @@ revision lacking SYSTEM's evaluator may still produce an explicitly requested
 incomplete preview; its inventory and entrance retain `INCOMPLETE` / `UNAVAILABLE`.
 Serving cannot upgrade those statuses. Static hosting can expose the same files,
 but does not by itself implement the declared API handlers.
-
-The manual [publication workflow](../.github/workflows/publish-edition.yml)
-publishes only a verified SYSTEM export to separate GitHub Pages hosting. It
-requires an independently obtained manifest digest and refuses an existing
-Pages custom domain. It does not serve raw `/SURFACE`, deploy `serve.py`, or
-implement the predecessor screenshot's arrival/upload interface. See
-[SYSTEM's publication procedure](../SYSTEM/SYSTEM.md#separate-publication-and-deferred-domain-cutover).
 
 ## First externalisation, not established reality
 

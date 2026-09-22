@@ -2,14 +2,17 @@
 
 ## Standing
 
-SYSTEM is derivative maintenance around [SOURCE](../SOURCE/CONSTITUTION_0%28%291.md)
-and [STATE](../STATE/STATE.md), not another core module or a runtime for CSC,
-DCR, or LINEAGE. [SYSTEM.json](SYSTEM.json) records this operational
-contract. Neither file is an implementation claim under
+SYSTEM contains derivative machinery around [SOURCE](../SOURCE/CONSTITUTION_0%28%291.md)
+and [STATE](../STATE/STATE.md) and is not another core module.
+[SYSTEM.json](SYSTEM.json) records only the repository-integrity contract for
+verification, export, and recovery. Separately bounded executable forms retain
+their own identities, records, qualification ceilings, and non-effects.
+Neither this file nor SYSTEM.json is an implementation claim under
 [LINEAGE's existing schema](../STATE/LINEAGE/SCHEMAS/IMPLEMENTATION-CLAIM.schema.json).
 The human Constitution governs meaning; machine references depend on its
-exact-byte binding. Publication, recovery, schema acceptance, and parsing do
-not establish adoption, identity, Agency, Authority, or present capability.
+exact-byte binding. Verification, export, recovery, publication, execution,
+testing, schema acceptance, and parsing do not establish adoption, identity,
+Agency, Authority, formation, Locality, settlement, or present capability.
 
 ## Current boundary
 
@@ -21,6 +24,13 @@ report, not a recovered service or a preserved screenshot.
 Surface selects these files and both unchanged ZIP carriers. Invalid vectors
 remain normative examples rather than reports of events; archive contents
 remain historical evidence, not canonical or executable publication machinery.
+
+[AVALANCHE_IMPLEMENTATION_001](AVALANCHE/AVALANCHE_IMPLEMENTATION_001/)
+is a separately bounded source implementation with functional test evidence.
+Its recorded status remains `SOURCE_IMPLEMENTED`, `FUNCTIONALLY_TESTED`,
+`QUALIFICATION_INCOMPLETE`, `NOT_RELEASED`, `NOT_DEPLOYED`, and
+`NOT_READY_FOR_MAINNET`. Its presence records no L1, Locality, settlement
+occurrence, release, deployment, or public-network act.
 
 [conformance.py](conformance.py) executes the formal evaluation contract in
 `STATE/STATE.md`: offline Draft 2020-12 validation with format checking, exact
@@ -120,48 +130,9 @@ The ORIGIN locator's `inspected_commit` describes its historical input snapshot;
 it is never substituted for the commit selected for a new edition. Provenance
 remains in [STATE/LINEAGE](../STATE/LINEAGE/LINEAGE.md), not a SYSTEM ledger.
 
-## Separate publication and deferred domain cutover
+## Publication boundary
 
-[Publish verified edition](../.github/workflows/publish-edition.yml) is a manual
-GitHub Pages deployment, not a claim that deployment has occurred. A maintainer
-must first merge the workflow onto the default branch, enable **Settings → Pages
-→ Source: GitHub Actions**, and configure the `github-pages` environment's
-approval/branch restrictions. Leave the custom-domain setting empty. No
-Cloudflare configuration, DNS record, `CNAME`, upload handler, or live-site
-replacement is created by this change.
-
-1. Choose a trusted commit containing this workflow, its SYSTEM evaluator, and
-   the intended selection. Export that exact commit locally with the existing
-   `export.py` command above, and retain its printed manifest SHA-256 through
-   an independently trusted channel. A digest of an older edition is not reusable.
-2. Dispatch **Publish verified edition** on the branch/tag pointing to that
-   commit, supplying the digest as `manifest_sha256`. The workflow checks out
-   its exact `github.sha`, exports into a fresh runner directory, and verifies
-   against the supplied digest before uploading. A moved branch or mismatched
-   digest fails closed. No incomplete-preview option is used.
-3. The deployment job requires Actions-based Pages with no custom domain and
-   publishes only the export directory. Use the successful deployment's
-   `page_url` as the actual separate public address; do not infer deployment from
-   workflow presence or an artifact upload. The run summary retains the commit
-   and accepted digest. Pages is static reading only: declared `/api/*`
-   operations are not deployed, and no predecessor arrival service is recreated.
-4. After deployment, download the public manifest and selected files to a fresh
-   directory and run `verify.py --export` with the independently retained digest.
-   Confirm the root entrance and relative resource links under the Pages
-   project path before recording a successful public encounter.
-
-The submitter's screenshot is not a source export. Its binary attachment could
-not be retrieved in this task, so crop preservation is explicitly pending in the
-[predecessor record](../STATE/LINEAGE/OCCURRENCES/PRESENCE-LIMITED.json). When the
-image is available, retain only a privacy-reviewed site viewport, excluding
-browser/desktop chrome and other windows. Bind the cropped artifact's exact
-bytes, identify it as a user-supplied derivative crop, and retain unknown capture
-time and hosting. Do not turn screenshot text into functioning service claims.
-
-Custom-domain cutover is a later, separate reviewed change: establish control
-of `presence.limited`, complete predecessor preservation, retain the verified
-separate deployment as a rollback reference, then configure domain verification,
-DNS and HTTPS with the actual provider. This workflow intentionally refuses
-custom-domain deployment until that policy is explicitly revised. Only observed
-deployment results can update the public-location status in a new edition;
-publication alone establishes no succession or constitutional coupling.
+The edition operations can produce and verify a portable edition. This
+repository establishes no publication provider, deployment workflow, or public
+location; domain control remains unverified. Publication is a later, separately
+authorized operation and establishes no succession or constitutional coupling.

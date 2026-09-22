@@ -4,7 +4,7 @@
     "status": "INITIAL_EXTERNALISATION",
     "public_location": {
       "status": "UNCONFIGURED",
-      "reason": "No deployed repository edition is established; separate publication must be confirmed before any custom-domain cutover.",
+      "reason": "No publication provider, deployment workflow, or deployed repository edition is established.",
       "intended_url": "https://presence.limited",
       "domain_control": "UNVERIFIED"
     },
