@@ -1,6 +1,6 @@
 {
   "schema": "PRESENCE_FORM_PROFILE_001",
-  "version": "3.0.0",
+  "version": "1.0.0",
   "form_id": "PRESENCE-AVALANCHE-FORM-001",
   "purpose": "Minimum public embodiment for origin-bound participation, living capacity, departure-state checkpointing, renewed ingress with carried-state succession, currentness, dormancy, finite formation authority, and explicit succession.",
   "required_medium_capabilities": [

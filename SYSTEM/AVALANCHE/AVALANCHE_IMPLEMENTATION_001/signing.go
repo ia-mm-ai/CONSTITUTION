@@ -101,6 +101,9 @@ func (vm *VM) draftTransition(request *TransitionDraftRequest) (*UnsignedTransit
 	if !exists {
 		return nil, fmt.Errorf("unsupported operation %q", request.Operation)
 	}
+	if err := validateScopeShape(request.Operation, request.LocusID); err != nil {
+		return nil, err
+	}
 	if err := requireSafeID("actor_id", request.ActorID); err != nil {
 		return nil, err
 	}
@@ -144,6 +147,9 @@ func (vm *VM) draftTransition(request *TransitionDraftRequest) (*UnsignedTransit
 		if _, err := preview.apply(vm.genesis, pending, pendingID); err != nil {
 			return nil, fmt.Errorf("pending transition %s became invalid: %w", pendingID, err)
 		}
+	}
+	if err := preview.enforceOperationScope(&UnsignedTransition{Operation: request.Operation, LocusID: request.LocusID}); err != nil {
+		return nil, err
 	}
 	if knownKey, known := preview.ActorKeys[request.ActorID]; known && knownKey != request.ActorPublicKey {
 		return nil, errors.New("actor_public_key differs from the actor's established local binding")

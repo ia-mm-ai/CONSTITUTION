@@ -38,28 +38,32 @@ const (
 	opActivateSuccessor   = "ACTIVATE_SUCCESSOR"
 )
 
-var operationEffects = map[string]string{
-	opBound:               "OPENS_TEMPORARY_LOCUS_ONLY",
-	opPresentForm:         "ELIGIBILITY_TO_GATE_ONLY",
-	opGateDisposition:     "SETS_GATE_POSTURE_ONLY",
-	opEnter:               "ENTERS_CURRENT_LOCUS_ONLY",
-	opCheckpointDeparture: "CHECKPOINTS_PARTICIPANT_STATE_FOR_DEPARTURE_ONLY",
-	opReenter:             "RENEWS_ENTRY_WITH_CARRIED_STATE_SUCCESSION_ONLY",
-	opObserveCrossing:     "RECORDS_CROSSING_ONLY",
-	opMatterDisposition:   "SETS_ACTOR_LOCAL_MATTER_POSTURE_ONLY",
-	opRecordEmergence:     "RECORDS_FIELD_LOCAL_EMERGENCE_ONLY",
-	opCorrect:             "APPENDS_CORRECTION_ONLY",
-	opExit:                "EXITS_CURRENT_LOCUS_ONLY",
-	opClose:               "CLOSES_LOCUS_AND_ADDRESSES_RESIDUE_ONLY",
-	opIncorporateResidue:  "INCORPORATES_ADDRESSED_RESIDUE_LOCALLY_ONLY",
-	opDeclareCapacity:     "SETS_SIGNED_LOCAL_CAPACITY_ACCOUNT_ONLY",
-	opPulse:               "RECORDS_SIGNED_LOCAL_CURRENTNESS_ONLY",
-	opReclaimOffer:        "EXPIRES_UNENTERED_ADMISSION_OFFER_ONLY",
-	opRegisterAuthority:   "REGISTERS_BOUNDED_CONTINUITY_AUTHORITY_ONLY",
-	opExhaustFormation:    "EXHAUSTS_FORMATION_AUTHORITY_WITHOUT_TRANSFER",
-	opProposeSuccessor:    "RECORDS_SUCCESSOR_PROPOSAL_ONLY",
-	opAttestSuccessor:     "APPENDS_SUCCESSOR_ATTESTATION_ONLY",
-	opActivateSuccessor:   "FREEZES_PREDECESSOR_AT_SUCCESSION_BOUNDARY_ONLY",
+// allOperations is the VM's native operation inventory. It must agree exactly
+// with the shared operation-scope contract; scope_contract_test.go enforces
+// that agreement mechanically. Effects are sourced only from the contract via
+// operationEffects in contract.go.
+var allOperations = []string{
+	opBound,
+	opPresentForm,
+	opGateDisposition,
+	opEnter,
+	opCheckpointDeparture,
+	opReenter,
+	opObserveCrossing,
+	opMatterDisposition,
+	opRecordEmergence,
+	opCorrect,
+	opExit,
+	opClose,
+	opIncorporateResidue,
+	opDeclareCapacity,
+	opPulse,
+	opReclaimOffer,
+	opRegisterAuthority,
+	opExhaustFormation,
+	opProposeSuccessor,
+	opAttestSuccessor,
+	opActivateSuccessor,
 }
 
 type UnsignedTransition struct {
@@ -318,6 +322,9 @@ func (t *Transition) ValidateSyntax() error {
 	}
 	if u.Effect != expectedEffect {
 		return fmt.Errorf("operation %s requires explicit effect %s", u.Operation, expectedEffect)
+	}
+	if err := validateScopeShape(u.Operation, u.LocusID); err != nil {
+		return err
 	}
 	if u.Revision == 0 {
 		return errors.New("transition revision must be greater than zero")

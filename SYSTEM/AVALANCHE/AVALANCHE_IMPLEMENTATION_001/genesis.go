@@ -13,17 +13,17 @@ const (
 	genesisVersion             = uint32(4)
 	deploymentDescriptorSchema = "PRESENCE_DEPLOYMENT_DESCRIPTOR_001"
 	formID                     = "PRESENCE-AVALANCHE-FORM-001"
-	formSHA256                 = "10848ac3fc2f68f6fdc041a4c9862d8fb186f4c3d0ebd4edde3f3933fe3ce893"
+	formSHA256                 = "3a72b3707552fd56b78c216c2d4a0caae9297cc52611d440ea170ab6e9770fa5"
 
-	directPredecessorProtocol         = "LOCALITY_VM_002"
-	directPredecessorVersion          = "2.1.0"
-	directPredecessorVMID             = "2JnfZqeNUW34DmiSznMp1oJSpX5Fpqv9Ms6BYEyGF3LYVx7jQ5"
-	directPredecessorRepositorySHA256 = "bffc125a5873a42b8ad81ede898ae7d65e36666870af3f0e6e6e5d7bdf2ddacb"
-	directPredecessorSidecarSHA256    = "a7b5b4b922943cef87e04e140b63c430cb90f795dfdb40f8d72aec4b5e02ce7c"
-	directPredecessorReleaseSHA256    = "7586bdd9f31bb120b608414d5428d2435855d76c7dfd011d9f036eec91590add"
-	directPredecessorEvidenceSHA256   = "78d2403fa9847cee82235ded7d6aca32572c8da854a55ea7d95169fe21393a84"
-	directPredecessorStateCommitment  = "38fd03c9d2bbb0ccd18585d71ce7f0573f2967a2289dbd60fd513cd782cf7d3f"
-	directPredecessorStateSHA256      = "6990892e7d7d80d7bec72e03caddb74d6fe0c5e916aa732aca8e98cf1b4ec8e3"
+	directPredecessorProtocol         = "LOCALITY_VM_003"
+	directPredecessorVersion          = "3.0.0"
+	directPredecessorVMID             = "25tZjky6SecZA1Gwc6VwD2ouy64xAUdgNLo1C8dkXfbsFNxaTk"
+	directPredecessorRepositorySHA256 = "5597eab61802b1df92636b6df88fea46b88f460c4e5f2c51e393c5c6ce7a214f"
+	directPredecessorSidecarSHA256    = "abab31f2dd1018831034bc93e67eb7e125352e1fb71142e8ed6e5bafa4235e69"
+	directPredecessorReleaseSHA256    = "205d6823e520884c59fb09f06091362370c29891661e54af7aff0f313c6bbb65"
+	directPredecessorEvidenceSHA256   = "170eafe5836ee5d43bd0def635c048a29d9b30937e596a4336378695500aac64"
+	directPredecessorStateCommitment  = "be615433b6e6eb3a9c6c2284ddb565aae2718f0f45c80a3c1ed5647fe3203a64"
+	directPredecessorStateSHA256      = "cb8b8cee6d8fac7a49e3e67aa51356d46d663e88f20d3f53d714ed0deebd49b7"
 
 	predecessorChainID         = "LB6wwV4JNxr8fwjUPBHMzf3PiW2d4hsTc4v63uX1MjY6oZ9Wb"
 	predecessorL1ID            = "21mJfY4QpDeVykBaeG8nwn7k7w7b5oPpPhaYcJWqumht8SvaK"
@@ -33,11 +33,11 @@ const (
 	predecessorGenesisID       = "KENTRA-CUSTOM-VM-GENESIS-001"
 	predecessorBodySHA256      = "58bf3daa9c74aac496451179f053152ed50943b8e8c4dbdac8f34d7172ab4f72"
 
-	constitutionHumanSHA256   = "5dea16e2400c652eb063129711a6bf26c8485a2cbad25ce261beda6f7fee5206"
-	constitutionMachineSHA256 = "5a0d6ffec23d09b203212b295d86e45e141a33a7f35f525d56172fb848d1a73c"
-	constitutionBindingSHA256 = "cc2f4f2a1fdfab3287ee661dfbcc6e9db72c8e2ac918a94c288598f27916e758"
-	constitutionOriginRepo    = "https://github.com/ia-mm-ai/CONSTITUTION"
-	constitutionOriginCommit  = "4cf5a926d5fece4e3cccfdfcab40e16431dd332b"
+	constitutionHumanSHA256   = "affeb5738cdfeea7ee4fe985652bf78b15eb6dfbba5871d82f0f2213a81832d0"
+	constitutionMachineSHA256 = "519a81d2a26d5bf32afd77566bbb35b4d28b22af85ac45a7055fccd1b45222f8"
+	constitutionBindingSHA256 = "a40c711d77471f0cb675c095f452b84b35de39a38b097351a6e10a6d585b2de8"
+	constitutionOriginRepo    = "https://github.com/ia-mm-ai/PRESENCE"
+	constitutionOriginCommit  = "a0cbb1080540bbe83f8678e81240247585dba060"
 )
 
 var (
@@ -263,10 +263,10 @@ func (g *Genesis) Validate() error {
 		return fmt.Errorf("expected %s version %d encoded as %s", genesisFormat, genesisVersion, genesisEncoding)
 	}
 	if g.Domain.ID != domainID || g.Domain.VMClass != "AVALANCHE_CUSTOM_RPCCHAINVM" {
-		return errors.New("domain must identify the LOCALITY_VM Avalanche RPCChainVM")
+		return errors.New("domain must identify the PRESENCE_AVALANCHE_VM Avalanche RPCChainVM")
 	}
 	if g.Domain.ExecutionModel != "NON_EVM_SIGNED_EVENT_SOURCED" || g.Domain.StateModel != "VERSIONED_EVENT_SOURCED_LIVING_CAPACITY" {
-		return errors.New("unsupported LOCALITY execution or state model")
+		return errors.New("unsupported PRESENCE AVALANCHE execution or state model")
 	}
 	if err := requireSafeID("domain.genesis_id", g.Domain.GenesisID); err != nil {
 		return err
@@ -282,7 +282,7 @@ func (g *Genesis) Validate() error {
 		"PRESERVED_IMMUTABLE_PREDECESSOR",
 	}
 	if g.Lineage.DirectPredecessor != wantDirect {
-		return errors.New("lineage must bind the exact immutable LOCALITY_VM_002 v2.1.0 predecessor")
+		return errors.New("lineage must bind the exact immutable LOCALITY_VM_003 v3.0.0 predecessor")
 	}
 	wantAncestor := FormationAncestor{"KENTRA", predecessorChainID, predecessorL1ID, predecessorVMID, predecessorValidationID, predecessorValidatorNodeID, predecessorGenesisID, predecessorBodySHA256, "FORMATION_COMPLETE_REFERENCE_ONLY", "UNAVAILABLE_TO_CURRENT_OPERATOR", "NEW_LOCALITY_REQUIRES_NEW_VALIDATOR_AND_AUTHORITY_CUSTODY"}
 	if g.Lineage.FormationAncestor != wantAncestor {
@@ -293,13 +293,14 @@ func (g *Genesis) Validate() error {
 	}
 	wantOrigin := GenesisConstitutionOrigin{
 		constitutionOriginRepo, constitutionOriginCommit,
-		"SOURCE/CONSTITUTION_0()1.md", "SOURCE/CONSTITUTION_0()1.json", "SOURCE/FORM_BINDING.json",
-		41268, 139114, 1901,
+		"SOURCE/CONSTITUTION_0()1.md", "SOURCE/CONSTITUTION_0()1.json",
+		"SYSTEM/AVALANCHE/AVALANCHE_IMPLEMENTATION_001/binding/FORM_BINDING.json",
+		44133, 146048, 1939,
 		"EXACT_COMMIT_PATH_LENGTH_SHA256_AND_REPOSITORY_FORM_BINDING",
 		"BYTE_IDENTICAL_EVIDENCE_NOT_SEPARATE_ORIGIN",
 		"FORM_BINDING_NON_EFFECTS_APPLY",
 	}
-	if g.Constitution.HumanPath != "source/CONSTITUTION_0()1.md" || g.Constitution.HumanSHA256 != constitutionHumanSHA256 || g.Constitution.MachinePath != "source/CONSTITUTION_0()1.json" || g.Constitution.MachineSHA256 != constitutionMachineSHA256 || g.Constitution.FormBindingPath != "source/FORM_BINDING.json" || g.Constitution.FormBindingSHA256 != constitutionBindingSHA256 || g.Constitution.PublicOrigin != wantOrigin || g.Constitution.HumanRole != "SUBSTANTIVE_MEANING" || g.Constitution.MachineRole != "REPRESENTATION_ONLY" || g.Constitution.ConflictResult != "UNRESOLVED_HOLD_EXACT_SCOPE" || g.Constitution.ParsingHasForce {
+	if g.Constitution.HumanPath != "SOURCE/CONSTITUTION_0()1.md" || g.Constitution.HumanSHA256 != constitutionHumanSHA256 || g.Constitution.MachinePath != "SOURCE/CONSTITUTION_0()1.json" || g.Constitution.MachineSHA256 != constitutionMachineSHA256 || g.Constitution.FormBindingPath != "SYSTEM/AVALANCHE/AVALANCHE_IMPLEMENTATION_001/binding/FORM_BINDING.json" || g.Constitution.FormBindingSHA256 != constitutionBindingSHA256 || g.Constitution.PublicOrigin != wantOrigin || g.Constitution.HumanRole != "SUBSTANTIVE_MEANING" || g.Constitution.MachineRole != "REPRESENTATION_ONLY" || g.Constitution.ConflictResult != "UNRESOLVED_HOLD_EXACT_SCOPE" || g.Constitution.ParsingHasForce {
 		return errors.New("constitution boundary differs from the committed source surface")
 	}
 	if err := requireSafeID("locality.id", g.Locality.ID); err != nil {

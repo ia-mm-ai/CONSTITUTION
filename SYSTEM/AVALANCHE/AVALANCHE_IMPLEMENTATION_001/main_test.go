@@ -8,11 +8,11 @@ import (
 )
 
 func TestMachineVersionContract(t *testing.T) {
-	wantVMID := "25tZjky6SecZA1Gwc6VwD2ouy64xAUdgNLo1C8dkXfbsFNxaTk"
-	if got := localityVMID().String(); got != wantVMID {
+	wantVMID := "cNhhBznc1YN29QVJMQbK7sxy6GsimFKN6yvftRjPK7qWEvZw8"
+	if got := presenceVMID().String(); got != wantVMID {
 		t.Fatalf("unexpected PRESENCE AVALANCHE VM ID: got %s want %s", got, wantVMID)
 	}
-	if got := localityVMID().String(); got == "pJHx1NU8ghWsiwg1vrqwaqE5uKh1k4EJRBkpB1tKV1QuQFhMi" {
+	if got := presenceVMID().String(); got == "pJHx1NU8ghWsiwg1vrqwaqE5uKh1k4EJRBkpB1tKV1QuQFhMi" {
 		t.Fatal("successor VM ID must not reuse the formation VM ID")
 	}
 
@@ -22,7 +22,7 @@ func TestMachineVersionContract(t *testing.T) {
 		AvalancheGo:        "v1.15.0",
 		AvalancheGoProfile: avalancheGoProfile,
 		RPCChainVM:         version.RPCChainVMProtocol,
-		VMID:               localityVMID().String(),
+		VMID:               presenceVMID().String(),
 	}
 	encoded, err := json.Marshal(document)
 	if err != nil {

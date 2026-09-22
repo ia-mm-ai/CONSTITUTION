@@ -38,7 +38,7 @@ func decodeCanonical(data []byte, value any) error {
 		return err
 	}
 	if !bytes.Equal(data, canonical) {
-		return errors.New("JSON is not in the canonical LOCALITY encoding")
+		return errors.New("JSON is not in the canonical PRESENCE encoding")
 	}
 	return nil
 }

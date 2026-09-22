@@ -34,6 +34,9 @@ type residueEnvelope struct {
 
 func (s *RuntimeState) applyOperation(genesis *Genesis, transition *Transition, transitionID string) error {
 	u := &transition.Unsigned
+	if err := s.enforceOperationScope(u); err != nil {
+		return err
+	}
 	switch u.Operation {
 	case opBound:
 		return s.applyBound(u, transitionID)
@@ -578,6 +581,9 @@ func (s *RuntimeState) applyCorrection(u *UnsignedTransition, transitionID strin
 	if !exists {
 		return errors.New("correction target does not exist")
 	}
+	if u.LocusID != target.LocusID {
+		return fmt.Errorf("CORRECT must bind the exact scope of its target transition (target locus %q)", target.LocusID)
+	}
 	if target.ActorID != u.ActorID {
 		return errors.New("actor may only correct its own attributed transition")
 	}
@@ -985,7 +991,7 @@ func (s *RuntimeState) applyProposeSuccessor(u *UnsignedTransition, transitionID
 	if err != nil {
 		return err
 	}
-	if p.Protocol == vmIDDomain || p.VMID == localityVMID().String() {
+	if p.Protocol == vmIDDomain || p.VMID == presenceVMID().String() {
 		return errors.New("successor must have a distinct protocol and VM identity")
 	}
 	if _, exists := s.SuccessorProposals[p.ProposalID]; exists {

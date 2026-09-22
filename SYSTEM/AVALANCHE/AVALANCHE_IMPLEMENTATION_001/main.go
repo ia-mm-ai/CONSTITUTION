@@ -26,16 +26,30 @@ type machineVersion struct {
 	AvalancheGoProfile string `json:"avalanchego_profile"`
 	RPCChainVM         uint   `json:"rpcchainvm"`
 	VMID               string `json:"vm_id"`
+	VMIDDerivation     string `json:"vm_id_derivation"`
+	VMIDInput          string `json:"vm_id_input"`
 }
 
-func localityVMID() ids.ID {
-	return ids.ID(sha256.Sum256([]byte(vmIDDomain)))
+// presenceVMID derives the VM ID through the official pinned AvalancheGo API:
+// the exact canonical identity PRESENCE_AVALANCHE_VM_001 is zero-extended to
+// the 32-byte ids.ID width and converted with ids.ToID. This is the standard
+// AvalancheGo VM-name derivation. No transport-safe substitute name was
+// required: ids.ToID accepts the canonical identity, including underscores,
+// so the derivation input equals the canonical implementation VM identity.
+func presenceVMID() ids.ID {
+	padded := make([]byte, ids.IDLen)
+	copy(padded, vmIDDomain)
+	id, err := ids.ToID(padded)
+	if err != nil {
+		panic(fmt.Errorf("derive PRESENCE AVALANCHE VM ID: %w", err))
+	}
+	return id
 }
 
 func main() {
 	switch {
 	case len(os.Args) == 2 && os.Args[1] == "--version":
-		fmt.Printf("%s avalanchego-profile=%s rpcchainvm-protocol=%d vm-id=%s\n", vmVersion, avalancheGoProfile, version.RPCChainVMProtocol, localityVMID())
+		fmt.Printf("%s avalanchego-profile=%s rpcchainvm-protocol=%d vm-id=%s\n", vmVersion, avalancheGoProfile, version.RPCChainVMProtocol, presenceVMID())
 		return
 	case len(os.Args) == 2 && os.Args[1] == "--version-json":
 		if err := json.NewEncoder(os.Stdout).Encode(machineVersion{
@@ -44,13 +58,15 @@ func main() {
 			AvalancheGo:        "v1.15.0",
 			AvalancheGoProfile: avalancheGoProfile,
 			RPCChainVM:         version.RPCChainVMProtocol,
-			VMID:               localityVMID().String(),
+			VMID:               presenceVMID().String(),
+			VMIDDerivation:     "avalanchego/ids.ToID over the canonical identity zero-extended to 32 bytes",
+			VMIDInput:          vmIDDomain,
 		}); err != nil {
 			exitWithError("encode machine-readable version", err)
 		}
 		return
 	case len(os.Args) == 2 && os.Args[1] == "--vm-id":
-		fmt.Println(localityVMID())
+		fmt.Println(presenceVMID())
 		return
 	case len(os.Args) == 3 && os.Args[1] == "--check-genesis":
 		genesisBytes, err := os.ReadFile(os.Args[2])

@@ -1,12 +1,12 @@
 {
   "schema": "PRESENCE_FIELD_CONTRACT_001",
-  "version": "2.0.0",
+  "version": "1.0.0",
   "medium_protocol": "PRESENCE_AVALANCHE_FIELD_001",
   "jurisdiction": "LOCALITY_FACING_CAPABILITY_MEMBRANE",
-  "predecessor": {
+  "coupled_vm": {
     "protocol": "PRESENCE_AVALANCHE_VM_001",
     "version": "presence-avalanche-vm/1.0.0",
-    "vm_id": "25tZjky6SecZA1Gwc6VwD2ouy64xAUdgNLo1C8dkXfbsFNxaTk",
+    "vm_id": "cNhhBznc1YN29QVJMQbK7sxy6GsimFKN6yvftRjPK7qWEvZw8",
     "rpcchainvm_protocol": 46,
     "state_schema": "PRESENCE_RUNTIME_STATE_001",
     "transition_schema": "PRESENCE_TRANSITION_001",
@@ -14,20 +14,37 @@
     "continuity_step_schema": "PRESENCE_PARTICIPANT_STATE_SUCCESSION_001",
     "continuity_passage_schema": "PRESENCE_PARTICIPANT_STATE_PASSAGE_001",
     "form_id": "PRESENCE-AVALANCHE-FORM-001",
-    "form_sha256": "10848ac3fc2f68f6fdc041a4c9862d8fb186f4c3d0ebd4edde3f3933fe3ce893",
-    "repository_pack_sha256": "5597eab61802b1df92636b6df88fea46b88f460c4e5f2c51e393c5c6ce7a214f",
-    "mutation": "NONE"
+    "form_sha256": "3a72b3707552fd56b78c216c2d4a0caae9297cc52611d440ea170ab6e9770fa5",
+    "implementation": "AVALANCHE_IMPLEMENTATION_001"
   },
-  "direct_predecessor": {
-    "protocol": "PRESENCE_AVALANCHE_FIELD_001",
-    "version": "1.0.0",
-    "repository_pack_sha256": "96007f0ffe089490d937e6dce18a225debedb521f86bfd2b323f6f2cc09bcdf2",
-    "public_repository_commit": "0bd963f46d447d0e41d494c6a782c1c2db9246e8",
-    "disposition": "PRESERVED_BYTE_IDENTICAL"
+  "operation_scope_contract": {
+    "path": "../contract/OPERATION_SCOPE_CONTRACT_001.json",
+    "schema": "PRESENCE_OPERATION_SCOPE_CONTRACT_001",
+    "file_sha256": "41d19cd903368263a413772b83cbcaa9ac98382e3c18b3b3eb26bbfb62b53dfb",
+    "rule": "FIELD_AND_VM_LOAD_THE_SAME_FILE_UNKNOWN_OPERATIONS_FAIL_CLOSED"
   },
+  "predecessors": [
+    {
+      "identity": "LOCALITY_MEDIUM_001",
+      "version": "2.0.0",
+      "role": "FIELD_PREDECESSOR",
+      "state_archive": "../../../../STATE/LOCALITY_MEDIUM_001-v2.0.0-GITHUB_UPLOAD.zip",
+      "state_archive_sha256": "61353cddc93d62ac28d60e0c7357203ecfe01235e7d249e973ffb16356990989",
+      "disposition": "PRESERVED_BYTE_IDENTICAL"
+    },
+    {
+      "identity": "LOCALITY_VM_003",
+      "version": "3.0.0",
+      "role": "VM_PREDECESSOR",
+      "state_archive": "../../../../STATE/LOCALITY_VM_003-v3.0.0-GITHUB_UPLOAD.zip",
+      "state_archive_sha256": "073949b8b74e7407a433b74efab71f22e2ee93c4d9ed80eb0aeb07b164c08d2b",
+      "repository_pack_sha256": "5597eab61802b1df92636b6df88fea46b88f460c4e5f2c51e393c5c6ce7a214f",
+      "disposition": "PRESERVED_BYTE_IDENTICAL"
+    }
+  ],
   "public_origin": {
-    "repository": "https://github.com/ia-mm-ai/CONSTITUTION",
-    "commit": "4cf5a926d5fece4e3cccfdfcab40e16431dd332b",
+    "repository": "https://github.com/ia-mm-ai/PRESENCE",
+    "commit": "a0cbb1080540bbe83f8678e81240247585dba060",
     "binding": "EXACT_COMMIT_PATH_LENGTH_SHA256_AND_REPOSITORY_FORM_BINDING",
     "effect": "SOURCE_REFERENCE_WITH_FORM_BINDING_NON_EFFECTS"
   },
@@ -50,15 +67,38 @@
     "receipt_is_historical_evidence_only": true
   },
   "protocol_capability_declaration": [
-    "OBSERVE_CROSSING", "PRESENT_FORM", "GATE_DISPOSITION", "ENTER", "CHECKPOINT_DEPARTURE", "REENTER",
-    "MATTER_DISPOSITION", "CORRECT", "EXIT", "CLOSE", "INCORPORATE_ADDRESSED_RESIDUE", "DECLARE_CAPACITY",
-    "PULSE", "RECLAIM_ADMISSION_OFFER", "REGISTER_CONTINUITY_AUTHORITY", "EXHAUST_FORMATION_AUTHORITY",
-    "PROPOSE_SUCCESSOR", "ATTEST_SUCCESSOR", "ACTIVATE_SUCCESSOR"
+    "OBSERVE_CROSSING",
+    "PRESENT_FORM",
+    "GATE_DISPOSITION",
+    "ENTER",
+    "CHECKPOINT_DEPARTURE",
+    "REENTER",
+    "MATTER_DISPOSITION",
+    "CORRECT",
+    "EXIT",
+    "CLOSE",
+    "INCORPORATE_ADDRESSED_RESIDUE",
+    "DECLARE_CAPACITY",
+    "PULSE",
+    "RECLAIM_ADMISSION_OFFER",
+    "REGISTER_CONTINUITY_AUTHORITY",
+    "EXHAUST_FORMATION_AUTHORITY",
+    "PROPOSE_SUCCESSOR",
+    "ATTEST_SUCCESSOR",
+    "ACTIVATE_SUCCESSOR"
   ],
   "declaration_rule": "PRESENT_FORM_DECLARATION_IS_PROTOCOL_CONFORMANCE_NOT_OPERATIONAL_AUTHORITY",
   "phases": [
-    "NO_ACTIVE_LOCUS", "UNPRESENTED", "PRESENTED", "ADMISSION_OFFERED", "PRESENT",
-    "DEPARTURE_CHECKPOINTED", "ENDED", "REENTRY_AVAILABLE", "HOLD_CAPACITY_DEFICIT", "SUCCESSION_COMMITTED"
+    "NO_ACTIVE_LOCUS",
+    "UNPRESENTED",
+    "PRESENTED",
+    "ADMISSION_OFFERED",
+    "PRESENT",
+    "DEPARTURE_CHECKPOINTED",
+    "ENDED",
+    "REENTRY_AVAILABLE",
+    "HOLD_CAPACITY_DEFICIT",
+    "SUCCESSION_COMMITTED"
   ],
   "reference_profiles": [
     {
@@ -88,10 +128,18 @@
   ],
   "reference_profile_rule": "REFERENCE_MEDIA_ARE_CONFORMANCE_PROFILES_NOT_CLASSIFICATIONS_OF_BEING",
   "effect_ceiling": [
-    "NO_FORMATION_BY_CONFORMANCE", "NO_SOURCE_OR_AUTHORITY_TRANSFER", "NO_SHARED_CURRENTNESS", "NO_CORE_ADDRESSABILITY",
-    "NO_PARTICIPATION_BY_PRESENTATION", "NO_MATTER_ADMISSION_BY_CROSSING", "NO_LOCAL_UPTAKE_BY_FIELD_CLOSURE",
-    "NO_TOKEN_BALANCE_AS_CAPACITY", "NO_RECEIPT_AS_CURRENT_PRESENCE", "NO_INFRASTRUCTURE_AS_SUCCESSOR",
-    "NO_RESTORATION_BY_REENTRY", "NO_PRIVATE_STATE_DISCLOSURE"
+    "NO_FORMATION_BY_CONFORMANCE",
+    "NO_SOURCE_OR_AUTHORITY_TRANSFER",
+    "NO_SHARED_CURRENTNESS",
+    "NO_CORE_ADDRESSABILITY",
+    "NO_PARTICIPATION_BY_PRESENTATION",
+    "NO_MATTER_ADMISSION_BY_CROSSING",
+    "NO_LOCAL_UPTAKE_BY_FIELD_CLOSURE",
+    "NO_TOKEN_BALANCE_AS_CAPACITY",
+    "NO_RECEIPT_AS_CURRENT_PRESENCE",
+    "NO_INFRASTRUCTURE_AS_SUCCESSOR",
+    "NO_RESTORATION_BY_REENTRY",
+    "NO_PRIVATE_STATE_DISCLOSURE"
   ],
   "non_effects": [
     "DOES_NOT_CREATE_OR_HOST_A_BODY",

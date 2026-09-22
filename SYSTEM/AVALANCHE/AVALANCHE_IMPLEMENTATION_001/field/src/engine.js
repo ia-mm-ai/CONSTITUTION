@@ -21,6 +21,7 @@ import {
   validateUnsigned,
   verifyTransitionSignature
 } from "./signature.js";
+import { validateDraftLocus } from "./scope-contract.js";
 
 function assertStatus(status, state, config) {
   if (!status || typeof status !== "object" || Array.isArray(status)) throw new Error("VM status is invalid");
@@ -199,9 +200,7 @@ export class MediumEngine {
       throw new Error("draft request fields do not match the medium contract");
     }
     const decision = await this.assertAuthorized(request.operation);
-    if (request.locus_id !== (decision.observation.active_locus_id ?? "") && request.operation !== "BOUND") {
-      throw new Error("draft locus_id is not the accepted active locus");
-    }
+    validateDraftLocus(request.operation, request.locus_id, decision.state, request.payload);
     if (!Number.isSafeInteger(request.observed_at) || request.observed_at < 0) throw new Error("observed_at is invalid");
     if (!request.payload || typeof request.payload !== "object" || Array.isArray(request.payload)) throw new Error("payload must be an object");
     const vmRequest = {

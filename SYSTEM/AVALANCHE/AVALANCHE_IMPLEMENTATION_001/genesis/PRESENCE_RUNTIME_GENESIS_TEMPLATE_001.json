@@ -12,15 +12,15 @@
   },
   "lineage": {
     "direct_predecessor": {
-      "protocol": "LOCALITY_VM_002",
-      "version": "2.1.0",
-      "vm_id": "2JnfZqeNUW34DmiSznMp1oJSpX5Fpqv9Ms6BYEyGF3LYVx7jQ5",
-      "repository_pack_sha256": "bffc125a5873a42b8ad81ede898ae7d65e36666870af3f0e6e6e5d7bdf2ddacb",
-      "repository_checksum_sidecar_sha256": "a7b5b4b922943cef87e04e140b63c430cb90f795dfdb40f8d72aec4b5e02ce7c",
-      "linux_release_sha256": "7586bdd9f31bb120b608414d5428d2435855d76c7dfd011d9f036eec91590add",
-      "qualification_evidence_sha256": "78d2403fa9847cee82235ded7d6aca32572c8da854a55ea7d95169fe21393a84",
-      "final_state_commitment": "38fd03c9d2bbb0ccd18585d71ce7f0573f2967a2289dbd60fd513cd782cf7d3f",
-      "final_state_sha256": "6990892e7d7d80d7bec72e03caddb74d6fe0c5e916aa732aca8e98cf1b4ec8e3",
+      "protocol": "LOCALITY_VM_003",
+      "version": "3.0.0",
+      "vm_id": "25tZjky6SecZA1Gwc6VwD2ouy64xAUdgNLo1C8dkXfbsFNxaTk",
+      "repository_pack_sha256": "5597eab61802b1df92636b6df88fea46b88f460c4e5f2c51e393c5c6ce7a214f",
+      "repository_checksum_sidecar_sha256": "abab31f2dd1018831034bc93e67eb7e125352e1fb71142e8ed6e5bafa4235e69",
+      "linux_release_sha256": "205d6823e520884c59fb09f06091362370c29891661e54af7aff0f313c6bbb65",
+      "qualification_evidence_sha256": "170eafe5836ee5d43bd0def635c048a29d9b30937e596a4336378695500aac64",
+      "final_state_commitment": "be615433b6e6eb3a9c6c2284ddb565aae2718f0f45c80a3c1ed5647fe3203a64",
+      "final_state_sha256": "cb8b8cee6d8fac7a49e3e67aa51356d46d663e88f20d3f53d714ed0deebd49b7",
       "disposition": "PRESERVED_IMMUTABLE_PREDECESSOR"
     },
     "formation_ancestor": {
@@ -42,21 +42,21 @@
     "shared_currentness": "NONE"
   },
   "constitution": {
-    "human_path": "source/CONSTITUTION_0()1.md",
-    "human_sha256": "5dea16e2400c652eb063129711a6bf26c8485a2cbad25ce261beda6f7fee5206",
-    "machine_path": "source/CONSTITUTION_0()1.json",
-    "machine_sha256": "5a0d6ffec23d09b203212b295d86e45e141a33a7f35f525d56172fb848d1a73c",
-    "form_binding_path": "source/FORM_BINDING.json",
-    "form_binding_sha256": "cc2f4f2a1fdfab3287ee661dfbcc6e9db72c8e2ac918a94c288598f27916e758",
+    "human_path": "SOURCE/CONSTITUTION_0()1.md",
+    "human_sha256": "affeb5738cdfeea7ee4fe985652bf78b15eb6dfbba5871d82f0f2213a81832d0",
+    "machine_path": "SOURCE/CONSTITUTION_0()1.json",
+    "machine_sha256": "519a81d2a26d5bf32afd77566bbb35b4d28b22af85ac45a7055fccd1b45222f8",
+    "form_binding_path": "SYSTEM/AVALANCHE/AVALANCHE_IMPLEMENTATION_001/binding/FORM_BINDING.json",
+    "form_binding_sha256": "a40c711d77471f0cb675c095f452b84b35de39a38b097351a6e10a6d585b2de8",
     "public_origin": {
-      "repository": "https://github.com/ia-mm-ai/CONSTITUTION",
-      "commit": "4cf5a926d5fece4e3cccfdfcab40e16431dd332b",
+      "repository": "https://github.com/ia-mm-ai/PRESENCE",
+      "commit": "a0cbb1080540bbe83f8678e81240247585dba060",
       "human_repository_path": "SOURCE/CONSTITUTION_0()1.md",
       "machine_repository_path": "SOURCE/CONSTITUTION_0()1.json",
-      "form_binding_repository_path": "SOURCE/FORM_BINDING.json",
-      "human_bytes": 41268,
-      "machine_bytes": 139114,
-      "form_binding_bytes": 1901,
+      "form_binding_repository_path": "SYSTEM/AVALANCHE/AVALANCHE_IMPLEMENTATION_001/binding/FORM_BINDING.json",
+      "human_bytes": 44133,
+      "machine_bytes": 146048,
+      "form_binding_bytes": 1939,
       "binding": "EXACT_COMMIT_PATH_LENGTH_SHA256_AND_REPOSITORY_FORM_BINDING",
       "mirror_effect": "BYTE_IDENTICAL_EVIDENCE_NOT_SEPARATE_ORIGIN",
       "publication_effect": "FORM_BINDING_NON_EFFECTS_APPLY"
@@ -79,8 +79,13 @@
   },
   "profile": {
     "form_id": "PRESENCE-AVALANCHE-FORM-001",
-    "form_sha256": "10848ac3fc2f68f6fdc041a4c9862d8fb186f4c3d0ebd4edde3f3933fe3ce893",
-    "gate_postures": ["ADMIT", "REFUSE", "WITHHOLD", "HOLD"],
+    "form_sha256": "3a72b3707552fd56b78c216c2d4a0caae9297cc52611d440ea170ab6e9770fa5",
+    "gate_postures": [
+      "ADMIT",
+      "REFUSE",
+      "WITHHOLD",
+      "HOLD"
+    ],
     "effect_ceiling": [
       "NO_FORMATION_BY_CONFORMANCE",
       "NO_SOURCE_OR_AUTHORITY_TRANSFER",

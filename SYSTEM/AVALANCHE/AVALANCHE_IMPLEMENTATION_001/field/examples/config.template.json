@@ -4,7 +4,7 @@
   "endpoint": "http://127.0.0.1:9650/ext/bc/REPLACE_WITH_SUCCESSOR_BLOCKCHAIN_ID",
   "expected_blockchain_id": "REPLACE_WITH_SUCCESSOR_BLOCKCHAIN_ID",
   "expected_locality_id": "REPLACE_WITH_SUCCESSOR_GENESIS_LOCALITY_ID",
-  "expected_vm_id": "25tZjky6SecZA1Gwc6VwD2ouy64xAUdgNLo1C8dkXfbsFNxaTk",
+  "expected_vm_id": "cNhhBznc1YN29QVJMQbK7sxy6GsimFKN6yvftRjPK7qWEvZw8",
   "expected_vm_version": "presence-avalanche-vm/2.1.0",
   "expected_rpcchainvm_protocol": 46,
   "actor_id": "REPLACE_WITH_DERIVED_LOCALITY_ACTOR_ID",
