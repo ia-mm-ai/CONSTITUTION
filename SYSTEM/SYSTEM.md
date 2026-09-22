@@ -4,7 +4,7 @@
 
 SYSTEM is derivative maintenance around [SOURCE](../SOURCE/CONSTITUTION_0%28%291.md)
 and [STATE](../STATE/STATE.md), not another core module or a runtime for CSC,
-DCR, or LINEAGE. [SYSTEM.json](SYSTEM.json) records this initial operational
+DCR, or LINEAGE. [SYSTEM.json](SYSTEM.json) records this operational
 contract. Neither file is an implementation claim under
 [LINEAGE's existing schema](../STATE/LINEAGE/SCHEMAS/IMPLEMENTATION-CLAIM.schema.json).
 The human Constitution governs meaning; machine references depend on its
@@ -14,19 +14,22 @@ not establish adoption, identity, Agency, Authority, or present capability.
 ## Current boundary
 
 The repository contains the Source pair, STATE and its CSC/DCR/LINEAGE models,
-23 schemas, 14 vector suites, the ORIGIN locator, and two derivation records.
-The first surface selects these actual files, including invalid vectors as
-normative examples rather than reports of events.
+23 schemas, 14 vector suites, the ORIGIN locator, two derivation records, and
+the paired human/machine VM003–Medium001 historical implementation account.
+Surface selects these files and both unchanged ZIP carriers. Invalid vectors
+remain normative examples rather than reports of events; archive contents
+remain historical evidence, not canonical or executable publication machinery.
 
-`STATE/STATE.md` describes `STATE/LINEAGE/CONFORMANCE.py`, but that executable
-and its tests are absent at this initial externalisation. SYSTEM does **not**
-replace its rule evaluator or treat schema well-formedness as vector success.
-Revision verification reports `INCOMPLETE` when it cannot run that checker.
-Ordinary export is blocked; `--allow-incomplete` deliberately makes a labelled
-preview with the gap retained in both generated JSON files. An available
-checker that fails cannot be bypassed by that option.
+[conformance.py](conformance.py) executes the formal evaluation contract in
+`STATE/STATE.md`: offline Draft 2020-12 validation with format checking, exact
+decimal comparisons, and ordered semantic rule evaluation against each vector's
+expected triple. It also validates the models, rules, origin, derivation maps,
+and implementation claims. Its expression engine and regression cases derive
+from the former evaluator, now maintained solely in SYSTEM; no program in
+canonical STATE is required or executed. Passing means representation
+consistency at the declared scope, not present capability or constitutional effect.
 
-The documents are initial contracts, not filled-in claims about a deployment.
+The documents are operational contracts, not filled-in claims about a deployment.
 No public address, release revision, generated digest, or conformance result
 is invented as a placeholder.
 
@@ -34,45 +37,65 @@ is invented as a placeholder.
 
 - **verify.py** reads one full, locally available Git commit, ignoring dirty
   working-tree files. It checks the Source pair, LINEAGE's Source bindings,
-  declared resources, stable Source references, schema definitions, and offline
-  schema dependencies. When present, it runs the selected commit's core checker
-  in an isolated temporary tree, with a timeout. Select only trusted local Git
+  declared resources, stable Source references, schema definitions, offline
+  schema dependencies, and selection of model and implementation file relations.
+  Both ZIPs must match their derivation digests and lengths and the account's
+  exact carrier locators, and be recognizable ZIP files. No carrier contents
+  are extracted or executed; nested `!/` locators retain their historical
+  meaning, but their members are not independently re-inspected by this check.
+  It runs the selected commit's SYSTEM evaluator
+  in an isolated temporary tree, with a timeout, and records its byte binding.
+  Select only trusted local Git
   revisions: this executes that revision's checker, not a sandboxed program.
   The report names the revision, checked resources, checks performed, and
   separate conformance result. Exit 0 means the requested check passed,
-  1 means failure, and 2 means revision conformance remains incomplete.
+  1 means failure, and 2 means the selected revision lacks SYSTEM's evaluator.
 - **export.py** constructs the edition from those exact Git blobs, never from
   a mixture of a named commit and current files. It writes only into a new
   destination whose parent exists, then checks the resulting edition.
 - **recover.py** constructs the same publication from a selected revision, or
   copies a verified export into a new destination and verifies it again.
   Recovery of an export never executes code from the supplied directory.
-  It is not recovery of Git history, missing evidence archives, or living State.
+  It recovers the selected exact carriers, not Git history, unselected evidence,
+  or living State.
 - **requirements.txt** pins the direct Python dependency actually imported by
   these operations and the interface. Python 3.10+ and Git must be installed
   separately; no web framework or remote schema fetch is required.
 
-Use the entry points' `--help` for exact options. From any directory:
+Use the entry points' `--help` for exact options. From the repository root:
 
 ```sh
-python -m pip install -r /home/runner/work/PRESENCE/PRESENCE/SYSTEM/requirements.txt
-python /home/runner/work/PRESENCE/PRESENCE/SYSTEM/verify.py --revision "$COMMIT"
-python /home/runner/work/PRESENCE/PRESENCE/SYSTEM/export.py --revision "$COMMIT" --destination /tmp/presence-edition
-python /home/runner/work/PRESENCE/PRESENCE/SYSTEM/recover.py --export /tmp/presence-edition --manifest-sha256 "$MANIFEST_SHA256" --destination /tmp/presence-recovered
+python -m pip install -r SYSTEM/requirements.txt
+COMMIT=$(git rev-parse --verify HEAD)
+python SYSTEM/verify.py --revision "$COMMIT"
+python SYSTEM/export.py --revision "$COMMIT" --destination ../presence-edition
+# Use the exporter's printed digest, obtained through an independently trusted channel.
+python SYSTEM/verify.py --export ../presence-edition --manifest-sha256 "$MANIFEST_SHA256"
+python SYSTEM/recover.py --export ../presence-edition --manifest-sha256 "$MANIFEST_SHA256" --destination ../presence-recovered
 ```
 
 `COMMIT` must be a full commit ID already available in the local repository and
-must contain the declaration and entrance. No default branch is silently
-selected or fetched. For the present checker gap, append `--allow-incomplete`
-to an export or revision recovery only when an incomplete preview is intended.
+must contain the declaration, entrance, and SYSTEM evaluator for a complete
+edition. No default branch is silently selected or fetched. `--allow-incomplete`
+is retained only for explicitly labelled previews of revisions lacking the
+SYSTEM evaluator; it cannot bypass failed conformance, carrier bindings, or
+missing selected relations.
+
+For local evaluator development, `python SYSTEM/conformance.py` checks the
+working tree, not a revision-bound edition. Run its regression tests with
+`python -m unittest discover -s SYSTEM -p 'test_*.py'`. Revision verification
+always ignores working-tree changes, including changes to the evaluator.
 
 ## Portable edition and trust
 
 The publication contains `index.html`, generated `index.json`, generated
-`manifest.json`, and the explicitly selected core files at their original
+`manifest.json`, and the explicitly selected core files, implementation account,
+and two historical ZIP carriers at their original
 repository-relative paths. It contains no maintenance scripts, Git metadata,
-predecessor archives, unlisted working-tree files, or newly inferred evidence.
-Relative core references therefore retain their original meaning.
+unlisted working-tree files, or newly inferred evidence. The ZIPs are served
+as `application/zip` exact bytes, never as executable interface code.
+Relative model and account file references therefore retain their original
+meaning and must resolve to selected material before export.
 
 `index.json` binds resource paths, stable references, media types, operation
 contracts, and the verification report to one revision. `manifest.json` binds

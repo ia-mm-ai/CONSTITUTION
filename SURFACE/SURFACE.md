@@ -14,7 +14,9 @@ URL or a currently published revision.
   location, and direct provenance references into STATE/LINEAGE.
 - **resources** explicitly selects the Source human/machine pair; STATE and
   its three modules; the existing schemas and vectors; and the origin and two
-  extraction records. Paths are relative to this declaration. Existing core
+  extraction records; the VM003–Medium001 historical implementation account
+  in both forms; and both unchanged ZIP carriers. Paths are relative to this
+  declaration. Existing core
   IDs are reused exactly. Resources without an ID receive derivative
   `urn:presence:surface:…:1` locators, not new core definitions.
 - **operations** names the three actual handlers in `serve.py`, their GET
@@ -23,6 +25,10 @@ URL or a currently published revision.
 
 Schemas and core definitions are not copied into an interface-specific model.
 Their selected exact files remain available for offline reference resolution.
+SYSTEM rejects unselected model and implementation file relations, including
+LINEAGE's relation to the historical account and the account's carrier paths.
+The carriers use `application/zip`; they remain noncanonical historical
+evidence, not present capability, executable handlers, or authenticated releases.
 Stable constitutional refs such as `reading.7` and `section.19.2` resolve to a
 JSON Pointer in the bound machine Constitution. References locate material;
 they do not import its truth, support, permission, or constitutional effect.
@@ -45,10 +51,11 @@ not through a live union of a publication and the working tree.
 
 ## Discovery, reading, resolution, checks
 
-Install the pinned requirements in `SYSTEM/requirements.txt`, then run:
+Install the pinned requirements in `SYSTEM/requirements.txt`, then run from
+the repository root:
 
 ```sh
-python /home/runner/work/PRESENCE/PRESENCE/SURFACE/serve.py --edition /tmp/presence-edition --manifest-sha256 "$MANIFEST_SHA256"
+python SURFACE/serve.py --edition ../presence-edition --manifest-sha256 "$MANIFEST_SHA256"
 ```
 
 The interface listens on `127.0.0.1:8765` by default. It verifies the complete
@@ -74,11 +81,12 @@ return 400; unlisted resources and references return 404. Unsupported methods
 return 501. There are no upload, mutation, export, recovery, arbitrary path,
 remote fetch, dynamic import, or command-execution endpoints.
 
-The initial repository lacks the core checker described by STATE. An explicitly
-requested incomplete preview may still be read and byte-checked; its inventory
-and entrance retain `INCOMPLETE` / `UNAVAILABLE`. Serving it cannot convert
-those statuses into conformance. Static hosting can expose the same files,
-but it does not by itself implement the declared API handlers.
+SYSTEM executes formal schema, rule, and vector checks when generating a complete
+edition. Serving never reruns that evaluator or any carrier code. A legacy
+revision lacking SYSTEM's evaluator may still produce an explicitly requested
+incomplete preview; its inventory and entrance retain `INCOMPLETE` / `UNAVAILABLE`.
+Serving cannot upgrade those statuses. Static hosting can expose the same files,
+but does not by itself implement the declared API handlers.
 
 ## First externalisation, not established reality
 
