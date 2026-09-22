@@ -30,6 +30,14 @@ dependency on a particular host, operating system, ledger, runtime, virtual
 machine, network, signature system, or database. Human procedures can embody
 bounded functions as well as software; no technology is privileged (§ 19.3).
 
+### Bounded historical implementation relation
+
+The [human account](IMPLEMENTATIONS/VM003-MEDIUM001.md) and
+[machine claim](IMPLEMENTATIONS/VM003-MEDIUM001.json) record one bounded
+historical implementation relation between two exact predecessor carriers and
+this core. This is not a fourth canonical module, a privileged embodiment, a
+release or a present capability declaration.
+
 ## 2. Contract and evaluation
 
 [LINEAGE.json](LINEAGE.json) is the executable normative rule model.
