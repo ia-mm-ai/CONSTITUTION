@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "PRESENCE_ADMIN_INPUT_SCHEMA_001",
+  "title": "Administrative deployment descriptor for AVALANCHE_IMPLEMENTATION_001",
+  "description": "The exact administrative input consumed by `presence-avalanche-vm --materialize-genesis TEMPLATE DESCRIPTOR PUBLIC_AUTHORITY OUTPUT`. Supplying this input is an administrative act; it is not release qualification, deployment, formation, succession, Authority or Presence. Validation authority remains the VM's own DeploymentDescriptor.Validate (genesis.go); this schema mirrors it for administrators.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "genesis_id",
+    "locality_id",
+    "purpose",
+    "source_reference",
+    "source_sha256"
+  ],
+  "properties": {
+    "schema": {
+      "const": "PRESENCE_DEPLOYMENT_DESCRIPTOR_001",
+      "description": "Fixed descriptor schema identifier."
+    },
+    "genesis_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]{0,127}$",
+      "description": "Safe identifier for the materialized genesis. Must be distinct from the formation-ancestor genesis identity."
+    },
+    "locality_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]{0,127}$",
+      "description": "Safe identifier of the locality body. Must not be the historical formation ancestor KENTRA."
+    },
+    "purpose": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 1024,
+      "description": "Bounded human-readable purpose of this genesis."
+    },
+    "source_reference": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]{0,127}$",
+      "description": "Safe identifier naming the administrative source mandate for this deployment."
+    },
+    "source_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$",
+      "description": "Lowercase hex SHA-256 commitment to the administrative source mandate."
+    }
+  },
+  "companion_inputs": {
+    "template": "genesis/PRESENCE_RUNTIME_GENESIS_TEMPLATE_001.json (canonical, committed)",
+    "public_authority": "locality-authority.public.json produced by `--generate-authority DIRECTORY`; the private counterpart must never be committed or persisted beyond its administrative purpose",
+    "output_check": "verify the produced genesis with `--check-genesis OUTPUT` before any use"
+  }
+}

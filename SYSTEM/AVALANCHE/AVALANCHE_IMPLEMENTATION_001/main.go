@@ -110,8 +110,13 @@ func main() {
 		}
 		fmt.Printf("signed canonical PRESENCE transition: %s\n", os.Args[4])
 		return
+	case len(os.Args) == 4 && os.Args[1] == "--serve-rehearsal":
+		if err := serveRehearsal(os.Args[2], os.Args[3]); err != nil {
+			exitWithError("serve disposable rehearsal VM", err)
+		}
+		return
 	case len(os.Args) != 1:
-		fmt.Fprintln(os.Stderr, "usage: presence-avalanche-vm [--version | --version-json | --vm-id | --check-genesis PATH | --check-transition PATH | --generate-authority DIRECTORY | --materialize-genesis TEMPLATE DEPLOYMENT_DESCRIPTOR PUBLIC_AUTHORITY OUTPUT | --sign-unsigned UNSIGNED PRIVATE_AUTHORITY OUTPUT]")
+		fmt.Fprintln(os.Stderr, "usage: presence-avalanche-vm [--version | --version-json | --vm-id | --check-genesis PATH | --check-transition PATH | --generate-authority DIRECTORY | --materialize-genesis TEMPLATE DEPLOYMENT_DESCRIPTOR PUBLIC_AUTHORITY OUTPUT | --sign-unsigned UNSIGNED PRIVATE_AUTHORITY OUTPUT | --serve-rehearsal GENESIS LOOPBACK_ADDRESS]")
 		os.Exit(2)
 	}
 

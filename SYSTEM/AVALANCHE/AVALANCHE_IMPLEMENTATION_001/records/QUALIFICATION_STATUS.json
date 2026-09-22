@@ -1,0 +1,80 @@
+{
+  "schema": "PRESENCE_QUALIFICATION_STATUS_001",
+  "implementation": "AVALANCHE_IMPLEMENTATION_001",
+  "version": "1.0.0",
+  "statuses": [
+    "SOURCE_IMPLEMENTED",
+    "FUNCTIONALLY_TESTED",
+    "QUALIFICATION_INCOMPLETE",
+    "NOT_RELEASED",
+    "NOT_DEPLOYED",
+    "NOT_READY_FOR_MAINNET"
+  ],
+  "status_rule": "READY_FOR_ADMIN_INSTANTIATION is not claimed because not every declared prerequisite has passed.",
+  "passed": {
+    "vm_compilation": {
+      "status": "PASSED",
+      "toolchain": "go1.25.13 linux/amd64 (GOTOOLCHAIN=auto)",
+      "avalanchego": "v1.15.0 (70bd6d063b7343fd2cd8217200aaf77b57f19f68), RPCChainVM protocol 46"
+    },
+    "field_load": {
+      "status": "PASSED",
+      "runtime": "node v22.23.2, zero third-party dependencies"
+    },
+    "operation_scope_repair": {
+      "status": "PASSED",
+      "contract": "contract/OPERATION_SCOPE_CONTRACT_001.json",
+      "contract_sha256": "41d19cd903368263a413772b83cbcaa9ac98382e3c18b3b3eb26bbfb62b53dfb",
+      "enforcement": "VM go:embed + FIELD runtime load of the same file; unknown or unclassified operations fail closed in both runtimes"
+    },
+    "deterministic_tests": {
+      "status": "PASSED",
+      "vm": "GOTOOLCHAIN=auto go test ./... (includes scope_contract_test.go, 10 scope regression requirements)",
+      "field": "node --test test/*.test.js — 30 pass, 0 fail (includes test/scope-contract.test.js, 10 mirrored requirements)",
+      "vet": "GOTOOLCHAIN=auto go vet ./... clean"
+    },
+    "coupled_lifecycle": {
+      "status": "PASSED",
+      "point_reached": "read -> REGISTER_CONTINUITY_AUTHORITY -> BOUND -> receipt -> renewed read -> DECLARE_CAPACITY (empty locus_id while LOCUS-COUPLED-001 active) -> receipt -> renewed read -> PULSE -> CORRECT (target-scoped) -> final read",
+      "beyond_former_failure": true,
+      "evidence": "records/COUPLED_LIFECYCLE_TRANSCRIPT.json",
+      "runner": "single in-process VM served on loopback via --serve-rehearsal; disposable in-memory state; no network"
+    },
+    "source_state_binding": {
+      "status": "PASSED",
+      "binding": "binding/SOURCE_STATE_BINDING.json and binding/FORM_BINDING.json verified against current SOURCE/ and STATE/ bytes"
+    },
+    "secret_exclusion": {
+      "status": "PASSED",
+      "detail": "No private keys, mnemonics or credentials persisted; disposable rehearsal keys confined to a temporary directory outside the repository"
+    }
+  ],
+  "unresolved": [
+    {
+      "id": "THREE_VALIDATOR_RESTART_REJOIN",
+      "status": "UNRESOLVED",
+      "kind": "ENVIRONMENTAL_QUALIFICATION_BOUNDARY",
+      "detail": "Full three-validator restart/rejoin qualification was not run in this single-runner environment. The coupled lifecycle was demonstrated on one in-process VM. This qualification is required before any deployment claim.",
+      "claimed_passed": false
+    },
+    {
+      "id": "VULNERABILITY_DATABASE_OBSERVATION",
+      "status": "UNRESOLVED_EXTERNAL_OBSERVATION",
+      "kind": "EXTERNAL_ADVISORY_DATABASE_UNREACHABLE",
+      "tool": "govulncheck (golang.org/x/vuln/cmd/govulncheck@latest)",
+      "attempted_query": "govulncheck ./... fetching https://vuln.go.dev/index/modules.json.gz",
+      "failure": "dial tcp: lookup vuln.go.dev on 127.0.0.53:53: server misbehaving (DNS resolution blocked in sandbox)",
+      "consequence": "No zero-vulnerabilities claim is made. Dependency vulnerability posture of the pinned AvalancheGo v1.15.0 module graph is externally unobserved from this environment.",
+      "claimed_passed": false
+    },
+    {
+      "id": "DEPLOYMENT_PROVISIONING_QUALIFICATION",
+      "status": "UNRESOLVED",
+      "kind": "ENVIRONMENTAL_QUALIFICATION_BOUNDARY",
+      "detail": "Custom-plugin provisioning (every validator receiving the custom executable, external Validator Manager placement, manual/CLI-aware deployment path) is documented in docs/DEPLOYMENT_ARCHITECTURE.md but not exercised. Builder Console stock Docker generation assumes Subnet-EVM and cannot provision this VM.",
+      "claimed_passed": false
+    }
+  ],
+  "public_network_acts": "NONE",
+  "release_acts": "NONE"
+}

@@ -105,25 +105,25 @@
       "profile_id": "HUMAN_MEDIUM_001",
       "embodiment_kind": "HUMAN",
       "path": "profiles/HUMAN_MEDIUM_001.json",
-      "file_sha256": "86e5326b39c3c1df2e784fb30793c04fbb3be0c837df1c42cff652e9894c9b53"
+      "file_sha256": "7bb6b59b533daecc08f41d6132c5aba8375ebcfb2642c95dba3b0aafe585fccb"
     },
     {
       "profile_id": "AI_MEDIUM_001",
       "embodiment_kind": "AI",
       "path": "profiles/AI_MEDIUM_001.json",
-      "file_sha256": "3dbdd4becfe0551bc72c5a582308f8592499b64ad44038b3f674741fa5808dc1"
+      "file_sha256": "a54b4e8cbfc29feb3b7b6416af5c86cadddcd1310374ad01c8d53474ea6cb46a"
     },
     {
       "profile_id": "DEVICE_MEDIUM_001",
       "embodiment_kind": "DEVICE",
       "path": "profiles/DEVICE_MEDIUM_001.json",
-      "file_sha256": "46e7eff57f9ee1e117671fecf7dd357c1774cffdde5b3d1ab7658705f2b8bd2a"
+      "file_sha256": "b8f3de81ed43d32b54e01af39fdd0311b99e883cf8731baff41a1ab1137fa139"
     },
     {
       "profile_id": "PRESENCE_AVALANCHE_FIELD_001",
       "embodiment_kind": "LOCALITY",
-      "path": "profiles/PRESENCE_AVALANCHE_FIELD_001.json",
-      "file_sha256": "13d54415df7d8e67e80f5c0cd0addd7999b4c429a6e947469ddf76f1e90bb1d2"
+      "path": "profiles/PRESENCE_FIELD_HOST_001.json",
+      "file_sha256": "e12ac07e576792449d827c8e52167aec8555b3a66184eb94b0223f8f3008096f"
     }
   ],
   "reference_profile_rule": "REFERENCE_MEDIA_ARE_CONFORMANCE_PROFILES_NOT_CLASSIFICATIONS_OF_BEING",

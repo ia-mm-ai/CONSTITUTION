@@ -1,0 +1,49 @@
+{
+  "schema": "PRESENCE_SOURCE_STATE_BINDING_001",
+  "implementation": "AVALANCHE_IMPLEMENTATION_001",
+  "version": "1.0.0",
+  "rule": "Every binding below must verify byte-exactly against the live repository. Verification requires only sha256sum and byte counts; no network access.",
+  "repository": "https://github.com/ia-mm-ai/PRESENCE",
+  "source": [
+    {
+      "path": "SOURCE/CONSTITUTION_0()1.md",
+      "sha256": "affeb5738cdfeea7ee4fe985652bf78b15eb6dfbba5871d82f0f2213a81832d0",
+      "byte_length": 44133,
+      "disposition": "PRESERVED_BYTE_IDENTICAL"
+    },
+    {
+      "path": "SOURCE/CONSTITUTION_0()1.json",
+      "sha256": "519a81d2a26d5bf32afd77566bbb35b4d28b22af85ac45a7055fccd1b45222f8",
+      "byte_length": 146048,
+      "disposition": "PRESERVED_BYTE_IDENTICAL"
+    }
+  ],
+  "state": [
+    {
+      "path": "STATE/LOCALITY_VM_003-v3.0.0-GITHUB_UPLOAD.zip",
+      "sha256": "073949b8b74e7407a433b74efab71f22e2ee93c4d9ed80eb0aeb07b164c08d2b",
+      "role": "VM_PREDECESSOR_ARCHIVE",
+      "disposition": "PRESERVED_BYTE_IDENTICAL"
+    },
+    {
+      "path": "STATE/LOCALITY_MEDIUM_001-v2.0.0-GITHUB_UPLOAD.zip",
+      "sha256": "61353cddc93d62ac28d60e0c7357203ecfe01235e7d249e973ffb16356990989",
+      "role": "FIELD_PREDECESSOR_ARCHIVE",
+      "disposition": "PRESERVED_BYTE_IDENTICAL"
+    }
+  ],
+  "implementation_bindings": [
+    {
+      "path": "SYSTEM/AVALANCHE/AVALANCHE_IMPLEMENTATION_001/binding/FORM_BINDING.json",
+      "sha256": "a40c711d77471f0cb675c095f452b84b35de39a38b097351a6e10a6d585b2de8",
+      "byte_length": 1939,
+      "bound_by": "genesis.go constitutionBindingSHA256 and the canonical genesis template"
+    },
+    {
+      "path": "SYSTEM/AVALANCHE/AVALANCHE_IMPLEMENTATION_001/contract/OPERATION_SCOPE_CONTRACT_001.json",
+      "sha256": "41d19cd903368263a413772b83cbcaa9ac98382e3c18b3b3eb26bbfb62b53dfb",
+      "bound_by": "VM go:embed (contract.go), FIELD loader (field/src/scope-contract.js) and field contract operation_scope_contract.file_sha256"
+    }
+  ],
+  "verification": "cd repository root; sha256sum 'SOURCE/CONSTITUTION_0()1.md' 'SOURCE/CONSTITUTION_0()1.json' 'STATE/LOCALITY_VM_003-v3.0.0-GITHUB_UPLOAD.zip' 'STATE/LOCALITY_MEDIUM_001-v2.0.0-GITHUB_UPLOAD.zip' 'SYSTEM/AVALANCHE/AVALANCHE_IMPLEMENTATION_001/binding/FORM_BINDING.json' 'SYSTEM/AVALANCHE/AVALANCHE_IMPLEMENTATION_001/contract/OPERATION_SCOPE_CONTRACT_001.json' and compare with the digests above."
+}

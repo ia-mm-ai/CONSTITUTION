@@ -1,0 +1,91 @@
+{
+  "schema": "PRESENCE_COUPLED_LIFECYCLE_TRANSCRIPT_001",
+  "endpoint": "http://127.0.0.1:19650",
+  "effects": {
+    "BOUND": "OPENS_TEMPORARY_LOCUS_ONLY",
+    "PRESENT_FORM": "ELIGIBILITY_TO_GATE_ONLY",
+    "GATE_DISPOSITION": "SETS_GATE_POSTURE_ONLY",
+    "ENTER": "ENTERS_CURRENT_LOCUS_ONLY",
+    "CHECKPOINT_DEPARTURE": "CHECKPOINTS_PARTICIPANT_STATE_FOR_DEPARTURE_ONLY",
+    "REENTER": "RENEWS_ENTRY_WITH_CARRIED_STATE_SUCCESSION_ONLY",
+    "OBSERVE_CROSSING": "RECORDS_CROSSING_ONLY",
+    "MATTER_DISPOSITION": "SETS_ACTOR_LOCAL_MATTER_POSTURE_ONLY",
+    "RECORD_EMERGENCE": "RECORDS_FIELD_LOCAL_EMERGENCE_ONLY",
+    "CORRECT": "APPENDS_CORRECTION_ONLY",
+    "EXIT": "EXITS_CURRENT_LOCUS_ONLY",
+    "CLOSE": "CLOSES_LOCUS_AND_ADDRESSES_RESIDUE_ONLY",
+    "INCORPORATE_ADDRESSED_RESIDUE": "INCORPORATES_ADDRESSED_RESIDUE_LOCALLY_ONLY",
+    "DECLARE_CAPACITY": "SETS_SIGNED_LOCAL_CAPACITY_ACCOUNT_ONLY",
+    "PULSE": "RECORDS_SIGNED_LOCAL_CURRENTNESS_ONLY",
+    "RECLAIM_ADMISSION_OFFER": "EXPIRES_UNENTERED_ADMISSION_OFFER_ONLY",
+    "REGISTER_CONTINUITY_AUTHORITY": "REGISTERS_BOUNDED_CONTINUITY_AUTHORITY_ONLY",
+    "EXHAUST_FORMATION_AUTHORITY": "EXHAUSTS_FORMATION_AUTHORITY_WITHOUT_TRANSFER",
+    "PROPOSE_SUCCESSOR": "RECORDS_SUCCESSOR_PROPOSAL_ONLY",
+    "ATTEST_SUCCESSOR": "APPENDS_SUCCESSOR_ATTESTATION_ONLY",
+    "ACTIVATE_SUCCESSOR": "FREEZES_PREDECESSOR_AT_SUCCESSION_BOUNDARY_ONLY"
+  },
+  "steps": [
+    {
+      "step": "VM_SERVING",
+      "vm_version": "presence-avalanche-vm/1.0.0",
+      "revision": 0,
+      "locality": "PRESENCE-LOCALITY-001"
+    },
+    {
+      "step": "REGISTER_CONTINUITY_AUTHORITY_ACCEPTED",
+      "transition_id": "94f5340063907e4ebaf65b798f4f2ba757ab303bb2594195c3e865b7fea365f9",
+      "revision": 1
+    },
+    {
+      "step": "READ",
+      "revision": 1,
+      "active_locus": ""
+    },
+    {
+      "step": "BOUND_ACCEPTED",
+      "transition_id": "b846d299354026d92ef50eeda3fdae1f7d1d068e7166ada86a640db02f89d230",
+      "revision": 2,
+      "effect": "OPENS_TEMPORARY_LOCUS_ONLY",
+      "locus_id": "LOCUS-COUPLED-001"
+    },
+    {
+      "step": "RENEWED_READ_AFTER_BOUND",
+      "revision": 2,
+      "active_locus": "LOCUS-COUPLED-001"
+    },
+    {
+      "step": "DECLARE_CAPACITY_ACCEPTED",
+      "transition_id": "50211d21e5a302e13eba7337390e7dc63d634948415d1a5071a68d24d991af37",
+      "revision": 3,
+      "effect": "SETS_SIGNED_LOCAL_CAPACITY_ACCOUNT_ONLY",
+      "locus_id": ""
+    },
+    {
+      "step": "RENEWED_READ_AFTER_DECLARE_CAPACITY",
+      "revision": 3,
+      "active_locus": "LOCUS-COUPLED-001",
+      "declared_actual_units": 800
+    },
+    {
+      "step": "PULSE_ACCEPTED",
+      "transition_id": "eb996fc2ce3afc4f57fab79718e378d74d4bdee039eb89e046380e826f537650",
+      "revision": 4,
+      "effect": "RECORDS_SIGNED_LOCAL_CURRENTNESS_ONLY",
+      "locus_id": ""
+    },
+    {
+      "step": "CORRECT_ACCEPTED",
+      "transition_id": "4e81245a20a15be7d29e43b9844c0070c18a2a37acdd59e5d78684e13b80fd70",
+      "revision": 5,
+      "effect": "APPENDS_CORRECTION_ONLY",
+      "locus_id": ""
+    },
+    {
+      "step": "FINAL_READ",
+      "revision": 5,
+      "active_locus": "LOCUS-COUPLED-001",
+      "posture": "DORMANT_P0",
+      "events": 5
+    }
+  ]
+}

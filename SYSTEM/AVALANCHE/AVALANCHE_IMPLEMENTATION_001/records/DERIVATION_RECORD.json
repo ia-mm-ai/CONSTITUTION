@@ -1,0 +1,100 @@
+{
+  "schema": "PRESENCE_DERIVATION_RECORD_001",
+  "implementation": "AVALANCHE_IMPLEMENTATION_001",
+  "version": "1.0.0",
+  "crossing_kind": "IMPLEMENTATION_SOURCE_CROSSING",
+  "crossing_is_not": [
+    "RELEASE_QUALIFICATION",
+    "DEPLOYMENT",
+    "L1_CREATION",
+    "ADOPTION",
+    "FORMATION",
+    "SUCCESSION",
+    "AUTHORITY",
+    "PRESENCE"
+  ],
+  "derived_from": [
+    {
+      "identity": "LOCALITY_VM_003",
+      "version": "3.0.0",
+      "role": "VM_PREDECESSOR",
+      "input": "STATE/LOCALITY_VM_003-v3.0.0-GITHUB_UPLOAD.zip",
+      "input_sha256": "073949b8b74e7407a433b74efab71f22e2ee93c4d9ed80eb0aeb07b164c08d2b",
+      "use": "READ_ONLY_IMPLEMENTATION_INPUT",
+      "disposition": "PRESERVED_BYTE_IDENTICAL"
+    },
+    {
+      "identity": "LOCALITY_MEDIUM_001",
+      "version": "2.0.0",
+      "role": "FIELD_PREDECESSOR",
+      "input": "STATE/LOCALITY_MEDIUM_001-v2.0.0-GITHUB_UPLOAD.zip",
+      "input_sha256": "61353cddc93d62ac28d60e0c7357203ecfe01235e7d249e973ffb16356990989",
+      "use": "READ_ONLY_IMPLEMENTATION_INPUT",
+      "disposition": "PRESERVED_BYTE_IDENTICAL"
+    }
+  ],
+  "identity_mapping": {
+    "rule": "HISTORICAL_IDENTIFIERS_REMAIN_ONLY_AS_DERIVATION_AND_LINEAGE_EVIDENCE",
+    "successor_identity": "AVALANCHE_IMPLEMENTATION_001",
+    "successor_version": "1.0.0",
+    "vm_protocol": {
+      "predecessor": "LOCALITY_VM_003",
+      "successor": "PRESENCE_AVALANCHE_VM_001"
+    },
+    "field_protocol": {
+      "predecessor": "LOCALITY_MEDIUM_001 (KENTRA lineage)",
+      "successor": "PRESENCE_AVALANCHE_FIELD_001"
+    },
+    "historical_identifiers_preserved_as_lineage": [
+      "LOCALITY_VM_003",
+      "LOCALITY_MEDIUM_001",
+      "VM001",
+      "VM002",
+      "KENTRA"
+    ]
+  },
+  "vm_id_derivation": {
+    "canonical_identity": "PRESENCE_AVALANCHE_VM_001",
+    "derivation_input": "PRESENCE_AVALANCHE_VM_001",
+    "transport_safe_substitute_required": false,
+    "method": "github.com/ava-labs/avalanchego/ids.ToID over the canonical identity zero-extended to 32 bytes (official pinned AvalancheGo v1.15.0 API)",
+    "avalanchego_version": "v1.15.0",
+    "avalanchego_commit": "70bd6d063b7343fd2cd8217200aaf77b57f19f68",
+    "rpcchainvm_protocol": 46,
+    "vm_id": "cNhhBznc1YN29QVJMQbK7sxy6GsimFKN6yvftRjPK7qWEvZw8",
+    "note": "The Avalanche CLI wrapper rejects underscores in VM names, but the upstream ids.ToID API accepts the canonical identity directly, so no substitute derivation name was invented."
+  },
+  "repaired_defect": {
+    "finding": "FIELD src/engine.js required every operation except BOUND to name the accepted active locus, while VM operations.go required DECLARE_CAPACITY to use an empty locus_id because capacity declaration is body/locality-level.",
+    "classification": "REPAIRABLE_IMPLEMENTATION_DEFECT_NOT_A_SOURCE_CONTRADICTION",
+    "repair": "One shared normative operation-scope contract (contract/OPERATION_SCOPE_CONTRACT_001.json) now classifies every supported operation into NEW_LOCUS, ACTIVE_LOCUS, BODY_LOCAL, DORMANT_BODY or TARGET_SCOPED. The VM embeds the file at compile time (contract.go) and the FIELD loads the same file at runtime (field/src/scope-contract.js). Unknown operations and unclassified operations fail closed in both runtimes, and mirrored regression suites assert that both inventories agree."
+  },
+  "source_binding": {
+    "repository": "https://github.com/ia-mm-ai/PRESENCE",
+    "starting_commit": "a0cbb1080540bbe83f8678e81240247585dba060",
+    "source_files": [
+      {
+        "path": "SOURCE/CONSTITUTION_0()1.md",
+        "sha256": "affeb5738cdfeea7ee4fe985652bf78b15eb6dfbba5871d82f0f2213a81832d0",
+        "byte_length": 44133,
+        "disposition": "PRESERVED_BYTE_IDENTICAL"
+      },
+      {
+        "path": "SOURCE/CONSTITUTION_0()1.json",
+        "sha256": "519a81d2a26d5bf32afd77566bbb35b4d28b22af85ac45a7055fccd1b45222f8",
+        "byte_length": 146048,
+        "disposition": "PRESERVED_BYTE_IDENTICAL"
+      }
+    ]
+  },
+  "immutable_jurisdictions_observed": [
+    "SOURCE_PRESERVED_BYTE_FOR_BYTE",
+    "CANONICAL_CSC_DCR_LINEAGE_STANDARDS_PRESERVED",
+    "BOTH_PREDECESSOR_ZIPS_PRESERVED_BYTE_IDENTICAL",
+    "NO_PREDECESSOR_EVIDENCE_DELETED_REWRITTEN_OR_REPLACED",
+    "NO_NEW_ROOT_JURISDICTION",
+    "NO_MAINNET_FUJI_OR_PUBLIC_NETWORK_WRITE",
+    "NO_RELEASE_TAG_OR_DEPLOYMENT",
+    "NO_DISPOSABLE_PRIVATE_CREDENTIALS_PERSISTED"
+  ]
+}
