@@ -63,7 +63,7 @@ async function fixture(profileName = "AI_FIELD_001.json", vmID = VM_ID) {
 }
 
 test("the engine refuses any foreign schema, contract digest and actor namespace", async () => {
-  const f = await fixture("AI_MEDIUM_001.json");
+  const f = await fixture("AI_FIELD_001.json");
   const original = structuredClone(f.state);
   f.setState({ ...original, schema: "PRESENCE_AVALANCHE_STATE_001" });
   await assert.rejects(() => f.engine.observe(), /unsupported VM state schema/);
@@ -218,7 +218,7 @@ test("shipped AI profile can draft and submit same-open-locus REENTER after a fr
 });
 
 test("shared scope contract permits BOUND and body-local capacity across an active locus", async () => {
-  const f = await fixture("PRESENCE_AVALANCHE_FIELD_001.json");
+  const f = await fixture("LOCALITY_FIELD_001.json");
   const noLocus = structuredClone(f.state);
   noLocus.active_locus_id = "";
   noLocus.body = { posture: "DORMANT_P0", presence_count: 0, reason: "NO_CURRENT_ENTRY" };
@@ -252,7 +252,7 @@ test("shared scope contract permits BOUND and body-local capacity across an acti
 });
 
 test("invalid active and body-local loci are rejected before VM drafting", async () => {
-  const f = await fixture("PRESENCE_AVALANCHE_FIELD_001.json");
+  const f = await fixture("LOCALITY_FIELD_001.json");
   let draftCalls = 0;
   const originalDraft = f.client.draft;
   f.client.draft = async (request) => {
@@ -275,7 +275,7 @@ test("invalid active and body-local loci are rejected before VM drafting", async
 });
 
 test("CORRECT follows its target scope and unknown operations fail closed", async () => {
-  const f = await fixture("PRESENCE_AVALANCHE_FIELD_001.json");
+  const f = await fixture("LOCALITY_FIELD_001.json");
   const target = "7".repeat(64);
   const state = structuredClone(f.state);
   state.events[target] = { transition_id: target, locus_id: "LOCUS-CLOSED" };
