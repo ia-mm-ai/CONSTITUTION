@@ -175,8 +175,8 @@ def inventory(files):
             if ref in references:
                 raise ValueError(f"Duplicate Source reference: {ref}")
             references[ref] = {"path": MACHINE, "pointer": pointer}
-    if HUMAN not in paths or MACHINE not in paths or "STATE/LINEAGE/ORIGIN.json" not in paths:
-        raise ValueError("The bound Source pair and LINEAGE origin must be selected")
+    if not {HUMAN, MACHINE, "STATE/STATE.json", "STATE/LINEAGE/ORIGIN.json"}.issubset(paths):
+        raise ValueError("The bound Source pair, State core and LINEAGE origin must be selected")
     for path in declaration["point"]["provenance"]:
         if not path.startswith("../") or path[3:] not in paths:
             raise ValueError(f"Unselected provenance: {path}")
@@ -231,7 +231,7 @@ def check_relations(files, resources):
             continue
         document = load_json(files[name])
         kind = document.get("kind")
-        if kind in ("canonical_state_core", "canonical_standard"):
+        if kind in ("canonical_state_core", "canonical_standard", "source_locator"):
             for key in ("human_standard", "origin", "policy"):
                 if key in document:
                     selected_reference(name, document[key], paths)
@@ -264,7 +264,10 @@ def check_relations(files, resources):
                 document["identity"]["identity_refs"]
                 + document["demonstrations"]["primary"]["evidence_refs"]
                 + document["demonstrations"]["additional_refs"]
+                + document["present_status"]["current_basis_refs"]
             )
+            locators += [document["attestation"][key] for key in ("key_ref", "signature_ref")
+                         if key in document["attestation"]]
             for locator in locators:
                 # External identifiers are claims, never network retrieval instructions.
                 if re.match(r"^[a-zA-Z][a-zA-Z0-9+.-]*:", locator):

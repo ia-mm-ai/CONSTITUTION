@@ -64,6 +64,36 @@ class PublicationTests(unittest.TestCase):
                 with self.subTest(name=name), self.assertRaisesRegex(ValueError, "binding mismatch"):
                     verify.check_material(files)
 
+    def test_source_only_selection_cannot_omit_state(self):
+        roots = {verify.HUMAN, verify.MACHINE, "STATE/LINEAGE/ORIGIN.json"}
+        files = self.changed_document("SURFACE/surface.json", lambda d: (
+            d.update(resources=[r for r in d["resources"] if r["path"][3:] in roots]),
+            d["point"].update(provenance=["../STATE/LINEAGE/ORIGIN.json"]),
+        ))
+        with self.assertRaisesRegex(ValueError, "State core"):
+            verify.check_material(files)
+
+    def test_origin_policy_relation_must_be_selected(self):
+        files = self.changed_document("STATE/LINEAGE/ORIGIN.json",
+                                      lambda d: d.update(policy="../MISSING.json"))
+        with self.assertRaisesRegex(ValueError, "Unselected material reference"):
+            verify.check_material(files)
+
+    def test_implementation_basis_and_attestation_relations_must_be_selected(self):
+        path = "STATE/LINEAGE/IMPLEMENTATIONS/VM003-MEDIUM001.json"
+        for field in ("current_basis_refs", "key_ref", "signature_ref"):
+            def change(document):
+                if field == "current_basis_refs":
+                    document["present_status"][field] = ["missing.json"]
+                else:
+                    document["attestation"][field] = "missing.json"
+            files = self.changed_document(path, change)
+            with self.subTest(field=field), self.assertRaisesRegex(ValueError, "Unselected material reference"):
+                verify.check_material(files)
+        files = self.changed_document(path, lambda d: d["present_status"].update(
+            current_basis_refs=["urn:external:unverified-basis"]))
+        verify.check_material(files)
+
     def test_implementation_digest_mismatch_is_rejected(self):
         path = "STATE/LINEAGE/IMPLEMENTATIONS/VM003-MEDIUM001.json"
         files = self.changed_document(path, lambda d: d["identity"]["identity_refs"].__setitem__(
