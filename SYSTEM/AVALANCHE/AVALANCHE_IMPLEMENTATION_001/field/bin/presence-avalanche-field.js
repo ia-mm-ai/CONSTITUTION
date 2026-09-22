@@ -27,7 +27,7 @@ function usage() {
     "  presence-avalanche-field --version-json",
     "  presence-avalanche-field inspect --config <config.json>",
     "  presence-avalanche-field serve --config <config.json>",
-    "  presence-avalanche-field actor-id --public-key <64-lowercase-hex>",
+    "  presence-avalanche-field actor-id --public-key <64-lowercase-hex> [--vm-id <id>]",
     "  presence-avalanche-field commit <file>",
     "  presence-avalanche-field successor --participant <id> --from <sha256> --delta <sha256> [--delta <sha256> ...]",
     "  presence-avalanche-field verify-journal <journal.ndjson>"
@@ -49,7 +49,8 @@ async function main() {
   }
   if (command === "actor-id") {
     const publicKey = valueAfter(args, "--public-key");
-    process.stdout.write(`${JSON.stringify({ actor_id: actorIdFromPublicKey(publicKey), actor_public_key: publicKey })}\n`);
+    const vmID = args.includes("--vm-id") ? valueAfter(args, "--vm-id") : VM_ID;
+    process.stdout.write(`${JSON.stringify({ actor_id: actorIdFromPublicKey(publicKey, vmID), actor_public_key: publicKey })}\n`);
     return;
   }
   if (command === "serve") {

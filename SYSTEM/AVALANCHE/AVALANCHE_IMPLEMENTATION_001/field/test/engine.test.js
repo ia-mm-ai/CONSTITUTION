@@ -7,14 +7,15 @@ import { AppendOnlyJournal } from "../src/journal.js";
 import { MediumEngine } from "../src/engine.js";
 import { loadProfile } from "../src/profile.js";
 import { signingBytes, transitionID } from "../src/signature.js";
-import { VM_EFFECTS, VM_ID, VM_RPCCHAINVM_PROTOCOL, VM_TRANSITION_SCHEMA, VM_VERSION } from "../src/constants.js";
+import { ROOT_VM_ID, VM_EFFECTS, VM_ID, VM_RPCCHAINVM_PROTOCOL, VM_TRANSITION_SCHEMA, VM_VERSION, vmIdentity } from "../src/constants.js";
 import { CapabilityBroker } from "../src/broker.js";
 import { keyMaterial, presentState, statusFor, testDirectory } from "./helpers.js";
 
-async function fixture() {
-  const keys = keyMaterial();
-  let state = presentState(keys.actorId, keys.publicKeyHex);
-  let status = statusFor(state);
+async function fixture(profileName = "AI_FIELD_001.json", vmID = VM_ID) {
+  const identity = vmIdentity(vmID);
+  const keys = keyMaterial(vmID);
+  let state = presentState(keys.actorId, keys.publicKeyHex, { schema: identity.stateSchema });
+  let status = statusFor(state, { operation_contract_sha256: identity.contractSHA256 });
   let submitted;
   const client = {
     status: async () => structuredClone(status),
@@ -41,10 +42,10 @@ async function fixture() {
   };
   const directory = await testDirectory();
   const journal = await new AppendOnlyJournal(join(directory, "events.ndjson")).initialize();
-  const profile = await loadProfile(resolve("profiles/AI_FIELD_001.json"));
+  const profile = await loadProfile(resolve("profiles", profileName));
   const config = {
     expected_locality_id: state.host_locality_id,
-    expected_vm_id: VM_ID,
+    expected_vm_id: vmID,
     expected_vm_version: VM_VERSION,
     expected_rpcchainvm_protocol: VM_RPCCHAINVM_PROTOCOL,
     actor_id: keys.actorId,
@@ -55,11 +56,40 @@ async function fixture() {
   return {
     keys, client, engine, journal,
     get state() { return state; },
-    setState(value) { state = value; status = statusFor(state); },
+    setState(value) { state = value; status = statusFor(state, { operation_contract_sha256: identity.contractSHA256 }); },
     submitted: () => submitted,
     directory
   };
 }
+
+test("root VM identity can observe, draft and submit through the merged FIELD", async () => {
+  const f = await fixture("AI_MEDIUM_001.json", ROOT_VM_ID);
+  assert.equal((await f.engine.observe()).state.schema, vmIdentity(ROOT_VM_ID).stateSchema);
+  const draft = await f.engine.prepareDraft({
+    operation: "OBSERVE_CROSSING", locus_id: f.state.active_locus_id, observed_at: 1001,
+    payload: { claim: "A&B <>\u2028\u2029" }
+  });
+  assert.match(draft.unsigned.actor_id, /^LOCALITY-ACTOR-/);
+  const signature = sign(null, signingBytes(draft.unsigned), f.keys.privateKey).toString("hex");
+  assert.equal((await f.engine.submitTransition({ unsigned: draft.unsigned, signature })).status, "PENDING_CONSENSUS");
+});
+
+test("each configured VM refuses the other schema, contract digest and actor namespace", async () => {
+  for (const [id, other] of [[VM_ID, ROOT_VM_ID], [ROOT_VM_ID, VM_ID]]) {
+    const f = await fixture("AI_MEDIUM_001.json", id);
+    const original = structuredClone(f.state);
+    f.setState({ ...original, schema: vmIdentity(other).stateSchema });
+    await assert.rejects(() => f.engine.observe(), /state schema mismatch/);
+    f.setState(original);
+    for (const digest of [undefined, vmIdentity(other).contractSHA256]) {
+      f.client.status = async () => statusFor(f.state, { operation_contract_sha256: digest });
+      await assert.rejects(() => f.engine.observe(), /contract hash mismatch/);
+    }
+    f.client.status = async () => statusFor(f.state, { operation_contract_sha256: vmIdentity(id).contractSHA256 });
+    f.engine.config.actor_id = keyMaterial(other).actorId;
+    assert.equal((await f.engine.decide("AI_BOUNDED_TOOL_BROKER")).allowed, false);
+  }
+});
 
 test("broker grants a controlled AI tool only while accepted entry is PRESENT", async () => {
   const f = await fixture();
@@ -199,4 +229,93 @@ test("shipped AI profile can draft and submit same-open-locus REENTER after a fr
   });
   const signature = sign(null, signingBytes(draft.unsigned), f.keys.privateKey).toString("hex");
   assert.equal((await f.engine.submitTransition({ unsigned: draft.unsigned, signature })).status, "PENDING_CONSENSUS");
+});
+
+test("shared scope contract permits BOUND and body-local capacity across an active locus", async () => {
+  const f = await fixture("PRESENCE_AVALANCHE_FIELD_001.json");
+  const noLocus = structuredClone(f.state);
+  noLocus.active_locus_id = "";
+  noLocus.body = { posture: "DORMANT_P0", presence_count: 0, reason: "NO_CURRENT_ENTRY" };
+  f.setState(noLocus);
+  const bound = await f.engine.prepareDraft({
+    operation: "BOUND",
+    locus_id: "LOCUS-NEW",
+    observed_at: 1001,
+    payload: {
+      locus_id: "LOCUS-NEW",
+      purpose_sha256: "1".repeat(64),
+      closure_condition_sha256: "2".repeat(64),
+      capacity_ceiling_units: 10
+    }
+  });
+  assert.equal(bound.unsigned.locus_id, "LOCUS-NEW");
+
+  f.setState(presentState(f.keys.actorId, f.keys.publicKeyHex));
+  const declaration = await f.engine.prepareDraft({
+    operation: "DECLARE_CAPACITY",
+    locus_id: "",
+    observed_at: 1001,
+    payload: {
+      actual_units: 9,
+      resource_commitment_sha256: "3".repeat(64),
+      basis_sha256: "4".repeat(64)
+    }
+  });
+  assert.equal(declaration.unsigned.locus_id, "");
+  assert.equal((await f.engine.observe()).state.active_locus_id, "LOCUS-001");
+});
+
+test("invalid active and body-local loci are rejected before VM drafting", async () => {
+  const f = await fixture("PRESENCE_AVALANCHE_FIELD_001.json");
+  let draftCalls = 0;
+  const originalDraft = f.client.draft;
+  f.client.draft = async (request) => {
+    draftCalls += 1;
+    return originalDraft(request);
+  };
+  await assert.rejects(() => f.engine.prepareDraft({
+    operation: "DECLARE_CAPACITY",
+    locus_id: f.state.active_locus_id,
+    observed_at: 1001,
+    payload: { actual_units: 9, resource_commitment_sha256: "3".repeat(64), basis_sha256: "4".repeat(64) }
+  }), /BODY_LOCAL/);
+  await assert.rejects(() => f.engine.prepareDraft({
+    operation: "OBSERVE_CROSSING",
+    locus_id: "",
+    observed_at: 1001,
+    payload: {}
+  }), /ACTIVE_LOCUS/);
+  assert.equal(draftCalls, 0);
+});
+
+test("CORRECT follows its target scope and unknown operations fail closed", async () => {
+  const f = await fixture("PRESENCE_AVALANCHE_FIELD_001.json");
+  const target = "7".repeat(64);
+  const state = structuredClone(f.state);
+  state.events[target] = { transition_id: target, locus_id: "LOCUS-CLOSED" };
+  f.setState(state);
+  const payload = {
+    target_transition_id: target,
+    replacement_commitment: "8".repeat(64),
+    reason_sha256: "9".repeat(64)
+  };
+  const correction = await f.engine.prepareDraft({
+    operation: "CORRECT",
+    locus_id: "LOCUS-CLOSED",
+    observed_at: 1001,
+    payload
+  });
+  assert.equal(correction.unsigned.locus_id, "LOCUS-CLOSED");
+  await assert.rejects(() => f.engine.prepareDraft({
+    operation: "CORRECT",
+    locus_id: f.state.active_locus_id,
+    observed_at: 1001,
+    payload
+  }), /TARGET_SCOPED/);
+  await assert.rejects(() => f.engine.prepareDraft({
+    operation: "UNKNOWN_OPERATION",
+    locus_id: "",
+    observed_at: 1001,
+    payload: {}
+  }), /unsupported operation|denied/);
 });

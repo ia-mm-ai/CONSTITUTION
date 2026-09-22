@@ -1,4 +1,4 @@
-import { VM_OPERATIONS } from "./operations.js";
+import { VM_OPERATIONS, VM_OPERATION_CONTRACT_SHA256, ROOT_OPERATION_CONTRACT_SHA256 } from "./operations.js";
 export { VM_OPERATION_CONTRACT_SHA256 } from "./operations.js";
 
 export const IMPLEMENTATION = "AVALANCHE_IMPLEMENTATION_001";
@@ -16,6 +16,23 @@ export const VM_VERSION = "presence-avalanche-vm/1.0.0";
 export const VM_ID = "cNhhBznc1YN29QVJMQbK7sxy6GsimFKN6yvftRjPK7qWEvZw8";
 export const VM_RPCCHAINVM_PROTOCOL = 46;
 export const VM_STATE_SCHEMA = "PRESENCE_AVALANCHE_RUNTIME_STATE_001";
+export const ROOT_VM_ID = "cQYXygFUVutQucm4s8pr8M51sRdS1UfrTbpMdEgpRYt2JvEzr";
+export const VM_IDENTITIES = Object.freeze({
+  [VM_ID]: Object.freeze({
+    actorPrefix: "PRESENCE-AVALANCHE-ACTOR-",
+    stateSchema: VM_STATE_SCHEMA,
+    contractSHA256: VM_OPERATION_CONTRACT_SHA256
+  }),
+  [ROOT_VM_ID]: Object.freeze({
+    actorPrefix: "LOCALITY-ACTOR-",
+    stateSchema: "PRESENCE_AVALANCHE_STATE_001",
+    contractSHA256: ROOT_OPERATION_CONTRACT_SHA256
+  })
+});
+export function vmIdentity(id) {
+  if (!Object.hasOwn(VM_IDENTITIES, id)) throw new Error("unsupported expected_vm_id");
+  return VM_IDENTITIES[id];
+}
 export const VM_TRANSITION_SCHEMA = "PRESENCE_AVALANCHE_TRANSITION_001";
 export const VM_RECEIPT_SCHEMA = "PRESENCE_AVALANCHE_RECEIPT_001";
 export const VM_FORM_ID = "PRESENCE-AVALANCHE-FORM-001";
@@ -23,6 +40,15 @@ export const VM_FORM_SHA256 = "e70fedb8ec8420275703542ee16d6d0429b1b5979b0b8ff96
 export const VM_EFFECTS = Object.freeze(Object.fromEntries(
   Object.values(VM_OPERATIONS).map(({ operation, effect }) => [operation, effect])
 ));
+export const OPERATION_CONTRACT = Object.freeze(Object.values(VM_OPERATIONS));
+export const VM_SCOPES = Object.freeze(Object.fromEntries(
+  OPERATION_CONTRACT.map(({ operation, scope }) => [operation, scope])
+));
+export function operationDefinition(operation) {
+  const definition = VM_OPERATIONS[operation];
+  if (!definition) throw new Error(`unsupported operation ${operation}`);
+  return definition;
+}
 
 export const REQUIRED_EFFECT_CEILING = Object.freeze([
   "NO_FORMATION_BY_CONFORMANCE",

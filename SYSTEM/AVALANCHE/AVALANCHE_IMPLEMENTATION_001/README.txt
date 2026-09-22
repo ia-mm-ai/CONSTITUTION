@@ -21,7 +21,15 @@ Source layout
   qualification.json                 results, missing observations and ceilings
 
 Build from the repository checkout with Go toolchain downloads available:
-  bash SYSTEM/AVALANCHE/AVALANCHE_IMPLEMENTATION_001/scripts/build.sh /tmp/presence-build
+  bash SYSTEM/AVALANCHE/AVALANCHE_IMPLEMENTATION_001/scripts/build.sh /tmp/presence-build vm
+
+The merge retains the independently added root-level VM documented in README.md.
+build.sh defaults to that root implementation; its second argument "vm" selects
+this branch's VM. Their genesis, state schemas and actor namespaces are distinct;
+do not reuse state or qualification evidence across them. FIELD selects the
+exact identity from expected_vm_id and checks its schema and contract digest.
+Both embedded operation tables must agree on every operation/effect/scope entry.
+The shared scripts/test.sh validates both source trees and FIELD.
 
 Tests (working directories are material; use the exact successor directories):
   cd SYSTEM/AVALANCHE/AVALANCHE_IMPLEMENTATION_001/vm
@@ -38,7 +46,7 @@ only a disposable loopback three-validator network, checks the critical FIELD
 lifecycle, bounces a validator, restarts all three, and removes temporary keys.
 See integration/network-result.json for the observed run and its exact scope.
 
-The FIELD package is private and requires its sibling vm/protocol directory.
+The FIELD package is private and requires both protocol/ and vm/protocol/.
 Do not independently install or distribute it without the same contract bytes.
 The contract is an exhaustive array of unique operation/effect/scope entries.
 Both runtimes consume it, reject missing/unknown entries and verify their

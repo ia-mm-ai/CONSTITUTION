@@ -42,6 +42,19 @@ const contractBytes = readFileSync(new URL("../../vm/protocol/operations.json", 
 export const VM_OPERATION_CONTRACT_SHA256 = createHash("sha256").update(contractBytes).digest("hex");
 export const VM_OPERATIONS = validateOperationContract(JSON.parse(contractBytes.toString("utf8")));
 
+const rootContractBytes = readFileSync(new URL("../../protocol/operations.json", import.meta.url));
+export const ROOT_OPERATION_CONTRACT_SHA256 = createHash("sha256").update(rootContractBytes).digest("hex");
+const rootOperations = validateOperationContract({
+  protocol: "PRESENCE_AVALANCHE_VM_001",
+  ...JSON.parse(rootContractBytes.toString("utf8"))
+});
+for (const operation of SUPPORTED_VM_OPERATIONS) {
+  if (rootOperations[operation].scope !== VM_OPERATIONS[operation].scope ||
+      rootOperations[operation].effect !== VM_OPERATIONS[operation].effect) {
+    throw new Error(`VM operation contracts disagree for ${operation}`);
+  }
+}
+
 export function assertOperationScope(request, state) {
   const classification = VM_OPERATIONS[request.operation];
   if (!classification) throw new Error(`unknown VM operation ${request.operation}`);

@@ -18,7 +18,7 @@ function exactFields(value, fields, label) {
 }
 
 export function signingBytes(unsigned) {
-  // The VM signs Go encoding/json output in struct field order.
+  // PRESENCE_AVALANCHE_VM_001 signs Go encoding/json output in struct field order.
   const ordered = {
     schema: unsigned.schema,
     operation: unsigned.operation,

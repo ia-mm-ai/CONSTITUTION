@@ -4,21 +4,26 @@ import { readdir, readFile } from "node:fs/promises";
 import { resolve } from "node:path";
 import { validateProfile } from "../src/profile.js";
 
-test("all four reference media satisfy the common profile contract", async () => {
+test("both sets of reference media satisfy the common profile contract", async () => {
   const directory = resolve("profiles");
   const files = (await readdir(directory)).filter((file) => file.endsWith(".json")).sort();
-  assert.deepEqual(files, ["AI_FIELD_001.json", "DEVICE_FIELD_001.json", "HUMAN_FIELD_001.json", "LOCALITY_FIELD_001.json"]);
+  assert.deepEqual(files, [
+    "AI_FIELD_001.json", "AI_MEDIUM_001.json", "DEVICE_FIELD_001.json", "DEVICE_MEDIUM_001.json",
+    "HUMAN_FIELD_001.json", "HUMAN_MEDIUM_001.json", "LOCALITY_FIELD_001.json", "PRESENCE_AVALANCHE_FIELD_001.json"
+  ]);
   const kinds = [];
   for (const file of files) {
     kinds.push(validateProfile(JSON.parse(await readFile(resolve(directory, file), "utf8"))).embodiment_kind);
   }
-  assert.deepEqual(kinds.sort(), ["AI", "DEVICE", "HUMAN", "LOCALITY"]);
+  assert.deepEqual(kinds.sort(), ["AI", "AI", "DEVICE", "DEVICE", "HUMAN", "HUMAN", "LOCALITY", "LOCALITY"]);
 });
 
 test("a profile cannot silently drop an effect ceiling", async () => {
-  const profile = JSON.parse(await readFile(resolve("profiles/AI_FIELD_001.json"), "utf8"));
-  profile.effect_ceiling.pop();
-  assert.throws(() => validateProfile(profile), /effect_ceiling is missing/);
+  for (const file of ["AI_FIELD_001.json", "AI_MEDIUM_001.json"]) {
+    const profile = JSON.parse(await readFile(resolve("profiles", file), "utf8"));
+    profile.effect_ceiling.pop();
+    assert.throws(() => validateProfile(profile), /effect_ceiling is missing/);
+  }
 });
 
 test("FIELD contract references resolve to the shared implementation artifacts", async () => {

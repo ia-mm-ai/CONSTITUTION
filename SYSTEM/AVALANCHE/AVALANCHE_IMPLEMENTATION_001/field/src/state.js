@@ -2,7 +2,7 @@ import {
   MEDIUM_OBSERVATION_SCHEMA,
   VM_FORM_ID,
   VM_FORM_SHA256,
-  VM_STATE_SCHEMA
+  VM_IDENTITIES
 } from "./constants.js";
 import { assertPlainObject, isDigest } from "./canonical.js";
 
@@ -16,7 +16,7 @@ function requireSafeUint(value, label) {
 
 export function validateVMState(state) {
   assertPlainObject(state, "VM state");
-  if (state.schema !== VM_STATE_SCHEMA) throw new Error(`unsupported VM state schema ${state.schema}`);
+  if (!Object.values(VM_IDENTITIES).some(({ stateSchema }) => state.schema === stateSchema)) throw new Error(`unsupported VM state schema ${state.schema}`);
   requireSafeUint(state.revision, "VM revision");
   if (!isDigest(state.state_commitment)) throw new Error("VM state commitment is invalid");
   requireString(state.host_locality_id, "host_locality_id");

@@ -6,6 +6,7 @@ import {
   REQUIRED_EFFECT_CEILING,
   VM_FORM_ID,
   VM_FORM_SHA256,
+  VM_ID,
   VM_OPERATION_CONTRACT_SHA256,
   VM_REQUIRED_MEDIUM_CAPABILITIES,
   VM_STATE_SCHEMA,
@@ -24,11 +25,11 @@ export async function testDirectory() {
   return directory;
 }
 
-export function keyMaterial() {
+export function keyMaterial(vmID = VM_ID) {
   const pair = generateKeyPairSync("ed25519");
   const der = pair.publicKey.export({ format: "der", type: "spki" });
   const publicKeyHex = der.subarray(-32).toString("hex");
-  return { ...pair, publicKeyHex, actorId: actorIdFromPublicKey(publicKeyHex) };
+  return { ...pair, publicKeyHex, actorId: actorIdFromPublicKey(publicKeyHex, vmID) };
 }
 
 export function presentState(actorId, publicKeyHex, overrides = {}) {

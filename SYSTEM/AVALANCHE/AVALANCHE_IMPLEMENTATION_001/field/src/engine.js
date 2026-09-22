@@ -3,8 +3,7 @@ import {
   NON_EFFECTS,
   REQUIRED_EFFECT_CEILING,
   VM_EFFECTS,
-  VM_ID,
-  VM_OPERATION_CONTRACT_SHA256,
+  vmIdentity,
   VM_RECEIPT_SCHEMA,
   VM_REQUIRED_MEDIUM_CAPABILITIES,
   VM_RPCCHAINVM_PROTOCOL,
@@ -28,11 +27,12 @@ function assertStatus(status, state, config) {
   if (!status || typeof status !== "object" || Array.isArray(status)) throw new Error("VM status is invalid");
   if (status.healthy !== true) throw new Error("VM reports unhealthy");
   if (status.vm_version !== VM_VERSION || config.expected_vm_version !== VM_VERSION) throw new Error("VM version mismatch");
-  if (status.operation_contract_sha256 !== VM_OPERATION_CONTRACT_SHA256) throw new Error("VM operation contract hash mismatch");
+  const identity = vmIdentity(config.expected_vm_id);
+  if (status.operation_contract_sha256 !== identity.contractSHA256) throw new Error("VM operation contract hash mismatch");
   if (status.rpcchainvm_protocol !== VM_RPCCHAINVM_PROTOCOL || config.expected_rpcchainvm_protocol !== VM_RPCCHAINVM_PROTOCOL) {
     throw new Error("RPCChainVM protocol mismatch");
   }
-  if (config.expected_vm_id !== VM_ID) throw new Error("configured VM ID mismatch");
+  if (state.schema !== identity.stateSchema) throw new Error("configured VM state schema mismatch");
   if (status.locality_id !== config.expected_locality_id || state.host_locality_id !== config.expected_locality_id) {
     throw new Error("host locality identity mismatch");
   }
@@ -112,7 +112,7 @@ export class MediumEngine {
       reason = "OPERATION_OUTSIDE_PROFILE_ALLOWLIST";
     }
     const boundKey = state.actor_keys?.[this.config.actor_id];
-    const derivedActor = actorIdFromPublicKey(this.config.actor_public_key) === this.config.actor_id;
+    const derivedActor = actorIdFromPublicKey(this.config.actor_public_key, this.config.expected_vm_id) === this.config.actor_id;
     const acceptedHost = this.config.actor_id === state.host_locality_id && boundKey === this.config.actor_public_key;
     if (!derivedActor && !acceptedHost) {
       allowed = false;
