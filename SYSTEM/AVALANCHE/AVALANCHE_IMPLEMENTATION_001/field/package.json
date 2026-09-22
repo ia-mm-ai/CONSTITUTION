@@ -1,0 +1,41 @@
+{
+  "name": "presence-avalanche-field",
+  "version": "2.0.0",
+  "description": "Fail-closed companion medium for PRESENCE_AVALANCHE_VM_001 v3.0.0",
+  "type": "module",
+  "private": true,
+  "exports": {
+    ".": "./src/runtime.js",
+    "./broker": "./src/broker.js",
+    "./continuity": "./src/continuity.js",
+    "./constants": "./src/constants.js"
+  },
+  "files": [
+    "bin/",
+    "src/",
+    "profiles/",
+    "source/",
+    "contract/",
+    "lineage/",
+    "docs/",
+    "examples/",
+    "LINEAGE.md",
+    "SECURITY.md",
+    "RELEASE_MANIFEST.json",
+    "MANIFEST.sha256"
+  ],
+  "engines": {
+    "node": ">=22"
+  },
+  "bin": {
+    "presence-avalanche-field": "./bin/presence-avalanche-field.js"
+  },
+  "scripts": {
+    "test": "node --test test/*.test.js",
+    "verify": "node ./scripts/verify.mjs",
+    "verify:vm003-evidence": "node ./scripts/verify-vm003-evidence.mjs",
+    "qualify": "node ./scripts/qualify.mjs",
+    "seal": "node ./scripts/seal.mjs",
+    "start": "node ./bin/presence-avalanche-field.js serve"
+  }
+}

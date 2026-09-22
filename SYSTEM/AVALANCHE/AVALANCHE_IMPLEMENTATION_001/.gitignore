@@ -1,0 +1,16 @@
+/artifacts/*
+!/artifacts/.gitkeep
+/build/
+/rehearsal/evidence/
+/rehearsal/runs/
+*.private.json
+*.key
+*.pem
+*.p12
+staker.key
+signer.key
+/.env
+/secrets/
+/credentials/
+*.log
+.DS_Store

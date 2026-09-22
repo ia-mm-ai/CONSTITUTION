@@ -1,0 +1,8 @@
+{
+  "schema": "PRESENCE_DEPLOYMENT_DESCRIPTOR_001",
+  "genesis_id": "REPLACE-WITH-UNIQUE-GENESIS-ID",
+  "locality_id": "REPLACE-WITH-UNIQUE-LOCALITY-ID",
+  "purpose": "Replace with the bounded purpose of this locality.",
+  "source_reference": "REPLACE-WITH-SOURCE-REFERENCE",
+  "source_sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+}

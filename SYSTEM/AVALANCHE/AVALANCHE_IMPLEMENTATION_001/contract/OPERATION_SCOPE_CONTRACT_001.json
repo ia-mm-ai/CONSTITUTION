@@ -1,0 +1,59 @@
+{
+  "schema": "PRESENCE_OPERATION_SCOPE_CONTRACT_001",
+  "version": "1.0.0",
+  "implementation": "AVALANCHE_IMPLEMENTATION_001",
+  "vm_protocol": "PRESENCE_AVALANCHE_VM_001",
+  "authority": "SINGLE_NORMATIVE_SOURCE_FOR_VM_AND_FIELD_OPERATION_SCOPES",
+  "unknown_operation_rule": "FAIL_CLOSED",
+  "missing_scope_rule": "FAIL_CLOSED",
+  "scope_classes": {
+    "NEW_LOCUS": {
+      "transition_locus_rule": "NONEMPTY_PROPOSED_NEW_LOCUS_ID",
+      "active_locus_rule": "MUST_NOT_NAME_AN_ALREADY_ACTIVE_LOCUS",
+      "description": "The transition names the proposed new locus. It must not pretend that the named locus is an already active locus."
+    },
+    "ACTIVE_LOCUS": {
+      "transition_locus_rule": "EXACT_ACCEPTED_ACTIVE_LOCUS_ID",
+      "active_locus_rule": "AN_ACTIVE_LOCUS_MUST_EXIST",
+      "description": "The transition must name the exact accepted active locus."
+    },
+    "BODY_LOCAL": {
+      "transition_locus_rule": "EMPTY",
+      "active_locus_rule": "ACTIVE_LOCUS_MAY_EXIST_UNLESS_THE_VM_OPERATION_HAS_A_STRICTER_LAWFUL_CONDITION",
+      "description": "Body/locality-level operation. The transition locus_id must be empty; an active locus may still exist unless the VM operation has a stricter lawful condition."
+    },
+    "DORMANT_BODY": {
+      "transition_locus_rule": "EMPTY",
+      "active_locus_rule": "NO_ACTIVE_LOCUS_AND_EXACT_VM_DORMANT_POSTURE_CONDITIONS",
+      "description": "Requires an empty transition locus_id, no active locus, and the VM's exact dormant-posture conditions."
+    },
+    "TARGET_SCOPED": {
+      "transition_locus_rule": "EXACT_SCOPE_OF_THE_TARGET_TRANSITION",
+      "active_locus_rule": "INCIDENTAL_CURRENT_ACTIVITY_DOES_NOT_BIND",
+      "description": "The transition binds the exact scope/locus of its target transition. It must not be forced into the currently active locus merely because another locus is open."
+    }
+  },
+  "operations": {
+    "BOUND": { "scope": "NEW_LOCUS", "effect": "OPENS_TEMPORARY_LOCUS_ONLY" },
+    "PRESENT_FORM": { "scope": "ACTIVE_LOCUS", "effect": "ELIGIBILITY_TO_GATE_ONLY" },
+    "GATE_DISPOSITION": { "scope": "ACTIVE_LOCUS", "effect": "SETS_GATE_POSTURE_ONLY" },
+    "ENTER": { "scope": "ACTIVE_LOCUS", "effect": "ENTERS_CURRENT_LOCUS_ONLY" },
+    "CHECKPOINT_DEPARTURE": { "scope": "ACTIVE_LOCUS", "effect": "CHECKPOINTS_PARTICIPANT_STATE_FOR_DEPARTURE_ONLY" },
+    "REENTER": { "scope": "ACTIVE_LOCUS", "effect": "RENEWS_ENTRY_WITH_CARRIED_STATE_SUCCESSION_ONLY" },
+    "OBSERVE_CROSSING": { "scope": "ACTIVE_LOCUS", "effect": "RECORDS_CROSSING_ONLY" },
+    "MATTER_DISPOSITION": { "scope": "ACTIVE_LOCUS", "effect": "SETS_ACTOR_LOCAL_MATTER_POSTURE_ONLY" },
+    "RECORD_EMERGENCE": { "scope": "ACTIVE_LOCUS", "effect": "RECORDS_FIELD_LOCAL_EMERGENCE_ONLY" },
+    "CORRECT": { "scope": "TARGET_SCOPED", "effect": "APPENDS_CORRECTION_ONLY" },
+    "EXIT": { "scope": "ACTIVE_LOCUS", "effect": "EXITS_CURRENT_LOCUS_ONLY" },
+    "CLOSE": { "scope": "ACTIVE_LOCUS", "effect": "CLOSES_LOCUS_AND_ADDRESSES_RESIDUE_ONLY" },
+    "INCORPORATE_ADDRESSED_RESIDUE": { "scope": "BODY_LOCAL", "effect": "INCORPORATES_ADDRESSED_RESIDUE_LOCALLY_ONLY" },
+    "DECLARE_CAPACITY": { "scope": "BODY_LOCAL", "effect": "SETS_SIGNED_LOCAL_CAPACITY_ACCOUNT_ONLY" },
+    "PULSE": { "scope": "BODY_LOCAL", "effect": "RECORDS_SIGNED_LOCAL_CURRENTNESS_ONLY" },
+    "RECLAIM_ADMISSION_OFFER": { "scope": "ACTIVE_LOCUS", "effect": "EXPIRES_UNENTERED_ADMISSION_OFFER_ONLY" },
+    "REGISTER_CONTINUITY_AUTHORITY": { "scope": "BODY_LOCAL", "effect": "REGISTERS_BOUNDED_CONTINUITY_AUTHORITY_ONLY" },
+    "EXHAUST_FORMATION_AUTHORITY": { "scope": "DORMANT_BODY", "effect": "EXHAUSTS_FORMATION_AUTHORITY_WITHOUT_TRANSFER" },
+    "PROPOSE_SUCCESSOR": { "scope": "BODY_LOCAL", "effect": "RECORDS_SUCCESSOR_PROPOSAL_ONLY" },
+    "ATTEST_SUCCESSOR": { "scope": "BODY_LOCAL", "effect": "APPENDS_SUCCESSOR_ATTESTATION_ONLY" },
+    "ACTIVATE_SUCCESSOR": { "scope": "DORMANT_BODY", "effect": "FREEZES_PREDECESSOR_AT_SUCCESSION_BOUNDARY_ONLY" }
+  }
+}

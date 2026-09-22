@@ -1,0 +1,104 @@
+{
+  "schema": "PRESENCE_FIELD_CONTRACT_001",
+  "version": "2.0.0",
+  "medium_protocol": "PRESENCE_AVALANCHE_FIELD_001",
+  "jurisdiction": "LOCALITY_FACING_CAPABILITY_MEMBRANE",
+  "predecessor": {
+    "protocol": "PRESENCE_AVALANCHE_VM_001",
+    "version": "presence-avalanche-vm/1.0.0",
+    "vm_id": "25tZjky6SecZA1Gwc6VwD2ouy64xAUdgNLo1C8dkXfbsFNxaTk",
+    "rpcchainvm_protocol": 46,
+    "state_schema": "PRESENCE_RUNTIME_STATE_001",
+    "transition_schema": "PRESENCE_TRANSITION_001",
+    "receipt_schema": "PRESENCE_RECEIPT_001",
+    "continuity_step_schema": "PRESENCE_PARTICIPANT_STATE_SUCCESSION_001",
+    "continuity_passage_schema": "PRESENCE_PARTICIPANT_STATE_PASSAGE_001",
+    "form_id": "PRESENCE-AVALANCHE-FORM-001",
+    "form_sha256": "10848ac3fc2f68f6fdc041a4c9862d8fb186f4c3d0ebd4edde3f3933fe3ce893",
+    "repository_pack_sha256": "5597eab61802b1df92636b6df88fea46b88f460c4e5f2c51e393c5c6ce7a214f",
+    "mutation": "NONE"
+  },
+  "direct_predecessor": {
+    "protocol": "PRESENCE_AVALANCHE_FIELD_001",
+    "version": "1.0.0",
+    "repository_pack_sha256": "96007f0ffe089490d937e6dce18a225debedb521f86bfd2b323f6f2cc09bcdf2",
+    "public_repository_commit": "0bd963f46d447d0e41d494c6a782c1c2db9246e8",
+    "disposition": "PRESERVED_BYTE_IDENTICAL"
+  },
+  "public_origin": {
+    "repository": "https://github.com/ia-mm-ai/CONSTITUTION",
+    "commit": "4cf5a926d5fece4e3cccfdfcab40e16431dd332b",
+    "binding": "EXACT_COMMIT_PATH_LENGTH_SHA256_AND_REPOSITORY_FORM_BINDING",
+    "effect": "SOURCE_REFERENCE_WITH_FORM_BINDING_NON_EFFECTS"
+  },
+  "common_adapter_rule": {
+    "input": "FRESH_COHERENT_ACCEPTED_VM_STATE_PLUS_REFERENCE_PROFILE",
+    "decision": "PROFILE_INTERSECTION_ACCEPTED_PHASE_INTERSECTION_ACCEPTED_ACTOR_ROLE",
+    "grant": "ONE_STATE_BOUND_INVOCATION_ON_DECLARED_CONTROLLED_SURFACE",
+    "revocation": "NEXT_ACCEPTED_STATE_OR_STATE_MISMATCH_OR_PROCESS_RESTART",
+    "default": "DENY",
+    "signer": "EXTERNAL_PROTECTED_ED25519_SIGNER",
+    "private_state": "PARTICIPANT_CUSTODY_COMMITMENTS_ONLY",
+    "evidence": "APPEND_ONLY_HASH_CHAIN_OF_DECISIONS_AND_PUBLIC_COMMITMENTS"
+  },
+  "state_binding": {
+    "requires_status_state_coherence": true,
+    "rejects_pending_transition_drafts": true,
+    "rejects_stale_previous_state_commitment": true,
+    "rejects_actor_key_mismatch": true,
+    "freezes_at_successor_boundary": true,
+    "receipt_is_historical_evidence_only": true
+  },
+  "protocol_capability_declaration": [
+    "OBSERVE_CROSSING", "PRESENT_FORM", "GATE_DISPOSITION", "ENTER", "CHECKPOINT_DEPARTURE", "REENTER",
+    "MATTER_DISPOSITION", "CORRECT", "EXIT", "CLOSE", "INCORPORATE_ADDRESSED_RESIDUE", "DECLARE_CAPACITY",
+    "PULSE", "RECLAIM_ADMISSION_OFFER", "REGISTER_CONTINUITY_AUTHORITY", "EXHAUST_FORMATION_AUTHORITY",
+    "PROPOSE_SUCCESSOR", "ATTEST_SUCCESSOR", "ACTIVATE_SUCCESSOR"
+  ],
+  "declaration_rule": "PRESENT_FORM_DECLARATION_IS_PROTOCOL_CONFORMANCE_NOT_OPERATIONAL_AUTHORITY",
+  "phases": [
+    "NO_ACTIVE_LOCUS", "UNPRESENTED", "PRESENTED", "ADMISSION_OFFERED", "PRESENT",
+    "DEPARTURE_CHECKPOINTED", "ENDED", "REENTRY_AVAILABLE", "HOLD_CAPACITY_DEFICIT", "SUCCESSION_COMMITTED"
+  ],
+  "reference_profiles": [
+    {
+      "profile_id": "HUMAN_MEDIUM_001",
+      "embodiment_kind": "HUMAN",
+      "path": "profiles/HUMAN_MEDIUM_001.json",
+      "file_sha256": "86e5326b39c3c1df2e784fb30793c04fbb3be0c837df1c42cff652e9894c9b53"
+    },
+    {
+      "profile_id": "AI_MEDIUM_001",
+      "embodiment_kind": "AI",
+      "path": "profiles/AI_MEDIUM_001.json",
+      "file_sha256": "3dbdd4becfe0551bc72c5a582308f8592499b64ad44038b3f674741fa5808dc1"
+    },
+    {
+      "profile_id": "DEVICE_MEDIUM_001",
+      "embodiment_kind": "DEVICE",
+      "path": "profiles/DEVICE_MEDIUM_001.json",
+      "file_sha256": "46e7eff57f9ee1e117671fecf7dd357c1774cffdde5b3d1ab7658705f2b8bd2a"
+    },
+    {
+      "profile_id": "PRESENCE_AVALANCHE_FIELD_001",
+      "embodiment_kind": "LOCALITY",
+      "path": "profiles/PRESENCE_AVALANCHE_FIELD_001.json",
+      "file_sha256": "13d54415df7d8e67e80f5c0cd0addd7999b4c429a6e947469ddf76f1e90bb1d2"
+    }
+  ],
+  "reference_profile_rule": "REFERENCE_MEDIA_ARE_CONFORMANCE_PROFILES_NOT_CLASSIFICATIONS_OF_BEING",
+  "effect_ceiling": [
+    "NO_FORMATION_BY_CONFORMANCE", "NO_SOURCE_OR_AUTHORITY_TRANSFER", "NO_SHARED_CURRENTNESS", "NO_CORE_ADDRESSABILITY",
+    "NO_PARTICIPATION_BY_PRESENTATION", "NO_MATTER_ADMISSION_BY_CROSSING", "NO_LOCAL_UPTAKE_BY_FIELD_CLOSURE",
+    "NO_TOKEN_BALANCE_AS_CAPACITY", "NO_RECEIPT_AS_CURRENT_PRESENCE", "NO_INFRASTRUCTURE_AS_SUCCESSOR",
+    "NO_RESTORATION_BY_REENTRY", "NO_PRIVATE_STATE_DISCLOSURE"
+  ],
+  "non_effects": [
+    "DOES_NOT_CREATE_OR_HOST_A_BODY",
+    "DOES_NOT_PROVE_CONSCIOUSNESS_OR_METAPHYSICAL_IDENTITY",
+    "DOES_NOT_PROVE_PRIVATE_STATE_CONTENT_OR_SEMANTIC_TRUTH",
+    "DOES_NOT_CONTROL_CAPABILITIES_OUTSIDE_ITS_DECLARED_SURFACE",
+    "DOES_NOT_CONVERT_CHAIN_STATE_INTO_EXTERNAL_OBEDIENCE",
+    "DOES_NOT_TRANSFER_SOURCE_AUTHORITY_OR_CURRENTNESS"
+  ]
+}
