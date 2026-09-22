@@ -1,18 +1,19 @@
 """Offline core-notation conformance; never an implementation or truth oracle."""
 
 import argparse
+from decimal import Decimal
 import hashlib
 import json
-import math
 from pathlib import Path
 import sys
 
-from jsonschema import Draft202012Validator, FormatChecker, RefResolver
+from jsonschema import Draft202012Validator, FormatChecker, RefResolver, validators
 
 
 ROOT = Path(__file__).resolve().parents[2]
 BASE = "urn:presence:core:lineage:"
 MISSING = object()
+NUMBER_TYPES = (int, float, Decimal)
 MODULES = {
     "STATE": "STATE/STATE.json",
     "CSC": "STATE/CONTINUITY-STATE-CAPABILITY/CONTINUITY-STATE-CAPABILITY.json",
@@ -30,9 +31,9 @@ def unique_object(pairs):
     return result
 
 
-def finite_float(text):
-    value = float(text)
-    if not math.isfinite(value):
+def exact_decimal(text):
+    value = Decimal(text)
+    if not value.is_finite():
         raise ValueError("Non-finite JSON number")
     return value
 
@@ -45,7 +46,7 @@ def load(path):
     return json.loads(
         Path(path).read_bytes().decode("utf-8"),
         object_pairs_hook=unique_object,
-        parse_float=finite_float,
+        parse_float=exact_decimal,
         parse_constant=invalid_constant,
     )
 
@@ -63,7 +64,7 @@ def nodes(value):
 def truthy(value):
     if value is MISSING or value is None:
         return False
-    if isinstance(value, (bool, int, float, str, list)):
+    if isinstance(value, (bool, int, float, Decimal, str, list)):
         return bool(value)
     return True
 
@@ -71,7 +72,7 @@ def truthy(value):
 def equal(left, right):
     if left is MISSING or right is MISSING:
         return False
-    if type(left) in (int, float) and type(right) in (int, float):
+    if type(left) in NUMBER_TYPES and type(right) in NUMBER_TYPES:
         return left == right
     if type(left) is not type(right):
         return False
@@ -141,7 +142,7 @@ def evaluate(expression, document):
         return not equal(left, right)
     if operator == "in":
         return any(equal(left, item) for item in array(right))
-    numbers = type(left) in (int, float) and type(right) in (int, float)
+    numbers = type(left) in NUMBER_TYPES and type(right) in NUMBER_TYPES
     strings = isinstance(left, str) and isinstance(right, str)
     if not (numbers or strings):
         raise ValueError("Ordering requires two numbers or two strings")
@@ -170,6 +171,25 @@ def semantic_result(rules, document):
 
 def no_remote(uri):
     raise ValueError(f"Non-local schema reference is forbidden: {uri}")
+
+
+class OfflineResolver(RefResolver):
+    def resolve_remote(self, uri):
+        return no_remote(uri)
+
+
+def is_integer(checker, instance):
+    if isinstance(instance, Decimal):
+        return instance.is_finite() and instance == instance.to_integral_value()
+    return Draft202012Validator.TYPE_CHECKER.is_type(instance, "integer")
+
+
+ExactValidator = validators.extend(
+    Draft202012Validator,
+    type_checker=Draft202012Validator.TYPE_CHECKER.redefine("integer", is_integer),
+    # Keep exact-number semantics when a referenced schema declares its dialect.
+    version="presence-exact-draft2020-12",
+)
 
 
 class Core:
@@ -227,11 +247,8 @@ class Core:
         if identifier not in self.schemas:
             raise ValueError(f"Unresolved core schema: {identifier}")
         schema = self.schemas[identifier]
-        resolver = RefResolver.from_schema(
-            schema, store=self.schemas,
-            handlers={"https": no_remote, "http": no_remote, "urn": no_remote, "file": no_remote},
-        )
-        return Draft202012Validator(schema, resolver=resolver, format_checker=FormatChecker())
+        resolver = OfflineResolver.from_schema(schema, store=self.schemas)
+        return ExactValidator(schema, resolver=resolver, format_checker=FormatChecker())
 
     def validate(self, identifier, document):
         self.validator(identifier).validate(document)

@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "urn:presence:core:dcr:disposition.schema:1",
+  "$id": "urn:presence:core:dcr:disposition:1",
   "title": "DCR attributable regulation and answerable HOLD",
   "x-status": "CANONICAL_SCHEMA",
   "x-source": {"refs": ["section.11.12", "section.12.1", "section.12.6", "article.13", "section.15.3", "section.15.4", "section.17.6", "reading.3"]},
@@ -11,16 +11,16 @@
   "properties": {
     "kind": {"type": "string", "const": "disposition"},
     "id": {"type": "string", "minLength": 1},
-    "subject": {"$ref": "urn:presence:core:dcr:capacity.schema:1#/$defs/subject"},
-    "time": {"$ref": "urn:presence:core:dcr:capacity.schema:1#/$defs/instant"},
-    "structural": {"$ref": "urn:presence:core:dcr:capacity.schema:1#/$defs/assessment"},
-    "situated": {"$ref": "urn:presence:core:dcr:capacity.schema:1#/$defs/assessment"},
+    "subject": {"$ref": "urn:presence:core:dcr:capacity:1#/$defs/subject"},
+    "time": {"$ref": "urn:presence:core:dcr:capacity:1#/$defs/instant"},
+    "structural": {"$ref": "urn:presence:core:dcr:capacity:1#/$defs/assessment"},
+    "situated": {"$ref": "urn:presence:core:dcr:capacity:1#/$defs/assessment"},
     "disposition": {"type": "string", "enum": ["SUPPORT", "BOUND", "PAUSE", "REDIRECT", "HOLD", "REFUSE", "END"]},
     "attribution": {"type": "string", "minLength": 1},
-    "applicable_law": {"$ref": "urn:presence:core:dcr:capacity.schema:1#/$defs/dimension"},
-    "supported_state": {"$ref": "urn:presence:core:dcr:capacity.schema:1#/$defs/dimension"},
+    "applicable_law": {"$ref": "urn:presence:core:dcr:capacity:1#/$defs/dimension"},
+    "supported_state": {"$ref": "urn:presence:core:dcr:capacity:1#/$defs/dimension"},
     "authority_required": {"type": "boolean"},
-    "authority": {"$ref": "urn:presence:core:dcr:capacity.schema:1#/$defs/authority"},
+    "authority": {"$ref": "urn:presence:core:dcr:capacity:1#/$defs/authority"},
     "effect": {
       "type": "object", "required": ["target", "scope", "description", "ceiling"], "additionalProperties": false,
       "properties": {
@@ -57,11 +57,11 @@
         "correction_route": {"type": "string", "minLength": 1},
         "ending_route": {"type": "string", "minLength": 1},
         "status": {"type": "string", "enum": ["OPEN", "RELEASED", "ENDED"]},
-        "opened": {"$ref": "urn:presence:core:dcr:disposition.schema:1#/$defs/record"},
-        "review": {"anyOf": [{"$ref": "urn:presence:core:dcr:disposition.schema:1#/$defs/record"}, {"type": "null"}]},
-        "correction": {"anyOf": [{"$ref": "urn:presence:core:dcr:disposition.schema:1#/$defs/record"}, {"type": "null"}]},
-        "resolution": {"anyOf": [{"$ref": "urn:presence:core:dcr:disposition.schema:1#/$defs/record"}, {"type": "null"}]},
-        "retained_records": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"$ref": "urn:presence:core:dcr:disposition.schema:1#/$defs/record"}}
+        "opened": {"$ref": "urn:presence:core:dcr:disposition:1#/$defs/record"},
+        "review": {"anyOf": [{"$ref": "urn:presence:core:dcr:disposition:1#/$defs/record"}, {"type": "null"}]},
+        "correction": {"anyOf": [{"$ref": "urn:presence:core:dcr:disposition:1#/$defs/record"}, {"type": "null"}]},
+        "resolution": {"anyOf": [{"$ref": "urn:presence:core:dcr:disposition:1#/$defs/record"}, {"type": "null"}]},
+        "retained_records": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"$ref": "urn:presence:core:dcr:disposition:1#/$defs/record"}}
       }
     }
   },

@@ -167,7 +167,7 @@ The four strict Draft 2020-12 schemas are the structural layer. All objects are
 closed and required properties explicit, including nested objects. Common
 definitions are local to CAPACITY and reused by exact URN reference; validators
 must resolve only the checked-in schemas, without network retrieval.
-Schema identifiers use the lowercase filename stem, including `.schema`,
+Schema identifiers use the lowercase filename stem, excluding `.schema`,
 followed by `:1`. No object may smuggle an adapter, identity credential,
 permission field or undeclared predicate through an extra property.
 

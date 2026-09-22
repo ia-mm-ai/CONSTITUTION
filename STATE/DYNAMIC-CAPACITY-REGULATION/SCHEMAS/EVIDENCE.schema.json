@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "urn:presence:core:dcr:evidence.schema:1",
+  "$id": "urn:presence:core:dcr:evidence:1",
   "title": "DCR bounded proof declaration",
   "x-status": "CANONICAL_SCHEMA",
   "x-source": {"refs": ["section.3.3", "section.18.1", "section.18.2", "section.18.3", "section.18.4", "reading.3", "reading.7"]},
@@ -13,8 +13,8 @@
     "id": {"type": "string", "minLength": 1},
     "object": {"type": "string", "minLength": 1},
     "method": {"type": "string", "enum": ["SELF_REPORT", "BEHAVIOR", "OPTIONS", "SIGNATURE", "REPLAY", "MEASUREMENT", "LOCAL_JUDGMENT", "CONFORMANCE"]},
-    "subject": {"$ref": "urn:presence:core:dcr:capacity.schema:1#/$defs/subject"},
-    "time": {"$ref": "urn:presence:core:dcr:capacity.schema:1#/$defs/interval"},
+    "subject": {"$ref": "urn:presence:core:dcr:capacity:1#/$defs/subject"},
+    "time": {"$ref": "urn:presence:core:dcr:capacity:1#/$defs/interval"},
     "basis": {"type": "string", "minLength": 1},
     "result": {"type": "string", "enum": ["SUPPORTED", "NOT_SUPPORTED", "UNKNOWN", "UNRESOLVED", "FAILED"]},
     "observation": {"type": "string", "enum": ["OCCURRENCE", "CARRIER", "RECORD", "REPRESENTATION", "INTERPRETATION"]},
@@ -22,8 +22,8 @@
       "type": "object", "required": ["object", "subject", "time", "result"], "additionalProperties": false,
       "properties": {
         "object": {"type": "string", "minLength": 1},
-        "subject": {"$ref": "urn:presence:core:dcr:capacity.schema:1#/$defs/subject"},
-        "time": {"$ref": "urn:presence:core:dcr:capacity.schema:1#/$defs/instant"},
+        "subject": {"$ref": "urn:presence:core:dcr:capacity:1#/$defs/subject"},
+        "time": {"$ref": "urn:presence:core:dcr:capacity:1#/$defs/instant"},
         "result": {"type": "string", "enum": ["SUPPORTED", "NOT_SUPPORTED", "UNKNOWN", "UNRESOLVED", "FAILED"]}
       }
     },

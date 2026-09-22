@@ -1,14 +1,16 @@
 {
-  "kind": "formal_model",
+  "kind": "canonical_standard",
   "status": "CANONICAL_STANDARD",
   "id": "urn:presence:core:dcr:1",
   "human_standard": "DYNAMIC-CAPACITY-REGULATION.md",
+  "scope": "Exact-locality, time-sensitive reconciliation of structural and situated capacity; attributable bounded regulation, independent motion dimensions and proof ceilings. Representation only.",
   "source": {"refs": ["reading.2", "reading.3", "reading.5", "reading.6", "reading.7", "article.4", "article.11", "article.12", "article.13", "article.18", "section.19.3", "section.19.4"]},
   "schemas": ["SCHEMAS/CAPACITY.schema.json", "SCHEMAS/MOTION.schema.json", "SCHEMAS/DISPOSITION.schema.json", "SCHEMAS/EVIDENCE.schema.json"],
   "vectors": ["VECTORS/SUPPORT.json", "VECTORS/HOLD.json", "VECTORS/REFUSAL.json", "VECTORS/INVALID-OVERREACH.json"],
   "evaluation": {
+    "classification": "CORE_ENCODING_RULE",
     "schema_dialect": "https://json-schema.org/draft/2020-12/schema",
-    "rule_order": "ARRAY_ORDER_INDEPENDENT_RULES_DEDUPLICATED_FAILURE_CODES",
+    "order": "ARRAY_ORDER_INDEPENDENT_RULES_DEDUPLICATED_FAILURE_CODES",
     "schema_invalid": {"semantic_result": "NOT_EVALUATED", "failure_codes": ["SCHEMA_INVALID"]},
     "consistent": "CONSISTENT_AT_DECLARED_SCOPE",
     "inconsistent": "INCONSISTENT",

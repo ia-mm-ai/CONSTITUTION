@@ -9,7 +9,7 @@
   "required": ["kind", "id", "status", "human_standard", "source", "scope", "schemas", "vectors", "evaluation", "rules"],
   "properties": {
     "kind": {"const": "canonical_standard"},
-    "id": {"type": "string", "pattern": "^urn:presence:core:(csc|dcr|lineage)(:lineage)?:1$"},
+    "id": {"enum": ["urn:presence:core:csc:1", "urn:presence:core:dcr:1", "urn:presence:core:lineage:lineage:1"]},
     "status": {"const": "CANONICAL_STANDARD"},
     "human_standard": {"$ref": "urn:presence:core:lineage:core:1#/$defs/text"},
     "source": {"$ref": "urn:presence:core:lineage:core:1#/$defs/source"},

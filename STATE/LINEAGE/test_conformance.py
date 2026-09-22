@@ -81,16 +81,37 @@ class ExpressionTests(unittest.TestCase):
     def test_strict_json_bytes(self):
         with tempfile.TemporaryDirectory() as directory:
             path = Path(directory) / "input.json"
-            for data in (b'{"x":1,"x":2}', b'NaN', b'Infinity', b'1e999', b'"\xff"'):
+            for data in (b'{"x":1,"x":2}', b'NaN', b'Infinity', b'"\xff"'):
                 path.write_bytes(data)
                 with self.assertRaises((ValueError, UnicodeError)):
                     core.load(path)
             path.write_bytes(b'{"value":null}')
             self.assertEqual(core.load(path), {"value": None})
+            path.write_bytes(b'[1.0000000000000001,1,1e999,1.0]')
+            values = core.load(path)
+            self.assertFalse(core.equal(values[0], values[1]))
+            self.assertTrue(core.equal(values[1], values[3]))
+            self.assertTrue(core.ExactValidator({"type": "integer"}).is_valid(values[3]))
+            self.assertTrue(core.ExactValidator({"type": "number"}).is_valid(values[2]))
 
     def test_remote_schema_reference_refused(self):
         with self.assertRaises(ValueError):
             core.no_remote("https://example.invalid/schema")
+        resolver = core.OfflineResolver.from_schema({})
+        with self.assertRaises(ValueError):
+            resolver.resolve_remote("ftp://example.invalid/schema")
+
+    def test_exact_integer_through_schema_reference(self):
+        target = {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "$id": "urn:vector:integer",
+            "type": "integer",
+        }
+        schema = {"$ref": "urn:vector:integer"}
+        resolver = core.OfflineResolver.from_schema(schema, store={target["$id"]: target})
+        validator = core.ExactValidator(schema, resolver=resolver)
+        self.assertTrue(validator.is_valid(core.Decimal("1.0")))
+        self.assertFalse(validator.is_valid(core.Decimal("1.0000000000000001")))
 
 
 class CompositionTests(unittest.TestCase):

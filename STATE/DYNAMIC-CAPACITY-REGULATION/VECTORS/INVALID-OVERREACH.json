@@ -2,96 +2,126 @@
   "kind":"normative_vector_suite","status":"NORMATIVE_VECTOR",
   "source":{"refs":["reading.3","reading.5","reading.6","reading.7","section.11.10","section.12.2","section.13.7","section.18.3","section.18.4"]},
   "cases":[
-    {"id":"capacity-missing-required","schema":"urn:presence:core:dcr:capacity.schema:1","input":{"kind":"capacity"},"expected":{"schema_valid":false,"semantic_result":"NOT_EVALUATED","failure_codes":["SCHEMA_INVALID"]},"source":{"refs":["reading.3","reading.5"]},"forbidden_inference":"Missing data does not mean absent capacity."},
-    {"id":"motion-null-required-object","schema":"urn:presence:core:dcr:motion.schema:1","input":null,"expected":{"schema_valid":false,"semantic_result":"NOT_EVALUATED","failure_codes":["SCHEMA_INVALID"]},"source":{"refs":["reading.3","reading.5"]},"forbidden_inference":"Null is not a refusal, permission or incapacity judgment."},
-    {"id":"disposition-missing-attribution","schema":"urn:presence:core:dcr:disposition.schema:1","input":{"kind":"disposition","disposition":"HOLD"},"expected":{"schema_valid":false,"semantic_result":"NOT_EVALUATED","failure_codes":["SCHEMA_INVALID"]},"source":{"refs":["section.13.4","reading.3"]},"forbidden_inference":"A bare HOLD label is not an answerable HOLD."},
-    {"id":"evidence-missing-proof-fields","schema":"urn:presence:core:dcr:evidence.schema:1","input":{"kind":"evidence","result":"SUPPORTED"},"expected":{"schema_valid":false,"semantic_result":"NOT_EVALUATED","failure_codes":["SCHEMA_INVALID"]},"source":{"refs":["section.18.4","reading.3"]},"forbidden_inference":"An asserted result is not a bounded proof declaration."},
     {
-      "id":"structural-possibility-not-situated-support","schema":"urn:presence:core:dcr:capacity.schema:1",
+      "id":"authority-expired-wrong-scope","schema":"urn:presence:core:dcr:motion:1",
+      "input":{"kind":"motion","id":"max","subject":{"locality":"L","bearer":"B","act":"A","target":"T","relation":"R","scope":"S","conditions":["C"]},"time":{"frame":"f","at":5},"dimensions":{"agency":{"posture":"UNKNOWN","basis":null,"evidence":[]},"autonomy":{"posture":"UNKNOWN","basis":null,"evidence":[]},"capability":{"posture":"UNKNOWN","basis":null,"evidence":[]},"structural_capacity":{"posture":"UNKNOWN","basis":null,"evidence":[]},"situated_capacity":{"posture":"UNKNOWN","basis":null,"evidence":[]},"regulation":{"posture":"UNKNOWN","basis":null,"evidence":[]},"authority":{"posture":"YES","basis":"historical basis","evidence":["old-authority"]},"execution":{"posture":"UNKNOWN","basis":null,"evidence":[]},"consequence":{"posture":"UNKNOWN","basis":null,"evidence":[]}},"necessary":["authority"],"authority":{"source":"local-source","basis":"old-basis","bearer":"B","function":"A","target":"OTHER","scope":"OTHER","duration":{"frame":"f","from":1,"until":4},"conditions":["OTHER"],"delegation":"none","present_status":"ENDED"},"posture":"SUPPORTED","claimed_effect":"Unsupported attempted widening of ended Authority"},
+      "expected":{"schema_valid":true,"semantic_result":"INCONSISTENT","failure_codes":["EXACT_AUTHORITY_NOT_ESTABLISHED"]},
+      "source":{"refs":["section.12.1","section.12.3","section.12.4"]},"forbidden_inference":"A recoverable historical Authority record cannot supply present force at another scope."
+    },
+    {
+      "id":"dimension-yes-without-own-basis","schema":"urn:presence:core:dcr:motion:1",
+      "input":{"kind":"motion","id":"mbx","subject":{"locality":"L","bearer":"B","act":"A","target":"T","relation":"R","scope":"S","conditions":["C"]},"time":{"frame":"f","at":5},"dimensions":{"agency":{"posture":"YES","basis":null,"evidence":[]},"autonomy":{"posture":"UNKNOWN","basis":null,"evidence":[]},"capability":{"posture":"YES","basis":"demonstrated","evidence":["d"]},"structural_capacity":{"posture":"UNKNOWN","basis":null,"evidence":[]},"situated_capacity":{"posture":"UNKNOWN","basis":null,"evidence":[]},"regulation":{"posture":"UNKNOWN","basis":null,"evidence":[]},"authority":{"posture":"UNKNOWN","basis":null,"evidence":[]},"execution":{"posture":"UNKNOWN","basis":null,"evidence":[]},"consequence":{"posture":"UNKNOWN","basis":null,"evidence":[]}},"necessary":["agency"],"authority":null,"posture":"SUPPORTED","claimed_effect":"Unsupported Agency inference from demonstrated capability"},
+      "expected":{"schema_valid":true,"semantic_result":"INCONSISTENT","failure_codes":["DIMENSION_BASIS_MISSING"]},
+      "source":{"refs":["section.11.10","section.10.4"]},"forbidden_inference":"Capability evidence is not a missing Agency basis."
+    },
+    {
+      "id":"support-with-missing-regulatory-bases","schema":"urn:presence:core:dcr:disposition:1",
+      "input":{"kind":"disposition","id":"dbx","subject":{"locality":"L","bearer":"B","act":"A","target":"T","relation":"R","scope":"S","conditions":["C"]},"time":{"frame":"f","at":5},"structural":{"posture":"SUPPORTED","basis":"form","subject":{"locality":"L","bearer":"B","act":"A","target":"T","relation":"R","scope":"S","conditions":["C"]},"time":{"frame":"f","from":0,"until":10},"evidence":["s"],"failure":null},"situated":{"posture":"SUPPORTED","basis":"present","subject":{"locality":"L","bearer":"B","act":"A","target":"T","relation":"R","scope":"S","conditions":["C"]},"time":{"frame":"f","from":4,"until":6},"evidence":["p"],"failure":null},"disposition":"SUPPORT","attribution":"regulator","applicable_law":{"posture":"UNRESOLVED","basis":null,"evidence":[]},"supported_state":{"posture":"UNKNOWN","basis":null,"evidence":[]},"authority_required":true,"authority":null,"effect":{"target":"T","scope":"S","description":"Capacity alone cannot supply required regulatory basis","ceiling":"EXACT_MOTION_ONLY"},"constraint":"Exact scope does not cure missing basis","uncertainty":["Applicable law unresolved"],"failures":[],"hold":null},
+      "expected":{"schema_valid":true,"semantic_result":"INCONSISTENT","failure_codes":["EXACT_AUTHORITY_NOT_ESTABLISHED","REGULATORY_BASIS_NOT_ESTABLISHED"]},
+      "source":{"refs":["section.13.7","section.12.1"]},"forbidden_inference":"Capacity support cannot supply applicable law, supported State or required Authority."
+    },
+    {
+      "id":"hold-without-answerable-account","schema":"urn:presence:core:dcr:disposition:1",
+      "input":{"kind":"disposition","id":"dhx","subject":{"locality":"L","bearer":"B","act":"A","target":"T","relation":"R","scope":"S","conditions":["C"]},"time":{"frame":"f","at":5},"structural":{"posture":"UNKNOWN","basis":null,"subject":{"locality":"L","bearer":"B","act":"A","target":"T","relation":"R","scope":"S","conditions":["C"]},"time":{"frame":"f","from":0,"until":10},"evidence":[],"failure":null},"situated":{"posture":"UNRESOLVED","basis":null,"subject":{"locality":"L","bearer":"B","act":"A","target":"T","relation":"R","scope":"S","conditions":["C"]},"time":{"frame":"f","from":4,"until":6},"evidence":[],"failure":null},"disposition":"HOLD","attribution":"regulator","applicable_law":{"posture":"UNKNOWN","basis":null,"evidence":[]},"supported_state":{"posture":"UNKNOWN","basis":null,"evidence":[]},"authority_required":true,"authority":null,"effect":{"target":"T","scope":"S","description":"A label without review/correction/ending account","ceiling":"EXACT_MOTION_ONLY"},"constraint":"Non-expansion claimed","uncertainty":[],"failures":[],"hold":null},
+      "expected":{"schema_valid":true,"semantic_result":"INCONSISTENT","failure_codes":["REGULATORY_ACCOUNT_INCOMPLETE"]},
+      "source":{"refs":["section.13.3","section.13.4"]},"forbidden_inference":"An asserted HOLD cannot hide uncertainty or substitute for answerability."
+    },
+    {
+      "id":"evidence-inverted-window","schema":"urn:presence:core:dcr:evidence:1",
+      "input":{"kind":"evidence","id":"ewx","object":"bounded observation","method":"MEASUREMENT","subject":{"locality":"L","bearer":"B","act":"A","target":"T","relation":"R","scope":"S","conditions":["C"]},"time":{"frame":"f","from":6,"until":4},"basis":"available observation account","result":"UNKNOWN","observation":"RECORD","claim":{"object":"bounded observation","subject":{"locality":"L","bearer":"B","act":"A","target":"T","relation":"R","scope":"S","conditions":["C"]},"time":{"frame":"f","at":5},"result":"UNKNOWN"},"effect_ceiling":"MODEL_CORRELATE","evidence_available":false,"absence_model":null,"failure":null},
+      "expected":{"schema_valid":true,"semantic_result":"INCONSISTENT","failure_codes":["INVALID_EVIDENCE_INTERVAL"]},
+      "source":{"refs":["section.18.4","reading.3"]},"forbidden_inference":"Unknown may persist, but an inverted declared interval is an encoding inconsistency."
+    },
+    {"id":"capacity-missing-required","schema":"urn:presence:core:dcr:capacity:1","input":{"kind":"capacity"},"expected":{"schema_valid":false,"semantic_result":"NOT_EVALUATED","failure_codes":["SCHEMA_INVALID"]},"source":{"refs":["reading.3","reading.5"]},"forbidden_inference":"Missing data does not mean absent capacity."},
+    {"id":"motion-null-required-object","schema":"urn:presence:core:dcr:motion:1","input":null,"expected":{"schema_valid":false,"semantic_result":"NOT_EVALUATED","failure_codes":["SCHEMA_INVALID"]},"source":{"refs":["reading.3","reading.5"]},"forbidden_inference":"Null is not a refusal, permission or incapacity judgment."},
+    {"id":"disposition-missing-attribution","schema":"urn:presence:core:dcr:disposition:1","input":{"kind":"disposition","disposition":"HOLD"},"expected":{"schema_valid":false,"semantic_result":"NOT_EVALUATED","failure_codes":["SCHEMA_INVALID"]},"source":{"refs":["section.13.4","reading.3"]},"forbidden_inference":"A bare HOLD label is not an answerable HOLD."},
+    {"id":"evidence-missing-proof-fields","schema":"urn:presence:core:dcr:evidence:1","input":{"kind":"evidence","result":"SUPPORTED"},"expected":{"schema_valid":false,"semantic_result":"NOT_EVALUATED","failure_codes":["SCHEMA_INVALID"]},"source":{"refs":["section.18.4","reading.3"]},"forbidden_inference":"An asserted result is not a bounded proof declaration."},
+    {
+      "id":"structural-possibility-not-situated-support","schema":"urn:presence:core:dcr:capacity:1",
       "input":{"kind":"capacity","id":"cx1","subject":{"locality":"L","bearer":"B","act":"A","target":"T","relation":"R","scope":"S","conditions":["C"]},"time":{"frame":"f","at":5},"structural":{"posture":"SUPPORTED","basis":"form","subject":{"locality":"L","bearer":"B","act":"A","target":"T","relation":"R","scope":"S","conditions":["C"]},"time":{"frame":"f","from":0,"until":10},"evidence":["s"],"failure":null},"situated":{"posture":"UNKNOWN","basis":null,"subject":{"locality":"L","bearer":"B","act":"A","target":"T","relation":"R","scope":"S","conditions":["C"]},"time":{"frame":"f","from":4,"until":6},"evidence":[],"failure":null},"reconciliation":"SUPPORTABLE"},
       "expected":{"schema_valid":true,"semantic_result":"INCONSISTENT","failure_codes":["PRESENT_CAPACITY_NOT_ESTABLISHED"]},
       "source":{"refs":["section.11.4","section.11.5","section.13.7"]},"forbidden_inference":"A possible act is not presently bearable just because the Form supports it."
     },
     {
-      "id":"stale-situated-evidence","schema":"urn:presence:core:dcr:capacity.schema:1",
+      "id":"stale-situated-evidence","schema":"urn:presence:core:dcr:capacity:1",
       "input":{"kind":"capacity","id":"cx2","subject":{"locality":"L","bearer":"B","act":"A","target":"T","relation":"R","scope":"S","conditions":["C"]},"time":{"frame":"f","at":5},"structural":{"posture":"SUPPORTED","basis":"form","subject":{"locality":"L","bearer":"B","act":"A","target":"T","relation":"R","scope":"S","conditions":["C"]},"time":{"frame":"f","from":0,"until":10},"evidence":["s"],"failure":null},"situated":{"posture":"SUPPORTED","basis":"old-assessment","subject":{"locality":"L","bearer":"B","act":"A","target":"T","relation":"R","scope":"S","conditions":["C"]},"time":{"frame":"f","from":1,"until":4},"evidence":["old-p"],"failure":null},"reconciliation":"SUPPORTABLE"},
       "expected":{"schema_valid":true,"semantic_result":"INCONSISTENT","failure_codes":["SITUATED_SUPPORT_NOT_CURRENT"]},
       "source":{"refs":["section.13.7"]},"forbidden_inference":"Historical situated support does not establish present support."
     },
     {
-      "id":"different-locality-cannot-lend-capacity","schema":"urn:presence:core:dcr:capacity.schema:1",
+      "id":"different-locality-cannot-lend-capacity","schema":"urn:presence:core:dcr:capacity:1",
       "input":{"kind":"capacity","id":"cx3","subject":{"locality":"L","bearer":"B","act":"A","target":"T","relation":"R","scope":"S","conditions":["C"]},"time":{"frame":"f","at":5},"structural":{"posture":"SUPPORTED","basis":"form","subject":{"locality":"L","bearer":"B","act":"A","target":"T","relation":"R","scope":"S","conditions":["C"]},"time":{"frame":"f","from":0,"until":10},"evidence":["s"],"failure":null},"situated":{"posture":"SUPPORTED","basis":"other-locality","subject":{"locality":"OTHER","bearer":"B","act":"A","target":"T","relation":"R","scope":"S","conditions":["C"]},"time":{"frame":"f","from":4,"until":6},"evidence":["p"],"failure":null},"reconciliation":"SUPPORTABLE"},
       "expected":{"schema_valid":true,"semantic_result":"INCONSISTENT","failure_codes":["CAPACITY_SCOPE_MISMATCH"]},
       "source":{"refs":["section.13.7","section.11.10"]},"forbidden_inference":"Another locality's assessment does not establish this locality's capacity."
     },
     {
-      "id":"changed-conditions-and-motion","schema":"urn:presence:core:dcr:capacity.schema:1",
+      "id":"changed-conditions-and-motion","schema":"urn:presence:core:dcr:capacity:1",
       "input":{"kind":"capacity","id":"cx4","subject":{"locality":"L","bearer":"B","act":"A","target":"T","relation":"R","scope":"S","conditions":["C"]},"time":{"frame":"f","at":5},"structural":{"posture":"SUPPORTED","basis":"form","subject":{"locality":"L","bearer":"B","act":"OTHER-ACT","target":"T","relation":"R","scope":"S","conditions":["C"]},"time":{"frame":"f","from":0,"until":10},"evidence":["s"],"failure":null},"situated":{"posture":"SUPPORTED","basis":"other-conditions","subject":{"locality":"L","bearer":"B","act":"A","target":"T","relation":"R","scope":"S","conditions":["OTHER"]},"time":{"frame":"f","from":4,"until":6},"evidence":["p"],"failure":null},"reconciliation":"SUPPORTABLE"},
       "expected":{"schema_valid":true,"semantic_result":"INCONSISTENT","failure_codes":["CAPACITY_SCOPE_MISMATCH"]},
       "source":{"refs":["section.11.10","section.13.7"]},"forbidden_inference":"Failures are deduplicated; mismatched motion or conditions do not cross by similar identity."
     },
     {
-      "id":"null-basis-does-not-support-positive","schema":"urn:presence:core:dcr:capacity.schema:1",
+      "id":"null-basis-does-not-support-positive","schema":"urn:presence:core:dcr:capacity:1",
       "input":{"kind":"capacity","id":"cx5","subject":{"locality":"L","bearer":"B","act":"A","target":"T","relation":"R","scope":"S","conditions":["C"]},"time":{"frame":"f","at":5},"structural":{"posture":"SUPPORTED","basis":null,"subject":{"locality":"L","bearer":"B","act":"A","target":"T","relation":"R","scope":"S","conditions":["C"]},"time":{"frame":"f","from":0,"until":10},"evidence":[],"failure":null},"situated":{"posture":"SUPPORTED","basis":"present","subject":{"locality":"L","bearer":"B","act":"A","target":"T","relation":"R","scope":"S","conditions":["C"]},"time":{"frame":"f","from":4,"until":6},"evidence":["p"],"failure":null},"reconciliation":"SUPPORTABLE"},
       "expected":{"schema_valid":true,"semantic_result":"INCONSISTENT","failure_codes":["STRUCTURAL_SUPPORT_NOT_CURRENT"]},
       "source":{"refs":["reading.5","section.18.4"]},"forbidden_inference":"A positive label cannot stand in for its missing basis."
     },
     {
-      "id":"unresolved-remains-unresolved","schema":"urn:presence:core:dcr:capacity.schema:1",
+      "id":"unresolved-remains-unresolved","schema":"urn:presence:core:dcr:capacity:1",
       "input":{"kind":"capacity","id":"cx6","subject":{"locality":"L","bearer":"B","act":"A","target":"T","relation":"R","scope":"S","conditions":["C"]},"time":{"frame":"f","at":5},"structural":{"posture":"SUPPORTED","basis":"form","subject":{"locality":"L","bearer":"B","act":"A","target":"T","relation":"R","scope":"S","conditions":["C"]},"time":{"frame":"f","from":0,"until":10},"evidence":["s"],"failure":null},"situated":{"posture":"UNRESOLVED","basis":"conflicting support","subject":{"locality":"L","bearer":"B","act":"A","target":"T","relation":"R","scope":"S","conditions":["C"]},"time":{"frame":"f","from":4,"until":6},"evidence":["p","q"],"failure":null},"reconciliation":"SUPPORTABLE"},
       "expected":{"schema_valid":true,"semantic_result":"INCONSISTENT","failure_codes":["PRESENT_CAPACITY_NOT_ESTABLISHED"]},
       "source":{"refs":["reading.6","section.13.7"]},"forbidden_inference":"A conflict does not authorize choosing the broader effect."
     },
     {
-      "id":"inverted-interval-and-unrecorded-failure","schema":"urn:presence:core:dcr:capacity.schema:1",
+      "id":"inverted-interval-and-unrecorded-failure","schema":"urn:presence:core:dcr:capacity:1",
       "input":{"kind":"capacity","id":"cx7","subject":{"locality":"L","bearer":"B","act":"A","target":"T","relation":"R","scope":"S","conditions":["C"]},"time":{"frame":"f","at":5},"structural":{"posture":"UNKNOWN","basis":null,"subject":{"locality":"L","bearer":"B","act":"A","target":"T","relation":"R","scope":"S","conditions":["C"]},"time":{"frame":"f","from":10,"until":0},"evidence":[],"failure":null},"situated":{"posture":"FAILED","basis":"attempt","subject":{"locality":"L","bearer":"B","act":"A","target":"T","relation":"R","scope":"S","conditions":["C"]},"time":{"frame":"f","from":4,"until":6},"evidence":[],"failure":null},"reconciliation":"NOT_ESTABLISHED"},
       "expected":{"schema_valid":true,"semantic_result":"INCONSISTENT","failure_codes":["INVALID_CAPACITY_INTERVAL","FAILURE_DETAIL_MISSING"]},
       "source":{"refs":["section.18.4","section.18.3"]},"forbidden_inference":"Failures are reported in model rule order; invalid representation is not verified incapacity."
     },
     {
-      "id":"nested-extra-property-rejected","schema":"urn:presence:core:dcr:capacity.schema:1",
+      "id":"nested-extra-property-rejected","schema":"urn:presence:core:dcr:capacity:1",
       "input":{"kind":"capacity","id":"cx8","subject":{"locality":"L","bearer":"B","act":"A","target":"T","relation":"R","scope":"S","conditions":["C"],"permission":true},"time":{"frame":"f","at":5},"structural":{"posture":"UNKNOWN","basis":null,"subject":{"locality":"L","bearer":"B","act":"A","target":"T","relation":"R","scope":"S","conditions":["C"]},"time":{"frame":"f","from":0,"until":10},"evidence":[],"failure":null},"situated":{"posture":"UNKNOWN","basis":null,"subject":{"locality":"L","bearer":"B","act":"A","target":"T","relation":"R","scope":"S","conditions":["C"]},"time":{"frame":"f","from":4,"until":6},"evidence":[],"failure":null},"reconciliation":"NOT_ESTABLISHED"},
       "expected":{"schema_valid":false,"semantic_result":"NOT_EVALUATED","failure_codes":["SCHEMA_INVALID"]},
       "source":{"refs":["reading.3","section.11.13"]},"forbidden_inference":"A nested permission field cannot bypass the declared model."
     },
     {
-      "id":"capability-does-not-supply-autonomy","schema":"urn:presence:core:dcr:motion.schema:1",
+      "id":"capability-does-not-supply-autonomy","schema":"urn:presence:core:dcr:motion:1",
       "input":{"kind":"motion","id":"mx1","subject":{"locality":"L","bearer":"B","act":"A","target":"T","relation":"R","scope":"S","conditions":["C"]},"time":{"frame":"f","at":5},"dimensions":{"agency":{"posture":"YES","basis":"own-act","evidence":["a"]},"autonomy":{"posture":"NO","basis":"substituted-choice","evidence":["constraint"]},"capability":{"posture":"YES","basis":"demonstration","evidence":["d"]},"structural_capacity":{"posture":"YES","basis":"form","evidence":["s"]},"situated_capacity":{"posture":"YES","basis":"present","evidence":["p"]},"regulation":{"posture":"UNKNOWN","basis":null,"evidence":[]},"authority":{"posture":"UNKNOWN","basis":null,"evidence":[]},"execution":{"posture":"YES","basis":"attempted-act","evidence":["x"]},"consequence":{"posture":"YES","basis":"observed-change","evidence":["y"]}},"necessary":["agency","autonomy","capability","situated_capacity"],"authority":null,"posture":"SUPPORTED","claimed_effect":"Claimed autonomous consequential act"},
       "expected":{"schema_valid":true,"semantic_result":"INCONSISTENT","failure_codes":["NECESSARY_RELATION_NOT_ESTABLISHED"]},
       "source":{"refs":["section.10.4","section.10.5","section.11.10"]},"forbidden_inference":"Successful execution and actual consequence do not cure substituted choice."
     },
     {
-      "id":"authority-cannot-be-inferred-from-capability","schema":"urn:presence:core:dcr:motion.schema:1",
+      "id":"authority-cannot-be-inferred-from-capability","schema":"urn:presence:core:dcr:motion:1",
       "input":{"kind":"motion","id":"mx2","subject":{"locality":"L","bearer":"B","act":"A","target":"T","relation":"R","scope":"S","conditions":["C"]},"time":{"frame":"f","at":5},"dimensions":{"agency":{"posture":"UNKNOWN","basis":null,"evidence":[]},"autonomy":{"posture":"UNKNOWN","basis":null,"evidence":[]},"capability":{"posture":"YES","basis":"demonstration","evidence":["d"]},"structural_capacity":{"posture":"UNKNOWN","basis":null,"evidence":[]},"situated_capacity":{"posture":"UNKNOWN","basis":null,"evidence":[]},"regulation":{"posture":"UNKNOWN","basis":null,"evidence":[]},"authority":{"posture":"YES","basis":"capability-is-not-authority","evidence":["d"]},"execution":{"posture":"UNKNOWN","basis":null,"evidence":[]},"consequence":{"posture":"UNKNOWN","basis":null,"evidence":[]}},"necessary":["authority"],"authority":null,"posture":"SUPPORTED","claimed_effect":"Authoritative effect claimed from capability"},
       "expected":{"schema_valid":true,"semantic_result":"INCONSISTENT","failure_codes":["EXACT_AUTHORITY_NOT_ESTABLISHED"]},
       "source":{"refs":["section.12.1","section.12.2"]},"forbidden_inference":"The required Authority account cannot be replaced by an affirmative dimension label."
     },
     {
-      "id":"self-report-not-private-truth","schema":"urn:presence:core:dcr:evidence.schema:1",
+      "id":"self-report-not-private-truth","schema":"urn:presence:core:dcr:evidence:1",
       "input":{"kind":"evidence","id":"ex1","object":"attributed statement","method":"SELF_REPORT","subject":{"locality":"L","bearer":"B","act":"A","target":"T","relation":"R","scope":"S","conditions":["C"]},"time":{"frame":"f","from":4,"until":6},"basis":"attributable report","result":"SUPPORTED","observation":"RECORD","claim":{"object":"attributed statement","subject":{"locality":"L","bearer":"B","act":"A","target":"T","relation":"R","scope":"S","conditions":["C"]},"time":{"frame":"f","at":5},"result":"SUPPORTED"},"effect_ceiling":"PRIVATE_CONDITION","evidence_available":true,"absence_model":null,"failure":null},
       "expected":{"schema_valid":true,"semantic_result":"INCONSISTENT","failure_codes":["PROOF_CEILING_EXCEEDED"]},
       "source":{"refs":["section.3.3","section.18.1.table.row.1"]},"forbidden_inference":"An attributable statement does not prove its private subject."
     },
     {
-      "id":"evidence-stale-and-wrong-object","schema":"urn:presence:core:dcr:evidence.schema:1",
+      "id":"evidence-stale-and-wrong-object","schema":"urn:presence:core:dcr:evidence:1",
       "input":{"kind":"evidence","id":"ex2","object":"historical trace","method":"REPLAY","subject":{"locality":"L","bearer":"B","act":"A","target":"T","relation":"R","scope":"S","conditions":["C"]},"time":{"frame":"f","from":1,"until":4},"basis":"old replay","result":"SUPPORTED","observation":"RECORD","claim":{"object":"present consent","subject":{"locality":"L","bearer":"B","act":"A","target":"T","relation":"R","scope":"S","conditions":["C"]},"time":{"frame":"f","at":5},"result":"SUPPORTED"},"effect_ceiling":"TRACE_REPRODUCIBILITY","evidence_available":true,"absence_model":null,"failure":null},
       "expected":{"schema_valid":true,"semantic_result":"INCONSISTENT","failure_codes":["EVIDENCE_OBJECT_OR_SCOPE_MISMATCH","EVIDENCE_NOT_CURRENT_FOR_CLAIM"]},
       "source":{"refs":["section.18.1.table.row.5","section.18.4"]},"forbidden_inference":"Replay proves neither another object nor current consent."
     },
     {
-      "id":"failed-verification-not-negative-proof","schema":"urn:presence:core:dcr:evidence.schema:1",
+      "id":"failed-verification-not-negative-proof","schema":"urn:presence:core:dcr:evidence:1",
       "input":{"kind":"evidence","id":"ex3","object":"bounded observation","method":"MEASUREMENT","subject":{"locality":"L","bearer":"B","act":"A","target":"T","relation":"R","scope":"S","conditions":["C"]},"time":{"frame":"f","from":4,"until":6},"basis":"failed observation","result":"FAILED","observation":"RECORD","claim":{"object":"bounded observation","subject":{"locality":"L","bearer":"B","act":"A","target":"T","relation":"R","scope":"S","conditions":["C"]},"time":{"frame":"f","at":5},"result":"NOT_SUPPORTED"},"effect_ceiling":"MODEL_CORRELATE","evidence_available":false,"absence_model":null,"failure":"Observation interrupted"},
       "expected":{"schema_valid":true,"semantic_result":"INCONSISTENT","failure_codes":["EVIDENCE_RESULT_OVERSTATED"]},
       "source":{"refs":["section.18.3"]},"forbidden_inference":"Failed verification is not verification of a negative."
     },
     {
-      "id":"absence-without-discriminating-model","schema":"urn:presence:core:dcr:evidence.schema:1",
+      "id":"absence-without-discriminating-model","schema":"urn:presence:core:dcr:evidence:1",
       "input":{"kind":"evidence","id":"ex4","object":"bounded observation","method":"MEASUREMENT","subject":{"locality":"L","bearer":"B","act":"A","target":"T","relation":"R","scope":"S","conditions":["C"]},"time":{"frame":"f","from":4,"until":6},"basis":"absence assertion","result":"NOT_SUPPORTED","observation":"RECORD","claim":{"object":"bounded observation","subject":{"locality":"L","bearer":"B","act":"A","target":"T","relation":"R","scope":"S","conditions":["C"]},"time":{"frame":"f","at":5},"result":"NOT_SUPPORTED"},"effect_ceiling":"MODEL_CORRELATE","evidence_available":false,"absence_model":null,"failure":null},
       "expected":{"schema_valid":true,"semantic_result":"INCONSISTENT","failure_codes":["EVIDENCE_RESULT_OVERSTATED"]},
       "source":{"refs":["section.18.3"]},"forbidden_inference":"No evidence is not by itself evidence of absence."
     },
     {
-      "id":"refusal-must-not-generalize-incapacity","schema":"urn:presence:core:dcr:disposition.schema:1",
+      "id":"refusal-must-not-generalize-incapacity","schema":"urn:presence:core:dcr:disposition:1",
       "input":{"kind":"disposition","id":"dx1","subject":{"locality":"L","bearer":"B","act":"A","target":"T","relation":"R","scope":"S","conditions":["C"]},"time":{"frame":"f","at":5},"structural":{"posture":"UNKNOWN","basis":null,"subject":{"locality":"L","bearer":"B","act":"A","target":"T","relation":"R","scope":"S","conditions":["C"]},"time":{"frame":"f","from":0,"until":10},"evidence":[],"failure":null},"situated":{"posture":"UNKNOWN","basis":null,"subject":{"locality":"L","bearer":"B","act":"A","target":"T","relation":"R","scope":"S","conditions":["C"]},"time":{"frame":"f","from":4,"until":6},"evidence":[],"failure":null},"disposition":"REFUSE","attribution":"regulator","applicable_law":{"posture":"UNKNOWN","basis":null,"evidence":[]},"supported_state":{"posture":"UNKNOWN","basis":null,"evidence":[]},"authority_required":true,"authority":null,"effect":{"target":"whole-bearer","scope":"all-motion","description":"Unsupported general exclusion","ceiling":"GENERAL_INCAPACITY"},"constraint":"Improper general ban","uncertainty":["support"],"failures":[],"hold":null},
       "expected":{"schema_valid":true,"semantic_result":"INCONSISTENT","failure_codes":["DISPOSITION_OVERREACH"]},
       "source":{"refs":["section.11.12","section.13.2","section.3.5"]},"forbidden_inference":"Refusing one dependent motion does not establish general incapacity or exclusion."

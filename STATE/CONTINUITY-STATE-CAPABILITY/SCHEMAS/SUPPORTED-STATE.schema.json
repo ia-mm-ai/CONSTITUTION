@@ -37,8 +37,10 @@
         "dependencies":{"type":"array","items":{"type":"object","required":["id","status","interruption_risk","replacement_posture","loss_consequence"],"additionalProperties":false,"properties":{"id":{"$ref":"#/$defs/text"},"status":{"type":"string","enum":["AVAILABLE","UNAVAILABLE","UNKNOWN"]},"interruption_risk":{"$ref":"#/$defs/text"},"replacement_posture":{"$ref":"#/$defs/text"},"loss_consequence":{"$ref":"#/$defs/text"}}}},
         "failure_boundaries":{"$ref":"#/$defs/strings"},
         "present_status":{"type":"string","enum":["NOT_CLAIMED","SUPPORTED_AT_DECLARED_SCOPE","UNKNOWN","UNAVAILABLE"]},
-        "assessed_at":{"$ref":"#/$defs/nullable_text"}
-      }
+        "assessed_at":{"$ref":"#/$defs/nullable_text"},
+        "assessment_basis":{"$ref":"#/$defs/text","description":"Attributable evidence for the present assessment, separate from the historical capability demonstration."}
+      },
+      "allOf":[{"if":{"properties":{"claim":{"const":"CURRENT"}}},"then":{"required":["assessment_basis"]}}]
     }
   },
   "$defs":{

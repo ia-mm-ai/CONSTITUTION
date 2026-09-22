@@ -1,22 +1,22 @@
 {
-  "kind": "normative_standard",
+  "kind": "canonical_standard",
   "id": "urn:presence:core:lineage:lineage:1",
   "status": "CANONICAL_STANDARD",
   "human_standard": "LINEAGE.md",
   "source": {"refs": ["reading.2", "reading.3", "reading.5", "reading.6", "reading.7", "section.3.2", "section.6.7", "section.9.2", "section.16.6", "section.17.4", "section.17.9", "section.17.10", "section.17.11", "section.17.12", "section.17.13", "section.17.14", "section.17.15", "section.18.4", "section.19.3", "section.20.2"]},
   "scope": "Platform-neutral declarations of exact occurrences, bilateral relations, target-specific succession, pairwise divergence, re-entry, and implementation claims; bounded consistency only.",
   "origin": "ORIGIN.json",
-  "schemas": ["SCHEMAS/OCCURRENCE.schema.json", "SCHEMAS/RELATION.schema.json", "SCHEMAS/SUCCESSION.schema.json", "SCHEMAS/DIVERGENCE.schema.json", "SCHEMAS/RE-ENTRY.schema.json", "SCHEMAS/DERIVATION.schema.json", "SCHEMAS/IMPLEMENTATION-CLAIM.schema.json"],
-  "vectors": ["VECTORS/SUCCESSION.json", "VECTORS/DIVERGENCE.json", "VECTORS/RE-ENTRY.json", "VECTORS/INVALID-BROKEN-RELATION.json"],
+  "schemas": ["SCHEMAS/OCCURRENCE.schema.json", "SCHEMAS/RELATION.schema.json", "SCHEMAS/SUCCESSION.schema.json", "SCHEMAS/DIVERGENCE.schema.json", "SCHEMAS/RE-ENTRY.schema.json", "SCHEMAS/DERIVATION.schema.json", "SCHEMAS/IMPLEMENTATION-CLAIM.schema.json", "SCHEMAS/ORIGIN.schema.json"],
+  "vectors": ["VECTORS/SUCCESSION.json", "VECTORS/DIVERGENCE.json", "VECTORS/RE-ENTRY.json", "VECTORS/INVALID-BROKEN-RELATION.json", "VECTORS/PROVENANCE.json"],
   "related": ["../CONTINUITY-STATE-CAPABILITY/CONTINUITY-STATE-CAPABILITY.json", "../DYNAMIC-CAPACITY-REGULATION/DYNAMIC-CAPACITY-REGULATION.json"],
   "evaluation": {
     "classification": "CORE_ENCODING_RULE",
-    "source": {"refs": ["reading.3", "reading.7", "section.5.2", "section.18.1"]},
+    "schema_dialect": "https://json-schema.org/draft/2020-12/schema",
     "order": "Schema first; then applicable rules in array order; collect every failed assertion; deduplicate codes preserving first occurrence.",
-    "schema_failure": {"semantic_result": "NOT_EVALUATED", "failure_codes": ["SCHEMA_INVALID"]},
-    "semantic_failure": "INCONSISTENT",
-    "semantic_success": "CONSISTENT_AT_DECLARED_SCOPE",
-    "ceiling": "Consistency of declarations and tested constraints only; no truth, signature verification, evidence authenticity, constitutional validation, adoption, Authority, or presently demonstrated CSC."
+    "schema_invalid": {"semantic_result": "NOT_EVALUATED", "failure_codes": ["SCHEMA_INVALID"]},
+    "inconsistent": "INCONSISTENT",
+    "consistent": "CONSISTENT_AT_DECLARED_SCOPE",
+    "effect_ceiling": "Consistency of declarations and tested constraints only; no truth, signature verification, evidence authenticity, constitutional validation, adoption, Authority, or presently demonstrated CSC."
   },
   "rules": [
     {
@@ -113,7 +113,7 @@
     {
       "id": "LINEAGE_RELATION_RECIPROCITY", "classification": "CONSTITUTIONAL_RULE",
       "source": {"refs": ["section.8.3", "section.9.2"]},
-      "when": {"and": [{"===": [{"var": "kind"}, "relation"]}, {"!==": [{"var": "direction"}, "LOCAL"]}]},
+      "when": {"and": [{"===": [{"var": "kind"}, "relation"]}, {"or": [{"!==": [{"var": "direction"}, "LOCAL"]}, {"===": [{"var": "basis_by_side.right.status"}, "SUPPORTED"]}]}]},
       "assert": {"and": [
         {"===": [{"var": "basis_by_side.right.status"}, "SUPPORTED"]},
         {"in": [{"var": "basis_by_side.right.origin"}, ["LOCAL_ACT", "VALID_REPRESENTATION", "FORMATION"]]},
@@ -158,6 +158,7 @@
       "source": {"refs": ["section.17.9", "section.17.10", "section.17.11"]},
       "when": {"and": [{"===": [{"var": "kind"}, "succession"]}, {"===": [{"var": "establishment_posture"}, "ESTABLISHED"]}]},
       "assert": {"and": [
+        {"none": [[{"var": "target.id"}, {"var": "target.scope"}, {"var": "target.locality"}, {"var": "target.lineage"}, {"var": "predecessor"}, {"var": "successor"}], {"in": [{"var": ""}, ["UNKNOWN", "UNRESOLVED", "UNSUPPORTED", "REFUSED"]]}]},
         {"===": [{"var": "valid_basis.target"}, {"var": "target.id"}]},
         {"===": [{"var": "valid_basis.scope"}, {"var": "target.scope"}]},
         {"===": [{"var": "valid_basis.locality"}, {"var": "target.locality"}]},
@@ -175,9 +176,11 @@
       "when": {"and": [{"===": [{"var": "kind"}, "succession"]}, {"===": [{"var": "establishment_posture"}, "ESTABLISHED"]}]},
       "assert": {"and": [
         {"===": [{"var": "valid_basis.status"}, "SUPPORTED"]},
+        {"!": {"in": [{"var": "valid_basis.id"}, ["UNKNOWN", "UNRESOLVED", "UNSUPPORTED", "REFUSED"]]}},
         {"in": [{"var": "valid_basis.origin"}, ["ATTRIBUTABLE_SOURCE", "PREEXISTING_CONDITION", "EXACT_AUTHORITY"]]},
         {"!==": [{"var": "valid_basis.id"}, {"var": "id"}]},
-        {">": [{"count": {"var": "valid_basis.evidence_refs"}}, 0]}
+        {">": [{"count": {"var": "valid_basis.evidence_refs"}}, 0]},
+        {"none": [{"var": "valid_basis.evidence_refs"}, {"in": [{"var": ""}, ["UNKNOWN", "UNRESOLVED", "UNSUPPORTED", "REFUSED"]]}]}
       ]},
       "failure_code": "SUCCESSION_INDEPENDENT_BASIS_MISSING",
       "description": "Successor declaration, possession, copying, survival, or technical control cannot be the independent succession basis."
@@ -188,6 +191,10 @@
       "when": {"and": [{"===": [{"var": "kind"}, "succession"]}, {"===": [{"var": "establishment_posture"}, "ESTABLISHED"]}]},
       "assert": {"and": [
         {"===": [{"var": "successor_side_establishment.status"}, "SUPPORTED"]},
+        {"or": [
+          {"!": {"in": [{"var": "target.layer"}, ["BODY", "LOCALITY"]]}},
+          {"===": [{"var": "successor_side_establishment.layer_disposition"}, "LOCAL_DISPOSITION"]}
+        ]},
         {"!": {"in": [{"var": "successor_side_establishment.basis_ref"}, ["UNKNOWN", "UNRESOLVED", "UNSUPPORTED", "REFUSED"]]}},
         {"!": {"in": [{"var": "successor_side_establishment.occurrence_ref"}, ["UNKNOWN", "UNRESOLVED", "UNSUPPORTED", "REFUSED"]]}},
         {"or": [
@@ -491,8 +498,10 @@
         {"===": [{"var": "scope"}, {"var": "demonstrations.primary.scope"}]},
         {"===": [{"var": "conditions"}, {"var": "demonstrations.primary.conditions"}]},
         {"===": [{"var": "demonstrations.primary.result"}, "SUPPORTED"]},
+        {"!": {"in": [{"var": "present_status.as_of"}, ["UNKNOWN", "UNRESOLVED", "UNSUPPORTED", "REFUSED"]]}},
         {">": [{"count": {"var": "demonstrations.primary.evidence_refs"}}, 0]},
         {">": [{"count": {"var": "present_status.current_basis_refs"}}, 0]},
+        {"none": [{"var": "present_status.current_basis_refs"}, {"in": [{"var": ""}, ["UNKNOWN", "UNRESOLVED", "UNSUPPORTED", "REFUSED"]]}]},
         {"!": {"in": [{"var": "demonstrations.primary.method"}, ["SELF_REPORT", "SIGNATURE"]]}}
       ]},
       "failure_code": "IMPLEMENTATION_DEMONSTRATION_MISSING_OR_MISMATCHED",

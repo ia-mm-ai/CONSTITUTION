@@ -95,8 +95,10 @@ evaluation, or external-execution operators.
   `missing` takes an array of paths and returns the missing paths in order.
 - `===` and `!==` compare two evaluated values by deep JSON equality: no
   coercion of strings, booleans, numbers, arrays, or objects; object key order
-  is immaterial, array order is material. Missing values do not equal a JSON
-  value. Finite JSON numbers compare numerically; booleans are not numbers.
+  is immaterial, array order is material. A missing operand never establishes
+  equality, including with another missing operand. Finite JSON numbers compare
+  as exact base-ten values, without binary floating-point rounding; booleans
+  are not numbers. Numeric `1.0` equals `1` and satisfies the integer type.
 - `and` / `or` take arrays and return a Boolean; `!` negates one expression.
   False, null, missing, zero, empty string and empty array are falsey; all
   other values are truthy. Logical operations short-circuit.

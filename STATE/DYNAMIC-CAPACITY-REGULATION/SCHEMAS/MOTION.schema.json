@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "urn:presence:core:dcr:motion.schema:1",
+  "$id": "urn:presence:core:dcr:motion:1",
   "title": "DCR independent dimensions of an exact motion",
   "x-status": "CANONICAL_SCHEMA",
   "x-source": {"refs": ["article.10", "article.11", "section.12.1", "section.12.6", "reading.3", "reading.5"]},
@@ -11,29 +11,29 @@
   "properties": {
     "kind": {"type": "string", "const": "motion"},
     "id": {"type": "string", "minLength": 1},
-    "subject": {"$ref": "urn:presence:core:dcr:capacity.schema:1#/$defs/subject"},
-    "time": {"$ref": "urn:presence:core:dcr:capacity.schema:1#/$defs/instant"},
+    "subject": {"$ref": "urn:presence:core:dcr:capacity:1#/$defs/subject"},
+    "time": {"$ref": "urn:presence:core:dcr:capacity:1#/$defs/instant"},
     "dimensions": {
       "type": "object",
       "required": ["agency", "autonomy", "capability", "structural_capacity", "situated_capacity", "regulation", "authority", "execution", "consequence"],
       "additionalProperties": false,
       "properties": {
-        "agency": {"$ref": "urn:presence:core:dcr:capacity.schema:1#/$defs/dimension"},
-        "autonomy": {"$ref": "urn:presence:core:dcr:capacity.schema:1#/$defs/dimension"},
-        "capability": {"$ref": "urn:presence:core:dcr:capacity.schema:1#/$defs/dimension"},
-        "structural_capacity": {"$ref": "urn:presence:core:dcr:capacity.schema:1#/$defs/dimension"},
-        "situated_capacity": {"$ref": "urn:presence:core:dcr:capacity.schema:1#/$defs/dimension"},
-        "regulation": {"$ref": "urn:presence:core:dcr:capacity.schema:1#/$defs/dimension"},
-        "authority": {"$ref": "urn:presence:core:dcr:capacity.schema:1#/$defs/dimension"},
-        "execution": {"$ref": "urn:presence:core:dcr:capacity.schema:1#/$defs/dimension"},
-        "consequence": {"$ref": "urn:presence:core:dcr:capacity.schema:1#/$defs/dimension"}
+        "agency": {"$ref": "urn:presence:core:dcr:capacity:1#/$defs/dimension"},
+        "autonomy": {"$ref": "urn:presence:core:dcr:capacity:1#/$defs/dimension"},
+        "capability": {"$ref": "urn:presence:core:dcr:capacity:1#/$defs/dimension"},
+        "structural_capacity": {"$ref": "urn:presence:core:dcr:capacity:1#/$defs/dimension"},
+        "situated_capacity": {"$ref": "urn:presence:core:dcr:capacity:1#/$defs/dimension"},
+        "regulation": {"$ref": "urn:presence:core:dcr:capacity:1#/$defs/dimension"},
+        "authority": {"$ref": "urn:presence:core:dcr:capacity:1#/$defs/dimension"},
+        "execution": {"$ref": "urn:presence:core:dcr:capacity:1#/$defs/dimension"},
+        "consequence": {"$ref": "urn:presence:core:dcr:capacity:1#/$defs/dimension"}
       }
     },
     "necessary": {
       "type": "array", "uniqueItems": true,
       "items": {"type": "string", "enum": ["agency", "autonomy", "capability", "structural_capacity", "situated_capacity", "regulation", "authority", "execution", "consequence"]}
     },
-    "authority": {"$ref": "urn:presence:core:dcr:capacity.schema:1#/$defs/authority"},
+    "authority": {"$ref": "urn:presence:core:dcr:capacity:1#/$defs/authority"},
     "posture": {"type": "string", "enum": ["SUPPORTED", "HOLD", "REFUSE", "NOT_CLAIMED"]},
     "claimed_effect": {"type": "string", "minLength": 1}
   }

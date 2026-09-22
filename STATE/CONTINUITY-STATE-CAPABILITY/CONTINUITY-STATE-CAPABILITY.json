@@ -92,8 +92,8 @@
     {
       "id":"csc.current-qualification","classification":"CONSTITUTIONAL_RULE","source":{"refs":["section.16.8","section.19.3","section.20.2"]},
       "when":{"and":[{"===":[{"var":"kind"},"supported_state"]},{"===":[{"var":"qualification.claim"},"CURRENT"]}]},
-      "assert":{"and":[{"===":[{"var":"qualification.locality"},{"var":"locality"}]},{"===":[{"var":"qualification.scope"},{"var":"scope"}]},{"===":[{"var":"qualification.assessed_at"},{"var":"at"}]},{"===":[{"var":"qualification.demonstration.at"},{"var":"at"}]},{"===":[{"var":"qualification.conditions"},{"var":"qualification.demonstrated_conditions"}]},{"===":[{"var":"qualification.present_status"},"SUPPORTED_AT_DECLARED_SCOPE"]},{"all":[{"var":"qualification.dependencies"},{"===":[{"var":"status"},"AVAILABLE"]}]}]},
-      "failure_code":"CURRENT_QUALIFICATION_UNSUPPORTED","description":"Current qualification is independently evidenced at this boundary, locality and scope under the exact demonstrated conditions and available declared dependencies."
+      "assert":{"and":[{"===":[{"var":"qualification.locality"},{"var":"locality"}]},{"===":[{"var":"qualification.scope"},{"var":"scope"}]},{"===":[{"var":"qualification.assessed_at"},{"var":"at"}]},{"!":{"missing":["qualification.assessment_basis"]}},{"===":[{"var":"qualification.conditions"},{"var":"qualification.demonstrated_conditions"}]},{"===":[{"var":"qualification.present_status"},"SUPPORTED_AT_DECLARED_SCOPE"]},{"all":[{"var":"qualification.dependencies"},{"===":[{"var":"status"},"AVAILABLE"]}]}]},
+      "failure_code":"CURRENT_QUALIFICATION_UNSUPPORTED","description":"Current assessment has its own attributable basis at this boundary, locality and scope under demonstrated conditions and available declared dependencies. The demonstration may remain historical; current assessment does not require repeating it."
     },
     {
       "id":"csc.change-binding","classification":"CORE_ENCODING_RULE","source":{"refs":["section.15.3","section.16.7","section.17.7"]},
@@ -102,16 +102,28 @@
       "failure_code":"CHANGE_BINDING_MISMATCH","description":"Both represented endpoints belong to this locality; the result boundary is exact and record identities remain distinct."
     },
     {
+      "id":"csc.change-history","classification":"CONSTITUTIONAL_RULE","source":{"refs":["section.15.1","section.16.7","section.17.15"]},
+      "when":{"in":[{"var":"kind"},["transition","resumption"]]},
+      "assert":{"===":[{"var":"before.history"},{"var":"after.history"}]},
+      "failure_code":"CHANGE_HISTORY_ERASED","description":"The recoverable predecessor-history inventory remains exact; the new occurrence is recorded separately by this change record."
+    },
+    {
       "id":"csc.transition-links","classification":"CORE_ENCODING_RULE","source":{"refs":["section.16.7","section.17.7","section.17.9"]},
       "when":{"===":[{"var":"kind"},"transition"]},
       "assert":{"and":[{"===":[{"var":"lineage.predecessor"},{"var":"before.id"}]},{"===":[{"var":"lineage.result"},{"var":"after.id"}]},{"===":[{"var":"delta.before"},{"var":"before.id"}]},{"===":[{"var":"delta.after"},{"var":"after.id"}]},{"===":[{"var":"target.id"},{"var":"before.id"}]}]},
       "failure_code":"PREDECESSOR_RESULT_MISMATCH","description":"Lineage, target and delta bind the actual supplied endpoints, not merely plausible unrelated identifiers."
     },
     {
-      "id":"csc.transition-identity","classification":"CONSTITUTIONAL_RULE","source":{"refs":["section.17.1","section.17.3","section.17.5","section.17.8"]},
+      "id":"csc.transition-identity","classification":"CONSTITUTIONAL_RULE","source":{"refs":["section.17.1","section.17.3","section.17.4","section.17.5","section.17.8","section.17.9","section.17.10"]},
       "when":{"===":[{"var":"kind"},"transition"]},
-      "assert":{"or":[{"and":[{"in":[{"var":"classification"},["TRANSFORMATION","NEW_FORMATION"]]},{"!==":[{"var":"before.identity"},{"var":"after.identity"}]}]},{"and":[{"!":{"in":[{"var":"classification"},["TRANSFORMATION","NEW_FORMATION"]]}},{"===":[{"var":"before.identity"},{"var":"after.identity"}]}]}]},
-      "failure_code":"IDENTITY_CLASSIFICATION_MISMATCH","description":"Transformation or new formation recognizes difference; this profile's other State transitions cannot silently substitute constitutional identity."
+      "assert":{"or":[{"and":[{"in":[{"var":"classification"},["TRANSFORMATION","NEW_FORMATION"]]},{"!==":[{"var":"before.identity"},{"var":"after.identity"}]}]},{"and":[{"===":[{"var":"classification"},"SUCCESSION"]},{"===":[{"var":"basis.status"},"SUPPORTED"]},{"!==":[{"var":"basis.reference"},null]}]},{"and":[{"!":{"in":[{"var":"classification"},["TRANSFORMATION","NEW_FORMATION","SUCCESSION"]]}},{"===":[{"var":"before.identity"},{"var":"after.identity"}]}]}]},
+      "failure_code":"IDENTITY_CLASSIFICATION_MISMATCH","description":"Transformation or new formation recognizes difference. State-targeted succession may name a different successor identity under its exact independently supported basis and referenced lineage account; it does not equate predecessor and successor or establish succession at another layer."
+    },
+    {
+      "id":"csc.law-boundary","classification":"CONSTITUTIONAL_RULE","source":{"refs":["section.17.1","section.17.2","section.17.8"]},
+      "when":{"and":[{"===":[{"var":"kind"},"transition"]},{"!":{"in":[{"var":"classification"},["AMENDMENT","TRANSFORMATION","NEW_FORMATION","UNRESOLVED"]]}}]},
+      "assert":{"===":[{"var":"before.applicable_law"},{"var":"after.applicable_law"}]},
+      "failure_code":"LAW_CHANGED_WITHOUT_CLASSIFICATION","description":"An ordinary State transition cannot silently amend locally applicable law."
     },
     {
       "id":"csc.transition-basis","classification":"CONSTITUTIONAL_RULE","source":{"refs":["section.14.2","section.17.7","section.17.8","section.17.14"]},

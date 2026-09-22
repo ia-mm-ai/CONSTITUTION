@@ -152,13 +152,21 @@ visible in the transition and resulting representation.
 Adaptation, amendment, transformation, succession, new formation, divergence,
 dormancy, resumption, ending and unresolved classification remain distinct.
 Transformation and new formation recognize different constitutional identity.
-This State profile otherwise preserves the named identity; a different
-cross-locality or cross-identity succession requires its own exact
-[LINEAGE](../LINEAGE/LINEAGE.md) account, not a silent identifier substitution.
+State-targeted succession may name a different successor identity under an
+exact independently supported basis and its separate
+[LINEAGE](../LINEAGE/LINEAGE.md) account. It does not make predecessor and
+successor identical or establish identity succession at another layer.
+This profile's other State transitions preserve the named identity; a
+cross-locality account requires a separately bounded relation, not a silent
+identifier substitution.
 An unsupported or disputed change basis can preserve actual observed change
 only with unresolved classification and named remaining uncertainty
 (`csc.transition-identity`, `csc.transition-basis`,
 `csc.transition-discontinuity`; §§ 14.2, 17.7–17.14).
+The recoverable predecessor-history inventory remains exact through a
+transition or resumption (`csc.change-history`); the new record identifies
+the new occurrence separately. Ordinary State changes cannot silently amend
+law (`csc.law-boundary`).
 
 `SUCCESSION` here classifies a supplied State relation; the local comparison
 does not itself establish succession. The referenced lineage account MUST
@@ -233,9 +241,11 @@ replacement posture and consequences of loss (§ 20.2).
 preserves the demonstration and its boundary without declaring present
 support. A `CURRENT` qualification needs a present assessment at the exact
 locality, scope and boundary, the exact demonstrated conditions, available
-declared dependencies and a supported present status. This profile
-conservatively requires demonstration evidence scoped to the same named
-boundary; it does not mandate a particular testing schedule or procedure
+declared dependencies and a supported present status. Its nonblank
+`assessment_basis` identifies current attributable assessment evidence, and
+`assessed_at` binds that assessment to the record's boundary. The separately
+recorded capability demonstration may remain historical: the Constitution
+does not require repeating it at every assessment or mandate a testing schedule
 (`csc.qualification-fields` through `csc.current-qualification`).
 
 Evidence of historical preservation, restart, correction or successful
