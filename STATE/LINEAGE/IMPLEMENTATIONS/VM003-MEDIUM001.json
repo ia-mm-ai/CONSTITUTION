@@ -1,0 +1,204 @@
+{
+  "kind": "implementation_claim",
+  "id": "urn:presence:lineage:implementation:vm003-medium001:1",
+  "claimant": "ia-mm-ai/PRESENCE repository record",
+  "identity": {
+    "mechanism": "Coupled LOCALITY_VM_003 accepted-state VM and LOCALITY_MEDIUM_001 state-bound companion; historical bounded predecessor implementation account",
+    "version": "LOCALITY_VM_003 3.0.0 + LOCALITY_MEDIUM_001 2.0.0",
+    "form": "MIXED",
+    "identity_refs": [
+      "../../LOCALITY_VM_003-v3.0.0-GITHUB_UPLOAD.zip#sha256=073949b8b74e7407a433b74efab71f22e2ee93c4d9ed80eb0aeb07b164c08d2b&byte_length=6201060",
+      "../../LOCALITY_MEDIUM_001-v2.0.0-GITHUB_UPLOAD.zip#sha256=61353cddc93d62ac28d60e0c7357203ecfe01235e7d249e973ffb16356990989&byte_length=260923",
+      "../../LOCALITY_VM_003-v3.0.0-GITHUB_UPLOAD.zip!/continuous_state/LOCALITY_VM_003/LOCALITY_VM_003-v3.0.0-GITHUB_REPOSITORY_PACK.zip!/RELEASE_MANIFEST.json",
+      "../../LOCALITY_MEDIUM_001-v2.0.0-GITHUB_UPLOAD.zip!/local_medium/LOCALITY_MEDIUM_001/LOCALITY_MEDIUM_001-v2.0.0-SOURCE.tar.gz!/RELEASE_MANIFEST.json",
+      "../../LOCALITY_MEDIUM_001-v2.0.0-GITHUB_UPLOAD.zip!/local_medium/LOCALITY_MEDIUM_001/LOCALITY_MEDIUM_001-v2.0.0-SOURCE.tar.gz!/lineage/PREDECESSOR_LOCK.json",
+      "VM003-MEDIUM001.md"
+    ]
+  },
+  "core": {
+    "repository": "https://github.com/ia-mm-ai/PRESENCE",
+    "commit": "f03009d259852eb5dc6dc789f209efe6072b5de5",
+    "source": {
+      "human": {
+        "path": "SOURCE/CONSTITUTION_0()1.md",
+        "sha256": "affeb5738cdfeea7ee4fe985652bf78b15eb6dfbba5871d82f0f2213a81832d0",
+        "byte_length": 44133
+      },
+      "machine": {
+        "path": "SOURCE/CONSTITUTION_0()1.json",
+        "sha256": "519a81d2a26d5bf32afd77566bbb35b4d28b22af85ac45a7055fccd1b45222f8",
+        "byte_length": 146048
+      }
+    }
+  },
+  "implemented_modules": [
+    "CONTINUITY_STATE_CAPABILITY",
+    "DYNAMIC_CAPACITY_REGULATION"
+  ],
+  "locality": "Historical VM disposable-network state and Medium reference/mocked or archived-state context only; no current Locality or successor L1 identified",
+  "scope": "One source-observed coupled stack: VM signed revision/predecessor transitions, accepted-state snapshots, correction/checkpoint/reentry commitments and capacity reservations; Medium fresh accepted-view/profile checks, external-signature draft/submission and receipt/journal metadata. Module names denote only these bounded aspects, not complete canonical schemas, rule implementation or constitutional conformance. The historical bridge is Medium compatibility inspection of VM revision-18 evidence, not demonstrated live joint execution.",
+  "exclusions": [
+    "Present CSC or DCR; live deployment; successor L1; current platform or wire compatibility",
+    "Authority, Agency, autonomy, identity, adoption, formation, succession, Presence, constitutional validity or Source transfer",
+    "Complete canonical CSC, DCR or LINEAGE implementation; mapping as conformance; a fourth canonical module or privileged embodiment",
+    "Real end-to-end Medium encounter, protected signer, VM consensus acceptance and matching receipt demonstration",
+    "Private-state content or delta semantics; signature as rightful identity or effect; record possession as continuity",
+    "Portable HOLD review/correction/release lifecycle; universal persistence or journal/external-effect atomicity",
+    "Automatic predecessor State, key, law or Authority migration; execution of successor code",
+    "Current security audit, zero vulnerable dependencies, public-origin authenticity or availability verification"
+  ],
+  "conditions": [
+    "Both carriers remain at the uploaded paths with the declared exact bytes and digests; nested locators refer to retained archive members, not newly canonicalized source.",
+    "Current Source is the exact pair at the starting live commit. Archived human 41268-byte SHA-256 5dea16e2400c652eb063129711a6bf26c8485a2cbad25ce261beda6f7fee5206 and machine 139114-byte SHA-256 5a0d6ffec23d09b203212b295d86e45e141a33a7f35f525d56172fb848d1a73c are historical copies, not current Source.",
+    "Source inspection, test source, archive-declared assertions, historical output and present evidence remain separate. No predecessor execution or fresh runtime qualification occurred in this crossing.",
+    "VM accepted-state application remains separate from Medium authorization, drafting, pending submission and receipt observation; no capacity decision automatically creates a proposal or Authority.",
+    "Only explicitly routed handlers are guarded. Source-observed HTTP/signature coupling is conditional on exact serialized bytes, actor/nonces, fresh coherent state, capacity, operation law and external dependencies.",
+    "Historical VM qualification time is retained; Medium qualification JSON is untimed and its separately reported sealing time is not fabricated into an execution timestamp.",
+    "The account preserves all conflicts and gaps in VM003-MEDIUM001.md; no predecessor bytes or first-pass conclusions are repaired or replaced."
+  ],
+  "dependencies": [
+    {
+      "id": "vm-node-plugin-toolchain",
+      "bearer": "Historical VM release, external AvalancheGo process and consensus peers",
+      "function": "Go 1.25.13; AvalancheGo v1.15.0 commit 70bd6d063b7343fd2cd8217200aaf77b57f19f68; v1.15.0+LOCALITY_SECURITY_OVERLAY_001; RPCChainVM 46; VM ID 25tZjky6SecZA1Gwc6VwD2ouy64xAUdgNLo1C8dkXfbsFNxaTk. CGO Linux/amd64 build, Ubuntu 24.04 amd64 qualification target. Exact transitive modules/sums remain in archived go.mod/go.sum, overlay and build/dependency manifests.",
+      "effect_ceiling": "Historical execution conditions only, not present compatibility, safety, adoption or deployment",
+      "interruption_risk": "Plugin-ID/protocol/profile mismatch, absent process/peers or toolchain changes can prevent loading or acceptance.",
+      "replacement_posture": "REPLACEABLE_WITH_NEW_BASIS",
+      "consequences_of_loss": "This implementation path cannot establish new accepted State; a different node/platform requires fresh qualification and independent basis."
+    },
+    {
+      "id": "medium-node-runtime",
+      "bearer": "Historical locality-medium 2.0.0 Node ESM runtime",
+      "function": "Node >=22 with built-in crypto, filesystem, HTTP and fetch; no declared third-party dependencies. CI uses Node 22; historical qualification reports v24.19.0 on Linux 6.18.44 x86_64.",
+      "effect_ceiling": "Reference runtime behavior at inspected/tested scope only",
+      "interruption_risk": "Runtime/serialization change or process restart can invalidate interoperability and discard in-memory drafts.",
+      "replacement_posture": "REPLACEABLE_WITH_NEW_BASIS",
+      "consequences_of_loss": "Medium guarding/draft flow stops; accepted VM State and external consequences are not undone."
+    },
+    {
+      "id": "accepted-state-storage",
+      "bearer": "Avalanche-provided database and VM versiondb staging",
+      "function": "Persist exact genesis, accepted tip, blocks/per-block State, height index, transitions and receipts; restart validates stored genesis and loads the non-genesis accepted snapshot. At a genesis tip it instead uses freshly reconstructed genesis State without loading that persisted snapshot.",
+      "effect_ceiling": "Snapshot recovery under available consistent storage, not universal failure-atomic persistence or event replay from genesis",
+      "interruption_risk": "Commit failure, corruption or storage loss; pending entries can be removed before commit without restoration.",
+      "replacement_posture": "REPLACEABLE_WITH_NEW_BASIS",
+      "consequences_of_loss": "Recovery/acceptance becomes unsupported at this scope; archive possession cannot recreate lost accepted history."
+    },
+    {
+      "id": "medium-journal",
+      "bearer": "Restricted local filesystem and Medium journal writer",
+      "function": "Synced hash-chained NDJSON decision/draft/submission/receipt metadata; validation on open and serialized appends within one instance.",
+      "effect_ceiling": "Local retained representation, not externally anchored chronology, private-content proof or a transaction with VM acceptance",
+      "interruption_risk": "Permissions, write/sync failure, corruption or concurrent independent writers; submission can precede failed journal append.",
+      "replacement_posture": "REPLACEABLE_WITH_NEW_BASIS",
+      "consequences_of_loss": "The local evidence trail may be unavailable; an API failure cannot erase already submitted or accepted external effects."
+    },
+    {
+      "id": "keys-signers-and-operation-roles",
+      "bearer": "External protected Ed25519 signer, public actor bindings, formation/continuity role accounts and separately held node credentials",
+      "function": "Sign exact unsigned bytes, verify actor/key/nonce bindings and enforce VM operation capabilities; Medium itself does not establish authority roles.",
+      "effect_ceiling": "Key-byte attribution and predecessor operation checks only; no rightful identity, constitutional Authority or inherited custody",
+      "interruption_risk": "Unavailable/compromised signer, changed key, stale nonce or unsupported role blocks or undermines the scoped operation.",
+      "replacement_posture": "UNRESOLVED",
+      "consequences_of_loss": "No automatic identity/Authority continuity or key recovery is established; replacement requires independently supported relations."
+    },
+    {
+      "id": "transport-clock-and-coherent-views",
+      "bearer": "Configured VM HTTP endpoint, loopback Medium HTTP server, local clock and external network/process availability",
+      "function": "Native HTTP JSON, not application JSON-RPC; HTTPS except permitted IP-loopback HTTP, configured blockchain path segment, redirects refused, bounded response/request/receipt limits; fresh status/state comparison and offer-time checks.",
+      "effect_ceiling": "Endpoint configuration and coherent declarations, not independent chain authentication or an atomic snapshot",
+      "interruption_risk": "Network failure, stale/incoherent views, timeout or clock mismatch; receipt absence can mean pending or unavailable.",
+      "replacement_posture": "REPLACEABLE_WITH_NEW_BASIS",
+      "consequences_of_loss": "The guarded path fails or remains unresolved, without proving rejection or absence of an external occurrence."
+    },
+    {
+      "id": "profiles-genesis-and-controlled-handlers",
+      "bearer": "Deployment-specific genesis/configuration and HUMAN, AI, DEVICE or LOCALITY Medium profile plus registered handlers",
+      "function": "Select locality/form, capacity settings, actor, journal and capability/phase allowlists. Runtime profile parsing is not release-digest verification. Genesis template and AI handler remain unmaterialized/placeholders.",
+      "effect_ceiling": "Controls only routed surfaces; does not control a whole bearer or certify structural/situated constitutional capacity",
+      "interruption_risk": "Stale VM 2.1.0 template, mismatched profile or missing handler prevents the intended route; off-route effects remain uncontrolled.",
+      "replacement_posture": "REPLACEABLE_WITH_NEW_BASIS",
+      "consequences_of_loss": "The reference stack lacks the claimed controlled surface; fresh scoped configuration and handler evidence are necessary."
+    },
+    {
+      "id": "historical-evidence-carriers",
+      "bearer": "Both unchanged ZIP carriers and their qualification/test/build records",
+      "function": "Preserve exact identities and the Medium-to-VM evidence-digest bridge without copying executable artifacts into the core.",
+      "effect_ceiling": "Historical attributable claims and byte correspondence only",
+      "interruption_risk": "Unavailable or altered evidence prevents checking these locators and historical bounds.",
+      "replacement_posture": "NOT_REPLACEABLE_AT_DECLARED_SCOPE",
+      "consequences_of_loss": "A different carrier or newly generated report cannot silently replace these exact historical inputs."
+    }
+  ],
+  "demonstrations": {
+    "primary": {
+      "id": "vm003-medium001-historical-qualification-and-evidence-bridge",
+      "mechanism": "Coupled LOCALITY_VM_003 accepted-state VM and LOCALITY_MEDIUM_001 state-bound companion; historical bounded predecessor implementation account",
+      "modules": [
+        "CONTINUITY_STATE_CAPABILITY",
+        "DYNAMIC_CAPACITY_REGULATION"
+      ],
+      "locality": "Historical VM disposable three-node Linux/x86_64 rehearsal and Medium reference/mock plus archived-state compatibility context; not a current or successor L1",
+      "scope": "Archive-reported VM lifecycle/restart/rejoin and Medium unit/mock qualification plus compatibility with exact VM revision-18 public-state evidence; no demonstrated live integrated request-to-acceptance-to-receipt passage",
+      "conditions": [
+        "VM report binds its binary, Go 1.25.13, AvalancheGo v1.15.0 exact commit/security overlay and RPCChainVM 46.",
+        "Medium report records Node v24.19.0, 20 passing tests and VM public-state compatibility, while live_successor_l1_coupling is NOT_RUN_DEPLOYMENT_SPECIFIC.",
+        "The VM evidence digest 36202aafef90a5409350ed5ceb9a46447ad3a568676163b2e58f09a1b08a4fc0 is present in the VM carrier and referenced by the Medium report.",
+        "All reports remain historical self-reports read from exact bytes; no predecessor runtime result was independently reproduced."
+      ],
+      "object": "Paired historical qualification records and their explicit evidence-compatibility relation, not present capability or full constitutional conformance",
+      "method": "SELF_REPORT",
+      "time": "VM qualification observed_at_utc 2026-09-21T15:34:29Z; Medium qualification JSON has no timestamp, while its separate crossing report records sealing 2026-09-21T15:56:24Z. Sealing is not asserted as the test time.",
+      "basis": "Read-only inspection of digest-bound source/tests and archived reports. Primary result concerns the bounded reports and their exact evidence bridge, not a fresh execution result. Existing first-pass records remain indexes, not substituted evidence.",
+      "evidence_refs": [
+        "../../LOCALITY_VM_003-v3.0.0-GITHUB_UPLOAD.zip!/continuous_state/LOCALITY_VM_003/LOCALITY_VM_003-v3.0.0-qualification-evidence.tar.gz!/./QUALIFICATION_REPORT.json",
+        "../../LOCALITY_VM_003-v3.0.0-GITHUB_UPLOAD.zip!/continuous_state/LOCALITY_VM_003/LOCALITY_VM_003-v3.0.0-qualification-evidence.tar.gz!/./rehearsal/rehearsal-003-20260921T153110Z-I4rgzX/LOCALITY_REHEARSAL_003_EVIDENCE.json",
+        "../../LOCALITY_VM_003-v3.0.0-GITHUB_UPLOAD.zip!/continuous_state/LOCALITY_VM_003/LOCALITY_VM_003-v3.0.0-qualification-evidence.tar.gz!/./rehearsal/rehearsal-003-20260921T153110Z-I4rgzX/LOCALITY_REHEARSAL_003_POST_RESTART.json",
+        "../../LOCALITY_VM_003-v3.0.0-GITHUB_UPLOAD.zip!/continuous_state/LOCALITY_VM_003/LOCALITY_VM_003-v3.0.0-qualification-evidence.tar.gz!/./rehearsal/rehearsal-003-20260921T153110Z-I4rgzX/LOCALITY_REHEARSAL_003_POST_REJOIN.json",
+        "../../LOCALITY_MEDIUM_001-v2.0.0-GITHUB_UPLOAD.zip!/local_medium/LOCALITY_MEDIUM_001/LOCALITY_MEDIUM_001-v2.0.0-QUALIFICATION_EVIDENCE.tar.gz!/./LOCALITY_MEDIUM_001-v2.0.0-qualification.json",
+        "../../LOCALITY_MEDIUM_001-v2.0.0-GITHUB_UPLOAD.zip!/local_medium/LOCALITY_MEDIUM_001/LOCALITY_MEDIUM_001-v2.0.0-QUALIFICATION_EVIDENCE.tar.gz!/./LOCALITY_MEDIUM_001-v2.0.0-vm003-evidence-compatibility.json",
+        "../../LOCALITY_MEDIUM_001-v2.0.0-GITHUB_UPLOAD.zip!/local_medium/LOCALITY_MEDIUM_001/LOCALITY_MEDIUM_001-v2.0.0-QUALIFICATION_EVIDENCE.tar.gz!/./LOCALITY_MEDIUM_001-v2.0.0-tests.txt",
+        "../../LOCALITY_MEDIUM_001-v2.0.0-GITHUB_UPLOAD.zip!/local_medium/LOCALITY_MEDIUM_001/LOCALITY_MEDIUM_001-v2.0.0-CROSSING_REPORT.md"
+      ],
+      "result": "SUPPORTED",
+      "proof_ceiling": "ATTRIBUTABLE_CLAIM_ONLY"
+    },
+    "additional_refs": [
+      "../RECORDS/VM003-TO-CSC.json",
+      "../RECORDS/MEDIUM-TO-DCR.json",
+      "VM003-MEDIUM001.md",
+      "../../LOCALITY_VM_003-v3.0.0-GITHUB_UPLOAD.zip!/continuous_state/LOCALITY_VM_003/LOCALITY_VM_003-v3.0.0-GITHUB_REPOSITORY_PACK.zip!/vm_test.go",
+      "../../LOCALITY_VM_003-v3.0.0-GITHUB_UPLOAD.zip!/continuous_state/LOCALITY_VM_003/LOCALITY_VM_003-v3.0.0-GITHUB_REPOSITORY_PACK.zip!/continuity_reentry_test.go",
+      "../../LOCALITY_VM_003-v3.0.0-GITHUB_UPLOAD.zip!/continuous_state/LOCALITY_VM_003/LOCALITY_VM_003-v3.0.0-GITHUB_REPOSITORY_PACK.zip!/metabolism_test.go",
+      "../../LOCALITY_MEDIUM_001-v2.0.0-GITHUB_UPLOAD.zip!/local_medium/LOCALITY_MEDIUM_001/LOCALITY_MEDIUM_001-v2.0.0-SOURCE.tar.gz!/src/engine.js",
+      "../../LOCALITY_MEDIUM_001-v2.0.0-GITHUB_UPLOAD.zip!/local_medium/LOCALITY_MEDIUM_001/LOCALITY_MEDIUM_001-v2.0.0-SOURCE.tar.gz!/src/vm-client.js",
+      "../../LOCALITY_MEDIUM_001-v2.0.0-GITHUB_UPLOAD.zip!/local_medium/LOCALITY_MEDIUM_001/LOCALITY_MEDIUM_001-v2.0.0-SOURCE.tar.gz!/test/engine.test.js",
+      "../../LOCALITY_MEDIUM_001-v2.0.0-GITHUB_UPLOAD.zip!/local_medium/LOCALITY_MEDIUM_001/LOCALITY_MEDIUM_001-v2.0.0-SOURCE.tar.gz!/test/continuity.test.js",
+      "../../LOCALITY_MEDIUM_001-v2.0.0-GITHUB_UPLOAD.zip!/local_medium/LOCALITY_MEDIUM_001/LOCALITY_MEDIUM_001-v2.0.0-SOURCE.tar.gz!/scripts/verify-vm003-evidence.mjs"
+    ]
+  },
+  "failure_boundaries": [
+    "CONFLICTED: VM SECURITY/deployment instructions retain VM002 plugin ID 2JnfZqeNUW34DmiSznMp1oJSpX5Fpqv9Ms6BYEyGF3LYVx7jQ5 while VM003 source/manifest/qualification use 25tZjky6SecZA1Gwc6VwD2ouy64xAUdgNLo1C8dkXfbsFNxaTk and locality-vm/3.0.0. Explicit VM002 v2.1.0 ancestry references are not themselves runtime-version errors.",
+    "CONFLICTED: Medium config template references locality-vm/2.1.0 while constants/runtime validation require locality-vm/3.0.0; placeholder substitution alone cannot resolve it.",
+    "UNSUPPORTED: universal acceptance/mempool/storage atomicity when commit fails; pending mutations precede commit and lack restoration. Journal append after submission cannot undo a VM effect.",
+    "UNSUPPORTED: full portable HOLD review/correction/release lifecycle; capacity-deficit phase gating, correction/egress allowlists, offer expiry and receipt timeout do not implement that lifecycle.",
+    "CONFLICTED: Go json.Marshal escapes <, >, &, U+2028 and U+2029 while Medium JSON.stringify retains them, so otherwise permitted strings can cause canonical-byte/signature rejection. This is static source evidence, not an executed failure; ordinary compatible payload ordering is not universally mismatched. Full uint64/int64 interchange is unsupported by Medium safe integers.",
+    "UNSUPPORTED: complete live joint passage and real guarded effects. Medium submission and receipt tests are disconnected mocks, VM network rehearsal uses its own client, and the supplied AI handler is a placeholder.",
+    "UNSUPPORTED: a coherent remote declaration as authenticated chain identity, recomputed state commitment/capacity or independent constitutional Authority. Receipt checks do not prove older-receipt ancestry or retained original submission.",
+    "HISTORICAL: archived Source differs from current Source; archived qualification, signatures, tests, binary hashes and restart/rejoin establish no present capability, deployment, adoption, succession or Presence.",
+    "UNSUPPORTED: private-state semantics from commitment edges, production key-loss recovery, partition/resource-exhaustion guarantees, externally anchored journal truth or execution of an attested successor."
+  ],
+  "present_status": {
+    "posture": "HISTORICAL",
+    "as_of": "Historical evidence dated 2026-09-21: VM qualification 15:34:29Z; Medium sealing 15:56:24Z, with its exact qualification time unstated. No current runtime basis is asserted.",
+    "current_basis_refs": []
+  },
+  "attestation": {
+    "posture": "UNSIGNED"
+  },
+  "validation": "DECLARED_CLAIM_ONLY",
+  "claimed_effects": [
+    "BOUNDED_IMPLEMENTATION_CLAIM"
+  ],
+  "effect_ceiling": "NO_CONSTITUTIONAL_EFFECT_FROM_CLAIM"
+}

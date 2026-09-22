@@ -132,15 +132,7 @@ they are not converted to ordinary refusal or success.
 The suites contain exact inputs and expected triples, source references and
 forbidden inferences. They are normative tests, not actual events, simulated
 Localities, present capability demonstrations, or evidence of adoption.
-[CONFORMANCE.py](LINEAGE/CONFORMANCE.py) is an offline notation/vector checker,
-not a CSC or DCR implementation. It uses Python's standard library and the
-existing `jsonschema` validator (tested with 4.10.3); it performs no local
-dispositions, deployments or State mutation. Run from any directory:
-
-```sh
-python /home/runner/work/PRESENCE/PRESENCE/STATE/LINEAGE/CONFORMANCE.py
-python -m unittest discover -s /home/runner/work/PRESENCE/PRESENCE/STATE/LINEAGE -p 'test_conformance.py'
-```
+A derived SYSTEM may implement this evaluation contract. No verifier program is included in the canonical core.
 
 ## Qualification and proof boundaries
 
@@ -156,7 +148,9 @@ does not establish present CSC or capacity (sections 16.7–16.8, 18.1–18.4).
 Source snapshot. The derivation records preserve the two predecessor packs'
 inspected materials, extracted rules, exclusions and refused claims; they
 are semantic provenance, not duplicate Git history or succession of a Body.
-The archives and their executable contents are not part of this core.
+Archive carriers may be co-located in this repository while remaining outside
+canonical Source and normative State models. Their inclusion does not make
+their executable contents canonical, current, adopted, safe or deployed.
 
 This crossing neither amends Source nor forms, adopts, deploys or demonstrates
 a Body or implementation. No bearer, platform, repository or verifier becomes
