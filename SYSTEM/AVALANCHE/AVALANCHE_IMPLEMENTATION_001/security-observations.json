@@ -1,0 +1,33 @@
+{
+  "schema": "PRESENCE_AVALANCHE_SECURITY_OBSERVATIONS_001",
+  "implementation": "AVALANCHE_IMPLEMENTATION_001",
+  "vulnerability_status": "UNRESOLVED_EXTERNAL_OBSERVATION",
+  "observations": [
+    {
+      "tool": "runtime-tools-gh-advisory-database",
+      "query": "Pinned direct and indirect require entries in vm/go.mod and vm/rehearsal/go.mod, plus golang.org/x/vuln@1.7.0; submitted as Go ecosystem package/version pairs in three calls",
+      "result": "NO_MATCHING_ADVISORIES_RETURNED_FOR_QUERIED_PINS",
+      "ceiling": "A limited package/version lookup, not proof of zero vulnerabilities or reachable-code analysis"
+    },
+    {
+      "tool": "golang.org/x/vuln/cmd/govulncheck@v1.7.0",
+      "working_directory": "vm",
+      "command": "GOTOOLCHAIN=go1.25.13 go run golang.org/x/vuln/cmd/govulncheck@v1.7.0 -json ./...",
+      "query": "https://vuln.go.dev/index/modules.json.gz",
+      "exit_code": 1,
+      "result": "UNRESOLVED_EXTERNAL_OBSERVATION",
+      "failure": "govulncheck: fetching vulnerabilities: Get \"https://vuln.go.dev/index/modules.json.gz\": dial tcp: lookup vuln.go.dev on 127.0.0.53:53: server misbehaving",
+      "ceiling": "Package loading completed; vulnerability database retrieval did not. No reachability clearance is claimed."
+    },
+    {
+      "tool": "web_fetch",
+      "query": "https://vuln.go.dev/index/db.json",
+      "result": "UNRESOLVED_EXTERNAL_OBSERVATION",
+      "failure": "WebFetchBlockedUrlError: failed to lookup address information: No address associated with hostname",
+      "ceiling": "External Go vulnerability database observation unavailable through this tool"
+    }
+  ],
+  "no_zero_vulnerabilities_claim": true,
+  "test_and_static_results": "qualification.json",
+  "policy": "External observation failures do not erase a compiling, deterministically tested, secret-free source implementation; observed secrets, known critical defects or Source contradictions block crossing."
+}

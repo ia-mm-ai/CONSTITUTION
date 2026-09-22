@@ -1,0 +1,52 @@
+{
+  "schema": "PRESENCE_AVALANCHE_INTEGRATION_TEST_RESULTS_001",
+  "go_toolchain": "go1.25.13",
+  "node_runtime": "v22.23.2",
+  "commands": [
+    {
+      "working_directory": "SYSTEM/AVALANCHE/AVALANCHE_IMPLEMENTATION_001",
+      "command": "GOFLAGS=-race COUPLED_EVIDENCE_PATH=../integration/qualification-run.json ./integration/run.sh",
+      "result": "PASS",
+      "accepted_transitions": 24,
+      "vm_database_reloads": 2,
+      "final_revision": 24,
+      "final_posture": "DORMANT_P0",
+      "includes_latest_operation_contract_status_hash_check": true
+    },
+    {
+      "working_directory": "SYSTEM/AVALANCHE/AVALANCHE_IMPLEMENTATION_001",
+      "command": "COUPLED_EVIDENCE_PATH=../integration/qualification-run.json ./integration/run.sh",
+      "result": "PASS",
+      "accepted_transitions": 24,
+      "vm_database_reloads": 2,
+      "final_revision": 24,
+      "final_posture": "DORMANT_P0"
+    },
+    {
+      "working_directory": "SYSTEM/AVALANCHE/AVALANCHE_IMPLEMENTATION_001/vm",
+      "environment": "GOTMPDIR and TMPDIR set to project-relative integration scratch",
+      "command": "go test -race -tags=integration -run '^TestCoupledFIELDLifecycle$' -count=3 -v .",
+      "result": "PASS",
+      "runs": 3,
+      "accepted_transitions_per_run": 24,
+      "vm_database_reloads_per_run": 2,
+      "race_reports": 0
+    },
+    {
+      "working_directory": "SYSTEM/AVALANCHE/AVALANCHE_IMPLEMENTATION_001/vm",
+      "environment": "GOTMPDIR and TMPDIR set to project-relative integration scratch",
+      "command": "go test -run '^(TestHTTPDraftSubmitAndReceiptLifecycle|TestVMLifecyclePersistsAndRestarts|TestReentryCarriesStateWithoutReopeningPriorLocus)$' -count=1 .",
+      "result": "PASS",
+      "tests": 3
+    }
+  ],
+  "additional_validation": {
+    "secret_scan": "PASS_NO_SECRETS_IN_SEVEN_INTEGRATION_FILES",
+    "scratch_cleanup": "PASS_NO_INTEGRATION_SCRATCH_DIRECTORIES_REMAIN",
+    "parallel_code_review_and_codeql": "NOT_RUN_TOOL_REPORTED_VALIDATION_TIME_LIMIT",
+    "latest_source_recheck": "PASS_REAL_VM_STATUS_OPERATION_CONTRACT_SHA256_MATCHES_FIELD"
+  },
+  "result_evidence": "integration/qualification-run.json",
+  "unresolved_boundary": "integration/qualification-boundary.json",
+  "effect": "LOCAL_IMPLEMENTATION_TEST_EVIDENCE_ONLY_NO_CONSTITUTIONAL_EFFECT"
+}

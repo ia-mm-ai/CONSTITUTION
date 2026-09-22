@@ -1,0 +1,19 @@
+{
+  "schema": "PRESENCE_AVALANCHE_FIELD_CONFIG_001",
+  "medium_id": "REPLACE-WITH-DEPLOYMENT-FIELD-ID",
+  "endpoint": "http://127.0.0.1:9650/ext/bc/REPLACE_WITH_SUCCESSOR_BLOCKCHAIN_ID",
+  "expected_blockchain_id": "REPLACE_WITH_SUCCESSOR_BLOCKCHAIN_ID",
+  "expected_locality_id": "REPLACE_WITH_SUCCESSOR_GENESIS_LOCALITY_ID",
+  "expected_vm_id": "cNhhBznc1YN29QVJMQbK7sxy6GsimFKN6yvftRjPK7qWEvZw8",
+  "expected_vm_version": "presence-avalanche-vm/1.0.0",
+  "expected_rpcchainvm_protocol": 46,
+  "actor_id": "REPLACE_WITH_DERIVED_PRESENCE_ACTOR_ID",
+  "actor_public_key": "REPLACE_WITH_64_LOWERCASE_HEX_PUBLIC_KEY",
+  "profile_path": "../profiles/AI_FIELD_001.json",
+  "journal_path": "../var/field-events.ndjson",
+  "request_timeout_ms": 5000,
+  "receipt_timeout_ms": 120000,
+  "max_response_bytes": 4194304,
+  "listen_host": "127.0.0.1",
+  "listen_port": 8787
+}
