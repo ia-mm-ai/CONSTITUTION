@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:presence:core:lineage:core:1",
+  "title": "Core representation primitives",
+  "x-status": "CANONICAL_SCHEMA",
+  "x-rule-classification": "CORE_ENCODING_RULE",
+  "x-source": {"refs": ["reading.3", "reading.5", "reading.7", "section.18.4"]},
+  "$comment": "Deterministic notation only. Source references must additionally resolve in the verified bound machine Constitution.",
+  "$ref": "urn:presence:core:lineage:core:1#/$defs/source",
+  "$defs": {
+    "text": {"type": "string", "minLength": 1, "pattern": "\\S"},
+    "id": {"type": "string", "minLength": 1, "pattern": "^\\S+$"},
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "commit": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+    "texts": {"type": "array", "items": {"$ref": "urn:presence:core:lineage:core:1#/$defs/text"}, "uniqueItems": true},
+    "refs": {
+      "type": "array", "uniqueItems": true,
+      "items": {"type": "string", "pattern": "^(reading|part|article|section)\\.[0-9]+(?:\\.[a-z0-9]+)*$"}
+    },
+    "source": {
+      "type": "object", "additionalProperties": false,
+      "required": ["refs"],
+      "properties": {
+        "refs": {"$ref": "urn:presence:core:lineage:core:1#/$defs/refs"},
+        "human": {"$ref": "urn:presence:core:lineage:core:1#/$defs/text"},
+        "machine": {"$ref": "urn:presence:core:lineage:core:1#/$defs/text"}
+      }
+    },
+    "binding": {
+      "type": "object", "additionalProperties": false,
+      "required": ["path", "hash_algorithm", "sha256", "byte_length", "hash_scope", "effect_ceiling"],
+      "properties": {
+        "path": {"$ref": "urn:presence:core:lineage:core:1#/$defs/text"},
+        "hash_algorithm": {"const": "sha256"},
+        "sha256": {"$ref": "urn:presence:core:lineage:core:1#/$defs/sha256"},
+        "byte_length": {"type": "integer", "minimum": 1},
+        "hash_scope": {"const": "exact_file_bytes"},
+        "effect_ceiling": {"$ref": "urn:presence:core:lineage:core:1#/$defs/text"}
+      }
+    }
+  }
+}

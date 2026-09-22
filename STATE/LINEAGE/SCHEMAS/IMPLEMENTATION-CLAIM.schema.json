@@ -1,24 +1,119 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "Implementation claim — structural placeholder",
-  "description": "Bounded claim to embody a constitutional function or capability; no embodiment is privileged and no claim is certified here.",
-  "$comment": "Annotation-only placeholder: accepts every instance; no conformance or constitutional effect is established.",
-  "x-status": "STRUCTURAL_PLACEHOLDER",
-  "x-source": {
-    "machine": "../../../SOURCE/CONSTITUTION_0()1.json",
-    "refs": ["reading.7", "section.13.7", "section.16.8", "section.18.4", "section.19.1", "section.19.3", "section.19.4", "section.20.2", "section.20.4"]
-  },
+  "$id": "urn:presence:core:lineage:implementation-claim:1",
+  "title": "LINEAGE bounded implementation claim",
+  "x-status": "CANONICAL_SCHEMA",
+  "x-rule-classification": "CORE_ENCODING_RULE",
+  "x-source": {"refs": ["reading.7", "section.13.7", "section.16.8", "section.18.1", "section.18.4", "section.19.1", "section.19.3", "section.19.4", "section.20.2", "section.20.4"]},
+  "description": "Technology-neutral claim profile. Exact commit and byte bindings are encoding requirements, not adoption or a signature requirement. Declared hashes are not remotely verified by schema validation.",
+  "type": "object", "additionalProperties": false,
+  "required": ["kind", "id", "claimant", "identity", "core", "implemented_modules", "locality", "scope", "exclusions", "conditions", "dependencies", "demonstrations", "failure_boundaries", "present_status", "attestation", "validation", "claimed_effects", "effect_ceiling"],
   "properties": {
-    "claimant": {"description": "Attributable bearer of the claim, not a self-appointed constitutional authority."},
-    "bearer_or_mechanism": {"description": "Exact embodiment to which the claim applies."},
-    "constitutional_reference": {"description": "Exact source provisions and the function or capability claimed."},
-    "locality": {"description": "Exact Locality of the supported claim; no general applicability inferred."},
-    "scope": {"description": "Bounded function, act, or capability claimed."},
-    "conditions": {"description": "Conditions under which the claimed capability or function is supported."},
-    "demonstration": {"description": "Evidence with declared object, method, scope, time, basis, result, and effect ceiling."},
-    "dependencies": {"description": "Material dependencies, interruption risks, replacement posture, and consequences of loss."},
-    "failure_boundaries": {"description": "Known limits, uncertainty, and unsupported cases."},
-    "present_status": {"description": "Present qualification at the stated scope, not presumed from publication or historical success."},
-    "effect_ceiling": {"description": "No Source, Authority, Agency, autonomy, adoption, or constitutional effect created by the claim, conformance, custody, or successful operation."}
+    "kind": {"const": "implementation_claim"}, "id": {"$ref": "#/$defs/text"}, "claimant": {"$ref": "#/$defs/text"},
+    "identity": {
+      "type": "object", "additionalProperties": false, "required": ["mechanism", "version", "form", "identity_refs"],
+      "properties": {
+        "mechanism": {"$ref": "#/$defs/text"}, "version": {"$ref": "#/$defs/text"},
+        "form": {"enum": ["HUMAN_PROCEDURE", "SOFTWARE", "PROTOCOL", "VIRTUAL_MACHINE", "NETWORK", "MIXED"]},
+        "identity_refs": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"$ref": "#/$defs/text"}}
+      }
+    },
+    "core": {
+      "type": "object", "additionalProperties": false, "required": ["repository", "commit", "source"],
+      "properties": {
+        "repository": {"$ref": "#/$defs/text"},
+        "commit": {"type": "string", "pattern": "^(?:[0-9a-f]{40}|[0-9a-f]{64})$"},
+        "source": {
+          "type": "object", "additionalProperties": false, "required": ["human", "machine"],
+          "properties": {
+            "human": {
+              "type": "object", "additionalProperties": false, "required": ["path", "sha256", "byte_length"],
+              "properties": {
+                "path": {"const": "SOURCE/CONSTITUTION_0()1.md"},
+                "sha256": {"$ref": "#/$defs/sha256"}, "byte_length": {"type": "integer", "minimum": 1}
+              }
+            },
+            "machine": {
+              "type": "object", "additionalProperties": false, "required": ["path", "sha256", "byte_length"],
+              "properties": {
+                "path": {"const": "SOURCE/CONSTITUTION_0()1.json"},
+                "sha256": {"$ref": "#/$defs/sha256"}, "byte_length": {"type": "integer", "minimum": 1}
+              }
+            }
+          }
+        }
+      }
+    },
+    "implemented_modules": {
+      "type": "array", "minItems": 1, "uniqueItems": true,
+      "items": {"enum": ["CONTINUITY_STATE_CAPABILITY", "DYNAMIC_CAPACITY_REGULATION", "LINEAGE"]}
+    },
+    "locality": {"$ref": "#/$defs/text"}, "scope": {"$ref": "#/$defs/text"},
+    "exclusions": {"$ref": "#/$defs/references"},
+    "conditions": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"$ref": "#/$defs/text"}},
+    "dependencies": {
+      "type": "array", "uniqueItems": true,
+      "items": {
+        "type": "object", "additionalProperties": false,
+        "required": ["id", "bearer", "function", "effect_ceiling", "interruption_risk", "replacement_posture", "consequences_of_loss"],
+        "properties": {
+          "id": {"$ref": "#/$defs/text"}, "bearer": {"$ref": "#/$defs/text"}, "function": {"$ref": "#/$defs/text"},
+          "effect_ceiling": {"$ref": "#/$defs/text"}, "interruption_risk": {"$ref": "#/$defs/text"},
+          "replacement_posture": {"enum": ["REPLACEABLE_WITH_NEW_BASIS", "NOT_REPLACEABLE_AT_DECLARED_SCOPE", "UNKNOWN", "UNRESOLVED"]},
+          "consequences_of_loss": {"$ref": "#/$defs/text"}
+        }
+      }
+    },
+    "demonstrations": {
+      "type": "object", "additionalProperties": false,
+      "required": ["primary", "additional_refs"],
+      "properties": {
+        "primary": {
+          "type": "object", "additionalProperties": false,
+          "required": ["id", "mechanism", "modules", "locality", "scope", "conditions", "object", "method", "time", "basis", "evidence_refs", "result", "proof_ceiling"],
+          "properties": {
+            "id": {"$ref": "#/$defs/text"}, "mechanism": {"$ref": "#/$defs/text"},
+            "modules": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"enum": ["CONTINUITY_STATE_CAPABILITY", "DYNAMIC_CAPACITY_REGULATION", "LINEAGE"]}},
+            "locality": {"$ref": "#/$defs/text"}, "scope": {"$ref": "#/$defs/text"}, "conditions": {"$ref": "#/$defs/references"},
+            "object": {"$ref": "#/$defs/text"},
+            "method": {"enum": ["CONFORMANCE_TEST", "OBSERVATION", "INSPECTION", "REPLAY", "SELF_REPORT", "SIGNATURE"]},
+            "time": {"$ref": "#/$defs/text"}, "basis": {"$ref": "#/$defs/text"}, "evidence_refs": {"$ref": "#/$defs/references"},
+            "result": {"enum": ["SUPPORTED", "UNKNOWN", "UNRESOLVED", "UNSUPPORTED", "REFUSED"]},
+            "proof_ceiling": {"enum": ["TESTED_CONDITIONS_ONLY", "OBSERVED_TRACE_ONLY", "EXTERNAL_CORRELATE_ONLY", "REPRODUCIBLE_TRACE_ONLY", "ATTRIBUTABLE_CLAIM_ONLY", "BOUNDED_KEY_BYTE_ATTRIBUTION"]}
+          }
+        },
+        "additional_refs": {"$ref": "#/$defs/references"}
+      }
+    },
+    "failure_boundaries": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"$ref": "#/$defs/text"}},
+    "present_status": {
+      "type": "object", "additionalProperties": false, "required": ["posture", "as_of", "current_basis_refs"],
+      "properties": {
+        "posture": {"enum": ["DEMONSTRATED_AT_DECLARED_SCOPE", "CLAIMED_ONLY", "HISTORICAL", "UNKNOWN", "UNRESOLVED", "UNSUPPORTED", "REFUSED"]},
+        "as_of": {"$ref": "#/$defs/text"}, "current_basis_refs": {"$ref": "#/$defs/references"}
+      }
+    },
+    "attestation": {
+      "oneOf": [
+        {"type": "object", "additionalProperties": false, "required": ["posture"], "properties": {"posture": {"const": "UNSIGNED"}}},
+        {
+          "type": "object", "additionalProperties": false, "required": ["posture", "signer", "key_ref", "signature_ref"],
+          "properties": {
+            "posture": {"const": "SIGNED"}, "signer": {"$ref": "#/$defs/text"}, "key_ref": {"$ref": "#/$defs/text"}, "signature_ref": {"$ref": "#/$defs/text"}
+          }
+        }
+      ]
+    },
+    "validation": {"enum": ["DECLARED_CLAIM_ONLY", "SELF_VALIDATED", "CONSTITUTIONALLY_VALIDATED"]},
+    "claimed_effects": {
+      "type": "array", "uniqueItems": true,
+      "items": {"enum": ["BOUNDED_IMPLEMENTATION_CLAIM", "DECLARED_DEMONSTRATION", "PRESENT_CSC", "PRESENT_DCR", "SOURCE", "AUTHORITY", "AGENCY", "AUTONOMY", "ADOPTION", "GENERAL_CONSTITUTIONAL_VALIDITY"]}
+    },
+    "effect_ceiling": {"enum": ["NO_CONSTITUTIONAL_EFFECT_FROM_CLAIM", "SELF_AUTHORIZING"]}
+  },
+  "$defs": {
+    "text": {"type": "string", "minLength": 1, "pattern": "\\S"},
+    "references": {"type": "array", "uniqueItems": true, "items": {"$ref": "#/$defs/text"}},
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
   }
 }

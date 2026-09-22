@@ -1,0 +1,92 @@
+{
+  "kind": "normative_vector_suite",
+  "status": "NORMATIVE_VECTOR",
+  "source": {"refs": ["reading.5", "reading.7", "section.5.2", "section.19.2", "section.19.4"]},
+  "cases": [
+    {
+      "id": "state-explicit-input",
+      "schema": "urn:presence:core:lineage:interface:1",
+      "input": {
+        "kind": "module_input_relation",
+        "id": "urn:vector:input:1",
+        "source": {"refs": ["section.19.4"]},
+        "attribution": "urn:vector:recorder",
+        "locality": "urn:vector:locality",
+        "target": "urn:vector:motion",
+        "scope": "Refer to one capacity disposition in one transition proposal",
+        "effective_boundary": "urn:vector:occurrence:1",
+        "conditions": ["The disposition is evidence, not inherited Authority"],
+        "basis": ["urn:vector:local-basis"],
+        "evidence": ["urn:vector:reference-occurrence"],
+        "output": {"module": "DCR", "record": "urn:vector:disposition"},
+        "input": {"module": "CSC", "record": "urn:vector:proposal", "from_record": "urn:vector:disposition"},
+        "effect_ceiling": "SCOPED_INPUT_ONLY_NO_CONVERSION_OR_MISSING_BASIS"
+      },
+      "expected": {"schema_valid": true, "semantic_result": "CONSISTENT_AT_DECLARED_SCOPE", "failure_codes": []},
+      "source": {"refs": ["section.5.2", "section.19.2", "section.19.4"]},
+      "forbidden_inference": "A DCR reference supplies CSC preservation, present Agency, or Authority."
+    },
+    {
+      "id": "state-mismatched-input",
+      "schema": "urn:presence:core:lineage:interface:1",
+      "input": {
+        "kind": "module_input_relation",
+        "id": "urn:vector:input:2",
+        "source": {"refs": ["section.19.4"]},
+        "attribution": "urn:vector:recorder",
+        "locality": "urn:vector:locality",
+        "target": "urn:vector:motion",
+        "scope": "One proposed reference",
+        "effective_boundary": "urn:vector:occurrence:2",
+        "conditions": [],
+        "basis": ["urn:vector:local-basis"],
+        "evidence": ["urn:vector:reference-occurrence"],
+        "output": {"module": "DCR", "record": "urn:vector:disposition"},
+        "input": {"module": "CSC", "record": "urn:vector:proposal", "from_record": "urn:vector:different-disposition"},
+        "effect_ceiling": "SCOPED_INPUT_ONLY_NO_CONVERSION_OR_MISSING_BASIS"
+      },
+      "expected": {"schema_valid": true, "semantic_result": "INCONSISTENT", "failure_codes": ["INPUT_BINDING_MISMATCH"]},
+      "source": {"refs": ["section.5.2", "section.19.2"]},
+      "forbidden_inference": "Similar records or graph adjacency silently create the exact input relation."
+    },
+    {
+      "id": "state-not-cross-module",
+      "schema": "urn:presence:core:lineage:interface:1",
+      "input": {
+        "kind": "module_input_relation",
+        "id": "urn:vector:input:3",
+        "source": {"refs": ["section.19.4"]},
+        "attribution": "urn:vector:recorder",
+        "locality": "urn:vector:locality",
+        "target": "urn:vector:motion",
+        "scope": "One internal reference using the wrong representation profile",
+        "effective_boundary": "urn:vector:occurrence:3",
+        "conditions": [],
+        "basis": ["urn:vector:local-basis"],
+        "evidence": ["urn:vector:reference-occurrence"],
+        "output": {"module": "CSC", "record": "urn:vector:state"},
+        "input": {"module": "CSC", "record": "urn:vector:proposal", "from_record": "urn:vector:state"},
+        "effect_ceiling": "SCOPED_INPUT_ONLY_NO_CONVERSION_OR_MISSING_BASIS"
+      },
+      "expected": {"schema_valid": true, "semantic_result": "INCONSISTENT", "failure_codes": ["NOT_A_CROSS_MODULE_RELATION"]},
+      "source": {"refs": ["reading.3", "section.19.4"]},
+      "forbidden_inference": "A representation-profile failure forbids otherwise supported internal relations."
+    },
+    {
+      "id": "state-null-is-not-unknown",
+      "schema": "urn:presence:core:lineage:interface:1",
+      "input": null,
+      "expected": {"schema_valid": false, "semantic_result": "NOT_EVALUATED", "failure_codes": ["SCHEMA_INVALID"]},
+      "source": {"refs": ["reading.5", "section.3.4"]},
+      "forbidden_inference": "Null is a valid relation or establishes absence of every relation."
+    },
+    {
+      "id": "state-missing-is-not-refusal",
+      "schema": "urn:presence:core:lineage:interface:1",
+      "input": {"kind": "module_input_relation", "authority": "inherited"},
+      "expected": {"schema_valid": false, "semantic_result": "NOT_EVALUATED", "failure_codes": ["SCHEMA_INVALID"]},
+      "source": {"refs": ["reading.5", "section.5.2", "section.19.4"]},
+      "forbidden_inference": "An unknown field grants Authority or malformed input proves general incapacity."
+    }
+  ]
+}

@@ -1,24 +1,27 @@
 {
-  "kind": "scenario_outline",
-  "status": "ILLUSTRATIVE_NON_EXECUTABLE",
-  "source": {
-    "machine": "../../../SOURCE/CONSTITUTION_0()1.json",
-    "refs": ["section.14.5", "section.15.3", "section.15.4", "section.15.5"]
-  },
-  "schemas": ["../SCHEMAS/CORRECTION.schema.json", "../SCHEMAS/SUPPORTED-STATE.schema.json"],
-  "scenario": {
-    "assumptions": [
-      "A State representation contains an attributable error at an exact target.",
-      "The prior representation, corrected basis, resulting delta, and remaining uncertainty can be preserved."
-    ],
-    "proposed_claim": "Correct the representation while retaining enough history to explain the change.",
-    "expected_reading": [
-      "The correction identifies the error, target, prior representation, corrected basis, delta, and uncertainty.",
-      "The earlier occurrence remains historical fact; correction does not make it unoccurred.",
-      "Correcting the representation does not by itself establish repair of State or remedy for every affected relation."
-    ],
-    "forbidden_inferences": ["The prior occurrence never happened.", "A corrected record proves complete reconciliation or restored autonomy."]
-  },
-  "fixture": null,
-  "expected_validation": null
+  "kind":"normative_vector_suite","status":"NORMATIVE_VECTOR",
+  "source":{"refs":["section.14.5","section.15.3","section.15.4","section.15.5"]},
+  "cases":[
+    {
+      "id":"csc.correction.preserved-occurrence","schema":"urn:presence:core:csc:correction:1",
+      "input":{"kind":"correction","id":"r","locality":"L","scope":"scope","at":"t1","evidence":{"object":"r","locality":"L","scope":"scope","at":"t1","basis":"synthetic-comparison","method":"RECORD_COMPARISON","result":"SUPPORTED","effect_ceiling":"BOUNDED_REPRESENTATION_ONLY"},"uncertainty":{"status":"UNKNOWN","matters":["external-remedy"]},"before":{"id":"s0","locality":"L","identity":"I","applicable_law":"law","at":"t0","posture":"ACTIVE","history":["event"],"discontinuity":["gap"]},"after":{"id":"s1","locality":"L","identity":"I","applicable_law":"law","at":"t1","posture":"ACTIVE","history":["event"],"discontinuity":["gap"]},"target":"s0","target_kind":"REPRESENTATION","error":"misattributed effect","corrected_basis":"attribution-evidence","delta":{"before":"s0","after":"s1","description":"correct attribution only"},"prior_occurrence":"event","preserved_history":["event"],"state_effect":"UNCHANGED","repair_claim":"BOUNDED"},
+      "expected":{"schema_valid":true,"semantic_result":"CONSISTENT_AT_DECLARED_SCOPE","failure_codes":[]},
+      "source":{"refs":["section.14.5","section.15.3","section.15.4","section.15.5"]},
+      "forbidden_inference":"Synthetic representation repair neither erases occurrence nor proves recognition or remedy outside its scope."
+    },
+    {
+      "id":"csc.correction.erasure-and-overclaim","schema":"urn:presence:core:csc:correction:1",
+      "input":{"kind":"correction","id":"r","locality":"L","scope":"scope","at":"t1","evidence":{"object":"r","locality":"L","scope":"scope","at":"t1","basis":"synthetic-comparison","method":"RECORD_COMPARISON","result":"SUPPORTED","effect_ceiling":"BOUNDED_REPRESENTATION_ONLY"},"uncertainty":{"status":"KNOWN_AT_SCOPE","matters":[]},"before":{"id":"s0","locality":"L","identity":"I","applicable_law":"law","at":"t0","posture":"ACTIVE","history":["event"],"discontinuity":["gap"]},"after":{"id":"s1","locality":"L","identity":"I","applicable_law":"law","at":"t1","posture":"ACTIVE","history":[],"discontinuity":[]},"target":"unrelated","target_kind":"REPRESENTATION","error":"misattributed effect","corrected_basis":"attribution-evidence","delta":{"before":"s0","after":"other","description":"erase history"},"prior_occurrence":"event","preserved_history":[],"state_effect":"CHANGED","repair_claim":"UNIVERSAL"},
+      "expected":{"schema_valid":true,"semantic_result":"INCONSISTENT","failure_codes":["CORRECTION_BINDING_MISMATCH","CORRECTION_ERASES_HISTORY","REPRESENTATION_PROMOTED_TO_STATE","UNIVERSAL_REPAIR_CLAIM"]},
+      "source":{"refs":["section.14.5","section.15.3","section.15.4","section.15.5"]},
+      "forbidden_inference":"An asserted corrected basis cannot rewrite an unrelated target, make history unoccurred, or prove universal repair."
+    },
+    {
+      "id":"csc.correction.null-is-not-unknown","schema":"urn:presence:core:csc:correction:1",
+      "input":{"kind":"correction","id":"r","locality":"L","scope":"scope","at":"t1","evidence":{"object":"r","locality":"L","scope":"scope","at":"t1","basis":"synthetic-comparison","method":"RECORD_COMPARISON","result":"SUPPORTED","effect_ceiling":"BOUNDED_REPRESENTATION_ONLY"},"uncertainty":null,"before":{"id":"s0","locality":"L","identity":"I","applicable_law":"law","at":"t0","posture":"ACTIVE","history":["event"],"discontinuity":[]},"after":{"id":"s1","locality":"L","identity":"I","applicable_law":"law","at":"t1","posture":"ACTIVE","history":["event"],"discontinuity":[]},"target":"s0","target_kind":"STATE","error":"error","corrected_basis":"basis","delta":{"before":"s0","after":"s1","description":"correction"},"prior_occurrence":"event","preserved_history":["event"],"state_effect":"CHANGED","repair_claim":"BOUNDED"},
+      "expected":{"schema_valid":false,"semantic_result":"NOT_EVALUATED","failure_codes":["SCHEMA_INVALID"]},
+      "source":{"refs":["reading.5","section.15.3"]},
+      "forbidden_inference":"Null uncertainty is not an explicit UNKNOWN proposition or evidence that no uncertainty remains."
+    }
+  ]
 }

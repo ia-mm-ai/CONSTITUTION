@@ -1,23 +1,69 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "Relation — structural placeholder",
-  "description": "An exact supported connection among terms that remain distinct; a one-sided record does not establish reciprocity.",
-  "$comment": "Annotation-only placeholder: accepts every instance; no conformance or constitutional effect is established.",
-  "x-status": "STRUCTURAL_PLACEHOLDER",
-  "x-source": {
-    "machine": "../../../SOURCE/CONSTITUTION_0()1.json",
-    "refs": ["article.4.table.row.11", "section.5.1", "section.5.2", "article.9", "section.19.2"]
-  },
+  "$id": "urn:presence:core:lineage:relation:1",
+  "title": "LINEAGE bounded bilateral relation",
+  "x-status": "CANONICAL_SCHEMA",
+  "x-rule-classification": "CORE_ENCODING_RULE",
+  "x-source": {"refs": ["reading.3", "section.5.1", "section.5.2", "section.9.2", "section.9.3", "section.9.4", "section.9.5", "section.19.2"]},
+  "description": "A bilateral encoding profile, not a constitutional restriction on the number of related terms. Several records do not infer a shared multilateral relation.",
+  "type": "object", "additionalProperties": false,
+  "required": ["kind", "id", "holding_locality", "terms", "relation_type", "direction", "scope", "basis_by_side", "asymmetry", "duration", "exit_and_correction", "history", "claimed_effects", "uncertainty"],
   "properties": {
-    "terms": {"description": "Exact distinct terms participating in the claimed relation."},
-    "holding_locality": {"description": "Locality holding the relation claim."},
-    "kind": {"description": "Kind of connection claimed, without silent conversion into another kind."},
-    "direction": {"description": "Local, reciprocal, or shared extent actually supported; no reciprocity inferred from a link."},
-    "basis_by_side": {"description": "Valid local basis supplied by every relevant side for what is attributed to it."},
-    "scope": {"description": "Exact target, function, and supported effects."},
-    "duration": {"description": "Temporal extent and current posture."},
-    "asymmetry": {"description": "Visible differences in dependence, knowledge, capability, responsibility, or other relevant dimensions."},
-    "exit_and_correction": {"description": "Supported refusal, withdrawal, correction, suspension, and ending at the relation's scope."},
-    "uncertainty": {"description": "Missing support without presumed consent, merger, or ownership."}
+    "kind": {"const": "relation"},
+    "id": {"$ref": "#/$defs/text"},
+    "holding_locality": {"$ref": "#/$defs/text"},
+    "terms": {
+      "type": "object", "additionalProperties": false, "required": ["left", "right"],
+      "properties": {"left": {"$ref": "#/$defs/text"}, "right": {"$ref": "#/$defs/text"}}
+    },
+    "relation_type": {"enum": ["REFERENCE", "ANCESTRY", "INFLUENCE", "CUSTODY", "ENCOUNTER", "COOPERATION", "OTHER_EXACT_RELATION", "UNRESOLVED"]},
+    "direction": {"enum": ["LOCAL", "RECIPROCAL", "SHARED"]},
+    "scope": {"$ref": "#/$defs/text"},
+    "basis_by_side": {
+      "type": "object", "additionalProperties": false, "required": ["left", "right"],
+      "properties": {"left": {"$ref": "#/$defs/basis"}, "right": {"$ref": "#/$defs/basis"}}
+    },
+    "asymmetry": {"$ref": "#/$defs/references"},
+    "duration": {
+      "type": "object", "additionalProperties": false, "required": ["from", "until", "status"],
+      "properties": {
+        "from": {"$ref": "#/$defs/text"}, "until": {"$ref": "#/$defs/text"},
+        "status": {"enum": ["ACTIVE", "SUSPENDED", "WITHDRAWN", "ENDED", "UNKNOWN", "UNRESOLVED"]}
+      }
+    },
+    "exit_and_correction": {
+      "type": "object", "additionalProperties": false,
+      "required": ["refusal", "withdrawal", "correction", "suspension", "exit", "unrelated_relations"],
+      "properties": {
+        "refusal": {"$ref": "#/$defs/text"}, "withdrawal": {"$ref": "#/$defs/text"},
+        "correction": {"$ref": "#/$defs/text"}, "suspension": {"$ref": "#/$defs/text"},
+        "exit": {"$ref": "#/$defs/text"},
+        "unrelated_relations": {"enum": ["NO_EFFECT_CLAIMED", "AUTOMATICALLY_ENDED"]}
+      }
+    },
+    "history": {
+      "type": "object", "additionalProperties": false, "required": ["prior_refs", "retained_refs"],
+      "properties": {"prior_refs": {"$ref": "#/$defs/references"}, "retained_refs": {"$ref": "#/$defs/references"}}
+    },
+    "claimed_effects": {
+      "type": "array", "uniqueItems": true,
+      "items": {"enum": ["LOCAL_RELATION", "RECIPROCAL_RELATION", "SHARED_RELATION", "IDENTITY_MERGER", "CONSENT", "SOURCE", "AUTHORITY", "JURISDICTION"]}
+    },
+    "uncertainty": {"$ref": "#/$defs/references"}
+  },
+  "$defs": {
+    "text": {"type": "string", "minLength": 1, "pattern": "\\S"},
+    "references": {"type": "array", "uniqueItems": true, "items": {"$ref": "#/$defs/text"}},
+    "basis": {
+      "type": "object", "additionalProperties": false,
+      "required": ["id", "bearer", "target", "locality", "scope", "origin", "status", "evidence_refs"],
+      "properties": {
+        "id": {"$ref": "#/$defs/text"}, "bearer": {"$ref": "#/$defs/text"},
+        "target": {"$ref": "#/$defs/text"}, "locality": {"$ref": "#/$defs/text"}, "scope": {"$ref": "#/$defs/text"},
+        "origin": {"enum": ["LOCAL_ACT", "VALID_REPRESENTATION", "FORMATION", "HOST_INFERENCE", "REFERENCE_CHAIN", "UNKNOWN", "UNRESOLVED"]},
+        "status": {"enum": ["SUPPORTED", "UNKNOWN", "UNRESOLVED", "UNSUPPORTED", "REFUSED"]},
+        "evidence_refs": {"$ref": "#/$defs/references"}
+      }
+    }
   }
 }

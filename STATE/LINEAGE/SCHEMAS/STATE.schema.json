@@ -1,0 +1,79 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:presence:core:lineage:state:1",
+  "title": "Canonical State composition model",
+  "x-status": "CANONICAL_SCHEMA",
+  "x-rule-classification": "CORE_ENCODING_RULE",
+  "x-source": {"refs": ["reading.3", "reading.4", "reading.7", "section.19.2", "section.19.3", "section.19.4"]},
+  "type": "object", "additionalProperties": false,
+  "required": ["kind", "status", "human_standard", "source", "scope", "modules", "encoding", "interfaces", "composition", "schemas", "vectors", "rules", "effect_ceiling", "not_established"],
+  "properties": {
+    "kind": {"const": "canonical_state_core"},
+    "status": {"const": "CANONICAL_CORE"},
+    "human_standard": {"const": "STATE.md"},
+    "source": {"$ref": "urn:presence:core:lineage:core:1#/$defs/source"},
+    "scope": {"$ref": "urn:presence:core:lineage:core:1#/$defs/text"},
+    "modules": {"const": ["CONTINUITY-STATE-CAPABILITY/CONTINUITY-STATE-CAPABILITY.json", "DYNAMIC-CAPACITY-REGULATION/DYNAMIC-CAPACITY-REGULATION.json", "LINEAGE/LINEAGE.json"]},
+    "encoding": {
+      "type": "object", "additionalProperties": false,
+      "required": ["classification", "semantic_authority", "schemas", "vectors", "null", "path_resolution", "derivation_target_paths", "reference_resolution", "absence", "unknown", "unresolved", "unsupported", "refused", "hash_representation", "identifiers", "rule_language", "evaluation"],
+      "properties": {
+        "classification": {"const": "CORE_ENCODING_RULE"},
+        "semantic_authority": {"const": "source.human"},
+        "schemas": {"const": "strict_draft_2020_12_with_format_checking"},
+        "vectors": {"const": "exact_input_schema_and_semantic_expectations"},
+        "null": {"const": "invalid_unless_explicitly_defined_by_schema"},
+        "path_resolution": {"const": "relative_to_containing_file"},
+        "derivation_target_paths": {"const": "relative_to_repository_root"},
+        "reference_resolution": {"const": "stable_refs_in_source.machine"},
+        "absence": {"$ref": "urn:presence:core:lineage:core:1#/$defs/text"},
+        "unknown": {"const": "unestablished"},
+        "unresolved": {"const": "identified_conflict_not_silently_resolved"},
+        "unsupported": {"const": "support_does_not_establish_exact_claim"},
+        "refused": {"const": "attributable_scoped_disposition"},
+        "hash_representation": {"const": "sha256_over_exact_stored_file_bytes_with_byte_length; no_reencoding"},
+        "identifiers": {"const": "explicit_non_content_addressed_references"},
+        "rule_language": {"const": "LINEAGE/SCHEMAS/RULE.schema.json"},
+        "evaluation": {"const": "STATE.md#formal-rule-and-vector-evaluation"}
+      }
+    },
+    "interfaces": {
+      "type": "array", "minItems": 3, "maxItems": 3,
+      "items": {
+        "type": "object", "additionalProperties": false,
+        "required": ["module", "model", "job", "inputs", "outputs", "does_not_supply"],
+        "properties": {
+          "module": {"enum": ["CSC", "DCR", "LINEAGE"]},
+          "model": {"$ref": "urn:presence:core:lineage:core:1#/$defs/text"},
+          "job": {"$ref": "urn:presence:core:lineage:core:1#/$defs/text"},
+          "inputs": {"$ref": "#/$defs/nonempty_texts"},
+          "outputs": {"$ref": "#/$defs/nonempty_texts"},
+          "does_not_supply": {"$ref": "#/$defs/nonempty_texts"}
+        }
+      },
+      "allOf": [
+        {"contains": {"properties": {"module": {"const": "CSC"}}}, "minContains": 1, "maxContains": 1},
+        {"contains": {"properties": {"module": {"const": "DCR"}}}, "minContains": 1, "maxContains": 1},
+        {"contains": {"properties": {"module": {"const": "LINEAGE"}}}, "minContains": 1, "maxContains": 1}
+      ]
+    },
+    "composition": {
+      "type": "object", "additionalProperties": false,
+      "required": ["universal_execution_order", "input_relation_schema", "source", "rule"],
+      "properties": {
+        "universal_execution_order": {"const": false},
+        "input_relation_schema": {"const": "urn:presence:core:lineage:interface:1"},
+        "source": {"$ref": "urn:presence:core:lineage:core:1#/$defs/source"},
+        "rule": {"$ref": "urn:presence:core:lineage:core:1#/$defs/text"}
+      }
+    },
+    "schemas": {"$ref": "#/$defs/nonempty_texts"},
+    "vectors": {"$ref": "#/$defs/nonempty_texts"},
+    "rules": {"type": "array", "minItems": 1, "items": {"$ref": "urn:presence:core:lineage:rule:1"}},
+    "effect_ceiling": {"$ref": "urn:presence:core:lineage:core:1#/$defs/text"},
+    "not_established": {"$ref": "#/$defs/nonempty_texts"}
+  },
+  "$defs": {
+    "nonempty_texts": {"allOf": [{"$ref": "urn:presence:core:lineage:core:1#/$defs/texts"}, {"minItems": 1}]}
+  }
+}

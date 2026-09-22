@@ -1,36 +1,237 @@
 {
-  "kind": "module_index",
-  "status": "STRUCTURAL_PLACEHOLDER",
-  "human_outline": "CONTINUITY-STATE-CAPABILITY.md",
-  "source": {
-    "human": "../../SOURCE/CONSTITUTION_0()1.md",
-    "machine": "../../SOURCE/CONSTITUTION_0()1.json",
-    "refs": ["article.4", "section.14.3", "section.14.5", "article.15", "article.16", "article.17", "section.19.3", "section.19.4"]
+  "kind":"canonical_standard",
+  "status":"CANONICAL_STANDARD",
+  "id":"urn:presence:core:csc:1",
+  "human_standard":"CONTINUITY-STATE-CAPABILITY.md",
+  "source":{"human":"../../SOURCE/CONSTITUTION_0()1.md","machine":"../../SOURCE/CONSTITUTION_0()1.json","refs":["reading.2","reading.3","reading.5","reading.6","reading.7","article.4","article.14","article.15","article.16","article.17","section.18.4","section.19.3","section.19.4"]},
+  "scope":"Bounded representations of supported State succession, correction, recoverable dormancy, present resumption conditions, and capability qualification. This standard makes no present CSC claim.",
+  "schemas":["SCHEMAS/SUPPORTED-STATE.schema.json","SCHEMAS/TRANSITION.schema.json","SCHEMAS/CORRECTION.schema.json","SCHEMAS/DORMANCY.schema.json","SCHEMAS/RESUMPTION.schema.json"],
+  "vectors":["VECTORS/SUCCESSION.json","VECTORS/CORRECTION.json","VECTORS/DORMANCY-RESUMPTION.json","VECTORS/INVALID-DISCONTINUITY.json"],
+  "evaluation":{
+    "classification":"CORE_ENCODING_RULE",
+    "schema_dialect":"https://json-schema.org/draft/2020-12/schema",
+    "schema_invalid":{"semantic_result":"NOT_EVALUATED","failure_codes":["SCHEMA_INVALID"]},
+    "consistent":"CONSISTENT_AT_DECLARED_SCOPE",
+    "inconsistent":"INCONSISTENT",
+    "order":"Evaluate every applicable rule independently in array order; de-duplicate failure codes preserving first occurrence.",
+    "effect_ceiling":"A bounded representation reading, never universal permission, truth, present CSC, adoption, Authority, or constitutional effect.",
+    "external_evidence":"Identifiers name recoverable evidence; no rule fetches, authenticates, or establishes its truth. An application must inspect the exact basis independently before relying on a consequential claim.",
+    "encoding":"Closed objects, explicit uncertainty and nullable references, exact case-sensitive identifiers, ordered arrays and exact equality. These are CORE_ENCODING_RULE choices, not constitutional syntax mandates.",
+    "null":"Permitted only at schema-declared nullable references: no supplied value, not FALSE, ABSENT or UNKNOWN. An UNKNOWN proposition is represented by an explicit posture and named matter; missing required fields are invalid."
   },
-  "scope": "Preservation of supported State succession across transition, correction, dormancy, and resumption.",
-  "policy": "../STATE.json",
-  "related": ["../DYNAMIC-CAPACITY-REGULATION/DYNAMIC-CAPACITY-REGULATION.json", "../LINEAGE/LINEAGE.json"],
-  "schemas": [
-    "SCHEMAS/SUPPORTED-STATE.schema.json",
-    "SCHEMAS/TRANSITION.schema.json",
-    "SCHEMAS/CORRECTION.schema.json",
-    "SCHEMAS/DORMANCY.schema.json",
-    "SCHEMAS/RESUMPTION.schema.json"
-  ],
-  "vectors": [
-    "VECTORS/SUCCESSION.json",
-    "VECTORS/CORRECTION.json",
-    "VECTORS/DORMANCY-RESUMPTION.json",
-    "VECTORS/INVALID-DISCONTINUITY.json"
-  ],
-  "qualification_outline": {
-    "bearer_or_mechanism": null,
-    "scope": null,
-    "conditions": null,
-    "demonstration": null,
-    "dependencies": null,
-    "failure_boundaries": null,
-    "present_status": null
-  },
-  "qualification_effect": "No CSC claim is made; slots reserve the subjects of section.16.8."
+  "rules":[
+    {
+      "id":"csc.evidence-binding","classification":"CORE_ENCODING_RULE","source":{"refs":["section.2.1","section.18.4"]},
+      "assert":{"and":[{"===":[{"var":"evidence.object"},{"var":"id"}]},{"===":[{"var":"evidence.locality"},{"var":"locality"}]},{"===":[{"var":"evidence.scope"},{"var":"scope"}]},{"===":[{"var":"evidence.at"},{"var":"at"}]}]},
+      "failure_code":"EVIDENCE_BINDING_MISMATCH","description":"The evidence declaration names this exact record, locality, scope and boundary."
+    },
+    {
+      "id":"csc.support","classification":"CORE_ENCODING_RULE","source":{"refs":["section.3.2","section.16.7","section.18.4"]},
+      "assert":{"===":[{"var":"evidence.result"},"SUPPORTED"]},
+      "failure_code":"SUPPORT_NOT_ESTABLISHED","description":"A supported representation requires affirmative support at its declared scope; failure establishes no negative external truth."
+    },
+    {
+      "id":"csc.uncertainty","classification":"CORE_ENCODING_RULE","source":{"refs":["reading.5","section.3.4","section.3.5"]},
+      "assert":{"or":[{"and":[{"===":[{"var":"uncertainty.status"},"KNOWN_AT_SCOPE"]},{"===":[{"count":{"var":"uncertainty.matters"}},0]}]},{"and":[{"in":[{"var":"uncertainty.status"},["UNKNOWN","UNRESOLVED"]]},{">":[{"count":{"var":"uncertainty.matters"}},0]}]}]},
+      "failure_code":"UNCERTAINTY_NOT_PRESERVED","description":"Unknown and unresolved matters are named, not coerced into false, absence or a blanket prohibition."
+    },
+    {
+      "id":"csc.state-binding","classification":"CORE_ENCODING_RULE","source":{"refs":["section.2.1","section.14.5"]},
+      "when":{"===":[{"var":"kind"},"supported_state"]},
+      "assert":{"and":[{"===":[{"var":"state.locality"},{"var":"locality"}]},{"===":[{"var":"state.at"},{"var":"at"}]}]},
+      "failure_code":"STATE_BINDING_MISMATCH","description":"State representation locality and temporal boundary match the supported claim."
+    },
+    {
+      "id":"csc.consequence-return","classification":"CONSTITUTIONAL_RULE","source":{"refs":["section.14.1","section.14.2","section.14.3","section.14.4"]},
+      "when":{"===":[{"var":"kind"},"supported_state"]},
+      "assert":{"===":[{"var":"observed_consequences"},{"var":"returned_consequences"}]},
+      "failure_code":"CONSEQUENCE_OMITTED","description":"The declared material-consequence inventory is returned without erasure, including unauthorized effects; equality is the profile's exact inventory encoding."
+    },
+    {
+      "id":"csc.state-discontinuity","classification":"CONSTITUTIONAL_RULE","source":{"refs":["section.16.1","section.16.7"]},
+      "when":{"===":[{"var":"kind"},"supported_state"]},
+      "assert":{"and":[{"===":[{"var":"continuity.known_interruptions"},{"var":"continuity.recorded_interruptions"}]},{"===":[{"var":"state.discontinuity"},{"var":"continuity.recorded_interruptions"}]}]},
+      "failure_code":"DISCONTINUITY_CONCEALED","description":"Known interruption inventory is retained both in the continuity account and represented State."
+    },
+    {
+      "id":"csc.stream-cardinality","classification":"CORE_ENCODING_RULE","source":{"refs":["section.16.6"]},
+      "when":{"===":[{"var":"kind"},"supported_state"]},
+      "assert":{"and":[{"or":[{"!==":[{"var":"continuity.disposition"},"SINGLE"]},{"===":[{"count":{"var":"continuity.streams"}},1]}]},{"or":[{"!==":[{"var":"continuity.relation"},"INCOMPATIBLE"]},{">=":[{"count":{"var":"continuity.streams"}},2]}]}]},
+      "failure_code":"STREAM_INVENTORY_MISMATCH","description":"A single-stream account cannot encode several streams; incompatibility names at least two."
+    },
+    {
+      "id":"csc.incompatible-streams","classification":"CONSTITUTIONAL_RULE","source":{"refs":["section.16.6","section.17.13"]},
+      "when":{"and":[{"===":[{"var":"kind"},"supported_state"]},{"===":[{"var":"continuity.relation"},"INCOMPATIBLE"]}]},
+      "assert":{"or":[{"and":[{"===":[{"var":"continuity.disposition"},"VISIBLE_CONFLICT"]},{"===":[{"var":"state.posture"},"CONFLICTED"]}]},{"===":[{"var":"continuity.disposition"},"DISTINCT"]},{"and":[{"===":[{"var":"continuity.disposition"},"RECONCILED"]},{"!==":[{"var":"continuity.reconciliation_basis"},null]}]}]},
+      "failure_code":"INCOMPATIBLE_STREAMS_COLLAPSED","description":"Incompatible streams remain conflicted, distinct, or supported by an exact reconciliation basis; a preferred current label is insufficient."
+    },
+    {
+      "id":"csc.unknown-streams","classification":"CONSTITUTIONAL_RULE","source":{"refs":["reading.5","section.3.5","section.16.6"]},
+      "when":{"and":[{"===":[{"var":"kind"},"supported_state"]},{"===":[{"var":"continuity.relation"},"UNKNOWN"]}]},
+      "assert":{"and":[{"===":[{"var":"continuity.disposition"},"UNKNOWN"]},{"!==":[{"var":"uncertainty.status"},"KNOWN_AT_SCOPE"]}]},
+      "failure_code":"UNKNOWN_STREAM_RELATION_UPGRADED","description":"Unknown compatibility is not merged or declared compatible."
+    },
+    {
+      "id":"csc.qualification-fields","classification":"CONSTITUTIONAL_RULE","source":{"refs":["section.16.8","section.20.2"]},
+      "when":{"and":[{"===":[{"var":"kind"},"supported_state"]},{"!==":[{"var":"qualification.claim"},"NO_CLAIM"]}]},
+      "assert":{"and":[{"!==":[{"var":"qualification.bearer_or_mechanism"},null]},{"!==":[{"var":"qualification.locality"},null]},{"!==":[{"var":"qualification.scope"},null]},{">":[{"count":{"var":"qualification.conditions"}},0]},{">":[{"count":{"var":"qualification.demonstration.evidence"}},0]},{"!==":[{"var":"qualification.demonstration.at"},null]},{">":[{"count":{"var":"qualification.failure_boundaries"}},0]},{"===":[{"var":"qualification.demonstration.result"},"DEMONSTRATED"]}]},
+      "failure_code":"QUALIFICATION_INCOMPLETE","description":"A historical or current capability claim supplies the exact bearer, scope, conditions, demonstration, dependencies and failure boundaries."
+    },
+    {
+      "id":"csc.no-claim-ceiling","classification":"CORE_ENCODING_RULE","source":{"refs":["reading.7","section.16.8"]},
+      "when":{"and":[{"===":[{"var":"kind"},"supported_state"]},{"===":[{"var":"qualification.claim"},"NO_CLAIM"]}]},
+      "assert":{"===":[{"var":"qualification.present_status"},"NOT_CLAIMED"]},
+      "failure_code":"NO_CLAIM_UPGRADED","description":"A record explicitly making no capability claim cannot simultaneously declare current capability."
+    },
+    {
+      "id":"csc.historical-ceiling","classification":"CONSTITUTIONAL_RULE","source":{"refs":["section.15.2","section.16.8"]},
+      "when":{"and":[{"===":[{"var":"kind"},"supported_state"]},{"===":[{"var":"qualification.claim"},"HISTORICAL"]}]},
+      "assert":{"in":[{"var":"qualification.present_status"},["NOT_CLAIMED","UNKNOWN","UNAVAILABLE"]]},
+      "failure_code":"HISTORICAL_QUALIFICATION_UPGRADED","description":"A historical demonstration supplies no present supported status."
+    },
+    {
+      "id":"csc.current-qualification","classification":"CONSTITUTIONAL_RULE","source":{"refs":["section.16.8","section.19.3","section.20.2"]},
+      "when":{"and":[{"===":[{"var":"kind"},"supported_state"]},{"===":[{"var":"qualification.claim"},"CURRENT"]}]},
+      "assert":{"and":[{"===":[{"var":"qualification.locality"},{"var":"locality"}]},{"===":[{"var":"qualification.scope"},{"var":"scope"}]},{"===":[{"var":"qualification.assessed_at"},{"var":"at"}]},{"!":{"missing":["qualification.assessment_basis"]}},{"===":[{"var":"qualification.conditions"},{"var":"qualification.demonstrated_conditions"}]},{"===":[{"var":"qualification.present_status"},"SUPPORTED_AT_DECLARED_SCOPE"]},{"all":[{"var":"qualification.dependencies"},{"===":[{"var":"status"},"AVAILABLE"]}]}]},
+      "failure_code":"CURRENT_QUALIFICATION_UNSUPPORTED","description":"Current assessment has its own attributable basis at this boundary, locality and scope under demonstrated conditions and available declared dependencies. The demonstration may remain historical; current assessment does not require repeating it."
+    },
+    {
+      "id":"csc.change-binding","classification":"CORE_ENCODING_RULE","source":{"refs":["section.15.3","section.16.7","section.17.7"]},
+      "when":{"in":[{"var":"kind"},["transition","correction","resumption"]]},
+      "assert":{"and":[{"===":[{"var":"before.locality"},{"var":"locality"}]},{"===":[{"var":"after.locality"},{"var":"locality"}]},{"===":[{"var":"after.at"},{"var":"at"}]},{"!==":[{"var":"before.id"},{"var":"after.id"}]}]},
+      "failure_code":"CHANGE_BINDING_MISMATCH","description":"Both represented endpoints belong to this locality; the result boundary is exact and record identities remain distinct."
+    },
+    {
+      "id":"csc.change-history","classification":"CONSTITUTIONAL_RULE","source":{"refs":["section.15.1","section.16.7","section.17.15"]},
+      "when":{"in":[{"var":"kind"},["transition","resumption"]]},
+      "assert":{"===":[{"var":"before.history"},{"var":"after.history"}]},
+      "failure_code":"CHANGE_HISTORY_ERASED","description":"The recoverable predecessor-history inventory remains exact; the new occurrence is recorded separately by this change record."
+    },
+    {
+      "id":"csc.transition-links","classification":"CORE_ENCODING_RULE","source":{"refs":["section.16.7","section.17.7","section.17.9"]},
+      "when":{"===":[{"var":"kind"},"transition"]},
+      "assert":{"and":[{"===":[{"var":"lineage.predecessor"},{"var":"before.id"}]},{"===":[{"var":"lineage.result"},{"var":"after.id"}]},{"===":[{"var":"delta.before"},{"var":"before.id"}]},{"===":[{"var":"delta.after"},{"var":"after.id"}]},{"===":[{"var":"target.id"},{"var":"before.id"}]}]},
+      "failure_code":"PREDECESSOR_RESULT_MISMATCH","description":"Lineage, target and delta bind the actual supplied endpoints, not merely plausible unrelated identifiers."
+    },
+    {
+      "id":"csc.transition-identity","classification":"CONSTITUTIONAL_RULE","source":{"refs":["section.17.1","section.17.3","section.17.4","section.17.5","section.17.8","section.17.9","section.17.10"]},
+      "when":{"===":[{"var":"kind"},"transition"]},
+      "assert":{"or":[{"and":[{"in":[{"var":"classification"},["TRANSFORMATION","NEW_FORMATION"]]},{"!==":[{"var":"before.identity"},{"var":"after.identity"}]}]},{"and":[{"===":[{"var":"classification"},"SUCCESSION"]},{"===":[{"var":"basis.status"},"SUPPORTED"]},{"!==":[{"var":"basis.reference"},null]}]},{"and":[{"!":{"in":[{"var":"classification"},["TRANSFORMATION","NEW_FORMATION","SUCCESSION"]]}},{"===":[{"var":"before.identity"},{"var":"after.identity"}]}]}]},
+      "failure_code":"IDENTITY_CLASSIFICATION_MISMATCH","description":"Transformation or new formation recognizes difference. State-targeted succession may name a different successor identity under its exact independently supported basis and referenced lineage account; it does not equate predecessor and successor or establish succession at another layer."
+    },
+    {
+      "id":"csc.law-boundary","classification":"CONSTITUTIONAL_RULE","source":{"refs":["section.17.1","section.17.2","section.17.8"]},
+      "when":{"and":[{"===":[{"var":"kind"},"transition"]},{"!":{"in":[{"var":"classification"},["AMENDMENT","TRANSFORMATION","NEW_FORMATION","UNRESOLVED"]]}}]},
+      "assert":{"===":[{"var":"before.applicable_law"},{"var":"after.applicable_law"}]},
+      "failure_code":"LAW_CHANGED_WITHOUT_CLASSIFICATION","description":"An ordinary State transition cannot silently amend locally applicable law."
+    },
+    {
+      "id":"csc.transition-basis","classification":"CONSTITUTIONAL_RULE","source":{"refs":["section.14.2","section.17.7","section.17.8","section.17.14"]},
+      "when":{"===":[{"var":"kind"},"transition"]},
+      "assert":{"or":[{"and":[{"===":[{"var":"basis.status"},"SUPPORTED"]},{"!==":[{"var":"basis.reference"},null]}]},{"and":[{"===":[{"var":"classification"},"UNRESOLVED"]},{"!==":[{"var":"uncertainty.status"},"KNOWN_AT_SCOPE"]},{">":[{"count":{"var":"delta.unresolved"}},0]}]}]},
+      "failure_code":"CHANGE_BASIS_UNSUPPORTED","description":"Unsupported constitutional classification remains unresolved without denying observed change."
+    },
+    {
+      "id":"csc.transition-discontinuity","classification":"CONSTITUTIONAL_RULE","source":{"refs":["section.16.7","section.17.13"]},
+      "when":{"===":[{"var":"kind"},"transition"]},
+      "assert":{"and":[{"===":[{"var":"known_interruptions"},{"var":"recorded_interruptions"}]},{"===":[{"var":"after.discontinuity"},{"var":"recorded_interruptions"}]}]},
+      "failure_code":"DISCONTINUITY_CONCEALED","description":"Result and transition retain the exact declared interruption inventory."
+    },
+    {
+      "id":"csc.correction-links","classification":"CORE_ENCODING_RULE","source":{"refs":["section.15.3"]},
+      "when":{"===":[{"var":"kind"},"correction"]},
+      "assert":{"and":[{"===":[{"var":"target"},{"var":"before.id"}]},{"===":[{"var":"delta.before"},{"var":"before.id"}]},{"===":[{"var":"delta.after"},{"var":"after.id"}]},{"===":[{"var":"before.identity"},{"var":"after.identity"}]},{"===":[{"var":"before.applicable_law"},{"var":"after.applicable_law"}]}]},
+      "failure_code":"CORRECTION_BINDING_MISMATCH","description":"A correction targets the preserved prior representation and binds the actual result, without silent identity or law replacement."
+    },
+    {
+      "id":"csc.correction-history","classification":"CONSTITUTIONAL_RULE","source":{"refs":["section.15.3","section.15.4"]},
+      "when":{"===":[{"var":"kind"},"correction"]},
+      "assert":{"and":[{"===":[{"var":"before.history"},{"var":"preserved_history"}]},{"===":[{"var":"after.history"},{"var":"preserved_history"}]},{"in":[{"var":"prior_occurrence"},{"var":"preserved_history"}]},{"===":[{"var":"before.discontinuity"},{"var":"after.discontinuity"}]}]},
+      "failure_code":"CORRECTION_ERASES_HISTORY","description":"The prior occurrence and prior history remain recoverable; this correction profile adds its record separately rather than overwriting the history inventory."
+    },
+    {
+      "id":"csc.correction-state-ceiling","classification":"CONSTITUTIONAL_RULE","source":{"refs":["section.14.5","section.15.5"]},
+      "when":{"and":[{"===":[{"var":"kind"},"correction"]},{"===":[{"var":"target_kind"},"REPRESENTATION"]}]},
+      "assert":{"in":[{"var":"state_effect"},["UNCHANGED","UNKNOWN"]]},
+      "failure_code":"REPRESENTATION_PROMOTED_TO_STATE","description":"A representation-only correction cannot by itself claim changed State."
+    },
+    {
+      "id":"csc.repair-ceiling","classification":"CONSTITUTIONAL_RULE","source":{"refs":["section.15.5"]},
+      "when":{"===":[{"var":"kind"},"correction"]},
+      "assert":{"===":[{"var":"repair_claim"},"BOUNDED"]},
+      "failure_code":"UNIVERSAL_REPAIR_CLAIM","description":"The correction does not prove recognition, remedy or restored autonomy for every affected relation."
+    },
+    {
+      "id":"csc.dormancy-binding","classification":"CORE_ENCODING_RULE","source":{"refs":["section.16.2","section.16.7"]},
+      "when":{"===":[{"var":"kind"},"dormancy"]},
+      "assert":{"and":[{"===":[{"var":"last_supported_state.locality"},{"var":"locality"}]},{"===":[{"var":"recovery.state_id"},{"var":"last_supported_state.id"}]},{"===":[{"var":"recovery.identity"},{"var":"last_supported_state.identity"}]},{"===":[{"var":"recovery.applicable_law"},{"var":"last_supported_state.applicable_law"}]},{"===":[{"var":"recovery.boundary"},{"var":"at"}]}]},
+      "failure_code":"DORMANCY_RECOVERY_MISMATCH","description":"Recovery binds the actual last supported State, identity, law and dormancy boundary; it does not rename history as present activity."
+    },
+    {
+      "id":"csc.dormancy-ceiling","classification":"CONSTITUTIONAL_RULE","source":{"refs":["section.6.10","section.16.1","section.16.2","section.16.3"]},
+      "when":{"===":[{"var":"kind"},"dormancy"]},
+      "assert":{"and":[{"===":[{"var":"posture"},"DORMANT"]},{"===":[{"var":"resumption_effect"},"CONDITIONS_ONLY"]}]},
+      "failure_code":"DORMANCY_PROMOTED_TO_ENDING_OR_PERMISSION","description":"Dormancy is not ending; preserved carriers and possible conditions grant no permission to a later bearer."
+    },
+    {
+      "id":"csc.resumption-binding","classification":"CORE_ENCODING_RULE","source":{"refs":["section.16.2","section.16.5","section.16.7"]},
+      "when":{"===":[{"var":"kind"},"resumption"]},
+      "assert":{"and":[{"===":[{"var":"dormancy.state_id"},{"var":"before.id"}]},{"===":[{"var":"dormancy.identity"},{"var":"before.identity"}]},{"===":[{"var":"dormancy.applicable_law"},{"var":"before.applicable_law"}]},{"===":[{"var":"before.identity"},{"var":"after.identity"}]},{"===":[{"var":"before.applicable_law"},{"var":"after.applicable_law"}]},{"===":[{"var":"dormancy.discontinuity"},{"var":"after.discontinuity"}]}]},
+      "failure_code":"RESUMPTION_LINEAGE_MISMATCH","description":"Resumption preserves the recoverable predecessor, law, identity and interruption instead of restoring a fictitious uninterrupted history."
+    },
+    {
+      "id":"csc.present-context","classification":"CORE_ENCODING_RULE","source":{"refs":["section.11.10","section.16.5"]},
+      "when":{"===":[{"var":"kind"},"resumption"]},
+      "assert":{"and":[{"===":[{"var":"present_context"},{"var":"motion"}]},{"===":[{"var":"motion.locality"},{"var":"locality"}]},{"===":[{"var":"motion.scope"},{"var":"scope"}]},{"===":[{"var":"motion.at"},{"var":"at"}]}]},
+      "failure_code":"PRESENT_CONTEXT_MISMATCH","description":"The present relation assessment is bound to the exact bearer, act, target, locality, scope and boundary, not merely historical availability."
+    },
+    {
+      "id":"csc.resumption-conditions","classification":"CONSTITUTIONAL_RULE","source":{"refs":["section.16.2","section.16.5"]},
+      "when":{"===":[{"var":"kind"},"resumption"]},
+      "assert":{"and":[{"===":[{"var":"dormancy.conditions"},{"var":"required_conditions"}]},{"===":[{"var":"required_conditions"},{"var":"assessed_conditions"}]}]},
+      "failure_code":"RESUMPTION_CONDITIONS_UNSUPPORTED","description":"The complete declared conditions of possible resumption are assessed at the present bound context."
+    },
+    {
+      "id":"csc.present-agency","classification":"CONSTITUTIONAL_RULE","source":{"refs":["section.10.6","section.16.5"]},
+      "when":{"===":[{"var":"kind"},"resumption"]},
+      "assert":{"and":[{"===":[{"var":"relations.agency.status"},"SUPPORTED"]},{"!==":[{"var":"relations.agency.basis"},null]}]},
+      "failure_code":"PRESENT_AGENCY_UNSUPPORTED","description":"A record cannot supply present Agency for the resumed act."
+    },
+    {
+      "id":"csc.present-autonomy","classification":"CONSTITUTIONAL_RULE","source":{"refs":["section.10.2","section.10.8","section.16.5"]},
+      "when":{"===":[{"var":"kind"},"resumption"]},
+      "assert":{"and":[{"===":[{"var":"relations.autonomy.status"},"SUPPORTED"]},{"!==":[{"var":"relations.autonomy.basis"},null]}]},
+      "failure_code":"PRESENT_AUTONOMY_UNSUPPORTED","description":"Sufficient autonomy is separately supported for this act, without claiming metaphysical verification."
+    },
+    {
+      "id":"csc.present-capability","classification":"CONSTITUTIONAL_RULE","source":{"refs":["section.10.3","section.16.5"]},
+      "when":{"===":[{"var":"kind"},"resumption"]},
+      "assert":{"and":[{"===":[{"var":"relations.capability.status"},"SUPPORTED"]},{"!==":[{"var":"relations.capability.basis"},null]}]},
+      "failure_code":"PRESENT_CAPABILITY_UNSUPPORTED","description":"Recovered records do not demonstrate sufficient present capability."
+    },
+    {
+      "id":"csc.present-capacity","classification":"CONSTITUTIONAL_RULE","source":{"refs":["section.11.5","section.11.11","section.19.4"]},
+      "when":{"===":[{"var":"kind"},"resumption"]},
+      "assert":{"and":[{"===":[{"var":"relations.capacity.status"},"SUPPORTED"]},{"!==":[{"var":"relations.capacity.basis"},null]}]},
+      "failure_code":"PRESENT_CAPACITY_UNSUPPORTED","description":"State succession supplies no missing situated capacity."
+    },
+    {
+      "id":"csc.present-authority","classification":"CONSTITUTIONAL_RULE","source":{"refs":["section.11.11","section.12.1","section.16.5"]},
+      "when":{"===":[{"var":"kind"},"resumption"]},
+      "assert":{"and":[{"!==":[{"var":"relations.authority.basis"},null]},{"or":[{"and":[{"===":[{"var":"authority_required"},true]},{"===":[{"var":"relations.authority.status"},"SUPPORTED"]}]},{"and":[{"===":[{"var":"authority_required"},false]},{"===":[{"var":"relations.authority.status"},"NOT_REQUIRED"]}]}]}]},
+      "failure_code":"PRESENT_AUTHORITY_UNSUPPORTED","description":"Required Authority is independently grounded; a not-required classification also names its exact basis."
+    },
+    {
+      "id":"csc.other-relations","classification":"CONSTITUTIONAL_RULE","source":{"refs":["section.11.11","section.16.5"]},
+      "when":{"===":[{"var":"kind"},"resumption"]},
+      "assert":{"all":[{"var":"other_required_relations"},{"and":[{"===":[{"var":"status"},"SUPPORTED"]},{"!==":[{"var":"basis"},null]}]}]},
+      "failure_code":"OTHER_REQUIRED_RELATION_UNSUPPORTED","description":"Every additionally declared necessary relation is independently supported; an empty inventory does not certify that none is needed in reality."
+    },
+    {
+      "id":"csc.replacement-ceiling","classification":"CONSTITUTIONAL_RULE","source":{"refs":["section.16.4","section.16.5","section.19.4"]},
+      "when":{"===":[{"var":"kind"},"resumption"]},
+      "assert":{"===":[{"var":"inheritance"},"NONE"]},
+      "failure_code":"REPLACEMENT_INHERITANCE_CLAIM","description":"Resumption does not inherit identity, voice, memory, consent, Source, Agency, autonomy or Authority from a former bearer."
+    }
+  ]
 }

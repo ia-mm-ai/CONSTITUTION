@@ -1,21 +1,89 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "Derivation — structural placeholder",
-  "description": "Attributable relation between referenced and resulting material; derivation is not itself adoption, succession, or a constitutional change classification.",
-  "$comment": "Annotation-only placeholder: accepts every instance; no conformance or constitutional effect is established.",
-  "x-status": "STRUCTURAL_PLACEHOLDER",
-  "x-source": {
-    "machine": "../../../SOURCE/CONSTITUTION_0()1.json",
-    "refs": ["section.1.2", "section.1.4", "section.6.7", "section.17.1", "section.17.2", "section.17.3", "section.17.5", "section.17.7", "section.17.8", "section.19.2"]
-  },
+  "$id": "urn:presence:core:lineage:derivation:1",
+  "title": "Semantic material derivation, not constitutional succession",
+  "x-status": "CANONICAL_SCHEMA",
+  "x-rule-classification": "CORE_ENCODING_RULE",
+  "x-source": {"refs": ["reading.7", "section.1.5", "section.6.7", "section.17.1", "section.17.3", "section.17.7", "section.17.8", "section.18.1", "section.18.4", "section.19.2"]},
+  "type": "object", "additionalProperties": false,
+  "required": ["kind", "status", "id", "source", "input_archive", "inspected_material", "extracted_rule_map", "target_files", "excluded_material", "unsupported_or_refused_claims", "transformation_classification", "effect_ceiling"],
   "properties": {
-    "referenced_material": {"description": "Exact predecessor material to which derivation is attributed."},
-    "resulting_material": {"description": "Exact resulting material, distinct from its referent."},
-    "attribution": {"description": "Supported derivation relation, without transfer of Source or ownership of later formations."},
-    "changes": {"description": "Recoverable additions, removals, or transformations of material."},
-    "scope": {"description": "Bounds of the derivation claim and supporting evidence."},
-    "constitutional_classification": {"description": "Separately supported Article 17 classification if constitutional change is claimed; otherwise no classification is established by derivation alone."},
-    "change_basis": {"description": "Independent valid local basis, carry account, and effective boundary for any claimed constitutional change."},
-    "effect_ceiling": {"description": "Effects not established by copying, adaptation of material, ancestry, or reference."}
+    "kind": {"const": "derivation"},
+    "status": {"const": "RECORDED"},
+    "id": {"$ref": "urn:presence:core:lineage:core:1#/$defs/id"},
+    "source": {"$ref": "urn:presence:core:lineage:core:1#/$defs/source"},
+    "input_archive": {
+      "type": "object", "additionalProperties": false,
+      "required": ["filename", "byte_length", "sha256", "predecessor_identity"],
+      "properties": {
+        "filename": {"type": "string", "pattern": "^[^/\\\\]+\\.zip$"},
+        "byte_length": {"type": "integer", "minimum": 1},
+        "sha256": {"$ref": "urn:presence:core:lineage:core:1#/$defs/sha256"},
+        "predecessor_identity": {"$ref": "urn:presence:core:lineage:core:1#/$defs/text"}
+      }
+    },
+    "inspected_material": {
+      "type": "array", "minItems": 1,
+      "items": {
+        "type": "object", "additionalProperties": false,
+        "required": ["path", "byte_length", "sha256", "inspection", "substance"],
+        "properties": {
+          "path": {"$ref": "urn:presence:core:lineage:core:1#/$defs/text"},
+          "byte_length": {"type": "integer", "minimum": 0},
+          "sha256": {"$ref": "urn:presence:core:lineage:core:1#/$defs/sha256"},
+          "inspection": {"enum": ["TEXT_REVIEW", "BINARY_METADATA_ONLY", "DUPLICATE_VERIFIED"]},
+          "substance": {"$ref": "urn:presence:core:lineage:core:1#/$defs/text"}
+        }
+      }
+    },
+    "extracted_rule_map": {
+      "type": "array", "minItems": 1,
+      "items": {
+        "type": "object", "additionalProperties": false,
+        "required": ["input_paths", "target_rules", "source", "classification", "extraction"],
+        "properties": {
+          "input_paths": {"$ref": "#/$defs/nonempty_texts"},
+          "target_rules": {"$ref": "#/$defs/nonempty_texts"},
+          "source": {"$ref": "urn:presence:core:lineage:core:1#/$defs/source"},
+          "classification": {"enum": ["CONSTITUTIONAL_RULE", "CORE_ENCODING_RULE"]},
+          "extraction": {"$ref": "urn:presence:core:lineage:core:1#/$defs/text"}
+        },
+        "allOf": [{
+          "if": {"properties": {"classification": {"const": "CONSTITUTIONAL_RULE"}}},
+          "then": {"properties": {"source": {"properties": {"refs": {"minItems": 1}}}}}
+        }]
+      }
+    },
+    "target_files": {
+      "type": "array", "minItems": 1, "uniqueItems": true,
+      "items": {"type": "string", "pattern": "^STATE/(CONTINUITY-STATE-CAPABILITY|DYNAMIC-CAPACITY-REGULATION|LINEAGE)/[^\\\\]+$"}
+    },
+    "excluded_material": {
+      "type": "array", "minItems": 1,
+      "items": {
+        "type": "object", "additionalProperties": false, "required": ["paths", "reason"],
+        "properties": {"paths": {"$ref": "#/$defs/nonempty_texts"}, "reason": {"$ref": "urn:presence:core:lineage:core:1#/$defs/text"}}
+      }
+    },
+    "unsupported_or_refused_claims": {
+      "type": "array",
+      "items": {
+        "type": "object", "additionalProperties": false, "required": ["claim", "disposition", "reason", "source"],
+        "properties": {
+          "claim": {"$ref": "urn:presence:core:lineage:core:1#/$defs/text"},
+          "disposition": {"enum": ["UNSUPPORTED", "REFUSED", "UNRESOLVED"]},
+          "reason": {"$ref": "urn:presence:core:lineage:core:1#/$defs/text"},
+          "source": {"$ref": "urn:presence:core:lineage:core:1#/$defs/source"}
+        }
+      }
+    },
+    "transformation_classification": {
+      "const": "CANONICAL_EXTRACTION",
+      "description": "Repository operation only; not a finding of constitutional transformation, formation, succession, or adoption."
+    },
+    "effect_ceiling": {"$ref": "urn:presence:core:lineage:core:1#/$defs/text"}
+  },
+  "$defs": {
+    "nonempty_texts": {"allOf": [{"$ref": "urn:presence:core:lineage:core:1#/$defs/texts"}, {"minItems": 1}]}
   }
 }

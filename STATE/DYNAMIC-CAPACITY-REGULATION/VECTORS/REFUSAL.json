@@ -1,24 +1,54 @@
 {
-  "kind": "scenario_outline",
-  "status": "ILLUSTRATIVE_NON_EXECUTABLE",
-  "source": {
-    "machine": "../../../SOURCE/CONSTITUTION_0()1.json",
-    "refs": ["section.11.12", "section.13.2", "section.13.7", "section.14.1", "section.14.2"]
-  },
-  "schemas": ["../SCHEMAS/MOTION.schema.json", "../SCHEMAS/DISPOSITION.schema.json", "../SCHEMAS/EVIDENCE.schema.json"],
-  "scenario": {
-    "assumptions": [
-      "A particular motion lacks a necessary supported basis.",
-      "An exact valid local basis supports refusal of that dependent motion, with its target and effect identified."
-    ],
-    "proposed_claim": "Refuse that motion at the supported scope.",
-    "expected_reading": [
-      "Refusal is a bounded result, not a general ban or identity judgment.",
-      "It establishes no general lack of Agency, autonomy, awareness, or eligibility.",
-      "Actual consequences of refusal or attempted motion remain visible independently of validity."
-    ],
-    "forbidden_inferences": ["One refused act proves general incapacity.", "Refusal makes all consequences unreal."]
-  },
-  "fixture": null,
-  "expected_validation": null
+  "kind":"normative_vector_suite","status":"NORMATIVE_VECTOR",
+  "source":{"refs":["section.11.12","section.12.6","section.13.2","section.13.6","section.17.6"]},
+  "cases":[
+    {
+      "id":"bounded-exercise-not-owned-choice","schema":"urn:presence:core:dcr:disposition:1",
+      "input":{"kind":"disposition","id":"d2","subject":{"locality":"L","bearer":"B","act":"A","target":"T","relation":"R","scope":"S","conditions":["C"]},"time":{"frame":"f","at":5},"structural":{"posture":"SUPPORTED","basis":"form","subject":{"locality":"L","bearer":"B","act":"A","target":"T","relation":"R","scope":"S","conditions":["C"]},"time":{"frame":"f","from":0,"until":10},"evidence":["s"],"failure":null},"situated":{"posture":"NOT_SUPPORTED","basis":"bounded-risk","subject":{"locality":"L","bearer":"B","act":"A","target":"T","relation":"R","scope":"S","conditions":["C"]},"time":{"frame":"f","from":4,"until":6},"evidence":["p"],"failure":null},"disposition":"BOUND","attribution":"regulator","applicable_law":{"posture":"YES","basis":"local-law","evidence":["law"]},"supported_state":{"posture":"YES","basis":"present-state","evidence":["state"]},"authority_required":false,"authority":null,"effect":{"target":"T","scope":"S","description":"Bound this exercise; separately assess remaining motion","ceiling":"EXACT_MOTION_ONLY"},"constraint":"No further exercise of A pending narrower assessment","uncertainty":[],"failures":[],"hold":null},
+      "expected":{"schema_valid":true,"semantic_result":"CONSISTENT_AT_DECLARED_SCOPE","failure_codes":[]},
+      "source":{"refs":["section.13.6"]},"forbidden_inference":"Control of this exercise is not ownership of the bearer or its underlying choice."
+    },
+    {
+      "id":"pause-exact-motion","schema":"urn:presence:core:dcr:disposition:1",
+      "input":{"kind":"disposition","id":"d3","subject":{"locality":"L","bearer":"B","act":"A","target":"T","relation":"R","scope":"S","conditions":["C"]},"time":{"frame":"f","at":5},"structural":{"posture":"SUPPORTED","basis":"form","subject":{"locality":"L","bearer":"B","act":"A","target":"T","relation":"R","scope":"S","conditions":["C"]},"time":{"frame":"f","from":0,"until":10},"evidence":["s"],"failure":null},"situated":{"posture":"UNKNOWN","basis":null,"subject":{"locality":"L","bearer":"B","act":"A","target":"T","relation":"R","scope":"S","conditions":["C"]},"time":{"frame":"f","from":5,"until":5},"evidence":[],"failure":null},"disposition":"PAUSE","attribution":"regulator","applicable_law":{"posture":"YES","basis":"local-law","evidence":["law"]},"supported_state":{"posture":"YES","basis":"present-state","evidence":["state"]},"authority_required":false,"authority":null,"effect":{"target":"T","scope":"S","description":"Pause this motion for present reassessment","ceiling":"EXACT_MOTION_ONLY"},"constraint":"Pause A only; correction and unrelated motion remain separately assessed","uncertainty":["Situated support not yet established"],"failures":[],"hold":null},
+      "expected":{"schema_valid":true,"semantic_result":"CONSISTENT_AT_DECLARED_SCOPE","failure_codes":[]},
+      "source":{"refs":["section.13.7","section.3.5"]},"forbidden_inference":"Unknown capacity does not pause unrelated acts or erase actual consequence."
+    },
+    {
+      "id":"redirect-requires-new-target-assessment","schema":"urn:presence:core:dcr:disposition:1",
+      "input":{"kind":"disposition","id":"d4","subject":{"locality":"L","bearer":"B","act":"A","target":"T","relation":"R","scope":"S","conditions":["C"]},"time":{"frame":"f","at":5},"structural":{"posture":"SUPPORTED","basis":"form","subject":{"locality":"L","bearer":"B","act":"A","target":"T","relation":"R","scope":"S","conditions":["C"]},"time":{"frame":"f","from":0,"until":10},"evidence":["s"],"failure":null},"situated":{"posture":"NOT_SUPPORTED","basis":"risk-assessment","subject":{"locality":"L","bearer":"B","act":"A","target":"T","relation":"R","scope":"S","conditions":["C"]},"time":{"frame":"f","from":4,"until":6},"evidence":["p"],"failure":null},"disposition":"REDIRECT","attribution":"regulator","applicable_law":{"posture":"YES","basis":"local-law","evidence":["law"]},"supported_state":{"posture":"YES","basis":"present-state","evidence":["state"]},"authority_required":false,"authority":null,"effect":{"target":"T","scope":"S","description":"Stop this route and propose a separately assessed route","ceiling":"EXACT_MOTION_ONLY"},"constraint":"No support for the proposed route is inferred by this redirection","uncertainty":[],"failures":[],"hold":null},
+      "expected":{"schema_valid":true,"semantic_result":"CONSISTENT_AT_DECLARED_SCOPE","failure_codes":[]},
+      "source":{"refs":["section.13.6","section.13.7"]},"forbidden_inference":"A redirected act does not inherit the original target's support."
+    },
+    {
+      "id":"scoped-failure-refusal","schema":"urn:presence:core:dcr:disposition:1",
+      "input":{"kind":"disposition","id":"d5","subject":{"locality":"L","bearer":"B","act":"A","target":"T","relation":"R","scope":"S","conditions":["C"]},"time":{"frame":"f","at":5},"structural":{"posture":"SUPPORTED","basis":"form","subject":{"locality":"L","bearer":"B","act":"A","target":"T","relation":"R","scope":"S","conditions":["C"]},"time":{"frame":"f","from":0,"until":10},"evidence":["s"],"failure":null},"situated":{"posture":"FAILED","basis":"attempted assessment","subject":{"locality":"L","bearer":"B","act":"A","target":"T","relation":"R","scope":"S","conditions":["C"]},"time":{"frame":"f","from":4,"until":6},"evidence":["failed-assessment"],"failure":"Present observation unavailable"},"disposition":"REFUSE","attribution":"regulator","applicable_law":{"posture":"YES","basis":"local-law","evidence":["law"]},"supported_state":{"posture":"UNKNOWN","basis":null,"evidence":[]},"authority_required":true,"authority":null,"effect":{"target":"T","scope":"S","description":"Refuse only the unsupported dependent motion","ceiling":"EXACT_MOTION_ONLY"},"constraint":"No general incapacity, identity judgment or exclusion","uncertainty":["Failure does not verify incapacity"],"failures":[{"target":"T","scope":"S","description":"Observation failed; any actual consequence remains reportable"}],"hold":null},
+      "expected":{"schema_valid":true,"semantic_result":"CONSISTENT_AT_DECLARED_SCOPE","failure_codes":[]},
+      "source":{"refs":["section.11.12","section.12.6","section.13.2","section.18.3"]},"forbidden_inference":"A required basis is missing for A only; unrelated acts without that requirement are not refused."
+    },
+    {
+      "id":"end-exact-motion-history-remains","schema":"urn:presence:core:dcr:disposition:1",
+      "input":{"kind":"disposition","id":"d6","subject":{"locality":"L","bearer":"B","act":"A","target":"T","relation":"R","scope":"S","conditions":["C"]},"time":{"frame":"f","at":5},"structural":{"posture":"SUPPORTED","basis":"form","subject":{"locality":"L","bearer":"B","act":"A","target":"T","relation":"R","scope":"S","conditions":["C"]},"time":{"frame":"f","from":0,"until":10},"evidence":["s"],"failure":null},"situated":{"posture":"NOT_SUPPORTED","basis":"ending-assessment","subject":{"locality":"L","bearer":"B","act":"A","target":"T","relation":"R","scope":"S","conditions":["C"]},"time":{"frame":"f","from":4,"until":6},"evidence":["p"],"failure":null},"disposition":"END","attribution":"regulator","applicable_law":{"posture":"YES","basis":"local-law","evidence":["law"]},"supported_state":{"posture":"YES","basis":"present-state","evidence":["state"]},"authority_required":false,"authority":null,"effect":{"target":"T","scope":"S","description":"End only A here; retain earlier events and consequence","ceiling":"EXACT_MOTION_ONLY"},"constraint":"Records and surviving correction duties do not end","uncertainty":[],"failures":[],"hold":null},
+      "expected":{"schema_valid":true,"semantic_result":"CONSISTENT_AT_DECLARED_SCOPE","failure_codes":[]},
+      "source":{"refs":["section.17.6","section.15.4"]},"forbidden_inference":"Ending a motion does not erase its occurrence or consequences."
+    },
+    {
+      "id":"required-authority-missing-motion-held","schema":"urn:presence:core:dcr:motion:1",
+      "input":{"kind":"motion","id":"m2","subject":{"locality":"L","bearer":"B","act":"A","target":"T","relation":"R","scope":"S","conditions":["C"]},"time":{"frame":"f","at":5},"dimensions":{"agency":{"posture":"YES","basis":"own-act","evidence":["a"]},"autonomy":{"posture":"YES","basis":"options","evidence":["o"]},"capability":{"posture":"YES","basis":"demonstration","evidence":["d"]},"structural_capacity":{"posture":"YES","basis":"form","evidence":["s"]},"situated_capacity":{"posture":"YES","basis":"present","evidence":["p"]},"regulation":{"posture":"UNKNOWN","basis":null,"evidence":[]},"authority":{"posture":"UNKNOWN","basis":null,"evidence":[]},"execution":{"posture":"NO","basis":"no attempt in complete scoped observation","evidence":["x"]},"consequence":{"posture":"UNKNOWN","basis":null,"evidence":[]}},"necessary":["agency","autonomy","capability","situated_capacity","authority"],"authority":null,"posture":"HOLD","claimed_effect":"Authoritative change to T is not established"},
+      "expected":{"schema_valid":true,"semantic_result":"CONSISTENT_AT_DECLARED_SCOPE","failure_codes":[]},
+      "source":{"refs":["section.11.12","section.12.6"]},"forbidden_inference":"This held composition does not negate the separate self-directed act in SUPPORT vectors."
+    },
+    {
+      "id":"failed-evidence-remains-failed","schema":"urn:presence:core:dcr:evidence:1",
+      "input":{"kind":"evidence","id":"ef","object":"observation","method":"MEASUREMENT","subject":{"locality":"L","bearer":"B","act":"A","target":"T","relation":"R","scope":"S","conditions":["C"]},"time":{"frame":"f","from":4,"until":6},"basis":"attempted observation under stated model","result":"FAILED","observation":"RECORD","claim":{"object":"observation","subject":{"locality":"L","bearer":"B","act":"A","target":"T","relation":"R","scope":"S","conditions":["C"]},"time":{"frame":"f","at":5},"result":"FAILED"},"effect_ceiling":"MODEL_CORRELATE","evidence_available":false,"absence_model":null,"failure":"Observation interrupted"},
+      "expected":{"schema_valid":true,"semantic_result":"CONSISTENT_AT_DECLARED_SCOPE","failure_codes":[]},
+      "source":{"refs":["section.18.3"]},"forbidden_inference":"Failure to observe proves neither absence nor incapacity."
+    },
+    {
+      "id":"discriminating-absence-declared","schema":"urn:presence:core:dcr:evidence:1",
+      "input":{"kind":"evidence","id":"ea","object":"bounded test result","method":"CONFORMANCE","subject":{"locality":"L","bearer":"B","act":"A","target":"T","relation":"R","scope":"S","conditions":["C"]},"time":{"frame":"f","from":4,"until":6},"basis":"test model declares discriminating absence","result":"NOT_SUPPORTED","observation":"RECORD","claim":{"object":"bounded test result","subject":{"locality":"L","bearer":"B","act":"A","target":"T","relation":"R","scope":"S","conditions":["C"]},"time":{"frame":"f","at":5},"result":"NOT_SUPPORTED"},"effect_ceiling":"TEST_SATISFACTION","evidence_available":false,"absence_model":"exact-test-model-with-complete-observation-boundary","failure":null},
+      "expected":{"schema_valid":true,"semantic_result":"CONSISTENT_AT_DECLARED_SCOPE","failure_codes":[]},
+      "source":{"refs":["section.18.3"]},"forbidden_inference":"Naming an absence model does not prove its adequacy or a negative beyond that model."
+    }
+  ]
 }

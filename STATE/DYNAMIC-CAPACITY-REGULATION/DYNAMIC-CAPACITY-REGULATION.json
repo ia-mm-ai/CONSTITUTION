@@ -1,31 +1,261 @@
 {
-  "kind": "module_index",
-  "status": "STRUCTURAL_PLACEHOLDER",
-  "human_outline": "DYNAMIC-CAPACITY-REGULATION.md",
-  "source": {
-    "human": "../../SOURCE/CONSTITUTION_0()1.md",
-    "machine": "../../SOURCE/CONSTITUTION_0()1.json",
-    "refs": ["article.4", "article.10", "article.11", "article.12", "article.13", "article.18", "section.19.3", "section.19.4"]
+  "kind": "canonical_standard",
+  "status": "CANONICAL_STANDARD",
+  "id": "urn:presence:core:dcr:1",
+  "human_standard": "DYNAMIC-CAPACITY-REGULATION.md",
+  "scope": "Exact-locality, time-sensitive reconciliation of structural and situated capacity; attributable bounded regulation, independent motion dimensions and proof ceilings. Representation only.",
+  "source": {"refs": ["reading.2", "reading.3", "reading.5", "reading.6", "reading.7", "article.4", "article.11", "article.12", "article.13", "article.18", "section.19.3", "section.19.4"]},
+  "schemas": ["SCHEMAS/CAPACITY.schema.json", "SCHEMAS/MOTION.schema.json", "SCHEMAS/DISPOSITION.schema.json", "SCHEMAS/EVIDENCE.schema.json"],
+  "vectors": ["VECTORS/SUPPORT.json", "VECTORS/HOLD.json", "VECTORS/REFUSAL.json", "VECTORS/INVALID-OVERREACH.json"],
+  "evaluation": {
+    "classification": "CORE_ENCODING_RULE",
+    "schema_dialect": "https://json-schema.org/draft/2020-12/schema",
+    "order": "ARRAY_ORDER_INDEPENDENT_RULES_DEDUPLICATED_FAILURE_CODES",
+    "schema_invalid": {"semantic_result": "NOT_EVALUATED", "failure_codes": ["SCHEMA_INVALID"]},
+    "consistent": "CONSISTENT_AT_DECLARED_SCOPE",
+    "inconsistent": "INCONSISTENT",
+    "effect_ceiling": "REPRESENTATION_ONLY_NOT_PERMISSION_TRUTH_AUTHORITY_OR_ACTUAL_CAPACITY"
   },
-  "scope": "Local, time-sensitive reconciliation of structural capacity with situated capacity.",
-  "policy": "../STATE.json",
-  "related": ["../CONTINUITY-STATE-CAPABILITY/CONTINUITY-STATE-CAPABILITY.json", "../LINEAGE/LINEAGE.json"],
-  "schemas": [
-    "SCHEMAS/CAPACITY.schema.json",
-    "SCHEMAS/MOTION.schema.json",
-    "SCHEMAS/DISPOSITION.schema.json",
-    "SCHEMAS/EVIDENCE.schema.json"
-  ],
-  "vectors": [
-    "VECTORS/SUPPORT.json",
-    "VECTORS/HOLD.json",
-    "VECTORS/REFUSAL.json",
-    "VECTORS/INVALID-OVERREACH.json"
-  ],
-  "not_established": [
-    "actual situated capacity",
-    "Authority from capability or regulation",
-    "a universal permission result",
-    "State succession from capacity regulation"
+  "rules": [
+    {
+      "id": "DCR-C01", "classification": "CONSTITUTIONAL_RULE",
+      "source": {"refs": ["section.11.10", "section.13.7"]},
+      "when": {"in": [{"var": "kind"}, ["capacity", "disposition"]]},
+      "assert": {"and": [{"===": [{"var": "structural.subject"}, {"var": "subject"}]}, {"===": [{"var": "situated.subject"}, {"var": "subject"}]}]},
+      "failure_code": "CAPACITY_SCOPE_MISMATCH",
+      "description": "Structural and situated assessments concern exactly the declared locality, bearer, act, target, relation, scope and conditions; neither is borrowed from another motion."
+    },
+    {
+      "id": "DCR-C02", "classification": "CORE_ENCODING_RULE",
+      "source": {"refs": ["reading.3", "section.13.7"]},
+      "when": {"in": [{"var": "kind"}, ["capacity", "disposition"]]},
+      "assert": {"and": [{"<=": [{"var": "structural.time.from"}, {"var": "structural.time.until"}]}, {"<=": [{"var": "situated.time.from"}, {"var": "situated.time.until"}]}]},
+      "failure_code": "INVALID_CAPACITY_INTERVAL",
+      "description": "Each declared support interval has ordered inclusive boundaries in its named local time frame."
+    },
+    {
+      "id": "DCR-C03", "classification": "CONSTITUTIONAL_RULE",
+      "source": {"refs": ["section.11.4", "section.11.10", "section.13.7", "section.18.4"]},
+      "when": {"and": [{"in": [{"var": "kind"}, ["capacity", "disposition"]]}, {"in": [{"var": "structural.posture"}, ["SUPPORTED", "NOT_SUPPORTED"]]}]},
+      "assert": {"and": [{"!==": [{"var": "structural.basis"}, null]}, {">": [{"count": {"var": "structural.evidence"}}, 0]}, {"===": [{"var": "structural.time.frame"}, {"var": "time.frame"}]}, {"<=": [{"var": "structural.time.from"}, {"var": "time.at"}]}, {">=": [{"var": "structural.time.until"}, {"var": "time.at"}]}]},
+      "failure_code": "STRUCTURAL_SUPPORT_NOT_CURRENT",
+      "description": "An established structural assessment requires its own declared evidence and basis, exact time frame and present coverage."
+    },
+    {
+      "id": "DCR-C04", "classification": "CONSTITUTIONAL_RULE",
+      "source": {"refs": ["section.11.5", "section.11.10", "section.13.7", "section.18.4"]},
+      "when": {"and": [{"in": [{"var": "kind"}, ["capacity", "disposition"]]}, {"in": [{"var": "situated.posture"}, ["SUPPORTED", "NOT_SUPPORTED"]]}]},
+      "assert": {"and": [{"!==": [{"var": "situated.basis"}, null]}, {">": [{"count": {"var": "situated.evidence"}}, 0]}, {"===": [{"var": "situated.time.frame"}, {"var": "time.frame"}]}, {"<=": [{"var": "situated.time.from"}, {"var": "time.at"}]}, {">=": [{"var": "situated.time.until"}, {"var": "time.at"}]}]},
+      "failure_code": "SITUATED_SUPPORT_NOT_CURRENT",
+      "description": "Situated support is separately grounded and time-sensitive; historical success is not a present capacity assessment."
+    },
+    {
+      "id": "DCR-C05", "classification": "CONSTITUTIONAL_RULE",
+      "source": {"refs": ["section.13.7", "section.11.12", "reading.5"]},
+      "when": {"or": [{"and": [{"===": [{"var": "kind"}, "capacity"]}, {"===": [{"var": "reconciliation"}, "SUPPORTABLE"]}]}, {"and": [{"===": [{"var": "kind"}, "disposition"]}, {"===": [{"var": "disposition"}, "SUPPORT"]}]}]},
+      "assert": {"and": [{"===": [{"var": "structural.posture"}, "SUPPORTED"]}, {"===": [{"var": "situated.posture"}, "SUPPORTED"]}]},
+      "failure_code": "PRESENT_CAPACITY_NOT_ESTABLISHED",
+      "description": "A supportable reconciliation requires both dimensions. Failure does not judge the bearer or unrelated acts."
+    },
+    {
+      "id": "DCR-C06", "classification": "CORE_ENCODING_RULE",
+      "source": {"refs": ["section.14.1", "section.18.3", "reading.5"]},
+      "when": {"in": [{"var": "kind"}, ["capacity", "disposition"]]},
+      "assert": {"and": [{"or": [{"!==": [{"var": "structural.posture"}, "FAILED"]}, {"!==": [{"var": "structural.failure"}, null]}]}, {"or": [{"!==": [{"var": "situated.posture"}, "FAILED"]}, {"!==": [{"var": "situated.failure"}, null]}]}]},
+      "failure_code": "FAILURE_DETAIL_MISSING",
+      "description": "A failed assessment names the bounded failure instead of converting failure to a verified negative."
+    },
+    {
+      "id": "DCR-M01", "classification": "CONSTITUTIONAL_RULE",
+      "source": {"refs": ["section.11.10", "section.11.11", "section.11.12", "section.11.13"]},
+      "when": {"and": [{"===": [{"var": "kind"}, "motion"]}, {"===": [{"var": "posture"}, "SUPPORTED"]}]},
+      "assert": {"and": [
+        {"or": [{"!": {"in": ["agency", {"var": "necessary"}]}}, {"===": [{"var": "dimensions.agency.posture"}, "YES"]}]},
+        {"or": [{"!": {"in": ["autonomy", {"var": "necessary"}]}}, {"===": [{"var": "dimensions.autonomy.posture"}, "YES"]}]},
+        {"or": [{"!": {"in": ["capability", {"var": "necessary"}]}}, {"===": [{"var": "dimensions.capability.posture"}, "YES"]}]},
+        {"or": [{"!": {"in": ["structural_capacity", {"var": "necessary"}]}}, {"===": [{"var": "dimensions.structural_capacity.posture"}, "YES"]}]},
+        {"or": [{"!": {"in": ["situated_capacity", {"var": "necessary"}]}}, {"===": [{"var": "dimensions.situated_capacity.posture"}, "YES"]}]},
+        {"or": [{"!": {"in": ["regulation", {"var": "necessary"}]}}, {"===": [{"var": "dimensions.regulation.posture"}, "YES"]}]},
+        {"or": [{"!": {"in": ["authority", {"var": "necessary"}]}}, {"===": [{"var": "dimensions.authority.posture"}, "YES"]}]},
+        {"or": [{"!": {"in": ["execution", {"var": "necessary"}]}}, {"===": [{"var": "dimensions.execution.posture"}, "YES"]}]},
+        {"or": [{"!": {"in": ["consequence", {"var": "necessary"}]}}, {"===": [{"var": "dimensions.consequence.posture"}, "YES"]}]}
+      ]},
+      "failure_code": "NECESSARY_RELATION_NOT_ESTABLISHED",
+      "description": "Only the declared necessary composition is tested. Unknown Authority does not refuse an act that does not require it; execution and consequence can remain unknown."
+    },
+    {
+      "id": "DCR-M02", "classification": "CONSTITUTIONAL_RULE",
+      "source": {"refs": ["section.11.10", "section.18.4"]},
+      "when": {"===": [{"var": "kind"}, "motion"]},
+      "assert": {"and": [
+        {"or": [{"in": [{"var": "dimensions.agency.posture"}, ["UNKNOWN", "UNRESOLVED"]]}, {"and": [{"!==": [{"var": "dimensions.agency.basis"}, null]}, {">": [{"count": {"var": "dimensions.agency.evidence"}}, 0]}]}]},
+        {"or": [{"in": [{"var": "dimensions.autonomy.posture"}, ["UNKNOWN", "UNRESOLVED"]]}, {"and": [{"!==": [{"var": "dimensions.autonomy.basis"}, null]}, {">": [{"count": {"var": "dimensions.autonomy.evidence"}}, 0]}]}]},
+        {"or": [{"in": [{"var": "dimensions.capability.posture"}, ["UNKNOWN", "UNRESOLVED"]]}, {"and": [{"!==": [{"var": "dimensions.capability.basis"}, null]}, {">": [{"count": {"var": "dimensions.capability.evidence"}}, 0]}]}]},
+        {"or": [{"in": [{"var": "dimensions.structural_capacity.posture"}, ["UNKNOWN", "UNRESOLVED"]]}, {"and": [{"!==": [{"var": "dimensions.structural_capacity.basis"}, null]}, {">": [{"count": {"var": "dimensions.structural_capacity.evidence"}}, 0]}]}]},
+        {"or": [{"in": [{"var": "dimensions.situated_capacity.posture"}, ["UNKNOWN", "UNRESOLVED"]]}, {"and": [{"!==": [{"var": "dimensions.situated_capacity.basis"}, null]}, {">": [{"count": {"var": "dimensions.situated_capacity.evidence"}}, 0]}]}]},
+        {"or": [{"in": [{"var": "dimensions.regulation.posture"}, ["UNKNOWN", "UNRESOLVED"]]}, {"and": [{"!==": [{"var": "dimensions.regulation.basis"}, null]}, {">": [{"count": {"var": "dimensions.regulation.evidence"}}, 0]}]}]},
+        {"or": [{"in": [{"var": "dimensions.authority.posture"}, ["UNKNOWN", "UNRESOLVED"]]}, {"and": [{"!==": [{"var": "dimensions.authority.basis"}, null]}, {">": [{"count": {"var": "dimensions.authority.evidence"}}, 0]}]}]},
+        {"or": [{"in": [{"var": "dimensions.execution.posture"}, ["UNKNOWN", "UNRESOLVED"]]}, {"and": [{"!==": [{"var": "dimensions.execution.basis"}, null]}, {">": [{"count": {"var": "dimensions.execution.evidence"}}, 0]}]}]},
+        {"or": [{"in": [{"var": "dimensions.consequence.posture"}, ["UNKNOWN", "UNRESOLVED"]]}, {"and": [{"!==": [{"var": "dimensions.consequence.basis"}, null]}, {">": [{"count": {"var": "dimensions.consequence.evidence"}}, 0]}]}]}
+      ]},
+      "failure_code": "DIMENSION_BASIS_MISSING",
+      "description": "Each established dimension has its own declaration of ground; shared evidence references never establish conversion by themselves."
+    },
+    {
+      "id": "DCR-A01", "classification": "CONSTITUTIONAL_RULE",
+      "source": {"refs": ["section.12.1", "section.12.2", "section.12.5", "section.12.6"]},
+      "when": {"or": [{"and": [{"===": [{"var": "kind"}, "motion"]}, {"===": [{"var": "dimensions.authority.posture"}, "YES"]}]}, {"and": [{"===": [{"var": "kind"}, "disposition"]}, {"===": [{"var": "authority_required"}, true]}, {"!": {"in": [{"var": "disposition"}, ["HOLD", "REFUSE"]]}}]}]},
+      "assert": {"and": [{"!==": [{"var": "authority"}, null]}, {"===": [{"var": "authority.present_status"}, "SUPPORTED"]}, {"or": [{"!==": [{"var": "kind"}, "motion"]}, {"and": [{"===": [{"var": "authority.bearer"}, {"var": "subject.bearer"}]}, {"===": [{"var": "authority.function"}, {"var": "subject.act"}]}]}]}, {"===": [{"var": "authority.target"}, {"var": "subject.target"}]}, {"===": [{"var": "authority.scope"}, {"var": "subject.scope"}]}, {"===": [{"var": "authority.conditions"}, {"var": "subject.conditions"}]}, {"===": [{"var": "authority.duration.frame"}, {"var": "time.frame"}]}, {"<=": [{"var": "authority.duration.from"}, {"var": "time.at"}]}, {">=": [{"var": "authority.duration.until"}, {"var": "time.at"}]}]},
+      "failure_code": "EXACT_AUTHORITY_NOT_ESTABLISHED",
+      "description": "Claimed Authority requires independently recoverable source, basis, bearer, function, target, scope, duration, conditions, delegation and present posture. In the motion direct-Authority encoding profile, the acting-side account binds bearer to subject.bearer and function to subject.act. A different originating bearer or function needs explicitly supported delegation or representation at the acting side; its Authority cannot simply be borrowed. Disposition Authority concerns the governing relation, not necessarily the regulated motion's bearer or act. A HOLD or refusal with missing Authority prevents expansion, not an authoritative settlement."
+    },
+    {
+      "id": "DCR-D01", "classification": "CONSTITUTIONAL_RULE",
+      "source": {"refs": ["section.3.5", "section.11.12", "section.13.2", "section.13.6", "section.13.7"]},
+      "when": {"===": [{"var": "kind"}, "disposition"]},
+      "assert": {"and": [{"===": [{"var": "effect.target"}, {"var": "subject.target"}]}, {"===": [{"var": "effect.scope"}, {"var": "subject.scope"}]}, {"===": [{"var": "effect.ceiling"}, "EXACT_MOTION_ONLY"]}]},
+      "failure_code": "DISPOSITION_OVERREACH",
+      "description": "Effects remain at the exact target and smallest declared supported scope: not general incapacity, ownership, permission or Authority."
+    },
+    {
+      "id": "DCR-D02", "classification": "CONSTITUTIONAL_RULE",
+      "source": {"refs": ["section.13.7", "section.11.12", "reading.6"]},
+      "when": {"and": [{"===": [{"var": "kind"}, "disposition"]}, {"!": {"in": [{"var": "disposition"}, ["HOLD", "REFUSE"]]}}]},
+      "assert": {"and": [{"===": [{"var": "applicable_law.posture"}, "YES"]}, {"!==": [{"var": "applicable_law.basis"}, null]}, {">": [{"count": {"var": "applicable_law.evidence"}}, 0]}, {"===": [{"var": "supported_state.posture"}, "YES"]}, {"!==": [{"var": "supported_state.basis"}, null]}, {">": [{"count": {"var": "supported_state.evidence"}}, 0]}]},
+      "failure_code": "REGULATORY_BASIS_NOT_ESTABLISHED",
+      "description": "An affirmative regulatory effect requires applicable law and supported State; unresolved basis remains an exact HOLD or refusal without manufacturing authority."
+    },
+    {
+      "id": "DCR-D03", "classification": "CORE_ENCODING_RULE",
+      "source": {"refs": ["reading.5", "reading.6", "section.13.3", "section.14.1"]},
+      "when": {"===": [{"var": "kind"}, "disposition"]},
+      "assert": {"and": [
+        {"or": [{"!": {"in": [{"var": "situated.posture"}, ["UNKNOWN", "UNRESOLVED"]]}}, {">": [{"count": {"var": "uncertainty"}}, 0]}]},
+        {"or": [{"!==": [{"var": "situated.posture"}, "FAILED"]}, {">": [{"count": {"var": "failures"}}, 0]}]},
+        {"or": [{"!==": [{"var": "disposition"}, "HOLD"]}, {"!==": [{"var": "hold"}, null]}]}
+      ]},
+      "failure_code": "REGULATORY_ACCOUNT_INCOMPLETE",
+      "description": "Uncertainty and failures remain visible; HOLD has a lifecycle account rather than a terminal label."
+    },
+    {
+      "id": "DCR-H01", "classification": "CONSTITUTIONAL_RULE",
+      "source": {"refs": ["section.7.5", "section.13.3", "section.13.4"]},
+      "when": {"and": [{"===": [{"var": "kind"}, "disposition"]}, {"!==": [{"var": "hold"}, null]}]},
+      "assert": {"and": [
+        {"===": [{"var": "hold.target"}, {"var": "subject.target"}]},
+        {"===": [{"var": "hold.scope"}, {"var": "subject.scope"}]},
+        {"===": [{"var": "hold.opened.by"}, {"var": "hold.holder"}]},
+        {"===": [{"var": "hold.opened.target"}, {"var": "hold.target"}]},
+        {"===": [{"var": "hold.opened.scope"}, {"var": "hold.scope"}]},
+        {"===": [{"var": "hold.opened.event"}, "OPEN"]},
+        {"===": [{"var": "hold.opened.prior"}, null]},
+        {"<=": [{"var": "hold.opened.at"}, {"var": "time.at"}]},
+        {">=": [{"var": "hold.review_due"}, {"var": "hold.opened.at"}]},
+        {"or": [{"and": [{"===": [{"var": "hold.status"}, "OPEN"]}, {"===": [{"var": "disposition"}, "HOLD"]}, {"===": [{"var": "hold.resolution"}, null]}]}, {"and": [{"===": [{"var": "hold.status"}, "RELEASED"]}, {"===": [{"var": "disposition"}, "SUPPORT"]}, {"===": [{"var": "hold.resolution.event"}, "RELEASE"]}]}, {"and": [{"===": [{"var": "hold.status"}, "ENDED"]}, {"===": [{"var": "disposition"}, "END"]}, {"===": [{"var": "hold.resolution.event"}, "END"]}]}]}
+      ]},
+      "failure_code": "HOLD_SCOPE_OR_POSTURE_INVALID",
+      "description": "The holder is attributable, the question remains scoped, and release or ending is a recorded act, never a consequence of elapsed time alone."
+    },
+    {
+      "id": "DCR-H02", "classification": "CONSTITUTIONAL_RULE",
+      "source": {"refs": ["section.13.4", "section.15.4", "section.17.6"]},
+      "when": {"and": [{"===": [{"var": "kind"}, "disposition"]}, {"!==": [{"var": "hold"}, null]}]},
+      "assert": {"and": [
+        {"in": [{"var": "hold.opened"}, {"var": "hold.retained_records"}]},
+        {"or": [{"===": [{"var": "hold.review"}, null]}, {"in": [{"var": "hold.review"}, {"var": "hold.retained_records"}]}]},
+        {"or": [{"===": [{"var": "hold.correction"}, null]}, {"in": [{"var": "hold.correction"}, {"var": "hold.retained_records"}]}]},
+        {"or": [{"===": [{"var": "hold.resolution"}, null]}, {"in": [{"var": "hold.resolution"}, {"var": "hold.retained_records"}]}]}
+      ]},
+      "failure_code": "HOLD_HISTORY_NOT_PRESERVED",
+      "description": "Every lifecycle occurrence remains as an exact retained record, including records superseded by correction or ending; this is internal consistency, not external archival proof."
+    },
+    {
+      "id": "DCR-H03", "classification": "CORE_ENCODING_RULE",
+      "source": {"refs": ["section.13.4", "section.15.3", "reading.3"]},
+      "when": {"and": [{"===": [{"var": "kind"}, "disposition"]}, {"!==": [{"var": "hold"}, null]}, {"!==": [{"var": "hold.review"}, null]}]},
+      "assert": {"and": [{"===": [{"var": "hold.review.event"}, "REVIEW"]}, {"===": [{"var": "hold.review.prior"}, {"var": "hold.opened.id"}]}, {"!==": [{"var": "hold.review.id"}, {"var": "hold.opened.id"}]}, {"===": [{"var": "hold.review.target"}, {"var": "hold.target"}]}, {"===": [{"var": "hold.review.scope"}, {"var": "hold.scope"}]}, {">=": [{"var": "hold.review.at"}, {"var": "hold.opened.at"}]}, {"<=": [{"var": "hold.review.at"}, {"var": "time.at"}]}]},
+      "failure_code": "HOLD_REVIEW_INVALID",
+      "description": "An attributable review links the original record, exact target and scope and does not precede the opening or occur after the account."
+    },
+    {
+      "id": "DCR-H04", "classification": "CORE_ENCODING_RULE",
+      "source": {"refs": ["section.13.4", "section.15.3", "section.15.4", "reading.3"]},
+      "when": {"and": [{"===": [{"var": "kind"}, "disposition"]}, {"!==": [{"var": "hold"}, null]}, {"!==": [{"var": "hold.correction"}, null]}]},
+      "assert": {"and": [{"!==": [{"var": "hold.review"}, null]}, {"===": [{"var": "hold.correction.event"}, "CORRECT"]}, {"===": [{"var": "hold.correction.prior"}, {"var": "hold.review.id"}]}, {"!==": [{"var": "hold.correction.id"}, {"var": "hold.review.id"}]}, {"!==": [{"var": "hold.correction.id"}, {"var": "hold.opened.id"}]}, {"===": [{"var": "hold.correction.target"}, {"var": "hold.target"}]}, {"===": [{"var": "hold.correction.scope"}, {"var": "hold.scope"}]}, {">=": [{"var": "hold.correction.at"}, {"var": "hold.review.at"}]}, {"<=": [{"var": "hold.correction.at"}, {"var": "time.at"}]}]},
+      "failure_code": "HOLD_CORRECTION_INVALID",
+      "description": "Correction identifies the prior reviewed representation, its corrected basis and delta in detail, preserving earlier uncertainty and attribution."
+    },
+    {
+      "id": "DCR-H05", "classification": "CORE_ENCODING_RULE",
+      "source": {"refs": ["section.13.4", "section.15.4", "section.17.6", "reading.3"]},
+      "when": {"and": [{"===": [{"var": "kind"}, "disposition"]}, {"!==": [{"var": "hold"}, null]}, {"!==": [{"var": "hold.resolution"}, null]}]},
+      "assert": {"and": [
+        {"!==": [{"var": "hold.review"}, null]},
+        {"!==": [{"var": "hold.status"}, "OPEN"]},
+        {"===": [{"var": "hold.resolution.target"}, {"var": "hold.target"}]},
+        {"===": [{"var": "hold.resolution.scope"}, {"var": "hold.scope"}]},
+        {"!==": [{"var": "hold.resolution.id"}, {"var": "hold.opened.id"}]},
+        {"!==": [{"var": "hold.resolution.id"}, {"var": "hold.review.id"}]},
+        {"!==": [{"var": "hold.resolution.id"}, {"var": "hold.correction.id"}]},
+        {"<=": [{"var": "hold.resolution.at"}, {"var": "time.at"}]},
+        {"or": [{"and": [{"===": [{"var": "hold.correction"}, null]}, {"===": [{"var": "hold.resolution.prior"}, {"var": "hold.review.id"}]}, {">=": [{"var": "hold.resolution.at"}, {"var": "hold.review.at"}]}]}, {"and": [{"!==": [{"var": "hold.correction"}, null]}, {"===": [{"var": "hold.resolution.prior"}, {"var": "hold.correction.id"}]}, {">=": [{"var": "hold.resolution.at"}, {"var": "hold.correction.at"}]}]}]}
+      ]},
+      "failure_code": "HOLD_RESOLUTION_INVALID",
+      "description": "Release or ending follows an attributable review, preserving the exact prior record. A release additionally needs current structural and situated support under C03-C05."
+    },
+    {
+      "id": "DCR-E01", "classification": "CONSTITUTIONAL_RULE",
+      "source": {"refs": ["section.18.1", "section.18.4"]},
+      "when": {"===": [{"var": "kind"}, "evidence"]},
+      "assert": {"and": [{"===": [{"var": "object"}, {"var": "claim.object"}]}, {"===": [{"var": "subject"}, {"var": "claim.subject"}]}]},
+      "failure_code": "EVIDENCE_OBJECT_OR_SCOPE_MISMATCH",
+      "description": "A proof claim does not substitute another object, locality, motion, relation, scope or conditions."
+    },
+    {
+      "id": "DCR-E02", "classification": "CORE_ENCODING_RULE",
+      "source": {"refs": ["section.18.4", "reading.3"]},
+      "when": {"===": [{"var": "kind"}, "evidence"]},
+      "assert": {"<=": [{"var": "time.from"}, {"var": "time.until"}]},
+      "failure_code": "INVALID_EVIDENCE_INTERVAL",
+      "description": "Declared evidence interval boundaries are ordered."
+    },
+    {
+      "id": "DCR-E03", "classification": "CONSTITUTIONAL_RULE",
+      "source": {"refs": ["section.13.7", "section.18.4"]},
+      "when": {"and": [{"===": [{"var": "kind"}, "evidence"]}, {"in": [{"var": "claim.result"}, ["SUPPORTED", "NOT_SUPPORTED"]]}]},
+      "assert": {"and": [{"===": [{"var": "time.frame"}, {"var": "claim.time.frame"}]}, {"<=": [{"var": "time.from"}, {"var": "claim.time.at"}]}, {">=": [{"var": "time.until"}, {"var": "claim.time.at"}]}]},
+      "failure_code": "EVIDENCE_NOT_CURRENT_FOR_CLAIM",
+      "description": "An established claim falls within the stated evidence window and time frame, not a stale or future one."
+    },
+    {
+      "id": "DCR-E04", "classification": "CONSTITUTIONAL_RULE",
+      "source": {"refs": ["reading.5", "reading.6", "section.18.3"]},
+      "when": {"===": [{"var": "kind"}, "evidence"]},
+      "assert": {"and": [
+        {"or": [{"!": {"in": [{"var": "result"}, ["UNKNOWN", "UNRESOLVED", "FAILED"]]}}, {"===": [{"var": "result"}, {"var": "claim.result"}]}]},
+        {"or": [{"!==": [{"var": "claim.result"}, "SUPPORTED"]}, {"and": [{"===": [{"var": "result"}, "SUPPORTED"]}, {"===": [{"var": "evidence_available"}, true]}]}]},
+        {"or": [{"!==": [{"var": "claim.result"}, "NOT_SUPPORTED"]}, {"and": [{"===": [{"var": "result"}, "NOT_SUPPORTED"]}, {"or": [{"===": [{"var": "evidence_available"}, true]}, {"!==": [{"var": "absence_model"}, null]}]}]}]},
+        {"or": [{"!==": [{"var": "result"}, "FAILED"]}, {"!==": [{"var": "failure"}, null]}]}
+      ]},
+      "failure_code": "EVIDENCE_RESULT_OVERSTATED",
+      "description": "Unknown, unresolved and failed evidence cannot become positive or negative proof. Discriminating absence requires its exact model; failed verification names its failure."
+    },
+    {
+      "id": "DCR-E05", "classification": "CONSTITUTIONAL_RULE",
+      "source": {"refs": ["section.18.1.table.row.1", "section.18.1.table.row.2", "section.18.1.table.row.3", "section.18.1.table.row.4", "section.18.1.table.row.5", "section.18.1.table.row.6", "section.18.1.table.row.7", "section.18.1.table.row.8", "reading.7"]},
+      "when": {"===": [{"var": "kind"}, "evidence"]},
+      "assert": {"or": [
+        {"and": [{"===": [{"var": "method"}, "SELF_REPORT"]}, {"===": [{"var": "effect_ceiling"}, "ATTRIBUTABLE_CLAIM"]}]},
+        {"and": [{"===": [{"var": "method"}, "BEHAVIOR"]}, {"===": [{"var": "effect_ceiling"}, "OBSERVED_TRACE"]}]},
+        {"and": [{"===": [{"var": "method"}, "OPTIONS"]}, {"===": [{"var": "effect_ceiling"}, "EXACT_RELATIONAL_CONDITIONS"]}]},
+        {"and": [{"===": [{"var": "method"}, "SIGNATURE"]}, {"===": [{"var": "effect_ceiling"}, "ATTRIBUTION_RELATION"]}]},
+        {"and": [{"===": [{"var": "method"}, "REPLAY"]}, {"===": [{"var": "effect_ceiling"}, "TRACE_REPRODUCIBILITY"]}]},
+        {"and": [{"===": [{"var": "method"}, "MEASUREMENT"]}, {"===": [{"var": "effect_ceiling"}, "MODEL_CORRELATE"]}]},
+        {"and": [{"===": [{"var": "method"}, "LOCAL_JUDGMENT"]}, {"===": [{"var": "effect_ceiling"}, "LOCAL_CLASSIFICATION"]}]},
+        {"and": [{"===": [{"var": "method"}, "CONFORMANCE"]}, {"===": [{"var": "effect_ceiling"}, "TEST_SATISFACTION"]}]}
+      ]},
+      "failure_code": "PROOF_CEILING_EXCEEDED",
+      "description": "Evidence supports only its method's declared ceiling, never private state, Authority, universal permission or present capacity merely by testing."
+    }
   ]
 }

@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:presence:core:lineage:origin:1",
+  "title": "Canonical core source locator",
+  "x-status": "CANONICAL_SCHEMA",
+  "x-rule-classification": "CORE_ENCODING_RULE",
+  "x-source": {"refs": ["reading.2", "reading.3", "reading.7", "section.1.2", "section.6.7", "section.19.2", "section.20.3"]},
+  "type": "object", "additionalProperties": false,
+  "required": ["kind", "status", "policy", "source", "repository", "locator_scope", "human_content_binding", "machine_content_binding", "historical_occurrence", "predecessor_relation", "not_established", "effect_ceiling"],
+  "properties": {
+    "kind": {"const": "source_locator"},
+    "status": {"const": "CANONICAL_LOCATOR"},
+    "policy": {"const": "../STATE.json"},
+    "source": {"$ref": "urn:presence:core:lineage:core:1#/$defs/source"},
+    "repository": {
+      "type": "object", "additionalProperties": false,
+      "required": ["url", "inspected_ref", "inspected_commit", "core_path", "revision_rule"],
+      "properties": {
+        "url": {"const": "https://github.com/ia-mm-ai/PRESENCE"},
+        "inspected_ref": {"const": "refs/heads/main"},
+        "inspected_commit": {"$ref": "urn:presence:core:lineage:core:1#/$defs/commit"},
+        "core_path": {"const": "STATE/"},
+        "revision_rule": {"$ref": "urn:presence:core:lineage:core:1#/$defs/text"}
+      }
+    },
+    "locator_scope": {"$ref": "urn:presence:core:lineage:core:1#/$defs/text"},
+    "human_content_binding": {"$ref": "urn:presence:core:lineage:core:1#/$defs/binding"},
+    "machine_content_binding": {"$ref": "urn:presence:core:lineage:core:1#/$defs/binding"},
+    "historical_occurrence": {"$ref": "#/$defs/unestablished"},
+    "predecessor_relation": {"$ref": "#/$defs/unestablished"},
+    "not_established": {"allOf": [{"$ref": "urn:presence:core:lineage:core:1#/$defs/texts"}, {"minItems": 1}]},
+    "effect_ceiling": {"const": "Canonical source coordinate and exact byte correspondence only."}
+  },
+  "$defs": {
+    "unestablished": {
+      "type": "object", "additionalProperties": false, "required": ["status", "reason"],
+      "properties": {"status": {"const": "UNKNOWN"}, "reason": {"$ref": "urn:presence:core:lineage:core:1#/$defs/text"}}
+    }
+  }
+}

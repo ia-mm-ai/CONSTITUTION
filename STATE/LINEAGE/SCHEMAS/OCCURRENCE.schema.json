@@ -1,22 +1,77 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "Occurrence — structural placeholder",
-  "description": "An exact attributable occurrence, without converting evidence of one occurrence into another.",
-  "$comment": "Annotation-only placeholder: accepts every instance; no conformance or constitutional effect is established.",
-  "x-status": "STRUCTURAL_PLACEHOLDER",
-  "x-source": {
-    "machine": "../../../SOURCE/CONSTITUTION_0()1.json",
-    "refs": ["section.3.2", "section.7.2", "section.7.3", "section.18.1", "section.18.2", "section.18.4"]
-  },
+  "$id": "urn:presence:core:lineage:occurrence:1",
+  "title": "LINEAGE exact occurrence record",
+  "x-status": "CANONICAL_SCHEMA",
+  "x-rule-classification": "CORE_ENCODING_RULE",
+  "x-source": {"refs": ["reading.3", "section.3.2", "section.7.2", "section.7.3", "section.18.1", "section.18.2", "section.18.4"]},
+  "description": "Closed encoding profile. Schema acceptance is structural, not proof of the event or constitutional effect. Null is not an uncertainty value.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["kind", "id", "locality", "attribution", "scope", "occurrence", "carrier", "record", "evidence", "claimed_effects", "uncertainty"],
   "properties": {
-    "occurrence": {"description": "Exact occurrence claimed, distinguishing exposure, delivery, receipt, admission, and other events."},
-    "locality": {"description": "Locality in which the claim is held; not another Locality's inferred interior."},
-    "attribution": {"description": "Attributable ground of the occurrence claim."},
-    "scope": {"description": "Exact target and relation supported by the claim."},
-    "time": {"description": "Supported temporal boundary or ordering; no invented precision."},
-    "evidence": {"description": "Support with declared object, method, scope, time, basis, result, and effect ceiling."},
-    "carrier": {"description": "Carrier kept distinct from the occurrence."},
-    "record": {"description": "Preserved account kept distinct from the occurrence."},
-    "uncertainty": {"description": "Unsupported or unresolved details retained without forced resolution."}
+    "kind": {"const": "occurrence"},
+    "id": {"$ref": "#/$defs/text"},
+    "locality": {"$ref": "#/$defs/text"},
+    "attribution": {
+      "type": "object", "additionalProperties": false,
+      "required": ["bearer", "basis", "evidence_refs"],
+      "properties": {
+        "bearer": {"$ref": "#/$defs/text"},
+        "basis": {"$ref": "#/$defs/text"},
+        "evidence_refs": {"$ref": "#/$defs/references"}
+      }
+    },
+    "scope": {"$ref": "#/$defs/text"},
+    "occurrence": {
+      "type": "object", "additionalProperties": false,
+      "required": ["id", "type", "target", "time", "status"],
+      "properties": {
+        "id": {"$ref": "#/$defs/text"},
+        "type": {"$ref": "#/$defs/occurrenceType"},
+        "target": {"$ref": "#/$defs/text"},
+        "time": {"$ref": "#/$defs/text"},
+        "status": {"$ref": "#/$defs/support"}
+      }
+    },
+    "carrier": {
+      "type": "object", "additionalProperties": false,
+      "required": ["id", "type"],
+      "properties": {
+        "id": {"$ref": "#/$defs/text"},
+        "type": {"enum": ["HUMAN", "PHYSICAL", "SOFTWARE", "PROTOCOL", "MIXED", "UNKNOWN"]}
+      }
+    },
+    "record": {
+      "type": "object", "additionalProperties": false,
+      "required": ["id", "holder"],
+      "properties": {"id": {"$ref": "#/$defs/text"}, "holder": {"$ref": "#/$defs/text"}}
+    },
+    "evidence": {
+      "type": "object", "additionalProperties": false,
+      "required": ["id", "object", "occurrence_type", "method", "scope", "time", "basis", "result", "effect_ceiling"],
+      "properties": {
+        "id": {"$ref": "#/$defs/text"},
+        "object": {"$ref": "#/$defs/text"},
+        "occurrence_type": {"$ref": "#/$defs/occurrenceType"},
+        "method": {"enum": ["OBSERVATION", "SELF_REPORT", "SIGNATURE", "REPLAY", "INSPECTION", "CONFORMANCE_TEST", "EXTERNAL_REFERENCE"]},
+        "scope": {"$ref": "#/$defs/text"},
+        "time": {"$ref": "#/$defs/text"},
+        "basis": {"$ref": "#/$defs/text"},
+        "result": {"$ref": "#/$defs/support"},
+        "effect_ceiling": {"enum": ["EXACT_OCCURRENCE_ONLY", "ATTRIBUTABLE_CLAIM_ONLY", "BOUNDED_KEY_BYTE_ATTRIBUTION", "REPRODUCIBLE_TRACE_ONLY", "EXTERNAL_CORRELATE_ONLY", "TESTED_CONDITIONS_ONLY"]}
+      }
+    },
+    "claimed_effects": {
+      "type": "array", "uniqueItems": true,
+      "items": {"enum": ["EXACT_OCCURRENCE", "RECEIPT", "ADMISSION", "AGREEMENT", "CONTINUITY", "PRESENCE", "SOURCE", "AUTHORITY", "CONSENT", "LOCAL_INTERIOR_TRUTH"]}
+    },
+    "uncertainty": {"$ref": "#/$defs/references"}
+  },
+  "$defs": {
+    "text": {"type": "string", "minLength": 1, "pattern": "\\S"},
+    "references": {"type": "array", "uniqueItems": true, "items": {"$ref": "#/$defs/text"}},
+    "support": {"enum": ["SUPPORTED", "UNKNOWN", "UNRESOLVED", "UNSUPPORTED", "REFUSED"]},
+    "occurrenceType": {"enum": ["EXPOSURE", "EMISSION", "CROSSING", "DELIVERY", "RECEIPT", "INSPECTION", "ADMISSION", "UPTAKE", "INTEGRATION", "RESPONSE", "OTHER_EXACT_OCCURRENCE"]}
   }
 }

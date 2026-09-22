@@ -1,35 +1,547 @@
 {
-  "kind": "module_index",
-  "status": "STRUCTURAL_PLACEHOLDER",
-  "human_outline": "LINEAGE.md",
-  "source": {
-    "human": "../../SOURCE/CONSTITUTION_0()1.md",
-    "machine": "../../SOURCE/CONSTITUTION_0()1.json",
-    "refs": ["section.1.2", "section.1.4", "section.6.4", "section.6.7", "section.6.9", "article.9", "article.16", "article.17", "article.18", "article.19", "article.20"]
-  },
-  "scope": "Attributable occurrences and bounded relations without inferred inheritance or parental jurisdiction.",
-  "policy": "../STATE.json",
+  "kind": "canonical_standard",
+  "id": "urn:presence:core:lineage:lineage:1",
+  "status": "CANONICAL_STANDARD",
+  "human_standard": "LINEAGE.md",
+  "source": {"refs": ["reading.2", "reading.3", "reading.5", "reading.6", "reading.7", "section.3.2", "section.6.7", "section.9.2", "section.16.6", "section.17.4", "section.17.9", "section.17.10", "section.17.11", "section.17.12", "section.17.13", "section.17.14", "section.17.15", "section.18.4", "section.19.3", "section.20.2"]},
+  "scope": "Platform-neutral declarations of exact occurrences, bilateral relations, target-specific succession, pairwise divergence, re-entry, and implementation claims; bounded consistency only.",
   "origin": "ORIGIN.json",
+  "schemas": ["SCHEMAS/OCCURRENCE.schema.json", "SCHEMAS/RELATION.schema.json", "SCHEMAS/SUCCESSION.schema.json", "SCHEMAS/DIVERGENCE.schema.json", "SCHEMAS/RE-ENTRY.schema.json", "SCHEMAS/DERIVATION.schema.json", "SCHEMAS/IMPLEMENTATION-CLAIM.schema.json", "SCHEMAS/ORIGIN.schema.json"],
+  "vectors": ["VECTORS/SUCCESSION.json", "VECTORS/DIVERGENCE.json", "VECTORS/RE-ENTRY.json", "VECTORS/INVALID-BROKEN-RELATION.json", "VECTORS/PROVENANCE.json"],
   "related": ["../CONTINUITY-STATE-CAPABILITY/CONTINUITY-STATE-CAPABILITY.json", "../DYNAMIC-CAPACITY-REGULATION/DYNAMIC-CAPACITY-REGULATION.json"],
-  "schemas": [
-    "SCHEMAS/OCCURRENCE.schema.json",
-    "SCHEMAS/RELATION.schema.json",
-    "SCHEMAS/SUCCESSION.schema.json",
-    "SCHEMAS/DIVERGENCE.schema.json",
-    "SCHEMAS/RE-ENTRY.schema.json",
-    "SCHEMAS/DERIVATION.schema.json",
-    "SCHEMAS/IMPLEMENTATION-CLAIM.schema.json"
-  ],
-  "vectors": [
-    "VECTORS/SUCCESSION.json",
-    "VECTORS/DIVERGENCE.json",
-    "VECTORS/RE-ENTRY.json",
-    "VECTORS/INVALID-BROKEN-RELATION.json"
-  ],
-  "not_established": [
-    "succession from ancestry",
-    "Source transfer",
-    "reciprocity from a one-sided record",
-    "constitutional effect from implementation success"
+  "evaluation": {
+    "classification": "CORE_ENCODING_RULE",
+    "schema_dialect": "https://json-schema.org/draft/2020-12/schema",
+    "order": "Schema first; then applicable rules in array order; collect every failed assertion; deduplicate codes preserving first occurrence.",
+    "schema_invalid": {"semantic_result": "NOT_EVALUATED", "failure_codes": ["SCHEMA_INVALID"]},
+    "inconsistent": "INCONSISTENT",
+    "consistent": "CONSISTENT_AT_DECLARED_SCOPE",
+    "effect_ceiling": "Consistency of declarations and tested constraints only; no truth, signature verification, evidence authenticity, constitutional validation, adoption, Authority, or presently demonstrated CSC."
+  },
+  "rules": [
+    {
+      "id": "LINEAGE_OCCURRENCE_DISTINCTIONS", "classification": "CONSTITUTIONAL_RULE",
+      "source": {"refs": ["section.3.2", "section.18.1", "section.18.2"]},
+      "when": {"===": [{"var": "kind"}, "occurrence"]},
+      "assert": {"and": [
+        {"!==": [{"var": "occurrence.id"}, {"var": "carrier.id"}]},
+        {"!==": [{"var": "occurrence.id"}, {"var": "record.id"}]},
+        {"!==": [{"var": "occurrence.id"}, {"var": "evidence.id"}]},
+        {"!==": [{"var": "carrier.id"}, {"var": "record.id"}]},
+        {"!==": [{"var": "carrier.id"}, {"var": "evidence.id"}]},
+        {"!==": [{"var": "record.id"}, {"var": "evidence.id"}]}
+      ]},
+      "failure_code": "OCCURRENCE_OBJECTS_CONFLATED",
+      "description": "Occurrence, carrier, record, and evidence use distinct qualified referents, even when carried in the same physical artifact."
+    },
+    {
+      "id": "LINEAGE_OCCURRENCE_EXACT_SUPPORT", "classification": "CONSTITUTIONAL_RULE",
+      "source": {"refs": ["section.7.2", "section.7.3", "section.18.4"]},
+      "when": {"===": [{"var": "kind"}, "occurrence"]},
+      "assert": {"and": [
+        {"===": [{"var": "evidence.object"}, {"var": "occurrence.id"}]},
+        {"===": [{"var": "evidence.occurrence_type"}, {"var": "occurrence.type"}]},
+        {"===": [{"var": "evidence.scope"}, {"var": "scope"}]}
+      ]},
+      "failure_code": "OCCURRENCE_SUPPORT_MISMATCH",
+      "description": "Support must concern the exact declared event kind, object, and scope; delivery evidence cannot become receipt evidence."
+    },
+    {
+      "id": "LINEAGE_OCCURRENCE_SUPPORTED_CLAIM", "classification": "CONSTITUTIONAL_RULE",
+      "source": {"refs": ["section.3.2", "section.7.3", "section.18.4"]},
+      "when": {"and": [{"===": [{"var": "kind"}, "occurrence"]}, {"===": [{"var": "occurrence.status"}, "SUPPORTED"]}]},
+      "assert": {"and": [
+        {"===": [{"var": "evidence.result"}, "SUPPORTED"]},
+        {">": [{"count": {"var": "attribution.evidence_refs"}}, 0]},
+        {"in": [{"var": "evidence.id"}, {"var": "attribution.evidence_refs"}]}
+      ]},
+      "failure_code": "OCCURRENCE_SUPPORT_MISSING",
+      "description": "A supported occurrence declaration must expose attributable support, not merely a positive label."
+    },
+    {
+      "id": "LINEAGE_OCCURRENCE_NON_CONVERSION", "classification": "CONSTITUTIONAL_RULE",
+      "source": {"refs": ["section.5.1", "section.7.3", "section.14.4", "section.18.2"]},
+      "when": {"===": [{"var": "kind"}, "occurrence"]},
+      "assert": {"all": [{"var": "claimed_effects"}, {"===": [{"var": ""}, "EXACT_OCCURRENCE"]}]},
+      "failure_code": "OCCURRENCE_EFFECT_OVERREACH",
+      "description": "An occurrence record claims only its exact occurrence, not a converted later occurrence or constitutional effect."
+    },
+    {
+      "id": "LINEAGE_OCCURRENCE_METHOD_CEILING", "classification": "CONSTITUTIONAL_RULE",
+      "source": {"refs": ["section.3.3", "section.18.1", "section.18.4"]},
+      "when": {"===": [{"var": "kind"}, "occurrence"]},
+      "assert": {"or": [
+        {"and": [{"===": [{"var": "evidence.method"}, "SELF_REPORT"]}, {"===": [{"var": "evidence.effect_ceiling"}, "ATTRIBUTABLE_CLAIM_ONLY"]}]},
+        {"and": [{"===": [{"var": "evidence.method"}, "SIGNATURE"]}, {"===": [{"var": "evidence.effect_ceiling"}, "BOUNDED_KEY_BYTE_ATTRIBUTION"]}]},
+        {"and": [{"===": [{"var": "evidence.method"}, "REPLAY"]}, {"===": [{"var": "evidence.effect_ceiling"}, "REPRODUCIBLE_TRACE_ONLY"]}]},
+        {"and": [{"===": [{"var": "evidence.method"}, "INSPECTION"]}, {"===": [{"var": "evidence.effect_ceiling"}, "EXTERNAL_CORRELATE_ONLY"]}]},
+        {"and": [{"===": [{"var": "evidence.method"}, "CONFORMANCE_TEST"]}, {"===": [{"var": "evidence.effect_ceiling"}, "TESTED_CONDITIONS_ONLY"]}]},
+        {"and": [{"in": [{"var": "evidence.method"}, ["OBSERVATION", "EXTERNAL_REFERENCE"]]}, {"===": [{"var": "evidence.effect_ceiling"}, "EXACT_OCCURRENCE_ONLY"]}]}
+      ]},
+      "failure_code": "OCCURRENCE_PROOF_CEILING",
+      "description": "Method-specific ceilings cannot be expanded by labeling the result SUPPORTED."
+    },
+    {
+      "id": "LINEAGE_RELATION_TERMS", "classification": "CONSTITUTIONAL_RULE",
+      "source": {"refs": ["section.9.2", "section.9.3"]},
+      "when": {"===": [{"var": "kind"}, "relation"]},
+      "assert": {"and": [
+        {"!==": [{"var": "terms.left"}, {"var": "terms.right"}]},
+        {"===": [{"var": "basis_by_side.left.bearer"}, {"var": "terms.left"}]},
+        {"===": [{"var": "basis_by_side.left.target"}, {"var": "terms.right"}]},
+        {"===": [{"var": "basis_by_side.right.bearer"}, {"var": "terms.right"}]},
+        {"===": [{"var": "basis_by_side.right.target"}, {"var": "terms.left"}]},
+        {"===": [{"var": "basis_by_side.left.locality"}, {"var": "holding_locality"}]},
+        {"===": [{"var": "basis_by_side.left.scope"}, {"var": "scope"}]},
+        {"===": [{"var": "basis_by_side.right.scope"}, {"var": "scope"}]}
+      ]},
+      "failure_code": "RELATION_TERMS_OR_SCOPE_MISMATCH",
+      "description": "The holding side and other side remain distinct and each declaration addresses the exact counterpart and scope."
+    },
+    {
+      "id": "LINEAGE_RELATION_LOCAL_BASIS", "classification": "CONSTITUTIONAL_RULE",
+      "source": {"refs": ["section.9.2", "section.5.2"]},
+      "when": {"===": [{"var": "kind"}, "relation"]},
+      "assert": {"and": [
+        {"===": [{"var": "basis_by_side.left.status"}, "SUPPORTED"]},
+        {"in": [{"var": "basis_by_side.left.origin"}, ["LOCAL_ACT", "VALID_REPRESENTATION", "FORMATION"]]},
+        {">": [{"count": {"var": "basis_by_side.left.evidence_refs"}}, 0]}
+      ]},
+      "failure_code": "RELATION_LOCAL_BASIS_MISSING",
+      "description": "A declared local relation requires the holding side's attributable local basis."
+    },
+    {
+      "id": "LINEAGE_RELATION_RECIPROCITY", "classification": "CONSTITUTIONAL_RULE",
+      "source": {"refs": ["section.8.3", "section.9.2"]},
+      "when": {"and": [{"===": [{"var": "kind"}, "relation"]}, {"or": [{"!==": [{"var": "direction"}, "LOCAL"]}, {"===": [{"var": "basis_by_side.right.status"}, "SUPPORTED"]}]}]},
+      "assert": {"and": [
+        {"===": [{"var": "basis_by_side.right.status"}, "SUPPORTED"]},
+        {"in": [{"var": "basis_by_side.right.origin"}, ["LOCAL_ACT", "VALID_REPRESENTATION", "FORMATION"]]},
+        {">": [{"count": {"var": "basis_by_side.right.evidence_refs"}}, 0]}
+      ]},
+      "failure_code": "RECIPROCAL_BASIS_MISSING",
+      "description": "A link or host assertion cannot supply the other side's shared or reciprocal basis."
+    },
+    {
+      "id": "LINEAGE_RELATION_EFFECTS", "classification": "CONSTITUTIONAL_RULE",
+      "source": {"refs": ["section.5.1", "section.9.2", "section.9.3", "section.19.2"]},
+      "when": {"===": [{"var": "kind"}, "relation"]},
+      "assert": {"and": [
+        {"all": [{"var": "claimed_effects"}, {"in": [{"var": ""}, ["LOCAL_RELATION", "RECIPROCAL_RELATION", "SHARED_RELATION"]]}]},
+        {"or": [{"!": {"in": ["RECIPROCAL_RELATION", {"var": "claimed_effects"}]}}, {"in": [{"var": "direction"}, ["RECIPROCAL", "SHARED"]]}]},
+        {"or": [{"!": {"in": ["SHARED_RELATION", {"var": "claimed_effects"}]}}, {"===": [{"var": "direction"}, "SHARED"]}]}
+      ]},
+      "failure_code": "RELATION_EFFECT_OVERREACH",
+      "description": "Relation neither merges the terms nor creates effects or reciprocity beyond the supported direction."
+    },
+    {
+      "id": "LINEAGE_RELATION_ENDING", "classification": "CONSTITUTIONAL_RULE",
+      "source": {"refs": ["section.9.5", "section.15.4"]},
+      "when": {"===": [{"var": "kind"}, "relation"]},
+      "assert": {"and": [
+        {"===": [{"var": "history.prior_refs"}, {"var": "history.retained_refs"}]},
+        {"===": [{"var": "exit_and_correction.unrelated_relations"}, "NO_EFFECT_CLAIMED"]}
+      ]},
+      "failure_code": "RELATION_HISTORY_OR_EXIT_OVERREACH",
+      "description": "The preserved predecessor reference list remains intact and scoped ending does not end unrelated relations."
+    },
+    {
+      "id": "LINEAGE_SUCCESSION_DISTINCT", "classification": "CONSTITUTIONAL_RULE",
+      "source": {"refs": ["section.17.4"]},
+      "when": {"===": [{"var": "kind"}, "succession"]},
+      "assert": {"!==": [{"var": "predecessor"}, {"var": "successor"}]},
+      "failure_code": "SUCCESSION_IDENTITIES_CONFLATED",
+      "description": "Predecessor and successor remain distinct referents."
+    },
+    {
+      "id": "LINEAGE_SUCCESSION_EXACT_TARGET", "classification": "CONSTITUTIONAL_RULE",
+      "source": {"refs": ["section.17.9", "section.17.10", "section.17.11"]},
+      "when": {"and": [{"===": [{"var": "kind"}, "succession"]}, {"===": [{"var": "establishment_posture"}, "ESTABLISHED"]}]},
+      "assert": {"and": [
+        {"none": [[{"var": "target.id"}, {"var": "target.scope"}, {"var": "target.locality"}, {"var": "target.lineage"}, {"var": "predecessor"}, {"var": "successor"}], {"in": [{"var": ""}, ["UNKNOWN", "UNRESOLVED", "UNSUPPORTED", "REFUSED"]]}]},
+        {"===": [{"var": "valid_basis.target"}, {"var": "target.id"}]},
+        {"===": [{"var": "valid_basis.scope"}, {"var": "target.scope"}]},
+        {"===": [{"var": "valid_basis.locality"}, {"var": "target.locality"}]},
+        {"===": [{"var": "successor_side_establishment.target"}, {"var": "target.id"}]},
+        {"===": [{"var": "successor_side_establishment.scope"}, {"var": "target.scope"}]},
+        {"===": [{"var": "successor_side_establishment.locality"}, {"var": "target.locality"}]},
+        {"===": [{"var": "successor_side_establishment.successor"}, {"var": "successor"}]}
+      ]},
+      "failure_code": "SUCCESSION_TARGET_MISMATCH",
+      "description": "Independent basis and successor-side establishment must address this target, locality, scope, and successor."
+    },
+    {
+      "id": "LINEAGE_SUCCESSION_INDEPENDENT_BASIS", "classification": "CONSTITUTIONAL_RULE",
+      "source": {"refs": ["section.17.10", "section.17.14"]},
+      "when": {"and": [{"===": [{"var": "kind"}, "succession"]}, {"===": [{"var": "establishment_posture"}, "ESTABLISHED"]}]},
+      "assert": {"and": [
+        {"===": [{"var": "valid_basis.status"}, "SUPPORTED"]},
+        {"!": {"in": [{"var": "valid_basis.id"}, ["UNKNOWN", "UNRESOLVED", "UNSUPPORTED", "REFUSED"]]}},
+        {"in": [{"var": "valid_basis.origin"}, ["ATTRIBUTABLE_SOURCE", "PREEXISTING_CONDITION", "EXACT_AUTHORITY"]]},
+        {"!==": [{"var": "valid_basis.id"}, {"var": "id"}]},
+        {">": [{"count": {"var": "valid_basis.evidence_refs"}}, 0]},
+        {"none": [{"var": "valid_basis.evidence_refs"}, {"in": [{"var": ""}, ["UNKNOWN", "UNRESOLVED", "UNSUPPORTED", "REFUSED"]]}]}
+      ]},
+      "failure_code": "SUCCESSION_INDEPENDENT_BASIS_MISSING",
+      "description": "Successor declaration, possession, copying, survival, or technical control cannot be the independent succession basis."
+    },
+    {
+      "id": "LINEAGE_SUCCESSION_SUCCESSOR_SIDE", "classification": "CONSTITUTIONAL_RULE",
+      "source": {"refs": ["section.17.11", "section.17.14"]},
+      "when": {"and": [{"===": [{"var": "kind"}, "succession"]}, {"===": [{"var": "establishment_posture"}, "ESTABLISHED"]}]},
+      "assert": {"and": [
+        {"===": [{"var": "successor_side_establishment.status"}, "SUPPORTED"]},
+        {"or": [
+          {"!": {"in": [{"var": "target.layer"}, ["BODY", "LOCALITY"]]}},
+          {"===": [{"var": "successor_side_establishment.layer_disposition"}, "LOCAL_DISPOSITION"]}
+        ]},
+        {"!": {"in": [{"var": "successor_side_establishment.basis_ref"}, ["UNKNOWN", "UNRESOLVED", "UNSUPPORTED", "REFUSED"]]}},
+        {"!": {"in": [{"var": "successor_side_establishment.occurrence_ref"}, ["UNKNOWN", "UNRESOLVED", "UNSUPPORTED", "REFUSED"]]}},
+        {"or": [
+          {"and": [{"===": [{"var": "successor_side_establishment.layer_disposition"}, "LOCAL_DISPOSITION"]}, {"in": [{"var": "successor_side_establishment.method"}, ["ACCEPTANCE", "FORMATION"]]}]},
+          {"and": [{"===": [{"var": "successor_side_establishment.layer_disposition"}, "ARTIFACT"]}, {"===": [{"var": "successor_side_establishment.method"}, "EXACT_OCCURRENCE"]}]}
+        ]}
+      ]},
+      "failure_code": "SUCCESSOR_SIDE_NOT_ESTABLISHED",
+      "description": "Designation and delivery do not complete the applicable successor-side acceptance, formation, or exact artifact occurrence."
+    },
+    {
+      "id": "LINEAGE_SUCCESSION_BOUNDARY", "classification": "CONSTITUTIONAL_RULE",
+      "source": {"refs": ["section.17.13", "section.17.14"]},
+      "when": {"and": [{"===": [{"var": "kind"}, "succession"]}, {"===": [{"var": "establishment_posture"}, "ESTABLISHED"]}]},
+      "assert": {"and": [
+        {"in": [{"var": "effective_boundary.kind"}, ["OCCURRENCE", "TEMPORAL"]]},
+        {"!": {"in": [{"var": "effective_boundary.reference"}, ["UNKNOWN", "UNRESOLVED", "UNSUPPORTED", "REFUSED"]]}}
+      ]},
+      "failure_code": "SUCCESSION_EFFECTIVE_BOUNDARY_MISSING",
+      "description": "Established succession requires an exact effective occurrence or temporal boundary."
+    },
+    {
+      "id": "LINEAGE_SUCCESSION_COMPLETE_MAP", "classification": "CONSTITUTIONAL_RULE",
+      "source": {"refs": ["section.17.12", "section.17.14"]},
+      "when": {"and": [{"===": [{"var": "kind"}, "succession"]}, {"===": [{"var": "establishment_posture"}, "ESTABLISHED"]}]},
+      "assert": {"===": [{"var": "carry_map.status"}, "COMPLETE_AT_DECLARED_SCOPE"]},
+      "failure_code": "SUCCESSION_CARRY_MAP_UNRESOLVED",
+      "description": "A materially unresolved mapping cannot be called established succession."
+    },
+    {
+      "id": "LINEAGE_NO_SOURCE_TRANSFER", "classification": "CONSTITUTIONAL_RULE",
+      "source": {"refs": ["section.6.7", "section.17.12"]},
+      "when": {"===": [{"var": "kind"}, "succession"]},
+      "assert": {"none": [{"var": "carry_map.validly_carried"}, {"===": [{"var": "effect"}, "SOURCE"]}]},
+      "failure_code": "SOURCE_TRANSFER_FORBIDDEN",
+      "description": "Source never crosses in the carried set; a newly attributable successor Source belongs only in successor_new."
+    },
+    {
+      "id": "LINEAGE_CARRIED_EFFECT_BASIS", "classification": "CONSTITUTIONAL_RULE",
+      "source": {"refs": ["section.5.1", "section.17.4", "section.17.12"]},
+      "when": {"===": [{"var": "kind"}, "succession"]},
+      "assert": {"all": [{"var": "carry_map.validly_carried"}, {"and": [
+        {"===": [{"var": "target"}, {"var": "basis.target"}]},
+        {"===": [{"var": "scope"}, {"var": "basis.scope"}]},
+        {"===": [{"var": "locality"}, {"var": "basis.locality"}]},
+        {"===": [{"var": "effect"}, {"var": "basis.effect"}]},
+        {"===": [{"var": "basis.status"}, "SUPPORTED"]},
+        {"in": [{"var": "basis.origin"}, ["ATTRIBUTABLE_SOURCE", "PREEXISTING_CONDITION", "EXACT_AUTHORITY", "LOCAL_ACT", "FORMATION"]]},
+        {">": [{"count": {"var": "basis.evidence_refs"}}, 0]}
+      ]}]},
+      "failure_code": "CARRIED_EFFECT_BASIS_MISSING_OR_MISMATCHED",
+      "description": "Every expressly carried effect has its own matching supported basis; the succession label supplies none."
+    },
+    {
+      "id": "LINEAGE_SUCCESSOR_NEW_BASIS", "classification": "CONSTITUTIONAL_RULE",
+      "source": {"refs": ["section.6.7", "section.17.12"]},
+      "when": {"===": [{"var": "kind"}, "succession"]},
+      "assert": {"all": [{"var": "carry_map.successor_new"}, {"and": [
+        {"===": [{"var": "target"}, {"var": "basis.target"}]},
+        {"===": [{"var": "scope"}, {"var": "basis.scope"}]},
+        {"===": [{"var": "locality"}, {"var": "basis.locality"}]},
+        {"===": [{"var": "effect"}, {"var": "basis.effect"}]},
+        {"===": [{"var": "basis.status"}, "SUPPORTED"]},
+        {"in": [{"var": "basis.origin"}, ["ATTRIBUTABLE_SOURCE", "EXACT_AUTHORITY", "LOCAL_ACT", "FORMATION", "PREEXISTING_CONDITION"]]},
+        {">": [{"count": {"var": "basis.evidence_refs"}}, 0]},
+        {"or": [{"!==": [{"var": "effect"}, "SOURCE"]}, {"===": [{"var": "basis.origin"}, "ATTRIBUTABLE_SOURCE"]}]}
+      ]}]},
+      "failure_code": "SUCCESSOR_NEW_BASIS_MISSING_OR_MISMATCHED",
+      "description": "New successor relations are newly supported; a new Source must be attributable, not inherited."
+    },
+    {
+      "id": "LINEAGE_PREDECESSOR_REMAINDER", "classification": "CONSTITUTIONAL_RULE",
+      "source": {"refs": ["section.17.13", "section.17.15"]},
+      "when": {"and": [{"===": [{"var": "kind"}, "succession"]}, {"===": [{"var": "establishment_posture"}, "ESTABLISHED"]}]},
+      "assert": {"and": [
+        {"in": [{"var": "predecessor_remainder.posture"}, ["ENDED", "DORMANT", "HISTORICAL", "CONTINUES_ELSEWHERE", "COEXISTS", "DIVERGES"]]},
+        {"===": [{"var": "predecessor_remainder.state_ref"}, {"var": "answerability.predecessor_state"}]}
+      ]},
+      "failure_code": "PREDECESSOR_REMAINDER_UNSUPPORTED",
+      "description": "The exact predecessor remainder stays recoverable, rather than being replaced by successor state."
+    },
+    {
+      "id": "LINEAGE_SUCCESSION_HISTORY", "classification": "CONSTITUTIONAL_RULE",
+      "source": {"refs": ["section.17.13", "section.17.15", "section.15.4"]},
+      "when": {"===": [{"var": "kind"}, "succession"]},
+      "assert": {"and": [
+        {"===": [{"var": "answerability.predecessor_history"}, {"var": "answerability.retained_history"}]},
+        {"===": [{"var": "answerability.predecessor_duties"}, {"var": "answerability.retained_predecessor_duties"}]},
+        {"===": [{"var": "answerability.predecessor_state"}, {"var": "answerability.retained_predecessor_state"}]},
+        {"===": [{"var": "answerability.predecessor_author"}, {"var": "answerability.retained_predecessor_author"}]}
+      ]},
+      "failure_code": "PREDECESSOR_HISTORY_REWRITTEN",
+      "description": "Preserve the predecessor snapshot, attribution, consequences, failures, and correction duties, without retroactive successor authorship."
+    },
+    {
+      "id": "LINEAGE_SUCCESSOR_ANSWERABILITY", "classification": "CONSTITUTIONAL_RULE",
+      "source": {"refs": ["section.17.13", "section.17.15"]},
+      "when": {"and": [{"===": [{"var": "kind"}, "succession"]}, {"===": [{"var": "establishment_posture"}, "ESTABLISHED"]}]},
+      "assert": {"and": [
+        {"===": [{"var": "answerability.successor_answers_from"}, {"var": "effective_boundary.reference"}]},
+        {">": [{"count": {"var": "answerability.successor_duties"}}, 0]}
+      ]},
+      "failure_code": "SUCCESSOR_ANSWERABILITY_BOUNDARY_MISMATCH",
+      "description": "Successor answerability for formation, accepted inheritance, exercises, and consequence is bounded from the effective occurrence."
+    },
+    {
+      "id": "LINEAGE_NO_ANCESTRAL_CONTROL", "classification": "CONSTITUTIONAL_RULE",
+      "source": {"refs": ["section.1.4", "section.17.5", "section.17.15"]},
+      "when": {"===": [{"var": "kind"}, "succession"]},
+      "assert": {"===": [{"var": "answerability.ancestral_control"}, "NO_EFFECT_CLAIMED"]},
+      "failure_code": "ANCESTRAL_CONTROL_INFERRED",
+      "description": "Ancestry supplies no continuing control of successor choice."
+    },
+    {
+      "id": "LINEAGE_DIVERGENCE_EXACT_STREAMS", "classification": "CONSTITUTIONAL_RULE",
+      "source": {"refs": ["section.16.6", "section.17.13"]},
+      "when": {"===": [{"var": "kind"}, "divergence"]},
+      "assert": {"and": [
+        {"!==": [{"var": "streams.left.id"}, {"var": "streams.right.id"}]},
+        {"!==": [{"var": "streams.left.state_ref"}, {"var": "streams.right.state_ref"}]},
+        {"===": [{"var": "incompatibility.left_state"}, {"var": "streams.left.state_ref"}]},
+        {"===": [{"var": "incompatibility.right_state"}, {"var": "streams.right.state_ref"}]}
+      ]},
+      "failure_code": "DIVERGENCE_STREAMS_CONFLATED_OR_MISMATCHED",
+      "description": "Incompatibility identifies distinct streams and their exact different supported state claims."
+    },
+    {
+      "id": "LINEAGE_DIVERGENCE_VISIBLE", "classification": "CONSTITUTIONAL_RULE",
+      "source": {"refs": ["section.14.5", "section.16.6", "section.17.13"]},
+      "when": {"and": [{"===": [{"var": "kind"}, "divergence"]}, {"!==": [{"var": "treatment.posture"}, "RECONCILED"]}]},
+      "assert": {"and": [
+        {"===": [{"var": "treatment.assigned_states.left"}, {"var": "streams.left.state_ref"}]},
+        {"===": [{"var": "treatment.assigned_states.right"}, {"var": "streams.right.state_ref"}]}
+      ]},
+      "failure_code": "INCOMPATIBLE_STREAMS_SILENTLY_MERGED",
+      "description": "Without valid reconciliation the separate current state claims remain visible; selecting one is not reconciliation."
+    },
+    {
+      "id": "LINEAGE_DIVERGENCE_RECONCILIATION", "classification": "CONSTITUTIONAL_RULE",
+      "source": {"refs": ["section.16.6", "section.17.13"]},
+      "when": {"and": [{"===": [{"var": "kind"}, "divergence"]}, {"===": [{"var": "treatment.posture"}, "RECONCILED"]}]},
+      "assert": {"and": [
+        {"===": [{"var": "treatment.reconciliation_basis.status"}, "SUPPORTED"]},
+        {"===": [{"var": "treatment.reconciliation_basis.scope"}, {"var": "scope"}]},
+        {">": [{"count": {"var": "treatment.reconciliation_basis.evidence_refs"}}, 0]},
+        {"===": [{"var": "treatment.assigned_states.left"}, {"var": "treatment.assigned_states.right"}]}
+      ]},
+      "failure_code": "RECONCILIATION_BASIS_MISSING_OR_MISMATCHED",
+      "description": "Reconciliation names a supported scope-matching basis and the resulting reconciled state without replacing predecessor evidence."
+    },
+    {
+      "id": "LINEAGE_DIVERGENCE_HISTORY", "classification": "CONSTITUTIONAL_RULE",
+      "source": {"refs": ["section.15.4", "section.17.13", "section.17.15"]},
+      "when": {"===": [{"var": "kind"}, "divergence"]},
+      "assert": {"and": [
+        {"===": [{"var": "streams.left.history_refs"}, {"var": "streams.left.retained_history_refs"}]},
+        {"===": [{"var": "streams.right.history_refs"}, {"var": "streams.right.retained_history_refs"}]}
+      ]},
+      "failure_code": "DIVERGENCE_HISTORY_ERASED",
+      "description": "Even successful reconciliation retains both predecessor histories."
+    },
+    {
+      "id": "LINEAGE_DIVERGENCE_IDENTITY", "classification": "CONSTITUTIONAL_RULE",
+      "source": {"refs": ["section.2.10", "section.17.3", "section.17.8"]},
+      "when": {"and": [{"===": [{"var": "kind"}, "divergence"]}, {"!==": [{"var": "identity_commitments.left"}, {"var": "identity_commitments.right"}]}]},
+      "assert": {"in": [{"var": "identity_commitments.posture"}, ["DIFFERENT", "UNRESOLVED"]]},
+      "failure_code": "CHANGED_IDENTITY_CONCEALED",
+      "description": "Different declared commitments cannot be labeled identical because the streams share lineage."
+    },
+    {
+      "id": "LINEAGE_REENTRY_HISTORY", "classification": "CONSTITUTIONAL_RULE",
+      "source": {"refs": ["section.8.6", "section.9.5", "section.15.4"]},
+      "when": {"===": [{"var": "kind"}, "re_entry"]},
+      "assert": {"and": [
+        {"===": [{"var": "interruption_or_exit.ended_binding_ref"}, {"var": "prior_relation.binding_ref"}]},
+        {"===": [{"var": "retained_history"}, {"var": "prior_relation.history_refs"}]}
+      ]},
+      "failure_code": "REENTRY_PRIOR_BOUNDARY_ERASED",
+      "description": "Re-entry retains the exact prior binding's closure or interruption and the earlier history."
+    },
+    {
+      "id": "LINEAGE_REENTRY_NEW_OCCURRENCE", "classification": "CONSTITUTIONAL_RULE",
+      "source": {"refs": ["section.8.1", "section.8.3", "section.8.6"]},
+      "when": {"and": [{"===": [{"var": "kind"}, "re_entry"]}, {"===": [{"var": "renewal_status"}, "ESTABLISHED"]}]},
+      "assert": {"and": [
+        {"!==": [{"var": "present_binding.id"}, {"var": "prior_relation.binding_ref"}]},
+        {"!==": [{"var": "new_occurrence.id"}, {"var": "prior_relation.occurrence_ref"}]},
+        {"!==": [{"var": "current_relation.id"}, {"var": "prior_relation.id"}]},
+        {"===": [{"var": "new_occurrence.status"}, "SUPPORTED"]},
+        {"===": [{"var": "present_binding.occurrence_ref"}, {"var": "new_occurrence.id"}]},
+        {"===": [{"var": "present_binding.locality"}, {"var": "new_occurrence.locality"}]},
+        {"===": [{"var": "present_binding.scope"}, {"var": "new_occurrence.scope"}]},
+        {"===": [{"var": "current_relation.scope"}, {"var": "new_occurrence.scope"}]}
+      ]},
+      "failure_code": "REENTRY_NEW_CURRENT_OCCURRENCE_MISSING",
+      "description": "A new current binding and occurrence are not the archived binding or a historical occurrence relabeled as current."
+    },
+    {
+      "id": "LINEAGE_REENTRY_CURRENT_BASIS", "classification": "CONSTITUTIONAL_RULE",
+      "source": {"refs": ["section.8.1", "section.8.3", "section.16.5"]},
+      "when": {"and": [{"===": [{"var": "kind"}, "re_entry"]}, {"===": [{"var": "renewal_status"}, "ESTABLISHED"]}]},
+      "assert": {"and": [
+        {"===": [{"var": "present_binding.bearer"}, {"var": "entrant"}]},
+        {"===": [{"var": "present_binding.basis.bearer"}, {"var": "entrant"}]},
+        {"===": [{"var": "present_binding.basis.occurrence_ref"}, {"var": "new_occurrence.id"}]},
+        {"===": [{"var": "present_binding.basis.status"}, "SUPPORTED"]},
+        {"in": [{"var": "present_binding.basis.origin"}, ["OWN_CURRENT_ACT", "VALID_CURRENT_REPRESENTATION", "CURRENT_FORMATION"]]},
+        {">": [{"count": {"var": "present_binding.basis.evidence_refs"}}, 0]}
+      ]},
+      "failure_code": "REENTRY_PRESENT_BASIS_MISSING",
+      "description": "The entrant's current qualifying act or exact valid representation is required; the host or old record cannot supply it."
+    },
+    {
+      "id": "LINEAGE_REENTRY_LOCAL_RELATION", "classification": "CONSTITUTIONAL_RULE",
+      "source": {"refs": ["section.9.1", "section.9.2"]},
+      "when": {"and": [{"===": [{"var": "kind"}, "re_entry"]}, {"===": [{"var": "renewal_status"}, "ESTABLISHED"]}, {"!==": [{"var": "current_relation.posture"}, "ENCOUNTER_ONLY"]}]},
+      "assert": {"and": [
+        {"===": [{"var": "current_relation.local_bases.entrant.bearer"}, {"var": "entrant"}]},
+        {"===": [{"var": "current_relation.local_bases.entrant.occurrence_ref"}, {"var": "new_occurrence.id"}]},
+        {"===": [{"var": "current_relation.local_bases.entrant.status"}, "SUPPORTED"]},
+        {"in": [{"var": "current_relation.local_bases.entrant.origin"}, ["OWN_CURRENT_ACT", "VALID_CURRENT_REPRESENTATION", "CURRENT_FORMATION"]]},
+        {">": [{"count": {"var": "current_relation.local_bases.entrant.evidence_refs"}}, 0]}
+      ]},
+      "failure_code": "REENTRY_LOCAL_RELATION_BASIS_MISSING",
+      "description": "Presence does not automatically establish even the entrant's renewed local relation."
+    },
+    {
+      "id": "LINEAGE_REENTRY_SHARED_RELATION", "classification": "CONSTITUTIONAL_RULE",
+      "source": {"refs": ["section.8.3", "section.9.2"]},
+      "when": {"and": [{"===": [{"var": "kind"}, "re_entry"]}, {"===": [{"var": "renewal_status"}, "ESTABLISHED"]}, {"===": [{"var": "current_relation.posture"}, "SHARED"]}]},
+      "assert": {"and": [
+        {"!==": [{"var": "host"}, {"var": "entrant"}]},
+        {"===": [{"var": "current_relation.local_bases.host.bearer"}, {"var": "host"}]},
+        {"===": [{"var": "current_relation.local_bases.host.occurrence_ref"}, {"var": "new_occurrence.id"}]},
+        {"===": [{"var": "current_relation.local_bases.host.status"}, "SUPPORTED"]},
+        {"in": [{"var": "current_relation.local_bases.host.origin"}, ["OWN_CURRENT_ACT", "VALID_CURRENT_REPRESENTATION", "CURRENT_FORMATION"]]},
+        {">": [{"count": {"var": "current_relation.local_bases.host.evidence_refs"}}, 0]}
+      ]},
+      "failure_code": "REENTRY_SHARED_BASIS_MISSING",
+      "description": "A renewed shared relation needs the host's own current basis as well as the entrant's."
+    },
+    {
+      "id": "LINEAGE_REENTRY_MOTION", "classification": "CONSTITUTIONAL_RULE",
+      "source": {"refs": ["section.11.10", "section.11.11", "section.11.12", "section.16.5"]},
+      "when": {"and": [{"===": [{"var": "kind"}, "re_entry"]}, {"===": [{"var": "motion.posture"}, "ESTABLISHED"]}]},
+      "assert": {"and": [
+        {"===": [{"var": "renewal_status"}, "ESTABLISHED"]},
+        {"===": [{"var": "motion.scope"}, {"var": "new_occurrence.scope"}]},
+        {"===": [{"var": "motion.time"}, {"var": "new_occurrence.time"}]},
+        {"some": [{"var": "motion.relations"}, {"and": [{"===": [{"var": "dimension"}, "AGENCY"]}, {"===": [{"var": "required"}, true]}]}]},
+        {"some": [{"var": "motion.relations"}, {"and": [{"===": [{"var": "dimension"}, "AUTONOMY"]}, {"===": [{"var": "required"}, true]}]}]},
+        {"some": [{"var": "motion.relations"}, {"and": [{"===": [{"var": "dimension"}, "CAPABILITY"]}, {"===": [{"var": "required"}, true]}]}]},
+        {"all": [{"var": "motion.relations"}, {"or": [
+          {"===": [{"var": "required"}, false]},
+          {"and": [
+            {"===": [{"var": "status"}, "SUPPORTED"]},
+            {"===": [{"var": "scope"}, {"var": "basis_scope"}]},
+            {"===": [{"var": "scope"}, {"root": "motion.scope"}]},
+            {"===": [{"var": "temporal_posture"}, "CURRENT"]},
+            {">": [{"count": {"var": "evidence_refs"}}, 0]},
+            {"!": {"in": [{"var": "basis_ref"}, ["UNKNOWN", "UNRESOLVED", "UNSUPPORTED", "REFUSED"]]}}
+          ]}
+        ]}]}
+      ]},
+      "failure_code": "REENTRY_MOTION_RELATIONS_MISSING",
+      "description": "Resumed motion independently needs current Agency, autonomy, capability and every further required relation. Each required relation's scope must match both its own basis_scope and the enclosing motion.scope; support for another motion or historical success cannot substitute."
+    },
+    {
+      "id": "LINEAGE_REENTRY_EFFECTS", "classification": "CONSTITUTIONAL_RULE",
+      "source": {"refs": ["section.8.1", "section.9.1", "section.16.5", "section.17.8"]},
+      "when": {"===": [{"var": "kind"}, "re_entry"]},
+      "assert": {"and": [
+        {"all": [{"var": "claimed_effects"}, {"in": [{"var": ""}, ["NEW_CURRENT_BINDING", "NEW_LOCAL_RELATION", "NEW_SHARED_RELATION", "RESUMED_MOTION"]]}]},
+        {"or": [{"===": [{"count": {"var": "claimed_effects"}}, 0]}, {"===": [{"var": "renewal_status"}, "ESTABLISHED"]}]},
+        {"or": [{"!": {"in": ["NEW_LOCAL_RELATION", {"var": "claimed_effects"}]}}, {"in": [{"var": "current_relation.posture"}, ["LOCAL", "SHARED"]]}]},
+        {"or": [{"!": {"in": ["NEW_SHARED_RELATION", {"var": "claimed_effects"}]}}, {"===": [{"var": "current_relation.posture"}, "SHARED"]}]},
+        {"or": [{"!": {"in": ["RESUMED_MOTION", {"var": "claimed_effects"}]}}, {"===": [{"var": "motion.posture"}, "ESTABLISHED"]}]}
+      ]},
+      "failure_code": "REENTRY_EFFECT_OVERREACH",
+      "description": "Re-entry supplies no inherited consent, Authority, Body resumption, or succession, and cannot outgrow its declared current basis."
+    },
+    {
+      "id": "LINEAGE_IMPLEMENTATION_NO_SELF_VALIDATION", "classification": "CONSTITUTIONAL_RULE",
+      "source": {"refs": ["reading.7", "section.18.1", "section.19.3", "section.20.3"]},
+      "when": {"===": [{"var": "kind"}, "implementation_claim"]},
+      "assert": {"and": [
+        {"===": [{"var": "validation"}, "DECLARED_CLAIM_ONLY"]},
+        {"===": [{"var": "effect_ceiling"}, "NO_CONSTITUTIONAL_EFFECT_FROM_CLAIM"]},
+        {"all": [{"var": "claimed_effects"}, {"in": [{"var": ""}, ["BOUNDED_IMPLEMENTATION_CLAIM", "DECLARED_DEMONSTRATION"]]}]}
+      ]},
+      "failure_code": "IMPLEMENTATION_SELF_VALIDATION_OR_OVERREACH",
+      "description": "Signed or unsigned declarations, releases, schemas, conformance, and execution never validate themselves or create constitutional force."
+    },
+    {
+      "id": "LINEAGE_IMPLEMENTATION_DEMONSTRATED_SCOPE", "classification": "CONSTITUTIONAL_RULE",
+      "source": {"refs": ["section.16.8", "section.18.4", "section.19.3", "section.19.4"]},
+      "when": {"and": [{"===": [{"var": "kind"}, "implementation_claim"]}, {"===": [{"var": "present_status.posture"}, "DEMONSTRATED_AT_DECLARED_SCOPE"]}]},
+      "assert": {"and": [
+        {"===": [{"var": "identity.mechanism"}, {"var": "demonstrations.primary.mechanism"}]},
+        {"===": [{"var": "implemented_modules"}, {"var": "demonstrations.primary.modules"}]},
+        {"===": [{"var": "locality"}, {"var": "demonstrations.primary.locality"}]},
+        {"===": [{"var": "scope"}, {"var": "demonstrations.primary.scope"}]},
+        {"===": [{"var": "conditions"}, {"var": "demonstrations.primary.conditions"}]},
+        {"===": [{"var": "demonstrations.primary.result"}, "SUPPORTED"]},
+        {"!": {"in": [{"var": "present_status.as_of"}, ["UNKNOWN", "UNRESOLVED", "UNSUPPORTED", "REFUSED"]]}},
+        {">": [{"count": {"var": "demonstrations.primary.evidence_refs"}}, 0]},
+        {">": [{"count": {"var": "present_status.current_basis_refs"}}, 0]},
+        {"none": [{"var": "present_status.current_basis_refs"}, {"in": [{"var": ""}, ["UNKNOWN", "UNRESOLVED", "UNSUPPORTED", "REFUSED"]]}]},
+        {"!": {"in": [{"var": "demonstrations.primary.method"}, ["SELF_REPORT", "SIGNATURE"]]}}
+      ]},
+      "failure_code": "IMPLEMENTATION_DEMONSTRATION_MISSING_OR_MISMATCHED",
+      "description": "A present demonstration declaration matches exact identity, modules, locality, scope, and conditions with current qualification support; signature or self-report alone is not a demonstration."
+    },
+    {
+      "id": "LINEAGE_IMPLEMENTATION_PROOF_CEILING", "classification": "CONSTITUTIONAL_RULE",
+      "source": {"refs": ["section.18.1", "section.18.4"]},
+      "when": {"===": [{"var": "kind"}, "implementation_claim"]},
+      "assert": {"or": [
+        {"and": [{"===": [{"var": "demonstrations.primary.method"}, "CONFORMANCE_TEST"]}, {"===": [{"var": "demonstrations.primary.proof_ceiling"}, "TESTED_CONDITIONS_ONLY"]}]},
+        {"and": [{"===": [{"var": "demonstrations.primary.method"}, "OBSERVATION"]}, {"===": [{"var": "demonstrations.primary.proof_ceiling"}, "OBSERVED_TRACE_ONLY"]}]},
+        {"and": [{"===": [{"var": "demonstrations.primary.method"}, "INSPECTION"]}, {"===": [{"var": "demonstrations.primary.proof_ceiling"}, "EXTERNAL_CORRELATE_ONLY"]}]},
+        {"and": [{"===": [{"var": "demonstrations.primary.method"}, "REPLAY"]}, {"===": [{"var": "demonstrations.primary.proof_ceiling"}, "REPRODUCIBLE_TRACE_ONLY"]}]},
+        {"and": [{"===": [{"var": "demonstrations.primary.method"}, "SELF_REPORT"]}, {"===": [{"var": "demonstrations.primary.proof_ceiling"}, "ATTRIBUTABLE_CLAIM_ONLY"]}]},
+        {"and": [{"===": [{"var": "demonstrations.primary.method"}, "SIGNATURE"]}, {"===": [{"var": "demonstrations.primary.proof_ceiling"}, "BOUNDED_KEY_BYTE_ATTRIBUTION"]}]}
+      ]},
+      "failure_code": "IMPLEMENTATION_PROOF_CEILING_MISMATCH",
+      "description": "Conformance, replay, signature, and other evidence retain their particular proof ceilings."
+    },
+    {
+      "id": "LINEAGE_IMPLEMENTATION_PRESENTNESS", "classification": "CONSTITUTIONAL_RULE",
+      "source": {"refs": ["section.16.8", "section.18.1", "section.19.3"]},
+      "when": {"and": [{"===": [{"var": "kind"}, "implementation_claim"]}, {"in": ["DECLARED_DEMONSTRATION", {"var": "claimed_effects"}]}]},
+      "assert": {"===": [{"var": "present_status.posture"}, "DEMONSTRATED_AT_DECLARED_SCOPE"]},
+      "failure_code": "IMPLEMENTATION_HISTORICAL_TO_CURRENT_CONVERSION",
+      "description": "A historical, unknown, or merely claimed capability does not become presently demonstrated by publication."
+    },
+    {
+      "id": "LINEAGE_IMPLEMENTATION_EXACT_BINDING", "classification": "CORE_ENCODING_RULE",
+      "source": {"refs": ["reading.3", "section.19.2"]},
+      "when": {"===": [{"var": "kind"}, "implementation_claim"]},
+      "assert": {"and": [
+        {"!==": [{"var": "core.source.human.sha256"}, {"var": "core.source.machine.sha256"}]},
+        {">": [{"var": "core.source.human.byte_length"}, 0]},
+        {">": [{"var": "core.source.machine.byte_length"}, 0]}
+      ]},
+      "failure_code": "IMPLEMENTATION_SOURCE_BINDING_CONFLATED",
+      "description": "This Core profile identifies different human and machine exact-byte artifacts at an exact commit; it does not authenticate their remote existence."
+    }
   ]
 }

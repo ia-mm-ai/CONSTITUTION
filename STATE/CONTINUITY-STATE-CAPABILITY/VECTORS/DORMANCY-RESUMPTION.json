@@ -1,25 +1,48 @@
 {
-  "kind": "scenario_outline",
-  "status": "ILLUSTRATIVE_NON_EXECUTABLE",
-  "source": {
-    "machine": "../../../SOURCE/CONSTITUTION_0()1.json",
-    "refs": ["section.6.10", "section.11.11", "section.16.1", "section.16.2", "section.16.4", "section.16.5", "section.16.7"]
-  },
-  "schemas": ["../SCHEMAS/DORMANCY.schema.json", "../SCHEMAS/RESUMPTION.schema.json", "../SCHEMAS/SUPPORTED-STATE.schema.json"],
-  "scenario": {
-    "assumptions": [
-      "A dormant Body's identity, applicable law, last supported State, discontinuity, and conditions of possible resumption remain recoverable.",
-      "At a later exact boundary, present Agency, sufficient autonomy and capability, and every other relation needed for the proposed act are independently supported.",
-      "The interruption and any replacement of a bearer remain visible."
-    ],
-    "proposed_claim": "Resume the exact supported motion without claiming uninterrupted operation.",
-    "expected_reading": [
-      "Dormancy does not require continuous runtime and does not erase the Body.",
-      "Resumption depends on present relations rather than records acting or archives consenting.",
-      "Recovered records and restored capability transfer no prior bearer's identity, voice, consent, Agency, autonomy, or Authority."
-    ],
-    "forbidden_inferences": ["Recoverability alone grants the later bearer a right to resume.", "Resumption proves there was no discontinuity."]
-  },
-  "fixture": null,
-  "expected_validation": null
+  "kind":"normative_vector_suite","status":"NORMATIVE_VECTOR",
+  "source":{"refs":["section.6.10","section.11.11","section.16.1","section.16.2","section.16.4","section.16.5","section.16.7"]},
+  "cases":[
+    {
+      "id":"csc.dormancy.recoverable","schema":"urn:presence:core:csc:dormancy:1",
+      "input":{"kind":"dormancy","id":"r","locality":"L","scope":"scope","at":"t1","evidence":{"object":"r","locality":"L","scope":"scope","at":"t1","basis":"synthetic-custody-account","method":"RECORD_COMPARISON","result":"SUPPORTED","effect_ceiling":"BOUNDED_REPRESENTATION_ONLY"},"uncertainty":{"status":"UNKNOWN","matters":["future-resumption"]},"last_supported_state":{"id":"s0","locality":"L","identity":"I","applicable_law":"law","at":"t0","posture":"ACTIVE","history":["event"],"discontinuity":[]},"recovery":{"state_id":"s0","identity":"I","applicable_law":"law","boundary":"t1","discontinuity":["gap"],"conditions":["present-relations"],"carriers":["copy-a","copy-b"]},"posture":"DORMANT","resumption_effect":"CONDITIONS_ONLY"},
+      "expected":{"schema_valid":true,"semantic_result":"CONSISTENT_AT_DECLARED_SCOPE","failure_codes":[]},
+      "source":{"refs":["section.16.1","section.16.2","section.16.3"]},
+      "forbidden_inference":"Two synthetic carriers neither multiply identity nor establish ending, current activity or permission to resume."
+    },
+    {
+      "id":"csc.dormancy.mismatched-recovery-and-permission","schema":"urn:presence:core:csc:dormancy:1",
+      "input":{"kind":"dormancy","id":"r","locality":"L","scope":"scope","at":"t1","evidence":{"object":"r","locality":"L","scope":"scope","at":"t1","basis":"synthetic-custody-account","method":"RECORD_COMPARISON","result":"SUPPORTED","effect_ceiling":"BOUNDED_REPRESENTATION_ONLY"},"uncertainty":{"status":"UNKNOWN","matters":["future-resumption"]},"last_supported_state":{"id":"s0","locality":"L","identity":"I","applicable_law":"law","at":"t0","posture":"ACTIVE","history":["event"],"discontinuity":[]},"recovery":{"state_id":"other","identity":"replacement","applicable_law":"different-law","boundary":"t1","discontinuity":["gap"],"conditions":["present-relations"],"carriers":["copy"]},"posture":"ENDED","resumption_effect":"PERMISSION"},
+      "expected":{"schema_valid":true,"semantic_result":"INCONSISTENT","failure_codes":["DORMANCY_RECOVERY_MISMATCH","DORMANCY_PROMOTED_TO_ENDING_OR_PERMISSION"]},
+      "source":{"refs":["section.6.10","section.16.2","section.16.3"]},
+      "forbidden_inference":"Possession of a carrier cannot replace the bound identity or law, end the Body, or appoint a new mover."
+    },
+    {
+      "id":"csc.dormancy.nested-extra-property","schema":"urn:presence:core:csc:dormancy:1",
+      "input":{"kind":"dormancy","id":"r","locality":"L","scope":"scope","at":"t1","evidence":{"object":"r","locality":"L","scope":"scope","at":"t1","basis":"synthetic-custody-account","method":"RECORD_COMPARISON","result":"SUPPORTED","effect_ceiling":"BOUNDED_REPRESENTATION_ONLY"},"uncertainty":{"status":"UNKNOWN","matters":["future-resumption"]},"last_supported_state":{"id":"s0","locality":"L","identity":"I","applicable_law":"law","at":"t0","posture":"ACTIVE","history":["event"],"discontinuity":[]},"recovery":{"state_id":"s0","identity":"I","applicable_law":"law","boundary":"t1","discontinuity":["gap"],"conditions":["present-relations"],"carriers":["copy"],"automatic_permission":true},"posture":"DORMANT","resumption_effect":"CONDITIONS_ONLY"},
+      "expected":{"schema_valid":false,"semantic_result":"NOT_EVALUATED","failure_codes":["SCHEMA_INVALID"]},
+      "source":{"refs":["section.5.2","section.16.2"]},
+      "forbidden_inference":"An undeclared nested extension cannot acquire semantic force."
+    },
+    {
+      "id":"csc.resumption.present-relations","schema":"urn:presence:core:csc:resumption:1",
+      "input":{"kind":"resumption","id":"r","locality":"L","scope":"scope","at":"t1","evidence":{"object":"r","locality":"L","scope":"scope","at":"t1","basis":"synthetic-present-assessment","method":"OBSERVATION","result":"SUPPORTED","effect_ceiling":"BOUNDED_REPRESENTATION_ONLY"},"uncertainty":{"status":"UNKNOWN","matters":["unexposed-interior"]},"before":{"id":"s0","locality":"L","identity":"I","applicable_law":"law","at":"t0","posture":"DORMANT","history":["event"],"discontinuity":["gap"]},"after":{"id":"s1","locality":"L","identity":"I","applicable_law":"law","at":"t1","posture":"ACTIVE","history":["event"],"discontinuity":["gap"]},"dormancy":{"record":"d","state_id":"s0","identity":"I","applicable_law":"law","discontinuity":["gap"],"conditions":["present-relations"]},"motion":{"bearer":"new-bearer","act":"bounded-act","target":"target","locality":"L","scope":"scope","at":"t1"},"present_context":{"bearer":"new-bearer","act":"bounded-act","target":"target","locality":"L","scope":"scope","at":"t1"},"required_conditions":["present-relations"],"assessed_conditions":["present-relations"],"relations":{"agency":{"status":"SUPPORTED","basis":"new-act-binding"},"autonomy":{"status":"SUPPORTED","basis":"options-and-refusal-evidence"},"capability":{"status":"SUPPORTED","basis":"exact-demonstration"},"capacity":{"status":"SUPPORTED","basis":"present-capacity-assessment"},"authority":{"status":"NOT_REQUIRED","basis":"no-authoritative-effect-claimed"}},"authority_required":false,"other_required_relations":[{"name":"local-acceptance","status":"SUPPORTED","basis":"present-local-basis"}],"inheritance":"NONE"},
+      "expected":{"schema_valid":true,"semantic_result":"CONSISTENT_AT_DECLARED_SCOPE","failure_codes":[]},
+      "source":{"refs":["section.11.10","section.11.11","section.16.4","section.16.5"]},
+      "forbidden_inference":"This synthetic current account demonstrates neither real capability nor inheritance of a former bearer's consent, identity or Authority."
+    },
+    {
+      "id":"csc.resumption.archive-is-not-a-present-mover","schema":"urn:presence:core:csc:resumption:1",
+      "input":{"kind":"resumption","id":"r","locality":"L","scope":"scope","at":"t1","evidence":{"object":"r","locality":"L","scope":"scope","at":"t1","basis":"synthetic-archive","method":"RECORD_COMPARISON","result":"SUPPORTED","effect_ceiling":"BOUNDED_REPRESENTATION_ONLY"},"uncertainty":{"status":"UNKNOWN","matters":["present-relations"]},"before":{"id":"s0","locality":"L","identity":"I","applicable_law":"law","at":"t0","posture":"DORMANT","history":["event"],"discontinuity":["gap"]},"after":{"id":"s1","locality":"L","identity":"I","applicable_law":"law","at":"t1","posture":"ACTIVE","history":["event"],"discontinuity":[]},"dormancy":{"record":"d","state_id":"wrong-state","identity":"I","applicable_law":"law","discontinuity":["gap"],"conditions":["present-relations"]},"motion":{"bearer":"new-bearer","act":"bounded-act","target":"target","locality":"L","scope":"scope","at":"t1"},"present_context":{"bearer":"old-bearer","act":"different-act","target":"target","locality":"L","scope":"scope","at":"t0"},"required_conditions":["present-relations"],"assessed_conditions":[],"relations":{"agency":{"status":"UNKNOWN","basis":null},"autonomy":{"status":"UNKNOWN","basis":null},"capability":{"status":"SUPPORTED","basis":null},"capacity":{"status":"REFUSED","basis":"capacity-deficit"},"authority":{"status":"UNKNOWN","basis":null}},"authority_required":true,"other_required_relations":[{"name":"local-acceptance","status":"UNKNOWN","basis":null}],"inheritance":"CLAIMED"},
+      "expected":{"schema_valid":true,"semantic_result":"INCONSISTENT","failure_codes":["RESUMPTION_LINEAGE_MISMATCH","PRESENT_CONTEXT_MISMATCH","RESUMPTION_CONDITIONS_UNSUPPORTED","PRESENT_AGENCY_UNSUPPORTED","PRESENT_AUTONOMY_UNSUPPORTED","PRESENT_CAPABILITY_UNSUPPORTED","PRESENT_CAPACITY_UNSUPPORTED","PRESENT_AUTHORITY_UNSUPPORTED","OTHER_REQUIRED_RELATION_UNSUPPORTED","REPLACEMENT_INHERITANCE_CLAIM"]},
+      "source":{"refs":["section.11.12","section.16.4","section.16.5","section.19.4"]},
+      "forbidden_inference":"Failure concerns the exact dependent resumption claim, not a general ban, lack of Agency everywhere, or denial of actual consequence."
+    },
+    {
+      "id":"csc.resumption.missing-present-agency","schema":"urn:presence:core:csc:resumption:1",
+      "input":{"kind":"resumption","id":"r","locality":"L","scope":"scope","at":"t1","evidence":{"object":"r","locality":"L","scope":"scope","at":"t1","basis":"synthetic-present-assessment","method":"OBSERVATION","result":"SUPPORTED","effect_ceiling":"BOUNDED_REPRESENTATION_ONLY"},"uncertainty":{"status":"UNKNOWN","matters":["unexposed-interior"]},"before":{"id":"s0","locality":"L","identity":"I","applicable_law":"law","at":"t0","posture":"DORMANT","history":["event"],"discontinuity":["gap"]},"after":{"id":"s1","locality":"L","identity":"I","applicable_law":"law","at":"t1","posture":"ACTIVE","history":["event"],"discontinuity":["gap"]},"dormancy":{"record":"d","state_id":"s0","identity":"I","applicable_law":"law","discontinuity":["gap"],"conditions":["present-relations"]},"motion":{"bearer":"new-bearer","act":"bounded-act","target":"target","locality":"L","scope":"scope","at":"t1"},"present_context":{"bearer":"new-bearer","act":"bounded-act","target":"target","locality":"L","scope":"scope","at":"t1"},"required_conditions":["present-relations"],"assessed_conditions":["present-relations"],"relations":{"autonomy":{"status":"SUPPORTED","basis":"options"},"capability":{"status":"SUPPORTED","basis":"demonstration"},"capacity":{"status":"SUPPORTED","basis":"assessment"},"authority":{"status":"NOT_REQUIRED","basis":"bounded-effect"}},"authority_required":false,"other_required_relations":[],"inheritance":"NONE"},
+      "expected":{"schema_valid":false,"semantic_result":"NOT_EVALUATED","failure_codes":["SCHEMA_INVALID"]},
+      "source":{"refs":["reading.5","section.16.5"]},
+      "forbidden_inference":"Omitting Agency neither supplies it nor proves its absence; schema failure prevents semantic evaluation."
+    }
+  ]
 }

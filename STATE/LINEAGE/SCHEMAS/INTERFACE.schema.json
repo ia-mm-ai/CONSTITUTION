@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:presence:core:lineage:interface:1",
+  "title": "Explicit cross-module input relation",
+  "x-status": "CANONICAL_SCHEMA",
+  "x-rule-classification": "CORE_ENCODING_RULE",
+  "x-source": {"refs": ["section.5.1", "section.5.2", "section.11.10", "section.19.2", "section.19.4"]},
+  "type": "object", "additionalProperties": false,
+  "required": ["kind", "id", "source", "attribution", "locality", "target", "scope", "effective_boundary", "conditions", "basis", "evidence", "output", "input", "effect_ceiling"],
+  "properties": {
+    "kind": {"const": "module_input_relation"},
+    "id": {"$ref": "urn:presence:core:lineage:core:1#/$defs/id"},
+    "source": {"$ref": "urn:presence:core:lineage:core:1#/$defs/source"},
+    "attribution": {"$ref": "urn:presence:core:lineage:core:1#/$defs/text"},
+    "locality": {"$ref": "urn:presence:core:lineage:core:1#/$defs/id"},
+    "target": {"$ref": "urn:presence:core:lineage:core:1#/$defs/id"},
+    "scope": {"$ref": "urn:presence:core:lineage:core:1#/$defs/text"},
+    "effective_boundary": {"$ref": "urn:presence:core:lineage:core:1#/$defs/text"},
+    "conditions": {"$ref": "urn:presence:core:lineage:core:1#/$defs/texts"},
+    "basis": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"$ref": "urn:presence:core:lineage:core:1#/$defs/id"}},
+    "evidence": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"$ref": "urn:presence:core:lineage:core:1#/$defs/id"}},
+    "output": {
+      "type": "object", "additionalProperties": false, "required": ["module", "record"],
+      "properties": {
+        "module": {"enum": ["CSC", "DCR", "LINEAGE"]},
+        "record": {"$ref": "urn:presence:core:lineage:core:1#/$defs/id"}
+      }
+    },
+    "input": {
+      "type": "object", "additionalProperties": false, "required": ["module", "record", "from_record"],
+      "properties": {
+        "module": {"enum": ["CSC", "DCR", "LINEAGE"]},
+        "record": {"$ref": "urn:presence:core:lineage:core:1#/$defs/id"},
+        "from_record": {"$ref": "urn:presence:core:lineage:core:1#/$defs/id"}
+      }
+    },
+    "effect_ceiling": {"const": "SCOPED_INPUT_ONLY_NO_CONVERSION_OR_MISSING_BASIS"}
+  }
+}

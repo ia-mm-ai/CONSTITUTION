@@ -1,25 +1,112 @@
 {
-  "kind": "scenario_outline",
-  "status": "ILLUSTRATIVE_NON_EXECUTABLE",
-  "source": {
-    "machine": "../../../SOURCE/CONSTITUTION_0()1.json",
-    "refs": ["section.16.6", "section.17.3", "section.17.8", "section.17.13"]
-  },
-  "schemas": ["../SCHEMAS/DIVERGENCE.schema.json", "../SCHEMAS/RELATION.schema.json"],
-  "scenario": {
-    "assumptions": [
-      "Two attributable consequential streams have a supported predecessor relation.",
-      "Their resulting State claims are incompatible at an exact scope.",
-      "No valid reconciliation is established for the conflict."
-    ],
-    "proposed_claim": "Preserve the incompatible streams and their relation without silently assigning one current State to both.",
-    "expected_reading": [
-      "The conflict remains visible unless validly reconciled or the streams are recognized as distinct continuities.",
-      "A genuinely unresolved change classification remains UNRESOLVED rather than being called succession for convenience.",
-      "Shared lineage does not erase a difference in constitutional identity commitments."
-    ],
-    "forbidden_inferences": ["Shared ancestry proves identical current State.", "A preferred stream can rewrite the other's predecessor history."]
-  },
-  "fixture": null,
-  "expected_validation": null
+  "kind": "normative_vector_suite",
+  "status": "NORMATIVE_VECTOR",
+  "source": {"refs": ["section.14.5", "section.16.6", "section.17.3", "section.17.8", "section.17.13", "section.17.15"]},
+  "cases": [
+    {
+      "id": "lineage-divergence-visible-unresolved-classification",
+      "schema": "urn:presence:core:lineage:divergence:1",
+      "input": {
+        "kind": "divergence", "id": "fixture:conflict",
+        "predecessor_relation": {"id": "fixture:earlier-relation", "status": "SUPPORTED", "basis_ref": "fixture:relation-evidence"},
+        "scope": "fixture:state-choice", "boundary": "fixture:branch-occurrence",
+        "streams": {
+          "left": {"id": "fixture:left-stream", "locality": "fixture:left-locality", "state_ref": "fixture:left-state", "state_basis": "fixture:left-evidence", "history_refs": ["fixture:left-act"], "retained_history_refs": ["fixture:left-act"]},
+          "right": {"id": "fixture:right-stream", "locality": "fixture:right-locality", "state_ref": "fixture:right-state", "state_basis": "fixture:right-evidence", "history_refs": ["fixture:right-act"], "retained_history_refs": ["fixture:right-act"]}
+        },
+        "incompatibility": {"left_state": "fixture:left-state", "right_state": "fixture:right-state", "description": "Two incompatible state choices at the declared target", "evidence_refs": ["fixture:comparison"]},
+        "classification": "UNRESOLVED",
+        "identity_commitments": {"left": ["fixture:commitment-a"], "right": ["fixture:commitment-b"], "posture": "UNRESOLVED"},
+        "treatment": {"posture": "VISIBLE_CONFLICT", "assigned_states": {"left": "fixture:left-state", "right": "fixture:right-state"}, "reconciliation_basis": {"id": "UNKNOWN", "scope": "fixture:state-choice", "status": "UNKNOWN", "evidence_refs": []}},
+        "remaining_uncertainty": ["Classification is not decided by convenience"]
+      },
+      "expected": {"schema_valid": true, "semantic_result": "CONSISTENT_AT_DECLARED_SCOPE", "failure_codes": []},
+      "source": {"refs": ["section.16.6", "section.17.3", "section.17.8", "section.17.13"]},
+      "forbidden_inference": "A consistent visible conflict does not establish reconciliation, identical identity, or that either stream owns the other."
+    },
+    {
+      "id": "lineage-divergence-reconciled-with-history-retained",
+      "schema": "urn:presence:core:lineage:divergence:1",
+      "input": {
+        "kind": "divergence", "id": "fixture:reconciled",
+        "predecessor_relation": {"id": "fixture:earlier-relation", "status": "SUPPORTED", "basis_ref": "fixture:relation-evidence"},
+        "scope": "fixture:state-choice", "boundary": "fixture:branch-occurrence",
+        "streams": {
+          "left": {"id": "fixture:left-stream", "locality": "fixture:left-locality", "state_ref": "fixture:left-state", "state_basis": "fixture:left-evidence", "history_refs": ["fixture:left-act"], "retained_history_refs": ["fixture:left-act"]},
+          "right": {"id": "fixture:right-stream", "locality": "fixture:right-locality", "state_ref": "fixture:right-state", "state_basis": "fixture:right-evidence", "history_refs": ["fixture:right-act"], "retained_history_refs": ["fixture:right-act"]}
+        },
+        "incompatibility": {"left_state": "fixture:left-state", "right_state": "fixture:right-state", "description": "Earlier incompatible claims remain in the record", "evidence_refs": ["fixture:comparison"]},
+        "classification": "DIVERGENCE",
+        "identity_commitments": {"left": ["fixture:commitment"], "right": ["fixture:commitment"], "posture": "SAME_AT_DECLARED_SCOPE"},
+        "treatment": {"posture": "RECONCILED", "assigned_states": {"left": "fixture:reconciled-state", "right": "fixture:reconciled-state"}, "reconciliation_basis": {"id": "fixture:reconciliation", "scope": "fixture:state-choice", "status": "SUPPORTED", "evidence_refs": ["fixture:both-sides-basis"]}},
+        "remaining_uncertainty": ["No remedy outside this state scope is claimed"]
+      },
+      "expected": {"schema_valid": true, "semantic_result": "CONSISTENT_AT_DECLARED_SCOPE", "failure_codes": []},
+      "source": {"refs": ["section.15.4", "section.15.5", "section.16.6", "section.17.13"]},
+      "forbidden_inference": "Reconciliation of declared state does not make the earlier divergence unoccurred or prove universal remedy."
+    },
+    {
+      "id": "lineage-divergence-silent-merge-and-concealed-identity",
+      "schema": "urn:presence:core:lineage:divergence:1",
+      "input": {
+        "kind": "divergence", "id": "fixture:hidden-conflict",
+        "predecessor_relation": {"id": "fixture:earlier-relation", "status": "SUPPORTED", "basis_ref": "fixture:relation-evidence"},
+        "scope": "fixture:state-choice", "boundary": "fixture:branch-occurrence",
+        "streams": {
+          "left": {"id": "fixture:left-stream", "locality": "fixture:left-locality", "state_ref": "fixture:left-state", "state_basis": "fixture:left-evidence", "history_refs": ["fixture:left-act"], "retained_history_refs": ["fixture:left-act"]},
+          "right": {"id": "fixture:right-stream", "locality": "fixture:right-locality", "state_ref": "fixture:right-state", "state_basis": "fixture:right-evidence", "history_refs": ["fixture:right-act"], "retained_history_refs": []}
+        },
+        "incompatibility": {"left_state": "fixture:left-state", "right_state": "fixture:right-state", "description": "The preferred stream is substituted without reconciliation", "evidence_refs": ["fixture:comparison"]},
+        "classification": "DIVERGENCE",
+        "identity_commitments": {"left": ["fixture:commitment-a"], "right": ["fixture:commitment-b"], "posture": "SAME_AT_DECLARED_SCOPE"},
+        "treatment": {"posture": "VISIBLE_CONFLICT", "assigned_states": {"left": "fixture:left-state", "right": "fixture:left-state"}, "reconciliation_basis": {"id": "UNKNOWN", "scope": "fixture:state-choice", "status": "UNKNOWN", "evidence_refs": []}},
+        "remaining_uncertainty": []
+      },
+      "expected": {"schema_valid": true, "semantic_result": "INCONSISTENT", "failure_codes": ["INCOMPATIBLE_STREAMS_SILENTLY_MERGED", "DIVERGENCE_HISTORY_ERASED", "CHANGED_IDENTITY_CONCEALED"]},
+      "source": {"refs": ["section.16.6", "section.17.3", "section.17.13", "section.17.15"]},
+      "forbidden_inference": "A shared predecessor and preferred representation do not permit one stream to erase the other's state, history, or changed identity."
+    },
+    {
+      "id": "lineage-divergence-reconciliation-without-basis",
+      "schema": "urn:presence:core:lineage:divergence:1",
+      "input": {
+        "kind": "divergence", "id": "fixture:unfounded-reconciliation",
+        "predecessor_relation": {"id": "fixture:earlier-relation", "status": "SUPPORTED", "basis_ref": "fixture:relation-evidence"},
+        "scope": "fixture:state-choice", "boundary": "fixture:branch-occurrence",
+        "streams": {
+          "left": {"id": "fixture:left-stream", "locality": "fixture:left-locality", "state_ref": "fixture:left-state", "state_basis": "fixture:left-evidence", "history_refs": ["fixture:left-act"], "retained_history_refs": ["fixture:left-act"]},
+          "right": {"id": "fixture:right-stream", "locality": "fixture:right-locality", "state_ref": "fixture:right-state", "state_basis": "fixture:right-evidence", "history_refs": ["fixture:right-act"], "retained_history_refs": ["fixture:right-act"]}
+        },
+        "incompatibility": {"left_state": "fixture:left-state", "right_state": "fixture:right-state", "description": "Declared reconciliation lacks its own basis", "evidence_refs": ["fixture:comparison"]},
+        "classification": "DIVERGENCE",
+        "identity_commitments": {"left": ["fixture:commitment"], "right": ["fixture:commitment"], "posture": "SAME_AT_DECLARED_SCOPE"},
+        "treatment": {"posture": "RECONCILED", "assigned_states": {"left": "fixture:reconciled-state", "right": "fixture:reconciled-state"}, "reconciliation_basis": {"id": "UNKNOWN", "scope": "fixture:other-scope", "status": "UNSUPPORTED", "evidence_refs": []}},
+        "remaining_uncertainty": []
+      },
+      "expected": {"schema_valid": true, "semantic_result": "INCONSISTENT", "failure_codes": ["RECONCILIATION_BASIS_MISSING_OR_MISMATCHED"]},
+      "source": {"refs": ["section.16.6", "section.17.13"]},
+      "forbidden_inference": "A single resulting state label does not itself establish valid reconciliation."
+    },
+    {
+      "id": "lineage-divergence-null-is-not-unknown",
+      "schema": "urn:presence:core:lineage:divergence:1",
+      "input": {
+        "kind": "divergence", "id": "fixture:malformed",
+        "predecessor_relation": {"id": "fixture:earlier-relation", "status": "SUPPORTED", "basis_ref": "fixture:relation-evidence"},
+        "scope": "fixture:state-choice", "boundary": "fixture:branch-occurrence",
+        "streams": {
+          "left": {"id": "fixture:left-stream", "locality": "fixture:left-locality", "state_ref": "fixture:left-state", "state_basis": "fixture:left-evidence", "history_refs": [], "retained_history_refs": []},
+          "right": {"id": "fixture:right-stream", "locality": "fixture:right-locality", "state_ref": "fixture:right-state", "state_basis": "fixture:right-evidence", "history_refs": [], "retained_history_refs": []}
+        },
+        "incompatibility": {"left_state": "fixture:left-state", "right_state": "fixture:right-state", "description": "Explicit uncertainty required", "evidence_refs": ["fixture:comparison"]},
+        "classification": null,
+        "identity_commitments": {"left": [], "right": [], "posture": "UNRESOLVED"},
+        "treatment": {"posture": "VISIBLE_CONFLICT", "assigned_states": {"left": "fixture:left-state", "right": "fixture:right-state"}, "reconciliation_basis": {"id": "UNKNOWN", "scope": "fixture:state-choice", "status": "UNKNOWN", "evidence_refs": []}},
+        "remaining_uncertainty": ["Classification not established"]
+      },
+      "expected": {"schema_valid": false, "semantic_result": "NOT_EVALUATED", "failure_codes": ["SCHEMA_INVALID"]},
+      "source": {"refs": ["reading.3", "reading.5", "section.17.8"]},
+      "forbidden_inference": "Null does not encode UNKNOWN, UNRESOLVED, absence, or a false proposition in this profile."
+    }
+  ]
 }

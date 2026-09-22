@@ -1,25 +1,245 @@
 {
-  "kind": "scenario_outline",
-  "status": "ILLUSTRATIVE_NON_EXECUTABLE",
-  "source": {
-    "machine": "../../../SOURCE/CONSTITUTION_0()1.json",
-    "refs": ["section.5.1", "section.5.2", "section.6.7", "section.9.2", "section.17.10", "section.17.11", "section.17.14", "section.19.2"]
-  },
-  "schemas": ["../SCHEMAS/RELATION.schema.json", "../SCHEMAS/DERIVATION.schema.json", "../SCHEMAS/SUCCESSION.schema.json"],
-  "scenario": {
-    "assumptions": [
-      "A later artifact copies predecessor material and records a link to it.",
-      "The copied material's earlier relations are recoverable, but the claimed succession lacks an independent valid basis and successor-side establishment."
-    ],
-    "proposed_claim": "The chain of references makes the later artifact a successor inheriting the predecessor's Source and Authority.",
-    "expected_reading": [
-      "A navigable chain establishes neither an unstated conversion nor missing relation support.",
-      "Succession has not been established; ancestry, reference, or derivation may be recorded only at their supported scope.",
-      "Source cannot transfer, and Authority requires its own sufficient basis; a one-sided link establishes no reciprocal relation."
-    ],
-    "forbidden_inferences": ["Reference chains carry constitutional effects transitively.", "Copying makes Source inheritable."],
-    "invalidity_scope": "The missing relation basis and claimed inheritance, not a malformed path or rejection by the annotation-only schemas."
-  },
-  "fixture": null,
-  "expected_validation": null
+  "kind": "normative_vector_suite",
+  "status": "NORMATIVE_VECTOR",
+  "source": {"refs": ["reading.7", "section.5.1", "section.5.2", "section.7.3", "section.9.2", "section.16.8", "section.18.1", "section.18.4", "section.19.3", "section.20.2"]},
+  "cases": [
+    {
+      "id": "lineage-occurrence-delivery-only",
+      "schema": "urn:presence:core:lineage:occurrence:1",
+      "input": {
+        "kind": "occurrence", "id": "fixture:occurrence-claim", "locality": "fixture:sender", "attribution": {"bearer": "fixture:observer", "basis": "fixture:observation", "evidence_refs": ["fixture:evidence"]}, "scope": "fixture:delivery-only",
+        "occurrence": {"id": "fixture:delivery", "type": "DELIVERY", "target": "fixture:matter", "time": "fixture:t1", "status": "SUPPORTED"},
+        "carrier": {"id": "fixture:carrier", "type": "PHYSICAL"}, "record": {"id": "fixture:record", "holder": "fixture:sender"},
+        "evidence": {"id": "fixture:evidence", "object": "fixture:delivery", "occurrence_type": "DELIVERY", "method": "OBSERVATION", "scope": "fixture:delivery-only", "time": "fixture:t1", "basis": "fixture:observation", "result": "SUPPORTED", "effect_ceiling": "EXACT_OCCURRENCE_ONLY"},
+        "claimed_effects": ["EXACT_OCCURRENCE"], "uncertainty": ["Receipt and admission not established"]
+      },
+      "expected": {"schema_valid": true, "semantic_result": "CONSISTENT_AT_DECLARED_SCOPE", "failure_codes": []},
+      "source": {"refs": ["section.7.2", "section.7.3", "section.18.1", "section.18.2"]},
+      "forbidden_inference": "A supported delivery claim does not prove receipt, admission, or agreement."
+    },
+    {
+      "id": "lineage-occurrence-delivery-is-not-receipt",
+      "schema": "urn:presence:core:lineage:occurrence:1",
+      "input": {
+        "kind": "occurrence", "id": "fixture:occurrence-overreach", "locality": "fixture:sender", "attribution": {"bearer": "fixture:observer", "basis": "fixture:observation", "evidence_refs": ["fixture:evidence"]}, "scope": "fixture:delivery-only",
+        "occurrence": {"id": "fixture:delivery", "type": "RECEIPT", "target": "fixture:matter", "time": "fixture:t1", "status": "SUPPORTED"},
+        "carrier": {"id": "fixture:carrier", "type": "PHYSICAL"}, "record": {"id": "fixture:record", "holder": "fixture:sender"},
+        "evidence": {"id": "fixture:evidence", "object": "fixture:delivery", "occurrence_type": "DELIVERY", "method": "OBSERVATION", "scope": "fixture:delivery-only", "time": "fixture:t1", "basis": "fixture:observation", "result": "SUPPORTED", "effect_ceiling": "EXACT_OCCURRENCE_ONLY"},
+        "claimed_effects": ["RECEIPT", "ADMISSION"], "uncertainty": []
+      },
+      "expected": {"schema_valid": true, "semantic_result": "INCONSISTENT", "failure_codes": ["OCCURRENCE_SUPPORT_MISMATCH", "OCCURRENCE_EFFECT_OVERREACH"]},
+      "source": {"refs": ["section.5.1", "section.7.2", "section.7.3"]},
+      "forbidden_inference": "A changed event label does not widen the scope of delivery evidence."
+    },
+    {
+      "id": "lineage-occurrence-record-and-signature-not-event-truth",
+      "schema": "urn:presence:core:lineage:occurrence:1",
+      "input": {
+        "kind": "occurrence", "id": "fixture:conflated-claim", "locality": "fixture:sender", "attribution": {"bearer": "fixture:key-holder", "basis": "fixture:signature", "evidence_refs": ["fixture:evidence"]}, "scope": "fixture:delivery-only",
+        "occurrence": {"id": "fixture:record", "type": "DELIVERY", "target": "fixture:matter", "time": "fixture:t1", "status": "SUPPORTED"},
+        "carrier": {"id": "fixture:carrier", "type": "SOFTWARE"}, "record": {"id": "fixture:record", "holder": "fixture:sender"},
+        "evidence": {"id": "fixture:evidence", "object": "fixture:record", "occurrence_type": "DELIVERY", "method": "SIGNATURE", "scope": "fixture:delivery-only", "time": "fixture:t1", "basis": "fixture:signature", "result": "SUPPORTED", "effect_ceiling": "EXACT_OCCURRENCE_ONLY"},
+        "claimed_effects": ["EXACT_OCCURRENCE"], "uncertainty": []
+      },
+      "expected": {"schema_valid": true, "semantic_result": "INCONSISTENT", "failure_codes": ["OCCURRENCE_OBJECTS_CONFLATED", "OCCURRENCE_PROOF_CEILING"]},
+      "source": {"refs": ["section.18.1", "section.18.2", "section.18.4"]},
+      "forbidden_inference": "A signed record is not the occurrence and a signature does not verify the truth of every assertion in its bytes."
+    },
+    {
+      "id": "lineage-occurrence-null-support-is-malformed",
+      "schema": "urn:presence:core:lineage:occurrence:1",
+      "input": {
+        "kind": "occurrence", "id": "fixture:malformed-occurrence", "locality": "fixture:sender", "attribution": {"bearer": "fixture:observer", "basis": "fixture:observation", "evidence_refs": []}, "scope": "fixture:delivery-only",
+        "occurrence": {"id": "fixture:delivery", "type": "DELIVERY", "target": "fixture:matter", "time": "fixture:t1", "status": null},
+        "carrier": {"id": "fixture:carrier", "type": "PHYSICAL"}, "record": {"id": "fixture:record", "holder": "fixture:sender"},
+        "evidence": {"id": "fixture:evidence", "object": "fixture:delivery", "occurrence_type": "DELIVERY", "method": "OBSERVATION", "scope": "fixture:delivery-only", "time": "fixture:t1", "basis": "fixture:observation", "result": "UNKNOWN", "effect_ceiling": "EXACT_OCCURRENCE_ONLY"},
+        "claimed_effects": [], "uncertainty": ["Support not established"]
+      },
+      "expected": {"schema_valid": false, "semantic_result": "NOT_EVALUATED", "failure_codes": ["SCHEMA_INVALID"]},
+      "source": {"refs": ["reading.3", "reading.5", "section.3.4"]},
+      "forbidden_inference": "Omitted support and null cannot silently mean UNKNOWN, false, absence, refusal, or permission."
+    },
+    {
+      "id": "lineage-relation-one-sided-reference",
+      "schema": "urn:presence:core:lineage:relation:1",
+      "input": {
+        "kind": "relation", "id": "fixture:reference", "holding_locality": "fixture:left-locality",
+        "terms": {"left": "fixture:left", "right": "fixture:right"}, "relation_type": "REFERENCE", "direction": "LOCAL", "scope": "fixture:reference-only",
+        "basis_by_side": {
+          "left": {"id": "fixture:left-basis", "bearer": "fixture:left", "target": "fixture:right", "locality": "fixture:left-locality", "scope": "fixture:reference-only", "origin": "LOCAL_ACT", "status": "SUPPORTED", "evidence_refs": ["fixture:left-record"]},
+          "right": {"id": "UNKNOWN", "bearer": "fixture:right", "target": "fixture:left", "locality": "fixture:right-locality", "scope": "fixture:reference-only", "origin": "UNKNOWN", "status": "UNKNOWN", "evidence_refs": []}
+        },
+        "asymmetry": ["Only the holding side's reference is supported"],
+        "duration": {"from": "fixture:t1", "until": "UNKNOWN", "status": "ACTIVE"},
+        "exit_and_correction": {"refusal": "fixture:refusal-procedure", "withdrawal": "fixture:withdrawal-procedure", "correction": "fixture:correction-procedure", "suspension": "fixture:suspension-procedure", "exit": "fixture:exit-procedure", "unrelated_relations": "NO_EFFECT_CLAIMED"},
+        "history": {"prior_refs": ["fixture:prior-reference"], "retained_refs": ["fixture:prior-reference"]},
+        "claimed_effects": ["LOCAL_RELATION"], "uncertainty": ["Right-side relation is UNKNOWN"]
+      },
+      "expected": {"schema_valid": true, "semantic_result": "CONSISTENT_AT_DECLARED_SCOPE", "failure_codes": []},
+      "source": {"refs": ["section.9.2", "section.9.3", "section.9.4", "section.19.2"]},
+      "forbidden_inference": "The locally supported reference says nothing unstated about the other side's reciprocity, consent, Authority, or jurisdiction."
+    },
+    {
+      "id": "lineage-relation-reciprocal-bases",
+      "schema": "urn:presence:core:lineage:relation:1",
+      "input": {
+        "kind": "relation", "id": "fixture:reciprocal", "holding_locality": "fixture:left-locality",
+        "terms": {"left": "fixture:left", "right": "fixture:right"}, "relation_type": "COOPERATION", "direction": "RECIPROCAL", "scope": "fixture:bounded-cooperation",
+        "basis_by_side": {
+          "left": {"id": "fixture:left-basis", "bearer": "fixture:left", "target": "fixture:right", "locality": "fixture:left-locality", "scope": "fixture:bounded-cooperation", "origin": "LOCAL_ACT", "status": "SUPPORTED", "evidence_refs": ["fixture:left-record"]},
+          "right": {"id": "fixture:right-basis", "bearer": "fixture:right", "target": "fixture:left", "locality": "fixture:right-locality", "scope": "fixture:bounded-cooperation", "origin": "LOCAL_ACT", "status": "SUPPORTED", "evidence_refs": ["fixture:right-record"]}
+        },
+        "asymmetry": ["Different contribution scopes remain visible in the referenced records"],
+        "duration": {"from": "fixture:t1", "until": "fixture:t2", "status": "ENDED"},
+        "exit_and_correction": {"refusal": "fixture:refusal-procedure", "withdrawal": "fixture:withdrawal-procedure", "correction": "fixture:correction-procedure", "suspension": "fixture:suspension-procedure", "exit": "fixture:ending-record", "unrelated_relations": "NO_EFFECT_CLAIMED"},
+        "history": {"prior_refs": ["fixture:cooperation-record"], "retained_refs": ["fixture:cooperation-record"]},
+        "claimed_effects": ["RECIPROCAL_RELATION"], "uncertainty": []
+      },
+      "expected": {"schema_valid": true, "semantic_result": "CONSISTENT_AT_DECLARED_SCOPE", "failure_codes": []},
+      "source": {"refs": ["section.9.2", "section.9.4", "section.9.5"]},
+      "forbidden_inference": "Ending this reciprocal relation preserves history and neither ends every other relation nor merges identities."
+    },
+    {
+      "id": "lineage-relation-reference-chain-does-not-reciprocate",
+      "schema": "urn:presence:core:lineage:relation:1",
+      "input": {
+        "kind": "relation", "id": "fixture:inferred-reciprocity", "holding_locality": "fixture:left-locality",
+        "terms": {"left": "fixture:left", "right": "fixture:right"}, "relation_type": "REFERENCE", "direction": "SHARED", "scope": "fixture:reference-only",
+        "basis_by_side": {
+          "left": {"id": "fixture:left-basis", "bearer": "fixture:left", "target": "fixture:right", "locality": "fixture:left-locality", "scope": "fixture:reference-only", "origin": "LOCAL_ACT", "status": "SUPPORTED", "evidence_refs": ["fixture:left-record"]},
+          "right": {"id": "fixture:graph-path", "bearer": "fixture:right", "target": "fixture:left", "locality": "fixture:right-locality", "scope": "fixture:reference-only", "origin": "REFERENCE_CHAIN", "status": "SUPPORTED", "evidence_refs": ["fixture:foreign-key"]}
+        },
+        "asymmetry": [],
+        "duration": {"from": "fixture:t1", "until": "UNKNOWN", "status": "ACTIVE"},
+        "exit_and_correction": {"refusal": "fixture:refusal-procedure", "withdrawal": "fixture:withdrawal-procedure", "correction": "fixture:correction-procedure", "suspension": "fixture:suspension-procedure", "exit": "fixture:exit-procedure", "unrelated_relations": "AUTOMATICALLY_ENDED"},
+        "history": {"prior_refs": ["fixture:prior-reference"], "retained_refs": []},
+        "claimed_effects": ["SHARED_RELATION", "AUTHORITY"], "uncertainty": []
+      },
+      "expected": {"schema_valid": true, "semantic_result": "INCONSISTENT", "failure_codes": ["RECIPROCAL_BASIS_MISSING", "RELATION_EFFECT_OVERREACH", "RELATION_HISTORY_OR_EXIT_OVERREACH"]},
+      "source": {"refs": ["section.5.1", "section.5.2", "section.9.2", "section.9.5", "section.19.2"]},
+      "forbidden_inference": "Navigable chains, foreign keys, and local classification cannot supply reciprocal basis, Authority, or erase relation history."
+    },
+    {
+      "id": "lineage-relation-unknown-property-rejected",
+      "schema": "urn:presence:core:lineage:relation:1",
+      "input": {
+        "kind": "relation", "id": "fixture:malformed-relation", "holding_locality": "fixture:left-locality",
+        "terms": {"left": "fixture:left", "right": "fixture:right", "merged_identity": "fixture:owner"}, "relation_type": "REFERENCE", "direction": "LOCAL", "scope": "fixture:reference-only",
+        "basis_by_side": {
+          "left": {"id": "fixture:left-basis", "bearer": "fixture:left", "target": "fixture:right", "locality": "fixture:left-locality", "scope": "fixture:reference-only", "origin": "LOCAL_ACT", "status": "SUPPORTED", "evidence_refs": ["fixture:left-record"]},
+          "right": {"id": "UNKNOWN", "bearer": "fixture:right", "target": "fixture:left", "locality": "fixture:right-locality", "scope": "fixture:reference-only", "origin": "UNKNOWN", "status": "UNKNOWN", "evidence_refs": []}
+        },
+        "asymmetry": [], "duration": {"from": "fixture:t1", "until": "UNKNOWN", "status": "ACTIVE"},
+        "exit_and_correction": {"refusal": "fixture:refusal", "withdrawal": "fixture:withdrawal", "correction": "fixture:correction", "suspension": "fixture:suspension", "exit": "fixture:exit", "unrelated_relations": "NO_EFFECT_CLAIMED"},
+        "history": {"prior_refs": [], "retained_refs": []}, "claimed_effects": ["LOCAL_RELATION"], "uncertainty": []
+      },
+      "expected": {"schema_valid": false, "semantic_result": "NOT_EVALUATED", "failure_codes": ["SCHEMA_INVALID"]},
+      "source": {"refs": ["reading.3", "section.9.3"]},
+      "forbidden_inference": "Unrecognized fields cannot bypass the explicit relation-effect ceiling."
+    },
+    {
+      "id": "lineage-implementation-unsigned-bounded-claim",
+      "schema": "urn:presence:core:lineage:implementation-claim:1",
+      "input": {
+        "kind": "implementation_claim", "id": "fixture:unsigned-claim", "claimant": "fixture:claimant",
+        "identity": {"mechanism": "fixture:human-procedure", "version": "fixture:v1", "form": "HUMAN_PROCEDURE", "identity_refs": ["fixture:procedure-description"]},
+        "core": {"repository": "https://github.com/ia-mm-ai/PRESENCE", "commit": "85e873a881a69ad004ef2d3fd51de2ff752169d2", "source": {
+          "human": {"path": "SOURCE/CONSTITUTION_0()1.md", "sha256": "affeb5738cdfeea7ee4fe985652bf78b15eb6dfbba5871d82f0f2213a81832d0", "byte_length": 44133},
+          "machine": {"path": "SOURCE/CONSTITUTION_0()1.json", "sha256": "519a81d2a26d5bf32afd77566bbb35b4d28b22af85ac45a7055fccd1b45222f8", "byte_length": 146048}
+        }},
+        "implemented_modules": ["LINEAGE"], "locality": "fixture:locality", "scope": "fixture:manual-reference-ledger", "exclusions": ["CSC and DCR are not claimed"], "conditions": ["fixture:trained-participant-available"],
+        "dependencies": [{"id": "fixture:participant", "bearer": "fixture:participant", "function": "Maintain the bounded ledger", "effect_ceiling": "No constitutional Authority from custody", "interruption_risk": "Participant unavailable", "replacement_posture": "REPLACEABLE_WITH_NEW_BASIS", "consequences_of_loss": "Current operation unavailable; records remain historical"}],
+        "demonstrations": {"primary": {"id": "fixture:self-report", "mechanism": "fixture:human-procedure", "modules": ["LINEAGE"], "locality": "fixture:locality", "scope": "fixture:manual-reference-ledger", "conditions": ["fixture:trained-participant-available"], "object": "fixture:procedure-claim", "method": "SELF_REPORT", "time": "fixture:t1", "basis": "fixture:claimant-report", "evidence_refs": ["fixture:report-record"], "result": "UNKNOWN", "proof_ceiling": "ATTRIBUTABLE_CLAIM_ONLY"}, "additional_refs": []},
+        "failure_boundaries": ["No demonstrated execution; evidence has not been independently checked"],
+        "present_status": {"posture": "CLAIMED_ONLY", "as_of": "fixture:t1", "current_basis_refs": []},
+        "attestation": {"posture": "UNSIGNED"}, "validation": "DECLARED_CLAIM_ONLY", "claimed_effects": ["BOUNDED_IMPLEMENTATION_CLAIM"], "effect_ceiling": "NO_CONSTITUTIONAL_EFFECT_FROM_CLAIM"
+      },
+      "expected": {"schema_valid": true, "semantic_result": "CONSISTENT_AT_DECLARED_SCOPE", "failure_codes": []},
+      "source": {"refs": ["reading.7", "section.16.8", "section.18.1", "section.19.3", "section.20.2"]},
+      "forbidden_inference": "An unsigned attributable claim can be represented without self-validation; neither these Source bytes nor this synthetic fixture demonstrate present CSC."
+    },
+    {
+      "id": "lineage-implementation-exact-declared-demonstration",
+      "schema": "urn:presence:core:lineage:implementation-claim:1",
+      "input": {
+        "kind": "implementation_claim", "id": "fixture:declared-demonstration", "claimant": "fixture:claimant",
+        "identity": {"mechanism": "fixture:human-procedure", "version": "fixture:v1", "form": "HUMAN_PROCEDURE", "identity_refs": ["fixture:procedure-description"]},
+        "core": {"repository": "https://github.com/ia-mm-ai/PRESENCE", "commit": "85e873a881a69ad004ef2d3fd51de2ff752169d2", "source": {
+          "human": {"path": "SOURCE/CONSTITUTION_0()1.md", "sha256": "affeb5738cdfeea7ee4fe985652bf78b15eb6dfbba5871d82f0f2213a81832d0", "byte_length": 44133},
+          "machine": {"path": "SOURCE/CONSTITUTION_0()1.json", "sha256": "519a81d2a26d5bf32afd77566bbb35b4d28b22af85ac45a7055fccd1b45222f8", "byte_length": 146048}
+        }},
+        "implemented_modules": ["LINEAGE"], "locality": "fixture:locality", "scope": "fixture:manual-reference-ledger", "exclusions": ["No CSC or DCR claim"], "conditions": ["fixture:trained-participant-available"],
+        "dependencies": [{"id": "fixture:participant", "bearer": "fixture:participant", "function": "Maintain the bounded ledger", "effect_ceiling": "No constitutional Authority from custody", "interruption_risk": "Participant unavailable", "replacement_posture": "REPLACEABLE_WITH_NEW_BASIS", "consequences_of_loss": "Current operation unavailable; records remain historical"}],
+        "demonstrations": {"primary": {"id": "fixture:demonstration", "mechanism": "fixture:human-procedure", "modules": ["LINEAGE"], "locality": "fixture:locality", "scope": "fixture:manual-reference-ledger", "conditions": ["fixture:trained-participant-available"], "object": "fixture:ledger-maintenance", "method": "OBSERVATION", "time": "fixture:t1", "basis": "fixture:observation-procedure", "evidence_refs": ["fixture:observed-trace"], "result": "SUPPORTED", "proof_ceiling": "OBSERVED_TRACE_ONLY"}, "additional_refs": []},
+        "failure_boundaries": ["Only the declared conditions and exact Locality were observed"],
+        "present_status": {"posture": "DEMONSTRATED_AT_DECLARED_SCOPE", "as_of": "fixture:t2", "current_basis_refs": ["fixture:current-conditions-check"]},
+        "attestation": {"posture": "UNSIGNED"}, "validation": "DECLARED_CLAIM_ONLY", "claimed_effects": ["BOUNDED_IMPLEMENTATION_CLAIM", "DECLARED_DEMONSTRATION"], "effect_ceiling": "NO_CONSTITUTIONAL_EFFECT_FROM_CLAIM"
+      },
+      "expected": {"schema_valid": true, "semantic_result": "CONSISTENT_AT_DECLARED_SCOPE", "failure_codes": []},
+      "source": {"refs": ["section.16.8", "section.18.4", "section.19.3", "section.19.4"]},
+      "forbidden_inference": "Consistency checks a synthetic demonstration declaration, not its truth, general conformance, constitutional effect, or actual repository capability."
+    },
+    {
+      "id": "lineage-implementation-unsigned-self-validation-rejected",
+      "schema": "urn:presence:core:lineage:implementation-claim:1",
+      "input": {
+        "kind": "implementation_claim", "id": "fixture:self-validation", "claimant": "fixture:claimant",
+        "identity": {"mechanism": "fixture:human-procedure", "version": "fixture:v1", "form": "HUMAN_PROCEDURE", "identity_refs": ["fixture:procedure-description"]},
+        "core": {"repository": "https://github.com/ia-mm-ai/PRESENCE", "commit": "85e873a881a69ad004ef2d3fd51de2ff752169d2", "source": {
+          "human": {"path": "SOURCE/CONSTITUTION_0()1.md", "sha256": "affeb5738cdfeea7ee4fe985652bf78b15eb6dfbba5871d82f0f2213a81832d0", "byte_length": 44133},
+          "machine": {"path": "SOURCE/CONSTITUTION_0()1.json", "sha256": "519a81d2a26d5bf32afd77566bbb35b4d28b22af85ac45a7055fccd1b45222f8", "byte_length": 146048}
+        }},
+        "implemented_modules": ["CONTINUITY_STATE_CAPABILITY"], "locality": "fixture:locality", "scope": "fixture:claimed-csc", "exclusions": [], "conditions": ["fixture:publication-only"],
+        "dependencies": [],
+        "demonstrations": {"primary": {"id": "fixture:self-report", "mechanism": "fixture:human-procedure", "modules": ["CONTINUITY_STATE_CAPABILITY"], "locality": "fixture:locality", "scope": "fixture:claimed-csc", "conditions": ["fixture:publication-only"], "object": "fixture:csc-claim", "method": "SELF_REPORT", "time": "fixture:t1", "basis": "fixture:claimant-report", "evidence_refs": ["fixture:report-record"], "result": "SUPPORTED", "proof_ceiling": "ATTRIBUTABLE_CLAIM_ONLY"}, "additional_refs": []},
+        "failure_boundaries": ["No operational demonstration"],
+        "present_status": {"posture": "DEMONSTRATED_AT_DECLARED_SCOPE", "as_of": "fixture:t1", "current_basis_refs": []},
+        "attestation": {"posture": "UNSIGNED"}, "validation": "SELF_VALIDATED", "claimed_effects": ["PRESENT_CSC", "AUTHORITY"], "effect_ceiling": "SELF_AUTHORIZING"
+      },
+      "expected": {"schema_valid": true, "semantic_result": "INCONSISTENT", "failure_codes": ["IMPLEMENTATION_SELF_VALIDATION_OR_OVERREACH", "IMPLEMENTATION_DEMONSTRATION_MISSING_OR_MISMATCHED"]},
+      "source": {"refs": ["reading.7", "section.16.8", "section.18.1", "section.19.3", "section.20.3"]},
+      "forbidden_inference": "Publication, self-report, or an unsigned declaration cannot establish present CSC or authorize itself."
+    },
+    {
+      "id": "lineage-implementation-historical-trace-not-current",
+      "schema": "urn:presence:core:lineage:implementation-claim:1",
+      "input": {
+        "kind": "implementation_claim", "id": "fixture:historical-demonstration", "claimant": "fixture:claimant",
+        "identity": {"mechanism": "fixture:human-procedure", "version": "fixture:v1", "form": "HUMAN_PROCEDURE", "identity_refs": ["fixture:procedure-description"]},
+        "core": {"repository": "https://github.com/ia-mm-ai/PRESENCE", "commit": "85e873a881a69ad004ef2d3fd51de2ff752169d2", "source": {
+          "human": {"path": "SOURCE/CONSTITUTION_0()1.md", "sha256": "affeb5738cdfeea7ee4fe985652bf78b15eb6dfbba5871d82f0f2213a81832d0", "byte_length": 44133},
+          "machine": {"path": "SOURCE/CONSTITUTION_0()1.json", "sha256": "519a81d2a26d5bf32afd77566bbb35b4d28b22af85ac45a7055fccd1b45222f8", "byte_length": 146048}
+        }},
+        "implemented_modules": ["LINEAGE"], "locality": "fixture:locality", "scope": "fixture:manual-reference-ledger", "exclusions": ["No CSC or DCR claim"], "conditions": ["fixture:participant-now-unavailable"],
+        "dependencies": [{"id": "fixture:participant", "bearer": "fixture:participant", "function": "Maintain the bounded ledger", "effect_ceiling": "Historical record only during absence", "interruption_risk": "Participant unavailable", "replacement_posture": "UNKNOWN", "consequences_of_loss": "New operation unestablished"}],
+        "demonstrations": {"primary": {"id": "fixture:old-test", "mechanism": "fixture:human-procedure", "modules": ["LINEAGE"], "locality": "fixture:locality", "scope": "fixture:manual-reference-ledger", "conditions": ["fixture:participant-was-available"], "object": "fixture:old-test-object", "method": "CONFORMANCE_TEST", "time": "fixture:t1", "basis": "fixture:old-test-procedure", "evidence_refs": ["fixture:old-test-output"], "result": "SUPPORTED", "proof_ceiling": "TESTED_CONDITIONS_ONLY"}, "additional_refs": []},
+        "failure_boundaries": ["Historical conditions no longer supported"],
+        "present_status": {"posture": "HISTORICAL", "as_of": "fixture:t2", "current_basis_refs": []},
+        "attestation": {"posture": "SIGNED", "signer": "fixture:key-holder", "key_ref": "fixture:key", "signature_ref": "fixture:signature"}, "validation": "DECLARED_CLAIM_ONLY", "claimed_effects": ["DECLARED_DEMONSTRATION"], "effect_ceiling": "NO_CONSTITUTIONAL_EFFECT_FROM_CLAIM"
+      },
+      "expected": {"schema_valid": true, "semantic_result": "INCONSISTENT", "failure_codes": ["IMPLEMENTATION_HISTORICAL_TO_CURRENT_CONVERSION"]},
+      "source": {"refs": ["section.16.8", "section.18.1", "section.20.2"]},
+      "forbidden_inference": "A signature or historically passing test cannot restore absent dependencies or prove a present demonstration."
+    },
+    {
+      "id": "lineage-implementation-floating-commit-is-malformed",
+      "schema": "urn:presence:core:lineage:implementation-claim:1",
+      "input": {
+        "kind": "implementation_claim", "id": "fixture:floating-reference", "claimant": "fixture:claimant",
+        "identity": {"mechanism": "fixture:human-procedure", "version": "fixture:v1", "form": "HUMAN_PROCEDURE", "identity_refs": ["fixture:procedure-description"]},
+        "core": {"repository": "https://github.com/ia-mm-ai/PRESENCE", "commit": "main", "source": {
+          "human": {"path": "SOURCE/CONSTITUTION_0()1.md", "sha256": "affeb5738cdfeea7ee4fe985652bf78b15eb6dfbba5871d82f0f2213a81832d0", "byte_length": 44133},
+          "machine": {"path": "SOURCE/CONSTITUTION_0()1.json", "sha256": "519a81d2a26d5bf32afd77566bbb35b4d28b22af85ac45a7055fccd1b45222f8", "byte_length": "146048"}
+        }},
+        "implemented_modules": ["LINEAGE"], "locality": "fixture:locality", "scope": "fixture:manual-reference-ledger", "exclusions": ["No CSC or DCR claim"], "conditions": ["fixture:trained-participant-available"], "dependencies": [],
+        "demonstrations": {"primary": {"id": "fixture:self-report", "mechanism": "fixture:human-procedure", "modules": ["LINEAGE"], "locality": "fixture:locality", "scope": "fixture:manual-reference-ledger", "conditions": ["fixture:trained-participant-available"], "object": "fixture:procedure-claim", "method": "SELF_REPORT", "time": "fixture:t1", "basis": "fixture:claimant-report", "evidence_refs": [], "result": "UNKNOWN", "proof_ceiling": "ATTRIBUTABLE_CLAIM_ONLY"}, "additional_refs": []},
+        "failure_boundaries": ["No demonstrated execution"],
+        "present_status": {"posture": "CLAIMED_ONLY", "as_of": "fixture:t1", "current_basis_refs": []},
+        "attestation": {"posture": "UNSIGNED"}, "validation": "DECLARED_CLAIM_ONLY", "claimed_effects": ["BOUNDED_IMPLEMENTATION_CLAIM"], "effect_ceiling": "NO_CONSTITUTIONAL_EFFECT_FROM_CLAIM"
+      },
+      "expected": {"schema_valid": false, "semantic_result": "NOT_EVALUATED", "failure_codes": ["SCHEMA_INVALID"]},
+      "source": {"refs": ["reading.3", "section.19.2"]},
+      "forbidden_inference": "A moving branch name is not an exact Core commit and a string is not an exact integer byte count."
+    }
+  ]
 }

@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:presence:core:lineage:module:1",
+  "title": "Canonical module machine model",
+  "x-status": "CANONICAL_SCHEMA",
+  "x-rule-classification": "CORE_ENCODING_RULE",
+  "x-source": {"refs": ["reading.3", "reading.7", "section.19.3", "section.19.4"]},
+  "type": "object", "additionalProperties": false,
+  "required": ["kind", "id", "status", "human_standard", "source", "scope", "schemas", "vectors", "evaluation", "rules"],
+  "properties": {
+    "kind": {"const": "canonical_standard"},
+    "id": {"enum": ["urn:presence:core:csc:1", "urn:presence:core:dcr:1", "urn:presence:core:lineage:lineage:1"]},
+    "status": {"const": "CANONICAL_STANDARD"},
+    "human_standard": {"$ref": "urn:presence:core:lineage:core:1#/$defs/text"},
+    "source": {"$ref": "urn:presence:core:lineage:core:1#/$defs/source"},
+    "scope": {"$ref": "urn:presence:core:lineage:core:1#/$defs/text"},
+    "schemas": {"$ref": "#/$defs/paths"},
+    "vectors": {"$ref": "#/$defs/paths"},
+    "related": {"$ref": "#/$defs/paths"},
+    "origin": {"const": "ORIGIN.json"},
+    "policy": {"const": "../STATE.json"},
+    "not_established": {"$ref": "urn:presence:core:lineage:core:1#/$defs/texts"},
+    "evaluation": {
+      "type": "object", "additionalProperties": false,
+      "required": ["classification", "schema_dialect", "schema_invalid", "consistent", "inconsistent", "order", "effect_ceiling"],
+      "properties": {
+        "classification": {"const": "CORE_ENCODING_RULE"},
+        "schema_dialect": {"const": "https://json-schema.org/draft/2020-12/schema"},
+        "schema_invalid": {
+          "type": "object", "additionalProperties": false,
+          "required": ["semantic_result", "failure_codes"],
+          "properties": {
+            "semantic_result": {"const": "NOT_EVALUATED"},
+            "failure_codes": {"const": ["SCHEMA_INVALID"]}
+          }
+        },
+        "consistent": {"const": "CONSISTENT_AT_DECLARED_SCOPE"},
+        "inconsistent": {"const": "INCONSISTENT"},
+        "order": {"$ref": "urn:presence:core:lineage:core:1#/$defs/text"},
+        "effect_ceiling": {"$ref": "urn:presence:core:lineage:core:1#/$defs/text"},
+        "external_evidence": {"$ref": "urn:presence:core:lineage:core:1#/$defs/text"},
+        "encoding": {"$ref": "urn:presence:core:lineage:core:1#/$defs/text"},
+        "null": {"$ref": "urn:presence:core:lineage:core:1#/$defs/text"}
+      }
+    },
+    "rules": {"type": "array", "minItems": 1, "items": {"$ref": "urn:presence:core:lineage:rule:1"}}
+  },
+  "$defs": {
+    "paths": {"allOf": [{"$ref": "urn:presence:core:lineage:core:1#/$defs/texts"}, {"minItems": 1}]}
+  }
+}
