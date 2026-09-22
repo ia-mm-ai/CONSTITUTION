@@ -6,10 +6,10 @@ from http.server import BaseHTTPRequestHandler, HTTPServer
 from pathlib import Path
 from urllib.parse import parse_qs, unquote, urlsplit
 
-from jsonschema import Draft202012Validator, ValidationError
+from jsonschema import ValidationError
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "SYSTEM"))
-from verify import CEILING, binding, check_export, encode, load_json
+from verify import CEILING, binding, check_export, encode, load_json, offline_validator
 
 
 def selected(index, ref):
@@ -81,10 +81,10 @@ def handler_for(files):
                     query = parse_qs(url.query, keep_blank_values=True, strict_parsing=True,
                                      max_num_fields=1, errors="strict")
                     request = {key: values[0] for key, values in query.items()}
-                    Draft202012Validator(op["input"]).validate(request)
+                    offline_validator(op["input"]).validate(request)
                     media_type, data = HANDLERS[op["id"]](index, files, request)
                     if op["id"] != "read":
-                        Draft202012Validator(op["output"]).validate(load_json(data))
+                        offline_validator(op["output"]).validate(load_json(data))
                     self.reply(200, media_type, data)
                 else:
                     if url.query:

@@ -10,7 +10,7 @@ import sys
 import tempfile
 from pathlib import Path, PurePosixPath
 
-from jsonschema import Draft202012Validator, SchemaError
+from jsonschema import Draft202012Validator, RefResolver, SchemaError
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -18,6 +18,15 @@ CHECKER = "STATE/LINEAGE/CONFORMANCE.py"
 HUMAN = "SOURCE/CONSTITUTION_0()1.md"
 MACHINE = "SOURCE/CONSTITUTION_0()1.json"
 CEILING = "Byte correspondence and checked representation only; no adoption, Authority, or present CSC/DCR."
+
+
+class OfflineResolver(RefResolver):
+    def resolve_remote(self, uri):
+        raise ValueError("External schema retrieval is disabled")
+
+
+def offline_validator(schema):
+    return Draft202012Validator(schema, resolver=OfflineResolver.from_schema(schema))
 
 
 def load_json(data):
@@ -179,8 +188,11 @@ def inventory(files):
                 raise ValueError("Read output must remain exact resource bytes")
         else:
             check_schema(op["output"])
-            if any("$ref" in node or "$dynamicRef" in node for node, _ in walk(op["output"])):
-                raise ValueError("Operation output contracts must be self-contained; no reference fetching")
+            for node, _ in walk(op["output"]):
+                if any(key in node for key in ("$ref", "$dynamicRef", "$recursiveRef")):
+                    raise ValueError("Operation output contracts must be self-contained; no reference fetching")
+                if "$schema" in node and node["$schema"] != "https://json-schema.org/draft/2020-12/schema":
+                    raise ValueError("Operation output contracts must retain the Draft 2020-12 dialect")
     return declaration, resources, references
 
 
