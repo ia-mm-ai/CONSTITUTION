@@ -1,0 +1,125 @@
+{
+  "point": {
+    "title": "PRESENCE",
+    "status": "INITIAL_EXTERNALISATION",
+    "public_location": {
+      "status": "UNCONFIGURED",
+      "reason": "No deployed POINT is established by this repository."
+    },
+    "scope": "Reading the bound Source pair and canonical STATE representations; resolving listed references; checking edition bytes.",
+    "provenance": [
+      "../STATE/LINEAGE/ORIGIN.json",
+      "../STATE/LINEAGE/RECORDS/VM003-TO-CSC.json",
+      "../STATE/LINEAGE/RECORDS/MEDIUM-TO-DCR.json"
+    ],
+    "effect_ceiling": "Derivative exposure, not a Body, adoption, Authority, a current State, or demonstrated CSC/DCR."
+  },
+  "resources": [
+    {"path": "../SOURCE/CONSTITUTION_0()1.md", "ref": "urn:presence:surface:source-human:1"},
+    {"path": "../SOURCE/CONSTITUTION_0()1.json", "ref": "urn:presence:surface:source-machine:1"},
+    {"path": "../STATE/STATE.md", "ref": "urn:presence:surface:state-human:1"},
+    {"path": "../STATE/STATE.json", "ref": "urn:presence:surface:state-machine:1"},
+    {"path": "../STATE/CONTINUITY-STATE-CAPABILITY/CONTINUITY-STATE-CAPABILITY.md", "ref": "urn:presence:surface:csc-human:1"},
+    {"path": "../STATE/CONTINUITY-STATE-CAPABILITY/CONTINUITY-STATE-CAPABILITY.json", "ref": "urn:presence:core:csc:1"},
+    {"path": "../STATE/DYNAMIC-CAPACITY-REGULATION/DYNAMIC-CAPACITY-REGULATION.md", "ref": "urn:presence:surface:dcr-human:1"},
+    {"path": "../STATE/DYNAMIC-CAPACITY-REGULATION/DYNAMIC-CAPACITY-REGULATION.json", "ref": "urn:presence:core:dcr:1"},
+    {"path": "../STATE/LINEAGE/LINEAGE.md", "ref": "urn:presence:surface:lineage-human:1"},
+    {"path": "../STATE/LINEAGE/LINEAGE.json", "ref": "urn:presence:core:lineage:lineage:1"},
+    {"path": "../STATE/LINEAGE/ORIGIN.json", "ref": "urn:presence:surface:origin:1"},
+    {"path": "../STATE/LINEAGE/RECORDS/VM003-TO-CSC.json", "ref": "urn:presence:core:derivation:vm003-to-csc:1"},
+    {"path": "../STATE/LINEAGE/RECORDS/MEDIUM-TO-DCR.json", "ref": "urn:presence:core:lineage:medium-to-dcr:1"},
+    {"path": "../STATE/CONTINUITY-STATE-CAPABILITY/SCHEMAS/SUPPORTED-STATE.schema.json", "ref": "urn:presence:core:csc:supported-state:1"},
+    {"path": "../STATE/CONTINUITY-STATE-CAPABILITY/SCHEMAS/TRANSITION.schema.json", "ref": "urn:presence:core:csc:transition:1"},
+    {"path": "../STATE/CONTINUITY-STATE-CAPABILITY/SCHEMAS/CORRECTION.schema.json", "ref": "urn:presence:core:csc:correction:1"},
+    {"path": "../STATE/CONTINUITY-STATE-CAPABILITY/SCHEMAS/DORMANCY.schema.json", "ref": "urn:presence:core:csc:dormancy:1"},
+    {"path": "../STATE/CONTINUITY-STATE-CAPABILITY/SCHEMAS/RESUMPTION.schema.json", "ref": "urn:presence:core:csc:resumption:1"},
+    {"path": "../STATE/DYNAMIC-CAPACITY-REGULATION/SCHEMAS/CAPACITY.schema.json", "ref": "urn:presence:core:dcr:capacity:1"},
+    {"path": "../STATE/DYNAMIC-CAPACITY-REGULATION/SCHEMAS/MOTION.schema.json", "ref": "urn:presence:core:dcr:motion:1"},
+    {"path": "../STATE/DYNAMIC-CAPACITY-REGULATION/SCHEMAS/DISPOSITION.schema.json", "ref": "urn:presence:core:dcr:disposition:1"},
+    {"path": "../STATE/DYNAMIC-CAPACITY-REGULATION/SCHEMAS/EVIDENCE.schema.json", "ref": "urn:presence:core:dcr:evidence:1"},
+    {"path": "../STATE/LINEAGE/SCHEMAS/CORE.schema.json", "ref": "urn:presence:core:lineage:core:1"},
+    {"path": "../STATE/LINEAGE/SCHEMAS/STATE.schema.json", "ref": "urn:presence:core:lineage:state:1"},
+    {"path": "../STATE/LINEAGE/SCHEMAS/MODULE.schema.json", "ref": "urn:presence:core:lineage:module:1"},
+    {"path": "../STATE/LINEAGE/SCHEMAS/RULE.schema.json", "ref": "urn:presence:core:lineage:rule:1"},
+    {"path": "../STATE/LINEAGE/SCHEMAS/VECTOR.schema.json", "ref": "urn:presence:core:lineage:vector:1"},
+    {"path": "../STATE/LINEAGE/SCHEMAS/INTERFACE.schema.json", "ref": "urn:presence:core:lineage:interface:1"},
+    {"path": "../STATE/LINEAGE/SCHEMAS/OCCURRENCE.schema.json", "ref": "urn:presence:core:lineage:occurrence:1"},
+    {"path": "../STATE/LINEAGE/SCHEMAS/RELATION.schema.json", "ref": "urn:presence:core:lineage:relation:1"},
+    {"path": "../STATE/LINEAGE/SCHEMAS/SUCCESSION.schema.json", "ref": "urn:presence:core:lineage:succession:1"},
+    {"path": "../STATE/LINEAGE/SCHEMAS/DIVERGENCE.schema.json", "ref": "urn:presence:core:lineage:divergence:1"},
+    {"path": "../STATE/LINEAGE/SCHEMAS/RE-ENTRY.schema.json", "ref": "urn:presence:core:lineage:re-entry:1"},
+    {"path": "../STATE/LINEAGE/SCHEMAS/IMPLEMENTATION-CLAIM.schema.json", "ref": "urn:presence:core:lineage:implementation-claim:1"},
+    {"path": "../STATE/LINEAGE/SCHEMAS/DERIVATION.schema.json", "ref": "urn:presence:core:lineage:derivation:1"},
+    {"path": "../STATE/LINEAGE/SCHEMAS/ORIGIN.schema.json", "ref": "urn:presence:core:lineage:origin:1"},
+    {"path": "../STATE/CONTINUITY-STATE-CAPABILITY/VECTORS/SUCCESSION.json", "ref": "urn:presence:surface:csc-vector-succession:1"},
+    {"path": "../STATE/CONTINUITY-STATE-CAPABILITY/VECTORS/CORRECTION.json", "ref": "urn:presence:surface:csc-vector-correction:1"},
+    {"path": "../STATE/CONTINUITY-STATE-CAPABILITY/VECTORS/DORMANCY-RESUMPTION.json", "ref": "urn:presence:surface:csc-vector-dormancy-resumption:1"},
+    {"path": "../STATE/CONTINUITY-STATE-CAPABILITY/VECTORS/INVALID-DISCONTINUITY.json", "ref": "urn:presence:surface:csc-vector-invalid-discontinuity:1"},
+    {"path": "../STATE/DYNAMIC-CAPACITY-REGULATION/VECTORS/SUPPORT.json", "ref": "urn:presence:surface:dcr-vector-support:1"},
+    {"path": "../STATE/DYNAMIC-CAPACITY-REGULATION/VECTORS/HOLD.json", "ref": "urn:presence:surface:dcr-vector-hold:1"},
+    {"path": "../STATE/DYNAMIC-CAPACITY-REGULATION/VECTORS/REFUSAL.json", "ref": "urn:presence:surface:dcr-vector-refusal:1"},
+    {"path": "../STATE/DYNAMIC-CAPACITY-REGULATION/VECTORS/INVALID-OVERREACH.json", "ref": "urn:presence:surface:dcr-vector-invalid-overreach:1"},
+    {"path": "../STATE/LINEAGE/VECTORS/COMPOSITION.json", "ref": "urn:presence:surface:lineage-vector-composition:1"},
+    {"path": "../STATE/LINEAGE/VECTORS/SUCCESSION.json", "ref": "urn:presence:surface:lineage-vector-succession:1"},
+    {"path": "../STATE/LINEAGE/VECTORS/DIVERGENCE.json", "ref": "urn:presence:surface:lineage-vector-divergence:1"},
+    {"path": "../STATE/LINEAGE/VECTORS/RE-ENTRY.json", "ref": "urn:presence:surface:lineage-vector-re-entry:1"},
+    {"path": "../STATE/LINEAGE/VECTORS/PROVENANCE.json", "ref": "urn:presence:surface:lineage-vector-provenance:1"},
+    {"path": "../STATE/LINEAGE/VECTORS/INVALID-BROKEN-RELATION.json", "ref": "urn:presence:surface:lineage-vector-invalid-broken-relation:1"}
+  ],
+  "operations": [
+    {
+      "id": "read",
+      "handler": "serve.read_resource",
+      "method": "GET",
+      "route": "/api/read",
+      "input": {
+        "type": "object", "additionalProperties": false, "required": ["resource"],
+        "properties": {"resource": {"type": "string", "minLength": 1, "maxLength": 512}}
+      },
+      "output": {"representation": "exact_resource_bytes", "media_type_from": "index.resources[].media_type"},
+      "scope": "Only a resource ref listed in this edition; no caller-supplied filesystem path."
+    },
+    {
+      "id": "resolve",
+      "handler": "serve.resolve_reference",
+      "method": "GET",
+      "route": "/api/resolve",
+      "input": {
+        "type": "object", "additionalProperties": false, "required": ["ref"],
+        "properties": {"ref": {"type": "string", "minLength": 1, "maxLength": 512}}
+      },
+      "output": {
+        "type": "object", "additionalProperties": false,
+        "required": ["revision", "ref", "path", "pointer"],
+        "properties": {
+          "revision": {"type": "string"}, "ref": {"type": "string"},
+          "path": {"type": "string"}, "pointer": {"type": "string"}
+        }
+      },
+      "scope": "Exact listed resource or bound Source ref, returned as an edition path and JSON Pointer; no remote resolution."
+    },
+    {
+      "id": "check",
+      "handler": "serve.check_resource",
+      "method": "GET",
+      "route": "/api/check",
+      "input": {
+        "type": "object", "additionalProperties": false, "required": ["resource"],
+        "properties": {"resource": {"type": "string", "minLength": 1, "maxLength": 512}}
+      },
+      "output": {
+        "type": "object", "additionalProperties": false,
+        "required": ["revision", "resource", "sha256", "byte_length", "result", "conformance", "effect_ceiling"],
+        "properties": {
+          "revision": {"type": "string"}, "resource": {"type": "string"},
+          "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+          "byte_length": {"type": "integer", "minimum": 0},
+          "result": {"enum": ["MATCH", "MISMATCH"]},
+          "conformance": {"const": "NOT_EVALUATED"},
+          "effect_ceiling": {"type": "string"}
+        }
+      },
+      "scope": "Exact served bytes against this edition's binding; not evaluation of arbitrary submitted records or constitutional conformance."
+    }
+  ]
+}

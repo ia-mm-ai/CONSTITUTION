@@ -1,0 +1,45 @@
+{
+  "kind": "derivative_operations",
+  "status": "INITIAL_EXTERNALISATION",
+  "human_contract": "SYSTEM.md",
+  "core": {
+    "human_source": "../SOURCE/CONSTITUTION_0()1.md",
+    "machine_source": "../SOURCE/CONSTITUTION_0()1.json",
+    "state": "../STATE/STATE.json",
+    "provenance": "../STATE/LINEAGE/ORIGIN.json",
+    "implementation_claim_schema": "../STATE/LINEAGE/SCHEMAS/IMPLEMENTATION-CLAIM.schema.json"
+  },
+  "operations": {
+    "verify": {
+      "handler": "verify.py",
+      "scope": "Exact Source and LINEAGE bytes, selected references, schema definitions, available core checker, or exported byte bindings.",
+      "conformance_checker": "../STATE/LINEAGE/CONFORMANCE.py",
+      "missing_checker": "INCOMPLETE, never PASSED"
+    },
+    "export": {
+      "handler": "export.py",
+      "input": "One full locally available Git commit ID and a fresh destination.",
+      "output": ["index.html", "index.json", "manifest.json", "selected core material"],
+      "incomplete_preview": "Only by explicit --allow-incomplete; failure of an available checker still blocks export."
+    },
+    "recover": {
+      "handler": "recover.py",
+      "input": "One explicit revision or an export with an independently trusted manifest SHA-256.",
+      "output": "Byte-identical portable edition in a fresh destination, followed by integrity verification.",
+      "does_not_recover": ["Git history", "unselected material", "a Body's State", "Agency", "Authority"]
+    }
+  },
+  "publication": {
+    "resource_declaration": "../SURFACE/surface.json",
+    "revision": "Resolved only from an explicit full commit ID, never from ORIGIN.repository.inspected_commit.",
+    "index": "Generated inventory and bounded operation contracts, not a hand-maintained second core.",
+    "manifest": "Exact SHA-256 and byte_length for every exported file except the manifest itself.",
+    "trust": "A manifest digest needs an independent trusted channel; internal consistency is not authentication."
+  },
+  "unestablished": [
+    "A deployed public location",
+    "Core conformance while STATE/LINEAGE/CONFORMANCE.py is absent",
+    "Any constitutional implementation or adoption"
+  ],
+  "effect_ceiling": "Derivative maintenance and byte correspondence only; no independent Source, constitutional effect, or demonstrated CSC/DCR."
+}
