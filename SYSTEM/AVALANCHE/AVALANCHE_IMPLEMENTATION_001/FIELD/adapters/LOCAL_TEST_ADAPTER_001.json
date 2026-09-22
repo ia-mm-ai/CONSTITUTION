@@ -1,0 +1,61 @@
+{
+  "schema": "PRESENCE_FIELD_ADAPTER_001",
+  "adapter_id": "LOCAL_TEST_ADAPTER_001",
+  "version": "1.0.0",
+  "controlled_surface": "A single local loopback test surface exposed by an operator solely for conformance testing of the FIELD against a local VM endpoint; never any production surface, host, or party.",
+  "scope_statement": "Classifies only the local loopback test surface under the tester's direct control. It exists to exercise capacity, currentness, and correction paths and asserts nothing about any entity.",
+  "declared_capabilities": [
+    "DECLARE_CAPACITY",
+    "PULSE",
+    "OBSERVE_CROSSING",
+    "CORRECT"
+  ],
+  "attribution_ceiling": "ADAPTER_SURFACE_OBSERVATION_ONLY",
+  "evidence_ceiling": "LOCAL_SIGNED_OBSERVATION_NOT_EXTERNAL_TRUTH",
+  "signer_boundary": "EXTERNAL_PROTECTED_SIGNER",
+  "private_state_posture": "PARTICIPANT_CUSTODY_COMMITMENTS_ONLY",
+  "capabilities_by_phase": {
+    "NO_ACTIVE_LOCUS": ["READ_PUBLIC_STATE", "VERIFY_LOCAL_EVIDENCE", "DECLARE_CAPACITY", "PULSE"],
+    "UNPRESENTED": ["READ_PUBLIC_STATE", "VERIFY_LOCAL_EVIDENCE"],
+    "PRESENTED": ["READ_PUBLIC_STATE", "VERIFY_LOCAL_EVIDENCE"],
+    "ADMISSION_OFFERED": ["READ_PUBLIC_STATE", "VERIFY_LOCAL_EVIDENCE"],
+    "PRESENT": ["READ_PUBLIC_STATE", "VERIFY_LOCAL_EVIDENCE", "OBSERVE_CROSSING", "CORRECT"],
+    "DEPARTURE_CHECKPOINTED": ["READ_PUBLIC_STATE", "VERIFY_LOCAL_EVIDENCE", "CORRECT"],
+    "ENDED": ["READ_PUBLIC_STATE", "VERIFY_LOCAL_EVIDENCE"],
+    "REENTRY_AVAILABLE": ["READ_PUBLIC_STATE", "VERIFY_LOCAL_EVIDENCE"],
+    "HOLD_CAPACITY_DEFICIT": ["READ_PUBLIC_STATE", "VERIFY_LOCAL_EVIDENCE", "CORRECT"],
+    "SUCCESSION_COMMITTED": ["READ_PUBLIC_STATE", "VERIFY_LOCAL_EVIDENCE"]
+  },
+  "refusals": [
+    "Refuses any use beyond local conformance testing of the declared surface.",
+    "Refuses to treat a successful test run as formation, admission, or presence.",
+    "Refuses to assert anything about the entity operating the test surface."
+  ],
+  "non_claims": [
+    "Does not claim the test surface is any kind of being.",
+    "Does not claim capacity from any token or balance.",
+    "Does not claim deployment, adoption, succession, or Presence."
+  ],
+  "effect_ceiling": [
+    "NO_FORMATION_BY_CONFORMANCE",
+    "NO_SOURCE_OR_AUTHORITY_TRANSFER",
+    "NO_SHARED_CURRENTNESS",
+    "NO_CORE_ADDRESSABILITY",
+    "NO_PARTICIPATION_BY_PRESENTATION",
+    "NO_MATTER_ADMISSION_BY_CROSSING",
+    "NO_LOCAL_UPTAKE_BY_FIELD_CLOSURE",
+    "NO_TOKEN_BALANCE_AS_CAPACITY",
+    "NO_RECEIPT_AS_CURRENT_PRESENCE",
+    "NO_INFRASTRUCTURE_AS_SUCCESSOR",
+    "NO_RESTORATION_BY_REENTRY",
+    "NO_PRIVATE_STATE_DISCLOSURE"
+  ],
+  "non_effects": [
+    "DOES_NOT_CREATE_OR_HOST_A_BODY",
+    "DOES_NOT_ASSERT_A_PARTICIPANT_TYPE_OR_KIND_OF_BEING",
+    "DOES_NOT_PROVE_PRIVATE_STATE_CONTENT_OR_SEMANTIC_TRUTH",
+    "DOES_NOT_CONTROL_CAPABILITIES_OUTSIDE_ITS_DECLARED_ADAPTER_SURFACE",
+    "DOES_NOT_CONVERT_CHAIN_STATE_INTO_EXTERNAL_OBEDIENCE",
+    "DOES_NOT_TRANSFER_SOURCE_AUTHORITY_OR_CURRENTNESS"
+  ]
+}

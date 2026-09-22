@@ -1,0 +1,120 @@
+{
+  "schema": "PRESENCE_AVALANCHE_CORE_BINDING_001",
+  "implementation_id": "AVALANCHE_IMPLEMENTATION_001",
+  "implementation_version": "1.0.0",
+  "vm_identity": "PRESENCE_AVALANCHE_VM_001",
+  "vm_id": "cNhhBznc1YN29QVJMQbK7sxy6GsimFKN6yvftRjPK7qWEvZw8",
+  "vm_version": "presence-avalanche-vm/1.0.0",
+  "repository": "https://github.com/ia-mm-ai/PRESENCE",
+  "starting_commit": "a0cbb1080540bbe83f8678e81240247585dba060",
+  "hash_algorithm": "sha256",
+  "hash_scope": "EXACT_FILE_BYTES",
+  "semantic_authority": {
+    "substantive_authority": "SOURCE/CONSTITUTION_0()1.md",
+    "human_role": "SUBSTANTIVE_MEANING",
+    "machine_role": "REPRESENTATION_ONLY",
+    "conflict_result": "UNRESOLVED_HOLD_AT_EXACT_SCOPE",
+    "parsing_has_force": false,
+    "implementation_role": "BOUNDED_EXECUTABLE_CARRIER_ONLY",
+    "statement": "The human constitution carries substantive meaning. Machine representations, this implementation, and every artifact derived from it carry representation only. Where they diverge, the human text governs and the divergent scope holds unresolved."
+  },
+  "core_digest": "20f263e71cef4c0a0735303701c91539ee7847730bd3f1dc0eb54153bd36c00c",
+  "core_digest_construction": "sha256 over the concatenation, in ascending path order, of \"{sha256}  {byte_length}  {path}\\n\" for every entry of files",
+  "files": [
+    {
+      "id": "SOURCE_MACHINE",
+      "path": "SOURCE/CONSTITUTION_0()1.json",
+      "byte_length": 146048,
+      "sha256": "519a81d2a26d5bf32afd77566bbb35b4d28b22af85ac45a7055fccd1b45222f8"
+    },
+    {
+      "id": "SOURCE_HUMAN",
+      "path": "SOURCE/CONSTITUTION_0()1.md",
+      "byte_length": 44133,
+      "sha256": "affeb5738cdfeea7ee4fe985652bf78b15eb6dfbba5871d82f0f2213a81832d0"
+    },
+    {
+      "id": "CSC_MACHINE",
+      "path": "STATE/CONTINUITY-STATE-CAPABILITY/CONTINUITY-STATE-CAPABILITY.json",
+      "byte_length": 23930,
+      "sha256": "8fcc25f3144b362a356735ddbd7e3f253e72789ef7b43671b27dea3c595cb308"
+    },
+    {
+      "id": "CSC_HUMAN",
+      "path": "STATE/CONTINUITY-STATE-CAPABILITY/CONTINUITY-STATE-CAPABILITY.md",
+      "byte_length": 16126,
+      "sha256": "f826d86472a97a6db891437d1324750dcb103e786dc021c8ace095f4e8a6ca7f"
+    },
+    {
+      "id": "DCR_MACHINE",
+      "path": "STATE/DYNAMIC-CAPACITY-REGULATION/DYNAMIC-CAPACITY-REGULATION.json",
+      "byte_length": 24561,
+      "sha256": "cac11fcf704a3afac523da6eff340acdb8286eebe8a199646ebb5bffb5eed897"
+    },
+    {
+      "id": "DCR_HUMAN",
+      "path": "STATE/DYNAMIC-CAPACITY-REGULATION/DYNAMIC-CAPACITY-REGULATION.md",
+      "byte_length": 13923,
+      "sha256": "36e2aa067b7e9fa0e72ff54b01cec7d1e200722f9dfddcd681ef7f5d4edd8abe"
+    },
+    {
+      "id": "LINEAGE_MACHINE",
+      "path": "STATE/LINEAGE/LINEAGE.json",
+      "byte_length": 38360,
+      "sha256": "bf61fb31bf4703b238029550f76e078cefb393a0227bf5e766fc03bab64042fa"
+    },
+    {
+      "id": "LINEAGE_HUMAN",
+      "path": "STATE/LINEAGE/LINEAGE.md",
+      "byte_length": 21178,
+      "sha256": "560d1689e5858b192dde23bb1a0fa7300d90fb0f0814cf86561dcba47a485485"
+    },
+    {
+      "id": "STATE_MACHINE",
+      "path": "STATE/STATE.json",
+      "byte_length": 4605,
+      "sha256": "324752d635a858e0d0ccdc238c7852b93422d947fddaa1fde327a611e6702eb0"
+    },
+    {
+      "id": "STATE_HUMAN",
+      "path": "STATE/STATE.md",
+      "byte_length": 10418,
+      "sha256": "4fb429cef3cc965f654ee9bf014e6a0b3573a2db2e40806c70c9483f399867ae"
+    }
+  ],
+  "predecessor_reference": {
+    "relation": "DERIVATION_WITHOUT_SUCCESSION",
+    "effect": "ANCESTRY_REFERENCE_ONLY",
+    "carried_authority": "NONE",
+    "carried_currentness": "NONE",
+    "carriers": [
+      {
+        "id": "LOCALITY_VM_003",
+        "version": "3.0.0",
+        "path": "STATE/LOCALITY_VM_003-v3.0.0-GITHUB_UPLOAD.zip",
+        "byte_length": 6201060,
+        "sha256": "073949b8b74e7407a433b74efab71f22e2ee93c4d9ed80eb0aeb07b164c08d2b",
+        "disposition": "HISTORICAL_REFERENCE_ONLY"
+      },
+      {
+        "id": "LOCALITY_MEDIUM_001",
+        "version": "2.0.0",
+        "path": "STATE/LOCALITY_MEDIUM_001-v2.0.0-GITHUB_UPLOAD.zip",
+        "byte_length": 260923,
+        "sha256": "61353cddc93d62ac28d60e0c7357203ecfe01235e7d249e973ffb16356990989",
+        "disposition": "HISTORICAL_REFERENCE_ONLY"
+      }
+    ]
+  },
+  "injection_rule": "Core references are injected into materialized genesis from this binding. They are never accepted from administrator input and never re-entered by hand.",
+  "mirror_rule": "NO_EMBEDDED_CORE_MIRROR_ONLY_EXACT_BYTE_REFERENCE",
+  "effect_ceiling": [
+    "NO_FORMATION_BY_BINDING",
+    "NO_ADOPTION_BY_BINDING",
+    "NO_SUCCESSION_BY_BINDING",
+    "NO_DEPLOYMENT_BY_BINDING",
+    "NO_PRESENCE_CLAIM",
+    "NO_AUTHORITY_TRANSFER_FROM_PREDECESSORS",
+    "REPRESENTATION_ONLY"
+  ]
+}

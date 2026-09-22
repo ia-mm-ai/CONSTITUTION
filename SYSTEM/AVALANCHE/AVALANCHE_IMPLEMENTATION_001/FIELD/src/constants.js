@@ -1,0 +1,181 @@
+// PRESENCE_AVALANCHE_FIELD_001 identity and the frozen surface of the VM it
+// reads. The FIELD never invents identity: every value below is the exact,
+// compiled identity of the PRESENCE_AVALANCHE_VM_001 runtime and its core
+// binding. Drift in any of these values is a fail-closed condition.
+
+export const IMPLEMENTATION_ID = "AVALANCHE_IMPLEMENTATION_001";
+export const IMPLEMENTATION_VERSION = "1.0.0";
+
+export const FIELD_PROTOCOL = "PRESENCE_AVALANCHE_FIELD_001";
+export const FIELD_PACKAGE = "presence-avalanche-field";
+export const FIELD_VERSION = "1.0.0";
+
+export const FIELD_CONTRACT_SCHEMA = "PRESENCE_FIELD_CONTRACT_001";
+export const FIELD_ADAPTER_SCHEMA = "PRESENCE_FIELD_ADAPTER_001";
+export const FIELD_CONFIG_SCHEMA = "PRESENCE_FIELD_CONFIG_001";
+export const FIELD_EVENT_SCHEMA = "PRESENCE_FIELD_EVENT_001";
+export const FIELD_DISPOSITION_SCHEMA = "PRESENCE_FIELD_DISPOSITION_001";
+export const FIELD_OBSERVATION_SCHEMA = "PRESENCE_FIELD_OBSERVATION_001";
+export const FIELD_COUPLED_EVIDENCE_SCHEMA = "PRESENCE_FIELD_COUPLED_EVIDENCE_001";
+
+// The consensus runtime this FIELD is bound to. These are read, never written.
+export const VM_IDENTITY = "PRESENCE_AVALANCHE_VM_001";
+export const VM_VERSION = "presence-avalanche-vm/1.0.0";
+export const VM_ID = "cNhhBznc1YN29QVJMQbK7sxy6GsimFKN6yvftRjPK7qWEvZw8";
+export const VM_RPCCHAINVM_PROTOCOL = 46;
+export const AVALANCHEGO_TARGET = "v1.15.0";
+export const AVALANCHEGO_PROFILE = "v1.15.0+PRESENCE_AVALANCHE_SECURITY_OVERLAY_001";
+
+export const VM_STATE_SCHEMA = "PRESENCE_AVALANCHE_RUNTIME_STATE_001";
+export const VM_TRANSITION_SCHEMA = "PRESENCE_AVALANCHE_TRANSITION_001";
+export const VM_RECEIPT_SCHEMA = "PRESENCE_AVALANCHE_RECEIPT_001";
+export const VM_BLOCK_SCHEMA = "PRESENCE_AVALANCHE_BLOCK_001";
+export const VM_GENESIS_FORMAT = "PRESENCE_AVALANCHE_RUNTIME_GENESIS";
+export const VM_FORM_ID = "PRESENCE-AVALANCHE-FORM-001";
+// The VM binds its form identity to a compiled placeholder digest until a
+// production form artifact is sealed. The FIELD mirrors the VM exactly; it must
+// not fabricate a form digest the VM does not carry.
+export const VM_FORM_SHA256 = "FORM_SHA256_PLACEHOLDER";
+
+export const VM_AUTHORITY_PUBLIC_SCHEMA = "PRESENCE_AVALANCHE_AUTHORITY_PUBLIC_001";
+export const VM_AUTHORITY_PRIVATE_SCHEMA = "PRESENCE_AVALANCHE_AUTHORITY_PRIVATE_001";
+
+// Actor identifiers are derived from the ED25519 public key by the VM. The
+// FIELD reproduces the exact derivation so it can bind a configured key to the
+// actor the VM will recognise.
+export const ACTOR_ID_PREFIX = "PRESENCE-ACTOR-";
+
+// The constitutional core this implementation is bound to. The FIELD references
+// the core only by commit + digest + binding path. It never embeds core bytes.
+export const CORE_REPOSITORY = "https://github.com/ia-mm-ai/PRESENCE";
+export const CORE_COMMIT = "a0cbb1080540bbe83f8678e81240247585dba060";
+export const CORE_DIGEST = "20f263e71cef4c0a0735303701c91539ee7847730bd3f1dc0eb54153bd36c00c";
+export const CORE_BINDING_PATH = "../CORE_BINDING.json";
+export const CORE_BINDING_SCHEMA = "PRESENCE_AVALANCHE_CORE_BINDING_001";
+
+// The full VM operation surface, with the exact single-scope effect the VM
+// records for each. Declaring the surface is protocol conformance, never
+// authority to perform every operation.
+export const VM_EFFECTS = Object.freeze({
+  BOUND: "OPENS_TEMPORARY_LOCUS_ONLY",
+  PRESENT_FORM: "ELIGIBILITY_TO_GATE_ONLY",
+  GATE_DISPOSITION: "SETS_GATE_POSTURE_ONLY",
+  ENTER: "ENTERS_CURRENT_LOCUS_ONLY",
+  CHECKPOINT_DEPARTURE: "CHECKPOINTS_PARTICIPANT_STATE_FOR_DEPARTURE_ONLY",
+  REENTER: "RENEWS_ENTRY_WITH_CARRIED_STATE_SUCCESSION_ONLY",
+  OBSERVE_CROSSING: "RECORDS_CROSSING_ONLY",
+  MATTER_DISPOSITION: "SETS_ACTOR_LOCAL_MATTER_POSTURE_ONLY",
+  RECORD_EMERGENCE: "RECORDS_FIELD_LOCAL_EMERGENCE_ONLY",
+  CORRECT: "APPENDS_CORRECTION_ONLY",
+  EXIT: "EXITS_CURRENT_LOCUS_ONLY",
+  CLOSE: "CLOSES_LOCUS_AND_ADDRESSES_RESIDUE_ONLY",
+  INCORPORATE_ADDRESSED_RESIDUE: "INCORPORATES_ADDRESSED_RESIDUE_LOCALLY_ONLY",
+  DECLARE_CAPACITY: "SETS_SIGNED_LOCAL_CAPACITY_ACCOUNT_ONLY",
+  PULSE: "RECORDS_SIGNED_LOCAL_CURRENTNESS_ONLY",
+  RECLAIM_ADMISSION_OFFER: "EXPIRES_UNENTERED_ADMISSION_OFFER_ONLY",
+  REGISTER_CONTINUITY_AUTHORITY: "REGISTERS_BOUNDED_CONTINUITY_AUTHORITY_ONLY",
+  EXHAUST_FORMATION_AUTHORITY: "EXHAUSTS_FORMATION_AUTHORITY_WITHOUT_TRANSFER",
+  PROPOSE_SUCCESSOR: "RECORDS_SUCCESSOR_PROPOSAL_ONLY",
+  ATTEST_SUCCESSOR: "APPENDS_SUCCESSOR_ATTESTATION_ONLY",
+  ACTIVATE_SUCCESSOR: "FREEZES_PREDECESSOR_AT_SUCCESSION_BOUNDARY_ONLY"
+});
+
+// The bounded set of dispositions the FIELD may reach. Nothing else is a
+// disposition, and REFUSE is the fail-closed default.
+export const DISPOSITIONS = Object.freeze([
+  "SUPPORT",
+  "HOLD",
+  "REFUSE",
+  "END",
+  "CORRECT",
+  "RELEASE"
+]);
+export const DEFAULT_DISPOSITION = "REFUSE";
+
+// Operations that carry a participant out of current presence. When one of
+// these is supported it is dispositioned as END rather than SUPPORT.
+export const END_OPERATIONS = Object.freeze(["CHECKPOINT_DEPARTURE", "EXIT"]);
+// Operations that append a correction rather than create new presence.
+export const CORRECTION_OPERATIONS = Object.freeze(["CORRECT"]);
+// FIELD-local capabilities that never touch the VM. RELEASE_RESERVATION frees a
+// locally held reservation without claiming any accepted consequence.
+export const RELEASE_CAPABILITY = "RELEASE_RESERVATION";
+
+export const ALWAYS_LOCAL_CAPABILITIES = Object.freeze([
+  "READ_PUBLIC_STATE",
+  "VERIFY_LOCAL_EVIDENCE",
+  "PREPARE_PRESENTATION",
+  "REQUEST_PROTECTED_SIGNATURE",
+  RELEASE_CAPABILITY
+]);
+
+export const EGRESS_CAPABILITIES = Object.freeze([
+  "CORRECT",
+  "CHECKPOINT_DEPARTURE",
+  "EXIT"
+]);
+
+// Full local-adapter protocol surface the VM requires at PRESENT_FORM.
+export const VM_REQUIRED_ADAPTER_CAPABILITIES = Object.freeze([
+  "OBSERVE_CROSSING",
+  "PRESENT_FORM",
+  "GATE_DISPOSITION",
+  "ENTER",
+  "CHECKPOINT_DEPARTURE",
+  "REENTER",
+  "MATTER_DISPOSITION",
+  "CORRECT",
+  "EXIT",
+  "CLOSE",
+  "INCORPORATE_ADDRESSED_RESIDUE",
+  "DECLARE_CAPACITY",
+  "PULSE",
+  "RECLAIM_ADMISSION_OFFER",
+  "REGISTER_CONTINUITY_AUTHORITY",
+  "EXHAUST_FORMATION_AUTHORITY",
+  "PROPOSE_SUCCESSOR",
+  "ATTEST_SUCCESSOR",
+  "ACTIVATE_SUCCESSOR"
+]);
+
+export const PHASES = Object.freeze([
+  "NO_ACTIVE_LOCUS",
+  "UNPRESENTED",
+  "PRESENTED",
+  "ADMISSION_OFFERED",
+  "PRESENT",
+  "DEPARTURE_CHECKPOINTED",
+  "ENDED",
+  "REENTRY_AVAILABLE",
+  "HOLD_CAPACITY_DEFICIT",
+  "SUCCESSION_COMMITTED"
+]);
+
+// Ceilings stamped on every emitted FIELD record.
+export const ATTRIBUTION_CEILING = "ADAPTER_SURFACE_OBSERVATION_ONLY";
+export const EVIDENCE_CEILING = "LOCAL_SIGNED_OBSERVATION_NOT_EXTERNAL_TRUTH";
+export const SURFACE_ATTRIBUTION = "SURFACE_ONLY_NOT_PARTICIPANT_TYPE";
+
+export const REQUIRED_EFFECT_CEILING = Object.freeze([
+  "NO_FORMATION_BY_CONFORMANCE",
+  "NO_SOURCE_OR_AUTHORITY_TRANSFER",
+  "NO_SHARED_CURRENTNESS",
+  "NO_CORE_ADDRESSABILITY",
+  "NO_PARTICIPATION_BY_PRESENTATION",
+  "NO_MATTER_ADMISSION_BY_CROSSING",
+  "NO_LOCAL_UPTAKE_BY_FIELD_CLOSURE",
+  "NO_TOKEN_BALANCE_AS_CAPACITY",
+  "NO_RECEIPT_AS_CURRENT_PRESENCE",
+  "NO_INFRASTRUCTURE_AS_SUCCESSOR",
+  "NO_RESTORATION_BY_REENTRY",
+  "NO_PRIVATE_STATE_DISCLOSURE"
+]);
+
+export const NON_EFFECTS = Object.freeze([
+  "DOES_NOT_CREATE_OR_HOST_A_BODY",
+  "DOES_NOT_ASSERT_A_PARTICIPANT_TYPE_OR_KIND_OF_BEING",
+  "DOES_NOT_PROVE_PRIVATE_STATE_CONTENT_OR_SEMANTIC_TRUTH",
+  "DOES_NOT_CONTROL_CAPABILITIES_OUTSIDE_ITS_DECLARED_ADAPTER_SURFACE",
+  "DOES_NOT_CONVERT_CHAIN_STATE_INTO_EXTERNAL_OBEDIENCE",
+  "DOES_NOT_TRANSFER_SOURCE_AUTHORITY_OR_CURRENTNESS"
+]);

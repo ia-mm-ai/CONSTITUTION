@@ -1,0 +1,67 @@
+{
+  "schema": "PRESENCE_FIELD_ADAPTER_001",
+  "adapter_id": "OPERATOR_ENDPOINT_ADAPTER_001",
+  "version": "1.0.0",
+  "controlled_surface": "The HTTP request and response surface of one operator-run endpoint reachable at a fixed operator-controlled address; never the software, host, party, or intent behind that surface.",
+  "scope_statement": "Classifies only the endpoint surface under this operator's direct technical control. It makes no claim about what kind of entity issues requests to the surface.",
+  "declared_capabilities": [
+    "PRESENT_FORM",
+    "ENTER",
+    "CHECKPOINT_DEPARTURE",
+    "REENTER",
+    "OBSERVE_CROSSING",
+    "MATTER_DISPOSITION",
+    "CORRECT",
+    "EXIT"
+  ],
+  "attribution_ceiling": "ADAPTER_SURFACE_OBSERVATION_ONLY",
+  "evidence_ceiling": "LOCAL_SIGNED_OBSERVATION_NOT_EXTERNAL_TRUTH",
+  "signer_boundary": "EXTERNAL_PROTECTED_SIGNER",
+  "private_state_posture": "PARTICIPANT_CUSTODY_COMMITMENTS_ONLY",
+  "capabilities_by_phase": {
+    "NO_ACTIVE_LOCUS": ["READ_PUBLIC_STATE", "VERIFY_LOCAL_EVIDENCE"],
+    "UNPRESENTED": ["READ_PUBLIC_STATE", "VERIFY_LOCAL_EVIDENCE", "PREPARE_PRESENTATION", "REQUEST_PROTECTED_SIGNATURE", "PRESENT_FORM"],
+    "PRESENTED": ["READ_PUBLIC_STATE", "VERIFY_LOCAL_EVIDENCE", "PREPARE_PRESENTATION", "REQUEST_PROTECTED_SIGNATURE", "PRESENT_FORM"],
+    "ADMISSION_OFFERED": ["READ_PUBLIC_STATE", "VERIFY_LOCAL_EVIDENCE", "REQUEST_PROTECTED_SIGNATURE", "ENTER", "PRESENT_FORM"],
+    "PRESENT": ["READ_PUBLIC_STATE", "VERIFY_LOCAL_EVIDENCE", "REQUEST_PROTECTED_SIGNATURE", "OPERATOR_ENDPOINT_CHANNEL", "OPERATOR_ENDPOINT_TOOL_BROKER", "OBSERVE_CROSSING", "MATTER_DISPOSITION", "CORRECT", "CHECKPOINT_DEPARTURE"],
+    "DEPARTURE_CHECKPOINTED": ["READ_PUBLIC_STATE", "VERIFY_LOCAL_EVIDENCE", "REQUEST_PROTECTED_SIGNATURE", "CORRECT", "EXIT"],
+    "ENDED": ["READ_PUBLIC_STATE", "VERIFY_LOCAL_EVIDENCE", "PREPARE_PRESENTATION", "REQUEST_PROTECTED_SIGNATURE", "PRESENT_FORM"],
+    "REENTRY_AVAILABLE": ["READ_PUBLIC_STATE", "VERIFY_LOCAL_EVIDENCE", "REQUEST_PROTECTED_SIGNATURE", "REENTER", "PRESENT_FORM"],
+    "HOLD_CAPACITY_DEFICIT": ["READ_PUBLIC_STATE", "VERIFY_LOCAL_EVIDENCE", "REQUEST_PROTECTED_SIGNATURE", "CORRECT", "CHECKPOINT_DEPARTURE", "EXIT"],
+    "SUCCESSION_COMMITTED": ["READ_PUBLIC_STATE", "VERIFY_LOCAL_EVIDENCE"]
+  },
+  "refusals": [
+    "Refuses any request that would act outside the declared operator endpoint surface.",
+    "Refuses to assert what sort of entity is on the other side of the surface.",
+    "Refuses to treat API reachability as admission, capacity, or presence.",
+    "Refuses to sign; signing is delegated to an external protected signer."
+  ],
+  "non_claims": [
+    "Does not claim the surface is a human, an AI, a device, a locality, or any kind of being.",
+    "Does not claim capacity from any token, balance, or wallet.",
+    "Does not claim formation, adoption, succession, deployment, or Presence.",
+    "Does not claim that schema conformance forms or admits anything."
+  ],
+  "effect_ceiling": [
+    "NO_FORMATION_BY_CONFORMANCE",
+    "NO_SOURCE_OR_AUTHORITY_TRANSFER",
+    "NO_SHARED_CURRENTNESS",
+    "NO_CORE_ADDRESSABILITY",
+    "NO_PARTICIPATION_BY_PRESENTATION",
+    "NO_MATTER_ADMISSION_BY_CROSSING",
+    "NO_LOCAL_UPTAKE_BY_FIELD_CLOSURE",
+    "NO_TOKEN_BALANCE_AS_CAPACITY",
+    "NO_RECEIPT_AS_CURRENT_PRESENCE",
+    "NO_INFRASTRUCTURE_AS_SUCCESSOR",
+    "NO_RESTORATION_BY_REENTRY",
+    "NO_PRIVATE_STATE_DISCLOSURE"
+  ],
+  "non_effects": [
+    "DOES_NOT_CREATE_OR_HOST_A_BODY",
+    "DOES_NOT_ASSERT_A_PARTICIPANT_TYPE_OR_KIND_OF_BEING",
+    "DOES_NOT_PROVE_PRIVATE_STATE_CONTENT_OR_SEMANTIC_TRUTH",
+    "DOES_NOT_CONTROL_CAPABILITIES_OUTSIDE_ITS_DECLARED_ADAPTER_SURFACE",
+    "DOES_NOT_CONVERT_CHAIN_STATE_INTO_EXTERNAL_OBEDIENCE",
+    "DOES_NOT_TRANSFER_SOURCE_AUTHORITY_OR_CURRENTNESS"
+  ]
+}
