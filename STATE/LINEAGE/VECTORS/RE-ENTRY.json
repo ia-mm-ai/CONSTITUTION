@@ -53,6 +53,33 @@
       "forbidden_inference": "The declared present relations are individually required and remain unverified; capability does not supply Authority or the host's reciprocal relation."
     },
     {
+      "id": "lineage-reentry-matching-local-scopes-cannot-support-another-motion",
+      "schema": "urn:presence:core:lineage:re-entry:1",
+      "input": {
+        "kind": "re_entry", "id": "fixture:unrelated-motion-support", "host": "fixture:host", "entrant": "fixture:entrant",
+        "prior_relation": {"id": "fixture:old-relation", "binding_ref": "fixture:old-binding", "occurrence_ref": "fixture:old-occurrence", "locality": "fixture:entrant-locality", "scope": "fixture:old-encounter", "history_refs": ["fixture:old-encounter", "fixture:closure"]},
+        "interruption_or_exit": {"id": "fixture:closure", "type": "CLOSURE", "time": "fixture:t1", "ended_binding_ref": "fixture:old-binding", "evidence_refs": ["fixture:closure-record"]},
+        "new_occurrence": {"id": "fixture:new-occurrence", "locality": "fixture:entrant-locality", "scope": "fixture:new-motion", "time": "fixture:t2", "status": "SUPPORTED"},
+        "present_binding": {"id": "fixture:new-binding", "bearer": "fixture:entrant", "locality": "fixture:entrant-locality", "scope": "fixture:new-motion", "occurrence_ref": "fixture:new-occurrence", "basis": {"id": "fixture:entrant-act", "bearer": "fixture:entrant", "occurrence_ref": "fixture:new-occurrence", "origin": "OWN_CURRENT_ACT", "status": "SUPPORTED", "evidence_refs": ["fixture:entrant-act-record"]}},
+        "current_relation": {"id": "fixture:new-relation", "scope": "fixture:new-motion", "posture": "LOCAL", "local_bases": {
+          "host": {"id": "UNKNOWN", "bearer": "fixture:host", "occurrence_ref": "fixture:new-occurrence", "origin": "UNKNOWN", "status": "UNKNOWN", "evidence_refs": []},
+          "entrant": {"id": "fixture:entrant-relation", "bearer": "fixture:entrant", "occurrence_ref": "fixture:new-occurrence", "origin": "OWN_CURRENT_ACT", "status": "SUPPORTED", "evidence_refs": ["fixture:entrant-relation-record"]}
+        }},
+        "renewal_status": "ESTABLISHED",
+        "motion": {"posture": "ESTABLISHED", "scope": "fixture:new-motion", "time": "fixture:t2", "relations": [
+          {"dimension": "AGENCY", "required": true, "scope": "fixture:unrelated-motion", "basis_scope": "fixture:unrelated-motion", "temporal_posture": "CURRENT", "status": "SUPPORTED", "basis_ref": "fixture:agency-basis", "evidence_refs": ["fixture:agency-evidence"]},
+          {"dimension": "AUTONOMY", "required": true, "scope": "fixture:new-motion", "basis_scope": "fixture:new-motion", "temporal_posture": "CURRENT", "status": "SUPPORTED", "basis_ref": "fixture:autonomy-basis", "evidence_refs": ["fixture:autonomy-evidence"]},
+          {"dimension": "CAPABILITY", "required": true, "scope": "fixture:new-motion", "basis_scope": "fixture:new-motion", "temporal_posture": "CURRENT", "status": "SUPPORTED", "basis_ref": "fixture:capability-basis", "evidence_refs": ["fixture:capability-evidence"]},
+          {"dimension": "AUTHORITY", "required": true, "scope": "fixture:new-motion", "basis_scope": "fixture:new-motion", "temporal_posture": "CURRENT", "status": "SUPPORTED", "basis_ref": "fixture:authority-basis", "evidence_refs": ["fixture:authority-evidence"]}
+        ]},
+        "retained_history": ["fixture:old-encounter", "fixture:closure"],
+        "claimed_effects": ["NEW_CURRENT_BINDING", "NEW_LOCAL_RELATION", "RESUMED_MOTION"], "uncertainty": []
+      },
+      "expected": {"schema_valid": true, "semantic_result": "INCONSISTENT", "failure_codes": ["REENTRY_MOTION_RELATIONS_MISSING"]},
+      "source": {"refs": ["section.11.10", "section.11.11", "section.16.5"]},
+      "forbidden_inference": "A required relation whose scope and basis_scope agree with each other but name another motion cannot support the enclosing claimed motion."
+    },
+    {
       "id": "lineage-reentry-archived-binding-cannot-act",
       "schema": "urn:presence:core:lineage:re-entry:1",
       "input": {

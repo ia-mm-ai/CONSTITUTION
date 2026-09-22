@@ -103,11 +103,11 @@
     },
     {
       "id": "DCR-A01", "classification": "CONSTITUTIONAL_RULE",
-      "source": {"refs": ["section.12.1", "section.12.2", "section.12.6"]},
+      "source": {"refs": ["section.12.1", "section.12.2", "section.12.5", "section.12.6"]},
       "when": {"or": [{"and": [{"===": [{"var": "kind"}, "motion"]}, {"===": [{"var": "dimensions.authority.posture"}, "YES"]}]}, {"and": [{"===": [{"var": "kind"}, "disposition"]}, {"===": [{"var": "authority_required"}, true]}, {"!": {"in": [{"var": "disposition"}, ["HOLD", "REFUSE"]]}}]}]},
-      "assert": {"and": [{"!==": [{"var": "authority"}, null]}, {"===": [{"var": "authority.present_status"}, "SUPPORTED"]}, {"===": [{"var": "authority.target"}, {"var": "subject.target"}]}, {"===": [{"var": "authority.scope"}, {"var": "subject.scope"}]}, {"===": [{"var": "authority.conditions"}, {"var": "subject.conditions"}]}, {"===": [{"var": "authority.duration.frame"}, {"var": "time.frame"}]}, {"<=": [{"var": "authority.duration.from"}, {"var": "time.at"}]}, {">=": [{"var": "authority.duration.until"}, {"var": "time.at"}]}]},
+      "assert": {"and": [{"!==": [{"var": "authority"}, null]}, {"===": [{"var": "authority.present_status"}, "SUPPORTED"]}, {"or": [{"!==": [{"var": "kind"}, "motion"]}, {"and": [{"===": [{"var": "authority.bearer"}, {"var": "subject.bearer"}]}, {"===": [{"var": "authority.function"}, {"var": "subject.act"}]}]}]}, {"===": [{"var": "authority.target"}, {"var": "subject.target"}]}, {"===": [{"var": "authority.scope"}, {"var": "subject.scope"}]}, {"===": [{"var": "authority.conditions"}, {"var": "subject.conditions"}]}, {"===": [{"var": "authority.duration.frame"}, {"var": "time.frame"}]}, {"<=": [{"var": "authority.duration.from"}, {"var": "time.at"}]}, {">=": [{"var": "authority.duration.until"}, {"var": "time.at"}]}]},
       "failure_code": "EXACT_AUTHORITY_NOT_ESTABLISHED",
-      "description": "Claimed Authority requires independently recoverable source, basis, bearer, function, target, scope, duration, conditions, delegation and present posture. A HOLD or refusal with missing Authority prevents expansion, not an authoritative settlement."
+      "description": "Claimed Authority requires independently recoverable source, basis, bearer, function, target, scope, duration, conditions, delegation and present posture. In the motion direct-Authority encoding profile, the acting-side account binds bearer to subject.bearer and function to subject.act. A different originating bearer or function needs explicitly supported delegation or representation at the acting side; its Authority cannot simply be borrowed. Disposition Authority concerns the governing relation, not necessarily the regulated motion's bearer or act. A HOLD or refusal with missing Authority prevents expansion, not an authoritative settlement."
     },
     {
       "id": "DCR-D01", "classification": "CONSTITUTIONAL_RULE",

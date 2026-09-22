@@ -35,6 +35,7 @@
           "additionalProperties": false,
           "properties": {
             "var": {"type": "string", "pattern": "^(?:[^.]+(?:\\.[^.]+)*)?$"},
+            "root": {"type": "string", "pattern": "^(?:[^.]+(?:\\.[^.]+)*)?$"},
             "missing": {"type": "array", "uniqueItems": true, "items": {"type": "string"}},
             "===": {"$ref": "urn:presence:core:lineage:rule:1#/$defs/pair"},
             "!==": {"$ref": "urn:presence:core:lineage:rule:1#/$defs/pair"},

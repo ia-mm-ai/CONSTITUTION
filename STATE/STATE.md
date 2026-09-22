@@ -84,7 +84,7 @@ The following are **CORE_ENCODING_RULES**, limited to interoperable notation.
 The module models contain independent rules, not a state-changing program.
 The [rule schema](LINEAGE/SCHEMAS/RULE.schema.json) defines a small closed
 expression language. An expression is a JSON literal, an array of expressions,
-or a single-key operation. Objects as data are obtained through `var`, not
+or a single-key operation. Objects as data are obtained through `var` or `root`, not
 executed as arbitrary code. There are no network, clock, filesystem, random,
 evaluation, or external-execution operators.
 
@@ -93,6 +93,11 @@ evaluation, or external-execution operators.
 - `var` takes a dotted property path; `""` denotes the current evaluation
   object. Missing paths produce a distinct internal missing value, not `null`.
   `missing` takes an array of paths and returns the missing paths in order.
+- `root` takes the same path notation but always reads the immutable original
+  input, including inside nested quantifiers. This explicit encoding operation
+  binds a quantified item's scope to its enclosing motion; an item's own
+  internally consistent scope is not sufficient. It supplies no ambient
+  runtime state or external evidence.
 - `===` and `!==` compare two evaluated values by deep JSON equality: no
   coercion of strings, booleans, numbers, arrays, or objects; object key order
   is immaterial, array order is material. A missing operand never establishes

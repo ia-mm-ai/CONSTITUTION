@@ -105,37 +105,39 @@ def array(value):
     return value
 
 
-def evaluate(expression, document):
+def evaluate(expression, document, root=MISSING):
+    if root is MISSING:
+        root = document
     if isinstance(expression, list):
-        return [evaluate(item, document) for item in expression]
+        return [evaluate(item, document, root) for item in expression]
     if not isinstance(expression, dict):
         return expression
     if len(expression) != 1:
         raise ValueError("An operation must have exactly one key")
     operator, args = next(iter(expression.items()))
-    if operator == "var":
-        return lookup(document, args)
+    if operator in ("var", "root"):
+        return lookup(root if operator == "root" else document, args)
     if operator == "missing":
         return [path for path in array(args) if lookup(document, path) is MISSING]
     if operator == "!":
-        return not truthy(evaluate(args, document))
+        return not truthy(evaluate(args, document, root))
     if operator == "count":
-        return len(array(evaluate(args, document)))
+        return len(array(evaluate(args, document, root)))
     if operator == "and":
-        return all(truthy(evaluate(arg, document)) for arg in array(args))
+        return all(truthy(evaluate(arg, document, root)) for arg in array(args))
     if operator == "or":
-        return any(truthy(evaluate(arg, document)) for arg in array(args))
+        return any(truthy(evaluate(arg, document, root)) for arg in array(args))
     if operator not in ("===", "!==", "in", ">", ">=", "<", "<=", "all", "some", "none"):
         raise ValueError(f"Unknown operation: {operator}")
     if len(array(args)) != 2:
         raise ValueError(f"{operator} needs two operands")
-    left = evaluate(args[0], document)
+    left = evaluate(args[0], document, root)
     if operator in ("all", "some", "none"):
-        values = (truthy(evaluate(args[1], item)) for item in array(left))
+        values = (truthy(evaluate(args[1], item, root)) for item in array(left))
         return all(values) if operator == "all" else (
             any(values) if operator == "some" else not any(values)
         )
-    right = evaluate(args[1], document)
+    right = evaluate(args[1], document, root)
     if operator == "===":
         return equal(left, right)
     if operator == "!==":

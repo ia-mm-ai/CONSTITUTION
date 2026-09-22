@@ -55,6 +55,21 @@ class ExpressionTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             core.evaluate({"in": ["a", "abc"]}, {})
 
+    def test_quantified_scope_is_bound_to_original_input(self):
+        expression = {"all": [
+            {"var": "relations"},
+            {"===": [{"var": "scope"}, {"root": "scope"}]},
+        ]}
+        self.assertTrue(core.evaluate(expression, {"scope": "motion", "relations": [{"scope": "motion"}]}))
+        self.assertFalse(core.evaluate(expression, {"scope": "motion", "relations": [{"scope": "other"}]}))
+        nested = {"all": [
+            {"var": "groups"},
+            {"all": [{"var": ""}, {"===": [{"var": ""}, {"root": "scope"}]}]},
+        ]}
+        self.assertTrue(core.evaluate(nested, {"scope": "motion", "groups": [["motion"]]}))
+        self.assertFalse(core.evaluate(nested, {"scope": "motion", "groups": [["other"]]}))
+        self.assertIs(core.evaluate({"root": "absent"}, {}), core.MISSING)
+
     def test_ordering(self):
         for operation in (">", ">=", "<", "<="):
             self.assertIsInstance(core.evaluate({operation: [2, 3]}, {}), bool)

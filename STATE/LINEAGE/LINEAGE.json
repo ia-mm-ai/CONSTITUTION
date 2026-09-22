@@ -452,6 +452,7 @@
           {"and": [
             {"===": [{"var": "status"}, "SUPPORTED"]},
             {"===": [{"var": "scope"}, {"var": "basis_scope"}]},
+            {"===": [{"var": "scope"}, {"root": "motion.scope"}]},
             {"===": [{"var": "temporal_posture"}, "CURRENT"]},
             {">": [{"count": {"var": "evidence_refs"}}, 0]},
             {"!": {"in": [{"var": "basis_ref"}, ["UNKNOWN", "UNRESOLVED", "UNSUPPORTED", "REFUSED"]]}}
@@ -459,7 +460,7 @@
         ]}]}
       ]},
       "failure_code": "REENTRY_MOTION_RELATIONS_MISSING",
-      "description": "Resumed motion independently needs current Agency, autonomy, capability and every further required relation, not historical success."
+      "description": "Resumed motion independently needs current Agency, autonomy, capability and every further required relation. Each required relation's scope must match both its own basis_scope and the enclosing motion.scope; support for another motion or historical success cannot substitute."
     },
     {
       "id": "LINEAGE_REENTRY_EFFECTS", "classification": "CONSTITUTIONAL_RULE",

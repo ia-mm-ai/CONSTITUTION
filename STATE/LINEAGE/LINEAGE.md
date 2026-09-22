@@ -53,12 +53,14 @@ An evaluator SHALL:
    `CONSISTENT_AT_DECLARED_SCOPE` with an empty list. Both carry
    `schema_valid: true`.
 
-Expressions use only `var`, strict deep `===` / `!==`, `and`, `or`, `!`, array
+Expressions use only `var`, `root`, strict deep `===` / `!==`, `and`, `or`, `!`, array
 membership `in`, ordering `> >= < <=`, `all`, `some`, `none`, `missing`, and
 `count`. A variable's dotted path starts at input; inside a quantifier it starts
-at that item, and `var: ""` means that item. There is no implicit access to the
-outer record from a quantifier, code execution, reference traversal, network
-fetch, or custom operation. Objects in expressions have exactly one operator.
+at that item, and `var: ""` means that item. The **CORE_ENCODING_RULE** operator
+`root` explicitly reads a dotted path from the immutable original input, even
+inside nested quantifiers; it does not change the item-local meaning of `var`.
+There is no implicit outer-record access, code execution, reference traversal,
+network fetch, or custom operation. Objects in expressions have exactly one operator.
 Equality never converts strings, numbers, and booleans. Arrays compare in order.
 `all` and `none` on an empty array are true; `some` is false. Rules explicitly
 check nonemptiness where affirmative support requires evidence.
@@ -248,8 +250,11 @@ host's current basis. `ENCOUNTER_ONLY` asserts neither (§§ 9.1–9.2).
 Resumed consequential motion, if claimed, separately accounts for present
 Agency, autonomy, capability, and every other relation necessary to the exact
 act, including Authority wherever the effect requires it. Each required
-dimension needs current scope-matching support; one positive dimension supplies
-none of the others (§§ 11.10–11.12, 16.5). The declared list does not establish
+dimension's `scope` MUST match both its own `basis_scope` and the enclosing
+`motion.scope`, which the predicate reads through `root`. Matching each other
+while naming an unrelated motion is insufficient. Each required dimension
+needs current support; one positive dimension supplies none of the others
+(§§ 11.10–11.12, 16.5). The declared list does not establish
 that all actually necessary relations were identified. Re-entry alone confers
 no inherited consent, Authority, Body resumption, or succession.
 

@@ -72,6 +72,20 @@ status must support that effect. An exact non-null Authority account is not
 proof of its truth. A record cannot manufacture Authority by supplying field
 values (§§ 12.1–12.7).
 
+The motion schema uses a **direct-Authority profile** as a CORE encoding choice:
+when its Authority dimension is YES, `authority.bearer` equals `subject.bearer`
+and `authority.function` equals `subject.act`. These fields describe the
+acting-side Authority for the exact motion, not merely a source holder's
+Authority. A different originating bearer or function requires explicitly
+supported delegation or representation at the acting side, recorded through
+the source, basis, delegation account and evidence. Naming another holder or
+claiming delegation in text cannot lend its Authority to this motion. This
+profile does not prohibit valid constitutional delegation or representation;
+it requires their resulting acting-side basis to be explicit, without
+transferring Source, identity or any unsupported effect (§§ 12.1, 12.4–12.5).
+The checker tests these declarations and bindings, not the truth or validity
+of a delegation chain.
+
 ## 4. Attributable disposition and minimal effect
 
 Every disposition names its accountable attribution, exact target and effect,
@@ -79,6 +93,13 @@ applicable-law and supported-State assessments, Authority where required,
 constraint, uncertainty, and failures. Effect must remain at the smallest
 truthful supported scope; where a narrower target is supportable, create that
 exact account instead of pretending a broad account has been narrowed.
+
+A disposition's `subject.bearer` and `subject.act` identify the regulated
+motion. Its Authority bearer and function describe the governing relation;
+they need not equal that mover and act. The motion profile's two equalities
+therefore do not apply to dispositions. The governing basis must still support
+the attributable disposition at its exact target, scope, conditions and time;
+schema validity or a matching target alone does not establish that relation.
 
 | Encoding | Meaning at the declared scope |
 | --- | --- |
