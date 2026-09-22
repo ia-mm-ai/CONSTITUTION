@@ -341,6 +341,13 @@ class Core:
                     raise ValueError(f"Extraction map has unknown target rule: {path}")
         model = load(self.root / MODULES["LINEAGE"])
         self.validate(BASE + "module:1", model)
+        for path in sorted((self.root / "STATE/LINEAGE/OCCURRENCES").glob("*.json")):
+            occurrence = load(path)
+            self.validate(BASE + "occurrence:1", occurrence)
+            result = semantic_result(model["rules"], occurrence)
+            if result["failure_codes"]:
+                raise ValueError(f"{path.name}: {result['failure_codes']}")
+            print(f"{path.name}: CONSISTENT_AT_DECLARED_SCOPE (not authenticated occurrence)")
         for path in sorted((self.root / "STATE/LINEAGE/IMPLEMENTATIONS").glob("*.json")):
             claim = load(path)
             self.validate(BASE + "implementation-claim:1", claim)
@@ -348,7 +355,7 @@ class Core:
             if result["failure_codes"]:
                 raise ValueError(f"{path.name}: {result['failure_codes']}")
             print(f"{path.name}: CONSISTENT_AT_DECLARED_SCOPE (not present capability)")
-        print("Origin, derivation and implementation records passed (claims remain unverified)")
+        print("Origin, derivation, occurrence and implementation records passed (claims remain unverified)")
 
 
 def main():

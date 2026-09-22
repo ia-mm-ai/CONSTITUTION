@@ -12,7 +12,7 @@
   "operations": {
     "verify": {
       "handler": "verify.py",
-      "scope": "Exact Source and LINEAGE bytes, portable model and implementation relations, exact historical ZIP bindings, schema definitions, SYSTEM formal rule/vector evaluation, or exported byte bindings.",
+      "scope": "Exact Source and LINEAGE bytes, portable model and implementation relations, exact historical ZIP bindings, schema definitions, SYSTEM formal rule/vector and occurrence evaluation, or exported byte bindings.",
       "conformance_checker": "conformance.py",
       "execution": "Only the selected local commit's SYSTEM evaluator; no canonical STATE verifier or archive execution. The report binds the evaluator bytes.",
       "missing_checker": "INCOMPLETE, never PASSED; legacy revisions may request an explicit preview"
@@ -20,7 +20,7 @@
     "export": {
       "handler": "export.py",
       "input": "One full locally available Git commit ID and a fresh destination.",
-      "output": ["index.html", "index.json", "manifest.json", "selected core material", "historical implementation account", "exact historical ZIP carriers"],
+      "output": ["index.html", "index.json", "manifest.json", "selected core material", "historical implementation account", "bounded predecessor Site account", "exact historical ZIP carriers"],
       "incomplete_preview": "Only by explicit --allow-incomplete; failure of an available checker still blocks export."
     },
     "recover": {
@@ -36,7 +36,15 @@
     "index": "Generated inventory and bounded operation contracts, not a hand-maintained second core.",
     "manifest": "Exact SHA-256 and byte_length for every exported file except the manifest itself.",
     "carriers": "application/zip; exact outer bytes checked against derivation and implementation bindings, ZIP recognition only; no extraction, nested-member reinspection, execution or authenticity claim.",
-    "trust": "A manifest digest needs an independent trusted channel; internal consistency is not authentication."
+    "trust": "A manifest digest needs an independent trusted channel; internal consistency is not authentication.",
+    "separate_hosting": {
+      "workflow": "../.github/workflows/publish-edition.yml",
+      "trigger": "Manual dispatch of a trusted commit with an independently supplied manifest SHA-256.",
+      "payload": "Only the integrity-verified SYSTEM export; not raw SURFACE.",
+      "prerequisites": ["Actions-based GitHub Pages", "github-pages environment approval as configured", "No existing Pages custom domain"],
+      "scope": "Static reading only; no API handlers, predecessor upload behavior or recovered service.",
+      "custom_domain": "Deferred until domain control and predecessor preservation are established; this workflow refuses custom-domain deployment."
+    }
   },
   "unestablished": [
     "A deployed public location",

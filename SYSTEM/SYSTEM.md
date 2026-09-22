@@ -16,6 +16,8 @@ not establish adoption, identity, Agency, Authority, or present capability.
 The repository contains the Source pair, STATE and its CSC/DCR/LINEAGE models,
 23 schemas, 14 vector suites, the ORIGIN locator, two derivation records, and
 the paired human/machine VM003–Medium001 historical implementation account.
+The separate predecessor Site occurrence account retains a user-attributed
+report, not a recovered service or a preserved screenshot.
 Surface selects these files and both unchanged ZIP carriers. Invalid vectors
 remain normative examples rather than reports of events; archive contents
 remain historical evidence, not canonical or executable publication machinery.
@@ -24,7 +26,9 @@ remain historical evidence, not canonical or executable publication machinery.
 `STATE/STATE.md`: offline Draft 2020-12 validation with format checking, exact
 decimal comparisons, and ordered semantic rule evaluation against each vector's
 expected triple. It also validates the models, rules, origin, derivation maps,
-and implementation claims. Its expression engine and regression cases derive
+occurrence records, and implementation claims. Occurrences in
+`STATE/LINEAGE/OCCURRENCES` receive both schema and LINEAGE semantic checks;
+passing does not authenticate their evidence. Its expression engine and regression cases derive
 from the former evaluator, now maintained solely in SYSTEM; no program in
 canonical STATE is required or executed. Passing means representation
 consistency at the declared scope, not present capability or constitutional effect.
@@ -115,3 +119,49 @@ commit and compare the resulting manifest digest using the same tool version.
 The ORIGIN locator's `inspected_commit` describes its historical input snapshot;
 it is never substituted for the commit selected for a new edition. Provenance
 remains in [STATE/LINEAGE](../STATE/LINEAGE/LINEAGE.md), not a SYSTEM ledger.
+
+## Separate publication and deferred domain cutover
+
+[Publish verified edition](../.github/workflows/publish-edition.yml) is a manual
+GitHub Pages deployment, not a claim that deployment has occurred. A maintainer
+must first merge the workflow onto the default branch, enable **Settings → Pages
+→ Source: GitHub Actions**, and configure the `github-pages` environment's
+approval/branch restrictions. Leave the custom-domain setting empty. No
+Cloudflare configuration, DNS record, `CNAME`, upload handler, or live-site
+replacement is created by this change.
+
+1. Choose a trusted commit containing this workflow, its SYSTEM evaluator, and
+   the intended selection. Export that exact commit locally with the existing
+   `export.py` command above, and retain its printed manifest SHA-256 through
+   an independently trusted channel. A digest of an older edition is not reusable.
+2. Dispatch **Publish verified edition** on the branch/tag pointing to that
+   commit, supplying the digest as `manifest_sha256`. The workflow checks out
+   its exact `github.sha`, exports into a fresh runner directory, and verifies
+   against the supplied digest before uploading. A moved branch or mismatched
+   digest fails closed. No incomplete-preview option is used.
+3. The deployment job requires Actions-based Pages with no custom domain and
+   publishes only the export directory. Use the successful deployment's
+   `page_url` as the actual separate public address; do not infer deployment from
+   workflow presence or an artifact upload. The run summary retains the commit
+   and accepted digest. Pages is static reading only: declared `/api/*`
+   operations are not deployed, and no predecessor arrival service is recreated.
+4. After deployment, download the public manifest and selected files to a fresh
+   directory and run `verify.py --export` with the independently retained digest.
+   Confirm the root entrance and relative resource links under the Pages
+   project path before recording a successful public encounter.
+
+The submitter's screenshot is not a source export. Its binary attachment could
+not be retrieved in this task, so crop preservation is explicitly pending in the
+[predecessor record](../STATE/LINEAGE/OCCURRENCES/PRESENCE-LIMITED.json). When the
+image is available, retain only a privacy-reviewed site viewport, excluding
+browser/desktop chrome and other windows. Bind the cropped artifact's exact
+bytes, identify it as a user-supplied derivative crop, and retain unknown capture
+time and hosting. Do not turn screenshot text into functioning service claims.
+
+Custom-domain cutover is a later, separate reviewed change: establish control
+of `presence.limited`, complete predecessor preservation, retain the verified
+separate deployment as a rollback reference, then configure domain verification,
+DNS and HTTPS with the actual provider. This workflow intentionally refuses
+custom-domain deployment until that policy is explicitly revised. Only observed
+deployment results can update the public-location status in a new edition;
+publication alone establishes no succession or constitutional coupling.

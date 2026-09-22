@@ -1,0 +1,48 @@
+{
+  "kind": "occurrence",
+  "id": "urn:presence:lineage:occurrence-record:presence-limited-predecessor:1",
+  "locality": "PRESENCE repository; holding an attributed predecessor account, not the predecessor service",
+  "attribution": {
+    "bearer": "Site submitter; identity and domain control unverified",
+    "basis": "The submitter describes a Site created through ChatGPT before this repository and supplies a screenshot as visual evidence. Creation method and hosting are not independently established.",
+    "evidence_refs": [
+      "urn:presence:evidence:presence-limited-submitter-account:1"
+    ]
+  },
+  "scope": "Attributed account of the predecessor Site labelled presence.limited; visual appearance only, not verified public delivery or functioning services.",
+  "occurrence": {
+    "id": "urn:presence:occurrence:presence-limited-predecessor-exposure:1",
+    "type": "EXPOSURE",
+    "target": "https://presence.limited",
+    "time": "Reported by the submitter to predate this repository; exact event time UNKNOWN",
+    "status": "UNKNOWN"
+  },
+  "carrier": {
+    "id": "urn:presence:carrier:presence-limited-predecessor-site:1",
+    "type": "SOFTWARE"
+  },
+  "record": {
+    "id": "urn:presence:record:presence-limited-predecessor-account:1",
+    "holder": "PRESENCE repository, STATE/LINEAGE/OCCURRENCES/PRESENCE-LIMITED.json"
+  },
+  "evidence": {
+    "id": "urn:presence:evidence:presence-limited-submitter-account:1",
+    "object": "urn:presence:occurrence:presence-limited-predecessor-exposure:1",
+    "occurrence_type": "EXPOSURE",
+    "method": "SELF_REPORT",
+    "scope": "Attributed account of the predecessor Site labelled presence.limited; visual appearance only, not verified public delivery or functioning services.",
+    "time": "Submitted during this repository task; screenshot capture time UNKNOWN",
+    "basis": "User-supplied visual evidence depicts PRESENCE.LIMITED, OPEN APERTURE and ARRIVAL / HOLD. This record retains the attributed account only. Screenshot bytes could not be retrieved; no site-only crop, byte binding, source export or recoverable service is preserved here. Full desktop imagery and its external attachment links are deliberately not republished.",
+    "result": "SUPPORTED",
+    "effect_ceiling": "ATTRIBUTABLE_CLAIM_ONLY"
+  },
+  "claimed_effects": [],
+  "uncertainty": [
+    "Screenshot capture time and original image bytes are unverified; privacy-safe crop preservation remains pending.",
+    "Hosting provider, domain registration and control, and public reachability are unverified.",
+    "The reported ChatGPT creation context does not establish hosting or a recoverable application.",
+    "Gating, upload handling, retention of submissions and all backend behavior are unverified.",
+    "No recovered functionality, established succession, Source transfer, Authority, identity continuity or constitutional coupling is claimed.",
+    "Publication of a repository edition is a separate operation; presence.limited has not been connected by this record."
+  ]
+}

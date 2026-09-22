@@ -45,6 +45,7 @@ class PublicationTests(unittest.TestCase):
 
     def test_missing_account_companion_carrier_or_vector_is_rejected(self):
         for target in (
+            "STATE/LINEAGE/OCCURRENCES/PRESENCE-LIMITED.json",
             "STATE/LINEAGE/IMPLEMENTATIONS/VM003-MEDIUM001.json",
             "STATE/LINEAGE/IMPLEMENTATIONS/VM003-MEDIUM001.md",
             "STATE/LOCALITY_VM_003-v3.0.0-GITHUB_UPLOAD.zip",
@@ -55,6 +56,23 @@ class PublicationTests(unittest.TestCase):
                 resources=[r for r in d["resources"] if r["path"] != "../" + target]))
             with self.subTest(target=target), self.assertRaises(ValueError):
                 verify.check_material(files)
+
+    def test_predecessor_is_selected_without_claiming_domain_cutover(self):
+        index = verify.load_json(self.edition["index.json"])
+        target = "STATE/LINEAGE/OCCURRENCES/PRESENCE-LIMITED.json"
+        self.assertIn(target, self.edition)
+        self.assertIn("../" + target, index["point"]["provenance"])
+        self.assertEqual(index["point"]["public_location"]["status"], "UNCONFIGURED")
+        self.assertEqual(index["point"]["public_location"]["domain_control"], "UNVERIFIED")
+        self.assertNotIn("CNAME", self.edition)
+        self.assertNotIn("SURFACE/index.html", self.edition)
+
+    def test_occurrence_overreach_blocks_publication(self):
+        files = self.changed_document("STATE/LINEAGE/OCCURRENCES/PRESENCE-LIMITED.json",
+                                      lambda d: d["claimed_effects"].append("CONTINUITY"))
+        with patch.object(verify, "revision_files", return_value=files):
+            with self.assertRaisesRegex(ValueError, "conformance did not pass"):
+                verify.publication(verify.ROOT, self.revision)
 
     def test_corrupt_carriers_are_rejected(self):
         for name in self.files:
