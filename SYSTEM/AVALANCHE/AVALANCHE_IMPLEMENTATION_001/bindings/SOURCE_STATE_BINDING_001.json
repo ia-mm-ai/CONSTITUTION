@@ -1,0 +1,37 @@
+{
+  "schema": "PRESENCE_AVALANCHE_SOURCE_STATE_BINDING_001",
+  "implementation": "AVALANCHE_IMPLEMENTATION_001",
+  "version": "1.0.0",
+  "origin_commit": "a0cbb1080540bbe83f8678e81240247585dba060",
+  "tree_hash_algorithm": "SHA256_OF_SORTED_SHA256SUM_LINES_WITH_REPOSITORY_RELATIVE_PATHS",
+  "source": {
+    "tree_sha256": "e6102789238cf29dc61ac3ca1899d7e569df04da083764b30222fb300043b371",
+    "files": [
+      {
+        "path": "SOURCE/CONSTITUTION_0()1.md",
+        "bytes": 44133,
+        "sha256": "affeb5738cdfeea7ee4fe985652bf78b15eb6dfbba5871d82f0f2213a81832d0"
+      },
+      {
+        "path": "SOURCE/CONSTITUTION_0()1.json",
+        "bytes": 146048,
+        "sha256": "519a81d2a26d5bf32afd77566bbb35b4d28b22af85ac45a7055fccd1b45222f8"
+      }
+    ]
+  },
+  "state": {
+    "tree_sha256": "9e8a2b688775e730085bfdaf693c9cb3769dd0d74bc2362592ad75d4000268dc",
+    "predecessor_archives": [
+      {
+        "path": "STATE/LOCALITY_VM_003-v3.0.0-GITHUB_UPLOAD.zip",
+        "bytes": 6201060,
+        "sha256": "073949b8b74e7407a433b74efab71f22e2ee93c4d9ed80eb0aeb07b164c08d2b"
+      },
+      {
+        "path": "STATE/LOCALITY_MEDIUM_001-v2.0.0-GITHUB_UPLOAD.zip",
+        "bytes": 260923,
+        "sha256": "61353cddc93d62ac28d60e0c7357203ecfe01235e7d249e973ffb16356990989"
+      }
+    ]
+  }
+}
