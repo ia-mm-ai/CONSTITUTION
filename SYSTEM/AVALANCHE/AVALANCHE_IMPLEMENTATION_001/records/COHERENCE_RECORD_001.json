@@ -55,7 +55,7 @@
       "richer NEW_LOCUS/ACTIVE_LOCUS/BODY_LOCAL/DORMANT_BODY/TARGET_SCOPED scope-class definitions, now embedded in the single shared contract vm/protocol/operations.json",
       "one exhaustive shared operation/effect/scope contract with declared FAIL_CLOSED unknown-operation and missing-scope rules",
       "CORRECT bound to the exact target transition rather than incidental current activity",
-      "FIELD contract, reference-profile ceilings and non-effects (field/contract/, field/profiles/)",
+      "FIELD contract, reference-profile ceilings and non-effects retained in the single canonical HUMAN_FIELD_001, AI_FIELD_001, DEVICE_FIELD_001 and LOCALITY_FIELD_001 profile family (field/contract/, field/profiles/)",
       "pre-sign, draft-time, pre-submit and accepted-state scope enforcement in FIELD",
       "fail-closed unknown/missing/duplicate operation behavior in both runtimes",
       "coupled FIELD-VM verification beyond DECLARE_CAPACITY"
@@ -88,7 +88,11 @@
       "dual-mode FIELD selection between predecessor candidates (ROOT_VM_ID, VM_IDENTITIES)",
       "scripts/rehearsal-001.sh and rehearsal/run_lifecycle.py root-VM harness (scenario preserved as vm/lifecycle_regression_test.go)",
       "Markdown qualification/derivation duplicates (DERIVATION.md, QUALIFICATION_STATUS.md) in favor of single JSON records",
-      "committed vm/vm build artifact"
+      "committed vm/vm build artifact",
+      "field/profiles/HUMAN_MEDIUM_001.json duplicate profile alias",
+      "field/profiles/AI_MEDIUM_001.json duplicate profile alias",
+      "field/profiles/DEVICE_MEDIUM_001.json duplicate profile alias",
+      "field/profiles/PRESENCE_AVALANCHE_FIELD_001.json duplicate profile alias"
     ]
   },
   "structure": [
