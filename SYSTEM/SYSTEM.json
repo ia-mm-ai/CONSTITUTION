@@ -36,18 +36,10 @@
     "index": "Generated inventory and bounded operation contracts, not a hand-maintained second core.",
     "manifest": "Exact SHA-256 and byte_length for every exported file except the manifest itself.",
     "carriers": "application/zip; exact outer bytes checked against derivation and implementation bindings, ZIP recognition only; no extraction, nested-member reinspection, execution or authenticity claim.",
-    "trust": "A manifest digest needs an independent trusted channel; internal consistency is not authentication.",
-    "separate_hosting": {
-      "workflow": "../.github/workflows/publish-edition.yml",
-      "trigger": "Manual dispatch of a trusted commit with an independently supplied manifest SHA-256.",
-      "payload": "Only the integrity-verified SYSTEM export; not raw SURFACE.",
-      "prerequisites": ["Actions-based GitHub Pages", "github-pages environment approval as configured", "No existing Pages custom domain"],
-      "scope": "Static reading only; no API handlers, predecessor upload behavior or recovered service.",
-      "custom_domain": "Deferred until domain control and predecessor preservation are established; this workflow refuses custom-domain deployment."
-    }
+    "trust": "A manifest digest needs an independent trusted channel; internal consistency is not authentication."
   },
   "unestablished": [
-    "A deployed public location",
+    "A publication provider, deployment workflow, or deployed public location",
     "Present capability or constitutional conformance from formal representation checks",
     "Any constitutional implementation or adoption"
   ],
