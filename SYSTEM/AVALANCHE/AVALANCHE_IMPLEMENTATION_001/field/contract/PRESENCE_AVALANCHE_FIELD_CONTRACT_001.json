@@ -15,10 +15,11 @@
     "continuity_passage_schema": "PRESENCE_AVALANCHE_PARTICIPANT_STATE_PASSAGE_001",
     "form_id": "PRESENCE-AVALANCHE-FORM-001",
     "operation_contract": "../../vm/protocol/operations.json",
+    "operation_contract_sha256": "f4342e8b9549e2d4d9d0be378e68383cd5ebb3017ba377a8d922acd69d0912e1",
     "operation_scope_rule": "CHECK_SHARED_CLASSIFICATION_BEFORE_DRAFT_AND_AGAIN_AGAINST_ACCEPTED_STATE_BEFORE_SUBMISSION"
   },
   "public_origin": {
-    "binding": "../../vm/protocol/binding.json",
+    "binding": "../../bindings/SOURCE_STATE_BINDING_001.json",
     "effect": "DERIVATIVE_IMPLEMENTATION_BINDING_NOT_SOURCE_AUTHORITY"
   },
   "common_adapter_rule": {

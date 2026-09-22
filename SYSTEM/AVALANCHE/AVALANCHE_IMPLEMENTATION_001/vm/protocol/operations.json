@@ -3,6 +3,36 @@
   "implementation": "AVALANCHE_IMPLEMENTATION_001",
   "protocol": "PRESENCE_AVALANCHE_VM_001",
   "version": "1.0.0",
+  "authority": "SINGLE_NORMATIVE_SOURCE_FOR_VM_AND_FIELD_OPERATION_EFFECT_SCOPE",
+  "unknown_operation_rule": "FAIL_CLOSED",
+  "missing_or_duplicate_operation_rule": "FAIL_CLOSED",
+  "scope_classes": {
+    "NEW_LOCUS": {
+      "transition_locus_rule": "NONEMPTY_PROPOSED_UNUSED_LOCUS_ID",
+      "accepted_state_rule": "NO_ACTIVE_LOCUS",
+      "definition": "Names a proposed new temporary locus and never impersonates an accepted active locus."
+    },
+    "ACTIVE_LOCUS": {
+      "transition_locus_rule": "EXACT_ACCEPTED_ACTIVE_LOCUS_ID",
+      "accepted_state_rule": "ACTIVE_LOCUS_REQUIRED",
+      "definition": "Names the exact currently accepted active temporary locus."
+    },
+    "BODY_LOCAL": {
+      "transition_locus_rule": "EMPTY",
+      "accepted_state_rule": "ACTIVE_LOCUS_MAY_EXIST_UNLESS_OPERATION_LAW_IS_STRICTER",
+      "definition": "Acts on the locality body account, not on a temporary locus."
+    },
+    "DORMANT_BODY": {
+      "transition_locus_rule": "EMPTY",
+      "accepted_state_rule": "NO_ACTIVE_LOCUS_AND_EXACT_VM_DORMANT_POSTURE",
+      "definition": "Acts only at the VM-derived dormant body checkpoint."
+    },
+    "TARGET_SCOPED": {
+      "transition_locus_rule": "EXACT_ACCEPTED_TARGET_TRANSITION_LOCUS_ID",
+      "accepted_state_rule": "INCIDENTAL_CURRENT_ACTIVITY_DOES_NOT_BIND",
+      "definition": "Binds the accepted target transition's exact locus, including an empty body-local or historical closed-locus scope."
+    }
+  },
   "operations": [
     {"operation": "BOUND", "effect": "OPENS_TEMPORARY_LOCUS_ONLY", "scope": "NEW_LOCUS"},
     {"operation": "PRESENT_FORM", "effect": "ELIGIBILITY_TO_GATE_ONLY", "scope": "ACTIVE_LOCUS"},

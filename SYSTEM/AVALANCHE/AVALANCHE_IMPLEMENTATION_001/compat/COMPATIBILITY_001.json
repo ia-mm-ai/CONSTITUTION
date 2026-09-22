@@ -1,0 +1,34 @@
+{
+  "schema": "PRESENCE_AVALANCHE_COMPATIBILITY_001",
+  "implementation": "AVALANCHE_IMPLEMENTATION_001",
+  "version": "1.0.0",
+  "vm_protocol": "PRESENCE_AVALANCHE_VM_001",
+  "field_protocol": "PRESENCE_AVALANCHE_FIELD_001",
+  "vm_id_derivation": {
+    "input": "PRESENCE_AVALANCHE_VM_001",
+    "encoding": "UTF8_RIGHT_PAD_ZERO_TO_IDS_IDLEN",
+    "official_api": "github.com/ava-labs/avalanchego/ids.ToID",
+    "pinned_convention": "github.com/ava-labs/avalanchego@v1.15.0/utils/constants/vm_ids.go",
+    "result": "cNhhBznc1YN29QVJMQbK7sxy6GsimFKN6yvftRjPK7qWEvZw8"
+  },
+  "avalanchego": {
+    "version": "v1.15.0",
+    "commit": "70bd6d063b7343fd2cd8217200aaf77b57f19f68",
+    "rpcchainvm_protocol": 46,
+    "required_security_overlay": "PRESENCE_AVALANCHE_SECURITY_OVERLAY_001",
+    "overlay_record": "AVALANCHEGO_SECURITY_OVERLAY_001.json"
+  },
+  "wire": {
+    "json": "GO_ENCODING_JSON_COMPATIBLE_HTML_AND_U2028_U2029_ESCAPING",
+    "signature": "ED25519_OVER_CANONICAL_UNSIGNED_JSON",
+    "transition_id": "SHA256_OF_GO_COMPATIBLE_SIGNED_ENVELOPE"
+  },
+  "operation_contract": {
+    "path": "../vm/protocol/operations.json",
+    "sha256": "f4342e8b9549e2d4d9d0be378e68383cd5ebb3017ba377a8d922acd69d0912e1"
+  },
+  "predecessor_wire_compatibility": "NONE",
+  "state_migration": "NOT_DEFINED",
+  "identity_continuity": "NOT_INFERRED",
+  "deployment_qualification": "NOT_ESTABLISHED"
+}

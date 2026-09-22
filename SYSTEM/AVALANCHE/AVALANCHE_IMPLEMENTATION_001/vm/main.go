@@ -18,7 +18,7 @@ const (
 	implementationVersion = "1.0.0"
 	vmVersion             = "presence-avalanche-vm/1.0.0"
 	vmIDDomain            = "PRESENCE_AVALANCHE_VM_001"
-	avalancheGoProfile    = "v1.15.0"
+	avalancheGoProfile    = "v1.15.0+PRESENCE_AVALANCHE_SECURITY_OVERLAY_001"
 )
 
 type machineVersion struct {

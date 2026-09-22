@@ -1,0 +1,64 @@
+{
+  "schema": "PRESENCE_AVALANCHE_DERIVATION_COHERENCE_001",
+  "implementation": "AVALANCHE_IMPLEMENTATION_001",
+  "version": "1.0.0",
+  "starting_main": "5e09d1fbe3c1008937d95497fcc162a6ebd4190d",
+  "parallel_inputs": {
+    "pull_request_16": "0ab38005f4de88eb972dbc50faa9796f818daba8",
+    "pull_request_17": "d5e6703c71cd5b261041b9ebc41fbbf69450c2b9"
+  },
+  "git_lineage": "ONE_THREE_PARENT_OURS_LINEAGE_COMMIT_FROM_MAIN_PR16_PR17_THEN_COHERENT_MATERIALIZATION",
+  "dispositions": [
+    {
+      "crossing": "accepted first crossing / PR #15 / main",
+      "head": "5e09d1fbe3c1008937d95497fcc162a6ebd4190d",
+      "disposition": "PRESERVED_AND_SUPERSEDED_AT_PRE_RELEASE_IMPLEMENTATION_FORM_LAYER",
+      "retained": "Source/STATE integrity machinery, predecessor archive bindings, security-overlay identity, accepted lifecycle regression requirements",
+      "historical_identity_only": "cQYXygFUVutQucm4s8pr8M51sRdS1UfrTbpMdEgpRYt2JvEzr",
+      "not_invalidated": true,
+      "not_silently_rewritten": true
+    },
+    {
+      "crossing": "parallel optimization A / PR #16",
+      "head": "0ab38005f4de88eb972dbc50faa9796f818daba8",
+      "disposition": "REWORKED_INTO_CANONICAL_BODY",
+      "retained": "rich scope definitions, exhaustive fail-closed operation/effect/scope contract, target-bound CORRECT, FIELD ceilings and scope enforcement stages",
+      "historical": "PR-specific duplicate paths, stale evidence, and competing compatibility records",
+      "discarded": "root-level duplicate VM form and any operative predecessor identity"
+    },
+    {
+      "crossing": "parallel optimization B / PR #17",
+      "head": "d5e6703c71cd5b261041b9ebc41fbbf69450c2b9",
+      "disposition": "STRUCTURAL_BASIS_REWORKED_INTO_CANONICAL_BODY",
+      "retained": "vm/ and field/ sibling architecture, official VM-ID derivation, namespaced schemas and actor namespace, whole-state binding, digest and locality/key checks, Go wire compatibility, re-entry corrections, coupled integration, restart harness, qualification ceilings",
+      "historical": "observations made against the PR #17 contract digest",
+      "discarded": "root VM duplicate, dual-runtime FIELD accommodation, stale defaults, duplicate records, and mismatched test counts"
+    }
+  ],
+  "current_identity": {
+    "vm_id": "cNhhBznc1YN29QVJMQbK7sxy6GsimFKN6yvftRjPK7qWEvZw8",
+    "state_schema": "PRESENCE_AVALANCHE_RUNTIME_STATE_001",
+    "actor_namespace": "PRESENCE-AVALANCHE-ACTOR-",
+    "operation_contract_sha256": "f4342e8b9549e2d4d9d0be378e68383cd5ebb3017ba377a8d922acd69d0912e1"
+  },
+  "coherence": {
+    "operative_vm_source_trees": 1,
+    "operative_go_modules": 1,
+    "bounded_rehearsal_submodules": 1,
+    "operative_operation_contracts": 1,
+    "operative_vm_ids": 1,
+    "operative_state_schema_families": 1,
+    "operative_actor_namespaces": 1,
+    "operative_binding_directories": 1
+  },
+  "migration": "NO_STATE_MIGRATION_OR_IDENTITY_CONTINUITY_IS_DEFINED_OR_INFERRED",
+  "non_effects": [
+    "NO_SOURCE_OR_CANONICAL_STATE_CHANGE",
+    "NO_RELEASE",
+    "NO_DEPLOYMENT",
+    "NO_CHAIN_OR_L1_CREATION",
+    "NO_VALIDATOR_MANAGER_OR_AUTHORITY_ACT",
+    "NO_FORMATION_ADOPTION_SUCCESSION_OR_PRESENCE_CLAIM",
+    "NO_PUBLIC_NETWORK_MUTATION"
+  ]
+}

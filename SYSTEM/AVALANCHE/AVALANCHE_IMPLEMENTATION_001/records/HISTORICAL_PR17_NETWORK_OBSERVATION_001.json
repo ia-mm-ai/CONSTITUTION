@@ -1,0 +1,19 @@
+{
+  "schema": "PRESENCE_AVALANCHE_HISTORICAL_NETWORK_OBSERVATION_001",
+  "source_crossing": "d5e6703c71cd5b261041b9ebc41fbbf69450c2b9",
+  "source_contract_sha256": "23fce19b9ddf8cd04313199393ff4d2ae833ae7241a018784e620a18e63d57ed",
+  "vm_id": "cNhhBznc1YN29QVJMQbK7sxy6GsimFKN6yvftRjPK7qWEvZw8",
+  "avalanchego_observed": "PLAIN_V1_15_0_NOT_DECLARED_SECURITY_OVERLAY",
+  "validator_count": 3,
+  "observed_operations": [
+    "BOUND",
+    "DECLARE_CAPACITY",
+    "CLOSE"
+  ],
+  "validator_bounce_and_rejoin": "HISTORICALLY_OBSERVED",
+  "full_network_process_restart": "HISTORICALLY_OBSERVED",
+  "state_and_receipt_equality": "HISTORICALLY_OBSERVED",
+  "current_qualification_effect": "NONE",
+  "reason": "The current contract digest differs and the historical run did not establish the required security overlay or complete lifecycle.",
+  "not_transferable_to_current_qualification": true
+}

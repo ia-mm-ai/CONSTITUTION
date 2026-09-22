@@ -3,7 +3,7 @@
   "implementation": "AVALANCHE_IMPLEMENTATION_001",
   "version": "1.0.0",
   "repository": "https://github.com/ia-mm-ai/PRESENCE",
-  "starting_commit": "a0cbb1080540bbe83f8678e81240247585dba060",
+  "starting_commit": "5e09d1fbe3c1008937d95497fcc162a6ebd4190d",
   "hash_scope": "EXACT_STORED_FILE_BYTES",
   "source": {
     "SOURCE/CONSTITUTION_0()1.md": {

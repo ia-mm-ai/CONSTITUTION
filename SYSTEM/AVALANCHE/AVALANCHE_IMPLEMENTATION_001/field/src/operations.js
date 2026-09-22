@@ -16,10 +16,15 @@ const TOKEN = /^[A-Z][A-Z0-9_]+$/;
 export function validateOperationContract(contract) {
   if (
     !contract || typeof contract !== "object" || Array.isArray(contract) ||
-    Object.keys(contract).sort().join(",") !== "implementation,operations,protocol,schema,version" ||
+    Object.keys(contract).sort().join(",") !== "authority,implementation,missing_or_duplicate_operation_rule,operations,protocol,schema,scope_classes,unknown_operation_rule,version" ||
     contract.schema !== "PRESENCE_AVALANCHE_OPERATION_CONTRACT_001" ||
     contract.implementation !== "AVALANCHE_IMPLEMENTATION_001" ||
     contract.protocol !== "PRESENCE_AVALANCHE_VM_001" || contract.version !== "1.0.0" ||
+    contract.authority !== "SINGLE_NORMATIVE_SOURCE_FOR_VM_AND_FIELD_OPERATION_EFFECT_SCOPE" ||
+    contract.unknown_operation_rule !== "FAIL_CLOSED" ||
+    contract.missing_or_duplicate_operation_rule !== "FAIL_CLOSED" ||
+    !contract.scope_classes || typeof contract.scope_classes !== "object" ||
+    Object.keys(contract.scope_classes).sort().join(",") !== [...SCOPES].sort().join(",") ||
     !Array.isArray(contract.operations)
   ) throw new Error("unsupported shared VM operation contract");
   const operations = Object.create(null);
@@ -41,19 +46,6 @@ export function validateOperationContract(contract) {
 const contractBytes = readFileSync(new URL("../../vm/protocol/operations.json", import.meta.url));
 export const VM_OPERATION_CONTRACT_SHA256 = createHash("sha256").update(contractBytes).digest("hex");
 export const VM_OPERATIONS = validateOperationContract(JSON.parse(contractBytes.toString("utf8")));
-
-const rootContractBytes = readFileSync(new URL("../../protocol/operations.json", import.meta.url));
-export const ROOT_OPERATION_CONTRACT_SHA256 = createHash("sha256").update(rootContractBytes).digest("hex");
-const rootOperations = validateOperationContract({
-  protocol: "PRESENCE_AVALANCHE_VM_001",
-  ...JSON.parse(rootContractBytes.toString("utf8"))
-});
-for (const operation of SUPPORTED_VM_OPERATIONS) {
-  if (rootOperations[operation].scope !== VM_OPERATIONS[operation].scope ||
-      rootOperations[operation].effect !== VM_OPERATIONS[operation].effect) {
-    throw new Error(`VM operation contracts disagree for ${operation}`);
-  }
-}
 
 export function assertOperationScope(request, state) {
   const classification = VM_OPERATIONS[request.operation];

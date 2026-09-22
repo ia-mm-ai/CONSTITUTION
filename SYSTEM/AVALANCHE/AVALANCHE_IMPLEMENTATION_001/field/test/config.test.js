@@ -1,7 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { actorIdFromPublicKey, validateConfig } from "../src/config.js";
-import { ROOT_VM_ID, VM_ID, VM_RPCCHAINVM_PROTOCOL, VM_VERSION } from "../src/constants.js";
+import { VM_ID, VM_RPCCHAINVM_PROTOCOL, VM_VERSION } from "../src/constants.js";
 
 function base() {
   const publicKey = "12".repeat(32);
@@ -30,15 +30,11 @@ test("config binds chain route, frozen VM and derived actor ID", () => {
   assert.equal(value.listen_port, 8787);
 });
 
-test("config binds each VM ID to its own actor namespace", () => {
+test("config rejects every non-canonical VM identity", () => {
   const config = base();
-  config.expected_vm_id = ROOT_VM_ID;
-  assert.throws(() => validateConfig(config), /actor_id/);
-  config.actor_id = actorIdFromPublicKey(config.actor_public_key, ROOT_VM_ID);
-  assert.match(validateConfig(config).actor_id, /^LOCALITY-ACTOR-/);
-  assert.throws(() => validateConfig({ ...config, expected_vm_id: VM_ID }), /actor_id/);
   for (const id of ["unknown", "toString", undefined]) {
     assert.throws(() => validateConfig({ ...config, expected_vm_id: id }), /expected_vm_id/);
+    if (id !== undefined) assert.throws(() => actorIdFromPublicKey(config.actor_public_key, id), /expected_vm_id/);
   }
 });
 

@@ -34,11 +34,15 @@ type operationContract struct {
 }
 
 type protocolContract struct {
-	Schema         string              `json:"schema"`
-	Implementation string              `json:"implementation"`
-	Protocol       string              `json:"protocol"`
-	Version        string              `json:"version"`
-	Operations     []operationContract `json:"operations"`
+	Schema                          string                     `json:"schema"`
+	Implementation                  string                     `json:"implementation"`
+	Protocol                        string                     `json:"protocol"`
+	Version                         string                     `json:"version"`
+	Authority                       string                     `json:"authority"`
+	UnknownOperationRule            string                     `json:"unknown_operation_rule"`
+	MissingOrDuplicateOperationRule string                     `json:"missing_or_duplicate_operation_rule"`
+	ScopeClasses                    map[string]json.RawMessage `json:"scope_classes"`
+	Operations                      []operationContract        `json:"operations"`
 }
 
 var supportedOperations = []string{
@@ -69,8 +73,20 @@ func loadOperationContracts(data []byte) (map[string]operationContract, error) {
 	}
 	if document.Schema != "PRESENCE_AVALANCHE_OPERATION_CONTRACT_001" ||
 		document.Implementation != implementationID || document.Protocol != vmIDDomain ||
-		document.Version != implementationVersion {
+		document.Version != implementationVersion ||
+		document.Authority != "SINGLE_NORMATIVE_SOURCE_FOR_VM_AND_FIELD_OPERATION_EFFECT_SCOPE" ||
+		document.UnknownOperationRule != "FAIL_CLOSED" ||
+		document.MissingOrDuplicateOperationRule != "FAIL_CLOSED" {
 		return nil, errors.New("operation contract identity mismatch")
+	}
+	expectedScopes := []string{scopeNewLocus, scopeActiveLocus, scopeBodyLocal, scopeDormantBody, scopeTarget}
+	if len(document.ScopeClasses) != len(expectedScopes) {
+		return nil, errors.New("operation contract scope-class inventory is not exhaustive")
+	}
+	for _, scope := range expectedScopes {
+		if _, exists := document.ScopeClasses[scope]; !exists {
+			return nil, fmt.Errorf("operation contract is missing scope class %q", scope)
+		}
 	}
 	contracts := make(map[string]operationContract, len(document.Operations))
 	for _, operation := range document.Operations {
@@ -84,6 +100,9 @@ func loadOperationContracts(data []byte) (map[string]operationContract, error) {
 		case scopeNewLocus, scopeActiveLocus, scopeBodyLocal, scopeDormantBody, scopeTarget:
 		default:
 			return nil, fmt.Errorf("unknown scope for operation %q", operation.Operation)
+		}
+		if _, exists := document.ScopeClasses[operation.Scope]; !exists {
+			return nil, fmt.Errorf("undefined scope for operation %q", operation.Operation)
 		}
 		contracts[operation.Operation] = operation
 	}

@@ -63,7 +63,7 @@ func testGenesis(t *testing.T) ([]byte, *Genesis, testAuthorities) {
 			HumanPath: "SOURCE/CONSTITUTION_0()1.md", HumanSHA256: constitutionHumanSHA256,
 			MachinePath: "SOURCE/CONSTITUTION_0()1.json", MachineSHA256: constitutionMachineSHA256,
 			FormBindingPath: constitutionBindingPath, FormBindingSHA256: constitutionBindingSHA256,
-			FormBindingBytes: uint64(len(sourceStateBindingJSON)),
+			FormBindingBytes: constitutionBindingBytes,
 			PublicOrigin: GenesisConstitutionOrigin{
 				Repository: constitutionOriginRepo, Commit: constitutionOriginCommit,
 				HumanRepositoryPath: "SOURCE/CONSTITUTION_0()1.md", MachineRepositoryPath: "SOURCE/CONSTITUTION_0()1.json",

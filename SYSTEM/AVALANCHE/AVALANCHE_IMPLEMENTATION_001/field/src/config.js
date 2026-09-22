@@ -22,8 +22,9 @@ const CONFIG_FIELDS = new Set([
 
 export function actorIdFromPublicKey(publicKeyHex, vmID = VM_ID) {
   if (!HEX_KEY_PATTERN.test(publicKeyHex)) throw new Error("actor_public_key must be 32-byte lowercase hex");
+  if (vmID !== VM_ID) throw new Error("unsupported expected_vm_id");
   const digest = createHash("sha256").update(Buffer.from(publicKeyHex, "hex")).digest("hex");
-  return `${vmIdentity(vmID).actorPrefix}${digest.slice(0, 40)}`;
+  return `${vmIdentity(VM_ID).actorPrefix}${digest.slice(0, 40)}`;
 }
 
 function validateEndpoint(endpoint, expectedBlockchainId) {
@@ -48,7 +49,7 @@ export function validateConfig(input) {
   if (typeof input.medium_id !== "string" || !/^[A-Z0-9][A-Z0-9_-]{2,95}$/.test(input.medium_id)) throw new Error("medium_id is invalid");
   if (typeof input.expected_blockchain_id !== "string" || input.expected_blockchain_id.length < 8) throw new Error("expected_blockchain_id is required");
   if (typeof input.expected_locality_id !== "string" || input.expected_locality_id.length < 3) throw new Error("expected_locality_id is required");
-  vmIdentity(input.expected_vm_id);
+  if (input.expected_vm_id !== VM_ID) throw new Error(`expected_vm_id must be ${VM_ID}`);
   if (input.expected_vm_version !== VM_VERSION) throw new Error(`expected_vm_version must be ${VM_VERSION}`);
   if (input.expected_rpcchainvm_protocol !== VM_RPCCHAINVM_PROTOCOL) throw new Error(`expected_rpcchainvm_protocol must be ${VM_RPCCHAINVM_PROTOCOL}`);
   if (!HEX_KEY_PATTERN.test(input.actor_public_key ?? "")) throw new Error("actor_public_key must be 32-byte lowercase hex");

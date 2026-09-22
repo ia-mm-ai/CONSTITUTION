@@ -47,14 +47,12 @@ Go work files use a project-relative scratch directory removed by run.sh.
 
 Read qualification-boundary.json before interpreting any PASS result. The
 extended driver above tests explicit VM acceptance, not a validator quorum.
-The separate network.sh/network-driver.mjs test uses three actual local
-AvalancheGo validators and the custom plugin. BOUND -> DECLARE_CAPACITY ->
-renewed read -> CLOSE, validator bounce/rejoin, and whole-network process
-restart passed with matching state and retained receipts on all three nodes.
-See network-result.json. Its private temporary directory and processes were
-removed. It does not claim the complete participant lifecycle ran on a quorum.
-Earlier upstream build failures remain recorded in network-build-attempts.json;
-they were resolved by a separate pinned, advisory-checked disposable build module.
+The separate network.sh/network-driver.mjs test is retained for three actual
+local AvalancheGo validators and the custom plugin. It requires a node binary
+whose Go build metadata matches PRESENCE_AVALANCHE_SECURITY_OVERLAY_001. No
+historical run is transferred to the current contract digest. The bounded PR
+#17 observation is preserved only in
+records/HISTORICAL_PR17_NETWORK_OBSERVATION_001.json.
 
 These results are implementation evidence, not constitutional effect,
 Authority, formation, adoption, succession, external truth or Presence.

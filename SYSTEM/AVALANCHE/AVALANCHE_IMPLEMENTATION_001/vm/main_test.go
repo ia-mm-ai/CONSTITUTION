@@ -43,7 +43,7 @@ func TestMachineVersionContract(t *testing.T) {
 	if decoded.RPCChainVM != 46 {
 		t.Fatalf("unexpected RPCChainVM protocol: %d", decoded.RPCChainVM)
 	}
-	if decoded.AvalancheGoProfile != "v1.15.0" {
+	if decoded.AvalancheGoProfile != "v1.15.0+PRESENCE_AVALANCHE_SECURITY_OVERLAY_001" {
 		t.Fatalf("unexpected AvalancheGo profile: %s", decoded.AvalancheGoProfile)
 	}
 	if decoded.ProtocolContractSHA256 != digestText(string(protocolContractJSON)) {

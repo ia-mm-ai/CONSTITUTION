@@ -1,7 +1,6 @@
 package main
 
 import (
-	"bytes"
 	"crypto/sha256"
 	"encoding/hex"
 	"os"
@@ -9,13 +8,13 @@ import (
 )
 
 func TestCurrentProfileAndGenesisTemplateBinding(t *testing.T) {
-	binding, err := os.ReadFile("protocol/binding.json")
+	binding, err := os.ReadFile("../bindings/SOURCE_STATE_BINDING_001.json")
 	if err != nil {
 		t.Fatal(err)
 	}
-
-	if !bytes.Equal(binding, sourceStateBindingJSON) {
-		t.Fatal("runtime Source/State binding differs from the shared stored bytes")
+	bindingDigest := sha256.Sum256(binding)
+	if hex.EncodeToString(bindingDigest[:]) != constitutionBindingSHA256 || uint64(len(binding)) != constitutionBindingBytes {
+		t.Fatal("runtime Source/State binding differs from the compiled exact-byte identity")
 	}
 	profile, err := os.ReadFile("profile/PRESENCE_AVALANCHE_FORM_001.json")
 	if err != nil {
@@ -43,7 +42,7 @@ func TestCurrentProfileAndGenesisTemplateBinding(t *testing.T) {
 	if err := template.Validate(); err != nil {
 		t.Fatalf("current genesis template cannot be materialized: %v", err)
 	}
-	if template.Constitution.PublicOrigin.Commit != "a0cbb1080540bbe83f8678e81240247585dba060" {
+	if template.Constitution.PublicOrigin.Commit != "5e09d1fbe3c1008937d95497fcc162a6ebd4190d" {
 		t.Fatal("Source origin is not pinned to current main")
 	}
 	template.Constitution.FormBindingBytes++

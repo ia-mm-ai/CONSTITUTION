@@ -4,22 +4,21 @@ import { readdir, readFile } from "node:fs/promises";
 import { resolve } from "node:path";
 import { validateProfile } from "../src/profile.js";
 
-test("both sets of reference media satisfy the common profile contract", async () => {
+test("the four reference media satisfy the common profile contract", async () => {
   const directory = resolve("profiles");
   const files = (await readdir(directory)).filter((file) => file.endsWith(".json")).sort();
   assert.deepEqual(files, [
-    "AI_FIELD_001.json", "AI_MEDIUM_001.json", "DEVICE_FIELD_001.json", "DEVICE_MEDIUM_001.json",
-    "HUMAN_FIELD_001.json", "HUMAN_MEDIUM_001.json", "LOCALITY_FIELD_001.json", "PRESENCE_AVALANCHE_FIELD_001.json"
+    "AI_FIELD_001.json", "DEVICE_FIELD_001.json", "HUMAN_FIELD_001.json", "LOCALITY_FIELD_001.json"
   ]);
   const kinds = [];
   for (const file of files) {
     kinds.push(validateProfile(JSON.parse(await readFile(resolve(directory, file), "utf8"))).embodiment_kind);
   }
-  assert.deepEqual(kinds.sort(), ["AI", "AI", "DEVICE", "DEVICE", "HUMAN", "HUMAN", "LOCALITY", "LOCALITY"]);
+  assert.deepEqual(kinds.sort(), ["AI", "DEVICE", "HUMAN", "LOCALITY"]);
 });
 
 test("a profile cannot silently drop an effect ceiling", async () => {
-  for (const file of ["AI_FIELD_001.json", "AI_MEDIUM_001.json"]) {
+  for (const file of ["AI_FIELD_001.json"]) {
     const profile = JSON.parse(await readFile(resolve("profiles", file), "utf8"));
     profile.effect_ceiling.pop();
     assert.throws(() => validateProfile(profile), /effect_ceiling is missing/);
@@ -33,6 +32,9 @@ test("FIELD contract references resolve to the shared implementation artifacts",
     const document = JSON.parse(await readFile(new URL(path, url), "utf8"));
     assert.equal(document.implementation, contract.implementation);
   }
+  const operationBytes = await readFile(new URL(contract.vm.operation_contract, url));
+  const { createHash } = await import("node:crypto");
+  assert.equal(createHash("sha256").update(operationBytes).digest("hex"), contract.vm.operation_contract_sha256);
   for (const reference of contract.reference_profiles) {
     const profile = validateProfile(JSON.parse(await readFile(new URL(reference.path, url), "utf8")));
     assert.equal(profile.profile_id, reference.profile_id);

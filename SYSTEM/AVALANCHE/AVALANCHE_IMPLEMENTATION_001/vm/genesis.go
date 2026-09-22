@@ -2,9 +2,7 @@ package main
 
 import (
 	"crypto/ed25519"
-	"crypto/sha256"
 	_ "embed"
-	"encoding/hex"
 	"errors"
 	"fmt"
 )
@@ -36,18 +34,12 @@ const (
 
 	constitutionHumanSHA256   = "affeb5738cdfeea7ee4fe985652bf78b15eb6dfbba5871d82f0f2213a81832d0"
 	constitutionMachineSHA256 = "519a81d2a26d5bf32afd77566bbb35b4d28b22af85ac45a7055fccd1b45222f8"
-	constitutionBindingPath   = "SYSTEM/AVALANCHE/AVALANCHE_IMPLEMENTATION_001/vm/protocol/binding.json"
+	constitutionBindingPath   = "SYSTEM/AVALANCHE/AVALANCHE_IMPLEMENTATION_001/bindings/SOURCE_STATE_BINDING_001.json"
+	constitutionBindingSHA256 = "8d96c1e24262164636c8068292ccef0d20029488568cc805b6097e3430eb9842"
+	constitutionBindingBytes  = uint64(1456)
 	constitutionOriginRepo    = "https://github.com/ia-mm-ai/PRESENCE"
-	constitutionOriginCommit  = "a0cbb1080540bbe83f8678e81240247585dba060"
+	constitutionOriginCommit  = "5e09d1fbe3c1008937d95497fcc162a6ebd4190d"
 )
-
-//go:embed protocol/binding.json
-var sourceStateBindingJSON []byte
-
-var constitutionBindingSHA256 = func() string {
-	digest := sha256.Sum256(sourceStateBindingJSON)
-	return hex.EncodeToString(digest[:])
-}()
 
 var (
 	requiredGatePostures       = []string{"ADMIT", "REFUSE", "WITHHOLD", "HOLD"}
@@ -304,7 +296,7 @@ func (g *Genesis) Validate() error {
 		"NO_BUNDLED_SOURCE_MIRROR",
 		"PUBLICATION_NOT_FORMATION",
 	}
-	if g.Constitution.HumanPath != "SOURCE/CONSTITUTION_0()1.md" || g.Constitution.HumanSHA256 != constitutionHumanSHA256 || g.Constitution.MachinePath != "SOURCE/CONSTITUTION_0()1.json" || g.Constitution.MachineSHA256 != constitutionMachineSHA256 || g.Constitution.FormBindingPath != constitutionBindingPath || g.Constitution.FormBindingSHA256 != constitutionBindingSHA256 || g.Constitution.FormBindingBytes != uint64(len(sourceStateBindingJSON)) || g.Constitution.PublicOrigin != wantOrigin || g.Constitution.HumanRole != "SUBSTANTIVE_MEANING" || g.Constitution.MachineRole != "REPRESENTATION_ONLY" || g.Constitution.ConflictResult != "UNRESOLVED_HOLD_EXACT_SCOPE" || g.Constitution.ParsingHasForce {
+	if g.Constitution.HumanPath != "SOURCE/CONSTITUTION_0()1.md" || g.Constitution.HumanSHA256 != constitutionHumanSHA256 || g.Constitution.MachinePath != "SOURCE/CONSTITUTION_0()1.json" || g.Constitution.MachineSHA256 != constitutionMachineSHA256 || g.Constitution.FormBindingPath != constitutionBindingPath || g.Constitution.FormBindingSHA256 != constitutionBindingSHA256 || g.Constitution.FormBindingBytes != constitutionBindingBytes || g.Constitution.PublicOrigin != wantOrigin || g.Constitution.HumanRole != "SUBSTANTIVE_MEANING" || g.Constitution.MachineRole != "REPRESENTATION_ONLY" || g.Constitution.ConflictResult != "UNRESOLVED_HOLD_EXACT_SCOPE" || g.Constitution.ParsingHasForce {
 		return errors.New("constitution boundary differs from the committed source surface")
 	}
 	if err := requireSafeID("locality.id", g.Locality.ID); err != nil {

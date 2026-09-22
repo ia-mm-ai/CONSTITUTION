@@ -1,41 +1,27 @@
 {
   "schema": "PRESENCE_AVALANCHE_QUALIFICATION_BOUNDARY_001",
-  "intended_network": {
-    "validator_count": 3,
-    "avalanchego_version": "v1.15.0",
-    "avalanchego_commit": "70bd6d063b7343fd2cd8217200aaf77b57f19f68",
-    "go_version": "1.25.13",
-    "rpcchainvm_protocol": 46,
-    "network_class": "DISPOSABLE_LOCAL_ONLY",
-    "public_network_writes": false
+  "current_contract_sha256": "f4342e8b9549e2d4d9d0be378e68383cd5ebb3017ba377a8d922acd69d0912e1",
+  "current_coupled_observation": {
+    "command": "COUPLED_EVIDENCE_PATH=../integration/qualification-run.json ./integration/run.sh",
+    "result": "PASS",
+    "accepted_transitions": 29,
+    "acceptance": "REAL_VM_BUILD_VERIFY_ACCEPT_UNDER_LOCAL_TEST_CONTROLLER",
+    "vm_database_reloads": 2,
+    "validator_quorum": "NOT_RUN"
   },
-  "pin_verification": {
-    "command": "cd vm && go mod download -json github.com/ava-labs/avalanchego@v1.15.0",
-    "origin_hash": "70bd6d063b7343fd2cd8217200aaf77b57f19f68",
-    "origin_ref": "refs/tags/v1.15.0",
-    "module_sum": "h1:F9RFoUT0tKguC+GYtambBL0TXafUNGJOfx/DjZtb6S0=",
-    "repository_clone_performed": false
-  },
-  "unresolved_boundary": {
-    "three_validator_network": "PASSED_BOUND_DECLARE_CAPACITY_CLOSE",
-    "validator_process_restart": "PASSED_AT_DECLARED_LOCAL_SCOPE",
-    "rpcchainvm_plugin_transport": "PASSED_AT_DECLARED_LOCAL_SCOPE",
-    "resolved_build_prerequisite": "Parent built upstream through a separate disposable Go module with the pinned AvalancheGo and gRPC versions; additional pins received advisory queries.",
-    "reason": "The recorded earlier build failures were resolved. Actual three-validator FIELD coupling, validator bounce/rejoin and whole-network restart passed; see network-result.json. The full participant/correction/reentry lifecycle remains tested under explicit local VM acceptance rather than three-validator consensus.",
-    "attempt_evidence": "integration/network-build-attempts.json",
-    "observed_network_evidence": "network-result.json",
-    "next_required_qualification": "Extend the actual three-validator run from the critical three-operation lifecycle to the complete participant/correction/reentry sequence and complete independent production qualification."
-  },
-  "retained_test": {
-    "command_from_implementation_root": "./integration/run.sh",
-    "runner": "go test -tags=integration -run '^TestCoupledFIELDLifecycle$' -count=1 -v .",
-    "driver": "integration/driver.mjs",
-    "vm_server": "vm/coupled_integration_test.go",
-    "client": "Real FIELD MediumEngine and VMClient over loopback HTTP; no fake VM client",
-    "acceptance": "Real VM BuildBlock, block.Verify and block.Accept invoked explicitly by an isolated test controller",
-    "restart_boundary": "Two fresh VM instances reinitialize from the same in-memory database; not an AvalancheGo or disk/process restart",
-    "signer_custody": "Random Ed25519 private keys held only in memory and passed to the separate Node signer over stdin; never written to journals or files",
-    "scratch": "Project-relative public journal and Go work files are cleaned on completion",
-    "effect": "LOCAL_IMPLEMENTATION_TEST_EVIDENCE_ONLY_NO_CONSTITUTIONAL_EFFECT"
-  }
+  "unresolved": [
+    {
+      "boundary": "COMPLETE_LIFECYCLE_ON_THREE_VALIDATOR_SECURITY_OVERLAY_NETWORK",
+      "status": "UNRESOLVED",
+      "required": "BOUND through INCORPORATE_ADDRESSED_RESIDUE, one-validator bounce/rejoin, and full-network restart with exact state and receipt equality"
+    },
+    {
+      "boundary": "SECURITY_OVERLAY_NETWORK_OBSERVATION",
+      "status": "UNRESOLVED",
+      "required": "Run the current VM and contract against AvalancheGo v1.15.0 plus PRESENCE_AVALANCHE_SECURITY_OVERLAY_001"
+    }
+  ],
+  "historical_network_evidence": "../records/HISTORICAL_PR17_NETWORK_OBSERVATION_001.json",
+  "historical_evidence_current_qualification_effect": "NONE",
+  "effect": "LOCAL_IMPLEMENTATION_TEST_EVIDENCE_ONLY_NO_RELEASE_DEPLOYMENT_OR_CONSTITUTIONAL_EFFECT"
 }

@@ -8,7 +8,7 @@ from pathlib import Path
 
 IMPLEMENTATION = Path(__file__).resolve().parents[1]
 REPOSITORY = IMPLEMENTATION.parents[2]
-BINDING = IMPLEMENTATION / "vm/protocol/binding.json"
+BINDING = IMPLEMENTATION / "bindings/SOURCE_STATE_BINDING_001.json"
 
 
 def digest(path):
