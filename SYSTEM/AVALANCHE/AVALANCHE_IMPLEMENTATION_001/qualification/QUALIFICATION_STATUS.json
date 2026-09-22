@@ -138,7 +138,7 @@
     "single_default_build": "scripts/build.sh builds only vm/ and prints vm_id cNhhBznc1YN29QVJMQbK7sxy6GsimFKN6yvftRjPK7qWEvZw8",
     "single_default_field_config": "field/examples/config.template.json expected_vm_id is the canonical VM ID; field/src/constants.js carries exactly one identity and fails closed for any other",
     "genesis": "Materialized and checked genesis binds the canonical VM identity and schemas",
-    "predecessor_vm_id": "cQYXygFUVutQucm4s8pr8M51sRdS1UfrTbpMdEgpRYt2JvEzr appears only in records/ lineage material and Git history; it has no operative configuration, build output, genesis, FIELD default, compatibility or binding use"
+    "predecessor_identity_posture": "HISTORICAL_ONLY; see records/COHERENCE_RECORD_001.json and records/DERIVATION_RECORD.json. The predecessor has no operative configuration, build output, genesis, FIELD default, compatibility, binding, migration or evidence-transfer effect."
   },
   "security": {
     "avalanchego_security_overlay": "PRESENCE_AVALANCHE_SECURITY_OVERLAY_001 (compat/AVALANCHEGO_SECURITY_OVERLAY_001.json) was applied to the AvalancheGo build used by the recorded three-validator network run; base-version-only network evidence is retained solely as bounded history in integration/historical/",
